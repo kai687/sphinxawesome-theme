@@ -1,0 +1,313 @@
+/* This file contains Tailwind styles applied to common tags
+ * such as paragraphs, headings, links, etc. */
+
+div.section {
+  @apply max-w-2xl;
+}
+
+p {
+  @apply my-6;
+}
+
+/* **************************
+ * HEADINGS
+ * **************************/
+main h1 {
+  @apply text-4xl text-gray-800 leading-tight mb-12 mt-12;
+}
+
+main h2 {
+  @apply text-2xl text-gray-800 leading-snug mb-8 mt-16;
+}
+
+main h3 {
+  @apply text-xl text-gray-800 font-medium leading-snug mb-6 mt-8;
+}
+
+/* **************************
+ * LINKS
+ * **************************/
+.headerlink {
+  @apply invisible;
+}
+
+.headerlink:after {
+  content: "#";
+  @apply text-gray-500 font-semibold;
+}
+
+h1:hover .headerlink:after,
+h2:hover .headerlink:after,
+h3:hover .headerlink:after {
+  @apply visible;
+}
+
+p a {
+  @apply text-blue-600;
+}
+
+.search li {
+  @apply border-t my-4 py-4;
+}
+
+.search li a {
+  @apply text-blue-600 text-lg;
+}
+
+.search .context {
+  @apply text-sm text-gray-800;
+}
+
+.highlighted {
+  @apply py-px px-1 bg-pink-200 rounded;
+}
+
+.highlight-link {
+  @apply hidden;
+}
+
+.headerlink:hover:after,
+.search li a:hover,
+a:hover {
+  @apply text-pink-500;
+}
+
+#nav-toc a.current {
+  @apply text-pink-500;
+}
+
+#nav-toc .toctree-l1 > a {
+  @apply block py-4 pl-8 pr-4 font-semibold tracking-wide;
+}
+
+#nav-toc .toctree-l1:first-of-type > a {
+  @apply -mt-4;
+}
+
+#nav-toc .toctree-l2 > a {
+  @apply block py-3 pl-10 pr-4;
+}
+
+#nav-toc .toctree-l3 > a {
+  @apply block py-3 pl-16 pr-4;
+}
+
+#nav-toc a:hover {
+  @apply text-gray-800 bg-gray-300;
+}
+
+/* special link for PDF download below the title of the doc */
+.pdf-link {
+  @apply text-sm mb-12 -mt-10;
+}
+
+/* **************************
+ * CODE
+ * **************************/
+code {
+  @apply font-mono font-medium text-sm leading-none py-px px-1 bg-gray-200 rounded;
+}
+
+.highlight {
+  @apply bg-gray-200 rounded;
+}
+
+pre {
+  width: 95%;
+  @apply font-mono font-normal p-4 overflow-x-auto;
+}
+
+/* **************************
+ * LISTS
+ * **************************/
+ol {
+  @apply list-decimal ml-4;
+}
+
+.section ul {
+  @apply list-disc ml-4;
+}
+
+ol > li,
+.section ul > li {
+  @apply pl-4;
+}
+
+dt {
+  @apply font-medium tracking-wide;
+}
+
+dd {
+  @apply pl-12;
+}
+
+/* **************************
+ * TABLES
+ * **************************/
+table {
+  @apply text-sm my-10;
+}
+
+table p {
+  @apply p-0 m-0;
+}
+
+table p + p {
+  @apply mt-4;
+}
+
+tr {
+  @apply border-b border-t border-gray-400;
+}
+
+th {
+  @apply font-medium bg-gray-200 tracking-wide py-3 px-2 text-left align-top;
+}
+
+td {
+  @apply px-2 py-3 text-left align-top;
+}
+
+/* **************************
+ * FIGURES
+ * **************************/
+.figure {
+  @apply my-12;
+}
+
+.figure > .caption {
+  @apply text-sm text-gray-800 m-4;
+}
+
+.figure .caption-number {
+  @apply font-medium tracking-wide;
+}
+
+.figure > .legend {
+  @apply text-sm text-gray-800 italic ml-4;
+}
+
+.figure > .legend > p:first-child {
+  @apply mt-0;
+}
+
+/* **************************
+ * ADMONITIONS
+ * **************************/
+.admonition {
+  @apply text-sm my-6 p-4 rounded;
+}
+
+.note {
+  @apply text-blue-900 bg-blue-200;
+}
+
+.warning {
+  @apply text-red-900 bg-red-200;
+}
+
+.caution {
+  @apply text-yellow-900 bg-yellow-200;
+}
+
+.admonition-title {
+  @apply font-medium tracking-wide mb-4 mt-0;
+}
+
+.admonition > p:not(.admonition-title) {
+  @apply my-4;
+}
+
+.admonition > p:last-child {
+  @apply mb-0;
+}
+
+/* **************************
+ * PRINT
+ * **************************/
+@media print {
+  header {
+    box-shadow: none !important;
+    flex-direction: row-reverse !important;
+    justify-items: space-between !important;
+    align-items: center !important;
+    @apply border-b;
+  }
+
+  header > img {
+    /* transition: transform 0.1s !important; */
+    transform: translate(0px, -14px) !important;
+  }
+
+  header h2 {
+    margin-left: 2rem !important;
+  }
+
+  footer,
+  button,
+  nav,
+  form,
+  .pdf-link {
+    @apply hidden;
+  }
+
+  p {
+    orphans: 2;
+    widows: 2;
+  }
+
+  p a.external:after {
+    content: " (" attr(href)  ")";
+  }
+
+  @page {
+    margin-top: 1.5cm;
+    margin-bottom: 2cm;
+    margin-left: 1.5cm;
+    margin-right: 1.5cm;
+    @bottom-left {
+      content: "Virtual Cluster Docs";
+      font-size: 9pt;
+    }
+    @bottom-right {
+      content: counter(page);
+    }
+    @top-left {
+      content: "";
+    }
+    @top-right {
+      content: "";
+    }
+    @top-center {
+      content: "";
+    }
+  }
+
+  h2,
+  h3,
+  h4 {
+    page-break-after: avoid;
+    break-after: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  a {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  section[role='contentinfo'] {
+    break-before: avoid;
+    page-break-before: avoid;
+  }
+
+  table {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  code {
+    whitespace: pre-wrap !important;
+  }
+}

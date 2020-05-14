@@ -1,0 +1,10 @@
+/* This is the main source file for the Sphinx Next Theme
+ * We import the Tailwind CSS and all styling for our theme
+ * comes in the theme-custom.css file */
+
+/* purgecss start ignore */
+@import "tailwindcss/base";
+@import "theme-custom.css";
+/* purgecss end ignore */
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";

@@ -1,0 +1,25 @@
+{#-
+  Template for the full-screen search pane
+-#}
+
+
+<div
+  id="search-pane"
+  class="h-full w-full fixed top-0 right-0 z-10 bg-gray-800 overflow-x-hidden pt-20
+  transition-all duration-300 flex flex-col items-center transform translate-x-full
+  opacity-0"
+>
+  <h4 class="text-xl text-white mb-4">Enter Search term</h4>
+
+  {%- import "buttons.html" as buttons -%}
+
+  <form
+    id="searchbox" action="{{ pathto('search') }}" method="get"
+    class="flex w-full rounded justify-between items-center max-w-sm px-12">
+
+    {%- include "input.html" -%}
+    {{ buttons.search(fg="text-gray-900", bg="bg-gray-300", hover="hover:bg-gray-800") }}
+  </form>
+
+  {{ buttons.close("closeSearchBtn") }}
+</div>

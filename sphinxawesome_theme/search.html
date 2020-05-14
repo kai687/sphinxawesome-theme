@@ -1,0 +1,32 @@
+{#-
+  Template for the search results.
+-#}
+
+
+{% extends "layout.html" %}
+{% set title = _('Search') %}
+{% block scripts %}
+{{ super() }}
+<script src="{{ pathto('_static/searchtools.js', 1) }}"></script>
+<script src="{{ pathto('searchindex.js', 1) }}" defer></script>
+{% endblock %}
+
+{% block main %}
+<div class="overflow-y-auto md:w-full flex flex-col">
+  <main role="main" class="mx-8 md:mx-12 flex-1">
+    {% include "breadcrumbs.html" %}
+    {{ body }}
+    <div id="fallback" class="my-8 text-sm text-red-700">
+      <script>document.querySelector("#fallback").style.display = "none"</script>
+      Please activate Javascript to enable searching the documentation.
+    </div>
+    <section id="search-results"></section>
+  </main>
+  <section role="contentinfo" class="mt-20 mx-12 mb-4 flex-shrink-0 text-sm text-gray-700">
+    &copy; Copyright {{ copyright }}
+    {%- if last_updated %}
+      Last updated: {{ last_updated }}.
+    {%- endif %}
+  </section>
+</div>
+{% endblock main %}
