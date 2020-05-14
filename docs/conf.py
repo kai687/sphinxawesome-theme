@@ -12,9 +12,10 @@ extensions = []
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
-
 nitpicky = True
 default_role = "literal"
+
+rst_prolog = r'''.. |name| replace:: sphinxawesome theme'''
 
 # -- Options for HTML output -------------------------------------------------
 
