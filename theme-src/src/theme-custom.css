@@ -235,12 +235,12 @@ td {
   }
 
   header > img {
-    /* transition: transform 0.1s !important; */
     transform: translate(0px, -14px) !important;
+    margin-right: 1rem !important;
   }
 
   header h2 {
-    margin-left: 2rem !important;
+    margin-left: 1rem !important;
   }
 
   footer,
