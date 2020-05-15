@@ -20,14 +20,12 @@ Install the theme as a Python package:
 
    $ pip install sphinxawesome-theme
 
-To use the theme, set the ``html_theme`` variable in the Sphinx configuration file
+To use the theme, set ``html_theme`` in the Sphinx configuration file
 ``conf.py``:
 
 .. code:: python
 
    html_theme = "sphinxawesome_theme"
-
-.. include-until-here
 
 -------------
 Configuration
@@ -48,6 +46,16 @@ the documents. Combining the ``:hidden:`` option with the ``nav_include_hidden``
 allows the links to the included documents to be shown in the navigation menu, but avoid
 the duplicated links on the content pages.
 
+-----------
+Limitations
+-----------
+
+I created this theme with manually written "prose" documentation in mind. There are no
+styles provided for API documentation yet. There may be styles missing for some roles or
+directives that I am not typically using. This version of the theme only really supports
+English as a language.
+
+.. include-until-here
 
 -------------
 Documentation
