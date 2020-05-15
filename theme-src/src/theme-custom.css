@@ -202,7 +202,8 @@ td {
   @apply text-sm my-6 p-4 rounded;
 }
 
-.note {
+.note,
+.seealso {
   @apply text-blue-900 bg-blue-200;
 }
 
