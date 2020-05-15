@@ -24,6 +24,10 @@ main h3 {
   @apply text-xl text-gray-800 font-medium leading-snug mb-6 mt-8;
 }
 
+main h4 {
+  @apply text-gray-800 font-medium my-6;
+}
+
 /* **************************
  * LINKS
  * **************************/
@@ -109,7 +113,7 @@ code {
 }
 
 .highlight {
-  @apply bg-gray-200 rounded;
+  @apply bg-gray-200 rounded my-6;
 }
 
 pre {
@@ -220,6 +224,13 @@ td {
 
 .admonition > p:last-child {
   @apply mb-0;
+}
+
+/* **************************
+ * OTHER DIRECTIVES/ROLES
+ * **************************/
+.guilabel {
+  @apply font-medium tracking-wide;
 }
 
 /* **************************
