@@ -20,5 +20,6 @@ rst_prolog = r'''.. |name| replace:: sphinxawesome theme'''
 # -- Options for HTML output -------------------------------------------------
 
 html_theme = "sphinxawesome_theme"
+html_theme_path = ["../sphinxawesome_theme"]
 html_theme_options = {"nav_include_hidden": True}
 html_last_updated_fmt = "%b %d, %Y"

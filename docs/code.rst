@@ -10,11 +10,6 @@ Clicking this button selects all text in the code block and copies it to the cli
    Click the button on the right to copy this text to the clipboard.
 
 
-.. parsed-literal::
-
-   Does this work as well?
-
-
 Tables are of course also styled.
 
    ==========  ==========
@@ -24,5 +19,3 @@ Tables are of course also styled.
    column      column
    column      column
    ==========  ==========
-
-

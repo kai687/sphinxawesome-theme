@@ -9,3 +9,4 @@ Sphinxawesome Theme
 
    text
    code
+   admonitions
