@@ -31,7 +31,7 @@ To use the theme, set ``html_theme`` in the Sphinx configuration file
 Configuration
 -------------
 
-To show entries in the navigation menu that come from `toctree
+To show also entries in the navigation menu from `toctree
 <https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html?highlight=toctree#directive-toctree>`_
 directives with the ``:hidden:`` option, add the following setting to the Sphinx
 configuration file ``conf.py``.
@@ -40,11 +40,10 @@ configuration file ``conf.py``.
 
    html_theme_options = {"nav_include_hidden": True}
 
-The default is ``False`` to be in line with other themes. Including ``:hidden:`` to a
-toctree directive makes Sphinx include the documents, but not print the list of links to
-the documents. Combining the ``:hidden:`` option with the ``nav_include_hidden`` option
-allows the links to the included documents to be shown in the navigation menu, but avoid
-the duplicated links on the content pages.
+Including ``:hidden:`` in a toctree directive makes Sphinx include the documents, but
+not print the list of links to the documents. This can be useful if a theme (such as
+this theme) has a separate navigation menu. ``nav_include_hidden=True`` prints all links
+in the navigatio menu.
 
 -----------
 Limitations

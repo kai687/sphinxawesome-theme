@@ -2,15 +2,18 @@
 Code and tables
 ===============
 
-The |name| implements a :guilabel:`Copy` button on the right side of each code block.
-Clicking this button selects all text in the code block and copies it to the clipboard.
+Click on the :guilabel:`Copy` button on the right side of a code block to copy it to the
+clipboard.
 
 .. code::
 
-   Click the button on the right to copy this text to the clipboard.
+   Click on the button on the right.
 
 
-Tables are of course also styled.
+This is a small table.
+
+.. table::
+   :width: 50%
 
    ==========  ==========
    table head  table head

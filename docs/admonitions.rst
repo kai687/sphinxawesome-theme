@@ -2,8 +2,8 @@
 Admonitions
 ===========
 
-Admonitions can provide additional explanations or warnings. Styles for these
-admonitions are provided.
+Admonitions can provide additional explanations or warnings. These four admonitions can
+be used with this theme: 
 
 - Note:
 
