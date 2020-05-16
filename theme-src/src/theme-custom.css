@@ -42,7 +42,8 @@ main h4 {
 
 h1:hover .headerlink:after,
 h2:hover .headerlink:after,
-h3:hover .headerlink:after {
+h3:hover .headerlink:after,
+table:hover .headerlink:after {
   @apply visible;
 }
 
@@ -150,6 +151,10 @@ dd {
  * **************************/
 table {
   @apply text-sm my-10;
+}
+
+table caption {
+  @apply text-left text-sm text-gray-800 px-2 mb-4;
 }
 
 table p {
