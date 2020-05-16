@@ -1,0 +1,6 @@
+[build]
+
+base = "docs/"
+publish = "docs/public"
+command = "sphinx-build -T -W . public"
+
