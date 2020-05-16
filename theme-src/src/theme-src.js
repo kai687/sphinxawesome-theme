@@ -1,4 +1,6 @@
 import css from "./theme-src.css";
+import "typeface-roboto";
+import "typeface-roboto-mono";
 
 // DOM elements we want to manipulate
 const nav = document.querySelector("nav");
