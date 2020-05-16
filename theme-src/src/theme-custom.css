@@ -195,6 +195,10 @@ td {
   @apply mt-0;
 }
 
+.badge {
+  @apply inline-block;
+}
+
 /* **************************
  * ADMONITIONS
  * **************************/
