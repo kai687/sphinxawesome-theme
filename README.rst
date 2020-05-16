@@ -18,7 +18,7 @@ Install the theme as a Python package:
 
 .. code:: console
 
-   $ pip install sphinxawesome-theme
+   pip install sphinxawesome-theme
 
 To use the theme, set ``html_theme`` in the Sphinx configuration file
 ``conf.py``:
