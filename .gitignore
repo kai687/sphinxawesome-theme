@@ -5,4 +5,4 @@ dist
 pip-wheel-metadata/
 sphinxawesome_theme.egg-info
 .tox
-docs/_build
+docs/public
