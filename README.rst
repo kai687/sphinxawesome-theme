@@ -6,6 +6,10 @@ Sphinx Awesome Theme
    :target: https://opensource.org/licenses/MIT
    :alt: MIT license
 
+.. image:: https://api.netlify.com/api/v1/badges/e6d20a5c-b49e-4ebc-80f6-59fde8f24e22/deploy-status
+   :target: https://app.netlify.com/sites/confident-austin-7d4cfd/deploys
+   :alt: Netlify Status
+
 This is a simple but awesome theme for the `Sphinx
 <http://www.sphinx-doc.org/en/master/>`_ documentation generator.
 
