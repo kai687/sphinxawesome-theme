@@ -47,18 +47,20 @@ configuration file ``conf.py``.
    html_theme_options = {"nav_include_hidden": True}
 
 Including ``:hidden:`` in a toctree directive makes Sphinx include the documents, but
-not print the list of links to the documents. This can be useful if a theme (such as
-this theme) has a separate navigation menu. ``nav_include_hidden=True`` prints all links
-in the navigatio menu.
+not print the list of links to the documents on the current page. This is useful when
+navigation links are shown elsewhere, for example in a menu on the left side. The
+default is ``nav_include_hidden=False`` in order to be compatible with other themes.
 
 -----------
 Limitations
 -----------
 
-I created this theme with manually written "prose" documentation in mind. There are no
-styles provided for API documentation yet. There may be styles missing for some roles or
-directives that I am not typically using. This version of the theme only really supports
-English as a language.
+This theme is designed to be simple. Some features are not (or not yet) available.
+
+- Zero customizability
+- API documentation has not been tested. Some styles are missing. 
+- Not all docutils/Sphinx roles have styles. There are a lot of them. 
+- Internationalization was neglected.
 
 .. include-until-here
 
