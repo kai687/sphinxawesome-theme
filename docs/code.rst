@@ -12,7 +12,7 @@ clipboard.
 
 This is a small table.
 
-.. table::
+.. table:: Table Caption
    :width: 50%
 
    ==========  ==========
