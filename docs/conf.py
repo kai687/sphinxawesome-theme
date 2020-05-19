@@ -1,6 +1,6 @@
 # -- Project information -----------------------------------------------------
 
-project = "Sphinxawesome Theme"
+project = "Sphinx Awesome Theme"
 copyright = "2020, Kai Welke"
 author = "Kai Welke"
 
@@ -14,7 +14,7 @@ default_role = "literal"
 
 # -- Options for HTML output -------------------------------------------------
 
-html_title = "Sphinxawesome Theme"
+html_title = "Sphinx Awesome Theme"
 html_theme = "sphinxawesome_theme"
 html_theme_path = ["../"]
 html_theme_options = {"nav_include_hidden": True}

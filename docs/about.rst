@@ -1,12 +1,12 @@
 About
 =====
 
-This page is a collection of topics about the sphinxawesome theme.
+This page is a collection of topics about the sphinx awesome theme.
 
 Assets
 ------
 
-The sphinxawesome theme uses the following external assets.
+The sphinx awesome theme uses the following external assets.
 
 .. list-table::
    :header-rows: 1
