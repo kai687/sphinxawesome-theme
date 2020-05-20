@@ -68,4 +68,5 @@ This theme is designed to be simple. Some features are not (or not yet) availabl
 Documentation
 -------------
 
-Read the documentation and see how the theme looks over there.
+Read the documentation and see how the theme looks on the `demo page
+<https://confident-austin-7d4cfd.netlify.app/>`_
