@@ -13,7 +13,7 @@
 
 {% block main %}
 <div class="overflow-y-auto md:w-full flex flex-col">
-  <main role="main" class="mx-8 md:mx-12 flex-1">
+  <main role="main" class="mx-4 md:ml-16 flex-1">
     {% include "breadcrumbs.html" %}
     {{ body }}
     <div id="fallback" class="my-8 text-sm text-red-700">
@@ -22,7 +22,7 @@
     </div>
     <section id="search-results"></section>
   </main>
-  <section role="contentinfo" class="mt-20 mx-12 mb-4 flex-shrink-0 text-sm text-gray-700">
+  <section role="contentinfo" class="mt-20 mx-8 md:ml-16 mb-4 flex-shrink-0 text-sm text-gray-700">
     &copy; Copyright {{ copyright }}
     {%- if last_updated %}
       Last updated: {{ last_updated }}.

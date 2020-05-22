@@ -10,7 +10,6 @@ const snackbar = document.querySelector("#snackbar");
 const searchForm = document.querySelector("#searchbox");
 const searchInput = document.querySelector("#search-input");
 
-
 document.querySelector("#openNavBtn").addEventListener("click", () => {
   nav.style.transform = "translate(0,0)";
   nav.style.transition = "transform 0.3s, opacity 0.5s";
@@ -45,6 +44,7 @@ function selectText(node) {
 
 function addCopyButton(el) {
   const btn = document.createElement("button");
+  btn.setAttribute("aria-label", "Copy this code block");
   btn.classList.add(
     "absolute",
     "right-0",
@@ -57,10 +57,10 @@ function addCopyButton(el) {
     "hover:text-pink-500"
   );
   btn.innerHTML =
-    '<svg class="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M6 6V2c0-1.1.9-2 2-2h10a2 2 0 012 2v10a2 2 0 01-2 2h-4v4a2 2 0 01-2 2H2a2 2 0 01-2-2V8c0-1.1.9-2 2-2h4zm2 0h4a2 2 0 012 2v4h4V2H8v4zM2 8v10h10V8H2z"/></svg>';
+    '<svg aria-hidden="true" class="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M6 6V2c0-1.1.9-2 2-2h10a2 2 0 012 2v10a2 2 0 01-2 2h-4v4a2 2 0 01-2 2H2a2 2 0 01-2-2V8c0-1.1.9-2 2-2h4zm2 0h4a2 2 0 012 2v4h4V2H8v4zM2 8v10h10V8H2z"/></svg>';
 
   // Show a tooltip on hover
-  btn.addEventListener("mouseenter", event => {
+  btn.addEventListener("mouseenter", (event) => {
     const rect = event.target.getBoundingClientRect();
     tooltip.style.opacity = 0.6;
     tooltip.style.visibility = "visible";
@@ -90,7 +90,7 @@ function addCopyButton(el) {
 }
 
 // Add Copy Button to all '<div class="highlight">' code blocks
-document.querySelectorAll("div.highlight").forEach(code => {
+document.querySelectorAll("div.highlight").forEach((code) => {
   code.style.position = "relative";
   addCopyButton(code);
 });
@@ -120,7 +120,7 @@ setTimeout(() => {
 }, 500);
 
 // prevent empty search submit
-searchForm.addEventListener("submit", event => {
+searchForm.addEventListener("submit", (event) => {
   if (searchInput.value.length < 1) {
     event.preventDefault();
   }

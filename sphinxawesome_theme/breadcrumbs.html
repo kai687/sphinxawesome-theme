@@ -7,7 +7,7 @@
 {% endset %}
 
 <nav role="navigation" 
-     aria-label="breadcrumbs navigation" 
+     aria-label="breadcrumbs" 
      class="mt-16 mb-12 text-sm text-gray-700 leading-tight">
   <a class="text-blue-600" href="{{ pathto(master_doc) }}">{{ docstitle }}</a>
   {{ separator }}
@@ -15,7 +15,7 @@
     <a class="text-blue-600" href="{{ doc.link|e }}">{{ doc.title }}</a>
     {{ separator }}
   {% endfor %}
-  <span>
+  <span aria-current="page">
     {{ title }}
   </span>
 </nav>
