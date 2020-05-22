@@ -180,6 +180,7 @@ td {
 /* **************************
  * FIGURES
  * **************************/
+
 .figure {
   @apply my-12;
 }
@@ -198,6 +199,10 @@ td {
 
 .figure > .legend > p:first-child {
   @apply mt-0;
+}
+
+.badge {
+  @apply inline mr-3;
 }
 
 /* **************************
