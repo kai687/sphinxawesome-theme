@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 {%- macro script() -%}
 <script id="documentation_options"
         data-url_root="{{ pathto('', 1) }}"
@@ -11,7 +10,8 @@
 
 {%- set lang_attr = "en" if language == None else (language|replace('_','-')) -%}
 
-<html lang="{{ lang_attr }} class="h-full">
+<!DOCTYPE html>
+<html lang="{{ lang_attr }}" class="h-full">
   <head>
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -20,9 +20,6 @@
     <title>
       {{ title|striptags|e if title else docstitle }}
     </title>
-    {% block scripts %}
-      {{ script() }}
-    {% endblock %}
     <link
       rel="stylesheet"
       href="{{ pathto('_static/pygments.css', 1) }}"
@@ -76,6 +73,9 @@
       {% include "search-pane.html" %}
       {% include "modals.html" %}
     </div>
-    <script src="{{ pathto('_static/theme.js', 1) }}" defer></script>
+    {% block scripts %}
+      {{ script() }}
+      <script src="{{ pathto('_static/theme.js', 1) }}" defer></script>
+    {% endblock %}
   </body>
 </html>
