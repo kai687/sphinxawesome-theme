@@ -71,4 +71,4 @@ Documentation
 -------------
 
 Read the documentation and see how the theme looks on the `demo page
-<https://confident-austin-7d4cfd.netlify.app/>`_
+<https://sphinxawesome.xyz>`_
