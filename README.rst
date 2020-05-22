@@ -2,18 +2,17 @@
 Sphinx Awesome Theme
 ====================
    
-.. image:: https://img.shields.io/pypi/l/sphinxawesome-theme?color=blue&style=for-the-badge   
+.. image:: https://img.shields.io/pypi/l/sphinxawesome-theme?color=blue&style=for-the-badge
+   :target: https://opensource.org/licenses/MIT
    :alt: MIT license
-   :class: badge
    
-.. image:: https://img.shields.io/pypi/v/sphinxawesome-theme?style=for-the-badge   
+.. image:: https://img.shields.io/pypi/v/sphinxawesome-theme?style=for-the-badge
+   :target: https://pypi.org/project/sphinxawesome-theme
    :alt: PyPI package version number
-   :class: badge
 
 .. image:: https://api.netlify.com/api/v1/badges/e6d20a5c-b49e-4ebc-80f6-59fde8f24e22/deploy-status
    :target: https://app.netlify.com/sites/confident-austin-7d4cfd/deploys
    :alt: Netlify Status
-   :class: badge
 
 This is a simple but awesome theme for the `Sphinx
 <http://www.sphinx-doc.org/en/master/>`_ documentation generator.
