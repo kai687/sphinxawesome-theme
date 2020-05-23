@@ -6,7 +6,7 @@ This page shows the basic paragraph and heading styles. Heading levels up to ``h
 defined, but only headings up to ``h3`` are included in the navigation menu.
 
 ---------------
-Level 2 Heading
+Level 2 heading
 ---------------
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vehicula lectus est, ac
@@ -18,7 +18,7 @@ placerat dui elementum. Sed et consequat purus, eget faucibus arcu. Vivamus ac n
 justo tempor consequat eget at nulla. In hac habitasse platea dictumst. Aliquam nec
 dolor ipsum.
 
-Level 3 Heading
+Level 3 heading
 ~~~~~~~~~~~~~~~
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vehicula lectus est, ac
@@ -30,7 +30,7 @@ placerat dui elementum. Sed et consequat purus, eget faucibus arcu. Vivamus ac n
 justo tempor consequat eget at nulla. In hac habitasse platea dictumst. Aliquam nec
 dolor ipsum.
 
-Level 4 Heading
+Level 4 heading
 ^^^^^^^^^^^^^^^
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vehicula lectus est, ac

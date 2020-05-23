@@ -1,10 +1,10 @@
-Sphinx Awesome Theme
+Sphinx awesome theme
 ====================
 
-These are the docs for the sphinx awesome theme. You can find the sources on `Github
-<https://github.com/kai687/sphinxawesome-theme>`_. You can check out the available
+These are the docs for the Sphinx awesome theme. You can find the sources on `Github
+<https://github.com/kai687/sphinxawesome-theme>`_. Can check out the available
 styles for :doc:`headings and text </text>`, :doc:`code and tables </code>`, and
-:doc:`admonitions` on these pages.
+:doc:`admonitions </admonitions>` on these pages.
 
 If you want to know more about the theme, check out the :doc:`about </about>` page.
 
