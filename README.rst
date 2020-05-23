@@ -62,10 +62,9 @@ Limitations
 
 This theme is designed to be simple. Some features are not (or not yet) available.
 
-- Zero custom theme variables to modify styles.
-- API documentation has not been tested. Some styles are missing. 
-- Not all docutils/Sphinx roles have styles. There are a lot of them. 
-- Internationalization was neglected.
+- API documentation has not been tested. Some styles might be missing.
+- Not all docutils/Sphinx roles have styles. There are a lot of them.
+- Some text is only available in English.
 
 .. include-until-here
 

@@ -1,3 +1,9 @@
+1.1.0
+~~~~~
+
+- Added translatable strings throughout the theme
+- Added option to override styles
+
 1.0.1
 ~~~~~
 
