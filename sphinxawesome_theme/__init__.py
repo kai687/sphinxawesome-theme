@@ -10,8 +10,7 @@ from os import path
 from typing import Dict, Any
 from sphinx.application import Sphinx
 
-__version__ = "1.0.1"
-
+__version__ = "1.1.0"
 
 def setup(app: Sphinx) -> Dict[str, Any]:
     """register this theme with Sphinx"""

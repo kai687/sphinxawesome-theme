@@ -1,11 +1,12 @@
-{%- macro script() -%}
+{%- macro script() %}
 <script id="documentation_options"
         data-url_root="{{ pathto('', 1) }}"
         src="{{ pathto('_static/documentation_options.js', 1) }}">
 </script>
-{% for js in script_files %}
+{%- for js in script_files %}
 {{ js_tag(js) }}
-{% endfor %}
+{%- endfor %}
+<script src="{{ pathto('_static/theme.js', 1) }}" defer></script>
 {%- endmacro -%}
 
 {%- set lang_attr = "en" if language == None else (language|replace('_','-')) -%}
@@ -28,6 +29,10 @@
       rel="stylesheet"
       href="{{ pathto('_static/' + style, 1) }}"
     />
+    {#- Extra CSS files for overriding stuff #}
+    {%- for css in css_files %}
+      <link rel="stylesheet" href="{{ pathto(css, 1) }}" />
+    {%- endfor %}
     {%- if pageurl %}
       <link rel="canonical" href="{{ pageurl }}" />
     {%- endif %}
@@ -75,7 +80,6 @@
     </div>
     {% block scripts %}
       {{ script() }}
-      <script src="{{ pathto('_static/theme.js', 1) }}" defer></script>
     {% endblock %}
   </body>
 </html>
