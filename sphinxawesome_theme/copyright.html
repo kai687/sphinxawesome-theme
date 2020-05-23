@@ -1,0 +1,14 @@
+{#-
+  Template for the copyright info at the bottom of the <main> element.
+-#}
+
+
+<section
+  role="contentinfo"
+  class="mt-20 mx-8 md:ml-16 mb-4 flex-shrink-0 text-sm text-gray-700"
+>
+  &copy; Copyright {{ copyright }}.
+  {%- if last_updated -%}
+    {% trans last_updated=last_updated|e %} Last updated: {{ last_updated }}.{% endtrans %}
+  {%- endif -%}
+</section>

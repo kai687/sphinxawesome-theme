@@ -7,8 +7,11 @@
 {% set title = _('Search') %}
 {% block scripts %}
 {{ super() }}
-<script src="{{ pathto('_static/searchtools.js', 1) }}"></script>
-<script src="{{ pathto('searchindex.js', 1) }}" defer></script>
+<script src="{{ pathto('_static/searchtools.js', 1) }}" defer></script>
+<script>
+  jQuery(function() { Search.loadIndex("{{ pathto('searchindex.js', 1) }}"); })
+</script>
+<script id="searchindexloader"></script>
 {% endblock %}
 
 {% block main %}
@@ -18,15 +21,12 @@
     {{ body }}
     <div id="fallback" class="my-8 text-sm text-red-700">
       <script>document.querySelector("#fallback").style.display = "none"</script>
+      {% trans %}
       Please activate Javascript to enable searching the documentation.
+      {% endtrans %}
     </div>
     <section id="search-results"></section>
   </main>
-  <section role="contentinfo" class="mt-20 mx-8 md:ml-16 mb-4 flex-shrink-0 text-sm text-gray-700">
-    &copy; Copyright {{ copyright }}
-    {%- if last_updated %}
-      Last updated: {{ last_updated }}.
-    {%- endif %}
-  </section>
+  {% include "copyright.html" %}
 </div>
 {% endblock main %}
