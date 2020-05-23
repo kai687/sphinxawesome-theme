@@ -16,3 +16,9 @@ def setup(app: Sphinx) -> Dict[str, Any]:
     """register this theme with Sphinx"""
 
     app.add_html_theme("sphinxawesome_theme", path.abspath(path.dirname(__file__)))
+
+    return {
+        "version": __version__,
+        "parallel_read_safe": True,
+        "parallel_write_safe": True,
+    }
