@@ -13,13 +13,13 @@ The sphinx awesome theme uses the following external assets.
 
    * - For
      - Name/Website
-   * - Styles
+   * - CSS
      - `Tailwind <https://tailwindcss.com/>`_
-   * - Fonts
+   * - fonts
      - `Roboto <https://github.com/googlefonts/roboto>`_
-   * - Icons for menu and magnifying glass
+   * - icons for menu and magnifying glass
      - `Entypo <http://www.entypo.com/>`_ by Daniel Bruce
-   * - Icons for copy buttons in code blocks
+   * - icons for copy buttons in code blocks
      - `Zondicons <http://www.zondicons.com/>`_ by Steve Schoger
 
 

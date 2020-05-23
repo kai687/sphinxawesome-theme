@@ -1,5 +1,5 @@
 ====================
-Sphinx Awesome Theme
+Sphinx awesome theme
 ====================
    
 .. image:: https://img.shields.io/pypi/l/sphinxawesome-theme?color=blue&style=for-the-badge
@@ -13,7 +13,7 @@ Sphinx Awesome Theme
    :class: badge
 
 .. image:: https://api.netlify.com/api/v1/badges/e6d20a5c-b49e-4ebc-80f6-59fde8f24e22/deploy-status
-   :target: https://app.netlify.com/sites/confident-austin-7d4cfd/deploys
+   :target: https://sphinxawesome.xyz
    :alt: Netlify Status
    :class: badge
 
@@ -62,7 +62,7 @@ Limitations
 
 This theme is designed to be simple. Some features are not (or not yet) available.
 
-- Zero customizability
+- Zero custom theme variables to modify styles.
 - API documentation has not been tested. Some styles are missing. 
 - Not all docutils/Sphinx roles have styles. There are a lot of them. 
 - Internationalization was neglected.

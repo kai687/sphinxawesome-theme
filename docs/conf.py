@@ -14,7 +14,7 @@ default_role = "literal"
 
 # -- Options for HTML output -------------------------------------------------
 
-html_title = "Sphinx Awesome Theme"
+html_title = "Sphinx awesome theme"
 html_theme = "sphinxawesome_theme"
 html_theme_path = ["../"]
 html_theme_options = {"nav_include_hidden": True}
