@@ -12,7 +12,7 @@ Sphinx awesome theme
    :alt: PyPI package version number
    :class: badge
 
-.. image:: https://api.netlify.com/api/v1/badges/e6d20a5c-b49e-4ebc-80f6-59fde8f24e22/deploy-status
+.. image:: https://img.shields.io/netlify/e6d20a5c-b49e-4ebc-80f6-59fde8f24e22?style=for-the-badge
    :target: https://sphinxawesome.xyz
    :alt: Netlify Status
    :class: badge
