@@ -102,7 +102,7 @@ a:hover {
 }
 
 #nav-toc .caption {
-  @apply pl-8 pr-4 uppercase text-sm text-gray-300 tracking-widest;
+  @apply pl-8 pr-4 uppercase text-sm text-gray-500 tracking-widest;
 }
 
 /* special link for PDF download below the title of the doc */
