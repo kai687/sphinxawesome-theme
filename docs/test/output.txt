@@ -1,2 +1,0 @@
-about.rst:37: [redirected with Found] https://jinja.palletsprojects.com to https://jinja.palletsprojects.com/en/2.11.x/
-index.rst:9: [redirected with Found] https://www.sphinx-doc.org to https://www.sphinx-doc.org/en/master/
