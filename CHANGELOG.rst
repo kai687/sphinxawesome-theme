@@ -1,3 +1,11 @@
+1.2.0
+~~~~~
+
+- Added styles for more admonitions
+- Added styles for "rubric" heading level and TOC captions
+- Fixed alignment bug for "copyright" info on small screens
+- Refactored docs
+
 1.1.0
 ~~~~~
 

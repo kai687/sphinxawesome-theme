@@ -2,29 +2,77 @@
 Admonitions
 ===========
 
-Admonitions can provide additional explanations or warnings. These four admonitions can
-be used with this theme: 
+Admonitions can provide additional explanations, or caution the user before proceeding
+with the next step. Sphinx and the underlying docutils module define a large number of
+admonitions. Since many of them are overlapping in their intended meaning, any project
+should only need a few.
 
-- note:
+----
+Tips
+----
 
-  .. note::
+Tips are positive admonitions. Maybe the information in a tip is a shortcut for an
+action that was just explained, or maybe the information contains a confirmation, that
+users are on the right path.
 
-     This is how a note will appear.
+.. tip::
 
-- see also:
+   This is how a tip appears.
 
-  .. seealso::
+The ``.. hint`` admonition is considered equivalent and appears in the same style.
 
-     This is how a ``seealso`` admonition will appear.
+-----
+Notes
+-----
 
-- caution:
+Notes are neutral admonitions, that can draw the attention of the reader, but usually
+don't have a positive or negative effect.
 
-  .. caution::
+.. note::
 
-     This is how a caution will appear.
+   This is how a note will appear.
 
-- warning:
+If you want to include a list of references to further documentation, you can use the
+``.. seealso`` directive.
 
-  .. warning::
+.. seealso:: `Sphinx directives
+   <https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html>`_, `Docutils directives <https://docutils.sourceforge.io/docs/ref/rst/directives.html>`_
 
-     This is how a warning will appear.
+Use a general admonition for notes with custom titles.
+
+.. admonition:: How to give the admonition a title?
+
+   Provide the title directly after the directive, e.g.
+
+   .. code-block:: rst
+
+      .. admonition:: How to give the admonition a title?
+
+-------
+Caution
+-------
+
+A ``.. caution`` should be used, when the user **should** be aware of something before
+moving on. As a negative admonition, ignoring it might have unwanted consequences,
+although not as detrimental that would warrant a warning.
+
+.. caution::
+
+   This is how a caution will appear.
+
+The ``.. important`` admonition is considered equivalent and appears in the same style.
+
+-------
+Warning
+-------
+
+A ``.. warning`` is a strong, negative admonition. Typically, anything involving
+security should be emphasized with a warning. Ignoring the information in a warning
+usually has negative consequences.
+
+.. warning::
+
+   This is how a warning will appear.
+
+The ``.. danger`` and ``.. error`` admonitions are considered equivalent and appear in
+the same style.

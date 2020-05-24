@@ -1,0 +1,25 @@
+{"filename": "about.rst", "lineno": 25, "status": "working", "code": 0, "uri": "http://www.entypo.com", "info": ""}
+{"filename": "about.rst", "lineno": 27, "status": "working", "code": 0, "uri": "http://www.zondicons.com", "info": ""}
+{"filename": "about.rst", "lineno": 21, "status": "working", "code": 0, "uri": "https://tailwindcss.com", "info": ""}
+{"filename": "about.rst", "lineno": 37, "status": "redirected", "code": 302, "uri": "https://jinja.palletsprojects.com", "info": "https://jinja.palletsprojects.com/en/2.11.x/", "text": "with Found"}
+{"filename": "about.rst", "lineno": 42, "status": "working", "code": 0, "uri": "https://tailwindcss.com", "info": ""}
+{"filename": "about.rst", "lineno": 51, "status": "working", "code": 0, "uri": "https://webpack.js.org", "info": ""}
+{"filename": "about.rst", "lineno": 59, "status": "working", "code": 0, "uri": "https://postcss.org", "info": ""}
+{"filename": "about.rst", "lineno": 23, "status": "working", "code": 0, "uri": "https://github.com/googlefonts/roboto", "info": ""}
+{"filename": "about.rst", "lineno": 47, "status": "working", "code": 0, "uri": "https://purgecss.com", "info": ""}
+{"filename": "demo/admonitions.rst", "lineno": 38, "status": "working", "code": 0, "uri": "https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html", "info": ""}
+{"filename": "demo/admonitions.rst", "lineno": 38, "status": "working", "code": 0, "uri": "https://docutils.sourceforge.io/docs/ref/rst/directives.html", "info": ""}
+{"filename": "demo/text.rst", "lineno": 40, "status": "working", "code": 0, "uri": "https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html?highlight=rubric#directive-rubric", "info": ""}
+{"filename": "development.rst", "lineno": 11, "status": "unchecked", "code": 0, "uri": "#how-to-install-the-theme", "info": ""}
+{"filename": "development.rst", "lineno": 122, "status": "unchecked", "code": 0, "uri": "#how-to-install-the-theme", "info": ""}
+{"filename": "development.rst", "lineno": 7, "status": "working", "code": 0, "uri": "https://nodejs.org/en/", "info": ""}
+{"filename": "development.rst", "lineno": 23, "status": "working", "code": 0, "uri": "https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-html_js_files", "info": ""}
+{"filename": "development.rst", "lineno": 40, "status": "working", "code": 0, "uri": "https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity", "info": ""}
+{"filename": "development.rst", "lineno": 23, "status": "working", "code": 0, "uri": "https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-html_css_files", "info": ""}
+{"filename": "how-to.rst", "lineno": 14, "status": "unchecked", "code": 0, "uri": "#how-to-modify-the-theme", "info": ""}
+{"filename": "how-to.rst", "lineno": 17, "status": "working", "code": 0, "uri": "https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-toctree", "info": ""}
+{"filename": "index.rst", "lineno": 9, "status": "unchecked", "code": 0, "uri": "#how-to-install-the-theme", "info": ""}
+{"filename": "index.rst", "lineno": 9, "status": "unchecked", "code": 0, "uri": "#how-to-use-the-theme", "info": ""}
+{"filename": "index.rst", "lineno": 9, "status": "unchecked", "code": 0, "uri": "#how-to-modify-the-theme", "info": ""}
+{"filename": "index.rst", "lineno": 9, "status": "redirected", "code": 302, "uri": "https://www.sphinx-doc.org", "info": "https://www.sphinx-doc.org/en/master/", "text": "with Found"}
+{"filename": "index.rst", "lineno": 15, "status": "working", "code": 0, "uri": "https://github.com/kai687/sphinxawesome-theme", "info": ""}
