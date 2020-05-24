@@ -25,11 +25,21 @@ This is a simple but awesome theme for the `Sphinx
 Installation
 ------------
 
+.. install-start
+
 Install the theme as a Python package:
 
 .. code:: console
 
    pip install sphinxawesome-theme
+
+.. install-end
+
+-----
+Usage
+-----
+
+.. use-start
 
 To use the theme, set ``html_theme`` in the Sphinx configuration file
 ``conf.py``:
@@ -38,39 +48,30 @@ To use the theme, set ``html_theme`` in the Sphinx configuration file
 
    html_theme = "sphinxawesome_theme"
 
--------------
-Configuration
--------------
-
-To show also entries in the navigation menu from `toctree
-<https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html?highlight=toctree#directive-toctree>`_
-directives with the ``:hidden:`` option, add the following setting to the Sphinx
+To include all entries in the navigation menu, add the following setting to the Sphinx
 configuration file ``conf.py``.
 
 .. code:: python
 
    html_theme_options = {"nav_include_hidden": True}
 
-Including ``:hidden:`` in a toctree directive makes Sphinx include the documents, but
-not print the list of links to the documents on the current page. This is useful when
-navigation links are shown elsewhere, for example in a menu on the left side. The
-default is ``nav_include_hidden=False`` in order to be compatible with other themes.
+If you set the option ``:hidden:`` to a toctree_ directive, the content will be
+included, but the list of links to the documents will not be written on the page itself.
+This can be useful when navigation links are shown elsewhere.
 
------------
-Limitations
------------
+.. _toctree: https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-toctree
 
-This theme is designed to be simple. Some features are not (or not yet) available.
+The Sphinx awesome theme shows a navigation menu on the left side of all pages, so
+having the links shown in the content area is not necessary. In order allow an easy
+transition from other Sphinx themes, the default is ``nav_include_hidden = False``.
 
-- API documentation has not been tested. Some styles might be missing.
-- Not all docutils/Sphinx roles have styles. There are a lot of them.
-- Some text is only available in English.
+To make best use of this theme, include the ``:hidden:`` option to all ``..toctree``
+directives and set ``nav_include_hidden = True``.
 
-.. include-until-here
+.. use-end
 
--------------
-Documentation
--------------
+----
+Demo
+----
 
-Read the documentation and see how the theme looks on the `demo page
-<https://sphinxawesome.xyz>`_
+See how the theme looks on the `demo page <https://sphinxawesome.xyz>`_.

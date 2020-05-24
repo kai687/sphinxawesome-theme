@@ -1,69 +1,82 @@
+=====
 About
 =====
 
-This page is a collection of topics about the sphinx awesome theme.
+This page contains information about used external assets as well as topics that
+didn't really fit anywhere else.
 
+
+------
 Assets
 ------
 
-The sphinx awesome theme uses the following external assets.
+The sphinx awesome theme relies on the following external assets.
 
 .. list-table::
    :header-rows: 1
 
-   * - For
+   * - Purpose
      - Name/Website
-   * - CSS
-     - `Tailwind <https://tailwindcss.com/>`_
+   * - CSS framework
+     - `Tailwind <https://tailwindcss.com>`_
    * - fonts
      - `Roboto <https://github.com/googlefonts/roboto>`_
    * - icons for menu and magnifying glass
-     - `Entypo <http://www.entypo.com/>`_ by Daniel Bruce
+     - `Entypo <http://www.entypo.com>`_ by Daniel Bruce
    * - icons for copy buttons in code blocks
-     - `Zondicons <http://www.zondicons.com/>`_ by Steve Schoger
+     - `Zondicons <http://www.zondicons.com>`_ by Steve Schoger
+
+The icons have been copied and included as SVG directly in the HTML templates.
+The Roboto fonts are bundled in the theme's static directory.
 
 
-Technology
-----------
+-----------------
+How does it work?
+-----------------
 
-Building the theme involves a few technologies. At the top layer is `Webpack
-<https://webpack.js.org/>`_ that ties everything together. The entry point is in
-``theme-src/src/theme-src.js`` which includes both all JavaScript functions that provide
-some simple interactions in the theme, and all dependencies, such as the fonts and the
-styles.
+Sphinx themes are a collection of Jinja2_ templates for the HTML, CSS styles and
+additional JavaScript files. The traditional way to style a theme is to write
+conventional CSS. Then, all that needs to be done to use the theme is to put files in
+the right place for Sphinx.
 
-The JavaScript is bundled and minified into the ``sphinxawesome_theme/static/theme.js``,
-which will be read by the browser.
+I wanted to try something different. Instead of writing CSS completely separate from the
+HTML where it's needed, I was intrigued by the idea behind Tailwind_. With the help of
+Tailwind CSS it wasn't that difficult to come up with a new design from scratch
+relatively fast.
 
-The fonts are read from the npm packages ``typeface-roboto`` and
-``typeface-roboto-mono``, which both have the web fonts and also create the
-``@fontface`` rules for the CSS.
+Tailwind has a lot of classes. If you include all of them, the final CSS file will be
+quite large. Luckily, the classes do not interfere with each other, so that unused
+styles can be removed from the final CSS quite easily using PurgeCSS_.
 
-The styles are read from ``theme-src/src/theme-src.css``, which are the basic `tailwind
-directives <https://tailwindcss.com/docs/installation#2-add-tailwind-to-your-css>`_. The
-file ``theme-src/src/theme-custom.css`` contains all styles for elements that come
-directly from Sphinx, such as headings, tables, paragraph text, etc. These files are
-processed by `PostCSS <https://postcss.org/>`_ and in particular the `PurgeCSS
-<https://purgecss.com/>`_ plugin. This checks the HTML templates and removes unused
-classes from the final ``sphinxawesome_theme/static/theme.css`` file.
+Since I also added a few JavaScript functions to open and close menus, add the 'copy
+code block' button and other small things, I wanted to use a tool, that can handle all
+the aspects of CSS and JavaScript manipulation for me. Enter Webpack_.
 
+The theme is built using ``webpack`` which is executed as an ``npm`` (or yarn) script.
+The entry point is ``theme-src/src/theme-src.js``. This file includes all JavaScript
+functions and it imports all dependencies, such as the fonts and the CSS.
 
-Overriding the theme
---------------------
+The Webpack configuration ``theme-src/webpack.config.js`` instructs webpack, what to do with the
+CSS, JavaScript, and Fonts. The JavaScript is *minified* and put in the output directory
+``sphinxawesome_theme/static/``. This file is read and executed by the browser.
+The fonts are imported from ``npm`` packages and also copied to the output directory.
+The ``npm`` packages also create the ``@fontface`` rules for the CSS.
+The CSS is processed with PostCSS_. The configuration in ``theme-src/postcss.config.js``
+lists a few plugins, including Tailwind and PurgeCSS.
 
-This themes supports the standard mechanism of adding additional CSS via `html_css_files
-<https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-html_css_files>`_
-and additional JavaScript files via `html_js_files
-<https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-html_js_files>`_.
+PurgeCSS will go through all template HTML files and remove from the final CSS all
+Tailwind classes that are not used. For example, if the theme never uses any
+``text-purple-*`` classes, it will not appear in the final output, thus greatly reducing
+the final size of the CSS file. Finally, the CSS will also be *minified*.
 
-For example, place additional styles in a file ``_static/custom.css`` and add the
-following options to your Sphinx configuration in ``conf.py``:
+.. note::
 
-.. code-block:: python
+   Minification is the process of removing all unnecessary whitespace from the final
+   output. In JavaScript, variable names are often abbreviated with a single letter.
+   This can greatly reduce the file size, thus improving performance.
 
-   html_static_path = ["_static"]
-   html_css_files = ["custom.css"]
-
-You might have to add ``!important`` to override the styles of some elements, if the
-base theme's styles have a higher specificity, for example, when applied via Tailwind's
-classes.
+.. _Jinja2: https://jinja.palletsprojects.com
+.. _Tailwind: https://tailwindcss.com
+.. _Webpack: https://webpack.js.org
+.. _PurgeCSS: https://purgecss.com
+.. _PostCSS: https://postcss.org

@@ -6,7 +6,7 @@ author = "Kai Welke"
 
 # -- General configuration ---------------------------------------------------
 
-extensions = []
+extensions = ["sphinx.ext.autosectionlabel"]
 
 exclude_patterns = ["public"]
 nitpicky = True

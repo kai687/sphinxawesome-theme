@@ -12,7 +12,6 @@ from sphinx.application import Sphinx
 
 __version__ = "1.1.0"
 
-
 def setup(app: Sphinx) -> Dict[str, Any]:
     """register this theme with Sphinx"""
 
