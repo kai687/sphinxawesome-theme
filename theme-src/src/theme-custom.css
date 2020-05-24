@@ -24,7 +24,8 @@ main h3 {
   @apply text-xl text-gray-800 font-medium leading-snug mb-6 mt-8;
 }
 
-main h4 {
+main h4,
+main .rubric {
   @apply text-gray-800 font-medium my-6;
 }
 
@@ -43,7 +44,8 @@ main h4 {
 h1:hover .headerlink:after,
 h2:hover .headerlink:after,
 h3:hover .headerlink:after,
-table:hover .headerlink:after {
+table:hover .headerlink:after,
+.figure:hover .headerlink:after {
   @apply visible;
 }
 
@@ -102,7 +104,11 @@ a:hover {
 }
 
 #nav-toc .caption {
-  @apply pl-8 pr-4 uppercase text-sm text-gray-300 tracking-widest;
+  @apply pl-8 pr-4 uppercase text-sm text-gray-500 tracking-widest;
+}
+
+#nav-toc .caption:first-of-type {
+  @apply mt-0;
 }
 
 /* special link for PDF download below the title of the doc */
@@ -213,19 +219,22 @@ td {
  * ADMONITIONS
  * **************************/
 .admonition {
-  @apply text-sm my-6 p-4 rounded;
+  @apply text-sm my-6 p-4 rounded text-blue-900 bg-blue-200;
 }
 
-.note,
-.seealso {
-  @apply text-blue-900 bg-blue-200;
+.tip,
+.hint {
+  @apply text-green-900 bg-green-200;
 }
 
-.warning {
+.warning,
+.danger,
+.error {
   @apply text-red-900 bg-red-200;
 }
 
-.caution {
+.caution,
+.important {
   @apply text-yellow-900 bg-yellow-200;
 }
 
