@@ -84,7 +84,7 @@ a:hover {
 }
 
 #nav-toc .toctree-l1 > a {
-  @apply block py-4 pl-8 pr-4 font-semibold tracking-wide;
+  @apply block py-4 pl-8 pr-4;
 }
 
 #nav-toc .toctree-l1:first-of-type > a {
