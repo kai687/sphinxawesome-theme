@@ -2,6 +2,9 @@ import css from "./theme-src.css";
 import "typeface-roboto";
 import "typeface-roboto-mono";
 
+// NOTE: strings should be encapsulated in _() which aliases
+//       to Documentation.gettext() from Sphinx' doctools.js
+
 // DOM elements we want to manipulate
 const nav = document.querySelector("nav");
 const search = document.querySelector("#search-pane");
@@ -44,7 +47,7 @@ function selectText(node) {
 
 function addCopyButton(el) {
   const btn = document.createElement("button");
-  btn.setAttribute("aria-label", "Copy this code block");
+  btn.setAttribute("aria-label", _("Copy this code block"));
   btn.classList.add(
     "absolute",
     "right-0",
@@ -66,7 +69,7 @@ function addCopyButton(el) {
     tooltip.style.visibility = "visible";
     tooltip.style.top = rect.y + rect.height + 1 + "px";
     tooltip.style.left = rect.x - 4 + "px";
-    tooltip.textContent = "Copy";
+    tooltip.textContent = _("Copy");
   });
 
   btn.addEventListener("mouseleave", () => {
@@ -77,7 +80,7 @@ function addCopyButton(el) {
 
   // Show 'Copied to clipboard' in a message at the bottom
   btn.addEventListener("click", () => {
-    snackbar.textContent = "Copied to clipboard";
+    snackbar.textContent = _("Copied to clipboard");
     snackbar.style.opacity = 1;
     snackbar.style.transform = "translate(0,0)";
     setTimeout(hideSnackbar, 2000);
@@ -101,7 +104,8 @@ setTimeout(() => {
   if (highlights.length) {
     snackbar.innerHTML =
       '<a class="tracking-wide" href="javascript:Documentation.hideSearchWords()">' +
-      "Clear Highlights</a>";
+      _("Clear Highlights") +
+      "</a>";
     snackbar.style.opacity = 1;
     snackbar.style.transform = "translate(0,0)";
 
@@ -130,3 +134,24 @@ function hideSnackbar() {
   snackbar.style.opacity = 0;
   snackbar.style.transform = "translate(0,100%)";
 }
+
+// focus search input on key '/'
+window.addEventListener("keydown", (event) => {
+  if (event.code === "Slash") {
+    searchInput.focus();
+    searchInput.value = "";
+    event.preventDefault();
+  }
+  if (event.code === "Escape") {
+    searchInput.blur();
+    event.preventDefault();
+  }
+});
+
+searchInput.addEventListener("focus", () => {
+  searchInput.placeholder = _("Enter search term");
+});
+
+searchInput.addEventListener("blur", () => {
+  searchInput.placeholder = _("Press ‘/’ to search the docs");
+});
