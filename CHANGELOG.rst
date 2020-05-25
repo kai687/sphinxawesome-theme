@@ -1,4 +1,5 @@
 - feature: focus on search input when pressing '/' key
+- fix: make nav links normal (#4)
 
 1.2.0
 ~~~~~
