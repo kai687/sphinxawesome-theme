@@ -1,3 +1,5 @@
+- feature: focus on search input when pressing '/' key
+
 1.2.0
 ~~~~~
 
