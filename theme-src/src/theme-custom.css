@@ -1,7 +1,8 @@
 /* This file contains Tailwind styles applied to common tags
  * such as paragraphs, headings, links, etc. */
 
-div.section {
+section,
+.section {
   @apply max-w-2xl;
 }
 
