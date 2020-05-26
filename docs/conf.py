@@ -23,3 +23,4 @@ html_theme = "sphinxawesome_theme"
 html_theme_path = ["../"]
 html_theme_options = {"nav_include_hidden": True}
 html_last_updated_fmt = ""
+html_add_permalinks = "#"
