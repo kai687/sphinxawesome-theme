@@ -34,19 +34,14 @@ main .rubric {
  * LINKS
  * **************************/
 .headerlink {
-  @apply invisible;
+  @apply invisible ml-3 text-gray-500 font-semibold;
 }
 
-.headerlink:after {
-  content: "#";
-  @apply text-gray-500 font-semibold;
-}
-
-h1:hover .headerlink:after,
-h2:hover .headerlink:after,
-h3:hover .headerlink:after,
-table:hover .headerlink:after,
-.figure:hover .headerlink:after {
+h1:hover .headerlink,
+h2:hover .headerlink,
+h3:hover .headerlink,
+table:hover .headerlink,
+.figure:hover .headerlink {
   @apply visible;
 }
 

@@ -3,6 +3,7 @@ Master
 
 - feature: focus on search input when pressing '/' key
 - feature: add project title to HTML header
+- feature: support different permalinks (#8)
 - fix: make nav links normal (#4)
 - fix: made footer sticky (#6)
 
