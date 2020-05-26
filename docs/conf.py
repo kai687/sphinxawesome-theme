@@ -1,8 +1,12 @@
+import datetime
+
+year = datetime.datetime.now().year
+
 # -- Project information -----------------------------------------------------
 
 project = "Sphinx Awesome Theme"
-copyright = "2020, Kai Welke"
 author = "Kai Welke"
+copyright = f"{year}, {author}"
 
 # -- General configuration ---------------------------------------------------
 
@@ -18,4 +22,4 @@ html_title = "Sphinx awesome theme"
 html_theme = "sphinxawesome_theme"
 html_theme_path = ["../"]
 html_theme_options = {"nav_include_hidden": True}
-html_last_updated_fmt = "%b %d, %Y"
+html_last_updated_fmt = ""
