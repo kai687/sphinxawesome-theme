@@ -11,6 +11,16 @@
 
 {%- set lang_attr = "en" if language == None else (language|replace('_','-')) -%}
 
+{%- if not embedded and docstitle -%}
+  {%- if title == docstitle -%}
+    {%- set titlesuffix = "" -%}
+  {%- else -%}
+    {%- set titlesuffix = " &#8212; "|safe + docstitle|e -%}
+  {%- endif -%}
+{%- else -%}
+  {%- set titlesuffix = "" -%}
+{%- endif %}
+
 <!DOCTYPE html>
 <html lang="{{ lang_attr }}" class="h-full">
   <head>
@@ -18,9 +28,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
     {{ metatags }}
+    {%- block htmltitle %}
     <title>
-      {{ title|striptags|e if title else docstitle }}
+      {{ title|striptags|e if title else docstitle }}{{ titlesuffix }}
     </title>
+    {%- endblock %}
     <link
       rel="stylesheet"
       href="{{ pathto('_static/pygments.css', 1) }}"

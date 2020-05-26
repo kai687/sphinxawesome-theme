@@ -1,4 +1,5 @@
 - feature: focus on search input when pressing '/' key
+- feature: add project title to HTML header
 - fix: make nav links normal (#4)
 
 1.2.0
