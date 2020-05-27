@@ -15,8 +15,7 @@
 
   <form
     id="searchbox" action="{{ pathto('search') }}" method="get"
-    class="flex w-full rounded justify-between items-center max-w-sm px-12
-    overflow-hidden">
+    class="flex w-full justify-between items-center max-w-sm px-12">
 
     {%- include "input.html" -%}
     {{ buttons.search(fg="text-gray-900", bg="bg-gray-300", hover="hover:bg-gray-800") }}
