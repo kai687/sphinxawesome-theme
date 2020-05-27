@@ -6,7 +6,7 @@ year = datetime.datetime.now().year
 
 project = "Sphinx Awesome Theme"
 author = "Kai Welke"
-copyright = f"{year}, {author}"
+copyright = f"{year}, {author}."
 
 # -- General configuration ---------------------------------------------------
 
