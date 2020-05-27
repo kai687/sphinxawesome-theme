@@ -1,6 +1,8 @@
 .. meta::
    :description: A theme for Sphinx to create beautiful documentation with Python.
    :keywords: documentation, sphinx, python
+   :og\:title: Sphinx awesome theme
+   :og\:description: A theme for Sphinx to create beautiful documentation with Python.
 
 
 Sphinx awesome theme
