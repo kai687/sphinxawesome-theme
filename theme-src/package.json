@@ -8,9 +8,7 @@
   "author": "Kai Welke",
   "license": "MIT",
   "dependencies": {
-    "tailwindcss": "^1.2",
-    "typeface-roboto": "^0.0.75",
-    "typeface-roboto-mono": "^0.0.75"
+    "tailwindcss": "^1.2"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^2.0.0",
