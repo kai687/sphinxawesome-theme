@@ -1,5 +1,10 @@
-Master
-~~~~~~
+1.3.1
+~~~~~
+
+- fix: include only used fonts (#12)
+
+1.3.0
+~~~~~
 
 - feature: focus on search input when pressing '/' key
 - feature: add project title to HTML header
