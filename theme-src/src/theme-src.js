@@ -147,3 +147,10 @@ window.addEventListener("keydown", (event) => {
     event.preventDefault();
   }
 });
+
+// hide 'copied' tooltip on scroll
+window.addEventListener("scroll", () => {
+  tooltip.textContent = "";
+  tooltip.style.opacity = 0;
+  tooltip.style.visibility = "hidden";
+})
