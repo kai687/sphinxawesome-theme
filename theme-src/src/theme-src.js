@@ -147,11 +147,3 @@ window.addEventListener("keydown", (event) => {
     event.preventDefault();
   }
 });
-
-searchInput.addEventListener("focus", () => {
-  searchInput.placeholder = _("Enter search term");
-});
-
-searchInput.addEventListener("blur", () => {
-  searchInput.placeholder = _("Press ‘/’ to search the docs");
-});

@@ -4,16 +4,16 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
   mode: "production",
   entry: {
-    theme: "./src/theme-src.js"
+    theme: "./src/theme-src.js",
   },
   output: {
     filename: "[name].js",
-    path: path.resolve(__dirname, "../sphinxawesome_theme/static/")
+    path: path.resolve(__dirname, "../sphinxawesome_theme/static/"),
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "theme.css"
-    })
+      filename: "theme.css",
+    }),
   ],
   module: {
     rules: [
@@ -22,13 +22,13 @@ module.exports = {
         use: [
           MiniCssExtractPlugin.loader,
           { loader: "css-loader", options: { importLoaders: 1 } },
-          "postcss-loader"
-        ]
+          "postcss-loader",
+        ],
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
-        use: ["file-loader"]
-      }
-    ]
-  }
+        use: ["file-loader"],
+      },
+    ],
+  },
 };

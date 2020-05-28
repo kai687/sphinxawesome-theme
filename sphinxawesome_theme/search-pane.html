@@ -9,7 +9,7 @@
   transition-all duration-300 flex flex-col items-center transform translate-x-full
   opacity-0 md:hidden"
 >
-<h4 class="text-xl text-white mb-4">{{ _('Enter search term') }}</h4>
+<h4 id="search-label" class="text-xl text-white mb-4">{{ _('Enter search term') }}</h4>
 
   {%- import "buttons.html" as buttons -%}
 
@@ -17,7 +17,13 @@
     id="searchbox" action="{{ pathto('search') }}" method="get"
     class="flex w-full rounded justify-between items-center max-w-sm px-12">
 
-    {%- include "input.html" -%}
+    <input
+      name="q"
+      aria-labelledby="search-label"
+      type="search" 
+      placeholder="{{ _('Search the docs') }}"
+      class="p-2 flex-1 rounded-l"
+    />
     {{ buttons.search(fg="text-gray-900", bg="bg-gray-300", hover="hover:bg-gray-800") }}
   </form>
 
