@@ -1,6 +1,5 @@
-import css from "./theme-src.css";
-import "typeface-roboto";
-import "typeface-roboto-mono";
+import "./theme-src.css";
+import "./fonts.css";
 
 // NOTE: strings should be encapsulated in _() which aliases
 //       to Documentation.gettext() from Sphinx' doctools.js
