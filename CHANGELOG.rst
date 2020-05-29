@@ -1,3 +1,8 @@
+MASTER
+~~~~~~
+
+- fix: removed dependency on Roboto semibold (#14)
+
 1.3.1
 ~~~~~
 

@@ -34,7 +34,7 @@ main .rubric {
  * LINKS
  * **************************/
 .headerlink {
-  @apply invisible ml-3 text-gray-500 font-semibold;
+  @apply invisible ml-3 text-gray-500 font-medium;
 }
 
 h1:hover .headerlink,
