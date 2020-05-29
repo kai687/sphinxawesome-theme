@@ -29,9 +29,10 @@ is hosted on Github_.
 .. toctree::
    :hidden:
    :caption: docs
-   
-   how-to
-   development
+
+   docs/install
+   docs/use
+   docs/development
    about
 
 .. toctree::
