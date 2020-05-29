@@ -2,6 +2,7 @@ MASTER
 ~~~~~~
 
 - fix: removed dependency on Roboto semibold (#14)
+- docs: restructuring, adding more install instructions
 
 1.3.1
 ~~~~~
