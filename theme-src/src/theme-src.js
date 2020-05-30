@@ -100,9 +100,17 @@ function addCopyButton(el) {
   el.appendChild(btn);
 }
 
+// In order for 'literal blocks' to behave a little like the code blocks,
+// we need to wrap them with a highlight div as well
+document.querySelectorAll("pre.literal-block").forEach((block) => {
+  const wrapper = document.createElement("div");
+  wrapper.classList.add("highlight");
+  block.parentNode.insertBefore(wrapper, block);
+  wrapper.appendChild(block);
+});
+
 // Add Copy Button to all '<div class="highlight">'
-// ... and '<pre class="literal-block">'
-document.querySelectorAll("div.highlight, pre.literal-block").forEach((code) => {
+document.querySelectorAll("div.highlight").forEach((code) => {
   code.style.position = "relative";
   addCopyButton(code);
 });

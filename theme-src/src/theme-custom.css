@@ -120,17 +120,9 @@ td.code > .highlight {
   @apply rounded-r rounded-l-none;
 }
 
-pre:not(.literal-block) {
+pre {
   width: 95%;
   @apply font-mono font-normal p-4 overflow-x-auto;
-}
-
-pre.literal-block {
-  @apply w-full bg-gray-200 rounded my-6 font-normal font-mono overflow-x-auto p-4;
-}
-
-.linenodiv > pre {
-  @apply pr-0 bg-gray-200 rounded-l;
 }
 
 /* emphasized lines in .highlight blocks */
