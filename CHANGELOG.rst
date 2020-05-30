@@ -1,6 +1,7 @@
 MASTER
 ~~~~~~
 
+- feat: enable 'nav_show_hidden' by default (#23)
 - feat: enable not showing of nav menu (#21)
 - feat: added styling for code block captions (#19)
 - feat: added styling for literal blocks (#17)
