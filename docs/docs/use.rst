@@ -19,7 +19,7 @@ The available options are::
        "nav_include_hidden": True,
        "show_nav": True,
        "show_breadcrumbs": True,
-       "breadcrumbs_separator": True
+       "breadcrumbs_separator": "/"
    }
 
 ``nav_include_hidden`` (default: ``True``)
