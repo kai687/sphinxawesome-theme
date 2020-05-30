@@ -25,15 +25,19 @@ This is a simple but awesome theme for the `Sphinx
 Installation
 ------------
 
-.. install-start
-
 Install the theme as a Python package:
+
+.. install-start
 
 .. code:: console
 
    pip install sphinxawesome-theme
 
 .. install-end
+
+Read the full `installation instructions
+<https://sphinxawesome.xyz/docs/install.html#how-to-install-the-theme>`_ for more
+information.
 
 -----
 Usage
@@ -48,27 +52,10 @@ To use the theme, set ``html_theme`` in the Sphinx configuration file
 
    html_theme = "sphinxawesome_theme"
 
-To include all entries in the navigation menu, add the following setting to the Sphinx
-configuration file ``conf.py``.
-
-.. code:: python
-
-   html_theme_options = {"nav_include_hidden": True}
-
-If you set the option ``:hidden:`` to a toctree_ directive, the content will be
-included, but the list of links to the documents will not be written on the page itself.
-This can be useful when navigation links are shown elsewhere.
-
-.. _toctree: https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-toctree
-
-The Sphinx awesome theme shows a navigation menu on the left side of all pages, so
-having the links shown in the content area is not necessary. In order allow an easy
-transition from other Sphinx themes, the default is ``nav_include_hidden = False``.
-
-To make best use of this theme, include the ``:hidden:`` option to all ``..toctree``
-directives and set ``nav_include_hidden = True``.
-
 .. use-end
+
+Read the full `usage guide
+<https://sphinxawesome.xyz/docs/use.html#how-to-use-the-theme>`_ for more information.
 
 ----
 Demo
