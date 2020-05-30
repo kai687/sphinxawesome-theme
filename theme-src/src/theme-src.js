@@ -15,16 +15,22 @@ const snackbar = document.querySelector("#snackbar");
 const searchForm = document.querySelector("#searchbox");
 const searchInput = document.querySelector("#search-input");
 
-document.querySelector("#openNavBtn").addEventListener("click", () => {
-  nav.style.transform = "translate(0,0)";
-  nav.style.transition = "transform 0.3s, opacity 0.5s";
-  nav.style.opacity = 1;
-});
+const openNavBtn = document.querySelector("#openNavBtn");
+if (openNavBtn) {
+  openNavBtn.addEventListener("click", () => {
+    nav.style.transform = "translate(0,0)";
+    nav.style.transition = "transform 0.3s, opacity 0.5s";
+    nav.style.opacity = 1;
+  });
+}
 
-document.querySelector("#closeNavBtn").addEventListener("click", () => {
-  nav.style.transform = "translate(-100%, 0)";
-  nav.style.opacity = 0;
-});
+const closeNavBtn = document.querySelector("#closeNavBtn");
+if (closeNavBtn) {
+  closeNavBtn.addEventListener("click", () => {
+    nav.style.transform = "translate(-100%, 0)";
+    nav.style.opacity = 0;
+  });
+}
 
 document.querySelector("#openSearchBtn").addEventListener("click", () => {
   search.style.transform = "translate(0,0)";

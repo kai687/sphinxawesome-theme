@@ -16,7 +16,7 @@
 
 {% block main %}
 <div class="overflow-y-auto md:w-full flex flex-col">
-  <main role="main" class="mx-4 md:ml-16 flex-1">
+  <main role="main" class="mx-4 {{ 'md:ml-16' if theme_show_nav else 'md:ml-8' }} flex-1">
     {% include "breadcrumbs.html" %}
     {{ body }}
     <div id="fallback" class="my-8 text-sm text-red-700">

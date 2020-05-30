@@ -1,6 +1,7 @@
 MASTER
 ~~~~~~
 
+- feat: enable not showing of nav menu (#21)
 - feat: added styling for code block captions (#19)
 - feat: added styling for literal blocks (#17)
 - fix: removed dependency on Roboto semibold (#14)

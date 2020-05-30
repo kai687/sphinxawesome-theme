@@ -5,6 +5,7 @@
 <footer class="sticky bottom-0 md:hidden bg-white">
   <section class="flex justify-around items-center">
     {#- The menu button displays the nav -#}
+    {%- if theme_show_nav %}
     <button
       id="openNavBtn"
       aria-labelledby="menuLabel"
@@ -20,6 +21,7 @@
       </svg>
       <span id="menuLabel" class="pl-2 text-sm font-medium uppercase text-gray-700">Menu</span>
     </button>
+    {%- endif %}
 
     {#- The search button displays a full-text search pane -#}
     <button
