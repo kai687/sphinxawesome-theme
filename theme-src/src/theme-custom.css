@@ -10,6 +10,7 @@ p {
   @apply my-6;
 }
 
+
 /* **************************
  * HEADINGS
  * **************************/
@@ -28,6 +29,7 @@ main {
     @apply text-gray-800 font-medium my-6;
   }
 }
+
 
 /* **************************
  * LINKS
@@ -49,16 +51,16 @@ p a {
   @apply text-blue-600;
 }
 
-.search li {
-  @apply border-t my-4 py-4;
-}
-
-.search li a {
-  @apply text-blue-600 text-lg;
-}
-
-.search .context {
-  @apply text-sm text-gray-800;
+.search {
+  li {
+    @apply border-t my-4 py-4;
+    a {
+      @apply text-blue-600 text-lg;
+    }
+  }
+  .context {
+    @apply text-sm text-gray-800;
+  }
 }
 
 .highlighted {
@@ -75,37 +77,33 @@ a:hover {
   @apply text-pink-500;
 }
 
-#nav-toc a.current {
-  @apply text-pink-500;
+#nav-toc {
+  a.current {
+    @apply text-pink-500;
+  }
+  .toctree-l1 > a {
+    @apply block py-4 pl-8 pr-4;
+  }
+  .toctree-l1:first-of-type > a {
+    @apply -mt-4;
+  }
+  .toctree-l2 > a {
+    @apply block py-3 pl-10 pr-4;
+  }
+  .toctree-l3 > a {
+    @apply block py-3 pl-16 pr-4;
+  }
+  a:hover {
+    @apply text-gray-800 bg-gray-300;
+  }
+  .caption {
+    @apply pl-8 pr-4 uppercase text-sm text-gray-500 tracking-widest;
+  }
+  .caption:first-of-type {
+    @apply mt-0;
+  }
 }
 
-#nav-toc .toctree-l1 > a {
-  @apply block py-4 pl-8 pr-4;
-}
-
-#nav-toc .toctree-l1:first-of-type > a {
-  @apply -mt-4;
-}
-
-#nav-toc .toctree-l2 > a {
-  @apply block py-3 pl-10 pr-4;
-}
-
-#nav-toc .toctree-l3 > a {
-  @apply block py-3 pl-16 pr-4;
-}
-
-#nav-toc a:hover {
-  @apply text-gray-800 bg-gray-300;
-}
-
-#nav-toc .caption {
-  @apply pl-8 pr-4 uppercase text-sm text-gray-500 tracking-widest;
-}
-
-#nav-toc .caption:first-of-type {
-  @apply mt-0;
-}
 
 /* **************************
  * CODE
@@ -142,14 +140,13 @@ pre.literal-block {
 
 .literal-block-wrapper {
   @apply my-6;
-}
 
-.literal-block-wrapper .code-block-caption {
-  @apply text-sm ml-4;
-}
-
-.literal-block-wrapper .highlight {
-  @apply mt-4;
+  .code-block-caption {
+    @apply text-sm ml-4;
+  }
+  .highlight {
+    @apply mt-4;
+  }
 }
 
 /* make prompts unselectable */
@@ -192,29 +189,27 @@ table:not(.highlighttable) {
   @apply w-full;
 }
 
-table caption {
-  @apply text-left text-sm text-gray-800 px-2 mb-4;
+table {
+  caption {
+    @apply text-left text-sm text-gray-800 px-2 mb-4;
+  }
+  p {
+    @apply p-0 m-0;
+  }
+  p + p {
+    @apply mt-4;
+  }
+  tr {
+    @apply border-b border-t border-gray-400;
+  }
+  th {
+    @apply font-medium bg-gray-200 tracking-wide py-3 px-2 text-left align-top;
+  }
+  td {
+    @apply px-2 py-3 text-left align-top;
+  }
 }
 
-table p {
-  @apply p-0 m-0;
-}
-
-table p + p {
-  @apply mt-4;
-}
-
-table:not(.highlighttable) tr {
-  @apply border-b border-t border-gray-400;
-}
-
-table:not(.highlighttable) th {
-  @apply font-medium bg-gray-200 tracking-wide py-3 px-2 text-left align-top;
-}
-
-table:not(.highlighttable) td {
-  @apply px-2 py-3 text-left align-top;
-}
 
 /* **************************
  * FIGURES
@@ -222,33 +217,33 @@ table:not(.highlighttable) td {
 
 .figure {
   @apply my-12;
+  .caption {
+    @apply text-sm text-gray-800 m-4;
+  }
+  .caption-number {
+    @apply font-medium tracking-wide;
+  }
+  .legend {
+    @apply text-sm text-gray-800 italic ml-4;
+    p:first-child {
+      @apply mt-0;
+    }
+  }
 }
 
-.figure > .caption {
-  @apply text-sm text-gray-800 m-4;
-}
-
-.figure .caption-number {
-  @apply font-medium tracking-wide;
-}
-
-.figure > .legend {
-  @apply text-sm text-gray-800 italic ml-4;
-}
-
-.figure > .legend > p:first-child {
-  @apply mt-0;
-}
-
-.badge {
-  @apply inline mr-2;
-}
 
 /* **************************
  * ADMONITIONS
  * **************************/
 .admonition {
   @apply text-sm my-6 p-4 rounded text-blue-900 bg-blue-200;
+
+  p:not(.admonition-title) {
+    @apply my-4;
+  }
+  p:last-child {
+    @apply mb-0;
+  }
 }
 
 .tip,
@@ -271,14 +266,6 @@ table:not(.highlighttable) td {
   @apply font-medium tracking-wide mb-4 mt-0;
 }
 
-.admonition > p:not(.admonition-title) {
-  @apply my-4;
-}
-
-.admonition > p:last-child {
-  @apply mb-0;
-}
-
 /* **************************
  * OTHER DIRECTIVES/ROLES
  * **************************/
@@ -296,32 +283,30 @@ table:not(.highlighttable) td {
     justify-items: space-between !important;
     align-items: center !important;
     @apply border-b;
-  }
 
-  header > img {
-    transform: translate(0px, -14px) !important;
-    margin-right: 1rem !important;
-  }
-
-  header h2 {
-    margin-left: 1rem !important;
+    img {
+      transform: translate(0px, -14px) !important;
+      margin-right: 1rem !important;
+    }
+    h2 {
+      margin-left: 1rem !important;
+    }
   }
 
   footer,
   button,
   nav,
-  form,
-  .pdf-link {
+  form {
     @apply hidden;
   }
 
   p {
     orphans: 2;
     widows: 2;
-  }
 
-  p a.external:after {
-    content: " (" attr(href)  ")";
+    a.external:after {
+      content: " (" attr(href)  ")";
+    }
   }
 
   @page {
