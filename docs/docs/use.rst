@@ -18,7 +18,8 @@ The available options are::
    html_theme_options = {
        "nav_include_hidden": True,
        "show_nav": True,
-       "show_breadcrumbs": True
+       "show_breadcrumbs": True,
+       "breadcrumbs_separator": True
    }
 
 ``nav_include_hidden`` (default: ``True``)
@@ -47,3 +48,11 @@ The available options are::
    want to hide the breadcrumbs navigation links, add::
       
       html_theme_options = {"show_breadcrumbs": False}
+
+``breadcrumbs_separator`` (default: ``/``)
+   If you want to select a different separator for the breadcrumbs navigation links,
+   set::
+
+      html_theme_options = {"breadcrumbs_separator": "{Char}"}
+
+   Replace ``{Char}`` with a character or HTML entity of your choice.
