@@ -1,7 +1,7 @@
 {#- Template for the main content element. -#}
 
 <div class="overflow-y-auto md:w-full flex flex-col">
-  <main role="main" class="mx-4 md:ml-16 flex-1">
+  <main role="main" class="mx-4 {{ 'md:ml-16' if theme_show_nav else 'md:ml-8' }} flex-1">
     {%- if pagename != master_doc %} 
       {%- include "breadcrumbs.html" %} 
     {% endif -%} 
