@@ -108,11 +108,6 @@ a:hover {
   @apply mt-0;
 }
 
-/* special link for PDF download below the title of the doc */
-.pdf-link {
-  @apply text-sm mb-12 -mt-10;
-}
-
 /* **************************
  * CODE
  * **************************/
@@ -156,6 +151,11 @@ pre.literal-block {
 
 .literal-block-wrapper .highlight {
   @apply mt-4;
+}
+
+/* make prompts unselectable */
+.gp {
+  @apply select-none pointer-events-none;
 }
 
 /* **************************

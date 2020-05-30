@@ -1,6 +1,7 @@
 MASTER
 ~~~~~~
 
+- feat: make prompt character unselectable (#20)
 - feat: add 'breadcrumbs_separator' option (#25)
 - feat: enable 'show_breadcrumbs' option (#24)
 - feat: enable 'nav_show_hidden' by default (#23)
