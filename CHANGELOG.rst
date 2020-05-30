@@ -1,6 +1,7 @@
 MASTER
 ~~~~~~
 
+- feat: add precss for nesting CSS
 - feat: make prompt character unselectable (#20)
 - feat: add 'breadcrumbs_separator' option (#25)
 - feat: enable 'show_breadcrumbs' option (#24)
