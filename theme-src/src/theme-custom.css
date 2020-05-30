@@ -41,7 +41,8 @@ h1:hover .headerlink,
 h2:hover .headerlink,
 h3:hover .headerlink,
 table:hover .headerlink,
-.figure:hover .headerlink {
+.figure:hover .headerlink,
+.literal-block-wrapper:hover .headerlink {
   @apply visible;
 }
 
@@ -123,9 +124,38 @@ code {
   @apply bg-gray-200 rounded my-6;
 }
 
-pre {
+td.code > .highlight {
+  @apply rounded-r rounded-l-none;
+}
+
+pre:not(.literal-block) {
   width: 95%;
   @apply font-mono font-normal p-4 overflow-x-auto;
+}
+
+pre.literal-block {
+  @apply w-full bg-gray-200 rounded my-6 font-normal font-mono overflow-x-auto p-4;
+}
+
+.linenodiv > pre {
+  @apply pr-0 bg-gray-200 rounded-l;
+}
+
+/* emphasized lines in .highlight blocks */
+.hll {
+  @apply block;
+}
+
+.literal-block-wrapper {
+  @apply my-6;
+}
+
+.literal-block-wrapper .code-block-caption {
+  @apply text-sm ml-4;
+}
+
+.literal-block-wrapper .highlight {
+  @apply mt-4;
 }
 
 /* **************************
@@ -155,8 +185,12 @@ dd {
 /* **************************
  * TABLES
  * **************************/
-table {
+table:not(.highlighttable) {
   @apply text-sm my-10;
+}
+
+.highlighttable {
+  @apply w-full;
 }
 
 table caption {
@@ -171,15 +205,15 @@ table p + p {
   @apply mt-4;
 }
 
-tr {
+table:not(.highlighttable) tr {
   @apply border-b border-t border-gray-400;
 }
 
-th {
+table:not(.highlighttable) th {
   @apply font-medium bg-gray-200 tracking-wide py-3 px-2 text-left align-top;
 }
 
-td {
+table:not(.highlighttable) td {
   @apply px-2 py-3 text-left align-top;
 }
 
