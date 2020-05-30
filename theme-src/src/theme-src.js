@@ -94,8 +94,9 @@ function addCopyButton(el) {
   el.appendChild(btn);
 }
 
-// Add Copy Button to all '<div class="highlight">' code blocks
-document.querySelectorAll("div.highlight").forEach((code) => {
+// Add Copy Button to all '<div class="highlight">'
+// ... and '<pre class="literal-block">'
+document.querySelectorAll("div.highlight, pre.literal-block").forEach((code) => {
   code.style.position = "relative";
   addCopyButton(code);
 });

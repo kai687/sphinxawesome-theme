@@ -9,9 +9,20 @@ Code
 This theme adds a :guilabel:`Copy` button to code blocks. Clicking on the button will
 copy the text inside the code block to the clipboard.
 
-.. code-block::
+.. parsed-literal::
 
-   Click on the button on the right.
+   Parsed literal blocks *can* contain reStructuredText!
+   But they don't have syntax highlighting
+
+
+.. code-block:: python
+   :emphasize-lines: 2
+   :linenos:
+
+   print("Don't highlight this")
+   print("But this!")
+   print("And this is unimportant again")
+
 
 -------
 Figures
