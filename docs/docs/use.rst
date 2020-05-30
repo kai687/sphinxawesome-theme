@@ -17,7 +17,8 @@ The available options are::
 
    html_theme_options = {
        "nav_include_hidden": True,
-       "show_nav": True
+       "show_nav": True,
+       "show_breadcrumbs": True
    }
 
 ``nav_include_hidden`` (default: ``True``)
@@ -39,3 +40,10 @@ The available options are::
    you want to hide the navigation menu, add::
 
       html_theme_options = {"show_nav": False}
+
+``show_breadcrumbs`` (default: ``True``)
+   By default, so-called “breadcrumbs” navigation links are shown at the top of the
+   content area to show the position of this document relative to the top-level. If you
+   want to hide the breadcrumbs navigation links, add::
+      
+      html_theme_options = {"show_breadcrumbs": False}

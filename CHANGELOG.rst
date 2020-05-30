@@ -1,6 +1,7 @@
 MASTER
 ~~~~~~
 
+- feat: enable 'show_breadcrumbs' option (#24)
 - feat: enable 'nav_show_hidden' by default (#23)
 - feat: enable not showing of nav menu (#21)
 - feat: added styling for code block captions (#19)
