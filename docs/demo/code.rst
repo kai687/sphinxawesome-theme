@@ -21,13 +21,25 @@ syntax highlighting.
    Parsed literal blocks *can* contain reStructuredText!
    But they **don't** have syntax highlighting
 
-Code blocks on the other hand can include syntax highlighting (and captions, and 
+Code blocks on the other hand can include syntax highlighting (and captions, and
 `other features
 <https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-code-block>`_)
 but markup will not be rendered.
 
 .. code-block:: python
    :emphasize-lines: 2
+   :caption: Code block caption.
+
+   print("Don't highlight this")
+   print("But this!")
+   print("And this is unimportant again")
+
+
+A code block can also have line numbers.
+
+.. code-block:: python
+   :emphasize-lines: 2
+   :linenos:
    :caption: Code block caption.
 
    print("Don't highlight this")
