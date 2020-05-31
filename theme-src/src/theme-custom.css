@@ -10,6 +10,10 @@ p {
   @apply my-6;
 }
 
+strong {
+  @apply font-medium;
+}
+
 
 /* **************************
  * HEADINGS
@@ -184,6 +188,9 @@ dt {
 
 dd {
   @apply pl-12;
+  p {
+    @apply mt-2;
+  }
 }
 
 /* **************************

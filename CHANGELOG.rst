@@ -1,3 +1,8 @@
+MASTER
+~~~~~~
+
+- fix: make bold text medium (#28)
+
 1.4.0
 ~~~~~
 
