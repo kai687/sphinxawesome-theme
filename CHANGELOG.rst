@@ -1,6 +1,7 @@
-MASTER
-~~~~~~
+1.4.0
+~~~~~
 
+- fix: showing linenumbers for code blocks (#18)
 - fix: make copy button for literals stick (#22)
 - feat: add precss for nesting CSS
 - feat: make prompt character unselectable (#20)
