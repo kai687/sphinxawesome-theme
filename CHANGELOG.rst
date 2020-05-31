@@ -1,7 +1,8 @@
-MASTER
-~~~~~~
+1.4.1
+~~~~~
 
 - fix: make bold text medium (#28)
+- fix: improved padding in linenumber display
 
 1.4.0
 ~~~~~

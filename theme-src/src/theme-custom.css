@@ -129,7 +129,7 @@ div[class^='highlight-'] {
 
 .linenodiv {
   pre {
-    @apply border-r border-gray-400 bg-gray-100 rounded-r-none select-none pointer-events-none;
+    @apply border-r border-gray-400 pr-1 bg-gray-100 rounded-r-none select-none pointer-events-none;
   }
 }
 
