@@ -11,9 +11,7 @@ How to configure the theme
 
 The theme includes just a few configuration options. All options can be set as key/value
 pairs in the ``html_theme_options`` dictionary in the Sphinx configuration file
-``conf.py``.
-
-The available options are::
+``conf.py``::
 
    html_theme_options = {
        "nav_include_hidden": True,
@@ -21,6 +19,8 @@ The available options are::
        "show_breadcrumbs": True,
        "breadcrumbs_separator": "/"
    }
+
+.. rubric:: Available options
 
 ``nav_include_hidden`` (default: ``True``)
    By default, Sphinx prints a list of links when a toctree_ directive is used to
