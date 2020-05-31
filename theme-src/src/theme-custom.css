@@ -112,17 +112,33 @@ code {
   @apply font-mono font-medium text-sm leading-none py-px px-1 bg-gray-200 rounded;
 }
 
+div[class^='highlight-'] {
+  @apply my-6 overflow-x-auto;
+}
+
+.linenodiv,
 .highlight {
-  @apply bg-gray-200 rounded my-6;
+  pre {
+    @apply p-4 pt-8 rounded bg-gray-200 overflow-x-auto;
+  }
 }
 
-td.code > .highlight {
-  @apply rounded-r rounded-l-none;
+.linenodiv {
+  pre {
+    @apply border-r border-gray-400 bg-gray-100 rounded-r-none select-none pointer-events-none;
+  }
 }
 
-pre {
-  width: 95%;
-  @apply font-mono font-normal p-4 overflow-x-auto;
+.highlighttable {
+  @apply w-full;
+  td {
+    @apply p-0;
+  }
+  .highlight {
+    pre {
+      @apply rounded-l-none;
+    }
+  }
 }
 
 /* emphasized lines in .highlight blocks */
@@ -136,7 +152,7 @@ pre {
   .code-block-caption {
     @apply text-sm ml-4;
   }
-  .highlight {
+  div[class^='highlight-'] {
     @apply mt-4;
   }
 }
@@ -173,18 +189,14 @@ dd {
 /* **************************
  * TABLES
  * **************************/
-table:not(.highlighttable) {
-  @apply text-sm my-10;
-}
-
-.highlighttable {
-  @apply w-full;
-}
-
 table {
   caption {
     @apply text-left text-sm text-gray-800 px-2 mb-4;
   }
+}
+
+table:not(.highlighttable) {
+  @apply text-sm my-10;
   p {
     @apply p-0 m-0;
   }

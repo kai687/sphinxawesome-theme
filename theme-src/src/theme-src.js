@@ -109,7 +109,7 @@ document.querySelectorAll("pre.literal-block").forEach((block) => {
   wrapper.appendChild(block);
 });
 
-// Add Copy Button to all '<div class="highlight">'
+// Add Copy Button to all code blocks
 document.querySelectorAll("div.highlight").forEach((code) => {
   code.style.position = "relative";
   addCopyButton(code);
