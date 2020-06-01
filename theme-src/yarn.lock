@@ -91,9 +91,9 @@
     source-map "^0.6.1"
 
 "@types/webpack@^4.4.31":
-  version "4.41.14"
-  resolved "https://registry.yarnpkg.com/@types/webpack/-/webpack-4.41.14.tgz#39e3a429a4cc7dedaf79d0558f2912a101c9a2de"
-  integrity sha512-IRnPKux2B7Qip/cUgen5gUh68fxk9Ao0ovKkkSUNPu+6Zub30pjqk9qFG2xZQUBcpIyLte1QfiYBpyAMwuN7Pw==
+  version "4.41.16"
+  resolved "https://registry.yarnpkg.com/@types/webpack/-/webpack-4.41.16.tgz#57b6154c5465401b0466c5fadcaf89dd98a77798"
+  integrity sha512-w80nXwCcXwwgv7rkTXb8lET6nWPNNUJxa36lrA2DEkD5TcPpHrlGAPrjdpZnkFX/FXSSuN5IIxCYowAB1Vobtw==
   dependencies:
     "@types/anymatch" "*"
     "@types/node" "*"
@@ -1115,9 +1115,9 @@ css-unit-converter@^1.1.1:
   integrity sha512-IiJwMC8rdZE0+xiEZHeru6YoONC4rfPMqGm2W85jMIbkFvv5nFTwJVFHam2eFrN6txmoUYFAFXiv8ICVeTO0MA==
 
 css-what@^3.2.1:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/css-what/-/css-what-3.2.1.tgz#f4a8f12421064621b456755e34a03a2c22df5da1"
-  integrity sha512-WwOrosiQTvyms+Ti5ZC5vGEK0Vod3FTt1ca+payZqvKuGJF+dq7bG63DstxtN0dpm6FxY27a/zS3Wten+gEtGw==
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/css-what/-/css-what-3.3.0.tgz#10fec696a9ece2e591ac772d759aacabac38cd39"
+  integrity sha512-pv9JPyatiPaQ6pf4OvD/dbfm0o5LviWmwxNWzblYf/1u9QZd0ihV+PMwy5jdQWQ3349kZmKEx9WXuSka2dM4cg==
 
 cssdb@^4.4.0:
   version "4.4.0"
@@ -1358,9 +1358,9 @@ duplexify@^3.4.2, duplexify@^3.6.0:
     stream-shift "^1.0.0"
 
 electron-to-chromium@^1.3.413:
-  version "1.3.454"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.454.tgz#9bf7db2cfa90b48a64a1f13111d667bacfcae618"
-  integrity sha512-2ODSCBwHsdB8T6csLaAbXIMYtrhu8oN1c5gS+/C2OqdfF35aXhDsnu8p+d7crbOpVXZnUza8I/Xl31mzkfnxGg==
+  version "1.3.455"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.455.tgz#fd65a3f5db6ffa83eb7c84f16ea9b1b7396f537d"
+  integrity sha512-4lwnxp+ArqOX9hiLwLpwhfqvwzUHFuDgLz4NTiU3lhygUzWtocIJ/5Vix+mWVNE2HQ9aI1k2ncGe5H/0OktMvA==
 
 elliptic@^6.0.0, elliptic@^6.5.2:
   version "6.5.2"
