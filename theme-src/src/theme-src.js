@@ -94,7 +94,10 @@ function addCopyButton(el) {
 
   // Show 'Copied to clipboard' in a message at the bottom
   btn.addEventListener("click", () => {
-    copyToClipboard(el, _("Copied code to clipboard"));
+    const selection = selectText(el);
+    document.execCommand("copy");
+    selection.removeAllRanges();
+    showSnackbar(_("Copied code to clipboard"));
   });
 
   el.appendChild(btn);
@@ -187,7 +190,7 @@ document.querySelectorAll(".headerlink").forEach((link) => {
   });
 });
 
-function copyMsgToClipboard(str, msg) {
+function copyToClipboard(str, msg) {
   const el = document.createElement("textarea");
   el.value = str;
   el.setAttribute("readonly", "");

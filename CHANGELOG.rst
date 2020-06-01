@@ -1,3 +1,9 @@
+1.5.0
+~~~~~
+
+- feat: clicking on permalink copies the link to clipboard (#29)
+
+
 1.4.1
 ~~~~~
 
