@@ -32,16 +32,22 @@ if (closeNavBtn) {
   });
 }
 
-document.querySelector("#openSearchBtn").addEventListener("click", () => {
-  search.style.transform = "translate(0,0)";
-  search.style.transition = "transform 0.3s, opacity 0.5s";
-  search.style.opacity = 1;
-});
+const openSearchBtn = document.querySelector("#openSearchBtn");
+if (openSearchBtn) {
+  openSearchBtn.addEventListener("click", () => {
+    search.style.transform = "translate(0,0)";
+    search.style.transition = "transform 0.3s, opacity 0.5s";
+    search.style.opacity = 1;
+  });
+}
 
-document.querySelector("#closeSearchBtn").addEventListener("click", () => {
-  search.style.transform = "translate(100%, 0)";
-  search.style.opacity = 0;
-});
+const closeSearchBtn = document.querySelector("#closeSearchBtn");
+if (closeSearchBtn) {
+  closeSearchBtn.addEventListener("click", () => {
+    search.style.transform = "translate(100%, 0)";
+    search.style.opacity = 0;
+  });
+}
 
 function selectText(node) {
   const selection = window.getSelection();
@@ -88,13 +94,7 @@ function addCopyButton(el) {
 
   // Show 'Copied to clipboard' in a message at the bottom
   btn.addEventListener("click", () => {
-    snackbar.textContent = _("Copied to clipboard");
-    snackbar.style.opacity = 1;
-    snackbar.style.transform = "translate(0,0)";
-    setTimeout(hideSnackbar, 2000);
-    const selection = selectText(el);
-    document.execCommand("copy");
-    selection.removeAllRanges;
+    copyToClipboard(el, _("Copied code to clipboard"));
   });
 
   el.appendChild(btn);
@@ -147,6 +147,13 @@ searchForm.addEventListener("submit", (event) => {
   }
 });
 
+function showSnackbar(message) {
+  snackbar.textContent = message;
+  snackbar.style.opacity = 1;
+  snackbar.style.transform = "translate(0,0)";
+  setTimeout(hideSnackbar, 2000);
+}
+
 function hideSnackbar() {
   snackbar.style.opacity = 0;
   snackbar.style.transform = "translate(0,100%)";
@@ -170,4 +177,32 @@ window.addEventListener("scroll", () => {
   tooltip.textContent = "";
   tooltip.style.opacity = 0;
   tooltip.style.visibility = "hidden";
-})
+});
+
+// click on permalink copies the href to clipboard
+document.querySelectorAll(".headerlink").forEach((link) => {
+  link.addEventListener("click", (event) => {
+    copyToClipboard(link.href, _("Copied link to clipboard"));
+    event.preventDefault();
+  });
+});
+
+function copyMsgToClipboard(str, msg) {
+  const el = document.createElement("textarea");
+  el.value = str;
+  el.setAttribute("readonly", "");
+  el.style.position = "absolute";
+  el.style.left = "-9999px";
+  document.body.appendChild(el);
+  const selected = document.getSelection().rangeCount > 0
+    ? document.getSelection().getRangeAt(0)
+    : false;
+  el.select();
+  document.execCommand('copy');
+  document.body.removeChild(el);
+  if (selected) {
+    document.getSelection().removeAllRanges();
+    document.getSelection().addRange(selected);
+  }
+  showSnackbar(msg)
+}
