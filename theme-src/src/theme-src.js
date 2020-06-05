@@ -124,8 +124,10 @@ setTimeout(() => {
   if (highlights.length) {
     snackbar.innerHTML =
       '<a class="tracking-wide" href="javascript:Documentation.hideSearchWords()">' +
-      _("Clear Highlights") +
+      _("Clear highlighted words") +
       "</a>";
+    snackbar.classList.remove("bg-gray-900", "text-gray-100");
+    snackbar.classList.add("bg-pink-200", "text-blue-600");
     snackbar.style.opacity = 1;
     snackbar.style.transform = "translate(0,0)";
 
@@ -160,6 +162,8 @@ function showSnackbar(message) {
 function hideSnackbar() {
   snackbar.style.opacity = 0;
   snackbar.style.transform = "translate(0,100%)";
+  snackbar.classList.remove("bg-pink-200", "text-blue-600");
+  snackbar.classList.add("bg-gray-900", "text-gray-100");
 }
 
 // focus search input on key '/'
@@ -197,15 +201,16 @@ function copyToClipboard(str, msg) {
   el.style.position = "absolute";
   el.style.left = "-9999px";
   document.body.appendChild(el);
-  const selected = document.getSelection().rangeCount > 0
-    ? document.getSelection().getRangeAt(0)
-    : false;
+  const selected =
+    document.getSelection().rangeCount > 0
+      ? document.getSelection().getRangeAt(0)
+      : false;
   el.select();
-  document.execCommand('copy');
+  document.execCommand("copy");
   document.body.removeChild(el);
   if (selected) {
     document.getSelection().removeAllRanges();
     document.getSelection().addRange(selected);
   }
-  showSnackbar(msg)
+  showSnackbar(msg);
 }
