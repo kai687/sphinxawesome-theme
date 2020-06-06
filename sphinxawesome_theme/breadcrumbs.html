@@ -8,7 +8,7 @@
 
 <nav role="navigation" 
      aria-label="{{ _('breadcrumbs') }}" 
-     class="mt-16 mb-12 text-sm text-gray-700 leading-tight">
+     class="mt-16 mb-12 text-sm text-gray-700 leading-tight print:hidden">
   <a class="text-blue-600" href="{{ pathto(master_doc) }}">{{ docstitle }}</a>
   {{ separator }}
   {% for doc in parents %}

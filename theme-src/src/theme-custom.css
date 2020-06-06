@@ -304,12 +304,9 @@ table:not(.highlighttable) {
     }
   }
 
-  footer,
-  button,
-  nav,
-  form {
-    @apply hidden;
-  }
+  /* button { */
+    /* @apply hidden; */
+  /* } */
 
   p {
     orphans: 2;
@@ -367,6 +364,7 @@ table:not(.highlighttable) {
     page-break-inside: avoid;
   }
 
+  pre,
   code {
     whitespace: pre-wrap !important;
   }

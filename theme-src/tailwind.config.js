@@ -3,7 +3,12 @@ module.exports = {
     fontFamily: {
       display: ["Roboto", "sans-serif"],
       body: ["Roboto", "sans-serif"],
-      mono: ["Roboto\\ Mono", "monospace"]
-    }
-  }
+      mono: ["Roboto\\ Mono", "monospace"],
+    },
+    extend: {
+      screens: {
+        "print": { "raw": "print" },
+      },
+    },
+  },
 };
