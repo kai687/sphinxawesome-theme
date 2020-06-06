@@ -3,6 +3,7 @@ MASTER
 
 - fix: snackbar looks different for message vs. action (#30)
 - fix: added 'print:' media-query to tailwind config
+- feat: made permalinks more semantic
 
 1.5.0
 ~~~~~
