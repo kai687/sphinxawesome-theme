@@ -47,6 +47,14 @@ A code block can also have line numbers.
    print("And this is unimportant again")
 
 
+This theme implements a `samp` directive, which allows you to define placeholders that a
+user should replace. This is similar to the :samp:`enter {SANDMAN}` role.
+
+.. samp::
+
+   $ Enter {SANDMAN}
+
+
 -------
 Figures
 -------

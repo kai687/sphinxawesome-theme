@@ -1,19 +1,20 @@
 """
-Distribute the Sphinx theme as a python package.
-See also: http://www.sphinx-doc.org/en/stable/theming.html#distribute-your-theme-as-a-python-package
+The Sphinx awesome theme as a Python package.
 
 :copyright: Copyright 2020, Kai Welke.
 :license: MIT, see LICENSE for details
 """
 
 from os import path
-from typing import Dict, Any
+from typing import Any, Dict
+
 from sphinx.application import Sphinx
 
 __version__ = "1.5.0"
 
-def setup(app: Sphinx) -> Dict[str, Any]:
-    """register this theme with Sphinx"""
+
+def setup(app: "Sphinx") -> Dict[str, Any]:
+    """Register the theme."""
 
     app.add_html_theme("sphinxawesome_theme", path.abspath(path.dirname(__file__)))
 

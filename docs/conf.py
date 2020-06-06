@@ -1,4 +1,11 @@
 import datetime
+import sys
+from pathlib import Path
+
+this_dir = Path(__file__).parent
+top_dir = (this_dir / "..").resolve()
+
+sys.path.append(str(top_dir))
 
 year = datetime.datetime.now().year
 
@@ -10,7 +17,7 @@ copyright = f"{year}, {author}."
 
 # -- General configuration ---------------------------------------------------
 
-extensions = ["sphinx.ext.autosectionlabel"]
+extensions = ["sphinx.ext.autosectionlabel", "samp_directive"]
 
 exclude_patterns = ["public"]
 nitpicky = True

@@ -166,6 +166,15 @@ div[class^='highlight-'] {
   @apply select-none pointer-events-none;
 }
 
+/* from the 'samp' directive */
+em.var {
+  @apply text-purple-700 font-medium;
+}
+
+.samp > em {
+  @apply text-purple-700;
+}
+
 /* **************************
  * LISTS
  * **************************/
