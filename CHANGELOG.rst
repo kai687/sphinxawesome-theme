@@ -1,5 +1,5 @@
-MASTER
-~~~~~~
+1.6.0
+~~~~~
 
 - fix: snackbar looks different for message vs. action (#30)
 - fix: added 'print:' media-query to tailwind config
