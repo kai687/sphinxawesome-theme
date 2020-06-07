@@ -4,12 +4,12 @@ MASTER
 - fix: snackbar looks different for message vs. action (#30)
 - fix: added 'print:' media-query to tailwind config
 - feat: made permalinks more semantic
+- feat: added directive for highlighting placeholder variables (#15)
 
 1.5.0
 ~~~~~
 
 - feat: clicking on permalink copies the link to clipboard (#29)
-
 
 1.4.1
 ~~~~~

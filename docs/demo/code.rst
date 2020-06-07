@@ -9,8 +9,29 @@ Code, figures, and tables
 Code
 ----
 
-This theme adds a :guilabel:`Copy` button to code blocks. Clicking on the button will
+This theme adds a :guilabel:`Copy` button to all code blocks. Clicking on the button will
 copy the text inside the code block to the clipboard.
+
+To mark up code blocks, choose between :rst:`parsed-literal`, :rst:`samp`, or
+:rst:`code-block` directives, depending on your needs.
+
+In summary:
+
+- Use :rst:`parsed-literal` directives, if you need to render reStructuredText markup
+  inside the code block, but don't need syntax highlighting.
+- Use :rst:`samp` directives, if you need to highlight placeholder variables, but
+  otherwise don't need markup or syntax highlighting.
+- Use :rst:`code-block` directives, if you want advanced features like syntax
+  highlighting, captions, line numbers, etc. but don't want to render any markup.
+
+.. note::
+
+   It is currently not possible to have both syntax highlighting *and* markup rendering
+   for code blocks in Sphinx.
+
+
+Parsed literal
+--------------
 
 Use a :rst:`parsed-literal` directive, when you want to render markup inside a code
 block, for example links or emphasized texts. :rst:`parsed-literal` blocks do not have
@@ -21,8 +42,38 @@ syntax highlighting.
    Parsed literal blocks *can* contain reStructuredText!
    But they **don't** have syntax highlighting
 
-Code blocks on the other hand can include syntax highlighting (and captions, and
-`other features
+Samp directive
+--------------
+
+To highlight placeholder variables in code, use the :rst:`samp` directive or interpreted
+text role. Sphinx provides the :rst:`samp` role by default. The
+`sphinxawesome-sampdirective <https://github.com/kai687/sphinxawesome-sampdirective>`_
+extension provides the :rst:`samp` directive. This extension is installed by default
+when you install the sphinxawesome theme.
+
+Placeholder variables are variables that users are expected to substitute. For example,
+:rst:`:samp:echo "Hello {NAME}"` is rendered as :samp:`echo "Hello {NAME}"`.
+
+The :rst:`samp` directive:
+
+.. code-block:: rst
+
+   .. samp::
+
+      $ echo "Hello {NAME}"
+
+is rendered as:
+
+.. samp::
+
+   $ echo "Hello {NAME}"
+
+
+Code blocks with syntax highlighting
+------------------------------------
+
+Code block directives on the other hand can include syntax highlighting (and captions, and `other
+features
 <https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-code-block>`_)
 but markup will not be rendered.
 
@@ -45,14 +96,6 @@ A code block can also have line numbers.
    print("Don't highlight this")
    print("But this!")
    print("And this is unimportant again")
-
-
-This theme implements a `samp` directive, which allows you to define placeholders that a
-user should replace. This is similar to the :samp:`enter {SANDMAN}` role.
-
-.. samp::
-
-   $ Enter {SANDMAN}
 
 
 -------

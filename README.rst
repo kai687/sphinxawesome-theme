@@ -15,7 +15,8 @@ Sphinx awesome theme
    :alt: Netlify Status
 
 This is a simple but awesome theme for the `Sphinx
-<http://www.sphinx-doc.org/en/master/>`_ documentation generator.
+<http://www.sphinx-doc.org/en/master/>`_ documentation generator.  See how the theme
+looks on the `demo page <https://sphinxawesome.xyz>`_.
 
 
 ------------
@@ -53,9 +54,3 @@ To use the theme, set ``html_theme`` in the Sphinx configuration file
 
 Read the full `usage guide
 <https://sphinxawesome.xyz/docs/use.html#how-to-use-the-theme>`_ for more information.
-
-----
-Demo
-----
-
-See how the theme looks on the `demo page <https://sphinxawesome.xyz>`_.
