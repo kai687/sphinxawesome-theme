@@ -75,9 +75,9 @@
     {%- endblock %}
   </head>
 
-  <body class="text-gray-900 antialiased font-body font-display md:h-screen flex flex-col">
+  <body class="text-gray-900 antialiased font-body font-display min-h-screen md:h-screen flex flex-col">
     {% include "header.html" %}
-    <div class="md:overflow-hidden md:flex flex-1">
+    <div class="md:overflow-hidden flex flex-col md:flex-row flex-1">
       {%- if theme_show_nav -%}
         {%- include "nav.html" %}
       {%- endif %}

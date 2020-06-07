@@ -2,6 +2,7 @@ MASTER
 ~~~~~~
 
 - fix(footer): justify-center
+- fix(footer): made sticky (again?) (#32)
 
 1.6.0
 ~~~~~

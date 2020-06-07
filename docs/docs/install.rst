@@ -30,9 +30,9 @@ If you want to modify the theme, `fork the repository
 and clone it into a directory accessible to your Sphinx project, for example
 ``./_themes``.
 
-.. code-block:: console
+.. samp::
 
-   git clone https://github.com/<your Github username>/sphinxawesome-theme.git
+   git clone https://github.com/{YOUR_GITHUB_USERNAME}/sphinxawesome-theme.git
 
 Next, follow the steps in :ref:`How to modify the theme`.
 
