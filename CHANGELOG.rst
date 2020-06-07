@@ -1,3 +1,8 @@
+MASTER
+~~~~~~
+
+- fix(footer): justify-center
+
 1.6.0
 ~~~~~
 
