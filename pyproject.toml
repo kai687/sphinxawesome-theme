@@ -21,6 +21,7 @@ packages = [
 [tool.poetry.dependencies]
 python = "^3.6"
 sphinx = ">3"
+sphinxawesome-sampdirective = "^1.0.0"
 
 [tool.poetry.dev-dependencies]
 
