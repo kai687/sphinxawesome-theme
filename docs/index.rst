@@ -8,10 +8,16 @@
 Sphinx awesome theme
 ====================
 
-The Sphinx awesome theme is a simple but beautiful theme for the Sphinx_ documentation
-generator. These pages are divided into a *docs* and a *demo* section. In the *docs*
+The Sphinx awesome theme is an awesome theme for the Sphinx_ documentation
+generator. It includes a number of usability improvements:
+
+.. include:: ../README.rst
+   :start-after: features-start
+   :end-before: features-end
+
+These pages are divided into a *docs* and a *demo* section. In the *docs*
 section, you can learn how to :ref:`install <How to install the theme>`, :ref:`use <How
-to use the theme>`, or :ref:`modify <How to modify the theme>` the theme.  If you want
+to use the theme>`, or :ref:`modify <How to modify the theme>` the theme. If you want
 to see which styles are available, check the pages in the *demo* section.
 
 The Sphinx awesome theme is available under the open-source MIT license. The source code

@@ -14,10 +14,34 @@ Sphinx awesome theme
    :target: https://sphinxawesome.xyz
    :alt: Netlify Status
 
-This is a simple but awesome theme for the `Sphinx
-<http://www.sphinx-doc.org/en/master/>`_ documentation generator.  See how the theme
+This is an awesome theme for the `Sphinx
+<http://www.sphinx-doc.org/en/master/>`_ documentation generator. See how the theme
 looks on the `demo page <https://sphinxawesome.xyz>`_.
 
+
+--------
+Features
+--------
+
+.. features-start
+
+The theme includes several usability improvements:
+
+Copy code blocks
+    Code blocks have a **Copy** button, that allows you to copy code snippets to the
+    clipboard.
+
+Improved links after headlines and captions
+    Clicking on the ``#`` character that appears when hovering over headlines and
+    captions copies that link to the clipboard. The tooltips for links after headlines
+    also show the section title, instead of the generic "Permalink to this headline".
+
+New directive for highlighting placeholder variables
+    The theme supports a new directive ``.. samp::``, which is the equivalent of the
+    built-in ``:samp:`` interpreted text role. This allows you to highlight placeholder
+    variables in code blocks.
+
+.. features-end
 
 ------------
 Installation
