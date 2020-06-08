@@ -15,7 +15,7 @@
   {%- if title == docstitle -%}
     {%- set titlesuffix = "" -%}
   {%- else -%}
-    {%- set titlesuffix = " &#8212; "|safe + docstitle|e -%}
+    {%- set titlesuffix = " | "|safe + docstitle|e -%}
   {%- endif -%}
 {%- else -%}
   {%- set titlesuffix = "" -%}
