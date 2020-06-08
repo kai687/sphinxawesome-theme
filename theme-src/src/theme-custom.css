@@ -1,9 +1,11 @@
 /* This file contains Tailwind styles applied to common tags
  * such as paragraphs, headings, links, etc. */
 
-section,
-.section {
-  @apply max-w-2xl;
+@screen md {
+  section,
+  .section {
+    @apply max-w-2xl;
+  }
 }
 
 p {
@@ -105,6 +107,23 @@ a:hover {
   }
   .caption:first-of-type {
     @apply mt-0;
+  }
+}
+
+@screen xxl {
+  #nav-toc {
+    .toctree-l1 > a {
+      @apply pl-16;
+    }
+    .toctree-l2 > a {
+      @apply pl-18;
+    }
+    .toctree-l3 > a {
+      @apply pl-24;
+    }
+    .caption {
+      @apply pl-16;
+    }
   }
 }
 

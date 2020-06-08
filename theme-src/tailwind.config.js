@@ -8,7 +8,11 @@ module.exports = {
     extend: {
       screens: {
         "print": { "raw": "print" },
+        "xxl": "1440px",
       },
+      padding: {
+        "18": "4.5rem",
+      }
     },
   },
 };
