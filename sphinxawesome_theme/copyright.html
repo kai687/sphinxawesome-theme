@@ -1,24 +1,34 @@
 {#-
-  Template for the copyright info at the bottom of the <main> element.
--#}
+    Template for the copyright info at the bottom of the <main> element. 
+-#} 
 
-
-<section
-  role="contentinfo"
-  class="mt-20 mx-4 {{ 'md:ml-16' if theme_show_nav else 'md:ml-8' }} mb-4 flex-shrink-0 text-sm text-gray-700"
->
+{%- if theme_show_nav -%}
+  <section
+    role="contentinfo"
+    class="mt-20 mx-4 md:ml-16 xxl:ml-32 mb-4 flex-shrink-0 text-sm text-gray-700"
+  >
+{%- else -%}
+    <section
+      role="contentinfo"
+      class="mt-20 mx-4 md:ml-8 xxl:ml-16 mb-4 flex-shrink-0 text-sm text-gray-700"
+    >
+{%- endif -%}
 {%- if show_copyright %}
   {%- if hasdoc('copyright') %}
-    {%- trans path=pathto('copyright'), copyright=copyright|e %}&copy;
-      <a href="{{ path }}">Copyright</a>{{ copyright }}
+    {%- trans path=pathto('copyright'), copyright=copyright|e %}
+      &copy; <a href="{{ path }}">Copyright</a>{{ copyright }}
     {%- endtrans -%}
-  {%- else %}
-    {%- trans copyright=copyright|e %}&copy; Copyright {{ copyright }}{%- endtrans %}
+  {%- else %} 
+    {%- trans copyright=copyright|e %}
+      &copy; Copyright {{ copyright }}
+    {%- endtrans %}
   {%- endif -%}
 {%- endif %}
 {%- if last_updated -%}
-  {%- trans last_updated=last_updated|e %} Last updated: {{ last_updated }}.{%- endtrans %}
-{%- endif -%}
+  {%- trans last_updated=last_updated|e %}
+    Last updated: {{ last_updated }}.
+  {%- endtrans %}
+{%- endif -%} 
 {%- if show_sphinx -%}
   {%- trans sphinx_version=sphinx_version|e %}
     Made with <a href="https://www.sphinx-doc.org">Sphinx {{ sphinx_version }}</a>

@@ -7,12 +7,12 @@
 <header class="md:sticky top-0 bg-white shadow-md flex flex-col md:flex-row justify-between items-center">
   {#- show logo on the left side of the header -#}
   {%- if logo -%}
-  <img class="h-8 mx-8 mt-4 md:mt-0 transform md:-translate-y-1" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo" />
+  <img class="h-8 mx-8 xxl:mx-16 mt-4 md:mt-0 transform md:-translate-y-1" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo" />
   {%- endif -%}
 
   {#- show manual title in the middle -#}
   <a href="{{ pathto(master_doc) }}" title="{{ _('Back to homepage') }}">
-    <h2 class="text-2xl text-gray-800 mx-8 py-4">{{ docstitle }}</h2>
+    <h2 class="text-2xl text-gray-800 mx-8 xxl:mx-16 py-4">{{ docstitle }}</h2>
   </a>
 
   {#- show a search input field on the right side -#}
