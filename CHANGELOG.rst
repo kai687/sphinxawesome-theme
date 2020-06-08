@@ -3,6 +3,7 @@ MASTER
 
 - fix(footer): justify-center
 - fix(footer): made sticky (again?) (#32)
+- fix(layout): improve layout on large screens (#31)
 
 1.6.0
 ~~~~~

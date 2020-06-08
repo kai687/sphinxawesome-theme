@@ -16,7 +16,12 @@
 
 {% block main %}
 <div class="overflow-y-auto md:w-full flex flex-col flex-1">
-  <main role="main" class="mx-4 {{ 'md:ml-16' if theme_show_nav else 'md:ml-8' }} flex-1">
+  {%- if theme_show_nav -%}
+    <main role="main" class="mx-4 md:ml-16 xxl:ml-32 flex-1">
+  {%- else -%}
+    <main role="main" class="mx-4 md:ml-8 xxl:ml-32 flex-1">
+  {%- endif -%}
+
     {%- if theme_show_breadcrumbs %}
       {% include "breadcrumbs.html" %}
     {%- endif %}
