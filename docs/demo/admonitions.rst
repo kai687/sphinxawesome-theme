@@ -19,7 +19,7 @@ users are on the right path.
 
    This is how a tip appears.
 
-The ``.. hint`` admonition is considered equivalent and appears in the same style.
+The ``hint`` admonition is considered equivalent and appears in the same style.
 
 -----
 Notes
@@ -33,7 +33,7 @@ don't have a positive or negative effect.
    This is how a note will appear.
 
 If you want to include a list of references to further documentation, you can use the
-``.. seealso`` directive.
+``seealso`` directive.
 
 .. seealso:: `Sphinx directives
    <https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html>`_, `Docutils directives <https://docutils.sourceforge.io/docs/ref/rst/directives.html>`_
@@ -52,7 +52,7 @@ Use a general admonition for notes with custom titles.
 Caution
 -------
 
-A ``.. caution`` should be used, when the user **should** be aware of something before
+A ``caution`` should be used, when the user **should** be aware of something before
 moving on. As a negative admonition, ignoring it might have unwanted consequences,
 although not as detrimental that would warrant a warning.
 
@@ -60,13 +60,13 @@ although not as detrimental that would warrant a warning.
 
    This is how a caution will appear.
 
-The ``.. important`` admonition is considered equivalent and appears in the same style.
+The ``important`` admonition is considered equivalent and appears in the same style.
 
 -------
 Warning
 -------
 
-A ``.. warning`` is a strong, negative admonition. Typically, anything involving
+A ``warning`` is a strong, negative admonition. Typically, anything involving
 security should be emphasized with a warning. Ignoring the information in a warning
 usually has negative consequences.
 
@@ -74,5 +74,5 @@ usually has negative consequences.
 
    This is how a warning will appear.
 
-The ``.. danger`` and ``.. error`` admonitions are considered equivalent and appear in
+The ``danger`` and ``error`` admonitions are considered equivalent and appear in
 the same style.

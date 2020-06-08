@@ -37,7 +37,7 @@ Improved links after headlines and captions
     also show the section title, instead of the generic "Permalink to this headline".
 
 New directive for highlighting placeholder variables
-    The theme supports a new directive ``.. samp::``, which is the equivalent of the
+    The theme supports a new directive ``samp``, which is the equivalent of the
     built-in ``:samp:`` interpreted text role. This allows you to highlight placeholder
     variables in code blocks.
 

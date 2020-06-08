@@ -41,7 +41,7 @@ faucibus nulla cursus, dictum dolor.
 .. rubric:: Rubric heading
 
 A rubric_ is a special type of paragraph heading that does not appear in the table of
-contents. You can generate it using the :samp:`.. rubric:: {title}` directive. It will
+contents. You can generate it using the :samp:`.. rubric:: {TITLE}` directive. It will
 appear with the same styling as an ``h4`` heading.
 
 .. _rubric: https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html?highlight=rubric#directive-rubric
