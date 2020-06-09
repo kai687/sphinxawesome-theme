@@ -1,6 +1,11 @@
 /* This file contains Tailwind styles applied to common tags
  * such as paragraphs, headings, links, etc. */
 
+/* remove rounded corners on webkit browsers */
+form, input[type=search] {
+  -webkit-appearance: none;
+}
+
 @screen md {
   section,
   .section {
