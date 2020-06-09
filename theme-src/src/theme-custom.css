@@ -2,7 +2,7 @@
  * such as paragraphs, headings, links, etc. */
 
 /* remove rounded corners on webkit browsers */
-form, input[type=search] {
+input[type=search] {
   -webkit-appearance: none;
 }
 
