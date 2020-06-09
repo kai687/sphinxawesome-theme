@@ -1,6 +1,11 @@
 MASTER
 ~~~~~~
 
+- fix: title in menu pane also leads back to homepage (#36)
+
+1.6.1
+~~~~~
+
 - fix(footer): justify-center
 - fix(footer): made sticky (again?) (#32)
 - fix(layout): improve layout on large screens (#31)

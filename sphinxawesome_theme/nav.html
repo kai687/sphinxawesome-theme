@@ -12,9 +12,11 @@
   duration-300 transform -translate-x-full md:translate-x-0 print:hidden"
 >
   <div class="flex flex-col h-full">
-    <h2 class="md:hidden text-2xl text-white font-medium mb-12 px-8">
-      {{ docstitle }}
-    </h2>
+    <a href="{{ pathto(master_doc) }}" title="{{ _('Back to homepage') }}">
+      <h2 class="md:hidden text-2xl text-white font-medium mb-12 px-8">
+        {{ docstitle }}
+      </h2>
+    </a>
 
     <div id="nav-toc" class="flex-1">
       {% if theme_nav_include_hidden|tobool %}
