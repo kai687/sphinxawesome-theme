@@ -1,7 +1,9 @@
-MASTER
-~~~~~~
+1.6.2
+~~~~~
 
 - fix: title in menu pane also leads back to homepage (#36)
+- fix: improved search input on iOS (#1)
+- fix: improved search input width on wider screens
 
 1.6.1
 ~~~~~

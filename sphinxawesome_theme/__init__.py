@@ -10,7 +10,7 @@ from typing import Any, Dict
 
 from sphinx.application import Sphinx
 
-__version__ = "1.6.1"
+__version__ = "1.6.2"
 
 
 def setup(app: "Sphinx") -> Dict[str, Any]:
