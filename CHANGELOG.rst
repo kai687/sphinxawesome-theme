@@ -1,3 +1,8 @@
+MASTER
+~~~~~~
+
+- fix: added styles for on-page TOC (#38)
+
 1.6.2
 ~~~~~
 
