@@ -38,7 +38,7 @@ is hosted on Github_.
 
    docs/install
    docs/use
-   docs/development
+   docs/modify
    about
 
 .. toctree::

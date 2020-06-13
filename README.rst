@@ -53,7 +53,7 @@ Install the theme as a Python package:
 
 .. code:: console
 
-   pip install sphinxawesome-theme
+   $ pip install sphinxawesome-theme
 
 .. install-end
 

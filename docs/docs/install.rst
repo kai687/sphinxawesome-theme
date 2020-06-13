@@ -20,21 +20,26 @@ install the theme directly from Github:
 
 .. code-block:: console
 
-   pip install git+https://github.com/kai687/sphinxawesome-theme.git
+   $ pip install git+https://github.com/kai687/sphinxawesome-theme.git
 
 Creating a local copy of the theme
 ----------------------------------
 
-If you want to modify the theme, `fork the repository
+If you want to modify the theme,
+`fork the repository
 <https://help.github.com/en/github/getting-started-with-github/fork-a-repo>`_
-and clone it into a directory accessible to your Sphinx project, for example
-``./_themes``.
+and clone it into a directory accessible to your Sphinx project,
+for example :file:`./_themes/`.
 
 .. samp::
 
-   git clone https://github.com/{YOUR_GITHUB_USERNAME}/sphinxawesome-theme.git
+   $ git clone https://github.com/{YOUR_GITHUB_USERNAME}/sphinxawesome-theme.git
 
-Next, follow the steps in :ref:`How to modify the theme`.
+To use a local copy of the theme, follow the steps described in
+:ref:`Using a local version of the theme`.
+
+To change the theme,
+follow the steps in :ref:`How to modify the theme`.
 
 .. note::
 

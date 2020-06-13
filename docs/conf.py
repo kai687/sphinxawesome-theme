@@ -23,3 +23,5 @@ html_theme = "sphinxawesome_theme"
 html_theme_path = ["../src/sphinxawesome_theme"]
 html_last_updated_fmt = ""
 html_add_permalinks = "#"
+
+# -- Register a :dir: interpreted text role ----------------------------------
