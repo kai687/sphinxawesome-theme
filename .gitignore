@@ -1,8 +1,7 @@
-theme-src/node_modules
+node_modules
 yarn-error.log
 __pycache__
 dist
 pip-wheel-metadata/
 sphinxawesome_theme.egg-info
-.tox
 docs/public

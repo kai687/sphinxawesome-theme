@@ -2,6 +2,8 @@ MASTER
 ~~~~~~
 
 - fix: added styles for on-page TOC (#38)
+- chore: moved to ``src`` package layout
+- chore: added nox for automation control
 
 1.6.2
 ~~~~~

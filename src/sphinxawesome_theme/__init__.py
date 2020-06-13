@@ -5,12 +5,20 @@ The Sphinx awesome theme as a Python package.
 :license: MIT, see LICENSE for details
 """
 
+try:
+    from importlib.metadata import version, PackageNotFoundError  # type: ignore
+except ImportError:  # pragma: no cover
+    from importlib_metadata import version, PackageNotFoundError  # type: ignore
+
 from os import path
 from typing import Any, Dict
 
 from sphinx.application import Sphinx
 
-__version__ = "1.6.2"
+try:
+    __version__ = version(__name__)
+except PackageNotFoundError:  # pragma: no cover
+    __version__ = "unknown"
 
 
 def setup(app: "Sphinx") -> Dict[str, Any]:
