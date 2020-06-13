@@ -110,6 +110,8 @@ a:hover {
   .caption {
     @apply pl-8 pr-4 uppercase text-sm text-gray-500 tracking-widest;
   }
+  /* this works by accident; the first-of-type is applied to the <p> *type*
+   * you we can't use it on the class */
   .caption:first-of-type {
     @apply mt-0;
   }
@@ -129,6 +131,43 @@ a:hover {
     .caption {
       @apply pl-16;
     }
+  }
+}
+
+.toctree-wrapper {
+  &:before {
+    content: "Contents";
+    @apply text-xl text-gray-800 font-medium leading-snug mb-6 mt-8;
+  }
+  .caption {
+    @apply uppercase text-sm text-gray-700 tracking-widest;
+  }
+  ul {
+    @apply mx-0 !important;
+  }
+  li {
+    @apply list-none px-0 !important;
+  }
+  .toctree-l1 > a {
+    @apply block;
+  }
+  .toctree-l2 > a {
+    @apply block py-3 pl-4;
+  }
+  .toctree-l3 > a {
+    @apply block py-3 pl-8;
+  }
+  a {
+    @apply text-blue-600;
+    &.current {
+      @apply text-pink-500;
+    }
+  }
+}
+
+.toctree-wrapper + .toctree-wrapper {
+  &:before {
+    content: none;
   }
 }
 
