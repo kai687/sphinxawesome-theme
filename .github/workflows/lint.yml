@@ -2,6 +2,8 @@
 name: Lint
 
 on: push
+  branches: 
+    - '!docs'
 
 jobs:
   lint:
