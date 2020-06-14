@@ -6,7 +6,7 @@ How to modify the theme
 
    If you want to modify the theme,
    you need `Node.js <https://nodejs.org/en/>`_.
-   If you just want to use the theme 
+   If you just want to use the theme
    or override some of the styles,
    you don't need Node.js.
 
@@ -24,7 +24,7 @@ It has the following structure:
     ├docs/
     └...
 
-Next, change to the :dir:`theme-src` directory 
+Next, change to the :dir:`theme-src` directory
 and install the JavaScript dependencies:
 
 .. code-block:: console
@@ -36,7 +36,7 @@ and install the JavaScript dependencies:
 Adding or overriding styles
 ---------------------------
 
-You can add additional CSS files via 
+You can add additional CSS files via
 `html_css_files
 <https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-html_css_files>`_
 and additional JavaScript files via
@@ -44,7 +44,7 @@ and additional JavaScript files via
 <https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-html_js_files>`_.
 
 For example, place additional styles in a file :file:`_static/custom.css`
-and add the following options 
+and add the following options
 to your Sphinx configuration in :file:`conf.py`::
 
    html_static_path = ["_static"]
@@ -56,7 +56,7 @@ you might have to add ``!important``.
 .. note::
 
    If the styles are applied via classes,
-   they have a higher specificity 
+   they have a higher specificity
    than targeting the element itself.
    For example, a ``<h1 class="text-red-600">`` will appear red
    even if your custom CSS overrides the text color for all ``h1`` elements.

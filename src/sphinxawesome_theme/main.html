@@ -6,9 +6,9 @@
   {%- else -%}
     <main role="main" class="mx-4 md:ml-8 xxl:ml-16 flex-1">
   {%- endif -%}
-    {%- if ((pagename != master_doc) and (theme_show_breadcrumbs)) %} 
-      {%- include "breadcrumbs.html" %} 
-    {% endif -%} 
+    {%- if ((pagename != master_doc) and (theme_show_breadcrumbs)) %}
+      {%- include "breadcrumbs.html" %}
+    {% endif -%}
     {{ body }}
   </main>
   {% include "copyright.html" %}

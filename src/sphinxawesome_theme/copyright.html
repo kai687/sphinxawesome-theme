@@ -1,6 +1,6 @@
 {#-
-    Template for the copyright info at the bottom of the <main> element. 
--#} 
+    Template for the copyright info at the bottom of the <main> element.
+-#}
 
 {%- if theme_show_nav -%}
   <section
@@ -18,7 +18,7 @@
     {%- trans path=pathto('copyright'), copyright=copyright|e %}
       &copy; <a href="{{ path }}">Copyright</a>{{ copyright }}
     {%- endtrans -%}
-  {%- else %} 
+  {%- else %}
     {%- trans copyright=copyright|e %}
       &copy; Copyright {{ copyright }}
     {%- endtrans %}
@@ -28,7 +28,7 @@
   {%- trans last_updated=last_updated|e %}
     Last updated: {{ last_updated }}.
   {%- endtrans %}
-{%- endif -%} 
+{%- endif -%}
 {%- if show_sphinx -%}
   {%- trans sphinx_version=sphinx_version|e %}
     Made with <a href="https://www.sphinx-doc.org">Sphinx {{ sphinx_version }}</a>

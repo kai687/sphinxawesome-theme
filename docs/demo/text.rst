@@ -45,4 +45,3 @@ contents. You can generate it using the :samp:`.. rubric:: {TITLE}` directive. I
 appear with the same styling as an ``h4`` heading.
 
 .. _rubric: https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html?highlight=rubric#directive-rubric
-

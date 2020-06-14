@@ -27,7 +27,7 @@ def install_constrained_version(session: Session, *args: str, **kwargs: Any) -> 
         session.install(f"--constraint={requirements.name}", *args, **kwargs)
 
 
-@nox.session(python="3.8")
+@nox.session(python=python_versions)
 def docs(session: Session) -> None:
     """Build the docs."""
     args = session.posargs or ["-aWTE", "docs", "docs/public"]

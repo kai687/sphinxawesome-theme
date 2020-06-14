@@ -1,11 +1,11 @@
 ====================
 Sphinx awesome theme
 ====================
-   
+
 .. image:: https://img.shields.io/pypi/l/sphinxawesome-theme?color=blue&style=for-the-badge
    :target: https://opensource.org/licenses/MIT
    :alt: MIT license
-   
+
 .. image:: https://img.shields.io/pypi/v/sphinxawesome-theme?style=for-the-badge
    :target: https://pypi.org/project/sphinxawesome-theme
    :alt: PyPI package version number

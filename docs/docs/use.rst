@@ -10,8 +10,8 @@ How to configure the theme
 --------------------------
 
 The theme includes just a few configuration options.
-All options can be set as key/value pairs 
-in the ``html_theme_options`` dictionary 
+All options can be set as key/value pairs
+in the ``html_theme_options`` dictionary
 in the Sphinx configuration file :file:`conf.py`::
 
    html_theme_options = {
@@ -47,7 +47,7 @@ in the Sphinx configuration file :file:`conf.py`::
    By default, so-called “breadcrumbs” navigation links are shown at the top of the
    content area to show the position of this document relative to the top-level. If you
    want to hide the breadcrumbs navigation links, add::
-      
+
       html_theme_options = {"show_breadcrumbs": False}
 
 ``breadcrumbs_separator`` (default: ``/``)
