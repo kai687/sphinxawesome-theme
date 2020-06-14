@@ -62,6 +62,4 @@ def setup(app: Sphinx) -> Dict[str, Any]:
     This is just a shortcut to curb the cognitive dissonance
     when saying :file:`directory/`.
     """
-
-    #  app.add_role("dir", EmphasizedLiteral())
     app.add_role("dir", DirRole())

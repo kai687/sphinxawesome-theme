@@ -1,0 +1,8 @@
+[flake8]
+select = ANN,BLK,B,B89,B9,C,D,E,F,I,S,W
+ignore = E501, W503, E203
+max-complexity = 10
+max-line-length = 88
+import-order-style = google
+docstring-convention = google
+per-file-ignores = */*:ANN101

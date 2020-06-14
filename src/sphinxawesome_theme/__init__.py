@@ -1,5 +1,4 @@
-"""
-The Sphinx awesome theme as a Python package.
+"""The Sphinx awesome theme as a Python package.
 
 :copyright: Copyright 2020, Kai Welke.
 :license: MIT, see LICENSE for details
@@ -23,7 +22,6 @@ except PackageNotFoundError:  # pragma: no cover
 
 def setup(app: "Sphinx") -> Dict[str, Any]:
     """Register the theme."""
-
     app.add_html_theme("sphinxawesome_theme", path.abspath(path.dirname(__file__)))
 
     return {
