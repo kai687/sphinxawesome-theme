@@ -6,6 +6,7 @@
     "build": "webpack"
   },
   "stylelint": {
+    "extends": ["stylelint-prettier/recommended"],
     "rules": {
       "color-no-invalid-hex": true,
       "font-family-no-duplicate-names": true,
@@ -56,7 +57,10 @@
     "postcss-import": "^12.0.1",
     "postcss-loader": "^3.0.0",
     "precss": "^4.0.0",
+    "prettier": "^2.0.5",
     "stylelint": "^13.6.0",
+    "stylelint-config-prettier": "^8.0.1",
+    "stylelint-prettier": "^1.1.2",
     "stylelint-webpack-plugin": "^2.0.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10"

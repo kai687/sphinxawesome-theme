@@ -2,7 +2,7 @@
  * such as paragraphs, headings, links, etc. */
 
 /* remove rounded corners on webkit browsers */
-input[type=search] {
+input[type="search"] {
   -webkit-appearance: none;
 }
 
@@ -20,7 +20,6 @@ p {
 strong {
   @apply font-medium;
 }
-
 
 /* **************************
  * HEADINGS
@@ -40,7 +39,6 @@ main {
     @apply text-gray-800 font-medium my-6;
   }
 }
-
 
 /* **************************
  * LINKS
@@ -178,7 +176,6 @@ a:hover {
   }
 }
 
-
 /* **************************
  * CODE
  * **************************/
@@ -300,7 +297,6 @@ table:not(.highlighttable) {
   }
 }
 
-
 /* **************************
  * FIGURES
  * **************************/
@@ -320,7 +316,6 @@ table:not(.highlighttable) {
     }
   }
 }
-
 
 /* **************************
  * ADMONITIONS
@@ -383,16 +378,12 @@ table:not(.highlighttable) {
     }
   }
 
-  /* button { */
-    /* @apply hidden; */
-  /* } */
-
   p {
     orphans: 2;
     widows: 2;
 
     a.external:after {
-      content: " (" attr(href)  ")";
+      content: " (" attr(href) ")";
     }
   }
 
