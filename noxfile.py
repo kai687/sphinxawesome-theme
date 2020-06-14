@@ -6,7 +6,7 @@ from typing import Any
 import nox
 from nox.sessions import Session
 
-nox.options.sessions = ["docs"]
+nox.options.sessions = ["docs", "lint", "black"]
 
 python_files = ["src/sphinxawesome_theme/__init__.py", "noxfile.py", "docs/conf.py"]
 python_versions = ["3.6", "3.7", "3.8"]
@@ -67,3 +67,12 @@ def lint(session: Session) -> None:
         "flake8-import-order",
     )
     session.run("flake8", *args)
+
+
+@nox.session(python="3.8")
+def black(session: Session) -> None:
+    """Format python files with black."""
+    args = session.posargs or python_files
+
+    install_constrained_version(session, "black")
+    session.run("black", *args)
