@@ -132,7 +132,8 @@ a:hover {
   }
 }
 
-.toctree-wrapper {
+.toctree-wrapper,
+.contents.local {
   /* This was meant to include a headline for the ``toctree`` directive if :hidden: is
    * not specified. Unfortunately, with :hidden:, "Contents" appears, because the <div>
    * contains a whitespace. It's not truly empty. On the other hand, CSS4's new :empty
