@@ -186,7 +186,7 @@ code {
   @apply font-mono font-medium text-sm leading-none py-px px-1 bg-gray-200 rounded;
 }
 
-div[class^='highlight-'] {
+div[class^="highlight-"] {
   @apply my-6 overflow-x-auto;
 }
 
@@ -226,7 +226,7 @@ div[class^='highlight-'] {
   .code-block-caption {
     @apply text-sm ml-4;
   }
-  div[class^='highlight-'] {
+  div[class^="highlight-"] {
     @apply mt-4;
   }
 }
@@ -375,7 +375,7 @@ table:not(.highlighttable) {
     @apply border-b;
 
     img {
-      transform: translate(0px, -14px) !important;
+      transform: translate(0, -14px) !important;
       margin-right: 1rem !important;
     }
     h2 {
@@ -397,10 +397,7 @@ table:not(.highlighttable) {
   }
 
   @page {
-    margin-top: 1.5cm;
-    margin-bottom: 2cm;
-    margin-left: 1.5cm;
-    margin-right: 1.5cm;
+    margin: 1.5cm 1.5cm 2cm 1.5cm;
     @bottom-left {
       content: "Virtual Cluster Docs";
       font-size: 9pt;
@@ -433,7 +430,7 @@ table:not(.highlighttable) {
     page-break-inside: avoid;
   }
 
-  section[role='contentinfo'] {
+  section[role="contentinfo"] {
     break-before: avoid;
     page-break-before: avoid;
   }
@@ -445,6 +442,6 @@ table:not(.highlighttable) {
 
   pre,
   code {
-    whitespace: pre-wrap !important;
+    white-space: pre-wrap !important;
   }
 }

@@ -4,6 +4,8 @@ MASTER
 - fix: added styles for on-page TOC (#38)
 - chore: moved to ``src`` package layout
 - chore: added nox for automation control
+- chore: added Github actions for some linting
+- chore: added stylelint to lint CSS files
 
 1.6.2
 ~~~~~

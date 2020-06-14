@@ -1,9 +1,9 @@
 const purgecss = require("@fullhuman/postcss-purgecss")({
   content: ["../sphinxawesome_theme/*.html", "./src/theme-src.js"],
-  defaultExtractor: content => content.match(/[\w-:/]+(?<!:)/g) || []
+  defaultExtractor: (content) => content.match(/[\w-:/]+(?<!:)/g) || [],
 });
 
-const mode = "production"
+const mode = "production";
 // const mode = "development"
 
 module.exports = {
@@ -12,7 +12,7 @@ module.exports = {
     require("precss"),
     require("tailwindcss"),
     require("autoprefixer"),
-    mode === 'production' ? purgecss : null,
-    mode === 'production' ? require("cssnano") : null
-  ]
+    mode === "production" ? purgecss : null,
+    mode === "production" ? require("cssnano") : null,
+  ],
 };
