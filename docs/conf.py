@@ -1,4 +1,12 @@
+"""Sphinx configuration file."""
+
 import datetime
+from typing import Any, Dict, List, Tuple
+
+from docutils import nodes
+from docutils.nodes import Node, system_message
+from sphinx.application import Sphinx
+from sphinx.roles import EmphasizedLiteral
 
 year = datetime.datetime.now().year
 
@@ -25,3 +33,35 @@ html_last_updated_fmt = ""
 html_add_permalinks = "#"
 
 # -- Register a :dir: interpreted text role ----------------------------------
+
+
+class DirRole(EmphasizedLiteral):
+    """Modify the ``EmphasizedLiteral`` role.
+
+    To distinguish files from directories, I'll append
+    ``/`` to every directory. In case I forget, append
+    the trailing slash automatically.
+    """
+
+    def run(self) -> Tuple[List[Node], List[system_message]]:
+        """Implement tiny bit of extra logic."""
+        if not self.text.strip().endswith("/"):
+            self.text += "/"
+
+        children = self.parse(self.text)
+        node = nodes.literal(
+            self.rawtext, "", *children, role=self.name.lower(), classes=[self.name]
+        )
+
+        return [node], []
+
+
+def setup(app: Sphinx) -> Dict[str, Any]:
+    """Register the :dir: role.
+
+    This is just a shortcut to curb the cognitive dissonance
+    when saying :file:`directory/`.
+    """
+
+    #  app.add_role("dir", EmphasizedLiteral())
+    app.add_role("dir", DirRole())

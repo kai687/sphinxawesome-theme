@@ -4,16 +4,18 @@ How to modify the theme
 
 .. note::
 
-   If you want to modify the theme, you need `Node.js <https://nodejs.org/en/>`_. If
-   you just want to use the theme or override some of the styles, you don't need
-   Node.js.
+   If you want to modify the theme,
+   you need `Node.js <https://nodejs.org/en/>`_.
+   If you just want to use the theme 
+   or override some of the styles,
+   you don't need Node.js.
 
 First, :ref:`clone the repository <How to install the theme>`.
-Next, change to the directory :file:`./sphinxawesome-theme/`.
+Next, change to the directory :dir:`./sphinxawesome-theme`.
 It has the following structure:
 
 .. code-block:: console
-   :emphasize-lines: 3
+   :emphasize-lines: 4
 
    ./sphinxawesome-theme/
     ├src/
@@ -22,8 +24,8 @@ It has the following structure:
     ├docs/
     └...
 
-Next, change to the :file:`theme-src/` directory and install the JavaScript
-dependencies:
+Next, change to the :dir:`theme-src` directory 
+and install the JavaScript dependencies:
 
 .. code-block:: console
 
@@ -41,23 +43,27 @@ and additional JavaScript files via
 `html_js_files
 <https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-html_js_files>`_.
 
-For example, place additional styles in a file :file:`_static/custom.css` and add the
-following options to your Sphinx configuration in :file:`conf.py`:
-
-.. code-block:: python
+For example, place additional styles in a file :file:`_static/custom.css`
+and add the following options 
+to your Sphinx configuration in :file:`conf.py`::
 
    html_static_path = ["_static"]
    html_css_files = ["custom.css"]
 
-If you want to override existing styles, you might have to add ``!important``.
+If you want to override existing styles,
+you might have to add ``!important``.
 
 .. note::
 
-   If the styles are applied via classes, they have a higher specificity than targeting
-   the element itself. For example, a ``<h1 class="text-red-600">`` will appear red
-   even if your custom CSS overrides the text color for all ``h1`` elements. Adding
-   ``!important`` to the custom CSS style will ensure that the style gets the highest
-   specificity. Use ``!important`` only when necessary. For more information, check the
+   If the styles are applied via classes,
+   they have a higher specificity 
+   than targeting the element itself.
+   For example, a ``<h1 class="text-red-600">`` will appear red
+   even if your custom CSS overrides the text color for all ``h1`` elements.
+   Adding ``!important`` to the custom CSS style ensures
+   that the style gets the highest specificity.
+   Use ``!important`` only when necessary.
+   For more information, check the
    `MDN web docs <https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity>`_.
 
 
@@ -86,7 +92,7 @@ but is part of the structure of the page,
 for example the header, the footer, or the background,
 is styled by applying Tailwind's classes directly.
 
-These styles are defined in the template files in :file:`sphinxawesome_theme/`.
+These styles are defined in the template files in :dir:`sphinxawesome_theme`.
 
 After making changes, either in the template files or in :file:`theme-custom.css`,
 rebuild the theme:
@@ -136,7 +142,7 @@ Using a local version of the theme
 If you want to use a modified version of the theme,
 you can use the theme locally.
 Place it inside a directory
-:file:`_ext/`, or :file:`_themes/`
+:dir:`_ext`, or :dir:`_themes`
 to keep the project tidy.
 
 For example, if you have a project structure like this:
@@ -148,7 +154,7 @@ For example, if you have a project structure like this:
    ├index.rst
    └_themes/
 
-Change to the :file:`_themes/` directory and
+Change to the :dir:`_themes` directory and
 :ref:`clone the repository <How to install the theme>`.
 
 Next, add this directory to the Sphinx configuration in :file:`conf.py`:

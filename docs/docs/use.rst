@@ -9,9 +9,10 @@ How to use the theme
 How to configure the theme
 --------------------------
 
-The theme includes just a few configuration options. All options can be set as key/value
-pairs in the ``html_theme_options`` dictionary in the Sphinx configuration file
-``conf.py``::
+The theme includes just a few configuration options.
+All options can be set as key/value pairs 
+in the ``html_theme_options`` dictionary 
+in the Sphinx configuration file :file:`conf.py`::
 
    html_theme_options = {
        "nav_include_hidden": True,

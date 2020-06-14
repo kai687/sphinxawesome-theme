@@ -4,7 +4,8 @@ How to install the theme
 Installing a release version (recommended)
 ------------------------------------------
 
-If you want to install a released version from PyPI_, follow these instructions.
+If you want to install a released version from PyPI_,
+follow these instructions.
 
 .. include:: ../../README.rst
    :start-after: install-start
@@ -15,8 +16,9 @@ If you want to install a released version from PyPI_, follow these instructions.
 Installing a development version
 --------------------------------
 
-Releases are planned often, so it shouldn't be needed for most users, but you can
-install the theme directly from Github:
+Releases are planned often,
+so it shouldn't be needed for most users,
+but you can install the theme directly from Github:
 
 .. code-block:: console
 
@@ -29,7 +31,7 @@ If you want to modify the theme,
 `fork the repository
 <https://help.github.com/en/github/getting-started-with-github/fork-a-repo>`_
 and clone it into a directory accessible to your Sphinx project,
-for example :file:`./_themes/`.
+for example :dir:`./_themes`.
 
 .. samp::
 
