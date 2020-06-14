@@ -36,6 +36,15 @@ def docs(session: Session) -> None:
 
 
 @nox.session(python="3.7")
+def netlify_test(session: Session) -> None:
+    """Test, if netlify can build the docs."""
+    args = ["-T", "-W", "docs/", "docs/public"]
+
+    session.install("-r", "requirements.txt")
+    session.run("sphinx-build", *args)
+
+
+@nox.session(python="3.7")
 def export_requirements(session: Session) -> None:
     """Export requirements from poetry.lock for Netlify.
 
