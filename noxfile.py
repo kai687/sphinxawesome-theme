@@ -6,7 +6,7 @@ from typing import Any
 import nox
 from nox.sessions import Session
 
-nox.options.sessions = ["docs", "lint", "black"]
+nox.options.sessions = ["docs", "lint", "black", "mypy"]
 
 python_files = ["src/sphinxawesome_theme/__init__.py", "noxfile.py", "docs/conf.py"]
 python_versions = ["3.6", "3.7", "3.8"]
@@ -76,3 +76,12 @@ def black(session: Session) -> None:
 
     install_constrained_version(session, "black")
     session.run("black", *args)
+
+
+@nox.session(python=python_versions)
+def mypy(session: Session) -> None:
+    """Typecheck python files with mypy."""
+    args = session.posargs or python_files
+
+    install_constrained_version(session, "mypy")
+    session.run("mypy", *args)

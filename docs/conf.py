@@ -1,7 +1,7 @@
 """Sphinx configuration file."""
 
 import datetime
-from typing import Any, Dict, List, Tuple
+from typing import List, Tuple
 
 from docutils import nodes
 from docutils.nodes import Node, system_message
@@ -56,7 +56,7 @@ class DirRole(EmphasizedLiteral):
         return [node], []
 
 
-def setup(app: Sphinx) -> Dict[str, Any]:
+def setup(app: Sphinx) -> None:
     """Register the :dir: role.
 
     This is just a shortcut to curb the cognitive dissonance
