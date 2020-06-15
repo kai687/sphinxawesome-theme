@@ -5,8 +5,24 @@
   "scripts": {
     "build": "webpack"
   },
+  "eslintConfig": {
+    "env": {
+      "browser": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module"
+    },
+    "globals": {
+      "_": "readable",
+      "Documentation": "readable"
+    },
+    "extends": "eslint:recommended"
+  },
   "stylelint": {
-    "extends": ["stylelint-prettier/recommended"],
+    "extends": [
+      "stylelint-prettier/recommended"
+    ],
     "rules": {
       "color-no-invalid-hex": true,
       "font-family-no-duplicate-names": true,
@@ -52,6 +68,8 @@
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.2.1",
     "cssnano": "^4.1.10",
+    "eslint": "^7.2.0",
+    "eslint-loader": "^4.0.2",
     "file-loader": "^6.0.0",
     "mini-css-extract-plugin": "^0.9.0",
     "postcss-import": "^12.0.1",

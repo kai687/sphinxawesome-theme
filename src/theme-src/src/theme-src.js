@@ -196,7 +196,7 @@ window.addEventListener("scroll", () => {
 
 // click on permalink copies the href to clipboard
 document.querySelectorAll(".headerlink").forEach((link) => {
-  parent = link.parentNode;
+  const parent = link.parentNode;
   if (/H1|2|3|4|5|6/.test(parent.tagName)) {
     link.title = "Copy link to section: " + parent.innerText;
   } else if (parent.parentNode.classList.contains("figure")) {
