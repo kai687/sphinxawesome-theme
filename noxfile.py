@@ -6,7 +6,7 @@ from typing import Any
 import nox
 from nox.sessions import Session
 
-nox.options.sessions = ["docs", "lint", "black", "mypy"]
+nox.options.sessions = ["docs", "lint", "black", "mypy", "netlify_test"]
 
 python_files = ["src/sphinxawesome_theme/__init__.py", "noxfile.py", "docs/conf.py"]
 python_versions = ["3.6", "3.7", "3.8"]
@@ -40,12 +40,14 @@ def netlify_test(session: Session) -> None:
     """Test, if netlify can build the docs."""
     args = ["-T", "-W", "docs/", "docs/public"]
 
+    export(session)
+
     session.install("-r", "requirements.txt")
     session.run("sphinx-build", *args)
 
 
 @nox.session(python="3.7")
-def export_requirements(session: Session) -> None:
+def export(session: Session) -> None:
     """Export requirements from poetry.lock for Netlify.
 
     Netlify uses Python 3.7.
