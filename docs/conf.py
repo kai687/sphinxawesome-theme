@@ -39,8 +39,8 @@ class DirRole(EmphasizedLiteral):
     """Modify the ``EmphasizedLiteral`` role.
 
     To distinguish files from directories, I'll append
-    ``/`` to every directory. In case I forget, append
-    the trailing slash automatically.
+    ``/`` to every directory. In case the author forgets it,
+    append the trailing slash automatically.
     """
 
     def run(self) -> Tuple[List[Node], List[system_message]]:

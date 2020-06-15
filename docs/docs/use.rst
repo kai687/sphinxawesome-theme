@@ -9,7 +9,6 @@ How to use the theme
 How to configure the theme
 --------------------------
 
-The theme includes just a few configuration options.
 All options can be set as key/value pairs
 in the ``html_theme_options`` dictionary
 in the Sphinx configuration file :file:`conf.py`::
@@ -36,6 +35,11 @@ in the Sphinx configuration file :file:`conf.py`::
 
       html_theme_options = {"nav_include_hidden": False}
 
+   It is recommended to either provide a caption to the toctree directive, or inserting
+   a headline before it when not using the ``:hidden:`` option. For example::
+
+      .. toctree::
+         :caption: Contents
 
 ``show_nav`` (default: ``True``)
    By default, the navigation links are shown in a navigation menu on the left side. If

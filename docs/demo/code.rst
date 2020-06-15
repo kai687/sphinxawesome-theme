@@ -45,11 +45,12 @@ syntax highlighting.
 Samp directive
 --------------
 
-To highlight placeholder variables in code, use the :rst:`samp` directive or interpreted
-text role. Sphinx provides the :rst:`samp` role by default. The
-`sphinxawesome-sampdirective <https://github.com/kai687/sphinxawesome-sampdirective>`_
-extension provides the :rst:`samp` directive. This extension is installed by default
-when you install the sphinxawesome theme.
+To highlight placeholder variables in inline code snippets,
+Sphinx provides the :rst:`samp` interpreted text role by default.
+The `sphinxawesome-sampdirective <https://github.com/kai687/sphinxawesome-sampdirective>`_
+extension provides the missing :rst:`samp` directive
+for highlighting placeholder variables in code blocks.
+The sphinx awesome theme includes this extension by default.
 
 Placeholder variables are variables that users are expected to substitute. For example,
 :rst:`:samp:echo "Hello {NAME}"` is rendered as :samp:`echo "Hello {NAME}"`.
