@@ -2,6 +2,7 @@ MASTER
 ~~~~~~
 
 - fix: added styles for on-page TOC (#38)
+- fix: clicking on current page links closes nav menu (#42)
 - chore: moved to ``src`` package layout
 - chore: added nox for automation control
 - chore: added Github actions for some linting

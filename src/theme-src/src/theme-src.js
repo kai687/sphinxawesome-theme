@@ -29,6 +29,15 @@ if (closeNavBtn) {
   });
 }
 
+// We want to close the nav menu also, when clicking on a link in the nav menu on the
+// current page
+document.querySelectorAll("nav li.current a").forEach((link) => {
+  link.addEventListener("click", () => {
+    nav.style.transform = "translate(-100%, 0)";
+    nav.style.opacity = 0;
+  })
+})
+
 const openSearchBtn = document.querySelector("#openSearchBtn");
 if (openSearchBtn) {
   openSearchBtn.addEventListener("click", () => {
