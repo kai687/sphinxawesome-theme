@@ -10,7 +10,7 @@ category of lists.
 Unordered lists
 ---------------
 
-Choose an unordered, or bulleted, list, when the order of items do not matter.
+Choose an unordered, or bulleted, list, when the order of items don't matter.
 
 - item a
 - item b
@@ -20,8 +20,12 @@ Choose an unordered, or bulleted, list, when the order of items do not matter.
 Ordered lists
 -------------
 
-Choose an ordered list, when the order of the items matter, that is, in most cases you
-need to perform the second step *after* the first step, and so on.
+Choose an ordered list,
+when the order of the items matter.
+For example, in most cases
+you need to perform the second step
+*after* the first step,
+and so on.
 
 #. Step 1
 #. Step 2

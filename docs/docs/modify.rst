@@ -63,8 +63,8 @@ you might have to add ``!important``.
    Adding ``!important`` to the custom CSS style ensures
    that the style gets the highest specificity.
    Use ``!important`` only when necessary.
-   For more information, check the
-   `MDN web docs <https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity>`_.
+   For more information, see the
+   `Mozilla Developer Networks web docs <https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity>`_.
 
 
 ---------------------
@@ -80,17 +80,17 @@ The sources of the theme are structured as follows:
    └theme-src/
 
 This theme uses CSS styles in two ways.
-Everything that is part of the main content
+Everything that's part of the main content
 is styled via Tailwind's ``@apply`` directives.
-This includes everything that is converted from reStructuredText to HTML
+This includes everything that's converted from reStructuredText to HTML
 and part of the navigation menu.
 
 These styles are defined in :file:`theme-src/src/theme-custom.css`.
 
-Everything that is not converted from reStructuredText,
-but is part of the structure of the page,
-for example the header, the footer, or the background,
-is styled by applying Tailwind's classes directly.
+Everything that's not converted from reStructuredText is styled
+with Tailwind's classes directly. This includes most elements on the page
+surrounding the "main" element, for example
+for example the header, the footer, or the background.
 
 These styles are defined in the template files in :dir:`sphinxawesome_theme`.
 

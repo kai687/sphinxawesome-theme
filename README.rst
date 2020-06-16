@@ -23,9 +23,9 @@ looks on the `demo page <https://sphinxawesome.xyz>`_.
 Features
 --------
 
-.. features-start
-
 The theme includes several usability improvements:
+
+.. features-start
 
 Copy code blocks
     Code blocks have a **Copy** button, that allows you to copy code snippets to the

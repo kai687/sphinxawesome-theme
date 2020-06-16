@@ -45,5 +45,5 @@ follow the steps in :ref:`How to modify the theme`.
 
 .. note::
 
-   If you only want to create a local copy, forking the repository first is not
+   If you only want to create a local copy, forking the repository first isn't
    necessary.

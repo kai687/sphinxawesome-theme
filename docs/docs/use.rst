@@ -25,9 +25,9 @@ in the Sphinx configuration file :file:`conf.py`::
 ``nav_include_hidden`` (default: ``True``)
    By default, Sphinx prints a list of links when a toctree_ directive is used to
    include links to other topics. Including the ``:hidden:`` option lets the content be
-   included, but the list of links will not be written on the page itself. This theme
+   included, but the list of links isn't written on the page itself. This theme
    shows navigation links by default in a navigation menu on the left. Repeating the
-   list of links in the main content area is not necessary.
+   list of links in the main content area isn't necessary.
 
    .. _toctree: https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-toctree
 
@@ -35,7 +35,7 @@ in the Sphinx configuration file :file:`conf.py`::
 
       html_theme_options = {"nav_include_hidden": False}
 
-   It is recommended to either provide a caption to the toctree directive, or inserting
+   It's recommended to either provide a caption to the toctree directive, or inserting
    a headline before it when not using the ``:hidden:`` option. For example::
 
       .. toctree::

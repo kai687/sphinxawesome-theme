@@ -11,9 +11,10 @@ should only need a few.
 Tips
 ----
 
-Tips are positive admonitions. Maybe the information in a tip is a shortcut for an
-action that was just explained, or maybe the information contains a confirmation, that
-users are on the right path.
+Tips are positive admonitions.
+A tip can be a shortcut for an action that was just explained,
+or a confirmation,
+that users are on the right path.
 
 .. tip::
 
@@ -30,7 +31,7 @@ don't have a positive or negative effect.
 
 .. note::
 
-   This is how a note will appear.
+   This is how a note appears.
 
 If you want to include a list of references to further documentation, you can use the
 ``seealso`` directive.
@@ -42,7 +43,7 @@ Use a general admonition for notes with custom titles.
 
 .. admonition:: How to give the admonition a title?
 
-   Provide the title directly after the directive, e.g.
+   Provide the title directly after the directive, for example,
 
    .. code-block:: rst
 
@@ -58,7 +59,7 @@ although not as detrimental that would warrant a warning.
 
 .. caution::
 
-   This is how a caution will appear.
+   This is how a caution appears.
 
 The ``important`` admonition is considered equivalent and appears in the same style.
 
@@ -72,7 +73,7 @@ usually has negative consequences.
 
 .. warning::
 
-   This is how a warning will appear.
+   This is how a warning appears.
 
 The ``danger`` and ``error`` admonitions are considered equivalent and appear in
 the same style.

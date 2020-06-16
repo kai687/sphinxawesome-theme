@@ -96,3 +96,14 @@ def mypy(session: Session) -> None:
 
     install_constrained_version(session, "mypy")
     session.run("mypy", *args)
+
+
+@nox.session(python=False)
+def vale(session: Session) -> None:
+    """Run vale linter on docs directory."""
+    from shutil import which
+
+    if which("vale") is not None:
+        session.run("vale", "docs", external=True)
+    else:
+        session.skip("Vale executable not found. Skipping.")

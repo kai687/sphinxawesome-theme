@@ -18,17 +18,17 @@ generator. It includes a number of usability improvements:
 These pages are divided into a *docs* and a *demo* section. In the *docs*
 section, you can learn how to :ref:`install <How to install the theme>`, :ref:`use <How
 to use the theme>`, or :ref:`modify <How to modify the theme>` the theme. If you want
-to see which styles are available, check the pages in the *demo* section.
+to see which styles are available, see the pages in the *demo* section.
 
-The Sphinx awesome theme is available under the open-source MIT license. The source code
+The Sphinx awesome theme is available under the open source MIT license. The source code
 is hosted on Github_.
 
 .. _Sphinx: https://www.sphinx-doc.org
 .. _Github: https://github.com/kai687/sphinxawesome-theme
 
-.. admonition:: What is a theme?
+.. admonition:: What's a theme?
 
-   A theme is a bundle of website templates, styles and JavaScript files that allows you
+   A theme is a bundle of website templates, styles, and JavaScript files that allows you
    to change the look and feel of your documentation by changing a configuration
    setting.
 

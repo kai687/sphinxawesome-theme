@@ -26,8 +26,12 @@ The sphinx awesome theme relies on the following external assets.
    * - icons for copy buttons in code blocks
      - `Zondicons <http://www.zondicons.com>`_ by Steve Schoger
 
+.. vale off
+
 The icons have been copied and included as SVG directly in the HTML templates.
 The Roboto fonts are bundled in the theme's static directory.
+
+.. vale on
 
 
 -----------------
@@ -40,24 +44,26 @@ The traditional way to style a theme is to write conventional CSS.
 After that, all that needs to be done to use the theme
 is to put files in the right place for Sphinx.
 
+.. vale off
+
 I wanted to try something different.
-Instead of writing CSS completely separate from the HTML where it's needed,
+Instead of writing CSS separate from the HTML where it's needed,
 I was intrigued by the idea behind Tailwind_.
 With the help of Tailwind CSS it wasn't that difficult to come up
 with a new design from scratch relatively fast.
 
 Tailwind has a lot of classes.
 If you include all of them,
-the final CSS file will be quite large.
-Luckily, the classes do not interfere with each other,
+the final CSS file is quite large.
+Luckily, the classes don't interfere with each other,
 so that unused styles can be removed from the final CSS quite easily using PurgeCSS_.
 
-Since I also added a few JavaScript functions
-to open and close menus,
-add the 'copy code block' button and other small things,
-I wanted to use a tool
+Since I also added a few JavaScript functions,
+I wanted to include a tool
 that can handle all the aspects of CSS and JavaScript manipulation for me.
 Enter Webpack_.
+
+.. vale on
 
 The theme is built using ``webpack`` which is executed as an ``npm`` (or yarn) script.
 The entry point is :file:`theme-src/src/theme-src.js`.
@@ -66,7 +72,7 @@ and it imports all dependencies,
 such as the fonts and the CSS.
 
 The Webpack configuration :file:`theme-src/webpack.config.js` instructs webpack
-what to do with the CSS, JavaScript, and fonts.
+how to process the CSS, JavaScript, and fonts.
 The JavaScript is *minified* and put in the output directory
 :dir:`sphinxawesome_theme/static`.
 This file is read and executed by the browser.
@@ -76,8 +82,8 @@ The CSS is processed with PostCSS_.
 The configuration in :file:`theme-src/postcss.config.js` uses a few plugins,
 including Tailwind and PurgeCSS.
 
-PurgeCSS will go through all template HTML files
-and remove from the final CSS all Tailwind classes that are not used.
+PurgeCSS goes through all template HTML files
+and removes from the final CSS all Tailwind classes that aren't used.
 For example, if the theme never uses any ``text-purple-*`` classes,
 they will not appear in the final output,
 thus greatly reducing the final size of the CSS file.

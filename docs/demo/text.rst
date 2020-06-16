@@ -4,7 +4,7 @@ Headings and text
 
 This page shows basic paragraph and heading styles. Styles for heading levels ``h1``,
 ``h2``, ``h3``, ``h4`` and the special rubric heading are defined. Only heading levels
-``h1``, ``h2``, and ``h3`` will show up in the navigation menu.
+``h1``, ``h2``, and ``h3`` show up in the navigation menu.
 
 For emphasizing inlined text, you can either *emphasize* it or make it a **strong**
 statement.
@@ -40,8 +40,8 @@ faucibus nulla cursus, dictum dolor.
 
 .. rubric:: Rubric heading
 
-A rubric_ is a special type of paragraph heading that does not appear in the table of
-contents. You can generate it using the :samp:`.. rubric:: {TITLE}` directive. It will
-appear with the same styling as an ``h4`` heading.
+A rubric_ is a special type of paragraph heading that doesn't appear in the table of
+contents. You can generate it using the :samp:`.. rubric:: {TITLE}` directive. It's
+rendered with the same styling as an ``h4`` heading.
 
 .. _rubric: https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html?highlight=rubric#directive-rubric

@@ -9,8 +9,8 @@ Code, figures, and tables
 Code
 ----
 
-This theme adds a :guilabel:`Copy` button to all code blocks. Clicking on the button will
-copy the text inside the code block to the clipboard.
+This theme adds a :guilabel:`Copy` button to all code blocks. Clicking on the button copies
+the text inside the code block to the clipboard.
 
 To mark up code blocks, choose between :rst:`parsed-literal`, :rst:`samp`, or
 :rst:`code-block` directives, depending on your needs.
@@ -26,7 +26,7 @@ In summary:
 
 .. note::
 
-   It is currently not possible to have both syntax highlighting *and* markup rendering
+   It's currently not possible to have both syntax highlighting *and* markup rendering
    for code blocks in Sphinx.
 
 
@@ -34,7 +34,7 @@ Parsed literal
 --------------
 
 Use a :rst:`parsed-literal` directive, when you want to render markup inside a code
-block, for example links or emphasized texts. :rst:`parsed-literal` blocks do not have
+block, for example links or emphasized texts. :rst:`parsed-literal` blocks don't have
 syntax highlighting.
 
 .. parsed-literal::
@@ -76,7 +76,7 @@ Code blocks with syntax highlighting
 Code block directives on the other hand can include syntax highlighting (and captions, and `other
 features
 <https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-code-block>`_)
-but markup will not be rendered.
+but markup isn't rendered.
 
 .. code-block:: python
    :emphasize-lines: 2
