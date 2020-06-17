@@ -118,7 +118,7 @@ Tables
 This is a small table.
 
 .. table:: Table caption
-   :width: 66%
+   :width: 100%
 
    ==========  ==========
    table head  table head
