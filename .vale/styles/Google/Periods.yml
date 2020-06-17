@@ -1,3 +1,4 @@
+---
 extends: existence
 message: "Don't use periods with acronyms or initialisms such as '%s'."
 link: 'https://developers.google.com/style/abbreviations'

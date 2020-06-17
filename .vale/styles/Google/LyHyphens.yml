@@ -1,3 +1,4 @@
+---
 extends: existence
 message: "'%s' doesn't need a hyphen."
 link: 'https://developers.google.com/style/hyphens'

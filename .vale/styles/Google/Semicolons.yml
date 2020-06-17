@@ -1,3 +1,4 @@
+---
 extends: existence
 message: "Use semicolons judiciously."
 link: 'https://developers.google.com/style/semicolons'

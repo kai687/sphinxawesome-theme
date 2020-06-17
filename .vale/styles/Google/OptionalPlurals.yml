@@ -1,3 +1,4 @@
+---
 extends: existence
 message: "Don't use plurals in parentheses such as in '%s'."
 link: 'https://developers.google.com/style/plurals-parentheses'

@@ -1,3 +1,4 @@
+---
 extends: existence
 message: "Use an em dash ('—') instead of '–'."
 link: 'https://developers.google.com/style/dashes'

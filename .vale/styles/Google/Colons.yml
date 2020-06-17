@@ -1,3 +1,4 @@
+---
 extends: existence
 message: "'%s' should be in lowercase."
 link: 'https://developers.google.com/style/colons'

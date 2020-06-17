@@ -1,3 +1,4 @@
+---
 extends: existence
 message: "Don't use internet slang abbreviations such as '%s'."
 link: 'https://developers.google.com/style/abbreviations'

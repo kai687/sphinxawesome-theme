@@ -1,3 +1,4 @@
+---
 extends: conditional
 message: "Spell out '%s', if it's unfamiliar to the audience."
 link: 'https://developers.google.com/style/abbreviations'
