@@ -14,6 +14,7 @@ First, :ref:`clone the repository <How to install the theme>`.
 Next, change to the directory :dir:`./sphinxawesome-theme`.
 It has the following structure:
 
+.. vale off
 .. code-block:: console
    :emphasize-lines: 4
 
@@ -23,6 +24,7 @@ It has the following structure:
     │ └theme-src/
     ├docs/
     └...
+.. vale on
 
 Next, change to the :dir:`theme-src` directory
 and install the JavaScript dependencies:
