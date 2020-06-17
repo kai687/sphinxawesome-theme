@@ -21,7 +21,7 @@ packages = [
 [tool.poetry.dependencies]
 python = ">=3.6.1,<4.0.0"
 sphinx = ">3"
-sphinxawesome-sampdirective = "^1.0.0"
+sphinxawesome-sampdirective = "^1.0.2"
 importlib_metadata = {version = "^1.6.1", python = "<3.8"}
 
 [tool.poetry.dev-dependencies]

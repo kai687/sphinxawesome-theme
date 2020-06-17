@@ -567,7 +567,7 @@ description = "A Sphinx directive for literal blocks with emphasis"
 name = "sphinxawesome-sampdirective"
 optional = false
 python-versions = ">=3.6.1,<4.0.0"
-version = "1.0.1"
+version = "1.0.2"
 
 [package.dependencies]
 sphinx = ">=2.2"
@@ -727,7 +727,7 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["jaraco.itertools", "func-timeout"]
 
 [metadata]
-content-hash = "3bab6dc8fd9c47b92c139836f5404e53acf9ad8da3262e3aa7358601333a35cb"
+content-hash = "6b3e44d633103d6d89452cbc371109f36d0e65e0f4ee0725e98ba6641905d204"
 python-versions = ">=3.6.1,<4.0.0"
 
 [metadata.files]
@@ -982,8 +982,8 @@ sphinx = [
     {file = "Sphinx-3.1.1.tar.gz", hash = "sha256:74fbead182a611ce1444f50218a1c5fc70b6cc547f64948f5182fb30a2a20258"},
 ]
 sphinxawesome-sampdirective = [
-    {file = "sphinxawesome-sampdirective-1.0.1.tar.gz", hash = "sha256:51aed358f60a8cf68ca1cd66e8a6d3c3f6c573245c05557d3a506f85960b5cb0"},
-    {file = "sphinxawesome_sampdirective-1.0.1-py3-none-any.whl", hash = "sha256:d7e7bb9393d2b60da0a886891ac3099918c7e666d08a9c0d3ada876d2006ef99"},
+    {file = "sphinxawesome-sampdirective-1.0.2.tar.gz", hash = "sha256:b05353faa4cb5b6faaacd5c56d772d1bc0d59aa836dbead9374002df5a4e32b3"},
+    {file = "sphinxawesome_sampdirective-1.0.2-py3-none-any.whl", hash = "sha256:935782f9e8a1389f108c9625f3ce21d781159d3998f4859a8f042974e1321f13"},
 ]
 sphinxcontrib-applehelp = [
     {file = "sphinxcontrib-applehelp-1.0.2.tar.gz", hash = "sha256:a072735ec80e7675e3f432fcae8610ecf509c5f1869d17e2eecff44389cdbc58"},
