@@ -1,5 +1,5 @@
-MASTER
-~~~~~~
+1.6.3
+~~~~~
 
 - fix: added styles for on-page TOC (#38)
 - fix: clicking on current page links closes nav menu (#42)
@@ -7,6 +7,8 @@ MASTER
 - chore: added nox for automation control
 - chore: added Github actions for some linting
 - chore: added stylelint to lint CSS files
+- chore: added eslint for linting JavaScript
+- chore: added vale for simple style checks
 
 1.6.2
 ~~~~~
