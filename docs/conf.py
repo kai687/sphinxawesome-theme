@@ -28,7 +28,7 @@ default_role = "literal"
 
 html_title = "Sphinx awesome theme"
 html_theme = "sphinxawesome_theme"
-html_theme_path = ["../src/"]
+html_theme_path = ["../src"]
 html_last_updated_fmt = ""
 html_add_permalinks = "#"
 

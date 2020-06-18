@@ -23,6 +23,7 @@ except PackageNotFoundError:  # pragma: no cover
 def setup(app: "Sphinx") -> Dict[str, Any]:
     """Register the theme."""
     app.add_html_theme("sphinxawesome_theme", path.abspath(path.dirname(__file__)))
+    app.setup_extension("sphinxawesome.sampdirective")
 
     return {
         "version": __version__,

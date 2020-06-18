@@ -1,3 +1,5 @@
+- feat: added auto-enabling of extension
+
 1.6.3
 ~~~~~
 
