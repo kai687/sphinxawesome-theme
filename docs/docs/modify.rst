@@ -15,6 +15,7 @@ Next, change to the directory :dir:`./sphinxawesome-theme`.
 It has the following structure:
 
 .. vale off
+
 .. code-block:: console
    :emphasize-lines: 4
 
@@ -24,6 +25,7 @@ It has the following structure:
     │ └theme-src/
     ├docs/
     └...
+
 .. vale on
 
 Next, change to the :dir:`theme-src` directory
@@ -157,14 +159,17 @@ For example, if you have a project structure like this:
    └_themes/
 
 Change to the :dir:`_themes` directory and
-:ref:`clone the repository <How to install the theme>`.
+:ref:`clone the repository <Creating a local copy of the theme>`.
 
-Next, add this directory to the Sphinx configuration in :file:`conf.py`:
-
-.. code-block:: python
+Next, add this directory to the Sphinx configuration in :file:`conf.py`::
 
    html_theme = "sphinxawesome_theme"
    html_theme_path = ["_themes"]
 
-If you build the documentation now,
-it uses the local version of the theme.
+Optional: if you want to use the ``samp`` directive,
+add it to the list of extensions in :file:`conf.py`::
+
+   extensions = ["sphinxawesome.sampdirective"]
+
+If you install the theme as a python package,
+the extension gets added automatically.

@@ -98,10 +98,12 @@ def mypy(session: Session) -> None:
     session.run("mypy", *args)
 
 
-@nox.session(python=False)
+@nox.session(python="3.8")
 def vale(session: Session) -> None:
     """Run vale linter on docs directory."""
     from shutil import which
+
+    install_constrained_version(session, "docutils")
 
     if which("vale") is not None:
         session.run("vale", "docs", external=True)

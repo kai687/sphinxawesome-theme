@@ -5,6 +5,9 @@ How to use the theme
    :start-after: use-start
    :end-before: use-end
 
+The theme activates the extension ``sphinxawesome.sampdirective`` automatically
+if is installed and loaded as a python package.
+If the theme is installed locally, see :ref:`Using a local version of the theme`.
 
 How to configure the theme
 --------------------------
