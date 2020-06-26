@@ -5,14 +5,17 @@ module.exports = {
       body: ["Roboto", "sans-serif"],
       mono: ["Roboto\\ Mono", "monospace"],
     },
+    minHeight: {
+      "100": "100px",
+    },
     extend: {
       screens: {
-        "print": { "raw": "print" },
-        "xxl": "1440px",
+        print: { raw: "print" },
+        xxl: "1440px",
       },
       padding: {
         "18": "4.5rem",
-      }
+      },
     },
   },
 };
