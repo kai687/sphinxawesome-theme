@@ -1,4 +1,5 @@
-- feat: added auto-enabling of extension
+- feat: added auto-enabling of sampdirective extension
+- fix: minor visual tweaks
 
 1.6.3
 ~~~~~
