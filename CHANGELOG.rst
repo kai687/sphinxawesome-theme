@@ -1,3 +1,6 @@
+MASTER
+~~~~~~
+
 - feat: added auto-enabling of sampdirective extension
 - fix: minor visual tweaks
 

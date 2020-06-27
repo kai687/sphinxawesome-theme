@@ -6,7 +6,7 @@ module.exports = {
       mono: ["Roboto\\ Mono", "monospace"],
     },
     minHeight: {
-      "100": "100px",
+      "75": "75px",
     },
     extend: {
       screens: {
