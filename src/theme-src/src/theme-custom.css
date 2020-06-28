@@ -103,10 +103,10 @@ a:hover {
     @apply block py-3 pl-16 pr-4;
   }
   a:hover {
-    @apply text-gray-800 bg-gray-300;
+    @apply text-gray-100 bg-gray-900;
   }
   .caption {
-    @apply pl-8 pr-4 uppercase text-sm text-gray-500 tracking-widest;
+    @apply pl-8 pr-4 uppercase text-sm text-gray-900 font-medium tracking-widest;
   }
   /* this works by accident; the first-of-type is applied to the <p> *type*
    * you we can't use it on the class */

@@ -6,20 +6,20 @@
   - search: magnifying glass, appears in the search field in the header.
 -#}
 
-{% macro close(id, position="fixed") %}
+{% macro close(id, position="fixed", fg="text-gray-800") %}
 <button
     id="{{ id }}"
     aria-label="{{ _('Close menu') }}"
     title="{{ _('Close menu') }}"
-    class="text-4xl text-gray-300 px-12 py-8 {{ position }} bottom-0 hover:text-pink-500
+    class="text-4xl {{ fg }} px-12 py-8 {{ position }} bottom-0 hover:text-pink-500
     md:hidden outline-none focus:outline-none focus:shadow-outline focus:text-pink-500
     self-center">
   &times;
 </button>
 {% endmacro %}
 
-{% macro search(fg="text-white", bg="bg-gray-800", hover="hover:bg-gray-200") %}
-<button class="rounded-r p-2 {{ fg }} {{ bg }} {{ hover }} hover:text-pink-500"
+{% macro search() %}
+<button class="rounded-r p-2 text-white bg-gray-800 hover:bg-gray-200 hover:text-pink-500"
         aria-label="{{ _('Get search results') }}"
         title="{{ _('Get search results') }}">
   <svg class="fill-current h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" aria-hidden="true">
