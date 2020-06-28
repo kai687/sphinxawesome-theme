@@ -1,8 +1,8 @@
-MASTER
-~~~~~~
+1.7.0
+~~~~~
 
 - feat: added auto-enabling of sampdirective extension
-- fix: minor visual tweaks
+- feat: re-design
 
 1.6.3
 ~~~~~
