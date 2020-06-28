@@ -5,7 +5,7 @@
 
 <div
   id="search-pane"
-  class="h-full w-full fixed top-0 right-0 z-10 bg-gray-800 overflow-x-hidden pt-20
+  class="h-full w-full fixed top-0 right-0 z-10 bg-gray-900 overflow-x-hidden pt-20
   transition-all duration-300 flex flex-col items-center transform translate-x-full
   opacity-0 md:hidden"
 >
@@ -24,8 +24,8 @@
       placeholder="{{ _('Search the docs') }}"
       class="p-2 flex-1 rounded-l"
     />
-    {{ buttons.search(fg="text-gray-900", bg="bg-gray-300", hover="hover:bg-gray-800") }}
+    {{ buttons.search() }}
   </form>
 
-  {{ buttons.close("closeSearchBtn") }}
+  {{ buttons.close("closeSearchBtn", fg="text-gray-200") }}
 </div>
