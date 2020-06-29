@@ -5,9 +5,6 @@ module.exports = {
       body: ["Roboto", "sans-serif"],
       mono: ["Roboto\\ Mono", "monospace"],
     },
-    minHeight: {
-      "75": "75px",
-    },
     extend: {
       screens: {
         print: { raw: "print" },
