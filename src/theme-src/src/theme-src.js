@@ -52,7 +52,7 @@ if (openSearchBtn) {
 const closeSearchBtn = document.querySelector("#closeSearchBtn");
 if (closeSearchBtn) {
   closeSearchBtn.addEventListener("click", () => {
-    search.style.transform = "translate(100%, 0)";
+    search.style.transform = "translate(0,100%)";
     search.style.opacity = 0;
   });
 }
