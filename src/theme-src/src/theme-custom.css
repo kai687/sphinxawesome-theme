@@ -92,10 +92,10 @@ a:hover {
       @apply text-pink-500;
     }
     &:hover {
-      @apply text-gray-100 bg-gray-600 outline-none;
+      @apply bg-gray-200 outline-none;
     }
     &:focus {
-      @apply text-gray-100 bg-gray-600 outline-none;
+      @apply bg-gray-200 outline-none;
     }
   }
   .toctree-l1 > a {
