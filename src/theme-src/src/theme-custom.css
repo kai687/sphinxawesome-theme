@@ -87,8 +87,16 @@ a:hover {
 }
 
 #nav-toc {
-  a.current {
-    @apply text-pink-500;
+  a {
+    &.current {
+      @apply text-pink-500;
+    }
+    &:hover {
+      @apply text-gray-100 bg-gray-600 outline-none;
+    }
+    &:focus {
+      @apply text-gray-100 bg-gray-600 outline-none;
+    }
   }
   .toctree-l1 > a {
     @apply block py-4 pl-8 pr-4;
@@ -101,10 +109,6 @@ a:hover {
   }
   .toctree-l3 > a {
     @apply block py-3 pl-16 pr-4;
-  }
-  a:hover,
-  a:focus {
-    @apply text-gray-100 bg-gray-900;
   }
   .caption {
     @apply pl-8 pr-4 uppercase text-sm text-gray-900 font-medium tracking-widest;
