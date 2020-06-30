@@ -189,6 +189,10 @@ code {
   @apply font-mono font-medium text-sm leading-none py-px px-1 bg-gray-200 rounded;
 }
 
+pre {
+  font-size: 0.95rem;
+}
+
 div[class^="highlight-"] {
   @apply my-6 overflow-x-auto;
 }
