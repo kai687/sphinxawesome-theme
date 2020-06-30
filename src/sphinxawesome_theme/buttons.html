@@ -6,12 +6,12 @@
   - search: magnifying glass, appears in the search field in the header.
 -#}
 
-{% macro close(id, position="fixed", fg="text-gray-800") %}
+{% macro close(id, fg="text-gray-800") %}
 <button
     id="{{ id }}"
     aria-label="{{ _('Close menu') }}"
     title="{{ _('Close menu') }}"
-    class="text-4xl {{ fg }} px-12 py-8 {{ position }} bottom-0 hover:text-pink-500
+    class="text-4xl {{ fg }} p-4 bottom-0 hover:text-pink-500
     md:hidden outline-none focus:outline-none focus:shadow-outline focus:text-pink-500
     self-center">
   &times;
