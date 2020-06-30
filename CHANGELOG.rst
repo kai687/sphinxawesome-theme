@@ -1,3 +1,8 @@
+MASTER
+~~~~~~
+
+- fix: improvements for search pane (#53)
+
 1.7.0
 ~~~~~
 
