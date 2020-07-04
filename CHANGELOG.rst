@@ -2,6 +2,8 @@ MASTER
 ~~~~~~
 
 - fix: improvements for search pane (#53)
+- feat: add permalinks to admonitions (#58)
+- fix: moved some permalink manipulation from JavaScript to Python
 
 1.7.0
 ~~~~~
