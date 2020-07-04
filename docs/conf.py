@@ -18,7 +18,10 @@ copyright = f"{year}, {author}."
 
 # -- General configuration ---------------------------------------------------
 
-extensions = ["sphinx.ext.autosectionlabel", "sphinxawesome.sampdirective"]
+extensions = [
+    "sphinx.ext.autosectionlabel",
+    "sphinxawesome_theme",
+]
 
 exclude_patterns = ["public"]
 nitpicky = True

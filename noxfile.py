@@ -8,7 +8,12 @@ from nox.sessions import Session
 
 nox.options.sessions = ["docs", "lint", "black", "mypy", "netlify_test"]
 
-python_files = ["src/sphinxawesome_theme/__init__.py", "noxfile.py", "docs/conf.py"]
+python_files = [
+    "src/sphinxawesome_theme/__init__.py",
+    "src/sphinxawesome_theme/html_translator.py",
+    "noxfile.py",
+    "docs/conf.py",
+]
 python_versions = ["3.6", "3.7", "3.8"]
 
 
@@ -30,7 +35,10 @@ def install_constrained_version(session: Session, *args: str, **kwargs: Any) -> 
 @nox.session(python=python_versions)
 def docs(session: Session) -> None:
     """Build the docs."""
-    args = session.posargs or ["-b", "dirhtml", "-aWTE", "docs", "docs/public"]
+    if "debug" in session.posargs:
+        args = ["-aEvvv", "docs", "docs/public"]
+    else:
+        args = session.posargs or ["-b", "dirhtml", "-aWTE", "docs", "docs/public"]
     session.run("poetry", "install", "--no-dev", external=True)
     session.run("sphinx-build", *args)
 

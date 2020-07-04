@@ -196,16 +196,6 @@ window.addEventListener("scroll", () => {
 
 // click on permalink copies the href to clipboard
 document.querySelectorAll(".headerlink").forEach((link) => {
-  const parent = link.parentNode;
-  if (/H1|2|3|4|5|6/.test(parent.tagName)) {
-    link.title = "Copy link to section: " + parent.innerText;
-  } else if (parent.parentNode.classList.contains("figure")) {
-    link.title = "Copy link to this image caption";
-  } else if (parent.classList.contains("code-block-caption")) {
-    link.title = "Copy link to this code block";
-  } else if (parent.parentNode.tagName === "TABLE") {
-    link.title = "Copy link to this table caption";
-  }
   link.addEventListener("click", (event) => {
     copyToClipboard(link.href, _("Copied link to clipboard"));
     event.preventDefault();

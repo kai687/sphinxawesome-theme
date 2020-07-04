@@ -14,6 +14,8 @@ from typing import Any, Dict
 
 from sphinx.application import Sphinx
 
+from .html_translator import BetterHTMLTranslator
+
 try:
     __version__ = version(__name__)
 except PackageNotFoundError:  # pragma: no cover
@@ -24,6 +26,8 @@ def setup(app: "Sphinx") -> Dict[str, Any]:
     """Register the theme."""
     app.add_html_theme("sphinxawesome_theme", path.abspath(path.dirname(__file__)))
     app.setup_extension("sphinxawesome.sampdirective")
+    app.set_translator("html", BetterHTMLTranslator)
+    app.set_translator("dirhtml", BetterHTMLTranslator)
 
     return {
         "version": __version__,
