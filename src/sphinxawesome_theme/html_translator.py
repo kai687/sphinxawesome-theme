@@ -38,11 +38,18 @@ class BetterHTMLTranslator(HTML5Translator):
             elif close_tag.startswith("</a></h"):
                 self.body.append(
                     f'</a><a class="headerlink" href="#{node.parent["ids"][0]}" '
-                    f'title="{_("Copy link to this headline")}">{self.permalink_text}'
+                    f'title="{_("Copy link to section: {node.astext()}.")}">'
+                    f"{self.permalink_text}"
                 )
             elif isinstance(node.parent, nodes.table):
                 self.body.append("</span>")
                 self.add_permalink_ref(node.parent, _("Copy link to this table"))
+            elif isinstance(node.parent, nodes.Admonition):
+                self.add_permalink_ref(node.parent, _("Copy link to this admonition."))
+                #  self.body.append(
+                #  f'<a class="headerlink" href="#{node.parent["ids"][0]}" '
+                #  f'title="{_("Copy link to this admonition")}">{self.permalink_text}'
+                #  )
         elif isinstance(node.parent, nodes.table):
             self.body.append("</span>")
 

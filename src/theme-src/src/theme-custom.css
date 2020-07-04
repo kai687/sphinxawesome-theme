@@ -51,6 +51,7 @@ h1:hover .headerlink,
 h2:hover .headerlink,
 h3:hover .headerlink,
 table:hover .headerlink,
+.admonition-title:hover .headerlink,
 .figure:hover .headerlink,
 .literal-block-wrapper:hover .headerlink {
   @apply visible;
@@ -339,22 +340,34 @@ table:not(.highlighttable) {
   p:last-child {
     @apply mb-0;
   }
+  .headerlink {
+    @apply text-blue-900;
+  }
 }
 
 .tip,
 .hint {
   @apply text-green-900 bg-green-200;
+  .headerlink {
+    @apply text-green-900;
+  }
 }
 
 .warning,
 .danger,
 .error {
   @apply text-red-900 bg-red-200;
+  .headerlink {
+    @apply text-red-900;
+  }
 }
 
 .caution,
 .important {
   @apply text-yellow-900 bg-yellow-200;
+  .headerlink {
+    @apply text-yellow-900;
+  }
 }
 
 .admonition-title {

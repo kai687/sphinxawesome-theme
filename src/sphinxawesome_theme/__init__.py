@@ -14,6 +14,7 @@ from typing import Any, Dict
 
 from sphinx.application import Sphinx
 
+from .admonitions_ids import AdmonitionId
 from .html_translator import BetterHTMLTranslator
 
 try:
@@ -28,6 +29,7 @@ def setup(app: "Sphinx") -> Dict[str, Any]:
     app.setup_extension("sphinxawesome.sampdirective")
     app.set_translator("html", BetterHTMLTranslator)
     app.set_translator("dirhtml", BetterHTMLTranslator)
+    app.add_post_transform(AdmonitionId)
 
     return {
         "version": __version__,
