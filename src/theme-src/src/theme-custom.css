@@ -58,14 +58,14 @@ table:hover .headerlink,
 }
 
 p a {
-  @apply text-blue-600;
+  @apply text-blue-700;
 }
 
 .search {
   li {
     @apply border-t my-4 py-4;
     a {
-      @apply text-blue-600 text-lg;
+      @apply text-blue-700 text-lg;
     }
   }
   .context {
@@ -176,7 +176,7 @@ a:hover {
     @apply block py-3 pl-8;
   }
   a {
-    @apply text-blue-600;
+    @apply text-blue-700;
     &.current {
       @apply text-pink-600;
     }

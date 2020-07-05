@@ -9,10 +9,10 @@
 <nav role="navigation"
      aria-label="{{ _('breadcrumbs') }}"
      class="mt-16 mb-12 text-sm text-gray-700 leading-tight print:hidden">
-  <a class="text-blue-600" href="{{ pathto(master_doc) }}">{{ docstitle }}</a>
+  <a class="text-blue-700" href="{{ pathto(master_doc) }}">{{ docstitle }}</a>
   {{ separator }}
   {% for doc in parents %}
-    <a class="text-blue-600" href="{{ doc.link|e }}">{{ doc.title }}</a>
+    <a class="text-blue-700" href="{{ doc.link|e }}">{{ doc.title }}</a>
     {{ separator }}
   {% endfor %}
   <span aria-current="page">
