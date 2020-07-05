@@ -381,6 +381,32 @@ table:not(.highlighttable) {
   @apply font-medium tracking-wide;
 }
 
+/* *************************
+ * TRANSITIONS
+ * *************************/
+[data-menu="closed"] {
+  @apply transition-all transform opacity-0 duration-300;
+}
+
+[data-menu="open"] {
+  transition: transform 0.3s, opacity 0.5s;
+  @apply translate-x-0 translate-y-0 opacity-100;
+}
+
+nav[data-menu="closed"] {
+  @apply -translate-x-full;
+}
+
+@screen md {
+  nav[data-menu="closed"] {
+    @apply translate-x-0 opacity-100;
+  }
+}
+
+#search-pane[data-menu="closed"] {
+  @apply translate-y-full;
+}
+
 /* **************************
  * PRINT
  * **************************/

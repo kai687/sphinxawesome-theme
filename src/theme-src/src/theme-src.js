@@ -15,17 +15,14 @@ const searchInput = document.querySelector("#search-input");
 const openNavBtn = document.querySelector("#openNavBtn");
 if (openNavBtn) {
   openNavBtn.addEventListener("click", () => {
-    nav.style.transform = "translate(0,0)";
-    nav.style.transition = "transform 0.3s, opacity 0.5s";
-    nav.style.opacity = 1;
+    nav.setAttribute("data-menu", "open");
   });
 }
 
 const closeNavBtn = document.querySelector("#closeNavBtn");
 if (closeNavBtn) {
   closeNavBtn.addEventListener("click", () => {
-    nav.style.transform = "translate(-100%, 0)";
-    nav.style.opacity = 0;
+    nav.setAttribute("data-menu", "closed");
   });
 }
 
@@ -34,8 +31,7 @@ if (closeNavBtn) {
 document.querySelectorAll("nav li.current a").forEach((link) => {
   if (closeNavBtn.offsetWidth > 0 && closeNavBtn.offsetHeight > 0) {
     link.addEventListener("click", () => {
-      nav.style.transform = "translate(-100%, 0)";
-      nav.style.opacity = 0;
+      nav.setAttribute("data-menu", "closed");
     });
   }
 });
@@ -43,17 +39,14 @@ document.querySelectorAll("nav li.current a").forEach((link) => {
 const openSearchBtn = document.querySelector("#openSearchBtn");
 if (openSearchBtn) {
   openSearchBtn.addEventListener("click", () => {
-    search.style.transform = "translate(0,0)";
-    search.style.transition = "transform 0.3s, opacity 0.5s";
-    search.style.opacity = 1;
+    search.setAttribute("data-menu", "open");
   });
 }
 
 const closeSearchBtn = document.querySelector("#closeSearchBtn");
 if (closeSearchBtn) {
   closeSearchBtn.addEventListener("click", () => {
-    search.style.transform = "translate(0,100%)";
-    search.style.opacity = 0;
+    search.setAttribute("data-menu", "closed");
   });
 }
 
