@@ -33,7 +33,7 @@ flake8-bugbear = "^20.1.4"
 flake8-docstrings = "^1.5.0"
 flake8-import-order = "^0.18.1"
 black = "^19.10b0"
-pre-commit = "^2.5.1"
+pre-commit = "^2.6.0"
 
 [tool.poetry.plugins."sphinx.html_themes"]
 "sphinxawesome_theme" = "sphinxawesome_theme"
