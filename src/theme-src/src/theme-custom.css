@@ -274,7 +274,7 @@ dt {
 }
 
 dd {
-  @apply pl-12;
+  @apply pl-6;
   p {
     @apply mt-2;
   }
@@ -433,26 +433,6 @@ nav[data-menu="closed"] {
 
     a.external:after {
       content: " (" attr(href) ")";
-    }
-  }
-
-  @page {
-    margin: 1.5cm 1.5cm 2cm 1.5cm;
-    @bottom-left {
-      content: "Virtual Cluster Docs";
-      font-size: 9pt;
-    }
-    @bottom-right {
-      content: counter(page);
-    }
-    @top-left {
-      content: "";
-    }
-    @top-right {
-      content: "";
-    }
-    @top-center {
-      content: "";
     }
   }
 
