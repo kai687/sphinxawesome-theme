@@ -31,10 +31,11 @@ Copy code blocks
     Code blocks have a **Copy** button, that allows you to copy code snippets to the
     clipboard.
 
-Improved links after headlines and captions
+Improved links after section titles and captions ("permalinks")
     Clicking on the ``#`` character that appears when hovering over headlines and
     captions copies that link to the clipboard. The tooltips for links after headlines
     also show the section title, instead of the generic "Permalink to this headline".
+    Admonitions also include a link for easy referencing.
 
 New directive for highlighting placeholder variables
     The theme supports a new directive ``samp``, which is the equivalent of the

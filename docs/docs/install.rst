@@ -16,16 +16,21 @@ follow these instructions.
 Installing a development version
 --------------------------------
 
-Releases are planned often,
-so it shouldn't be needed for most users,
-but you can install the theme directly from Github:
+If you want to try the latest features,
+install the theme directly from Github:
 
 .. code-block:: console
 
    $ pip install git+https://github.com/kai687/sphinxawesome-theme.git
 
-Creating a local copy of the theme
-----------------------------------
+Check the CHANGELOG_ for any features under the section "MASTER".
+Those are available in the development version,
+but not yet in the released version.
+
+.. _CHANGELOG: https://github.com/kai687/sphinxawesome-theme/blob/master/CHANGELOG.rst
+
+Installing the theme locally
+----------------------------
 
 If you want to modify the theme,
 `fork the repository
@@ -35,15 +40,18 @@ for example :dir:`./_themes`.
 
 .. samp::
 
+   $ cd _themes/
    $ git clone https://github.com/{YOUR_GITHUB_USERNAME}/sphinxawesome-theme.git
 
-To use a local copy of the theme, follow the steps described in
-:ref:`Using a local version of the theme`.
+Replace :samp:`{YOUR_GITHUB_USERNAME}` with your user name on Github.
+To use this local copy of the theme,
+follow the steps described in
+:ref:`How to use a local version of the theme`.
 
-To change the theme,
+To modify the theme,
 follow the steps in :ref:`How to modify the theme`.
 
 .. note::
 
-   If you only want to create a local copy, forking the repository first isn't
-   necessary.
+   If you don't want to merge your modifications with the main repository,
+   you don't need to fork the repository.

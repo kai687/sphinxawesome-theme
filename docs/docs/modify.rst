@@ -10,30 +10,32 @@ How to modify the theme
    or override some of the styles,
    you don't need Node.js.
 
-First, :ref:`clone the repository <How to install the theme>`.
-Next, change to the directory :dir:`./sphinxawesome-theme`.
-It has the following structure:
+Follow these steps to modify the theme:
 
-.. vale off
+#. :ref:`Clone the repository <How to install the theme>`.
+#. Change to the directory :dir:`./sphinxawesome-theme`.
+   It has the following structure:
 
-.. code-block:: console
-   :emphasize-lines: 4
+   .. vale off
 
-   ./sphinxawesome-theme/
-    ├src/
-    │ ├sphinxawesome_theme/
-    │ └theme-src/
-    ├docs/
-    └...
+   .. code-block:: console
+      :emphasize-lines: 4
 
-.. vale on
+      ./sphinxawesome-theme/
+        ├src/
+        │ ├sphinxawesome_theme/
+        │ └theme-src/
+        ├docs/
+        └...
 
-Next, change to the :dir:`theme-src` directory
-and install the JavaScript dependencies:
+   .. vale on
 
-.. code-block:: console
+#. Change to the :dir:`theme-src` directory
+   and install the JavaScript dependencies:
 
-   $ npm install
+   .. code-block:: console
+
+      $ npm install
 
 
 ---------------------------
@@ -136,40 +138,3 @@ to:
 .. code-block:: html
 
    <header class="md:sticky top-0 bg-orange-500 ...">
-
-
-----------------------------------
-Using a local version of the theme
-----------------------------------
-
-
-If you want to use a modified version of the theme,
-you can use the theme locally.
-Place it inside a directory
-:dir:`_ext`, or :dir:`_themes`
-to keep the project tidy.
-
-For example, if you have a project structure like this:
-
-.. code-block:: console
-
-   ./
-   ├conf.py
-   ├index.rst
-   └_themes/
-
-Change to the :dir:`_themes` directory and
-:ref:`clone the repository <Creating a local copy of the theme>`.
-
-Next, add this directory to the Sphinx configuration in :file:`conf.py`::
-
-   html_theme = "sphinxawesome_theme"
-   html_theme_path = ["_themes"]
-
-Optional: if you want to use the ``samp`` directive,
-add it to the list of extensions in :file:`conf.py`::
-
-   extensions = ["sphinxawesome.sampdirective"]
-
-If you install the theme as a python package,
-the extension gets added automatically.

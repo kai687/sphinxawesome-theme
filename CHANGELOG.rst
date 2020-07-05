@@ -4,6 +4,7 @@ MASTER
 - fix: improvements for search pane (#53)
 - feat: add permalinks to admonitions (#58)
 - fix: moved some permalink manipulation from JavaScript to Python
+- fix: migrate menu state transitions to data-attributes (#55)
 
 1.7.0
 ~~~~~
