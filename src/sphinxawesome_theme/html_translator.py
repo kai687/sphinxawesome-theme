@@ -54,8 +54,8 @@ class BetterHTMLTranslator(HTML5Translator):
             self.body.append("</span>")
 
         self.body.append(self.context.pop())
-        if self.in_document_title:
-            self.title = self.body[self.in_document_title : -1]
+        if self.in_document_title:  # type: ignore
+            self.title = self.body[self.in_document_title : -1]  # type: ignore
             self.in_document_title = 0
             self.body_pre_docinfo.extend(self.body)
             self.html_title.extend(self.body)
