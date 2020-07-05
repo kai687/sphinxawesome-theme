@@ -1,6 +1,8 @@
 """Sphinx configuration file."""
 
 import datetime
+from pathlib import Path
+import sys
 from typing import List, Tuple
 
 from docutils import nodes
@@ -9,6 +11,11 @@ from sphinx.application import Sphinx
 from sphinx.roles import EmphasizedLiteral
 
 year = datetime.datetime.now().year
+
+# Add path to local extension
+this_dir = Path(__file__).parent
+ext_dir = (this_dir / ".." / "src").resolve()
+sys.path.append(str(ext_dir.absolute()))
 
 # -- Project information -----------------------------------------------------
 
