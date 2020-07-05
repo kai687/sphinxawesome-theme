@@ -43,13 +43,12 @@ class BetterHTMLTranslator(HTML5Translator):
                 )
             elif isinstance(node.parent, nodes.table):
                 self.body.append("</span>")
-                self.add_permalink_ref(node.parent, _("Copy link to this table"))
+                self.add_permalink_ref(node.parent, _("Copy link to this table."))
             elif isinstance(node.parent, nodes.Admonition):
-                self.add_permalink_ref(node.parent, _("Copy link to this admonition."))
-                #  self.body.append(
-                #  f'<a class="headerlink" href="#{node.parent["ids"][0]}" '
-                #  f'title="{_("Copy link to this admonition")}">{self.permalink_text}'
-                #  )
+                admon_type = type(node.parent).__name__
+                self.add_permalink_ref(
+                    node.parent, _(f"Copy link to this {admon_type}.")
+                )
         elif isinstance(node.parent, nodes.table):
             self.body.append("</span>")
 
@@ -74,7 +73,7 @@ class BetterHTMLTranslator(HTML5Translator):
             self.add_permalink_ref(node.parent, _("Copy link to this image."))
         elif node.parent.get("toctree"):
             self.add_permalink_ref(
-                node.parent.parent, _("Copy link to this table of contents")
+                node.parent.parent, _("Copy link to this table of contents.")
             )
 
         if isinstance(node.parent, nodes.container) and node.parent.get(
