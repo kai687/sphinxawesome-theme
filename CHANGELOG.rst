@@ -1,5 +1,5 @@
-MASTER
-~~~~~~
+1.8.0
+~~~~~
 
 - fix: improvements for search pane (#53)
 - feat: add permalinks to admonitions (#58)
