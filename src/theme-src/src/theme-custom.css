@@ -84,13 +84,13 @@ p a {
 .headerlink:hover:after,
 .search li a:hover,
 a:hover {
-  @apply text-pink-500;
+  @apply text-pink-600;
 }
 
 #nav-toc {
   a {
     &.current {
-      @apply text-pink-500;
+      @apply text-pink-600;
     }
     &:hover {
       @apply bg-gray-200 outline-none;
@@ -178,7 +178,7 @@ a:hover {
   a {
     @apply text-blue-600;
     &.current {
-      @apply text-pink-500;
+      @apply text-pink-600;
     }
   }
 }
