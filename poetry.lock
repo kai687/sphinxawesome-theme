@@ -531,7 +531,7 @@ description = "Python documentation generator"
 name = "sphinx"
 optional = false
 python-versions = ">=3.5"
-version = "3.1.1"
+version = "3.1.2"
 
 [package.dependencies]
 Jinja2 = ">=2.3"
@@ -975,8 +975,8 @@ snowballstemmer = [
     {file = "snowballstemmer-2.0.0.tar.gz", hash = "sha256:df3bac3df4c2c01363f3dd2cfa78cce2840a79b9f1c2d2de9ce8d31683992f52"},
 ]
 sphinx = [
-    {file = "Sphinx-3.1.1-py3-none-any.whl", hash = "sha256:97c9e3bcce2f61d9f5edf131299ee9d1219630598d9f9a8791459a4d9e815be5"},
-    {file = "Sphinx-3.1.1.tar.gz", hash = "sha256:74fbead182a611ce1444f50218a1c5fc70b6cc547f64948f5182fb30a2a20258"},
+    {file = "Sphinx-3.1.2-py3-none-any.whl", hash = "sha256:97dbf2e31fc5684bb805104b8ad34434ed70e6c588f6896991b2fdfd2bef8c00"},
+    {file = "Sphinx-3.1.2.tar.gz", hash = "sha256:b9daeb9b39aa1ffefc2809b43604109825300300b987a24f45976c001ba1a8fd"},
 ]
 sphinxawesome-sampdirective = [
     {file = "sphinxawesome-sampdirective-1.0.3.tar.gz", hash = "sha256:e4da5181109336eb018a27b899a4b98eb2f2c2289072a16a2c0be8e0dece4809"},

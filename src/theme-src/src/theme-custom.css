@@ -266,7 +266,7 @@ ol {
 
 ol > li,
 .section ul > li {
-  @apply pl-4;
+  @apply pl-2;
 }
 
 dt {
