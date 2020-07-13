@@ -64,7 +64,7 @@
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^2.0.0",
-    "autoprefixer": "^9.8.2",
+    "autoprefixer": "^9.8.5",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.2.1",
     "cssnano": "^4.1.10",
