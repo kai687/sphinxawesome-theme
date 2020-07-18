@@ -7,8 +7,7 @@ input[type="search"] {
 }
 
 @screen md {
-  section,
-  .section {
+  section {
     @apply max-w-2xl;
   }
 }
@@ -277,12 +276,12 @@ ol {
   @apply list-decimal ml-4;
 }
 
-.section ul {
+section ul {
   @apply list-disc ml-4;
 }
 
 ol > li,
-.section ul > li {
+section ul > li {
   @apply pl-2;
 }
 

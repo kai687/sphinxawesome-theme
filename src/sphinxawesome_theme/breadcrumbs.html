@@ -2,19 +2,19 @@
   Template file for the Breadcrumbs feature.
 -#}
 
-{% set separator %}
+{%- set separator -%}
 <span class="text-gray-700">{{ theme_breadcrumbs_separator|default('/') }}</span>
-{% endset %}
+{%- endset -%}
 
 <nav role="navigation"
      aria-label="{{ _('breadcrumbs') }}"
      class="mt-16 mb-12 text-sm text-gray-700 leading-tight print:hidden">
   <a class="text-blue-700" href="{{ pathto(master_doc) }}">{{ docstitle }}</a>
   {{ separator }}
-  {% for doc in parents %}
+  {%- for doc in parents -%}
     <a class="text-blue-700" href="{{ doc.link|e }}">{{ doc.title }}</a>
     {{ separator }}
-  {% endfor %}
+  {%- endfor -%}
   <span aria-current="page">
     {{ title }}
   </span>

@@ -70,10 +70,18 @@ def _add_copy_button(tree: etree._ElementTree) -> None:
         code.insert(0, btn)
 
 
+def _divs_to_section(tree: etree._ElementTree) -> None:
+    divs = tree.xpath("//div[@class='section']")
+    for div in divs:
+        div.tag = "section"
+        div.attrib.pop("class", None)
+
+
 def _modify_html(html_filename: str) -> None:
     """Parse and modify a HTML document."""
     tree = html.parse(html_filename)
 
+    _divs_to_section(tree)
     _wrap_literal_blocks(tree)
     _add_copy_button(tree)
 
