@@ -265,6 +265,9 @@ button.copy {
   &:hover {
     @apply text-pink-500;
   }
+  & > svg {
+    @apply h-4 w-4 fill-current;
+  }
 }
 
 /* **************************
