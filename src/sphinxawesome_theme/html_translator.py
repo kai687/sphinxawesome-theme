@@ -19,7 +19,57 @@ logger = logging.getLogger(__name__)
 
 
 class BetterHTMLTranslator(HTML5Translator):
-    """Override a few methods to produce better permalinks."""
+    """Override a few methods to improve usability."""
+
+    def visit_literal_block(self, node: Element) -> None:
+        """Override literal block rendering.
+
+        We want parsed literal blocks (with rendered ReST markup)
+        to be wrapped in a div.highlight as well to allow placement
+        of code copy buttons.
+        """
+        if node.rawsource != node.astext():
+            # rendered markup = parsed-literal
+            self.body.append('<div class="highlight">\n')
+            # from ``docutils.writers._html_base.py``
+            self.body.append(self.starttag(node, "pre", "", CLASS="literal-block"))
+            if "code" in node.get("classes", []):
+                self.body.append("<code>")
+            return
+
+        # copied from ``sphinx.writers.html5``
+        lang = node.get("language", "default")
+        linenos = node.get("linenos", False)
+        highlight_args = node.get("highlight_args", {})
+        highlight_args["force"] = node.get("force", False)
+        if lang is self.builder.config.highlight_language:
+            # only pass highlighter options for original language
+            opts = self.builder.config.highlight_options
+        else:
+            opts = {}
+
+        highlighted = self.highlighter.highlight_block(
+            node.rawsource,
+            lang,
+            opts=opts,
+            linenos=linenos,
+            location=(self.builder.current_docname, node.line),
+            **highlight_args,
+        )
+        starttag = self.starttag(
+            node, "div", suffix="", CLASS="highlight-%s notranslate" % lang
+        )
+        self.body.append(starttag + highlighted + "</div>\n")
+        raise nodes.SkipNode
+
+    def depart_literal_block(self, node: Element) -> None:
+        """Override method."""
+        if "code" in node.get("classes", []):
+            self.body.append("</code>")
+        self.body.append("</pre>\n")
+
+        if node.rawsource != node.astext():
+            self.body.append("</div>\n")
 
     def depart_title(self, node: Element) -> None:
         """Override permalink addition to headlines."""

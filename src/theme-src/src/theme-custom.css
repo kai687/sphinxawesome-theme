@@ -198,6 +198,10 @@ div[class^="highlight-"] {
   @apply my-6 overflow-x-auto;
 }
 
+div.highlight {
+  @apply relative;
+}
+
 .linenodiv,
 .highlight {
   pre {
