@@ -257,6 +257,16 @@ em.var {
   @apply text-purple-700;
 }
 
+button.copy {
+  @apply absolute right-0 top-0 p-2 text-gray-600 outline-none;
+  &:focus {
+    @apply outline-none text-pink-500;
+  }
+  &:hover {
+    @apply text-pink-500;
+  }
+}
+
 /* **************************
  * LISTS
  * **************************/
