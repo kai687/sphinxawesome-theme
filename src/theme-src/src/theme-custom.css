@@ -134,7 +134,7 @@ a:hover {
   .expand {
     transition: transform 0.1s ease-out;
     transform: rotate(90deg);
-    @apply inline-block p-2 text-gray-700;
+    @apply inline-block p-2 text-gray-600;
     &:hover {
       @apply text-pink-600 outline-none;
     }
@@ -278,7 +278,8 @@ em.var {
   @apply text-purple-700 font-medium;
 }
 
-.samp > em {
+/* from the 'samp' role */
+code > em {
   @apply text-purple-700;
 }
 
