@@ -229,7 +229,7 @@ div[class^="highlight-"] {
 }
 
 div.highlight {
-  @apply relative;
+  @apply relative bg-transparent;
 }
 
 .linenodiv,
