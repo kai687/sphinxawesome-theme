@@ -23,7 +23,7 @@ python = ">=3.6.1,<4.0.0"
 sphinx = ">3"
 sphinxawesome-sampdirective = "^1.0.3"
 importlib_metadata = {version = "^1.6.1", python = "<3.8"}
-lxml = "^4.5.2"
+beautifulsoup4 = "^4.9.1"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^3.8.3"

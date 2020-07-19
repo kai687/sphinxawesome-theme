@@ -19,9 +19,9 @@
 
     <div id="nav-toc" class="flex-1">
       {% if theme_nav_include_hidden|tobool %}
-        {{ toctree(maxdepth=3, includehidden=true) }}
+        {{ toctree(maxdepth=3, collapse=False, includehidden=true) }}
       {% else %}
-        {{ toctree(maxdepth=3) }}
+        {{ toctree(maxdepth=3, collapse=False) }}
       {% endif %}
     </div>
 

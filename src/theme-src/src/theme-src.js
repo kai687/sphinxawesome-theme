@@ -14,40 +14,40 @@ const searchInput = document.querySelector("#search-input");
 
 const openNavBtn = document.querySelector("#openNavBtn");
 if (openNavBtn) {
-  openNavBtn.addEventListener("click", () => {
+  openNavBtn.onclick = () => {
     nav.setAttribute("data-menu", "open");
-  });
+  };
 }
 
 const closeNavBtn = document.querySelector("#closeNavBtn");
 if (closeNavBtn) {
-  closeNavBtn.addEventListener("click", () => {
+  closeNavBtn.onclick = () => {
     nav.setAttribute("data-menu", "closed");
-  });
+  };
 }
 
 // We want to close the nav menu also, when clicking on a link in the nav menu on the
 // current page (but only on small screens (i.e., where the close button is visible))
 document.querySelectorAll("nav li.current a").forEach((link) => {
   if (closeNavBtn.offsetWidth > 0 && closeNavBtn.offsetHeight > 0) {
-    link.addEventListener("click", () => {
+    link.onclick = () => {
       nav.setAttribute("data-menu", "closed");
-    });
+    };
   }
 });
 
 const openSearchBtn = document.querySelector("#openSearchBtn");
 if (openSearchBtn) {
-  openSearchBtn.addEventListener("click", () => {
+  openSearchBtn.onclick = () => {
     search.setAttribute("data-menu", "open");
-  });
+  };
 }
 
 const closeSearchBtn = document.querySelector("#closeSearchBtn");
 if (closeSearchBtn) {
-  closeSearchBtn.addEventListener("click", () => {
+  closeSearchBtn.onclick = () => {
     search.setAttribute("data-menu", "closed");
-  });
+  };
 }
 
 function selectText(node) {
@@ -78,13 +78,13 @@ document.querySelectorAll("button.copy").forEach((btn) => {
   });
 
   // Show 'Copied to clipboard' in a message at the bottom
-  btn.addEventListener("click", () => {
+  btn.onclick = () => {
     console.log(btn.parentNode);
     const selection = selectText(btn.parentNode);
     document.execCommand("copy");
     selection.removeAllRanges();
     showSnackbar(_("Copied code to clipboard"));
-  });
+  };
 });
 
 // Display link to clear highlighting at the bottom
@@ -100,10 +100,10 @@ setTimeout(() => {
     snackbar.style.opacity = 1;
     snackbar.style.transform = "translate(0,0)";
 
-    document.querySelector("#snackbar > a").addEventListener("click", () => {
+    document.querySelector("#snackbar > a").onclick = () => {
       hideSnackbar();
       searchInput.value = "";
-    });
+    };
 
     // Add the currently searched for term in the input
     searchInput.value = highlights[0].textContent;
@@ -157,10 +157,10 @@ window.addEventListener("scroll", () => {
 
 // click on permalink copies the href to clipboard
 document.querySelectorAll(".headerlink").forEach((link) => {
-  link.addEventListener("click", (event) => {
+  link.onclick = (event) => {
     copyToClipboard(link.href, _("Copied link to clipboard"));
     event.preventDefault();
-  });
+  };
 });
 
 function copyToClipboard(str, msg) {
@@ -183,3 +183,10 @@ function copyToClipboard(str, msg) {
   }
   showSnackbar(msg);
 }
+
+// collapsible NAV
+document.querySelectorAll(".expand").forEach((span) => {
+  span.onclick = () => {
+    span.parentElement.classList.toggle("expanded");
+  };
+});
