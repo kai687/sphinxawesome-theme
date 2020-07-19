@@ -1,5 +1,5 @@
-MASTER
-~~~~~~
+1.9.0
+~~~~~
 
 - more semantic elements (``div.section`` -> ``section``, ``div.figure`` -> ``figure``, etc.)
 - feat: collapsible navigation links
