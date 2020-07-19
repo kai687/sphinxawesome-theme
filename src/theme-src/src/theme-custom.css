@@ -229,19 +229,16 @@ div[class^="highlight-"] {
 }
 
 div.highlight {
-  @apply relative bg-transparent;
-}
-
-.linenodiv,
-.highlight {
+  @apply relative rounded bg-gray-200;
   pre {
-    @apply p-4 pt-8 rounded bg-gray-200 overflow-x-auto;
+    @apply p-4 pt-8 overflow-x-auto;
   }
 }
 
 .linenodiv {
+  @apply rounded-l bg-gray-100 border-r border-gray-400 select-none pointer-events-none;
   pre {
-    @apply border-r border-gray-400 pr-1 bg-gray-100 rounded-r-none select-none pointer-events-none;
+    @apply p-4 pt-8 pr-1 overflow-x-auto;
   }
 }
 
@@ -251,9 +248,7 @@ div.highlight {
     @apply p-0;
   }
   .highlight {
-    pre {
-      @apply rounded-l-none;
-    }
+    @apply rounded-l-none;
   }
 }
 
