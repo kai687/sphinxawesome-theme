@@ -1,6 +1,7 @@
 MASTER
 ~~~~~~
 
+- more semantic elements (``div.section`` -> ``section``, ``div.figure`` -> ``figure``, etc.)
 - feat: collapsible navigation links
 - chore: moved static DOM manipulation to new post-processing code in Python (#62)
 
