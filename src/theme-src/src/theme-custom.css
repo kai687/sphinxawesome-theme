@@ -92,19 +92,22 @@ a:hover {
       @apply text-pink-600;
     }
     &:hover {
-      @apply bg-gray-200 outline-none;
+      @apply outline-none;
     }
     &:focus {
-      @apply bg-gray-200 outline-none;
+      @apply outline-none;
     }
   }
   li {
     & > a {
-      @apply inline-block pr-4;
+      @apply inline-block;
     }
     & > ul {
       max-height: 0;
       overflow-y: hidden;
+    }
+    &:hover {
+      @apply bg-gray-200;
     }
   }
   li.toctree-l1 > a {
@@ -137,6 +140,7 @@ a:hover {
     }
   }
   .expanded {
+    @apply bg-gray-100;
     & > ul {
       max-height: 100%;
       transition: max-height 0.4s ease-in;
@@ -149,13 +153,13 @@ a:hover {
 
 @screen xxl {
   #nav-toc {
-    .toctree-l1 > a {
+    li.toctree-l1 > a {
       @apply pl-16;
     }
-    .toctree-l2 > a {
+    li.toctree-l2 > a {
       @apply pl-18;
     }
-    .toctree-l3 > a {
+    li.toctree-l3 > a {
       @apply pl-24;
     }
     .caption {

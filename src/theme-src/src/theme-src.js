@@ -62,20 +62,20 @@ function selectText(node) {
 
 // Add behaviour to 'copy code' buttons
 document.querySelectorAll("button.copy").forEach((btn) => {
-  btn.addEventListener("mouseenter", (event) => {
+  btn.onmouseenter = (event) => {
     const rect = event.target.getBoundingClientRect();
     tooltip.style.opacity = 0.6;
     tooltip.style.visibility = "visible";
     tooltip.style.top = rect.y + rect.height + 1 + "px";
     tooltip.style.left = rect.x - 4 + "px";
     tooltip.textContent = _("Copy this code");
-  });
+  };
 
-  btn.addEventListener("mouseleave", () => {
+  btn.onmouseleave = () => {
     tooltip.textContent = "";
     tooltip.style.opacity = 0;
     tooltip.style.visibility = "hidden";
-  });
+  };
 
   // Show 'Copied to clipboard' in a message at the bottom
   btn.onclick = () => {
@@ -107,19 +107,19 @@ setTimeout(() => {
 
     // Add the currently searched for term in the input
     searchInput.value = highlights[0].textContent;
-    searchInput.addEventListener("search", () => {
+    searchInput.onsearch = () => {
       Documentation.hideSearchWords();
       hideSnackbar();
-    });
+    };
   }
 }, 500);
 
 // prevent empty search submit
-searchForm.addEventListener("submit", (event) => {
+searchForm.onsubmit = (event) => {
   if (searchInput.value.length < 1) {
     event.preventDefault();
   }
-});
+};
 
 function showSnackbar(message) {
   snackbar.textContent = message;
@@ -149,11 +149,11 @@ window.addEventListener("keydown", (event) => {
 });
 
 // hide 'copied' tooltip on scroll
-window.addEventListener("scroll", () => {
+window.onscroll = () => {
   tooltip.textContent = "";
   tooltip.style.opacity = 0;
   tooltip.style.visibility = "hidden";
-});
+};
 
 // click on permalink copies the href to clipboard
 document.querySelectorAll(".headerlink").forEach((link) => {

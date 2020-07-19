@@ -98,9 +98,10 @@ def _divs_to_section(tree: BeautifulSoup) -> None:
 
 def _expand_current(tree: BeautifulSoup) -> None:
     """Add the ``.expanded`` class to li.current elements."""
-    current = tree("li", class_="current")
-    for li in current:
+    for li in tree("li", class_="current"):
         li["class"] += ["expanded"]
+        for sub in li("li", class_="toctree-l2"):
+            sub["class"] += ["expanded"]
 
 
 def _modify_html(html_filename: str) -> None:
