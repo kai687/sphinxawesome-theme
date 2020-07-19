@@ -134,7 +134,7 @@ a:hover {
   .expand {
     transition: transform 0.1s ease-out;
     transform: rotate(90deg);
-    @apply inline-block p-2;
+    @apply inline-block p-2 text-gray-700;
     &:hover {
       @apply text-pink-600 outline-none;
     }
