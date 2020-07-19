@@ -1,6 +1,7 @@
 MASTER
 ~~~~~~
 
+- feat: collapsible navigation links
 - chore: moved static DOM manipulation to new post-processing code in Python (#62)
 
 1.8.0
