@@ -13,25 +13,25 @@
       class="mt-20 mx-4 md:ml-8 xxl:ml-16 mb-4 flex-shrink-0 text-sm text-gray-700"
     >
 {%- endif -%}
-{%- if show_copyright %}
-  {%- if hasdoc('copyright') %}
-    {%- trans path=pathto('copyright'), copyright=copyright|e %}
+{%- if show_copyright -%}
+  {%- if hasdoc('copyright') -%}
+    {%- trans path=pathto('copyright'), copyright=copyright|e -%}
       &copy; <a href="{{ path }}">Copyright</a>{{ copyright }}
     {%- endtrans -%}
-  {%- else %}
-    {%- trans copyright=copyright|e %}
-      &copy; Copyright {{ copyright }}
-    {%- endtrans %}
+  {%- else -%}
+    {%- trans copyright=copyright|e -%}
+      &copy; Copyright {{ copyright }}&nbsp;
+    {%- endtrans -%}
   {%- endif -%}
-{%- endif %}
+{%- endif -%}
 {%- if last_updated -%}
-  {%- trans last_updated=last_updated|e %}
-    Last updated: {{ last_updated }}.
-  {%- endtrans %}
+  {%- trans last_updated=last_updated|e -%}
+    Last updated: {{ last_updated }}.&nbsp;
+  {%- endtrans -%}
 {%- endif -%}
 {%- if show_sphinx -%}
-  {%- trans sphinx_version=sphinx_version|e %}
+  {%- trans sphinx_version=sphinx_version|e -%}
     Made with <a href="https://www.sphinx-doc.org">Sphinx {{ sphinx_version }}</a>
   {%- endtrans -%}
-{%- endif %}
+{%- endif -%}
 </section>

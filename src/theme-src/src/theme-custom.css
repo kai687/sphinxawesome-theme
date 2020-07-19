@@ -51,7 +51,7 @@ h2:hover .headerlink,
 h3:hover .headerlink,
 table:hover .headerlink,
 .admonition-title:hover .headerlink,
-.figure:hover .headerlink,
+figure:hover .headerlink,
 .literal-block-wrapper:hover .headerlink {
   @apply visible;
 }
@@ -359,11 +359,8 @@ table:not(.highlighttable) {
  * FIGURES
  * **************************/
 
-.figure {
+figure {
   @apply my-12;
-  .caption {
-    @apply text-sm text-gray-800 m-4;
-  }
   .caption-number {
     @apply font-medium tracking-wide;
   }
@@ -373,6 +370,10 @@ table:not(.highlighttable) {
       @apply mt-0;
     }
   }
+}
+
+figcaption {
+  @apply text-sm text-gray-800 m-4;
 }
 
 /* **************************

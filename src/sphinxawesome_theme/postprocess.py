@@ -1,7 +1,11 @@
 """Post-process the HTML produced by Sphinx.
 
-- wrap literal blocks in `div.highlights` in order to
+- wrap literal blocks in ``div.highlights`` in order to
 - inject copy code buttons
+- inject HTML for collapsible navigation links
+- introduce semantic markup:
+  - div.section -> section
+  - div.figure -> figure
 
 :copyright: Copyright 2020, Kai Welke.
 :license: MIT, see LICENSE.
@@ -12,6 +16,7 @@ from typing import List
 
 from bs4 import BeautifulSoup
 from sphinx.application import Sphinx
+from sphinx.locale import _
 from sphinx.util import logging
 
 logger = logging.getLogger(__name__)
@@ -20,7 +25,7 @@ logger = logging.getLogger(__name__)
 def _get_html_files(outdir: str) -> List[str]:
     """Get a list of HTML files."""
     html_list = []
-    for root, _, files in os.walk(outdir):
+    for root, _dirs, files in os.walk(outdir):
         for file in files:
             if file.endswith(".html"):
                 html_list.append(os.path.join(root, file))
@@ -43,12 +48,10 @@ def _wrap_literal_blocks(tree: BeautifulSoup) -> None:
 
 def _add_copy_button(tree: BeautifulSoup) -> None:
     """Add code copy button to all ``div.highlight`` elements."""
-    code_blocks = tree("div", class_="highlight")
-
-    for code in code_blocks:
+    for code in tree("div", class_="highlight"):
         # create the button
         btn = tree.new_tag("button", attrs={"class": "copy"})
-        btn["aria-label"] = "Copy this code block"
+        btn["aria-label"] = _("Copy this code block")
 
         # create the SVG icon
         svg = tree.new_tag(
@@ -74,9 +77,7 @@ def _collapsible_nav(tree: BeautifulSoup) -> None:
     Adding them as spans instead of ``:after`` allows to capture
     click events on the link and the expand icon separately.
     """
-    nav_links = tree.select("nav ul a")
-
-    for link in nav_links:
+    for link in tree.select("nav ul a"):
         # ignore 'leaf' nodes
         if link.next_sibling:
             span = tree.new_tag("span", attrs={"class": "expand"})
@@ -85,15 +86,26 @@ def _collapsible_nav(tree: BeautifulSoup) -> None:
 
 
 def _divs_to_section(tree: BeautifulSoup) -> None:
-    """Convert ``div.section`` to proper ``section``.
+    """Convert ``div.section`` to semantic ``section`` elements.
 
-    With docutils 0.17, this should not be necessary anymore
-    and can be removed.
+    With docutils 0.17, this should not be necessary anymore.
     """
-    divs = tree("div", class_="section")
-    for div in divs:
+    for div in tree("div", class_="section"):
         div.name = "section"
         del div["class"]
+
+
+def _divs_to_figure(tree: BeautifulSoup) -> None:
+    """Convert ``div.figure`` to semantic ``figure`` elements.
+
+    With docutils 0.17, this should not be necessary anymore.
+    """
+    for div in tree("div", class_="figure"):
+        div.name = "figure"
+        div["class"].remove("figure")
+        caption = div("p", class_="caption")[0]
+        caption.name = "figcaption"
+        del caption["class"]
 
 
 def _expand_current(tree: BeautifulSoup) -> None:
@@ -102,6 +114,15 @@ def _expand_current(tree: BeautifulSoup) -> None:
         li["class"] += ["expanded"]
         for sub in li("li", class_="toctree-l2"):
             sub["class"] += ["expanded"]
+
+
+def _remove_pre_spans(tree: BeautifulSoup) -> None:
+    """Remove unnecessary nested ``span.pre`` elements in ``code."""
+    for code in tree("code"):
+        # we don't need classes for inline code elements
+        del code["class"]
+        for span in code("span", class_="pre"):
+            span.unwrap()
 
 
 def _modify_html(html_filename: str) -> None:
@@ -115,13 +136,15 @@ def _modify_html(html_filename: str) -> None:
         tree = BeautifulSoup(html, "html.parser")
 
     _divs_to_section(tree)
+    _divs_to_figure(tree)
     _expand_current(tree)
     _collapsible_nav(tree)
     _wrap_literal_blocks(tree)
     _add_copy_button(tree)
+    _remove_pre_spans(tree)
 
     with open(html_filename, "w") as out_file:
-        out_file.write(tree.prettify(formatter="html5"))
+        out_file.write(str(tree))
 
 
 def post_process_html(app: Sphinx, exc: Exception) -> None:

@@ -12,10 +12,7 @@
   <a class="text-blue-700" href="{{ pathto(master_doc) }}">{{ docstitle }}</a>
   {{ separator }}
   {%- for doc in parents -%}
-    <a class="text-blue-700" href="{{ doc.link|e }}">{{ doc.title }}</a>
-    {{ separator }}
+    <a class="text-blue-700" href="{{ doc.link|e }}">{{ doc.title }}</a>{{ separator }}
   {%- endfor -%}
-  <span aria-current="page">
-    {{ title }}
-  </span>
+  <span aria-current="page">{{ title }}</span>
 </nav>
