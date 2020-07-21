@@ -303,7 +303,7 @@ ol {
   @apply list-decimal ml-4;
 }
 
-section ul {
+section:not(#search-results) ul {
   @apply list-disc ml-4;
 }
 

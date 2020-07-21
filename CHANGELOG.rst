@@ -1,3 +1,8 @@
+MASTER
+~~~~~~
+
+- fix: list markers showing up in the search-results (#71)
+
 1.9.0
 ~~~~~
 
