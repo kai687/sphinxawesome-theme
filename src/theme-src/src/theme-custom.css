@@ -140,7 +140,9 @@ a:hover {
     }
   }
   .expanded {
-    @apply bg-gray-100;
+    &.current {
+      @apply bg-gray-100;
+    }
     & > ul {
       max-height: 100%;
       transition: max-height 0.4s ease-in;

@@ -1,6 +1,7 @@
 MASTER
 ~~~~~~
 
+- fix: remove background for non-current navigation elements (#72)
 - fix: list markers showing up in the search-results (#71)
 
 1.9.0
