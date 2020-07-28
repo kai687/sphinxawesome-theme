@@ -87,6 +87,9 @@ a:hover {
 }
 
 #nav-toc {
+  & > ul {
+    @apply -mt-4;
+  }
   a {
     &.current {
       @apply text-pink-600;
@@ -113,9 +116,6 @@ a:hover {
   li.toctree-l1 > a {
     @apply py-4 pl-8;
   }
-  li.toctree-l1:first-of-type > a {
-    @apply -mt-4;
-  }
   li.toctree-l2 > a {
     @apply py-3 pl-10;
   }
@@ -125,9 +125,8 @@ a:hover {
   .caption {
     @apply pl-8 pr-4 uppercase text-sm text-gray-900 font-medium tracking-widest;
   }
-  /* this works by accident; the first-of-type is applied to the <p> *type*
-   * you we can't use it on the class */
-  .caption:first-of-type {
+  /* for the caption. There is no 'first-of-class' selector */
+  p:first-of-type {
     @apply mt-0;
   }
   /* the expand triangle */
