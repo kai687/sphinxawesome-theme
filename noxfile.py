@@ -40,6 +40,12 @@ def docs(session: Session) -> None:
     session.run("sphinx-build", *args)
 
 
+@nox.session(python="3.8")
+def serve(session: Session) -> None:
+    """Serve the docs."""
+    session.run("python", "-m", "http.server", "--dir", "docs/public")
+
+
 @nox.session(python="3.7")
 def netlify_test(session: Session) -> None:
     """Test, if netlify can build the docs."""
