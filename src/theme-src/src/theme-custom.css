@@ -86,6 +86,10 @@ a:hover {
   @apply text-pink-600;
 }
 
+a:focus {
+  @apply text-pink-600 outline-none shadow-outline;
+}
+
 #nav-toc {
   & > ul {
     @apply -mt-4;
@@ -95,9 +99,6 @@ a:hover {
       @apply text-pink-600;
     }
     &:hover {
-      @apply outline-none;
-    }
-    &:focus {
       @apply outline-none;
     }
   }

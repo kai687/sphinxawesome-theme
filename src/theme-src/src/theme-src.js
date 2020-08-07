@@ -190,3 +190,12 @@ document.querySelectorAll(".expand").forEach((span) => {
     span.parentElement.classList.toggle("expanded");
   };
 });
+
+// expand NAV when tab focus is received on link
+document.querySelectorAll("#nav-toc a").forEach((navLink) => {
+  if (navLink.nextElementSibling) {
+    navLink.onfocus = () => {
+      navLink.parentElement.classList.toggle("expanded");
+    };
+  }
+});
