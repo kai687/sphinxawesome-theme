@@ -87,7 +87,7 @@ a:hover {
 }
 
 a:focus {
-  @apply text-pink-600 outline-none shadow-outline;
+  @apply text-pink-600 outline-none;
 }
 
 #nav-toc {
@@ -113,8 +113,11 @@ a:focus {
     &:hover {
       @apply bg-gray-200;
     }
-    &.toctree-l1.current > a {
-      @apply font-medium border-l-2 border-gray-200;
+    &.toctree-l1.current {
+      @apply border-r-2 border-blue-300;
+      & > a {
+        @apply font-medium;
+      }
     }
     &.toctree-l1 > a {
       @apply py-4 pl-8;
@@ -137,7 +140,7 @@ a:focus {
   .expand {
     transition: transform 0.1s ease-out;
     transform: rotate(90deg);
-    @apply inline-block p-2 text-gray-600;
+    @apply inline-block p-2 text-gray-600 text-lg;
     &:hover {
       @apply text-pink-600 outline-none;
     }

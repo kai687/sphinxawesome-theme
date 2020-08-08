@@ -195,13 +195,20 @@ document.querySelectorAll(".expand").forEach((span) => {
 const navLinks = document.querySelectorAll("#nav-toc a");
 navLinks.forEach((navLink) => {
   if (navLink.nextElementSibling) {
-    navLink.onfocus = () => {
+    navLink.onfocus = (e) => {
       navLink.parentElement.classList.add("expanded");
+      document.querySelectorAll(".expanded").forEach((div) => {
+        if (!div.contains(e.target)) {
+          div.classList.remove("expanded");
+        }
+      });
     };
   }
 });
 
-// scrollspy implementation
+// Mark sections, that are visible in the browser window also as
+// "current" and update this on scrolling
+// The scrollable window here is not the body, but the <div id="main-wrapper">
 const mainViewport = document.querySelector("#main-wrapper");
 const viewportTop = mainViewport.offsetTop;
 const viewportBottom =
