@@ -62,24 +62,32 @@ function selectText(node) {
 
 // Add behaviour to 'copy code' buttons
 document.querySelectorAll("button.copy").forEach((btn) => {
-  btn.onmouseenter = (event) => {
+  function showTooltip(event) {
     const rect = event.target.getBoundingClientRect();
     tooltip.style.opacity = 0.6;
     tooltip.style.visibility = "visible";
     tooltip.style.top = rect.y + rect.height + 1 + "px";
     tooltip.style.left = rect.x - 4 + "px";
     tooltip.textContent = _("Copy this code");
+  }
+  btn.onmouseenter = (event) => {
+    showTooltip(event);
+  };
+  btn.onfocus = (event) => {
+    showTooltip(event);
   };
 
-  btn.onmouseleave = () => {
+  function hideTooltip() {
     tooltip.textContent = "";
     tooltip.style.opacity = 0;
     tooltip.style.visibility = "hidden";
-  };
+  }
+
+  btn.onmouseleave = hideTooltip;
+  btn.onblur = hideTooltip;
 
   // Show 'Copied to clipboard' in a message at the bottom
   btn.onclick = () => {
-    console.log(btn.parentNode);
     const selection = selectText(btn.parentNode);
     document.execCommand("copy");
     selection.removeAllRanges();

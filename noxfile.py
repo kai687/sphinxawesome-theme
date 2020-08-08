@@ -40,7 +40,6 @@ def docs(session: Session) -> None:
     session.run("sphinx-build", *args)
 
 
-@nox.session(python="3.8")
 def serve(session: Session) -> None:
     """Serve the docs."""
     session.run("python", "-m", "http.server", "--dir", "docs/public")
