@@ -192,10 +192,41 @@ document.querySelectorAll(".expand").forEach((span) => {
 });
 
 // expand NAV when tab focus is received on link
-document.querySelectorAll("#nav-toc a").forEach((navLink) => {
+const navLinks = document.querySelectorAll("#nav-toc a");
+navLinks.forEach((navLink) => {
   if (navLink.nextElementSibling) {
     navLink.onfocus = () => {
-      navLink.parentElement.classList.toggle("expanded");
+      navLink.parentElement.classList.add("expanded");
     };
   }
 });
+
+// scrollspy implementation
+const mainViewport = document.querySelector("#main-wrapper");
+const viewportTop = mainViewport.offsetTop;
+const viewportBottom =
+  document.documentElement.offsetHeight || document.body.offsetHeight;
+
+const sections = document.querySelectorAll("main section");
+
+mainViewport.onscroll = () => {
+  for (var i = 0; i < sections.length; ++i) {
+    const rect = sections[i].getBoundingClientRect();
+    if (viewportTop <= rect.top && rect.top <= viewportBottom) {
+      const test = document.querySelector(
+        `#nav-toc a[href*=${sections[i].id}]`
+      );
+      if (test) {
+        test.classList.add("current");
+      }
+    }
+    if (rect.top < viewportTop || rect.top > viewportBottom) {
+      const test = document.querySelector(
+        `#nav-toc a[href*=${sections[i].id}]`
+      );
+      if (test) {
+        test.classList.remove("current");
+      }
+    }
+  }
+};
