@@ -113,15 +113,18 @@ a:focus {
     &:hover {
       @apply bg-gray-200;
     }
-  }
-  li.toctree-l1 > a {
-    @apply py-4 pl-8;
-  }
-  li.toctree-l2 > a {
-    @apply py-3 pl-10;
-  }
-  li.toctree-l3 > a {
-    @apply py-3 pl-16;
+    &.toctree-l1.current > a {
+      @apply font-medium border-l-2 border-gray-200;
+    }
+    &.toctree-l1 > a {
+      @apply py-4 pl-8;
+    }
+    &.toctree-l2 > a {
+      @apply py-3 pl-10;
+    }
+    &.toctree-l3 > a {
+      @apply py-3 pl-16;
+    }
   }
   .caption {
     @apply pl-8 pr-4 uppercase text-sm text-gray-900 font-medium tracking-widest;
