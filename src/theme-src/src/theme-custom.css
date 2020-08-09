@@ -123,7 +123,7 @@ a:focus {
       @apply py-4 pl-8;
     }
     &.toctree-l2 > a {
-      @apply py-3 pl-10;
+      @apply py-3 pl-12;
     }
     &.toctree-l3 > a {
       @apply py-3 pl-16;
@@ -165,7 +165,7 @@ a:focus {
       @apply pl-16;
     }
     li.toctree-l2 > a {
-      @apply pl-18;
+      @apply pl-20;
     }
     li.toctree-l3 > a {
       @apply pl-24;
