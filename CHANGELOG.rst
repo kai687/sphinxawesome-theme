@@ -1,6 +1,7 @@
-MASTER
+1.10.0
 ~~~~~~
 
+- feat: make navigation elements accessible by keyboard
 - feat: implement scrollspy for navigation (#70)
 - fix: remove background for non-current navigation elements (#72)
 - fix: list markers showing up in the search-results (#71)
