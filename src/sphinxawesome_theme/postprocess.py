@@ -111,14 +111,16 @@ def _add_focus_to_headings(tree: BeautifulSoup) -> None:
     """
     for heading in tree.select(
         "main h1, main h2, main h3, main h4, main h5, main h6, .admonition-title"
+        "figcaption,.code-block-caption, table caption"
     ):
-        headerlink = heading("a", class_="headerlink")[0]
-        heading_title = heading.contents[0]
-        new_link = tree.new_tag("a", href=headerlink["href"])
-        new_link.append(heading_title)
-        heading.clear()
-        heading.append(new_link)
-        heading.append(headerlink)
+        headerlink = heading.find("a", class_="headerlink")
+        caption_text = heading.find("span", class_="caption_text")
+        # figures, tables, code blocks
+        if caption_text:
+            caption_text.wrap(tree.new_tag("a", href=headerlink["href"]))
+        # hN, admonitions
+        else:
+            heading.contents[0].wrap(tree.new_tag("a", href=headerlink["href"]))
 
 
 def _divs_to_figure(tree: BeautifulSoup) -> None:
