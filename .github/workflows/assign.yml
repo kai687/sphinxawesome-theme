@@ -13,4 +13,4 @@ jobs:
         with:
           title-or-body: both
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          parameters: [{"keywords": ["bug", "broken"], "labels": ["bug"]}]
+          parameters: '[{"keywords": ["bug", "broken"], "labels": ["bug"]}]'
