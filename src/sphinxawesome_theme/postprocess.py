@@ -95,6 +95,32 @@ def _divs_to_section(tree: BeautifulSoup) -> None:
         del div["class"]
 
 
+def _add_focus_to_headings(tree: BeautifulSoup) -> None:
+    """Transform headlines so that they can receive focus.
+
+    Sphinx has a default structure of:
+    <h1>Title<a class="headerlink" href="...">#</a></h1>
+
+    What I want is:
+    <h1><a href="...">Title</a><a class="headerlink" href="...">#</a></h1>
+
+    This allows the headings to receive focus with the TAB key, as well as
+    allow logic to be applied on the headerlink '#' (click to copy).
+    Keyboard users can just use Ctrl+C on the focussed heading to achieve
+    the same goal.
+    """
+    for heading in tree.select(
+        "main h1, main h2, main h3, main h4, main h5, main h6, .admonition-title"
+    ):
+        headerlink = heading("a", class_="headerlink")[0]
+        heading_title = heading.contents[0]
+        new_link = tree.new_tag("a", href=headerlink["href"])
+        new_link.append(heading_title)
+        heading.clear()
+        heading.append(new_link)
+        heading.append(headerlink)
+
+
 def _divs_to_figure(tree: BeautifulSoup) -> None:
     """Convert ``div.figure`` to semantic ``figure`` elements.
 
@@ -112,8 +138,8 @@ def _expand_current(tree: BeautifulSoup) -> None:
     """Add the ``.expanded`` class to li.current elements."""
     for li in tree("li", class_="current"):
         li["class"] += ["expanded"]
-        for sub in li("li", class_="toctree-l2"):
-            sub["class"] += ["expanded"]
+        #  for sub in li("li", class_="toctree-l2"):
+        #  sub["class"] += ["expanded"]
 
 
 def _remove_pre_spans(tree: BeautifulSoup) -> None:
@@ -141,6 +167,7 @@ def _modify_html(html_filename: str) -> None:
     _collapsible_nav(tree)
     _wrap_literal_blocks(tree)
     _add_copy_button(tree)
+    _add_focus_to_headings(tree)
     _remove_pre_spans(tree)
 
     with open(html_filename, "w") as out_file:

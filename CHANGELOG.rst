@@ -1,3 +1,8 @@
+MASTER
+~~~~~~
+
+- feat: make headerlinks accessible by keyboard (#91)
+
 1.10.0
 ~~~~~~
 

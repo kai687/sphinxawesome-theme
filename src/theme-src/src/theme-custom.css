@@ -56,7 +56,7 @@ figure:hover .headerlink,
   @apply visible;
 }
 
-p a {
+p:not(.admonition-title) a {
   @apply text-blue-700;
 }
 
@@ -80,14 +80,10 @@ p a {
   @apply hidden;
 }
 
-.headerlink:hover:after,
 .search li a:hover,
-a:hover {
-  @apply text-pink-600;
-}
-
+a:hover,
 a:focus {
-  @apply text-pink-600 outline-none;
+  @apply text-pink-600;
 }
 
 #nav-toc {
@@ -97,9 +93,6 @@ a:focus {
   a {
     &.current {
       @apply text-pink-600;
-    }
-    &:hover {
-      @apply outline-none;
     }
   }
   li {
