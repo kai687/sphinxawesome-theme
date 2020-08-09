@@ -110,13 +110,16 @@ def _add_focus_to_headings(tree: BeautifulSoup) -> None:
     the same goal.
     """
     for heading in tree.select(
-        "main h1, main h2, main h3, main h4, main h5, main h6, .admonition-title"
+        "main h1, main h2, main h3, main h4, main h5, main h6, .admonition-title,"
         "figcaption,.code-block-caption, table caption"
     ):
         headerlink = heading.find("a", class_="headerlink")
-        caption_text = heading.find("span", class_="caption_text")
+        # make headerlinks (#) unfocussable
+        headerlink["tabindex"] = "-1"
+        caption_text = heading.find("span", class_="caption-text")
         # figures, tables, code blocks
         if caption_text:
+            print("DEBUG: ", caption_text)
             caption_text.wrap(tree.new_tag("a", href=headerlink["href"]))
         # hN, admonitions
         else:
