@@ -1,5 +1,5 @@
 ---
-name: Issue assignment
+name: "Assign issue and label"
 
 on:
   issues:
@@ -9,8 +9,8 @@ jobs:
   auto-assign:
     runs-on: ubuntu-latest
     steps:
-      - name: 'Auto-assign issue'
-        uses: pozil/auto-assign-issue@v1
+      - uses: Naturalclar/issue-action@v2.0.0
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          assignees: ${{ secrets.DEFAULT_ISSUE_ASSIGNEE }}
+          title-or-body: both
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          parameters: [{"keywords": ["bug", "broken"], "labels": ["bug"]}]
