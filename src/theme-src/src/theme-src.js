@@ -206,7 +206,7 @@ navLinks.forEach((navLink) => {
     navLink.onfocus = (e) => {
       navLink.parentElement.classList.add("expanded");
       document.querySelectorAll(".expanded").forEach((div) => {
-        if (!div.contains(e.target)) {
+        if (!div.contains(e.target) && !div.classList.contains("current")) {
           div.classList.remove("expanded");
         }
       });

@@ -26,9 +26,12 @@ def _get_html_files(outdir: str) -> List[str]:
     """Get a list of HTML files."""
     html_list = []
     for root, _dirs, files in os.walk(outdir):
-        for file in files:
-            if file.endswith(".html"):
-                html_list.append(os.path.join(root, file))
+        html_list.extend(
+            [os.path.join(root, file) for file in files if file.endswith(".html")]
+        )
+        #  for file in files:
+        #  if file.endswith(".html"):
+        #  html_list.append(os.path.join(root, file))
     return html_list
 
 
@@ -117,13 +120,13 @@ def _add_focus_to_headings(tree: BeautifulSoup) -> None:
         # make headerlinks (#) unfocussable
         headerlink["tabindex"] = "-1"
         caption_text = heading.find("span", class_="caption-text")
+        new_tag = tree.new_tag("a", href=headerlink["href"])
         # figures, tables, code blocks
         if caption_text:
-            print("DEBUG: ", caption_text)
-            caption_text.wrap(tree.new_tag("a", href=headerlink["href"]))
-        # hN, admonitions
+            caption_text.wrap(new_tag)
+        # h1-h6, admonitions
         else:
-            heading.contents[0].wrap(tree.new_tag("a", href=headerlink["href"]))
+            heading.contents[0].wrap(new_tag)
 
 
 def _divs_to_figure(tree: BeautifulSoup) -> None:
@@ -134,7 +137,7 @@ def _divs_to_figure(tree: BeautifulSoup) -> None:
     for div in tree("div", class_="figure"):
         div.name = "figure"
         div["class"].remove("figure")
-        caption = div("p", class_="caption")[0]
+        caption = div.find("p", class_="caption")
         caption.name = "figcaption"
         del caption["class"]
 
@@ -143,15 +146,11 @@ def _expand_current(tree: BeautifulSoup) -> None:
     """Add the ``.expanded`` class to li.current elements."""
     for li in tree("li", class_="current"):
         li["class"] += ["expanded"]
-        #  for sub in li("li", class_="toctree-l2"):
-        #  sub["class"] += ["expanded"]
 
 
 def _remove_pre_spans(tree: BeautifulSoup) -> None:
-    """Remove unnecessary nested ``span.pre`` elements in ``code."""
+    """Remove unnecessarily nested ``span.pre`` elements in inline ``code``."""
     for code in tree("code"):
-        # we don't need classes for inline code elements
-        del code["class"]
         for span in code("span", class_="pre"):
             span.unwrap()
 

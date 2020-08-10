@@ -1,7 +1,8 @@
-MASTER
+1.10.1
 ~~~~~~
 
 - feat: make headerlinks accessible by keyboard (#91)
+- fix: let current navigation elements stay expanded when tabbing
 
 1.10.0
 ~~~~~~
