@@ -1,3 +1,8 @@
+1.10.2
+~~~~~~
+
+- fix: non-existing image captions no longer crash HTML build (#93)
+
 1.10.1
 ~~~~~~
 
