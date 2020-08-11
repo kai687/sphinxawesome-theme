@@ -138,8 +138,9 @@ def _divs_to_figure(tree: BeautifulSoup) -> None:
         div.name = "figure"
         div["class"].remove("figure")
         caption = div.find("p", class_="caption")
-        caption.name = "figcaption"
-        del caption["class"]
+        if caption:
+            caption.name = "figcaption"
+            del caption["class"]
 
 
 def _expand_current(tree: BeautifulSoup) -> None:
