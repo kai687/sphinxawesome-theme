@@ -1,3 +1,8 @@
+1.10.4
+~~~~~~
+
+- fix: admonition ids were still problematic in LaTeX builds
+
 1.10.3
 ~~~~~~
 

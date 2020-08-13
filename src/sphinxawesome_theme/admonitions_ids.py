@@ -27,8 +27,10 @@ class AdmonitionId(SphinxPostTransform):
             if isinstance(node, nodes.section):
                 if node["names"]:
                     title = nodes.make_id(node["names"][0])
-                else:
+                elif self.document.nameids:
                     title = nodes.make_id(list(self.document.nameids)[0])
+                else:
+                    title = "unknown"
 
             if isinstance(node, nodes.Admonition):
                 node["ids"] = [f"{title}-note-{note_id}"]
