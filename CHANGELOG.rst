@@ -1,3 +1,8 @@
+1.10.3
+~~~~~~
+
+- fix: non-existing section titles no longer crash admonition_id
+
 1.10.2
 ~~~~~~
 
