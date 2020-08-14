@@ -1,3 +1,9 @@
+1.10.5
+~~~~~~
+
+- fix: python extensions run only for HTML builders (#95)
+- chore: basic unit testing
+
 1.10.4
 ~~~~~~
 

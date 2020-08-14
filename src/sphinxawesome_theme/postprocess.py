@@ -181,6 +181,9 @@ def _modify_html(html_filename: str) -> None:
 
 def post_process_html(app: Sphinx, exc: Exception) -> None:
     """Perform modifications on the built HTML."""
+    if app.builder.name not in ["html", "dirhtml"]:
+        return
+
     if exc is None:
         html_files = _get_html_files(app.outdir)
 

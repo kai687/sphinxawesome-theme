@@ -16,9 +16,11 @@ logger = logging.getLogger(__name__)
 
 
 class AdmonitionId(SphinxPostTransform):
-    """traverse all admonition nodes and add IDs."""
+    """Traverse all admonition nodes and add IDs."""
 
     default_priority = 10
+    # this postransform should only be applied for the HTML builders
+    builders = ("html", "dirhtml")
 
     def run(self, **kwargs: Any) -> None:
         """Run the AdmonitionID posttransform."""

@@ -23,8 +23,8 @@ install the theme directly from Github:
 
    $ pip install git+https://github.com/kai687/sphinxawesome-theme.git
 
-Check the CHANGELOG_ for any features under the section "MASTER".
-Those are available in the development version,
+Check the "MASTER" section in the CHANGELOG_ file.
+These features are available in the development version,
 but not yet in the released version.
 
 .. _CHANGELOG: https://github.com/kai687/sphinxawesome-theme/blob/master/CHANGELOG.rst

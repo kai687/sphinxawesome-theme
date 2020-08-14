@@ -6,14 +6,8 @@ from typing import Any
 import nox
 from nox.sessions import Session
 
-nox.options.sessions = ["docs", "lint", "black", "mypy", "netlify_test"]
-
-python_files = [
-    "src/sphinxawesome_theme/__init__.py",
-    "src/sphinxawesome_theme/html_translator.py",
-    "noxfile.py",
-    "docs/conf.py",
-]
+nox.options.sessions = ["docs", "lint", "black", "mypy", "netlify_test", "tests"]
+python_files = ["src/sphinxawesome_theme", "noxfile.py", "tests", "docs/conf.py"]
 python_versions = ["3.6", "3.7", "3.8"]
 
 
@@ -47,11 +41,6 @@ def docs(session: Session) -> None:
     args = session.posargs or ["-b", "dirhtml", "-aWTE", "docs", "docs/public"]
     session.run("poetry", "install", "--no-dev", external=True)
     session.run("sphinx-build", *args)
-
-
-def serve(session: Session) -> None:
-    """Serve the docs."""
-    session.run("python", "-m", "http.server", "--dir", "docs/public")
 
 
 @nox.session(python="3.7")

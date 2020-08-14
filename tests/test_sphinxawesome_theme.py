@@ -20,3 +20,12 @@ def test_can_access_and_compile_test(rootdir: Path, app: Sphinx) -> None:
     app.builder.build_all()
     assert app.outdir.exists()
     assert not os.listdir(app.outdir)
+
+
+@pytest.mark.sphinx("dummy", confoverrides={"extensions": ["sphinxawesome_theme"]})
+def test_dummy_compiles_with_extension(app: Sphinx) -> None:
+    """It compiles with enabling the extension."""
+    app.builder.build_all()
+
+    assert app.outdir.exists()
+    assert not os.listdir(app.outdir)
