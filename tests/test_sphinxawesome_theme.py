@@ -11,7 +11,7 @@ from sphinxawesome_theme import __version__
 
 def test_returns_version() -> None:
     """It has the correct version."""
-    assert __version__ == "1.10.4"
+    assert __version__ == "1.10.5"
 
 
 @pytest.mark.sphinx("dummy")
