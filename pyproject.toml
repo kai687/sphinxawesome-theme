@@ -35,6 +35,19 @@ flake8-docstrings = "^1.5.0"
 flake8-import-order = "^0.18.1"
 black = "^19.10b0"
 pre-commit = "^2.5.1"
+pytest = "^6.0"
+pytest-cov = "^1.24"
+coverage = { extras = ["toml"], version = "^5.2" }
+
+[tool.coverage.paths]
+source = ["src"]
+
+[tool.coverage.run]
+branch = true
+source = ["sphinxawesome_theme"]
+
+[tool.coverage.report]
+show_missing = true
 
 [tool.poetry.plugins."sphinx.html_themes"]
 "sphinxawesome_theme" = "sphinxawesome_theme"

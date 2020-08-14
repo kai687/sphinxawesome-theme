@@ -6,3 +6,4 @@ pip-wheel-metadata/
 sphinxawesome_theme.egg-info
 docs/public
 .nox
+.coverage

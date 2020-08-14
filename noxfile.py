@@ -33,6 +33,15 @@ def install_constrained_version(session: Session, *args: str, **kwargs: Any) -> 
 
 
 @nox.session(python=python_versions)
+def tests(session: Session) -> None:
+    """Run unit tests."""
+    args = session.posargs or ["--cov"]
+    session.run("poetry", "install", "--no-dev", external=True)
+    install_constrained_version(session, "coverage[toml]", "pytest", "pytest-cov")
+    session.run("pytest", *args)
+
+
+@nox.session(python=python_versions)
 def docs(session: Session) -> None:
     """Build the docs."""
     args = session.posargs or ["-b", "dirhtml", "-aWTE", "docs", "docs/public"]
