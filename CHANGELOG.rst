@@ -1,3 +1,8 @@
+MASTER
+~~~~~~
+
+- fix: table caption number style (#96)
+
 1.10.5
 ~~~~~~
 

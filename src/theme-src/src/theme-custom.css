@@ -352,15 +352,17 @@ table:not(.highlighttable) {
   }
 }
 
+/* both for table and figure caption numbers */
+.caption-number {
+  @apply font-medium tracking-wide;
+}
+
 /* **************************
  * FIGURES
  * **************************/
 
 figure {
   @apply my-12;
-  .caption-number {
-    @apply font-medium tracking-wide;
-  }
   .legend {
     @apply text-sm text-gray-800 italic ml-4;
     p:first-child {
