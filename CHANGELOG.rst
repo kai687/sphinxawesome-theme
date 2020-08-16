@@ -2,6 +2,7 @@ MASTER
 ~~~~~~
 
 - fix: table caption number style (#96)
+- fix: iOS nav menu close button fix (#65)
 
 1.10.5
 ~~~~~~
