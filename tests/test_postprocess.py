@@ -169,7 +169,7 @@ def test_postprocess_html(app: Sphinx) -> None:
 def test_dont_postprocess_xml(app: Sphinx) -> None:
     """It skips the XML builder."""
     app.builder.build_all()
-    postprocess.post_process_html(app)
+    postprocess.post_process_html(app, None)
     assert app.builder.name == "xml"
     # not sure how I can properly test this branch
     assert (app.outdir / "index.xml").exists()

@@ -12,7 +12,7 @@
 """
 
 import os
-from typing import List
+from typing import List, Optional
 
 from bs4 import BeautifulSoup
 from sphinx.application import Sphinx
@@ -176,7 +176,7 @@ def _modify_html(html_filename: str) -> None:
         out_file.write(str(tree))
 
 
-def post_process_html(app: Sphinx, exc: Exception) -> None:
+def post_process_html(app: Sphinx, exc: Optional[Exception]) -> None:
     """Perform modifications on the built HTML."""
     if app.builder.name not in ["html", "dirhtml"]:
         return
