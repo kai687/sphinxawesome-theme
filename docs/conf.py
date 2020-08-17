@@ -27,6 +27,7 @@ copyright = f"{year}, {author}."
 
 extensions = [
     "sphinx.ext.autosectionlabel",
+    "sphinx.ext.autodoc",
     "sphinxawesome_theme",
 ]
 
