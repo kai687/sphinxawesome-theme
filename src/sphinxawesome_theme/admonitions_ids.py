@@ -26,12 +26,11 @@ class AdmonitionId(SphinxPostTransform):
     def run(self, **kwargs: Any) -> None:
         """Run the AdmonitionID posttransform."""
         note_id = 1
+        title = "undefined"
         for node in self.document.traverse():
             if isinstance(node, nodes.section):
                 if node["names"]:
                     title = nodes.make_id(node["names"][0])
-                else:
-                    title = "unknown"
 
             # <desc> nodes are also admonitions for some reason
             if isinstance(node, nodes.Admonition) and not isinstance(node, desc):

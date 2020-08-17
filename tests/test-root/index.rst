@@ -14,3 +14,8 @@ Test Section
 .. option:: -t
 
    Test the admonition ID on an option
+
+.. code-block:: python
+   :caption: "Test block."
+
+   print("Hello World!")

@@ -8,6 +8,11 @@ from sphinx.application import Sphinx
 from sphinxawesome_theme import postprocess
 
 
+def parse_html(html: str) -> BeautifulSoup:
+    """Take a HTML as string and return a BeautifulSoup tree."""
+    return BeautifulSoup(html, "html.parser")
+
+
 @pytest.mark.sphinx("html")
 def test_get_filelist(app: Sphinx) -> None:
     """It gets the correct number of HTML files."""
@@ -19,9 +24,7 @@ def test_get_filelist(app: Sphinx) -> None:
 
 def test_wrap_literal_block() -> None:
     """It wraps pre.literal-blocks."""
-    html = "<pre class='literal-block'>Code</pre>"
-
-    tree = BeautifulSoup(html, "html.parser")
+    tree = parse_html("<pre class='literal-block'>Code</pre>")
     postprocess._wrap_literal_blocks(tree)
     pre = tree("pre")
     assert len(pre) == 1
@@ -31,9 +34,7 @@ def test_wrap_literal_block() -> None:
 
 def test_add_copy_button() -> None:
     """It adds a button to a div.highlight element."""
-    html = "<div class='highlight'>Code</div>"
-
-    tree = BeautifulSoup(html, "html.parser")
+    tree = parse_html("<div class='highlight'>Code</div>")
     postprocess._add_copy_button(tree)
 
     btn = tree("button")
@@ -59,7 +60,7 @@ def test_collapsible_nav() -> None:
             </nav>
     """
 
-    tree = BeautifulSoup(html, "html.parser")
+    tree = parse_html(html)
     postprocess._collapsible_nav(tree)
 
     spans = tree("span")
@@ -67,3 +68,110 @@ def test_collapsible_nav() -> None:
     assert spans[0]["class"] == ["expand"]
     assert spans[0].string == "\u25be"
     assert spans[0].previous_sibling.string == "Link 1"
+
+
+def test_div_to_section() -> None:
+    """It converts div.section to section."""
+    tree = parse_html("<div class='section'>Something</div>")
+    postprocess._divs_to_section(tree)
+    divs = tree("div")
+    assert len(divs) == 0
+    sections = tree("section")
+    assert len(sections) == 1
+    assert not sections[0].has_attr("class")
+
+
+def test_headerlinks() -> None:
+    """It converts the headerlinks properly."""
+    tree = parse_html(
+        "<main><h1>Title <a href='#' class='headerlink'>#</a></h1></main>"
+    )
+    postprocess._add_focus_to_headings(tree)
+    children = list(tree.h1.children)
+    assert len(children) == 2
+    for ch in children:
+        assert ch.name == "a"
+
+    headerlinks = tree("a", class_="headerlink")
+    assert len(headerlinks) == 1
+    assert headerlinks[0]["tabindex"] == "-1"
+
+
+def test_headerlink_captions() -> None:
+    """It converts headerlinks also in captions."""
+    tree = parse_html(
+        "<table><caption><span class='caption-text'>Caption</span>"
+        "<a href='#' class='headerlink'>#</a></caption></table"
+    )
+    postprocess._add_focus_to_headings(tree)
+    children = list(tree.table.caption.children)
+    assert len(children) == 2
+    assert tree.table.caption.a.span
+
+
+def test_div_to_fig() -> None:
+    """It converts a div.figure into figure element and p.caption into figcaption."""
+    tree = parse_html("<div class='figure'><p class='caption'>Caption</p></div>")
+    postprocess._divs_to_figure(tree)
+    assert not tree("div")
+    assert not tree("p")
+    assert tree("figure")
+    assert tree("figcaption")
+
+
+def test_div_to_fig_no_caption() -> None:
+    """It converts a div.figure without caption into figure."""
+    tree = parse_html("<div class='figure'>image</div>")
+    postprocess._divs_to_figure(tree)
+    assert not tree("div")
+    assert tree("figure")
+    assert tree.figure.string == "image"
+
+
+def test_expand_current() -> None:
+    """It adds a class to a li.current but not other li."""
+    tree = parse_html("<li class='current'>current</li>")
+    postprocess._expand_current(tree)
+    assert "expanded" in tree.li["class"]
+
+    tree = parse_html("<li>No current</li>")
+    postprocess._expand_current(tree)
+    assert not tree.li.has_attr("class")
+
+
+def test_remove_pre_spans() -> None:
+    """It removes unneeded span.pre elements inside inline code."""
+    tree = parse_html("<code><span class='pre'>code</span></code>")
+    postprocess._remove_pre_spans(tree)
+    assert not tree("span")
+    assert len(list(tree.code.children)) == 1
+    assert tree.code.string == "code"
+
+
+@pytest.mark.sphinx("html", confoverrides={"html_theme": "sphinxawesome_theme"})
+def test_modify_html(app: Sphinx) -> None:
+    """It performs all transforms."""
+    app.builder.build_all()
+    postprocess._modify_html(app.outdir / "index.html")
+
+    assert (app.outdir / "index.html").exists()
+
+
+@pytest.mark.sphinx("html", confoverrides={"html_theme": "sphinxawesome_theme"})
+def test_postprocess_html(app: Sphinx) -> None:
+    """It performs all transforms."""
+    app.builder.build_all()
+    postprocess.post_process_html(app, None)
+    assert (app.outdir / "index.html").exists()
+
+
+@pytest.mark.sphinx("xml", confoverrides={"html_theme": "sphinxawesome_theme"})
+def test_dont_postprocess_xml(app: Sphinx) -> None:
+    """It skips the XML builder."""
+    app.builder.build_all()
+    postprocess.post_process_html(app, None)
+    assert app.builder.name == "xml"
+    # not sure how I can properly test this branch
+    assert (app.outdir / "index.xml").exists()
+
+    postprocess.post_process_html(app, Exception())
