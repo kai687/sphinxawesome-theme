@@ -52,6 +52,7 @@ h3:hover .headerlink,
 table:hover .headerlink,
 .admonition-title:hover .headerlink,
 figure:hover .headerlink,
+dt:hover .headerlink,
 .literal-block-wrapper:hover .headerlink {
   @apply visible;
 }
@@ -294,6 +295,22 @@ button.copy {
   }
   & > svg {
     @apply h-4 w-4 fill-current;
+  }
+}
+
+/* autodocs */
+dl.py {
+  dt {
+    @apply bg-gray-900 rounded p-2 my-4 text-white;
+    & > code {
+      @apply bg-transparent p-0;
+      &.descname {
+        @apply text-base font-bold tracking-wide;
+      }
+    }
+  }
+  em.property {
+    @apply text-sm text-gray-100;
   }
 }
 
