@@ -18,7 +18,7 @@ requests==2.24.0
 six==1.15.0
 snowballstemmer==2.0.0
 soupsieve==1.9.6
-sphinx==3.2.0
+sphinx==3.2.1
 sphinxawesome-sampdirective==1.0.3
 sphinxcontrib-applehelp==1.0.2
 sphinxcontrib-devhelp==1.0.2
