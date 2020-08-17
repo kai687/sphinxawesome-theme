@@ -9,6 +9,7 @@ So that admonitions also can have permalinks.
 from typing import Any
 
 from docutils import nodes
+from sphinx.addnodes import desc
 from sphinx.transforms.post_transforms import SphinxPostTransform
 from sphinx.util import logging
 
@@ -29,11 +30,10 @@ class AdmonitionId(SphinxPostTransform):
             if isinstance(node, nodes.section):
                 if node["names"]:
                     title = nodes.make_id(node["names"][0])
-                elif self.document.nameids:
-                    title = nodes.make_id(list(self.document.nameids)[0])
                 else:
                     title = "unknown"
 
-            if isinstance(node, nodes.Admonition):
+            # <desc> nodes are also admonitions for some reason
+            if isinstance(node, nodes.Admonition) and not isinstance(node, desc):
                 node["ids"] = [f"{title}-note-{note_id}"]
                 note_id += 1

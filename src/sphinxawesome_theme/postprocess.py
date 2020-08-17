@@ -29,9 +29,6 @@ def _get_html_files(outdir: str) -> List[str]:
         html_list.extend(
             [os.path.join(root, file) for file in files if file.endswith(".html")]
         )
-        #  for file in files:
-        #  if file.endswith(".html"):
-        #  html_list.append(os.path.join(root, file))
     return html_list
 
 
