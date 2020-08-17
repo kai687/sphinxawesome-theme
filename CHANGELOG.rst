@@ -1,8 +1,9 @@
-MASTER
+1.11.0
 ~~~~~~
 
 - fix: table caption number style (#96)
 - fix: iOS nav menu close button fix (#65)
+- feat: improve autodoc styling (#39)
 - docs: add autodoc example
 
 1.10.5
