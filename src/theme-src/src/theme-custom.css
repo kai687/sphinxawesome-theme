@@ -301,16 +301,21 @@ button.copy {
 /* autodocs */
 dl.py {
   dt {
-    @apply bg-gray-900 rounded p-2 my-4 text-white;
+    @apply bg-gray-100 rounded p-2 my-4 text-black;
     & > code {
       @apply bg-transparent p-0;
       &.descname {
-        @apply text-base font-bold tracking-wide;
+        @apply text-base tracking-tight pr-px;
       }
     }
   }
-  em.property {
-    @apply text-sm text-gray-100;
+  em {
+    &.property {
+      @apply text-sm text-purple-900;
+    }
+    &.sig-param {
+      @apply text-purple-900;
+    }
   }
 }
 
