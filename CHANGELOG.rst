@@ -1,3 +1,10 @@
+MASTER
+~~~~~~
+
+- fix: better autodoc styling
+- feat: add command line option styles
+
+
 1.11.0
 ~~~~~~
 

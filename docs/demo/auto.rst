@@ -24,3 +24,20 @@ Autofunction example
 --------------------
 
 .. autofunction:: docutils.nodes.serial_escape
+
+
+--------------------
+Command line options
+--------------------
+
+.. option:: --help
+
+   Display a (hopefully) useful message.
+
+.. option:: -i FILE, --input FILE
+
+   Specify an input file.
+
+.. option:: -v, --verbose
+
+   Increase the verbosity.

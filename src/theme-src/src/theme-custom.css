@@ -301,7 +301,7 @@ button.copy {
 /* autodocs */
 dl.py {
   dt {
-    @apply bg-gray-100 rounded p-2 my-4 text-black;
+    @apply bg-gray-200 rounded p-2 my-4 text-black;
     & > code {
       @apply bg-transparent p-0;
       &.descname {
@@ -315,6 +315,18 @@ dl.py {
     }
     &.sig-param {
       @apply text-purple-900;
+    }
+  }
+}
+
+dl.option {
+  dt {
+    @apply bg-gray-200 rounded inline-block;
+    & > code {
+      @apply bg-transparent;
+    }
+    .sig-prename {
+      @apply italic text-purple-700;
     }
   }
 }
