@@ -202,16 +202,18 @@ document.querySelectorAll(".expand").forEach((span) => {
 // expand NAV when tab focus is received on link
 const navLinks = document.querySelectorAll("#nav-toc a");
 navLinks.forEach((navLink) => {
-  if (navLink.nextElementSibling) {
-    navLink.onfocus = (e) => {
-      navLink.parentElement.classList.add("expanded");
-      document.querySelectorAll(".expanded").forEach((div) => {
-        if (!div.contains(e.target) && !div.classList.contains("current")) {
-          div.classList.remove("expanded");
+  navLink.onfocus = (e) => {
+    document.querySelectorAll(".expand").forEach((span) => {
+      const li = span.parentElement;
+      if (li.contains(e.target)) {
+        li.classList.add("expanded");
+      } else {
+        if (!li.classList.contains("current")) {
+          li.classList.remove("expanded");
         }
-      });
-    };
-  }
+      }
+    });
+  };
 });
 
 // Mark sections, that are visible in the browser window also as
