@@ -26,5 +26,5 @@ def test_permalinks(app: Sphinx) -> None:
     )
     assert headerlinks[1]["title"] == "Copy link to section: Test Section."
     assert headerlinks[2]["title"] == "Copy link to this note."
-    assert headerlinks[3]["title"] == "Permalink to this definition"
+    assert headerlinks[3]["title"] == "Copy link to this definition."
     assert headerlinks[4]["title"] == "Copy link to this code block."

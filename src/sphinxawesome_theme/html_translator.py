@@ -82,3 +82,15 @@ class BetterHTMLTranslator(HTML5Translator):
             self.body.append("</div>\n")
         else:
             self.body.append("</p>\n")
+
+    def depart_desc_signature(self, node: Element) -> None:
+        """Override permalink stuff."""
+        if not node.get("is_multiline"):
+            self.add_permalink_ref(node, _("Copy link to this definition."))
+        self.body.append("</dt>\n")
+
+    def depart_desc_signature_line(self, node: Element) -> None:
+        """Override permalink stuff."""
+        if node.get("add_permalink"):
+            self.add_permalink_ref(node.parent, _("Copy link to this definition."))
+        self.body.append("<br />")
