@@ -1,3 +1,5 @@
+How to use the theme
+====================
 
 .. include:: ../../README.rst
    :start-after: use-start
