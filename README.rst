@@ -28,19 +28,24 @@ The theme includes several usability improvements:
 .. features-start
 
 Copy code blocks
-    Code blocks have a **Copy** button, that allows you to copy code snippets to the
+    Code blocks have a **Copy** button, allowing you to copy code snippets to the
     clipboard.
-
-Improved links after section titles and captions ("permalinks")
-    Clicking on the ``#`` character that appears when hovering over headlines and
-    captions copies that link to the clipboard. The tooltips for links after headlines
-    also show the section title, instead of the generic "Permalink to this headline".
-    Admonitions also include a link for easy referencing.
 
 New directive for highlighting placeholder variables
     The theme supports a new directive ``samp``, which is the equivalent of the
     built-in ``:samp:`` interpreted text role. This allows you to highlight placeholder
     variables in code blocks.
+
+Improved user experience
+    A lot of small features make the theme more usable. To name a few:
+
+    - You can tab through headlines and captions enabling easy navigation with the
+      keyboard.
+    - You can link to admonitions. Their titles have the same “permalink” mechanism as
+      headlines and captions.
+    - Clicking on the ``#`` icon for permalinks copies the link to the clipboard.
+    - Collapsible navigation menu: All elements are reachable from all pages.
+    - Keyboard shortcut for the search input: ``/``.
 
 .. features-end
 
@@ -77,5 +82,5 @@ To use the theme, set ``html_theme`` in the Sphinx configuration file
 
 .. use-end
 
-Read the full `usage guide
+Read the full `usage information
 <https://sphinxawesome.xyz/docs/use.html#how-to-use-the-theme>`_ for more information.

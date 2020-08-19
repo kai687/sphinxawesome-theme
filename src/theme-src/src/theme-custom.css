@@ -215,6 +215,11 @@ a:focus {
   }
 }
 
+.footnote-reference {
+  vertical-align: super;
+  @apply text-sm -ml-1;
+}
+
 /* **************************
  * CODE
  * **************************/
@@ -358,6 +363,24 @@ dd {
   }
 }
 
+dl.footnote {
+  @apply flex items-start text-sm border-t pt-4;
+  dt {
+    @apply text-blue-700;
+  }
+  dd > p:first-child {
+    @apply mt-0;
+  }
+  span.brackets {
+    &:before {
+      content: "[";
+    }
+    &:after {
+      content: "]";
+    }
+  }
+}
+
 /* **************************
  * TABLES
  * **************************/
@@ -423,6 +446,15 @@ figcaption {
   }
   .headerlink {
     @apply text-blue-900;
+  }
+}
+
+.seealso {
+  ul {
+    p {
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+    }
   }
 }
 

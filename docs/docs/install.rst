@@ -33,25 +33,23 @@ Installing the theme locally
 ----------------------------
 
 If you want to modify the theme,
-`fork the repository
-<https://help.github.com/en/github/getting-started-with-github/fork-a-repo>`_
+`fork the repository`_ [#]_
 and clone it into a directory accessible to your Sphinx project,
 for example :dir:`./_themes`.
+
+.. _fork the repository: https://help.github.com/en/github/getting-started-with-github/fork-a-repo
 
 .. samp::
 
    $ cd _themes/
    $ git clone https://github.com/{YOUR_GITHUB_USERNAME}/sphinxawesome-theme.git
 
-Replace :samp:`{YOUR_GITHUB_USERNAME}` with your user name on Github.
-To use this local copy of the theme,
-follow the steps described in
-:ref:`How to use a local version of the theme`.
+Replace :samp:`{YOUR_GITHUB_USERNAME}` with your Github user name.
 
-To modify the theme,
-follow the steps in :ref:`How to modify the theme`.
+.. seealso::
 
-.. note::
+   - :ref:`How to use a local version of the theme`
+   - :ref:`How to modify the theme`
 
-   If you don't want to merge your modifications with the main repository,
-   you don't need to fork the repository.
+.. [#] You only need to fork the repository if you want to merge your modifications with
+       the main repository.

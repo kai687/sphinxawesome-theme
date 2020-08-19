@@ -9,6 +9,7 @@ from docutils import nodes
 from docutils.nodes import Node, system_message
 from sphinx.application import Sphinx
 from sphinx.roles import EmphasizedLiteral
+from sphinx.util.docfields import Field
 
 year = datetime.datetime.now().year
 
@@ -74,3 +75,17 @@ def setup(app: Sphinx) -> None:
     when saying :file:`directory/`.
     """
     app.add_role("dir", DirRole())
+    app.add_object_type(
+        "confval",
+        "confval",
+        objname="configuration parameter",
+        doc_field_types=[
+            Field(
+                "default",
+                label="default",
+                has_arg=True,
+                names=("default",),
+                bodyrolename="class",
+            )
+        ],
+    )
