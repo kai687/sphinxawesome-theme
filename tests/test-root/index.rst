@@ -19,3 +19,12 @@ Test Section
    :caption: "Test block."
 
    print("Hello World!")
+
+.. table:: Table
+
+   ===  ===
+   A    B
+   ===  ===
+   1    2
+   3    4
+   ===  ===
