@@ -493,7 +493,7 @@ description = "A framework for managing and maintaining multi-language pre-commi
 name = "pre-commit"
 optional = false
 python-versions = ">=3.6.1"
-version = "2.6.0"
+version = "2.7.0"
 
 [package.dependencies]
 cfgv = ">=2.0.0"
@@ -617,7 +617,7 @@ category = "dev"
 description = "YAML parser and emitter for Python"
 name = "pyyaml"
 optional = false
-python-versions = "*"
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 version = "5.3.1"
 
 [[package]]
@@ -888,7 +888,7 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["jaraco.itertools", "func-timeout"]
 
 [metadata]
-content-hash = "8542a9f773e4a500e7a1ae84342fb0c0a2e2e44875e7d420634d1470e6caade3"
+content-hash = "de292a8fb594cbe656ad0f9e7b68f019e9030735f48128d1c3a29b8c647b3505"
 python-versions = ">=3.6.1,<4.0.0"
 
 [metadata.files]
@@ -1142,8 +1142,8 @@ pluggy = [
     {file = "pluggy-0.13.1.tar.gz", hash = "sha256:15b2acde666561e1298d71b523007ed7364de07029219b604cf808bfa1c765b0"},
 ]
 pre-commit = [
-    {file = "pre_commit-2.6.0-py2.py3-none-any.whl", hash = "sha256:e8b1315c585052e729ab7e99dcca5698266bedce9067d21dc909c23e3ceed626"},
-    {file = "pre_commit-2.6.0.tar.gz", hash = "sha256:1657663fdd63a321a4a739915d7d03baedd555b25054449090f97bb0cb30a915"},
+    {file = "pre_commit-2.7.0-py2.py3-none-any.whl", hash = "sha256:7bece167a451a9e43f225f80083b101c5d5811bbc387246bd00f8a41fd5e9c85"},
+    {file = "pre_commit-2.7.0.tar.gz", hash = "sha256:8b1cecd60b7c366c8ca3b37e67c165a1b59cfa913e9b42d390709585ece5af83"},
 ]
 py = [
     {file = "py-1.9.0-py2.py3-none-any.whl", hash = "sha256:366389d1db726cd2fcfc79732e75410e5fe4d31db13692115529d34069a043c2"},
