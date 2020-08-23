@@ -364,9 +364,9 @@ dd {
 }
 
 dl.footnote {
-  @apply flex items-start text-sm border-t pt-4;
+  @apply text-sm border-t pt-4;
   dt {
-    @apply text-blue-700;
+    @apply float-left text-blue-700;
   }
   dd > p:first-child {
     @apply mt-0;
