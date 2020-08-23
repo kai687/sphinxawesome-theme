@@ -172,23 +172,7 @@ a:focus {
 
 .toctree-wrapper,
 .contents.local {
-  /* This was meant to include a headline for the ``toctree`` directive if :hidden: is
-   * not specified. Unfortunately, with :hidden:, "Contents" appears, because the <div>
-   * contains a whitespace. It's not truly empty. On the other hand, CSS4's new :empty
-   * spec (that would also consider whitespace as empty) is not supported by any
-   * browser. I'll leave this in here for now in case I find a better solution. */
-  /* &::before {
-    content: "Contents";
-    @apply text-xl text-gray-800 font-medium leading-snug mb-6 mt-8;
-  }
-  &:empty {
-    &::before {
-      content: none;
-    }
-  }
-  & + &::before {
-    content: none;
-  } */
+  @apply mt-12;
   .caption {
     @apply uppercase text-sm text-gray-700 tracking-widest;
   }
@@ -341,10 +325,16 @@ dl.option {
  * **************************/
 ol {
   @apply list-decimal ml-4;
+  ol {
+    @apply list-latin;
+  }
 }
 
 section:not(#search-results) ul {
   @apply list-disc ml-4;
+  ul {
+    @apply list-square;
+  }
 }
 
 ol > li,

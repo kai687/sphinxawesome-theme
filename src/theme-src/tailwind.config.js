@@ -8,6 +8,13 @@ module.exports = {
       body: ["Roboto", "sans-serif"],
       mono: ["Roboto\\ Mono", "monospace"],
     },
+    listStyleType: {
+      none: "none",
+      disc: "disc",
+      decimal: "decimal",
+      square: "square",
+      latin: "lower-latin",
+    },
     extend: {
       screens: {
         print: { raw: "print" },
