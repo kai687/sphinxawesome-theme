@@ -28,7 +28,7 @@ The sphinx awesome theme relies on the following external assets.
 
 .. vale off
 
-The icons have been copied and included as SVG directly in the HTML templates.
+The icons are copied and included as SVG directly in the HTML templates.
 The Roboto fonts are bundled in the theme's static directory.
 
 .. vale on
@@ -41,8 +41,8 @@ How does it work?
 Sphinx themes are a collection of Jinja2_ templates for the HTML, CSS styles and
 additional JavaScript files.
 The traditional way to style a theme is to write conventional CSS.
-After that, all that needs to be done to use the theme
-is to put files in the right place for Sphinx.
+After that, you just need to put the files in a place that Sphinx can find
+in order to use the theme.
 
 .. vale off
 
@@ -68,7 +68,7 @@ Enter Webpack_.
 The theme is built using ``webpack`` which is executed as an ``npm`` (or yarn) script.
 The entry point is :file:`theme-src/src/theme-src.js`.
 This file includes all JavaScript functions
-and it imports all dependencies,
+and imports all dependencies,
 such as the fonts and the CSS.
 
 The Webpack configuration :file:`theme-src/webpack.config.js` instructs webpack
@@ -100,3 +100,22 @@ Finally, the CSS will also be *minified*.
 .. _Webpack: https://webpack.js.org
 .. _PurgeCSS: https://purgecss.com
 .. _PostCSS: https://postcss.org
+
+
+------------------------------
+Package and project management
+------------------------------
+
+The project is distributed as a Python package. Three tools are vital in order to achieve this:
+
+- `Poetry <https://python-poetry.org/>`_
+- `Nox <https://nox.thea.codes/en/stable/>`_
+- `pre-commit <https://https://pre-commit.com/>`_
+
+Poetry is a Python package manager, that uses a :file:`pyproject.toml` file to declare
+all the project's dependencies, and is used to build the package and upload it to PyPI.
+
+Nox is an automation tool that is used to perform various tests and checks, as well as
+building the documentation.
+
+Pre-commit is a tool, that runs configurable checks on every ``git commit``.

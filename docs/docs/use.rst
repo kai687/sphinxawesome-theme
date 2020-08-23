@@ -82,7 +82,7 @@ How to use a local version of the theme
 ---------------------------------------
 
 If you didn't install the theme as a Python package,
-but :ref:`installed it locally <Installing the theme locally>`,
+but installed it locally Installing the theme locally,
 place it inside a directory
 :dir:`_ext`, or :dir:`_themes`
 to keep the project tidy.
@@ -97,7 +97,7 @@ For example, if you have a project structure like this:
    └_themes/
 
 Change to the :dir:`_themes` directory and
-:ref:`clone the repository <Installing the theme locally>`.
+clone the repository Installing the theme locally.
 
 Next, add this directory to the Sphinx configuration in :file:`conf.py`::
 
