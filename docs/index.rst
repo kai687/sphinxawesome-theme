@@ -21,10 +21,10 @@ to use the theme>`, or :ref:`modify <How to modify the theme>` the theme. If you
 to see which styles are available, see the pages in the *demo* section.
 
 The Sphinx awesome theme is available under the open source MIT license. The source code
-is hosted on Github_.
+is hosted on GitHub_.
 
 .. _Sphinx: https://www.sphinx-doc.org
-.. _Github: https://github.com/kai687/sphinxawesome-theme
+.. _GitHub: https://github.com/kai687/sphinxawesome-theme
 
 .. admonition:: What's a theme?
 

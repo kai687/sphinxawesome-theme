@@ -17,7 +17,7 @@ Installing a development version
 --------------------------------
 
 If you want to try the latest features,
-install the theme directly from Github:
+install the theme directly from GitHub:
 
 .. code-block:: console
 
@@ -44,7 +44,7 @@ for example :dir:`./_themes`.
    $ cd _themes/
    $ git clone https://github.com/{YOUR_GITHUB_USERNAME}/sphinxawesome-theme.git
 
-Replace :samp:`{YOUR_GITHUB_USERNAME}` with your Github user name.
+Replace :samp:`{YOUR_GITHUB_USERNAME}` with your GitHub user name.
 
 .. seealso::
 
