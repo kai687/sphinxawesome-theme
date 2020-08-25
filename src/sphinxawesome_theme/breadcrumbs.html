@@ -3,7 +3,7 @@
 -#}
 
 {%- set separator -%}
-<span class="text-gray-700">{{ theme_breadcrumbs_separator|default('/') }}&nbsp;</span>
+<span class="text-gray-700 mr-1">{{ theme_breadcrumbs_separator|default('/') }}</span>
 {%- endset -%}
 
 <nav role="navigation"
@@ -13,7 +13,7 @@
   {{ separator }}
   {%- for doc in parents -%}
     <a class="text-blue-700" href="{{ doc.link|e }}">{{ doc.title }}</a>
-    &nbsp;{{ separator }}
+    {{ separator }}
   {%- endfor -%}
   <span aria-current="page">{{ title }}</span>
 </nav>
