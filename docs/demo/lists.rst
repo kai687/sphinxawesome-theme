@@ -14,6 +14,11 @@ Choose an unordered, or bulleted, list, when the order of items don't matter.
 
 - item a
 - item b
+
+  - subitem a
+  - subitem b
+  - subitem c
+
 - item c
 
 -------------
@@ -29,6 +34,11 @@ and so on.
 
 #. Step 1
 #. Step 2
+
+   #. Substep 1
+   #. Substep 2
+   #. Substep 3
+
 #. Step 3
 
 ----------------

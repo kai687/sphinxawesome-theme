@@ -1,8 +1,9 @@
 """Add ids to all admonition nodes.
 
-So that admonitions also can have permalinks.
+This allows admonitions, such as notes, warnings, etc.
+to also be linked to.
 
-:copyright: Copyright 2020, Kai Welke.
+:copyright: Copyright Kai Welke.
 :license: MIT, see LICENSE.
 """
 
@@ -17,14 +18,25 @@ logger = logging.getLogger(__name__)
 
 
 class AdmonitionId(SphinxPostTransform):
-    """Traverse all admonition nodes and add IDs."""
+    """Add IDs to admonition nodes.
+
+    This SphinxPostTransform is executed for "html"
+    and "dirhtml" builders, so that permalinks
+    can be added to the node titles.
+    """
 
     default_priority = 10
     # this postransform should only be applied for the HTML builders
     builders = ("html", "dirhtml")
 
     def run(self, **kwargs: Any) -> None:
-        """Run the AdmonitionID posttransform."""
+        """Run the post-transform.
+
+        Iterate over all nodes. If the node is a ``section`` node,
+        obtain the title from the names field.
+        If the node is an admonition (but not a ``desc`` node),
+        assign an ID of the form ``<sectiontitle>-note-<#>``.
+        """
         note_id = 1
         title = "undefined"
         for node in self.document.traverse():

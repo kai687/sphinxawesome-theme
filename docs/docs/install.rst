@@ -2,7 +2,7 @@ How to install the theme
 ========================
 
 Depending on the use case,
-there are multiple different ways
+there are several ways
 to install the Sphinx awesome theme.
 Most users should install the theme as a Python package.
 If you want to modify the theme,

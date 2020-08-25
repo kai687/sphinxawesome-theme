@@ -156,9 +156,20 @@ def _remove_pre_spans(tree: BeautifulSoup) -> None:
 def _modify_html(html_filename: str) -> None:
     """Modify a single HTML document.
 
-    - Parse the HTML document into a tree
-    - Perform the modifications on the tree in place
-    - Write out the tree as new HTML document (with the same filename)
+    The HTML document is parsed into a BeautifulSoup tree.
+    Then, the following operations are performed on the tree.
+
+    - divs to sections
+    - divs to figures
+    - expand current
+    - collapsible navs
+    - wrap literal blocks
+    - add copy button
+    - add focus to headings
+    - remove pre spans
+
+    After these modifications, the HTML is written into a file,
+    overwriting the original file.
     """
     with open(html_filename) as html:
         tree = BeautifulSoup(html, "html.parser")
@@ -177,7 +188,12 @@ def _modify_html(html_filename: str) -> None:
 
 
 def post_process_html(app: Sphinx, exc: Optional[Exception]) -> None:
-    """Perform modifications on the built HTML."""
+    """Perform modifications on the HTML after building.
+
+    This is an extra function, that gets a list from all HTML
+    files in the output directory, then runs the ``_modify_html``
+    function on each of them.
+    """
     if app.builder.name not in ["html", "dirhtml"]:
         return
 

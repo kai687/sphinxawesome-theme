@@ -28,3 +28,11 @@ for some commonly used words and phrases.
       In this documentation, upstream refers to the
       repository at
       https://github.com/kai687/sphinxawesome-theme.git
+
+   theme
+      A theme is a bundle of HTML templates,
+      CSS styles, and JavaScript files
+      that work together to create the user interface
+      of the website -- the “look and feel”.
+      You can alter the theme of a Sphinx website
+      simply by making a configuration change.

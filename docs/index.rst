@@ -8,7 +8,7 @@
 Sphinx awesome theme
 ====================
 
-The Sphinx awesome theme is an awesome theme for the Sphinx_ documentation
+The Sphinx awesome theme is an awesome :term:`theme` for the Sphinx_ documentation
 generator. It includes a number of usability improvements:
 
 .. include:: ../README.rst
@@ -26,12 +26,6 @@ is hosted on GitHub_.
 .. _Sphinx: https://www.sphinx-doc.org
 .. _GitHub: https://github.com/kai687/sphinxawesome-theme
 
-.. admonition:: What's a theme?
-
-   A theme is a bundle of website templates, styles, and JavaScript files that allows you
-   to change the look and feel of your documentation by changing a configuration
-   setting.
-
 .. toctree::
    :hidden:
    :caption: docs
@@ -40,6 +34,7 @@ is hosted on GitHub_.
    docs/use
    docs/modify
    about
+   api
    glossary
 
 .. toctree::

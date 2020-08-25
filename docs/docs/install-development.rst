@@ -41,8 +41,8 @@ follow these steps:
       $ git clone https://github.com/{YOUR_GITHUB_USERNAME}/sphinxawesome-theme.git
 
    Replace :samp:`{YOUR_GITHUB_USERNAME}` with your user name on GitHub.
-
-   If you didn't fork the repository, clone the original repository::
+   If you didn't fork the repository,
+   clone the original repository::
 
        $ git clone https://github.com/kai687/sphinxawesome-theme.git
 
@@ -96,7 +96,7 @@ follow these steps to install the project's Python dependencies.
 
        $ poetry run pre-commit run --all
 
-#. Run Nox session
+#. Run a Nox session
 
    To see if the project is setup correctly,
    run any of the defined Nox sessions.
@@ -126,7 +126,7 @@ follow these steps to install the JavaScript dependencies.
 
    If this command does not return a Node.js version, for example::
 
-       $ v12.18.2
+       $ v12.18.3
 
    you need to install Node.js first.
 
@@ -134,11 +134,13 @@ follow these steps to install the JavaScript dependencies.
 
        $ npm install --global yarn
 
-   If you don't want to install `yarn <https://yarnpkg.com/>`_,
+   If you don't want to install yarn_,
    you can use ``npm`` as well.
    The commands in this documentation use ``yarn``.
    You can replace the commmands to *run* something,
    for example, ``yarn build``, with ``npm run build``.
+
+   .. _yarn: https://yarnpkg.com/
 
 #. Change to the :dir:`theme-src` directory.
 

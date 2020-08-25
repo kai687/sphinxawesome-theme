@@ -1,6 +1,5 @@
 """Sphinx configuration file."""
 
-import datetime
 from pathlib import Path
 import sys
 from typing import List, Tuple
@@ -11,8 +10,6 @@ from sphinx.application import Sphinx
 from sphinx.roles import EmphasizedLiteral
 from sphinx.util.docfields import Field
 
-year = datetime.datetime.now().year
-
 # Add path to local extension
 this_dir = Path(__file__).parent
 ext_dir = (this_dir / ".." / "src").resolve()
@@ -22,19 +19,27 @@ sys.path.append(str(ext_dir.absolute()))
 
 project = "Sphinx Awesome Theme"
 author = "Kai Welke"
-copyright = f"{year}, {author}."
+copyright = f"{author}."
 
 # -- General configuration ---------------------------------------------------
 
 extensions = [
     "sphinx.ext.autosectionlabel",
     "sphinx.ext.autodoc",
+    "sphinx.ext.coverage",
+    "sphinx.ext.napoleon",
     "sphinxawesome_theme",
 ]
 
 exclude_patterns = ["public"]
 nitpicky = True
+nitpick_ignore = [
+    ("py:class", "sphinx.application.Sphinx"),
+    ("py:class", "docutils.nodes.Element"),
+]
 default_role = "literal"
+autodoc_default_flags = ["members"]
+autodoc_warningiserror = False
 
 # -- Options for HTML output -------------------------------------------------
 

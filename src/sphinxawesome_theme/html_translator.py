@@ -19,10 +19,27 @@ logger = logging.getLogger(__name__)
 
 
 class BetterHTMLTranslator(HTML5Translator):
-    """Override a few methods to improve usability."""
+    """Override a few methods to improve the usability.
+
+    By default, Sphinx permalinks have generic titles,
+    such as: "Permalink to this section".
+    In the sphinx awesome theme, clicking on a permalink
+    copies the link to the clipboard. Therefore,
+    the link title attributes are updated to be more
+    specific.
+    """
 
     def depart_title(self, node: Element) -> None:
-        """Override permalink addition to headlines."""
+        """Change the permalinks for headlines.
+
+        - for headlines: "Copy link to section: <section title>"
+        - for tables: "Copy link to this table"
+        - for admonitions: "Copy link to this <type>"
+
+        Admonitions don't have an ID by default.
+        The AdmonitionID post-transform adds
+        IDs to admonitions.
+        """
         close_tag = self.context[-1]
         if (
             self.permalink_text
@@ -61,7 +78,12 @@ class BetterHTMLTranslator(HTML5Translator):
             del self.body[:]
 
     def depart_caption(self, node: Element) -> None:
-        """Override permalink stuff."""
+        """Change the permalinks for captions.
+
+        - for code blocks: Copy link to this code block
+        - for images: Copy link to this image
+        - for table of contents: Copy link to this table of contents.
+        """
         self.body.append("</span>")
 
         # append permalink if available
@@ -84,13 +106,17 @@ class BetterHTMLTranslator(HTML5Translator):
             self.body.append("</p>\n")
 
     def depart_desc_signature(self, node: Element) -> None:
-        """Override permalink stuff."""
+        """Change permalinks for code definitions.
+
+        Functions, methods, command line options, etc.
+        "Copy link to this definition"
+        """
         if not node.get("is_multiline"):
             self.add_permalink_ref(node, _("Copy link to this definition."))
         self.body.append("</dt>\n")
 
     def depart_desc_signature_line(self, node: Element) -> None:
-        """Override permalink stuff."""
+        """Change permalinks for code definitions."""
         if node.get("add_permalink"):
             self.add_permalink_ref(node.parent, _("Copy link to this definition."))
         self.body.append("<br />")
