@@ -60,7 +60,7 @@
   "author": "Kai Welke",
   "license": "MIT",
   "dependencies": {
-    "tailwindcss": "^1.6"
+    "tailwindcss": "^1.7"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^2.0.0",
