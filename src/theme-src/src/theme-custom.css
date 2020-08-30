@@ -114,13 +114,13 @@ a:focus {
       }
     }
     &.toctree-l1 > a {
-      @apply py-4 pl-8;
+      @apply py-4 pl-8 pr-4;
     }
     &.toctree-l2 > a {
-      @apply py-3 pl-12;
+      @apply py-3 pl-12 pr-4;
     }
     &.toctree-l3 > a {
-      @apply py-3 pl-16;
+      @apply py-3 pl-16 pr-4;
     }
   }
   .caption {
