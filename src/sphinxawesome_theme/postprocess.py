@@ -153,6 +153,13 @@ def _remove_pre_spans(tree: BeautifulSoup) -> None:
             span.unwrap()
 
 
+def _remove_xref_spans(tree: BeautifulSoup) -> None:
+    """Remove unnecessarily nested ``span.std-ref`` elements in cross-references."""
+    for link in tree("a"):
+        for span in link("span", class_="std-ref"):
+            span.unwrap()
+
+
 def _modify_html(html_filename: str) -> None:
     """Modify a single HTML document.
 
@@ -171,6 +178,7 @@ def _modify_html(html_filename: str) -> None:
     _add_copy_button(tree)
     _add_focus_to_headings(tree)
     _remove_pre_spans(tree)
+    _remove_xref_spans(tree)
 
     with open(html_filename, "w") as out_file:
         out_file.write(str(tree))
