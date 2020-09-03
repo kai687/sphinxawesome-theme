@@ -60,22 +60,22 @@
   "author": "Kai Welke",
   "license": "MIT",
   "dependencies": {
-    "tailwindcss": "^1.6"
+    "tailwindcss": "^1.7"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^2.0.0",
     "autoprefixer": "^9.8.6",
     "clean-webpack-plugin": "^3.0.0",
-    "css-loader": "^4.2.0",
+    "css-loader": "^4.2.2",
     "cssnano": "^4.1.10",
     "eslint": "^7.7.0",
     "eslint-loader": "^4.0.2",
     "file-loader": "^6.0.0",
-    "mini-css-extract-plugin": "^0.10.0",
+    "mini-css-extract-plugin": "^0.11.0",
     "postcss-import": "^12.0.1",
     "postcss-loader": "^3.0.0",
     "precss": "^4.0.0",
-    "prettier": "^2.0.5",
+    "prettier": "^2.1.1",
     "stylelint": "^13.6.0",
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-prettier": "^1.1.2",

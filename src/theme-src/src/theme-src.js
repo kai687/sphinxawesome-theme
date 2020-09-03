@@ -195,7 +195,7 @@ function copyToClipboard(str, msg) {
 // collapsible NAV
 document.querySelectorAll(".expand").forEach((span) => {
   span.onclick = () => {
-    span.parentElement.classList.toggle("expanded");
+    span.parentElement.parentElement.classList.toggle("expanded");
   };
 });
 
@@ -204,7 +204,7 @@ const navLinks = document.querySelectorAll("#nav-toc a");
 navLinks.forEach((navLink) => {
   navLink.onfocus = (e) => {
     document.querySelectorAll(".expand").forEach((span) => {
-      const li = span.parentElement;
+      const li = span.parentElement.parentElement;
       if (li.contains(e.target)) {
         li.classList.add("expanded");
       } else {

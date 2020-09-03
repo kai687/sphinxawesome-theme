@@ -72,17 +72,27 @@ def _add_copy_button(tree: BeautifulSoup) -> None:
 
 
 def _collapsible_nav(tree: BeautifulSoup) -> None:
-    """Add small triangle icons to the links in the navigation.
+    """Restructure the navigation links to make them collapsible.
 
-    Adding them as spans instead of ``:after`` allows to capture
-    click events on the link and the expand icon separately.
+    First, all links in the navigation sidebar are wrapped in a ``div``.
+    This allows them to be 'block' and 'position relative' for the
+    'expand' icon to be positioned against. (Styling occurs in the CSS)
+    Note: We don't use tailwind classes here, as this is out of reach
+    for the PurgeCSS plugin.
+
+    Second, a span with the icon is inserted right before the link.
+    Adding the icon as separate DOM element allows click events to be
+    captured separately between the icon and the link.
     """
-    for link in tree.select("nav ul a"):
-        # ignore 'leaf' nodes
-        if link.next_sibling:
+    for link in tree.select("#nav-toc a"):
+        # First, all links should be wrapped in a div.nav-link
+        link.wrap(tree.new_tag("div", attrs={"class": "nav-link"}))
+        # Next, insert a span.expand before the link, if the #nav-link
+        # has any sibling elements (a ``ul`` in the navigation menu)
+        if link.parent.next_sibling:
             span = tree.new_tag("span", attrs={"class": "expand"})
-            span.string = "\u25be"
-            link.insert_after(span)
+            span.string = "\u203a"
+            link.insert_before(span)
 
 
 def _divs_to_section(tree: BeautifulSoup) -> None:
@@ -153,6 +163,13 @@ def _remove_pre_spans(tree: BeautifulSoup) -> None:
             span.unwrap()
 
 
+def _remove_xref_spans(tree: BeautifulSoup) -> None:
+    """Remove unnecessarily nested ``span.std-ref`` elements in cross-references."""
+    for link in tree("a"):
+        for span in link("span", class_="std-ref"):
+            span.unwrap()
+
+
 def _modify_html(html_filename: str) -> None:
     """Modify a single HTML document.
 
@@ -182,6 +199,7 @@ def _modify_html(html_filename: str) -> None:
     _add_copy_button(tree)
     _add_focus_to_headings(tree)
     _remove_pre_spans(tree)
+    _remove_xref_spans(tree)
 
     with open(html_filename, "w") as out_file:
         out_file.write(str(tree))
