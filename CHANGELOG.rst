@@ -1,3 +1,9 @@
+1.12.1
+~~~~~~
+
+- fix: wrong link title in skip to content link
+
+
 1.12.0
 ~~~~~~
 
