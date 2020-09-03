@@ -85,7 +85,7 @@ p:not(.admonition-title) a,
 .search li a:hover,
 a:hover,
 a:focus {
-  @apply text-pink-600;
+  @apply text-pink-600 !important;
 }
 
 /* **************************
@@ -107,9 +107,6 @@ a:focus {
   a.current {
     @apply text-pink-600;
   }
-  a:hover {
-    @apply text-pink-600 underline;
-  }
   .expand {
     top: 0;
     left: -16px;
@@ -123,6 +120,7 @@ a:focus {
   li > ul {
     max-height: 0;
     overflow-y: hidden;
+    @apply pl-4;
   }
   .expanded {
     & > div > a.current {
@@ -136,61 +134,6 @@ a:focus {
     }
   }
 }
-/* #nav-toc { */
-/* a { */
-/* &.current { */
-/* @apply text-pink-600; */
-/* } */
-/* } */
-/* li { */
-/* & > a { */
-/* @apply inline-block; */
-/* } */
-/* & > ul { */
-/* max-height: 0; */
-/* overflow-y: hidden; */
-/* } */
-/* &:hover { */
-/* @apply bg-gray-200; */
-/* } */
-/* &.toctree-l1.current { */
-/* @apply border-r-2 border-blue-300; */
-/* & > a { */
-/* @apply font-medium; */
-/* } */
-/* } */
-/* &.toctree-l1 > a { */
-/* @apply py-4 pl-8; */
-/* } */
-/* &.toctree-l2 > a { */
-/* @apply py-3 pl-12; */
-/* } */
-/* &.toctree-l3 > a { */
-/* @apply py-3 pl-16; */
-/* } */
-/* } */
-/* [> the expand triangle <] */
-/* .expand { */
-/* transition: transform 0.1s ease-out; */
-/* transform: rotate(90deg); */
-/* @apply inline-block p-2 text-gray-600 text-lg; */
-/* &:hover { */
-/* @apply text-pink-600 outline-none; */
-/* } */
-/* } */
-/* .expanded { */
-/* &.current { */
-/* @apply bg-gray-100; */
-/* } */
-/* & > ul { */
-/* max-height: 100%; */
-/* transition: max-height 0.4s ease-in; */
-/* } */
-/* & > .expand { */
-/* transform: rotate(0); */
-/* } */
-/* } */
-/* } */
 
 @screen xxl {
   #nav-toc {
@@ -202,15 +145,6 @@ a:focus {
     }
   }
 }
-/* li.toctree-l1 > a { */
-/* @apply pl-16; */
-/* } */
-/* li.toctree-l2 > a { */
-/* @apply pl-20; */
-/* } */
-/* li.toctree-l3 > a { */
-/* @apply pl-24; */
-/* } */
 
 .toctree-wrapper,
 .contents.local {
