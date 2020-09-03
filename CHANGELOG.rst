@@ -3,6 +3,7 @@ MASTER
 
 - fix: better autodoc styling
 - feat: add command line option styles
+- feat: better collapsible navigation (#102)
 
 
 1.11.0
