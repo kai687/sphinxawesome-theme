@@ -5,8 +5,6 @@ Module documentation
 On this page, you'll see an example how automatically generated
 module documentation looks like in Sphinx.
 
-You can check another example in the
-:ref:`module documentation <Sphinx awesome theme module documentation>`
 ------------------
 Automodule example
 ------------------

@@ -34,7 +34,6 @@ is hosted on GitHub_.
    docs/use
    docs/modify
    about
-   api
    glossary
 
 .. toctree::
