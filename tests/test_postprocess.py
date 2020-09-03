@@ -48,16 +48,18 @@ def test_add_copy_button() -> None:
 
 def test_collapsible_nav() -> None:
     """It adds a span to nested links."""
-    html = """<nav>
+    html = """<div id="nav-toc">
                 <ul>
-                  <li><a>Link 1</a>
+                  <li>
+                    <a>Link 1</a>
                     <ul>
                       <li><a>Sublink1</a></li>
                       <li><a>Sublink2</a></li>
                     </ul>
-                    <li><a>Link 2</a></li>
+                  </li>
+                  <li><a>Link 2</a></li>
                 </ul>
-            </nav>
+            </div>
     """
 
     tree = parse_html(html)
@@ -66,8 +68,8 @@ def test_collapsible_nav() -> None:
     spans = tree("span")
     assert len(spans) == 1
     assert spans[0]["class"] == ["expand"]
-    assert spans[0].string == "\u25be"
-    assert spans[0].previous_sibling.string == "Link 1"
+    assert spans[0].string == "\u203a"
+    assert spans[0].next_sibling.string == "Link 1"
 
 
 def test_div_to_section() -> None:
