@@ -57,7 +57,8 @@ dt:hover .headerlink,
   @apply visible;
 }
 
-p:not(.admonition-title) a {
+p:not(.admonition-title) a,
+#nav-toc a {
   @apply text-blue-700;
 }
 
@@ -87,88 +88,129 @@ a:focus {
   @apply text-pink-600;
 }
 
+/* **************************
+ * NAVIGATION MENU
+ * **************************/
 #nav-toc {
-  & > ul {
-    @apply -mt-4;
-  }
-  a {
-    &.current {
-      @apply text-pink-600;
-    }
-  }
-  li {
-    & > a {
-      @apply inline-block;
-    }
-    & > ul {
-      max-height: 0;
-      overflow-y: hidden;
-    }
-    &:hover {
-      @apply bg-gray-200;
-    }
-    &.toctree-l1.current {
-      @apply border-r-2 border-blue-300;
-      & > a {
-        @apply font-medium;
-      }
-    }
-    &.toctree-l1 > a {
-      @apply py-4 pl-8;
-    }
-    &.toctree-l2 > a {
-      @apply py-3 pl-12;
-    }
-    &.toctree-l3 > a {
-      @apply py-3 pl-16;
-    }
-  }
   .caption {
     @apply pl-8 pr-4 uppercase text-sm text-gray-900 font-medium tracking-widest;
   }
-  /* for the caption. There is no 'first-of-class' selector */
   p:first-of-type {
     @apply mt-0;
   }
-  /* the expand triangle */
+  & > ul {
+    @apply px-8 -mt-4;
+  }
+  .nav-link {
+    @apply relative py-2;
+  }
+  a.current {
+    @apply text-pink-600;
+  }
+  a:hover {
+    @apply text-pink-600 underline;
+  }
   .expand {
-    transition: transform 0.1s ease-out;
-    transform: rotate(90deg);
-    @apply inline-block p-2 text-gray-600 text-lg;
+    top: 0;
+    left: -16px;
+    padding: 3px;
+    transition: transform 150ms ease-out;
+    @apply inline-block absolute text-xl font-medium cursor-pointer select-none;
     &:hover {
-      @apply text-pink-600 outline-none;
+      @apply text-pink-600;
     }
   }
+  li > ul {
+    max-height: 0;
+    overflow-y: hidden;
+  }
   .expanded {
-    &.current {
-      @apply bg-gray-100;
+    & > div > a.current {
+      @apply font-medium;
+    }
+    & > div > .expand {
+      transform: rotate(90deg);
     }
     & > ul {
       max-height: 100%;
-      transition: max-height 0.4s ease-in;
-    }
-    & > .expand {
-      transform: rotate(0);
     }
   }
 }
+/* #nav-toc { */
+/* a { */
+/* &.current { */
+/* @apply text-pink-600; */
+/* } */
+/* } */
+/* li { */
+/* & > a { */
+/* @apply inline-block; */
+/* } */
+/* & > ul { */
+/* max-height: 0; */
+/* overflow-y: hidden; */
+/* } */
+/* &:hover { */
+/* @apply bg-gray-200; */
+/* } */
+/* &.toctree-l1.current { */
+/* @apply border-r-2 border-blue-300; */
+/* & > a { */
+/* @apply font-medium; */
+/* } */
+/* } */
+/* &.toctree-l1 > a { */
+/* @apply py-4 pl-8; */
+/* } */
+/* &.toctree-l2 > a { */
+/* @apply py-3 pl-12; */
+/* } */
+/* &.toctree-l3 > a { */
+/* @apply py-3 pl-16; */
+/* } */
+/* } */
+/* [> the expand triangle <] */
+/* .expand { */
+/* transition: transform 0.1s ease-out; */
+/* transform: rotate(90deg); */
+/* @apply inline-block p-2 text-gray-600 text-lg; */
+/* &:hover { */
+/* @apply text-pink-600 outline-none; */
+/* } */
+/* } */
+/* .expanded { */
+/* &.current { */
+/* @apply bg-gray-100; */
+/* } */
+/* & > ul { */
+/* max-height: 100%; */
+/* transition: max-height 0.4s ease-in; */
+/* } */
+/* & > .expand { */
+/* transform: rotate(0); */
+/* } */
+/* } */
+/* } */
 
 @screen xxl {
   #nav-toc {
-    li.toctree-l1 > a {
+    .caption {
       @apply pl-16;
     }
-    li.toctree-l2 > a {
-      @apply pl-20;
-    }
-    li.toctree-l3 > a {
-      @apply pl-24;
-    }
-    .caption {
+    & > ul {
       @apply pl-16;
     }
   }
 }
+/* li.toctree-l1 > a { */
+/* @apply pl-16; */
+/* } */
+/* li.toctree-l2 > a { */
+/* @apply pl-20; */
+/* } */
+/* li.toctree-l3 > a { */
+/* @apply pl-24; */
+/* } */
 
 .toctree-wrapper,
 .contents.local {
