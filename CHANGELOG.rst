@@ -2,6 +2,7 @@ MASTER
 ~~~~~~
 
 - fix: remove outline-none
+- docs: major update
 
 
 1.12.1
