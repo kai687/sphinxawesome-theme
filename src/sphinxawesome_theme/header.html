@@ -11,7 +11,7 @@
   {%- endif -%}
 
   {#- show manual title in the middle -#}
-  <a class="hover:bg-gray-700 focus:outline-none focus:bg-gray-700" href="{{ pathto(master_doc) }}" title="{{ _('Back to homepage') }}">
+  <a class="hover:bg-gray-700 focus:bg-gray-700" href="{{ pathto(master_doc) }}" title="{{ _('Back to homepage') }}">
     <h2 class="text-xl text-gray-100 mx-8 xxl:mx-16 py-4">{{ docstitle }}</h2>
   </a>
 
@@ -28,7 +28,7 @@
       type="search"
       aria-label="Search the docs"
       placeholder="{{ _('Search the docs') }}"
-      class="p-2 flex-1 rounded-l focus:outline-none focus:bg-gray-200"
+      class="p-2 flex-1 rounded-l focus:bg-gray-200"
     />
     {{ buttons.search() }}
   </form>

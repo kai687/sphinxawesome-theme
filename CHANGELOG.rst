@@ -1,9 +1,22 @@
 MASTER
 ~~~~~~
 
+- fix: remove outline-none
+
+
+1.12.1
+~~~~~~
+
+- fix: wrong link title in skip to content link
+
+
+1.12.0
+~~~~~~
+
 - fix: better autodoc styling
 - feat: add command line option styles
 - feat: better collapsible navigation (#102)
+- feat: skip to content link (#109)
 
 
 1.11.0

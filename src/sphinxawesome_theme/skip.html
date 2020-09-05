@@ -1,0 +1,9 @@
+{#-
+  Template file for the skip link "component".
+  This is visually hidden, but is the first element to receive focus when 'tabbing',
+  allowing a keyboard-only user to jump straight to the content.
+-#}
+
+<a class="block text-xl bg-white px-8 py-4 z-20 absolute top-0 left-0 transform -translate-x-full focus:translate-x-0 transition-transform duration-75"
+   href="#{{ title|sanitize }}"
+   title="Skip navigation links">Skip to content</a>
