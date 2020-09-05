@@ -14,9 +14,11 @@ Sphinx awesome theme
    :target: https://sphinxawesome.xyz
    :alt: Netlify Status
 
-This is an awesome theme for the `Sphinx
-<http://www.sphinx-doc.org/en/master/>`_ documentation generator. See how the theme
-looks on the `demo page <https://sphinxawesome.xyz>`_.
+This is an awesome theme for the Sphinx_ documentation generator.
+See how the theme looks on the `demo page`_.
+
+.. _Sphinx: http://www.sphinx-doc.org/en/master/
+.. _demo page: https://sphinxawesome.xyz
 
 
 --------
@@ -63,9 +65,9 @@ Install the theme as a Python package:
 
 .. install-end
 
-Read the full `installation instructions
-<https://sphinxawesome.xyz/docs/install.html#how-to-install-the-theme>`_ for more
-information.
+Read the full `installation instructions`_ for more information.
+
+.. _installation instructions: https://sphinxawesome.xyz/docs/install/#how-to-install-the-theme
 
 -----
 Usage
@@ -73,8 +75,8 @@ Usage
 
 .. use-start
 
-To use the theme, set ``html_theme`` in the Sphinx configuration file
-``conf.py``:
+To use the theme, set the ``html_theme`` configuration setting
+in the Sphinx configuration file ``conf.py``:
 
 .. code:: python
 
@@ -82,5 +84,6 @@ To use the theme, set ``html_theme`` in the Sphinx configuration file
 
 .. use-end
 
-Read the full `usage information
-<https://sphinxawesome.xyz/docs/use.html#how-to-use-the-theme>`_ for more information.
+Read the full `usage information`_ for more information.
+
+.. _usage information: https://sphinxawesome.xyz/docs/use/#how-to-use-the-theme

@@ -5,9 +5,9 @@ How to use the theme
    :start-after: use-start
    :end-before: use-end
 
-The theme activates the extension ``sphinxawesome.sampdirective``
-and other usability improvements automatically
-if the theme is installed and loaded as a python package.
+If you install and load the theme as a Python package,
+the Sphinx extension ``sphinxawesome.sampdirective``
+is installed and used automatically.
 If the theme is installed locally,
 see :ref:`How to use a local version of the theme`.
 
@@ -71,61 +71,53 @@ The available options and their default values for this theme are::
 .. confval:: breadcrumbs_separator
 
    If you want to select a different separator for the breadcrumbs navigation links,
-   set::
+   set:
+
+   .. samp::
 
       html_theme_options = {"breadcrumbs_separator": "{Char}"}
 
-   Replace ``{Char}`` with a character or HTML entity of your choice.
+   Replace :samp:`{Char}` with a character or HTML entity of your choice.
 
 
 How to use a local version of the theme
 ---------------------------------------
 
 If you didn't install the theme as a Python package,
-but installed it locally Installing the theme locally,
-place it inside a directory
-:dir:`_ext`, or :dir:`_themes`
-to keep the project tidy.
+you can :ref:`install it locally <Creating a local copy of the theme>`/
 
-For example, if you have a project structure like this:
+For example, you have a project structure like this:
 
 .. code-block:: console
+   :emphasize-lines: 3
 
    ./
    ├conf.py
    ├index.rst
-   └_themes/
+   └sphinxawesome-theme/
 
-Change to the :dir:`_themes` directory and
-clone the repository Installing the theme locally.
+Add this directory to the Sphinx configuration in :file:`conf.py`::
 
-Next, add this directory to the Sphinx configuration in :file:`conf.py`::
+   import os
+   import sys
 
+   sys.path.append(os.path.abspath("sphinxawesome-theme/src"))
+
+To prevent Sphinx from looking for source files in this directory,
+add it to the ``exclude_patterns`` list::
+
+   exclude_patterns = ["sphinxawesome-theme", "..."]
+
+Next, add the ``sphinxawesome_theme`` as extension and ``html_theme``
+
+   extensions = ["sphinxawesome_theme", "..."]
    html_theme = "sphinxawesome_theme"
-   html_theme_path = ["_themes"]
-
-**Recommended:** Add the theme as extension as well,
-to enable the ``samp`` directive extensions and other
-usability improvements.
 
 Add these modifications to your Sphinx configuration :file:`conf.py`:
 
-#. Add the path to the :dir:`_themes/` directory::
-
-      from pathlib import Path
-      import sys
-
-      this_dir = Path(__file__).parent
-      ext_dir = (this_dir / "_themes").resolve()
-      sys.path.append(str(ext_dir.absolute()))
-
-#. Add the theme to the list of extensions::
-
-      extensions = ["...", "sphinxawesome_theme"]
-
 .. note::
 
-   These additional steps are necessary, because local Sphinx themes
-   get loaded differently than themes installed as Python packages.
-   For locally installed themes, no Python code is executed. Therefore,
-   no additional extensions can be loaded without these extra steps.
+   These additional steps are necessary
+   in order to create a fully functional local version of the theme.
+   This is because locally installed Sphinx themes
+   are loaded differently than themes installed as Python packages.

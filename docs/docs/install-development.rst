@@ -29,7 +29,7 @@ To create a local copy of the theme,
 follow these steps:
 
 #. **Optional:** :term:`Fork the repository <forking a repository>`.
-   If you don't plan on merging your changes with the original repository,
+   If you don't want to merge your changes with the original repository,
    you can skip this step.
 
 #. :term:`Clone the (forked) repository <cloning a repository>`.
@@ -54,13 +54,14 @@ or modify any of the Python code in
 :dir:`sphinxawesome-theme/src/sphinxawesome_theme`,
 follow these steps to install the project's Python dependencies.
 
-#. Install Poetry_ and Nox_. Follow the recommended steps on `how to install Poetry`_.
-   Nox can be installed via pip, for example::
+#. Install Poetry_ and Nox_.
+   Follow the recommended steps for `how to install Poetry`_.
+   Install Nox via pip::
 
        $ pip install --user --upgrade nox
 
-   If you want to make sure,
-   you are using the same version of Poetry and Nox as the :term:`upstream` repository,
+   If you want to use the same version of Poetry and Nox
+   as the :term:`upstream` repository,
    check the file `constraints.txt`_.
 
    .. _Poetry: https://python-poetry.org/
@@ -69,11 +70,10 @@ follow these steps to install the project's Python dependencies.
    .. _constraints.txt: https://github.com/kai687/sphinxawesome-theme/blob/master/.github/workflows/constraints.txt
 
 
-#. Install the project's dependencies::
+#. Install the project's dependencies inside a virtual environment::
 
        $ poetry install
 
-   This installs all dependencies inside a virtual environment.
    Check Poetry's documentation_ for more information.
 
    .. _documentation: https://python-poetry.org/docs/basic-usage/
@@ -82,8 +82,6 @@ follow these steps to install the project's Python dependencies.
 
        $ poetry run pre-commit install
 
-   Pre-commit is a development dependency of this project.
-   You can run it from within the project's virtual environment.
    This command installs pre-commit hooks
    that are executed,
    whenever you commit to the repository.
@@ -91,28 +89,22 @@ follow these steps to install the project's Python dependencies.
    `.pre-commit-config.yaml <https://github.com/kai687/sphinxawesome-theme/blob/master/.pre-commit-config.yaml>`_
    to see which pre-commit-hooks are configured.
 
-   To test the pre-commit hooks without actually committing anything,
-   run::
+   To test the pre-commit hooks, run::
 
        $ poetry run pre-commit run --all
 
 #. Run a Nox session
 
-   To see if the project is setup correctly,
-   run any of the defined Nox sessions.
-   For example:
-
-   .. code-block:: console
+   To check if the project is set up correctly,
+   run any of the Nox sessions.
+   For example, to build the documentation
+   with Python 3.8::
 
       $ nox -s docs -p 3.8
 
-   This builds the documentation with the Python 3.8 interpreter.
-   To see the available sessions, enter:
-
-   .. code-block:: console
+   To list the available sessions, enter::
 
       $ nox -ls
-
 
 Installing JavaScript dependencies
 ----------------------------------
@@ -156,8 +148,6 @@ follow these steps to install the JavaScript dependencies.
         │ └theme-src/
         ├docs/
         └...
-
-   Change to the :dir:`theme-src` directory.
 
 #. Install the JavaScript dependencies::
 

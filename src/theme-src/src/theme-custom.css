@@ -303,9 +303,6 @@ ol {
   @apply list-decimal ml-4;
   ol {
     @apply list-latin;
-    ol {
-      @apply list-decimal;
-    }
   }
 }
 
@@ -313,9 +310,6 @@ section:not(#search-results) ul {
   @apply list-disc ml-4;
   ul {
     @apply list-square;
-    ul {
-      @apply list-disc;
-    }
   }
 }
 
@@ -332,17 +326,11 @@ dt {
   @apply font-medium tracking-wide;
 }
 
-ol,
-ul,
 dd {
   @apply pl-6;
   & > p {
     @apply mt-2;
   }
-}
-
-dd {
-  @apply pl-6;
 }
 
 dl.footnote {
