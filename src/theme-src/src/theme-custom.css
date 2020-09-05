@@ -324,6 +324,10 @@ section ul > li {
   @apply pl-2;
 }
 
+li > p {
+  @apply my-3;
+}
+
 dt {
   @apply font-medium tracking-wide;
 }
@@ -331,8 +335,9 @@ dt {
 ol,
 ul,
 dd {
-  p {
-    @apply my-2;
+  @apply pl-6;
+  & > p {
+    @apply mt-2;
   }
 }
 
