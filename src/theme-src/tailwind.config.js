@@ -1,6 +1,11 @@
 module.exports = {
   future: {
     removeDeprecatedGapUtilities: true,
+    purgeLayersByDefault: true,
+  },
+  purge: {
+    enabled: true,
+    content: ["../sphinxawesome_theme/*.html", "./src/theme-src.js"],
   },
   theme: {
     fontFamily: {
