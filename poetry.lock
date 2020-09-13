@@ -217,7 +217,7 @@ description = "Flake8 Type Annotation Checks"
 name = "flake8-annotations"
 optional = false
 python-versions = ">=3.6.1,<4.0.0"
-version = "2.3.0"
+version = "2.4.0"
 
 [package.dependencies]
 flake8 = ">=3.7,<3.9"
@@ -633,7 +633,7 @@ category = "dev"
 description = "YAML parser and emitter for Python"
 name = "pyyaml"
 optional = false
-python-versions = "*"
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 version = "5.3.1"
 
 [[package]]
@@ -904,7 +904,8 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["jaraco.itertools", "func-timeout"]
 
 [metadata]
-content-hash = "8cb1b70c084c0e0e34b2212082b2fcbe515d14728b3d631bac350a52efa80de4"
+content-hash = "9f347d0ad91a318d6d619b5ef025d305cd1be74d8457638205e9fd518a6c2670"
+lock-version = "1.0"
 python-versions = ">=3.6.1,<4.0.0"
 
 [metadata.files]
@@ -1018,8 +1019,8 @@ flake8 = [
     {file = "flake8-3.8.3.tar.gz", hash = "sha256:f04b9fcbac03b0a3e58c0ab3a0ecc462e023a9faf046d57794184028123aa208"},
 ]
 flake8-annotations = [
-    {file = "flake8-annotations-2.3.0.tar.gz", hash = "sha256:8d18db74a750dd97f40b483cc3ef80d07d03f687525bad8fd83365dcd3bfd414"},
-    {file = "flake8_annotations-2.3.0-py3-none-any.whl", hash = "sha256:7816a5d8f65ffdf37b8e21e5b17e0fd1e492aa92638573276de066e889a22b26"},
+    {file = "flake8-annotations-2.4.0.tar.gz", hash = "sha256:09fe1aa3f40cb8fef632a0ab3614050a7584bb884b6134e70cf1fc9eeee642fa"},
+    {file = "flake8_annotations-2.4.0-py3-none-any.whl", hash = "sha256:5bda552f074fd6e34276c7761756fa07d824ffac91ce9c0a8555eb2bc5b92d7a"},
 ]
 flake8-bandit = [
     {file = "flake8_bandit-2.1.2.tar.gz", hash = "sha256:687fc8da2e4a239b206af2e54a90093572a60d0954f3054e23690739b0b0de3b"},
