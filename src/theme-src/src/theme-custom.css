@@ -202,17 +202,15 @@ div.highlight {
   }
 }
 
-.linenodiv {
-  @apply rounded-l bg-gray-100 border-r border-gray-400 select-none pointer-events-none;
-  pre {
-    @apply p-4 pt-8 pr-1 overflow-x-auto;
-  }
-}
-
 .highlighttable {
   @apply w-full;
   td {
     @apply p-0;
+    &.linenos {
+      pre {
+        @apply pl-4 pt-8 pb-4 pr-0 rounded-l bg-gray-100 border-r border-gray-400 select-none pointer-events-none overflow-x-auto text-current;
+      }
+    }
   }
   .highlight {
     @apply rounded-l-none;
