@@ -18,7 +18,7 @@ from sphinx.writers.html5 import HTML5Translator
 logger = logging.getLogger(__name__)
 
 
-class BetterHTMLTranslator(HTML5Translator):
+class AwesomeHTMLTranslator(HTML5Translator):
     """Override a few methods to improve the usability.
 
     By default, Sphinx permalinks have generic titles,

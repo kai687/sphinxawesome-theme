@@ -14,10 +14,12 @@ except ImportError:  # pragma: no cover
 from os import path
 from typing import Any, Dict
 
+from docutils.parsers.rst import directives
 from sphinx.application import Sphinx
 
 from .admonitions_ids import AdmonitionId
-from .html_translator import BetterHTMLTranslator
+from .highlighting import AwesomeCodeBlock, AwesomeDirBuilder, AwesomeHTMLBuilder
+from .html_translator import AwesomeHTMLTranslator
 from .jinja_filter import setup_jinja_filter
 from .postprocess import post_process_html
 
@@ -35,18 +37,22 @@ def setup(app: "Sphinx") -> Dict[str, Any]:
 
     - add the HTML theme
     - activate the ``sphinxawesome.sampdirective`` extension
-    - set the ``BetterHTMLTranslator`` for the "html" and "dirhtml"
+    - set the ``AwesomeHTMLTranslator`` for the "html" and "dirhtml"
       builders
     - add the ``AdmonitionID`` as post-transform
     - execute the ``post_process_html`` code when the build has finished
     """
     app.add_html_theme("sphinxawesome_theme", path.abspath(path.dirname(__file__)))
     app.setup_extension("sphinxawesome.sampdirective")
-    app.set_translator("html", BetterHTMLTranslator)
-    app.set_translator("dirhtml", BetterHTMLTranslator)
+    app.set_translator("html", AwesomeHTMLTranslator)
+    app.set_translator("dirhtml", AwesomeHTMLTranslator)
+    app.add_builder(AwesomeHTMLBuilder, override=True)
+    app.add_builder(AwesomeDirBuilder, override=True)
     app.add_post_transform(AdmonitionId)
     app.connect("html-page-context", setup_jinja_filter)
     app.connect("build-finished", post_process_html)
+
+    directives.register_directive("code-block", AwesomeCodeBlock)
 
     return {
         "version": __version__,
