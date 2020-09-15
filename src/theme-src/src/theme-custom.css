@@ -217,9 +217,31 @@ div.highlight {
   }
 }
 
-/* emphasized lines in .highlight blocks */
+/* highlighted, added, and removed lines in .highlight blocks */
+.hll,
+.ins,
+.del {
+  @apply block bg-yellow-100 pl-4 py-1 -ml-4;
+}
+
 .hll {
-  @apply block;
+  @apply bg-yellow-100;
+}
+
+.ins {
+  @apply bg-teal-200;
+  &:before {
+    content: "\002b";
+    @apply text-teal-900 mr-2 -ml-2;
+  }
+}
+
+.del {
+  @apply bg-red-300;
+  &:before {
+    content: "\2212";
+    @apply text-red-900 mr-2 -ml-2;
+  }
 }
 
 .literal-block-wrapper {

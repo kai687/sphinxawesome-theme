@@ -5,7 +5,7 @@ This formatter adds classes to lines.
 :copyright: Copyright Kai Welke.
 :license: MIT, see LICENSE for details.
 """
-from typing import Any, List, Tuple
+from typing import Any, Generator, List, Optional, Tuple
 
 from docutils import nodes
 from docutils.nodes import Node
@@ -44,7 +44,7 @@ class AwesomeHtmlFormatter(HtmlFormatter):
 
         super().__init__(**options)
 
-    def _highlight_lines(self, tokensource: Tuple[Any, Any]) -> None:
+    def _highlight_lines(self, tokensource: Tuple[Any, Any]) -> Generator:
         """Add classes to `hl_added` and `hl_removed` lines.
 
         This implementation only deals with class based styling and removes
@@ -62,6 +62,27 @@ class AwesomeHtmlFormatter(HtmlFormatter):
                 yield 1, '<span class="del">%s</span>' % value
             else:
                 yield 1, value
+
+    def format_unencoded(self, tokensource: Tuple[Any, Any], outfile: Any) -> None:
+        """Add added/removed lines highlighting to the formatting pipeline."""
+        source = self._format_lines(tokensource)
+        if self.hl_lines or self.added_lines or self.removed_lines:
+            source = self._highlight_lines(source)
+        if not self.nowrap:
+            if self.linenos == 2:
+                source = self._wrap_inlinelinenos(source)
+            if self.lineanchors:
+                source = self._wrap_lineanchors(source)
+            if self.linespans:
+                source = self._wrap_linespans(source)
+            source = self.wrap(source, outfile)
+            if self.linenos == 1:
+                source = self._wrap_tablelinenos(source)
+            if self.full:
+                source = self._wrap_full(source, outfile)
+
+        for _, piece in source:
+            outfile.write(piece)
 
 
 class AwesomeBridge(PygmentsBridge):
@@ -91,7 +112,9 @@ class AwesomeHTMLBuilder(StandaloneHTMLBuilder):
             dark_style = None
 
         if dark_style is not None:
-            self.dark_highlighter = AwesomeBridge("html", dark_style)
+            self.dark_highlighter: Optional[AwesomeBridge] = AwesomeBridge(
+                "html", dark_style
+            )
             self.add_css_file(
                 "pygments_dark.css",
                 media="(prefers-color-scheme: dark)",
@@ -127,7 +150,7 @@ class AwesomeCodeBlock(CodeBlock):
         "name": directives.unchanged,
     }
 
-    def run(self) -> List[Node]:
+    def run(self) -> List[Node]:  # noqa: C901
         """Implement option method."""
         document = self.state.document
         code = "\n".join(self.content)
