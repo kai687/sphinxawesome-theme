@@ -2,9 +2,10 @@ const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const StyleLintPlugin = require("stylelint-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const webpack = require("webpack");
 
 module.exports = {
-  mode: "production",
+  mode: process.env.NODE_ENV || "development",
   entry: {
     theme: "./src/theme-src.js",
   },
@@ -13,6 +14,7 @@ module.exports = {
     path: path.resolve(__dirname, "../sphinxawesome_theme/static/"),
   },
   plugins: [
+    new webpack.ProgressPlugin(),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: "theme.css",
