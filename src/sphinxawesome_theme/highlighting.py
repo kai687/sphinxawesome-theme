@@ -10,14 +10,16 @@ extends the default Sphinx ``code-block`` directive.
 :copyright: Copyright Kai Welke.
 :license: MIT, see LICENSE for details.
 """
-from typing import Any, Generator, List, Tuple
+from typing import Any, Dict, Generator, List, Tuple
 
 from docutils import nodes
 from docutils.nodes import Node
 from docutils.parsers.rst import directives
 from pygments.formatters import HtmlFormatter
 from pygments.util import get_list_opt
+from sphinx.application import Sphinx
 from sphinx.directives.code import CodeBlock, container_wrapper, dedent_lines
+from sphinx.highlighting import PygmentsBridge
 from sphinx.locale import __
 from sphinx.util import logging, parselinenos
 
@@ -207,3 +209,9 @@ class AwesomeCodeBlock(CodeBlock):
         self.add_name(literal)
 
         return [literal]
+
+
+def setup(app: "Sphinx") -> Dict[str, Any]:
+    """Set up this internal extension."""
+    PygmentsBridge.html_formatter = AwesomeHtmlFormatter
+    directives.register_directive("code-block", AwesomeCodeBlock)
