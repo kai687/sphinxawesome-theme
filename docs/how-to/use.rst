@@ -108,12 +108,10 @@ add it to the ``exclude_patterns`` list::
 
    exclude_patterns = ["sphinxawesome-theme", "..."]
 
-Next, add the ``sphinxawesome_theme`` as extension and ``html_theme``
+Next, add the ``sphinxawesome_theme`` as extension and ``html_theme``::
 
    extensions = ["sphinxawesome_theme", "..."]
    html_theme = "sphinxawesome_theme"
-
-Add these modifications to your Sphinx configuration :file:`conf.py`:
 
 .. note::
 

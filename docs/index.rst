@@ -30,9 +30,9 @@ is hosted on GitHub_.
    :hidden:
    :caption: docs
 
-   docs/install
-   docs/use
-   docs/modify
+   how-to/install
+   how-to/use
+   how-to/modify
    about
    glossary
 

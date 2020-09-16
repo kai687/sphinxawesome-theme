@@ -90,12 +90,12 @@ building the documentation.
 Pre-commit is a tool, that runs configurable checks on every ``git commit``.
 
 The JavaScript and CSS portions of the theme are managed by Webpack_.
-The entry point for Webpack is the file `theme-src.js`_.
+The entry point for Webpack is the file `app.js`_.
 In this file, all dependencies are imported (including fonts and CSS styles)
 and the custom JavaScript functions are defined.
 The Webpack configuration `webpack.config.js`_ instructs Webpack
 how to process the CSS, JavaScript, and fonts.
-The JavaScript is checked with ESLint_ *minified* and put in the output directory.
+The JavaScript is checked with ESLint_ minified and put in the output directory.
 This file is read and executed by the browser.
 The fonts are imported from ``npm`` packages and also copied to the output directory.
 
@@ -114,7 +114,7 @@ thus greatly reducing the final size of the CSS file.
 
 .. _Webpack: https://webpack.js.org
 .. _webpack.config.js: https://github.com/kai687/sphinxawesome-theme/blob/master/src/theme-src/webpack.config.js
-.. _theme-src.js: https://github.com/kai687/sphinxawesome-theme/blob/master/src/theme-src/src/theme-src.js
+.. _app.js: https://github.com/kai687/sphinxawesome-theme/blob/master/src/theme-src/app.js
 .. _ESLint: https://eslint.org/
 .. _stylelint: https://stylelint.io/
 .. _PostCSS: https://postcss.org

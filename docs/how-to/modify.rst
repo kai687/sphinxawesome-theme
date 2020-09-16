@@ -51,7 +51,9 @@ Everything that's part of the main content
 is styled via Tailwind's ``@apply`` directives.
 This includes everything that's converted from reStructuredText to HTML.
 
-These styles are defined in :file:`theme-src/src/theme-custom.css`.
+These styles are defined in the files :file:`theme-src/css/*.css`.
+The CSS is categorized according to the elements which they apply to.
+For instance, styles relevant for the navigation menu are in :file:`nav.css`.
 
 Everything that's not converted from reStructuredText is styled
 with Tailwind's classes directly in the template files.
@@ -61,7 +63,7 @@ for example the header, the footer, or the background.
 
 These styles are defined in the template files in :dir:`sphinxawesome_theme`.
 
-After making changes, either in the template files or in :file:`theme-custom.css`,
+After making changes, either in the template files or in the CSS files,
 rebuild the theme:
 
 .. code-block:: console
@@ -71,15 +73,16 @@ rebuild the theme:
 .. rubric:: Examples
 
 For example, if you want to change the appearance of links from the default blue to an
-orange, open :file:`theme-custom.css` and change:
+orange, open :file:`links.css` and change:
 
 .. code-block::
-   :emphasize-removed: 2
-   :emphasize-added: 3
+   :emphasize-removed: 3
+   :emphasize-added: 4
 
-   p a {
-     @apply text-blue-600;
-     @apply text-orange-600;
+   p:not(.admonition-title) a,
+   #nav-toc a {
+      @apply text-blue-700;
+      @apply text-orange-600;
    }
 
 For example, to change the background color of the header to orange,
