@@ -1,4 +1,4 @@
-MASTER
+1.13.0
 ~~~~~~
 
 - feat: better code-block directive with support for added/removed lines
