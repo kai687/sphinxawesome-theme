@@ -1,0 +1,19 @@
+/* **************************
+ * FIGURES
+ * **************************/
+
+@layer base {
+  figure {
+    @apply my-12;
+    .legend {
+      @apply text-sm text-gray-800 italic ml-4;
+      p:first-child {
+        @apply mt-0;
+      }
+    }
+  }
+
+  figcaption {
+    @apply text-sm text-gray-800 m-4;
+  }
+}

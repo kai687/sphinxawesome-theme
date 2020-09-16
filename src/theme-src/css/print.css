@@ -1,0 +1,61 @@
+/* ***********************
+ * Stylesheet for printout
+ * ***********************/
+
+@layer base {
+  @media print {
+    header {
+      box-shadow: none !important;
+      flex-direction: row-reverse !important;
+      justify-items: space-between !important;
+      align-items: center !important;
+      @apply border-b;
+
+      img {
+        transform: translate(0, -14px) !important;
+        margin-right: 1rem !important;
+      }
+      h2 {
+        margin-left: 1rem !important;
+      }
+    }
+
+    p {
+      orphans: 2;
+      widows: 2;
+
+      a.external:after {
+        content: " (" attr(href) ")";
+      }
+    }
+
+    h2,
+    h3,
+    h4 {
+      page-break-after: avoid;
+      break-after: avoid;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    a {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    section[role="contentinfo"] {
+      break-before: avoid;
+      page-break-before: avoid;
+    }
+
+    table {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    pre,
+    code {
+      white-space: pre-wrap !important;
+    }
+  }
+}

@@ -1,0 +1,56 @@
+/* ****************
+ * Styles for links
+ * ****************/
+
+@layer components {
+  .headerlink {
+    @apply invisible ml-3 text-gray-500 font-medium;
+  }
+
+  h1:hover .headerlink,
+  h2:hover .headerlink,
+  h3:hover .headerlink,
+  table:hover .headerlink,
+  .admonition-title:hover .headerlink,
+  figure:hover .headerlink,
+  dt:hover .headerlink,
+  .literal-block-wrapper:hover .headerlink {
+    @apply visible;
+  }
+
+  p:not(.admonition-title) a,
+  #nav-toc a {
+    @apply text-blue-700;
+  }
+
+  .search {
+    li {
+      @apply border-t my-4 py-4;
+      a {
+        @apply text-blue-700 text-lg;
+      }
+    }
+    .context {
+      @apply text-sm text-gray-800;
+    }
+  }
+
+  .highlighted {
+    @apply py-px px-1 bg-pink-200 rounded;
+  }
+
+  .highlight-link {
+    @apply hidden;
+  }
+
+  .search li a:hover,
+  a:hover,
+  a:focus {
+    @apply text-pink-600 !important;
+  }
+
+  .footnote-reference {
+    vertical-align: super;
+    @apply text-sm -ml-1;
+  }
+}

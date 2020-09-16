@@ -4,6 +4,7 @@ MASTER
 - feat: better code-block directive with support for added/removed lines
 - fix: remove outline-none
 - docs: major update
+- chore: made JavaScript and CSS more modular
 
 
 1.12.1

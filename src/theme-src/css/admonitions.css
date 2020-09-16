@@ -1,30 +1,3 @@
-/* ******************************************
- * Some styling that's not easy to categorize
- * ******************************************/
-
-/* remove rounded corners on webkit browsers */
-input[type="search"] {
-  -webkit-appearance: none;
-}
-
-@screen md {
-  section {
-    @apply max-w-2xl;
-  }
-}
-
-p {
-  @apply my-6;
-}
-
-strong {
-  @apply font-medium;
-}
-
-.guilabel {
-  @apply font-medium tracking-wide;
-}
-
 /* **************************
  * ADMONITIONS
  * **************************/

@@ -2,9 +2,17 @@
  * We import the Tailwind CSS and all styling for our theme
  * comes in the theme-custom.css file */
 
-/* purgecss start ignore */
 @import "tailwindcss/base";
-@import "custom.css";
 @import "tailwindcss/components";
-/* purgecss end ignore */
+@import "custom.css";
+@import "headings.css";
+@import "nav.css";
+@import "links.css";
+@import "code.css";
+@import "lists.css";
+@import "tables.css";
+@import "figures.css";
+/* @import "admonitions.css"; */
+@import "transitions.css";
+@import "print.css";
 @import "tailwindcss/utilities";

@@ -1,0 +1,21 @@
+/* ***************************
+ * Styles for headings in main
+ * ***************************/
+
+@layer base {
+  main {
+    h1 {
+      @apply text-4xl text-gray-800 leading-tight mb-12 mt-12;
+    }
+    h2 {
+      @apply text-2xl text-gray-800 leading-snug mb-8 mt-16;
+    }
+    h3 {
+      @apply text-xl text-gray-800 font-medium leading-snug mb-6 mt-8;
+    }
+    h4,
+    .rubric {
+      @apply text-gray-800 font-medium my-6;
+    }
+  }
+}
