@@ -1,54 +1,19 @@
 import "./theme-src.css";
 import "./fonts.css";
+import { navFunctions, collapsibleNav } from "./nav";
+import { searchPane, clearSearchHighlights, searchEvents } from "./search";
+import { showSnackbar } from "./snackbar";
+import { showTooltip, hideTooltip, tooltipEvents } from "./tooltip";
+import { scrollActive } from "./scroll";
 
 // NOTE: strings should be encapsulated in _() which aliases
 //       to Documentation.gettext() from Sphinx' doctools.js
 
-// DOM elements we want to manipulate
-const nav = document.querySelector("nav");
-const search = document.querySelector("#search-pane");
-const tooltip = document.querySelector("#tooltip");
-const snackbar = document.querySelector("#snackbar");
-const searchForm = document.querySelector("#searchbox");
-const searchInput = document.querySelector("#search-input");
-
-const openNavBtn = document.querySelector("#openNavBtn");
-if (openNavBtn) {
-  openNavBtn.onclick = () => {
-    nav.setAttribute("data-menu", "open");
-  };
-}
-
-const closeNavBtn = document.querySelector("#closeNavBtn");
-if (closeNavBtn) {
-  closeNavBtn.onclick = () => {
-    nav.setAttribute("data-menu", "closed");
-  };
-}
-
-// We want to close the nav menu also, when clicking on a link in the nav menu on the
-// current page (but only on small screens (i.e., where the close button is visible))
-document.querySelectorAll("nav li.current a").forEach((link) => {
-  if (closeNavBtn.offsetWidth > 0 && closeNavBtn.offsetHeight > 0) {
-    link.onclick = () => {
-      nav.setAttribute("data-menu", "closed");
-    };
-  }
-});
-
-const openSearchBtn = document.querySelector("#openSearchBtn");
-if (openSearchBtn) {
-  openSearchBtn.onclick = () => {
-    search.setAttribute("data-menu", "open");
-  };
-}
-
-const closeSearchBtn = document.querySelector("#closeSearchBtn");
-if (closeSearchBtn) {
-  closeSearchBtn.onclick = () => {
-    search.setAttribute("data-menu", "closed");
-  };
-}
+navFunctions();
+searchPane();
+clearSearchHighlights();
+searchEvents();
+tooltipEvents();
 
 function selectText(node) {
   const selection = window.getSelection();
@@ -62,26 +27,12 @@ function selectText(node) {
 
 // Add behaviour to 'copy code' buttons
 document.querySelectorAll("button.copy").forEach((btn) => {
-  function showTooltip(event) {
-    const rect = event.target.getBoundingClientRect();
-    tooltip.style.opacity = 0.6;
-    tooltip.style.visibility = "visible";
-    tooltip.style.top = rect.y + rect.height + 1 + "px";
-    tooltip.style.left = rect.x - 4 + "px";
-    tooltip.textContent = _("Copy this code");
-  }
   btn.onmouseenter = (event) => {
     showTooltip(event);
   };
   btn.onfocus = (event) => {
     showTooltip(event);
   };
-
-  function hideTooltip() {
-    tooltip.textContent = "";
-    tooltip.style.opacity = 0;
-    tooltip.style.visibility = "hidden";
-  }
 
   btn.onmouseleave = hideTooltip;
   btn.onblur = hideTooltip;
@@ -95,73 +46,6 @@ document.querySelectorAll("button.copy").forEach((btn) => {
   };
 });
 
-// Display link to clear highlighting at the bottom
-setTimeout(() => {
-  const highlights = document.querySelectorAll(".highlighted");
-  if (highlights.length) {
-    snackbar.innerHTML =
-      '<a class="tracking-wide" href="javascript:Documentation.hideSearchWords()">' +
-      _("Clear highlighted words") +
-      "</a>";
-    snackbar.classList.remove("bg-gray-900", "text-gray-100");
-    snackbar.classList.add("bg-gray-200", "text-blue-700");
-    snackbar.style.opacity = 1;
-    snackbar.style.transform = "translate(0,0)";
-
-    document.querySelector("#snackbar > a").onclick = () => {
-      hideSnackbar();
-      searchInput.value = "";
-    };
-
-    // Add the currently searched for term in the input
-    searchInput.value = highlights[0].textContent;
-    searchInput.onsearch = () => {
-      Documentation.hideSearchWords();
-      hideSnackbar();
-    };
-  }
-}, 500);
-
-// prevent empty search submit
-searchForm.onsubmit = (event) => {
-  if (searchInput.value.length < 1) {
-    event.preventDefault();
-  }
-};
-
-function showSnackbar(message) {
-  snackbar.textContent = message;
-  snackbar.style.opacity = 1;
-  snackbar.style.transform = "translate(0,0)";
-  setTimeout(hideSnackbar, 2000);
-}
-
-function hideSnackbar() {
-  snackbar.style.opacity = 0;
-  snackbar.style.transform = "translate(0,100%)";
-  snackbar.classList.remove("bg-gray-200", "text-blue-700");
-  snackbar.classList.add("bg-gray-900", "text-gray-100");
-}
-
-// focus search input on key '/'
-window.addEventListener("keydown", (event) => {
-  if (event.code === "Slash") {
-    searchInput.focus();
-    searchInput.value = "";
-    event.preventDefault();
-  }
-  if (event.code === "Escape") {
-    searchInput.blur();
-    event.preventDefault();
-  }
-});
-
-// hide 'copied' tooltip on scroll
-window.onscroll = () => {
-  tooltip.textContent = "";
-  tooltip.style.opacity = 0;
-  tooltip.style.visibility = "hidden";
-};
 
 // click on permalink copies the href to clipboard
 document.querySelectorAll(".headerlink").forEach((link) => {
@@ -192,58 +76,5 @@ function copyToClipboard(str, msg) {
   showSnackbar(msg);
 }
 
-// collapsible NAV
-document.querySelectorAll(".expand").forEach((span) => {
-  span.onclick = () => {
-    span.parentElement.parentElement.classList.toggle("expanded");
-  };
-});
-
-// expand NAV when tab focus is received on link
-const navLinks = document.querySelectorAll("#nav-toc a");
-navLinks.forEach((navLink) => {
-  navLink.onfocus = (e) => {
-    document.querySelectorAll(".expand").forEach((span) => {
-      const li = span.parentElement.parentElement;
-      if (li.contains(e.target)) {
-        li.classList.add("expanded");
-      } else {
-        if (!li.classList.contains("current")) {
-          li.classList.remove("expanded");
-        }
-      }
-    });
-  };
-});
-
-// Mark sections, that are visible in the browser window also as
-// "current" and update this on scrolling
-// The scrollable window here is not the body, but the <div id="main-wrapper">
-const mainViewport = document.querySelector("#main-wrapper");
-const viewportTop = mainViewport.offsetTop;
-const viewportBottom =
-  document.documentElement.offsetHeight || document.body.offsetHeight;
-
-const sections = document.querySelectorAll("main section");
-
-mainViewport.onscroll = () => {
-  for (var i = 0; i < sections.length; ++i) {
-    const rect = sections[i].getBoundingClientRect();
-    if (viewportTop <= rect.top && rect.top <= viewportBottom) {
-      const test = document.querySelector(
-        `#nav-toc a[href*=${sections[i].id}]`
-      );
-      if (test) {
-        test.classList.add("current");
-      }
-    }
-    if (rect.top < viewportTop || rect.top > viewportBottom) {
-      const test = document.querySelector(
-        `#nav-toc a[href*=${sections[i].id}]`
-      );
-      if (test) {
-        test.classList.remove("current");
-      }
-    }
-  }
-};
+collapsibleNav()
+scrollActive();
