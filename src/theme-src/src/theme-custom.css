@@ -221,7 +221,7 @@ div.highlight {
 .hll,
 .ins,
 .del {
-  @apply block bg-yellow-100 pl-4 py-1 -ml-4;
+  @apply block pl-4 py-1 -ml-4;
 }
 
 .hll {
