@@ -29,9 +29,11 @@ The theme includes several usability improvements:
 
 .. features-start
 
-Copy code blocks
-    Code blocks have a **Copy** button, allowing you to copy code snippets to the
-    clipboard.
+Better code blocks
+    - Code blocks have a **Copy** button, allowing you to copy code snippets to the
+      clipboard.
+    - Code blocks are enhanced with ``emphasized-added`` and ``emphasized-removed``
+      options, that highlight removed lines in red and added lines in green.
 
 New directive for highlighting placeholder variables
     The theme supports a new directive ``samp``, which is the equivalent of the
