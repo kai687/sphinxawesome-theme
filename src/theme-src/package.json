@@ -3,7 +3,7 @@
   "version": "0.1",
   "description": "A new Sphinx theme using Tailwind CSS",
   "scripts": {
-    "build": "webpack"
+    "build": "NODE_ENV=production webpack"
   },
   "eslintConfig": {
     "env": {
