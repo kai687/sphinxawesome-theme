@@ -4,15 +4,14 @@
 
 @import "tailwindcss/base";
 @import "tailwindcss/components";
-@import "custom.css";
-@import "headings.css";
+@import "base.css";
 @import "nav.css";
 @import "links.css";
 @import "code.css";
 @import "lists.css";
 @import "tables.css";
 @import "figures.css";
-/* @import "admonitions.css"; */
+@import "admonitions.css";
 @import "transitions.css";
 @import "print.css";
 @import "tailwindcss/utilities";

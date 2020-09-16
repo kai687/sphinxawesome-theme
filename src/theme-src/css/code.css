@@ -2,139 +2,130 @@
  * Styles for code elements
  * ************************/
 
-@layer base {
-  code {
-    @apply font-mono font-medium text-sm leading-none py-px px-1 bg-gray-200 rounded;
+code {
+  @apply font-mono font-medium text-sm leading-none py-px px-1 bg-gray-200 rounded;
+}
+
+pre {
+  font-size: 0.95rem;
+}
+
+div[class^="highlight-"] {
+  @apply my-6 overflow-x-auto;
+}
+
+.highlight {
+  @apply relative rounded bg-gray-200;
+  & pre {
+    @apply p-4 pt-8 overflow-x-auto leading-6;
   }
-
-  pre {
-    font-size: 0.95rem;
+  & .hll,
+  & .ins,
+  & .del {
+    @apply block pl-4 -ml-4 relative;
   }
-
-  @layer components {
-    div[class^="highlight-"] {
-      @apply my-6 overflow-x-auto;
+  & .hll {
+    @apply bg-yellow-100;
+  }
+  & .ins {
+    @apply bg-teal-200 bg-opacity-75;
+    &:before {
+      content: "\002b";
+      left: 3px;
+      @apply text-teal-900 absolute;
     }
+  }
+  & .del {
+    @apply bg-red-300 bg-opacity-75;
+    &:before {
+      content: "\2212";
+      left: 3px;
+      @apply text-red-900 absolute;
+    }
+  }
+}
 
-    .highlight {
-      @apply relative rounded bg-gray-200;
-      pre {
-        @apply p-4 pt-8 overflow-x-auto leading-6;
-      }
-      .hll,
-      .ins,
-      .del {
-        @apply block pl-4 -ml-4 relative;
-      }
-
-      .hll {
-        @apply bg-yellow-100;
-      }
-
-      .ins {
-        @apply bg-teal-200 bg-opacity-75;
-        &:before {
-          content: "\002b";
-          left: 3px;
-          @apply text-teal-900 absolute;
-        }
-      }
-
-      .del {
-        @apply bg-red-300 bg-opacity-75;
-        &:before {
-          content: "\2212";
-          left: 3px;
-          @apply text-red-900 absolute;
-        }
+.highlighttable {
+  @apply w-full;
+  & td {
+    @apply p-0;
+    &.linenos {
+      & pre {
+        @apply pl-4 pt-8 pb-4 pr-0 rounded-l bg-gray-100 border-r border-gray-400 select-none pointer-events-none overflow-x-auto text-current leading-6;
       }
     }
+  }
+  & .highlight {
+    @apply rounded-l-none;
+  }
+}
 
-    .highlighttable {
-      @apply w-full;
-      td {
-        @apply p-0;
-        &.linenos {
-          pre {
-            @apply pl-4 pt-8 pb-4 pr-0 rounded-l bg-gray-100 border-r border-gray-400 select-none pointer-events-none overflow-x-auto text-current leading-6;
-          }
-        }
-      }
-      .highlight {
-        @apply rounded-l-none;
+.literal-block-wrapper {
+  @apply my-6;
+
+  & .code-block-caption {
+    @apply text-sm ml-4;
+  }
+  & div[class^="highlight-"] {
+    @apply mt-4;
+  }
+}
+
+/* make prompts unselectable */
+.gp {
+  @apply select-none pointer-events-none;
+}
+
+/* from the 'samp' directive */
+em.var {
+  @apply text-purple-700 font-medium;
+}
+
+/* from the 'samp' role */
+code > em {
+  @apply text-purple-700;
+}
+
+button.copy {
+  @apply absolute right-0 top-0 p-2 text-gray-600;
+  &:focus,
+  &:hover {
+    @apply text-pink-500;
+  }
+  & > svg {
+    @apply h-4 w-4 fill-current;
+  }
+}
+
+/* autodocs */
+dl.py {
+  & dt {
+    @apply bg-gray-200 rounded p-2 my-4 text-black;
+    & > code {
+      @apply bg-transparent p-0;
+      &.descname {
+        @apply text-base tracking-tight pr-px;
       }
     }
-
-    .literal-block-wrapper {
-      @apply my-6;
-
-      .code-block-caption {
-        @apply text-sm ml-4;
-      }
-      div[class^="highlight-"] {
-        @apply mt-4;
-      }
+  }
+  & em {
+    &.property {
+      @apply text-sm text-purple-900;
     }
-
-    /* make prompts unselectable */
-    .gp {
-      @apply select-none pointer-events-none;
+    &.sig-param {
+      @apply text-purple-900;
     }
+  }
+}
 
-    /* from the 'samp' directive */
-    em.var {
-      @apply text-purple-700 font-medium;
+dl.option {
+  & dt {
+    @apply bg-gray-200 rounded inline-block;
+    & > code {
+      @apply bg-transparent;
     }
-
-    /* from the 'samp' role */
-    code > em {
-      @apply text-purple-700;
-    }
-
-    button.copy {
-      @apply absolute right-0 top-0 p-2 text-gray-600;
-      &:focus {
-        @apply text-pink-500;
-      }
-      &:hover {
-        @apply text-pink-500;
-      }
-      & > svg {
-        @apply h-4 w-4 fill-current;
-      }
-    }
-
-    /* autodocs */
-    dl.py {
-      dt {
-        @apply bg-gray-200 rounded p-2 my-4 text-black;
-        & > code {
-          @apply bg-transparent p-0;
-          &.descname {
-            @apply text-base tracking-tight pr-px;
-          }
-        }
-      }
-      em {
-        &.property {
-          @apply text-sm text-purple-900;
-        }
-        &.sig-param {
-          @apply text-purple-900;
-        }
-      }
-    }
-
-    dl.option {
-      dt {
-        @apply bg-gray-200 rounded inline-block;
-        & > code {
-          @apply bg-transparent;
-        }
-        .sig-prename {
-          @apply italic text-purple-700;
-        }
-      }
+    & .sig-prename {
+      @apply italic text-purple-700;
     }
   }
 }

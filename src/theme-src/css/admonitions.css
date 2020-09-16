@@ -5,20 +5,20 @@
 .admonition {
   @apply text-sm my-6 p-4 rounded text-blue-900 bg-blue-200;
 
-  p:not(.admonition-title) {
+  & p:not(.admonition-title) {
     @apply my-4;
   }
-  p:last-child {
+  & p:last-child {
     @apply mb-0;
   }
-  .headerlink {
+  & .headerlink {
     @apply text-blue-900;
   }
 }
 
 .seealso {
-  ul {
-    p {
+  & ul {
+    & p {
       margin-top: 0 !important;
       margin-bottom: 0 !important;
     }
@@ -28,7 +28,7 @@
 .tip,
 .hint {
   @apply text-green-900 bg-green-200;
-  .headerlink {
+  & .headerlink {
     @apply text-green-900;
   }
 }
@@ -37,7 +37,7 @@
 .danger,
 .error {
   @apply text-red-900 bg-red-200;
-  .headerlink {
+  & .headerlink {
     @apply text-red-900;
   }
 }
@@ -45,7 +45,7 @@
 .caution,
 .important {
   @apply text-yellow-900 bg-yellow-200;
-  .headerlink {
+  & .headerlink {
     @apply text-yellow-900;
   }
 }

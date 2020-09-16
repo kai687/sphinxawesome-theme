@@ -2,56 +2,54 @@
  * Styles for lists
  * ****************/
 
-@layer base {
-  ol {
-    @apply list-decimal ml-4;
-    ol {
-      @apply list-latin;
+ol {
+  @apply list-decimal ml-4;
+  & ol {
+    @apply list-latin;
+  }
+}
+
+section:not(#search-results) ul {
+  @apply list-disc ml-4;
+  & ul {
+    @apply list-square;
+  }
+}
+
+ol > li,
+section ul > li {
+  @apply pl-2;
+}
+
+li > p {
+  @apply my-3;
+}
+
+dt {
+  @apply font-medium tracking-wide;
+}
+
+dd {
+  @apply pl-6;
+  & > p {
+    @apply mt-2;
+  }
+}
+
+dl.footnote {
+  @apply text-sm border-t pt-4;
+  & dt {
+    @apply float-left text-blue-700;
+  }
+  & dd > p:first-child {
+    @apply mt-0;
+  }
+  & span.brackets {
+    &:before {
+      content: "[";
     }
-  }
-
-  section:not(#search-results) ul {
-    @apply list-disc ml-4;
-    ul {
-      @apply list-square;
-    }
-  }
-
-  ol > li,
-  section ul > li {
-    @apply pl-2;
-  }
-
-  li > p {
-    @apply my-3;
-  }
-
-  dt {
-    @apply font-medium tracking-wide;
-  }
-
-  dd {
-    @apply pl-6;
-    & > p {
-      @apply mt-2;
-    }
-  }
-
-  dl.footnote {
-    @apply text-sm border-t pt-4;
-    dt {
-      @apply float-left text-blue-700;
-    }
-    dd > p:first-child {
-      @apply mt-0;
-    }
-    span.brackets {
-      &:before {
-        content: "[";
-      }
-      &:after {
-        content: "]";
-      }
+    &:after {
+      content: "]";
     }
   }
 }

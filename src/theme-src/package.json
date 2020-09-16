@@ -3,7 +3,8 @@
   "version": "0.1",
   "description": "A new Sphinx theme using Tailwind CSS",
   "scripts": {
-    "build": "NODE_ENV=production webpack"
+    "build": "NODE_ENV=production webpack",
+    "dev": "webpack"
   },
   "browserslist": [
     "last 2 versions",
@@ -46,7 +47,8 @@
         true,
         {
           "ignoreAtRules": [
-            "screen", "layer"
+            "screen",
+            "layer"
           ]
         }
       ],
@@ -70,7 +72,6 @@
   "devDependencies": {
     "@babel/core": "^7.11.6",
     "@babel/preset-env": "^7.11.5",
-    "autoprefixer": "^9.8.6",
     "babel-loader": "^8.1.0",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^4.3.0",
@@ -81,7 +82,7 @@
     "mini-css-extract-plugin": "^0.11.2",
     "postcss-import": "^12.0.1",
     "postcss-loader": "^3.0.0",
-    "precss": "^4.0.0",
+    "postcss-preset-env": "^6.7.0",
     "prettier": "^2.1.1",
     "stylelint": "^13.7.1",
     "stylelint-config-prettier": "^8.0.2",
