@@ -7,7 +7,7 @@ const webpack = require("webpack");
 module.exports = {
   mode: process.env.NODE_ENV || "development",
   entry: {
-    theme: "./src/theme-src.js",
+    theme: "./app.js",
   },
   output: {
     filename: "[name].js",
@@ -20,7 +20,7 @@ module.exports = {
       filename: "theme.css",
     }),
     new StyleLintPlugin({
-      files: "src/*.css",
+      files: "css/*.css",
       fix: true,
     }),
   ],

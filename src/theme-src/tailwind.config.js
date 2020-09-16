@@ -3,7 +3,7 @@ module.exports = {
     removeDeprecatedGapUtilities: true,
     purgeLayersByDefault: true,
   },
-  purge: ["../sphinxawesome_theme/*.html", "./src/theme-src.js"],
+  purge: ["../sphinxawesome_theme/*.html", "./js/*.js", "./css/*.css"],
   theme: {
     fontFamily: {
       display: ["Roboto", "sans-serif"],

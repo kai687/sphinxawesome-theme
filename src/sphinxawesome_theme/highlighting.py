@@ -23,6 +23,8 @@ from sphinx.highlighting import PygmentsBridge
 from sphinx.locale import __
 from sphinx.util import logging, parselinenos
 
+from . import __version__
+
 logger = logging.getLogger(__name__)
 
 
@@ -215,3 +217,9 @@ def setup(app: "Sphinx") -> Dict[str, Any]:
     """Set up this internal extension."""
     PygmentsBridge.html_formatter = AwesomeHtmlFormatter
     directives.register_directive("code-block", AwesomeCodeBlock)
+
+    return {
+        "version": __version__,
+        "parallel_read_safe": True,
+        "parallel_write_safe": True,
+    }
