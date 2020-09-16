@@ -1,6 +1,7 @@
 MASTER
 ~~~~~~
 
+- feat: better code-block directive with support for added/removed lines
 - fix: remove outline-none
 - docs: major update
 
