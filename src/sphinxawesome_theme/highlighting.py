@@ -1,21 +1,23 @@
 """Add more line highlighting options to Pygments.
 
-This formatter adds classes to lines.
+The theme uses a custom pygments HTML formatter,
+that adds the ability to highlight added/removed
+lines in code.
+
+To make use of this new function, this theme also
+extends the default Sphinx ``code-block`` directive.
 
 :copyright: Copyright Kai Welke.
 :license: MIT, see LICENSE for details.
 """
-from typing import Any, Generator, List, Optional, Tuple
+from typing import Any, Generator, List, Tuple
 
 from docutils import nodes
 from docutils.nodes import Node
 from docutils.parsers.rst import directives
 from pygments.formatters import HtmlFormatter
 from pygments.util import get_list_opt
-from sphinx.builders.dirhtml import DirectoryHTMLBuilder
-from sphinx.builders.html import StandaloneHTMLBuilder
 from sphinx.directives.code import CodeBlock, container_wrapper, dedent_lines
-from sphinx.highlighting import PygmentsBridge
 from sphinx.locale import __
 from sphinx.util import logging, parselinenos
 
@@ -83,55 +85,6 @@ class AwesomeHtmlFormatter(HtmlFormatter):
 
         for _, piece in source:
             outfile.write(piece)
-
-
-class AwesomeBridge(PygmentsBridge):
-    """Use the `AwesomeHTMLFormatter` for HTML output."""
-
-    html_formatter = AwesomeHtmlFormatter
-
-
-class AwesomeHTMLBuilder(StandaloneHTMLBuilder):
-    """Use the `AwesomeBridge` as highlighter."""
-
-    name = "html"
-
-    def init_highlighter(self) -> None:
-        """Override this method to use the `AwesomePygmentsBridge`."""
-        if self.config.pygments_style is not None:
-            style = self.config.pygments_style
-        elif self.theme:
-            style = self.theme.get_config("theme", "pygments_style", "none")
-        else:
-            style = "sphinx"
-        self.highlighter = AwesomeBridge("html", style)
-
-        if self.theme:
-            dark_style = self.theme.get_config("theme", "pygments_dark_style", None)
-        else:
-            dark_style = None
-
-        if dark_style is not None:
-            self.dark_highlighter: Optional[AwesomeBridge] = AwesomeBridge(
-                "html", dark_style
-            )
-            self.add_css_file(
-                "pygments_dark.css",
-                media="(prefers-color-scheme: dark)",
-                id="pygments_dark_css",
-            )
-        else:
-            self.dark_highlighter = None
-
-
-class AwesomeDirBuilder(DirectoryHTMLBuilder, AwesomeHTMLBuilder):
-    """Use the `AwesomeBridge` as highlighter.
-
-    The "base" is the `AwesomeHTMLBuilder`. The `DirectoryHTMLBuilder` overrides a few
-    methods here.
-    """
-
-    name = "dirhtml"
 
 
 class AwesomeCodeBlock(CodeBlock):

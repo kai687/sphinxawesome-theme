@@ -198,7 +198,7 @@ div[class^="highlight-"] {
 div.highlight {
   @apply relative rounded bg-gray-200;
   pre {
-    @apply p-4 pt-8 overflow-x-auto;
+    @apply p-4 pt-8 overflow-x-auto leading-6;
   }
 }
 
@@ -208,7 +208,7 @@ div.highlight {
     @apply p-0;
     &.linenos {
       pre {
-        @apply pl-4 pt-8 pb-4 pr-0 rounded-l bg-gray-100 border-r border-gray-400 select-none pointer-events-none overflow-x-auto text-current;
+        @apply pl-4 pt-8 pb-4 pr-0 rounded-l bg-gray-100 border-r border-gray-400 select-none pointer-events-none overflow-x-auto text-current leading-6;
       }
     }
   }
@@ -221,7 +221,7 @@ div.highlight {
 .hll,
 .ins,
 .del {
-  @apply block pl-4 py-1 -ml-4;
+  @apply block pl-4 -ml-4 relative;
 }
 
 .hll {
@@ -232,7 +232,8 @@ div.highlight {
   @apply bg-teal-200;
   &:before {
     content: "\002b";
-    @apply text-teal-900 mr-2 -ml-2;
+    left: 3px;
+    @apply text-teal-900 absolute;
   }
 }
 
@@ -240,7 +241,8 @@ div.highlight {
   @apply bg-red-300;
   &:before {
     content: "\2212";
-    @apply text-red-900 mr-2 -ml-2;
+    left: 3px;
+    @apply text-red-900 absolute;
   }
 }
 

@@ -87,16 +87,22 @@ but markup isn't rendered.
    print("And this is unimportant again")
 
 
-A code block can also have line numbers.
+A code block can also have line numbers. You can highlight specific lines with the
+``:emphasize-lines:`` option. You can also highlight changes in code using the
+``:emphasize-added:`` and ``:emphasize-removed:`` options.
 
 .. code-block:: python
    :emphasize-lines: 2
+   :emphasize-removed: 4
+   :emphasize-added: 5
    :linenos:
    :caption: Code block caption.
 
    print("Don't highlight this")
    print("But this!")
    print("And this is unimportant again")
+   print("Change this line")
+   print("To this line.")
 
 
 -------

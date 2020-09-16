@@ -16,9 +16,10 @@ from typing import Any, Dict
 
 from docutils.parsers.rst import directives
 from sphinx.application import Sphinx
+from sphinx.highlighting import PygmentsBridge
 
 from .admonitions_ids import AdmonitionId
-from .highlighting import AwesomeCodeBlock, AwesomeDirBuilder, AwesomeHTMLBuilder
+from .highlighting import AwesomeCodeBlock, AwesomeHtmlFormatter
 from .html_translator import AwesomeHTMLTranslator
 from .jinja_filter import setup_jinja_filter
 from .postprocess import post_process_html
@@ -35,6 +36,7 @@ def setup(app: "Sphinx") -> Dict[str, Any]:
 
     The setup function of this theme accomplishes the following:
 
+    - use the ``AwesometHtmlFormatter`` for syntax highlighting
     - add the HTML theme
     - activate the ``sphinxawesome.sampdirective`` extension
     - set the ``AwesomeHTMLTranslator`` for the "html" and "dirhtml"
@@ -42,12 +44,12 @@ def setup(app: "Sphinx") -> Dict[str, Any]:
     - add the ``AdmonitionID`` as post-transform
     - execute the ``post_process_html`` code when the build has finished
     """
+    PygmentsBridge.html_formatter = AwesomeHtmlFormatter
+
     app.add_html_theme("sphinxawesome_theme", path.abspath(path.dirname(__file__)))
     app.setup_extension("sphinxawesome.sampdirective")
     app.set_translator("html", AwesomeHTMLTranslator)
     app.set_translator("dirhtml", AwesomeHTMLTranslator)
-    app.add_builder(AwesomeHTMLBuilder, override=True)
-    app.add_builder(AwesomeDirBuilder, override=True)
     app.add_post_transform(AdmonitionId)
     app.connect("html-page-context", setup_jinja_filter)
     app.connect("build-finished", post_process_html)
