@@ -74,16 +74,11 @@ For example, if you want to change the appearance of links from the default blue
 orange, open :file:`theme-custom.css` and change:
 
 .. code-block::
+   :emphasize-removed: 2
+   :emphasize-added: 3
 
    p a {
      @apply text-blue-600;
-   }
-
-to:
-
-.. code-block::
-
-   p a {
      @apply text-orange-600;
    }
 
@@ -91,11 +86,8 @@ For example, to change the background color of the header to orange,
 open :file:`sphinxawesome_theme/header.html` and change:
 
 .. code-block:: html
+   :emphasize-removed: 1
+   :emphasize-added: 2
 
    <header class="md:sticky top-0 bg-white ...">
-
-to:
-
-.. code-block:: html
-
    <header class="md:sticky top-0 bg-orange-500 ...">

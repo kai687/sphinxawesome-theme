@@ -195,10 +195,37 @@ div[class^="highlight-"] {
   @apply my-6 overflow-x-auto;
 }
 
-div.highlight {
+.highlight {
   @apply relative rounded bg-gray-200;
   pre {
     @apply p-4 pt-8 overflow-x-auto leading-6;
+  }
+  .hll,
+  .ins,
+  .del {
+    @apply block pl-4 -ml-4 relative;
+  }
+
+  .hll {
+    @apply bg-yellow-100;
+  }
+
+  .ins {
+    @apply bg-teal-200 bg-opacity-75;
+    &:before {
+      content: "\002b";
+      left: 3px;
+      @apply text-teal-900 absolute;
+    }
+  }
+
+  .del {
+    @apply bg-red-300 bg-opacity-75;
+    &:before {
+      content: "\2212";
+      left: 3px;
+      @apply text-red-900 absolute;
+    }
   }
 }
 
@@ -214,35 +241,6 @@ div.highlight {
   }
   .highlight {
     @apply rounded-l-none;
-  }
-}
-
-/* highlighted, added, and removed lines in .highlight blocks */
-.hll,
-.ins,
-.del {
-  @apply block pl-4 -ml-4 relative;
-}
-
-.hll {
-  @apply bg-yellow-100;
-}
-
-.ins {
-  @apply bg-teal-200;
-  &:before {
-    content: "\002b";
-    left: 3px;
-    @apply text-teal-900 absolute;
-  }
-}
-
-.del {
-  @apply bg-red-300;
-  &:before {
-    content: "\2212";
-    left: 3px;
-    @apply text-red-900 absolute;
   }
 }
 
