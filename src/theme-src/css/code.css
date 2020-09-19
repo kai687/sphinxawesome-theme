@@ -43,6 +43,15 @@ div[class^="highlight-"] {
       @apply text-red-900 absolute;
     }
   }
+  /* This applies when `html_codeblock_linenos_style = inline` */
+  & .linenos {
+    @apply mr-4 pl-0 pr-2 bg-transparent;
+    & + .hll,
+    & + .ins,
+    & + .del {
+      @apply inline;
+    }
+  }
 }
 
 .highlighttable {
@@ -57,6 +66,11 @@ div[class^="highlight-"] {
   }
   & .highlight {
     @apply rounded-l-none;
+    & .hll,
+    & .ins,
+    & .del {
+      @apply block;
+    }
   }
 }
 
