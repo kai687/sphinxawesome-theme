@@ -52,14 +52,14 @@ The rules are defined in the file ``package.json``.
 The JavaScript files are loaded with babel_ and checked with eslint_
 before being bundled and minified.
 
-.. _ Node.js: https://nodejs.org/en/
-.. _ nvm: https://github.com/nvm-sh/nvm
-.. _ yarn: https://classic.yarnpkg.com/lang/en/
-.. _ PostCSS: https://postcss.org/
-.. _ TailwindCSS: https://tailwindcss.com/
-.. _ postcss-import: https://github.com/postcss/postcss-import
-.. _ postcss-preset-env: https://github.com/csstools/postcss-preset-env
-.. _ cssnano: https://cssnano.co/
-.. _ stylelint: https://stylelint.io/
-.. _ babel: https://babeljs.io/
-.. _ eslint: https://eslint.org/
+.. _Node.js: https://nodejs.org/en/
+.. _nvm: https://github.com/nvm-sh/nvm
+.. _yarn: https://classic.yarnpkg.com/lang/en/
+.. _PostCSS: https://postcss.org/
+.. _TailwindCSS: https://tailwindcss.com/
+.. _postcss-import: https://github.com/postcss/postcss-import
+.. _postcss-preset-env: https://github.com/csstools/postcss-preset-env
+.. _cssnano: https://cssnano.co/
+.. _stylelint: https://stylelint.io/
+.. _babel: https://babeljs.io/
+.. _eslint: https://eslint.org/
