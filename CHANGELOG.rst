@@ -1,4 +1,4 @@
-MASTER
+1.13.1
 ~~~~~~
 
 - fix: modified linenumber styling to work with new Sphinx (#123)
