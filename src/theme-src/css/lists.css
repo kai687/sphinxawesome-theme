@@ -26,7 +26,7 @@ li > p {
 }
 
 dt {
-  @apply font-medium tracking-wide;
+  @apply font-medium;
 }
 
 dd {
