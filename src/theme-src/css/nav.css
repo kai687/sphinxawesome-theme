@@ -79,10 +79,7 @@
   & .toctree-l3 > a {
     @apply block py-3 pl-8;
   }
-  & a {
-    @apply text-blue-700;
-    &.current {
-      @apply text-pink-600;
-    }
+  & a.current {
+    @apply text-pink-600;
   }
 }
