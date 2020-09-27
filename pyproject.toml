@@ -35,7 +35,7 @@ flake8-docstrings = "^1.5.0"
 flake8-import-order = "^0.18.1"
 black = "^20.8b1"
 pre-commit = "^2.7.1"
-pytest = "^6.0"
+pytest = "^6.1"
 pytest-cov = "^2.10"
 mypy = "^0.782"
 coverage = { extras = ["toml"], version = "^5.2" }
