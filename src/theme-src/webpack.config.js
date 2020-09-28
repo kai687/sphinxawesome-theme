@@ -1,4 +1,5 @@
 const path = require("path");
+const ESLintPlugin = require("eslint-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const StyleLintPlugin = require("stylelint-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
@@ -16,6 +17,11 @@ module.exports = {
   plugins: [
     new webpack.ProgressPlugin(),
     new CleanWebpackPlugin(),
+    new ESLintPlugin({
+      failOnWarning: true,
+      failOnError: true,
+      files: "./js/*.js",
+    }),
     new MiniCssExtractPlugin({
       filename: "theme.css",
     }),
@@ -37,12 +43,6 @@ module.exports = {
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
         use: ["file-loader"],
-      },
-      {
-        enforce: "pre",
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: "eslint-loader",
       },
       {
         test: /\.js$/,
