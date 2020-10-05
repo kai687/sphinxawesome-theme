@@ -69,7 +69,7 @@ description = "Screen-scraping library"
 name = "beautifulsoup4"
 optional = false
 python-versions = "*"
-version = "4.9.2"
+version = "4.9.3"
 
 [package.dependencies]
 [package.dependencies.soupsieve]
@@ -928,9 +928,9 @@ bandit = [
     {file = "bandit-1.6.2.tar.gz", hash = "sha256:41e75315853507aa145d62a78a2a6c5e3240fe14ee7c601459d0df9418196065"},
 ]
 beautifulsoup4 = [
-    {file = "beautifulsoup4-4.9.2-py2-none-any.whl", hash = "sha256:645d833a828722357038299b7f6879940c11dddd95b900fe5387c258b72bb883"},
-    {file = "beautifulsoup4-4.9.2-py3-none-any.whl", hash = "sha256:5dfe44f8fddc89ac5453f02659d3ab1668f2c0d9684839f0785037e8c6d9ac8d"},
-    {file = "beautifulsoup4-4.9.2.tar.gz", hash = "sha256:1edf5e39f3a5bc6e38b235b369128416c7239b34f692acccececb040233032a1"},
+    {file = "beautifulsoup4-4.9.3-py2-none-any.whl", hash = "sha256:4c98143716ef1cb40bf7f39a8e3eec8f8b009509e74904ba3a7b315431577e35"},
+    {file = "beautifulsoup4-4.9.3-py3-none-any.whl", hash = "sha256:fff47e031e34ec82bf17e00da8f592fe7de69aeea38be00523c04623c04fb666"},
+    {file = "beautifulsoup4-4.9.3.tar.gz", hash = "sha256:84729e322ad1d5b4d25f805bfa05b902dd96450f43842c4e99067d5e1369eb25"},
 ]
 black = [
     {file = "black-20.8b1.tar.gz", hash = "sha256:1c02557aa099101b9d21496f8a914e9ed2222ef70336404eeeac8edba836fbea"},
