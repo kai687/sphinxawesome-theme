@@ -79,7 +79,7 @@
     "cssnano-preset-advanced": "^4.0.7",
     "eslint": "^7.10.0",
     "eslint-webpack-plugin": "^2.1.0",
-    "file-loader": "^6.0.0",
+    "file-loader": "^6.1.1",
     "mini-css-extract-plugin": "^1.0.0",
     "postcss-import": "^12.0.1",
     "postcss-loader": "^3.0.0",
