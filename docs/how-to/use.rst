@@ -84,7 +84,7 @@ How to use a local version of the theme
 ---------------------------------------
 
 If you didn't install the theme as a Python package,
-you can :ref:`install it locally <Creating a local copy of the theme>`/
+you can :ref:`install it locally <Creating a local copy of the theme>`
 
 For example, you have a project structure like this:
 

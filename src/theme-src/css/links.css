@@ -61,3 +61,8 @@ a:focus {
   vertical-align: super;
   @apply text-sm -ml-1;
 }
+
+.external-link-icon {
+  margin-bottom: 3px;
+  @apply inline ml-px h-4;
+}

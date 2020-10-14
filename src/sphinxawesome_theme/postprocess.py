@@ -71,6 +71,36 @@ def _add_copy_button(tree: BeautifulSoup) -> None:
         code.append(btn)
 
 
+def _add_external_link_icon(tree: BeautifulSoup) -> None:
+    """Add icon to all ``a.external`` elements.
+
+    The icon is taken from the Materials icons set: ``open_in_new``.
+    https://material.io/resources/icons/?icon=open_in_new
+    """
+    for link in tree("a", class_="external"):
+        # create the icon
+        svg = tree.new_tag(
+            "svg",
+            attrs={
+                "xmlns": "http://www.w3.org/2000/xvg",
+                "viewBox": "0 0 24 24",
+                "class": "external-link-icon",
+                "fill": "currentColor",
+            },
+        )
+        svg["aria-hidden"] = "true"
+        # svg path
+        path = tree.new_tag("path", fill="none", d="M0 0h24v24H0z")
+        path2 = tree.new_tag(
+            "path",
+            d="M19 19H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14c1.1 0 "
+            "2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z",
+        )
+        svg.append(path)
+        svg.append(path2)
+        link.append(svg)
+
+
 def _collapsible_nav(tree: BeautifulSoup) -> None:
     """Restructure the navigation links to make them collapsible.
 
@@ -197,6 +227,7 @@ def _modify_html(html_filename: str) -> None:
     _collapsible_nav(tree)
     _wrap_literal_blocks(tree)
     _add_copy_button(tree)
+    _add_external_link_icon(tree)
     _add_focus_to_headings(tree)
     _remove_pre_spans(tree)
     _remove_xref_spans(tree)
