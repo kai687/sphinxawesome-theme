@@ -29,8 +29,8 @@ The sphinx awesome theme relies on the following external assets.
      - `Creative Commons Attribution-ShareAlike 4.0`_
    * - icons for copy buttons in code blocks
      - `Zondicons <http://www.zondicons.com>`_ by Steve Schoger
-     - ?
-   * - icon for external links
+     - ? (used until version 1.13.1)
+   * - icons
      - `Material icons <https://material.io/resources/icons/>`_
      - `Apache License, Version 2.0`_
 
