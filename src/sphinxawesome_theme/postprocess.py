@@ -12,12 +12,14 @@
 """
 
 import os
-from typing import List, Optional
+from typing import Any, Dict, List, Optional
 
 from bs4 import BeautifulSoup
-from sphinx.application import Sphinx
+from sphinx.application import Config, Sphinx
 from sphinx.locale import _
 from sphinx.util import logging
+
+from . import __version__
 
 logger = logging.getLogger(__name__)
 
@@ -205,7 +207,7 @@ def _remove_xref_spans(tree: BeautifulSoup) -> None:
             span.unwrap()
 
 
-def _modify_html(html_filename: str) -> None:
+def _modify_html(html_filename: str, config: Config) -> None:
     """Modify a single HTML document.
 
     The HTML document is parsed into a BeautifulSoup tree.
@@ -232,7 +234,8 @@ def _modify_html(html_filename: str) -> None:
     _collapsible_nav(tree)
     _wrap_literal_blocks(tree)
     _add_copy_button(tree)
-    _add_external_link_icon(tree)
+    if config.mark_external_links:
+        _add_external_link_icon(tree)
     _add_focus_to_headings(tree)
     _remove_pre_spans(tree)
     _remove_xref_spans(tree)
@@ -255,4 +258,16 @@ def post_process_html(app: Sphinx, exc: Optional[Exception]) -> None:
         html_files = _get_html_files(app.outdir)
 
         for doc in html_files:
-            _modify_html(doc)
+            _modify_html(doc, app.config)
+
+
+def setup(app: "Sphinx") -> Dict[str, Any]:
+    """Set this up as internal extension."""
+    app.add_config_value("mark_external_links", True, "env")
+    app.connect("build-finished", post_process_html)
+
+    return {
+        "version": __version__,
+        "parallel_read_safe": True,
+        "parallel_write_safe": True,
+    }
