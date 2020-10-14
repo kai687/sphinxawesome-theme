@@ -63,6 +63,7 @@ a:focus {
 }
 
 .external-link-icon {
-  margin-bottom: 3px;
-  @apply inline ml-px h-4;
+  height: 0.875rem;
+  margin-bottom: 2px;
+  @apply inline ml-px;
 }
