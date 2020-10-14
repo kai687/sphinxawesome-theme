@@ -32,7 +32,7 @@ The theme includes several usability improvements:
 Better code blocks
     - Code blocks have a **Copy** button, allowing you to copy code snippets to the
       clipboard.
-    - Code blocks are enhanced with ``emphasized-added`` and ``emphasized-removed``
+    - Code blocks are enhanced with ``emphasize-added`` and ``emphasize-removed``
       options, that highlight removed lines in red and added lines in green.
 
 New directive for highlighting placeholder variables
