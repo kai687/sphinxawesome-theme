@@ -24,15 +24,15 @@ The sphinx awesome theme relies on the following external assets.
    * - fonts
      - `Roboto <https://github.com/googlefonts/roboto>`_
      - `Apache License, Version 2.0`_
-   * - icons for menu and magnifying glass
-     - `Entypo <http://www.entypo.com>`_ by Daniel Bruce
-     - `Creative Commons Attribution-ShareAlike 4.0`_
-   * - icons for copy buttons in code blocks
-     - `Zondicons <http://www.zondicons.com>`_ by Steve Schoger
-     - ? (used until version 1.13.1)
    * - icons
      - `Material icons <https://material.io/resources/icons/>`_
      - `Apache License, Version 2.0`_
+   * - **Note:** versions ≤ 1.13.1 used these icons instead:
+     - `Entypo <http://www.entypo.com>`_ by Daniel Bruce
+     - `Creative Commons Attribution-ShareAlike 4.0`_
+   * -
+     - `Zondicons <http://www.zondicons.com>`_ by Steve Schoger
+     - ?
 
 .. _Creative Commons Attribution-ShareAlike 4.0: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 .. _Apache License, Version 2.0:  https://www.apache.org/licenses/LICENSE-2.0.html

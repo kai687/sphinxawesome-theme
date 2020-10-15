@@ -1,3 +1,9 @@
+MASTER
+~~~~~~
+
+- feat: switched to Material icons (#144)
+- feat: mark external links (#142)
+
 1.13.1
 ~~~~~~
 
