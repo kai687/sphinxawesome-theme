@@ -71,20 +71,18 @@ The available options and their default values for this theme are::
 .. confval:: breadcrumbs_separator
 
    If you want to select a different separator for the breadcrumbs navigation links,
-   set:
+   set::
 
-   .. samp::
+      html_theme_options = {"breadcrumbs_separator": "CHAR"}
 
-      html_theme_options = {"breadcrumbs_separator": "{Char}"}
-
-   Replace :samp:`{Char}` with a character or HTML entity of your choice.
+   Replace :samp:`{CHAR}` with a character or HTML entity of your choice.
 
 
 How to use a local version of the theme
 ---------------------------------------
 
 If you didn't install the theme as a Python package,
-you can :ref:`install it locally <Creating a local copy of the theme>`/
+you can :ref:`install it locally <Creating a local copy of the theme>`
 
 For example, you have a project structure like this:
 

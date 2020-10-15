@@ -12,12 +12,14 @@
 """
 
 import os
-from typing import List, Optional
+from typing import Any, Dict, List, Optional
 
 from bs4 import BeautifulSoup
-from sphinx.application import Sphinx
+from sphinx.application import Config, Sphinx
 from sphinx.locale import _
 from sphinx.util import logging
+
+from . import __version__
 
 logger = logging.getLogger(__name__)
 
@@ -47,7 +49,11 @@ def _wrap_literal_blocks(tree: BeautifulSoup) -> None:
 
 
 def _add_copy_button(tree: BeautifulSoup) -> None:
-    """Add code copy button to all ``div.highlight`` elements."""
+    """Add code copy button to all ``div.highlight`` elements.
+
+    The icon is taken from the Material Design icon set:
+    https://material.io/resources/icons/?icon=content_copy
+    """
     for code in tree("div", class_="highlight"):
         # create the button
         btn = tree.new_tag("button", attrs={"class": "copy"})
@@ -55,20 +61,51 @@ def _add_copy_button(tree: BeautifulSoup) -> None:
 
         # create the SVG icon
         svg = tree.new_tag(
-            "svg", xmlns="http://www.w3.org/2000/svg", viewBox="0 0 20 20"
+            "svg",
+            xmlns="http://www.w3.org/2000/svg",
+            viewBox="0 0 24 24",
+            fill="currentColor",
         )
         svg["aria-hidden"] = "true"
 
         # svg path
         path = tree.new_tag(
             "path",
-            d="M6 6V2c0-1.1.9-2 2-2h10a2 2 0 012 2v10a2 2 0 01-2 2h-4v4a2 2 0 "
-            "01-2 2H2a2 2 0 01-2-2V8c0-1.1.9-2 2-2h4zm2 0h4a2 2 0 012 "
-            "2v4h4V2H8v4zM2 8v10h10V8H2z",
+            d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 "
+            "4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 "
+            "0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z",
         )
         svg.append(path)
         btn.append(svg)
         code.append(btn)
+
+
+def _add_external_link_icon(tree: BeautifulSoup) -> None:
+    """Add icon to all ``a.external`` elements.
+
+    The icon is taken from the Materials icons set:
+    https://material.io/resources/icons/?icon=open_in_new
+    """
+    for link in tree("a", class_="external"):
+        # create the icon
+        svg = tree.new_tag(
+            "svg",
+            attrs={
+                "xmlns": "http://www.w3.org/2000/xvg",
+                "viewBox": "0 0 24 24",
+                "class": "external-link-icon",
+                "fill": "currentColor",
+            },
+        )
+        svg["aria-hidden"] = "true"
+        # svg path
+        path = tree.new_tag(
+            "path",
+            d="M19 19H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14c1.1 0 "
+            "2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z",
+        )
+        svg.append(path)
+        link.append(svg)
 
 
 def _collapsible_nav(tree: BeautifulSoup) -> None:
@@ -170,7 +207,7 @@ def _remove_xref_spans(tree: BeautifulSoup) -> None:
             span.unwrap()
 
 
-def _modify_html(html_filename: str) -> None:
+def _modify_html(html_filename: str, config: Config) -> None:
     """Modify a single HTML document.
 
     The HTML document is parsed into a BeautifulSoup tree.
@@ -197,6 +234,8 @@ def _modify_html(html_filename: str) -> None:
     _collapsible_nav(tree)
     _wrap_literal_blocks(tree)
     _add_copy_button(tree)
+    if config.mark_external_links:
+        _add_external_link_icon(tree)
     _add_focus_to_headings(tree)
     _remove_pre_spans(tree)
     _remove_xref_spans(tree)
@@ -219,4 +258,16 @@ def post_process_html(app: Sphinx, exc: Optional[Exception]) -> None:
         html_files = _get_html_files(app.outdir)
 
         for doc in html_files:
-            _modify_html(doc)
+            _modify_html(doc, app.config)
+
+
+def setup(app: "Sphinx") -> Dict[str, Any]:
+    """Set this up as internal extension."""
+    app.add_config_value("mark_external_links", True, "env")
+    app.connect("build-finished", post_process_html)
+
+    return {
+        "version": __version__,
+        "parallel_read_safe": True,
+        "parallel_write_safe": True,
+    }

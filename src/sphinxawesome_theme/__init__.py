@@ -19,7 +19,6 @@ from sphinx.application import Sphinx
 from .admonitions_ids import AdmonitionId
 from .html_translator import AwesomeHTMLTranslator
 from .jinja_filter import setup_jinja_filter
-from .postprocess import post_process_html
 
 try:
     __version__ = version(__name__)
@@ -44,11 +43,11 @@ def setup(app: "Sphinx") -> Dict[str, Any]:
     app.add_html_theme("sphinxawesome_theme", path.abspath(path.dirname(__file__)))
     app.setup_extension("sphinxawesome.sampdirective")
     app.setup_extension("sphinxawesome_theme.highlighting")
+    app.setup_extension("sphinxawesome_theme.postprocess")
     app.set_translator("html", AwesomeHTMLTranslator)
     app.set_translator("dirhtml", AwesomeHTMLTranslator)
     app.add_post_transform(AdmonitionId)
     app.connect("html-page-context", setup_jinja_filter)
-    app.connect("build-finished", post_process_html)
 
     return {
         "version": __version__,

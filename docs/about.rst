@@ -17,14 +17,25 @@ The sphinx awesome theme relies on the following external assets.
 
    * - Purpose
      - Name/Website
+     - License
    * - CSS framework
      - `Tailwind <https://tailwindcss.com>`_
+     - `MIT License <https://github.com/tailwindlabs/tailwindcss/blob/master/LICENSE>`_
    * - fonts
      - `Roboto <https://github.com/googlefonts/roboto>`_
-   * - icons for menu and magnifying glass
+     - `Apache License, Version 2.0`_
+   * - icons
+     - `Material icons <https://material.io/resources/icons/>`_
+     - `Apache License, Version 2.0`_
+   * - **Note:** versions ≤ 1.13.1 used these icons instead:
      - `Entypo <http://www.entypo.com>`_ by Daniel Bruce
-   * - icons for copy buttons in code blocks
+     - `Creative Commons Attribution-ShareAlike 4.0`_
+   * -
      - `Zondicons <http://www.zondicons.com>`_ by Steve Schoger
+     - ?
+
+.. _Creative Commons Attribution-ShareAlike 4.0: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+.. _Apache License, Version 2.0:  https://www.apache.org/licenses/LICENSE-2.0.html
 
 .. vale off
 

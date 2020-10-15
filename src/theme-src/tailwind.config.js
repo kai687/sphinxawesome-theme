@@ -2,6 +2,8 @@ module.exports = {
   future: {
     removeDeprecatedGapUtilities: true,
     purgeLayersByDefault: true,
+    standardFontWeights: true,
+    defaultLineHeights: true,
   },
   purge: ["../sphinxawesome_theme/*.html", "./js/*.js", "./css/*.css"],
   theme: {
