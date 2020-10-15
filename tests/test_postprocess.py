@@ -154,7 +154,7 @@ def test_remove_pre_spans() -> None:
 def test_modify_html(app: Sphinx) -> None:
     """It performs all transforms."""
     app.builder.build_all()
-    postprocess._modify_html(app.outdir / "index.html")
+    postprocess._modify_html(app.outdir / "index.html", app.config)
 
     assert (app.outdir / "index.html").exists()
 
