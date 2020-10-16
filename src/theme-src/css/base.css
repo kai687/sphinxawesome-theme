@@ -2,13 +2,8 @@
  * Some basic styling
  * ******************/
 
-/* remove rounded corners on webkit browsers */
-input[type="search"] {
-  -webkit-appearance: none;
-}
-
 section {
-  @apply max-w-2xl;
+  max-width: 82ch;
 }
 
 p {
