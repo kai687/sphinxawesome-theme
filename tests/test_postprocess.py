@@ -65,11 +65,10 @@ def test_collapsible_nav() -> None:
     tree = parse_html(html)
     postprocess._collapsible_nav(tree)
 
-    spans = tree("span")
-    assert len(spans) == 1
-    assert spans[0]["class"] == ["expand"]
-    assert spans[0].string == "\u203a"
-    assert spans[0].next_sibling.string == "Link 1"
+    icons = tree("svg")
+    assert len(icons) == 1
+    assert icons[0]["class"] == ["expand"]
+    assert icons[0].next_sibling.string == "Link 1"
 
 
 def test_div_to_section() -> None:
