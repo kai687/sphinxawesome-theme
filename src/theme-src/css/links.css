@@ -16,7 +16,7 @@
   @apply ml-1 text-gray-700;
   & > svg {
     height: 0.875em;
-    @apply invisible;
+    @apply invisible fill-current;
   }
   &:focus > svg {
     @apply visible;
