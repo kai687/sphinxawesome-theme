@@ -8,8 +8,7 @@ module.exports = {
   purge: ["../sphinxawesome_theme/*.html", "./js/*.js", "./css/*.css"],
   theme: {
     fontFamily: {
-      display: ["Roboto", "sans-serif"],
-      body: ["Roboto", "sans-serif"],
+      sans: ["Roboto", "sans-serif"],
       mono: ["Roboto\\ Mono", "monospace"],
     },
     listStyleType: {
