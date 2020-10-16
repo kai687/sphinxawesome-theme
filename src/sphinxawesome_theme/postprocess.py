@@ -142,37 +142,6 @@ def _divs_to_section(tree: BeautifulSoup) -> None:
         del div["class"]
 
 
-def _add_focus_to_headings(tree: BeautifulSoup) -> None:
-    """Transform headlines so that they can receive focus.
-
-    Sphinx has a default structure of:
-    <h1>Title<a class="headerlink" href="...">#</a></h1>
-
-    What I want is:
-    <h1><a href="...">Title</a><a class="headerlink" href="...">#</a></h1>
-
-    This allows the headings to receive focus with the TAB key, as well as
-    allow logic to be applied on the headerlink '#' (click to copy).
-    Keyboard users can just use Ctrl+C on the focussed heading to achieve
-    the same goal.
-    """
-    for heading in tree.select(
-        "main h1, main h2, main h3, main h4, main h5, main h6, .admonition-title,"
-        "figcaption,.code-block-caption, table caption"
-    ):
-        headerlink = heading.find("a", class_="headerlink")
-        # make headerlinks (#) unfocussable
-        headerlink["tabindex"] = "-1"
-        caption_text = heading.find("span", class_="caption-text")
-        new_tag = tree.new_tag("a", href=headerlink["href"])
-        # figures, tables, code blocks
-        if caption_text:
-            caption_text.wrap(new_tag)
-        # h1-h6, admonitions
-        else:
-            heading.contents[0].wrap(new_tag)
-
-
 def _divs_to_figure(tree: BeautifulSoup) -> None:
     """Convert ``div.figure`` to semantic ``figure`` elements.
 
@@ -211,16 +180,8 @@ def _modify_html(html_filename: str, config: Config) -> None:
     """Modify a single HTML document.
 
     The HTML document is parsed into a BeautifulSoup tree.
-    Then, the following operations are performed on the tree.
 
-    - divs to sections
-    - divs to figures
-    - expand current
-    - collapsible navs
-    - wrap literal blocks
-    - add copy button
-    - add focus to headings
-    - remove pre spans
+    The modifications are performed in order and in place.
 
     After these modifications, the HTML is written into a file,
     overwriting the original file.
@@ -236,7 +197,6 @@ def _modify_html(html_filename: str, config: Config) -> None:
     _add_copy_button(tree)
     if config.mark_external_links:
         _add_external_link_icon(tree)
-    _add_focus_to_headings(tree)
     _remove_pre_spans(tree)
     _remove_xref_spans(tree)
 

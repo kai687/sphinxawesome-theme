@@ -3,6 +3,7 @@ MASTER
 
 - feat: switched to Material icons (#144)
 - feat: mark external links (#142)
+- feat: rewrite permalink behavior
 - fix: unwanted rounding of elements (#147)
 
 1.13.1

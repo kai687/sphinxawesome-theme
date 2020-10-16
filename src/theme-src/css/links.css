@@ -2,10 +2,6 @@
  * Styles for links
  * ****************/
 
-.headerlink {
-  @apply invisible ml-3 text-gray-500 font-medium;
-}
-
 @custom-selector :--headerlinkable
   h1,
   h2,
@@ -16,9 +12,22 @@
   dt,
   .literal-block-wrapper;
 
+.headerlink {
+  @apply ml-1 text-gray-700;
+  & > svg {
+    height: 0.875em;
+    @apply invisible inline fill-current;
+  }
+  &:focus > svg {
+    @apply visible;
+  }
+}
+
 :--headerlinkable:hover {
   & .headerlink {
-    @apply visible;
+    & > svg {
+      @apply visible;
+    }
   }
 }
 
