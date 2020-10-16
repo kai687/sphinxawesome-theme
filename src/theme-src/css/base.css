@@ -18,6 +18,10 @@ strong {
   @apply font-medium tracking-wide;
 }
 
+svg {
+  @apply inline;
+}
+
 main {
   & h1 {
     @apply text-gray-800 text-4xl leading-tight mb-12 mt-12;

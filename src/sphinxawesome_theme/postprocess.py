@@ -1,11 +1,17 @@
 """Post-process the HTML produced by Sphinx.
 
-- wrap literal blocks in ``div.highlights`` in order to
-- inject copy code buttons
-- inject HTML for collapsible navigation links
-- introduce semantic markup:
-  - div.section -> section
-  - div.figure -> figure
+Modifications that can be done on the finished HTML
+are better done using BeautifulSoup. Here, a simple
+pipeline is defined for reading all HTML files,
+parsing them with BeautifulSoup and perform a chain
+of actions on the tree in place.
+See the `_modify_html()` function for the list of
+transformations.
+
+Note: If you add elements to the HTML, add traditional
+classes instead of using Tailwind's utility classes.
+This is because this Python file is not processed by
+PurgeCSS.
 
 :copyright: Copyright 2020, Kai Welke.
 :license: MIT, see LICENSE.
@@ -49,9 +55,9 @@ def _wrap_literal_blocks(tree: BeautifulSoup) -> None:
 
 
 def _add_copy_button(tree: BeautifulSoup) -> None:
-    """Add code copy button to all ``div.highlight`` elements.
+    """Add a code copy button to all ``div.highlight`` elements.
 
-    The icon is taken from the Material Design icon set:
+    The icon is from the Material Design icon set:
     https://material.io/resources/icons/?icon=content_copy
     """
     for code in tree("div", class_="highlight"):
@@ -83,7 +89,7 @@ def _add_copy_button(tree: BeautifulSoup) -> None:
 def _add_external_link_icon(tree: BeautifulSoup) -> None:
     """Add icon to all ``a.external`` elements.
 
-    The icon is taken from the Materials icons set:
+    The icon is from the Materials icons set:
     https://material.io/resources/icons/?icon=open_in_new
     """
     for link in tree("a", class_="external"):
@@ -113,13 +119,14 @@ def _collapsible_nav(tree: BeautifulSoup) -> None:
 
     First, all links in the navigation sidebar are wrapped in a ``div``.
     This allows them to be 'block' and 'position relative' for the
-    'expand' icon to be positioned against. (Styling occurs in the CSS)
-    Note: We don't use tailwind classes here, as this is out of reach
-    for the PurgeCSS plugin.
+    'expand' icon to be positioned against.
 
-    Second, a span with the icon is inserted right before the link.
+    Second, an icon is inserted right before the link.
     Adding the icon as separate DOM element allows click events to be
     captured separately between the icon and the link.
+
+    The icon is from the Materials icons set:
+    https://material.io/resources/icons/?icon=chevron_right
     """
     for link in tree.select("#nav-toc a"):
         # First, all links should be wrapped in a div.nav-link
@@ -127,9 +134,21 @@ def _collapsible_nav(tree: BeautifulSoup) -> None:
         # Next, insert a span.expand before the link, if the #nav-link
         # has any sibling elements (a ``ul`` in the navigation menu)
         if link.parent.next_sibling:
-            span = tree.new_tag("span", attrs={"class": "expand"})
-            span.string = "\u203a"
-            link.insert_before(span)
+            # create the icon
+            svg = tree.new_tag(
+                "svg",
+                attrs={
+                    "xmlns": "http://www.w3.org/2000/xvg",
+                    "viewBox": "0 0 24 24",
+                    "class": "expand",
+                    "fill": "currentColor",
+                },
+            )
+            path = tree.new_tag(
+                "path", d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+            )
+            svg.append(path)
+            link.insert_before(svg)
 
 
 def _divs_to_section(tree: BeautifulSoup) -> None:

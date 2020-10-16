@@ -13,17 +13,16 @@
     @apply px-8 -mt-4;
   }
   & .nav-link {
-    @apply relative py-2;
+    @apply py-2;
   }
   & a.current {
     @apply text-pink-600;
   }
   & .expand {
-    top: 0;
-    left: -16px;
-    padding: 3px;
+    height: 1.2rem;
+    margin-left: -0.4rem;
     transition: transform 150ms ease-out;
-    @apply inline-block absolute text-xl font-medium cursor-pointer select-none;
+    @apply inline cursor-pointer select-none rounded-full;
     &:hover {
       @apply text-pink-600;
     }

@@ -16,7 +16,7 @@
   @apply ml-1 text-gray-700;
   & > svg {
     height: 0.875em;
-    @apply invisible inline fill-current;
+    @apply invisible;
   }
   &:focus > svg {
     @apply visible;
@@ -74,5 +74,5 @@ a:focus {
 .external-link-icon {
   height: 0.875rem;
   margin-bottom: 2px;
-  @apply inline ml-px;
+  @apply ml-px;
 }
