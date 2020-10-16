@@ -83,34 +83,6 @@ def test_div_to_section() -> None:
     assert not sections[0].has_attr("class")
 
 
-def test_headerlinks() -> None:
-    """It converts the headerlinks properly."""
-    tree = parse_html(
-        "<main><h1>Title <a href='#' class='headerlink'>#</a></h1></main>"
-    )
-    postprocess._add_focus_to_headings(tree)
-    children = list(tree.h1.children)
-    assert len(children) == 2
-    for ch in children:
-        assert ch.name == "a"
-
-    headerlinks = tree("a", class_="headerlink")
-    assert len(headerlinks) == 1
-    assert headerlinks[0]["tabindex"] == "-1"
-
-
-def test_headerlink_captions() -> None:
-    """It converts headerlinks also in captions."""
-    tree = parse_html(
-        "<table><caption><span class='caption-text'>Caption</span>"
-        "<a href='#' class='headerlink'>#</a></caption></table"
-    )
-    postprocess._add_focus_to_headings(tree)
-    children = list(tree.table.caption.children)
-    assert len(children) == 2
-    assert tree.table.caption.a.span
-
-
 def test_div_to_fig() -> None:
     """It converts a div.figure into figure element and p.caption into figcaption."""
     tree = parse_html("<div class='figure'><p class='caption'>Caption</p></div>")
