@@ -80,7 +80,7 @@ class AwesomeHTMLTranslator(HTML5Translator):
         https://material.io/resources/icons/?search=link&style=baseline
         """
         if node["ids"] and self.builder.add_permalinks and self.permalink_text:
-            headerlink = '<a class="headerlink" href="#{}" title="{}">'.format(
+            headerlink = '<a class="headerlink" href="#{}" data-title="{}">'.format(
                 node["ids"][0], title
             )
             headerlink += (

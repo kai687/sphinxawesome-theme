@@ -58,7 +58,21 @@ function copyEvents() {
   });
 
   // click on permalink copies the href to clipboard
+  // add tooltips to permalinks
   document.querySelectorAll(".headerlink").forEach((link) => {
+    ["mouseenter", "focus"].forEach((eventType) => {
+      link.addEventListener(eventType, (event) => {
+        const tooltipText = event.target.getAttribute("data-title");
+        showTooltip(event, tooltipText);
+      });
+    });
+
+    ["mouseleave", "blur"].forEach((eventType) => {
+      link.addEventListener(eventType, () => {
+        hideTooltip;
+      });
+    });
+
     link.onclick = (event) => {
       copyToClipboard(link.href, _("Copied link to clipboard"));
       event.preventDefault();
