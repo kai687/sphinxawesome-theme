@@ -44,7 +44,7 @@ function copyEvents() {
 
     ["mouseleave", "blur"].forEach((eventType) => {
       btn.addEventListener(eventType, () => {
-        hideTooltip;
+        hideTooltip();
       });
     });
 
@@ -69,7 +69,7 @@ function copyEvents() {
 
     ["mouseleave", "blur"].forEach((eventType) => {
       link.addEventListener(eventType, () => {
-        hideTooltip;
+        hideTooltip();
       });
     });
 
