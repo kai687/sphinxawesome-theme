@@ -32,7 +32,7 @@
 }
 
 p:not(.admonition-title),
-#nav-toc,
+.nav-toc,
 .search,
 .toctree-wrapper,
 .contents.local {

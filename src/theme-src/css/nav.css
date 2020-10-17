@@ -1,8 +1,9 @@
 /* ********************************************************
- * Styles for the navigation menu on the left side #nav-toc
+ * Styles for the navigation menu on the left side .nav-toc
  * ********************************************************/
 
-#nav-toc {
+.nav-toc {
+  @apply flex-1 px-5;
   & .caption {
     @apply uppercase text-sm text-gray-900 font-medium tracking-widest;
   }
