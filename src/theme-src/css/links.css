@@ -21,6 +21,10 @@
   &:focus > svg {
     @apply visible;
   }
+  &:focus,
+  &:hover {
+    @apply text-pink-600;
+  }
 }
 
 :--headerlinkable:hover {
