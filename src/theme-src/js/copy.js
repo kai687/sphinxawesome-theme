@@ -35,15 +35,18 @@ function selectText(node) {
 function copyEvents() {
   // Add behaviour to 'copy code' buttons
   document.querySelectorAll("button.copy").forEach((btn) => {
-    btn.onmouseenter = (event) => {
-      showTooltip(event);
-    };
-    btn.onfocus = (event) => {
-      showTooltip(event);
-    };
+    ["mouseenter", "focus"].forEach((eventType) => {
+      btn.addEventListener(eventType, (event) => {
+        const tooltipText = event.target.getAttribute("aria-label");
+        showTooltip(event, tooltipText);
+      });
+    });
 
-    btn.onmouseleave = hideTooltip;
-    btn.onblur = hideTooltip;
+    ["mouseleave", "blur"].forEach((eventType) => {
+      btn.addEventListener(eventType, () => {
+        hideTooltip;
+      });
+    });
 
     // Show 'Copied to clipboard' in a message at the bottom
     btn.onclick = () => {

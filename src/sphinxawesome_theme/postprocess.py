@@ -63,7 +63,7 @@ def _add_copy_button(tree: BeautifulSoup) -> None:
     for code in tree("div", class_="highlight"):
         # create the button
         btn = tree.new_tag("button", attrs={"class": "copy"})
-        btn["aria-label"] = _("Copy this code block")
+        btn["aria-label"] = _("Copy this code")
 
         # create the SVG icon
         svg = tree.new_tag(
