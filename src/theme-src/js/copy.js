@@ -1,39 +1,11 @@
 import { showSnackbar } from "./snackbar";
 import { showTooltip, hideTooltip } from "./tooltip";
+import ClipboardJS from "clipboard";
 
-function copyToClipboard(str, msg) {
-  const el = document.createElement("textarea");
-  el.value = str;
-  el.setAttribute("readonly", "");
-  el.style.position = "absolute";
-  el.style.left = "-9999px";
-  document.body.appendChild(el);
-  const selected =
-    document.getSelection().rangeCount > 0
-      ? document.getSelection().getRangeAt(0)
-      : false;
-  el.select();
-  document.execCommand("copy");
-  document.body.removeChild(el);
-  if (selected) {
-    document.getSelection().removeAllRanges();
-    document.getSelection().addRange(selected);
-  }
-  showSnackbar(msg);
-}
-
-function selectText(node) {
-  const selection = window.getSelection();
-  const range = document.createRange();
-  range.selectNodeContents(node);
-  selection.removeAllRanges();
-  selection.addRange(range);
-
-  return selection;
-}
-
-function copyEvents() {
-  // Add behaviour to 'copy code' buttons
+function copyEvents () {
+  //
+  // Show and hide tooltips for the code copy buttons
+  //
   document.querySelectorAll("button.copy").forEach((btn) => {
     ["mouseenter", "focus"].forEach((eventType) => {
       btn.addEventListener(eventType, (event) => {
@@ -47,18 +19,10 @@ function copyEvents() {
         hideTooltip();
       });
     });
-
-    // Show 'Copied to clipboard' in a message at the bottom
-    btn.onclick = () => {
-      const selection = selectText(btn.parentNode);
-      document.execCommand("copy");
-      selection.removeAllRanges();
-      showSnackbar(_("Copied code to clipboard"));
-    };
   });
-
-  // click on permalink copies the href to clipboard
-  // add tooltips to permalinks
+  //
+  // Show and hide tooltips for the headerlink links
+  //
   document.querySelectorAll(".headerlink").forEach((btn) => {
     ["mouseenter", "focus"].forEach((eventType) => {
       btn.addEventListener(eventType, (event) => {
@@ -72,12 +36,33 @@ function copyEvents() {
         hideTooltip();
       });
     });
-
+    // we don't want the default `link` focus when clicked
     btn.onclick = (event) => {
-      copyToClipboard(btn.href, _("Copied link to clipboard"));
       event.preventDefault();
     };
   });
+
+  // Use clipboard.js for the headerlinks. Copy the href.
+  const headerlinkClipboard = new ClipboardJS(".headerlink", {
+    text: (trigger) => {
+      return trigger.href;
+    },
+  });
+
+  headerlinkClipboard.on("success", () => {
+    showSnackbar(_("Copied link to clipboard!"));
+  });
+
+  // Use clipboard.js for the code copy buttons. Select the parent node.
+  const codeClipboard = new ClipboardJS("button.copy", {
+    target: (trigger) => {
+      return trigger.parentNode;
+    },
+  });
+
+  codeClipboard.on("success", () => {
+    showSnackbar(_("Copied code to clipboard!"));
+  });
 }
 
-export { copyEvents };
+export { copyEvents }
