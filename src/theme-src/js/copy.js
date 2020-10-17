@@ -59,7 +59,7 @@ function copyEvents() {
 
   // click on permalink copies the href to clipboard
   // add tooltips to permalinks
-  document.querySelectorAll("button.headerlink").forEach((btn) => {
+  document.querySelectorAll(".headerlink").forEach((btn) => {
     ["mouseenter", "focus"].forEach((eventType) => {
       btn.addEventListener(eventType, (event) => {
         const tooltipText = event.target.getAttribute("aria-label");
@@ -74,10 +74,7 @@ function copyEvents() {
     });
 
     btn.onclick = (event) => {
-      console.log("headerlink clicked!")
-      const txt = event.target.getAttribute("data-href");
-      console.log(txt);
-      copyToClipboard(txt, _("Copied link to clipboard"));
+      copyToClipboard(btn.href, _("Copied link to clipboard"));
       event.preventDefault();
     };
   });
