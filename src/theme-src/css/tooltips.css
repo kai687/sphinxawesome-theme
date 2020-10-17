@@ -1,0 +1,63 @@
+/*
+ * Styles for Tooltips
+ * adapted from: https://github.com/primer/css/blob/master/src/tooltips/tooltips.scss
+ * Primer/CSS (MIT license)
+ */
+
+.tooltip {
+  @apply relative;
+}
+
+.tooltip::before {
+  z-index: 1000001;
+  width: 0;
+  height: 0;
+  content: "";
+  border: 6px solid transparent;
+  @apply text-sm text-gray-900 hidden opacity-0 pointer-events-none absolute;
+}
+
+.tooltip::after {
+  z-index: 1000000;
+  word-wrap: break-word;
+  content: attr(aria-label);
+  @apply opacity-0 rounded py-2 px-3 bg-gray-900 pointer-events-none whitespace-pre text-center text-xs tracking-wide text-white absolute hidden;
+}
+
+@keyframes tooltip-appear {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.tooltip:hover::before,
+.tooltip:hover::after,
+.tooltip:active::before,
+.tooltip:active::after,
+.tooltip:focus::before,
+.tooltip:focus::after {
+  animation-name: tooltip-appear;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in;
+  animation-delay: 0.2s;
+  @apply inline-block;
+}
+
+.below:after {
+  top: 100%;
+  right: 50%;
+  margin-top: 6px;
+  transform: translateX(50%);
+}
+.below:before {
+  top: auto;
+  right: 50%;
+  bottom: -7px;
+  margin-right: -6px;
+  border-bottom-color: #1a202c; /* border-gray-900 */
+}

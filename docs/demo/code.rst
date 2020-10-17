@@ -100,7 +100,7 @@ A code block can also have line numbers. You can highlight specific lines with t
 
    print("Don't highlight this")
    print("But this!")
-   print("And this is unimportant again")
+   print("And this is unimportant again.")
    print("Change this line")
    print("To this line.")
 

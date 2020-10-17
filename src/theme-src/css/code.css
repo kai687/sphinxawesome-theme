@@ -10,12 +10,8 @@ pre {
   font-size: 0.95rem;
 }
 
-div[class^="highlight-"] {
-  @apply my-6 overflow-x-auto;
-}
-
 .highlight {
-  @apply relative rounded bg-gray-200;
+  @apply relative rounded bg-gray-200 my-6;
   & pre {
     @apply p-4 pt-8 overflow-x-auto leading-6;
   }
@@ -76,12 +72,8 @@ div[class^="highlight-"] {
 
 .literal-block-wrapper {
   @apply my-6;
-
   & .code-block-caption {
-    @apply text-sm ml-4;
-  }
-  & div[class^="highlight-"] {
-    @apply mt-4;
+    @apply text-sm ml-4 -mb-4;
   }
 }
 

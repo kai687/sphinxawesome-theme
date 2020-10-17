@@ -86,7 +86,7 @@ class AwesomeHTMLTranslator(HTML5Translator):
         """
         if node["ids"] and self.builder.add_permalinks and self.permalink_text:
             headerlink = (
-                '<a role="button" class="headerlink" '
+                '<a role="button" class="headerlink tooltip below" '
                 'href="#{}" aria-label="{}">'.format(node["ids"][0], title)
             )
             headerlink += (

@@ -18,6 +18,7 @@ PurgeCSS.
 """
 
 import os
+import re
 from typing import Any, Dict, List, Optional
 
 from bs4 import BeautifulSoup
@@ -54,6 +55,30 @@ def _wrap_literal_blocks(tree: BeautifulSoup) -> None:
     ]
 
 
+def _unwrap_code_blocks(tree: BeautifulSoup) -> None:
+    """Remove unnecessary nesting of ``div.highlight`` elements.
+
+    For code-blocks, we have:
+
+    <div class="highlight-LANG">
+       <div class="highlight">
+          <pre>
+          ...
+
+    the outer block is unnecessary. As a bonus, we add the highlight
+    language as data attribute to the highlight div.
+    """
+    for block in tree("div", {"class": re.compile("highlight-.*")}):
+        for cl in block.attrs["class"]:
+            match = re.search("highlight-(.*)", cl)
+            if match:
+                lang = match.group(1)
+                print(lang)
+        hi = block.find("div", class_="highlight")
+        hi["data-highlight-lang"] = lang
+        block.unwrap()
+
+
 def _add_copy_button(tree: BeautifulSoup) -> None:
     """Add a code copy button to all ``div.highlight`` elements.
 
@@ -62,7 +87,7 @@ def _add_copy_button(tree: BeautifulSoup) -> None:
     """
     for code in tree("div", class_="highlight"):
         # create the button
-        btn = tree.new_tag("button", attrs={"class": "copy"})
+        btn = tree.new_tag("button", attrs={"class": "copy tooltip below"})
         btn["aria-label"] = _("Copy this code")
 
         # create the SVG icon
@@ -93,6 +118,9 @@ def _add_external_link_icon(tree: BeautifulSoup) -> None:
     https://material.io/resources/icons/?icon=open_in_new
     """
     for link in tree("a", class_="external"):
+        # add tooltip to link
+        link["aria-label"] = "Open external website"
+        link["class"] += ["tooltip", "below"]
         # create the icon
         svg = tree.new_tag(
             "svg",
@@ -213,6 +241,7 @@ def _modify_html(html_filename: str, config: Config) -> None:
     _expand_current(tree)
     _collapsible_nav(tree)
     _wrap_literal_blocks(tree)
+    _unwrap_code_blocks(tree)
     _add_copy_button(tree)
     if config.mark_external_links:
         _add_external_link_icon(tree)
