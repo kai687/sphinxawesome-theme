@@ -73,7 +73,6 @@ def _unwrap_code_blocks(tree: BeautifulSoup) -> None:
             match = re.search("highlight-(.*)", cl)
             if match:
                 lang = match.group(1)
-                print(lang)
         hi = block.find("div", class_="highlight")
         hi["data-highlight-lang"] = lang
         block.unwrap()
@@ -87,7 +86,7 @@ def _add_copy_button(tree: BeautifulSoup) -> None:
     """
     for code in tree("div", class_="highlight"):
         # create the button
-        btn = tree.new_tag("button", attrs={"class": "copy tooltip below"})
+        btn = tree.new_tag("button", attrs={"class": "copy tooltipped tooltipped-nw"})
         btn["aria-label"] = _("Copy this code")
 
         # create the SVG icon
@@ -120,7 +119,7 @@ def _add_external_link_icon(tree: BeautifulSoup) -> None:
     for link in tree("a", class_="external"):
         # add tooltip to link
         link["aria-label"] = "Open external website"
-        link["class"] += ["tooltip", "below"]
+        link["class"] += ["tooltipped", "tooltipped-ne"]
         # create the icon
         svg = tree.new_tag(
             "svg",

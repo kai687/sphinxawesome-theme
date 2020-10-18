@@ -21,11 +21,11 @@ def test_permalinks(app: Sphinx) -> None:
     headerlinks = tree("a", class_="headerlink")
     assert len(headerlinks) == 6
     assert (
-        headerlinks[0]["title"]
+        headerlinks[0]["aria-label"]
         == "Copy link to section: Test the Python extension of the Sphinx Awesome Theme."
     )
-    assert headerlinks[1]["title"] == "Copy link to section: Test Section."
-    assert headerlinks[2]["title"] == "Copy link to this note."
-    assert headerlinks[3]["title"] == "Copy link to this definition."
-    assert headerlinks[4]["title"] == "Copy link to this code block."
-    assert headerlinks[5]["title"] == "Copy link to this table."
+    assert headerlinks[1]["aria-label"] == "Copy link to section: Test Section."
+    assert headerlinks[2]["aria-label"] == "Copy link to this note."
+    assert headerlinks[3]["aria-label"] == "Copy link to this definition."
+    assert headerlinks[4]["aria-label"] == "Copy link to this code block."
+    assert headerlinks[5]["aria-label"] == "Copy link to this table."

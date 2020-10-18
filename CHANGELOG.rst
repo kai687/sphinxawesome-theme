@@ -6,6 +6,7 @@ MASTER
 - feat: rewrite permalink behavior
 - feat: use clipboard.js
 - feat: HTML simplifications
+- feat: CSS tooltips
 - fix: unwanted rounding of elements (#147)
 
 1.13.1

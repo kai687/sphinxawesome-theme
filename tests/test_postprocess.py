@@ -40,26 +40,27 @@ def test_add_copy_button() -> None:
     btn = tree("button")
     assert len(btn) == 1
     btn = btn[0]
-    assert btn["class"] == ["copy"]
-    assert btn["aria-label"] == "Copy this code block"
+    assert btn["class"] == ["copy", "tooltipped", "tooltipped-nw"]
+    assert btn["aria-label"] == "Copy this code"
     svg = btn("svg")
     assert svg[0]["aria-hidden"] == "true"
 
 
 def test_collapsible_nav() -> None:
     """It adds a span to nested links."""
-    html = """<div id="nav-toc">
-                <ul>
-                  <li>
+    html = """
+        <nav class="nav-toc">
+            <ul>
+                <li>
                     <a>Link 1</a>
                     <ul>
                       <li><a>Sublink1</a></li>
                       <li><a>Sublink2</a></li>
                     </ul>
-                  </li>
-                  <li><a>Link 2</a></li>
-                </ul>
-            </div>
+                </li>
+                <li><a>Link 2</a></li>
+            </ul>
+        </nav>
     """
 
     tree = parse_html(html)
