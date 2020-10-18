@@ -12,7 +12,7 @@
     @apply mb-0;
   }
   & .headerlink {
-    @apply text-blue-900;
+    @apply text-current;
   }
 }
 
@@ -28,26 +28,17 @@
 .tip,
 .hint {
   @apply text-green-900 bg-green-200;
-  & .headerlink {
-    @apply text-green-900;
-  }
 }
 
 .warning,
 .danger,
 .error {
   @apply text-red-900 bg-red-200;
-  & .headerlink {
-    @apply text-red-900;
-  }
 }
 
 .caution,
 .important {
   @apply text-yellow-900 bg-yellow-200;
-  & .headerlink {
-    @apply text-yellow-900;
-  }
 }
 
 .admonition-title {

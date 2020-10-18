@@ -2,17 +2,10 @@
     Template for the copyright info at the bottom of the <main> element.
 -#}
 
-{%- if theme_show_nav -%}
-  <section
-    role="contentinfo"
-    class="mt-20 mx-4 md:ml-16 xxl:ml-32 mb-4 flex-shrink-0 text-sm text-gray-700"
-  >
-{%- else -%}
-    <section
-      role="contentinfo"
-      class="mt-20 mx-4 md:ml-8 xxl:ml-16 mb-4 flex-shrink-0 text-sm text-gray-700"
-    >
-{%- endif -%}
+<section
+  role="contentinfo"
+  class="mt-20 px-5 mb-4 flex-shrink-0 text-sm text-gray-700 {% if not theme_show_nav -%}mx-auto{%- endif -%}"
+>
 {%- if show_copyright -%}
   {%- if hasdoc('copyright') -%}
     {%- trans path=pathto('copyright'), copyright=copyright|e -%}

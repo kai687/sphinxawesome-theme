@@ -1,26 +1,32 @@
 {#-
   Template file for the header.
+
+  If there is a logo, clicking the logo leads back to the homepage.
+  If there is no logo, clicking the manual title leads back to the homepage.
 -#}
 
 {%- import "buttons.html" as buttons -%}
 
-<header class="md:sticky top-0 bg-gray-900 shadow-md flex flex-col md:flex-row justify-center md:justify-between items-center z-10">
+<header class="md:sticky top-0 bg-gray-900 shadow-md flex md:flex-row justify-between items-center z-10">
   {#- show logo on the left side of the header -#}
   {%- if logo -%}
-  <img class="h-8 mx-8 xxl:mx-16 mt-4 md:mt-0 transform md:-translate-y-1" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo" />
-  {%- endif -%}
-
-  {#- show manual title in the middle -#}
-  <a class="hover:bg-gray-700 focus:bg-gray-700" href="{{ pathto(master_doc) }}" title="{{ _('Back to homepage') }}">
-    <h2 class="text-xl text-gray-100 mx-8 xxl:mx-16 py-4">{{ docstitle }}</h2>
+  <a class="hover:bg-gray-700 focus:bg-gray-700 py-4" href="{{ pathto(master_doc) }}" title="{{ _('Back to homepage') }}">
+    <img class="h-8 mx-5" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo" />
   </a>
+  {#- show manual title in the middle -#}
+  <h2 class="text-xl text-gray-100 mx-5 py-4">{{ docstitle }}</h2>
+  {%- else -%}
+  <a class="hover:bg-gray-700 focus:bg-gray-700" href="{{ pathto(master_doc) }}" title="{{ _('Back to homepage') }}">
+    <h2 class="text-xl text-gray-100 mx-5 py-4">{{ docstitle }}</h2>
+  </a>
+  {%- endif -%}
 
   {#- show a search input field on the right side -#}
   <form
     id="searchbox"
     action="{{ pathto('search') }}"
     method="get"
-    class="hidden md:flex my-auto mr-12 w-1/5 justify-between items-center print:hidden">
+    class="hidden md:flex my-auto mx-5 justify-between items-center print:hidden">
 
     <input
       name="q"
@@ -28,7 +34,8 @@
       type="search"
       aria-label="Search the docs"
       placeholder="{{ _('Search the docs') }}"
-      class="p-2 flex-1 rounded-l rounded-r-none focus:bg-gray-200"
+      class="p-2 flex-1 rounded-l rounded-r-none focus:bg-yellow-200"
+      style="width: 300px;"
     />
     {{ buttons.search() }}
   </form>

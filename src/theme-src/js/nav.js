@@ -1,7 +1,7 @@
 // Functionality for opening and closing the navigation menu
 
 function navFunctions() {
-  const nav = document.querySelector("nav");
+  const nav = document.querySelector('aside[role="navigation"]');
   const closeNavBtn = document.querySelector("#closeNavBtn");
   const openNavBtn = document.querySelector("#openNavBtn");
 
@@ -17,7 +17,7 @@ function navFunctions() {
   }
   // We want to close the nav menu also, when clicking on a link in the nav menu on the
   // current page (but only on small screens (i.e., where the close button is visible))
-  document.querySelectorAll("nav li.current a").forEach((link) => {
+  document.querySelectorAll(".nav-toc li.current a").forEach((link) => {
     if (closeNavBtn.offsetWidth > 0 && closeNavBtn.offsetHeight > 0) {
       link.onclick = () => {
         nav.setAttribute("data-menu", "closed");
@@ -34,7 +34,7 @@ function collapsibleNav() {
   });
 
   // expand NAV when tab focus is received on link
-  const navLinks = document.querySelectorAll("#nav-toc a");
+  const navLinks = document.querySelectorAll(".nav-toc a");
   navLinks.forEach((navLink) => {
     navLink.onfocus = (e) => {
       document.querySelectorAll(".expand").forEach((span) => {

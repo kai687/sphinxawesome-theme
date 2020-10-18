@@ -1,13 +1,9 @@
 {#- Template for the main content element. -#}
 
 <div id="main-wrapper" class="overflow-y-auto md:w-full flex flex-col flex-1">
-  {%- if theme_show_nav -%}
-    <main role="main" class="mx-4 md:ml-16 xxl:ml-32 flex-1">
-  {%- else -%}
-    <main role="main" class="mx-4 md:ml-8 xxl:ml-16 flex-1">
-  {%- endif -%}
+  <main role="main" class="px-5 flex-1 {% if not theme_show_nav -%}mx-auto{%- endif -%}">
     {%- if ((pagename != master_doc) and (theme_show_breadcrumbs)) %}
-      {%- include "breadcrumbs.html" %}
+    {%- include "breadcrumbs.html" %}
     {% endif -%}
     {{ body }}
   </main>

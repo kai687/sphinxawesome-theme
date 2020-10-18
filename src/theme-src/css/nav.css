@@ -1,16 +1,17 @@
 /* ********************************************************
- * Styles for the navigation menu on the left side #nav-toc
+ * Styles for the navigation menu on the left side .nav-toc
  * ********************************************************/
 
-#nav-toc {
+.nav-toc {
+  @apply flex-1 px-5;
   & .caption {
-    @apply pl-8 pr-4 uppercase text-sm text-gray-900 font-medium tracking-widest;
+    @apply uppercase text-sm text-gray-900 font-medium tracking-widest;
   }
   & p:first-of-type {
     @apply mt-0;
   }
   & > ul {
-    @apply px-8 -mt-4;
+    @apply -mt-4;
   }
   & .nav-link {
     @apply py-2;
@@ -22,9 +23,13 @@
     height: 1.2rem;
     margin-left: -0.4rem;
     transition: transform 150ms ease-out;
-    @apply inline cursor-pointer select-none rounded-full;
+    @apply inline cursor-pointer select-none;
     &:hover {
       @apply text-pink-600;
+    }
+    &:focus,
+    &:active {
+      @apply outline-none;
     }
   }
   & li > ul {
@@ -41,17 +46,6 @@
     }
     & > ul {
       max-height: 100%;
-    }
-  }
-}
-
-@screen xxl {
-  #nav-toc {
-    & .caption {
-      @apply pl-16;
-    }
-    & > ul {
-      @apply pl-16;
     }
   }
 }

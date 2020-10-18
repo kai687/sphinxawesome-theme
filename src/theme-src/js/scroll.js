@@ -14,7 +14,7 @@ function scrollActive() {
       const rect = sections[i].getBoundingClientRect();
       if (viewportTop <= rect.top && rect.top <= viewportBottom) {
         const test = document.querySelector(
-          `#nav-toc a[href*=${sections[i].id}]`
+          `.nav-toc a[href*=${sections[i].id}]`
         );
         if (test) {
           test.classList.add("current");
@@ -22,7 +22,7 @@ function scrollActive() {
       }
       if (rect.top < viewportTop || rect.top > viewportBottom) {
         const test = document.querySelector(
-          `#nav-toc a[href*=${sections[i].id}]`
+          `.nav-toc a[href*=${sections[i].id}]`
         );
         if (test) {
           test.classList.remove("current");

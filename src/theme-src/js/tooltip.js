@@ -1,4 +1,4 @@
-function showTooltip(event) {
+function showTooltip(event, text) {
   const rect = event.target.getBoundingClientRect();
   const tooltip = document.querySelector("#tooltip");
 
@@ -6,7 +6,7 @@ function showTooltip(event) {
   tooltip.style.visibility = "visible";
   tooltip.style.top = rect.y + rect.height + 1 + "px";
   tooltip.style.left = rect.x - 4 + "px";
-  tooltip.textContent = _("Copy this code");
+  tooltip.textContent = text;
 }
 
 function hideTooltip() {

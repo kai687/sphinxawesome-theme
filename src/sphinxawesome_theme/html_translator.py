@@ -74,17 +74,24 @@ class AwesomeHTMLTranslator(HTML5Translator):
     def add_permalink_ref(self, node: Element, title: str) -> None:
         """Add an icon instead of the ¶ symbol.
 
-        Note that user-defined permalink character is ignored.
+        Note that user-defined permalink characters specified via
+        `html_add_permalinks` are ignored.
+
+        Since clicking the permalink icon copies the link to the clipboard,
+        this should be a button element, but there is some magic with the
+        resolution of `href` attributes happening in Sphinx.
 
         The icon is taken from Material Design icons:
         https://material.io/resources/icons/?search=link&style=baseline
         """
         if node["ids"] and self.builder.add_permalinks and self.permalink_text:
-            headerlink = '<a class="headerlink" href="#{}" title="{}">'.format(
-                node["ids"][0], title
+            headerlink = (
+                '<a role="button" class="headerlink" '
+                'href="#{}" aria-label="{}">'.format(node["ids"][0], title)
             )
             headerlink += (
-                '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">'
+                '<svg xmlns="http://www.w3.org/2000/svg" '
+                'pointer-events="none" viewBox="0 0 24 24">'
                 '<path d="M3.9 12c0-1.71 1.39-3.1 '
                 "3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 "
                 "5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 "

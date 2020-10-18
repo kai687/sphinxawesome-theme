@@ -63,7 +63,7 @@ def _add_copy_button(tree: BeautifulSoup) -> None:
     for code in tree("div", class_="highlight"):
         # create the button
         btn = tree.new_tag("button", attrs={"class": "copy"})
-        btn["aria-label"] = _("Copy this code block")
+        btn["aria-label"] = _("Copy this code")
 
         # create the SVG icon
         svg = tree.new_tag(
@@ -128,7 +128,7 @@ def _collapsible_nav(tree: BeautifulSoup) -> None:
     The icon is from the Materials icons set:
     https://material.io/resources/icons/?icon=chevron_right
     """
-    for link in tree.select("#nav-toc a"):
+    for link in tree.select(".nav-toc a"):
         # First, all links should be wrapped in a div.nav-link
         link.wrap(tree.new_tag("div", attrs={"class": "nav-link"}))
         # Next, insert a span.expand before the link, if the #nav-link
