@@ -4,6 +4,8 @@ MASTER
 - feat: switched to Material icons (#144)
 - feat: mark external links (#142)
 - feat: rewrite permalink behavior
+- feat: use clipboard.js
+- feat: HTML simplifications
 - fix: unwanted rounding of elements (#147)
 
 1.13.1
