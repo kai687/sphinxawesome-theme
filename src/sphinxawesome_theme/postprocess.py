@@ -119,7 +119,7 @@ def _add_external_link_icon(tree: BeautifulSoup) -> None:
     for link in tree("a", class_="external"):
         # add tooltip to link
         link["aria-label"] = "Open external website"
-        link["class"] += ["tooltipped", "tooltipped-n"]
+        link["class"] += ["tooltipped", "tooltipped-ne"]
         # create the icon
         svg = tree.new_tag(
             "svg",
