@@ -11,8 +11,8 @@ module.exports = {
     theme: "./app.js",
   },
   output: {
-    filename: "[name].js",
     path: path.resolve(__dirname, "../sphinxawesome_theme/static/"),
+    publicPath: "",
   },
   plugins: [
     new webpack.ProgressPlugin(),
