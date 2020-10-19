@@ -6,6 +6,7 @@ from typing import Any
 import nox
 from nox.sessions import Session
 
+nox.options.stop_on_first_error = True
 nox.options.sessions = ["docs", "lint", "black", "mypy", "netlify_test", "tests"]
 python_files = ["src/sphinxawesome_theme", "noxfile.py", "tests", "docs/conf.py"]
 python_versions = ["3.6", "3.7", "3.8", "3.9"]

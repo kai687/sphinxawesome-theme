@@ -71,9 +71,11 @@ The available options and their default values for this theme are::
 .. confval:: breadcrumbs_separator
 
    If you want to select a different separator for the breadcrumbs navigation links,
-   set::
+   set:
 
-      html_theme_options = {"breadcrumbs_separator": "CHAR"}
+   .. samp::
+
+      html_theme_options = \{"breadcrumbs_separator": "{CHAR}"\}
 
    Replace :samp:`{CHAR}` with a character or HTML entity of your choice.
 
