@@ -44,6 +44,17 @@ def docs(session: Session) -> None:
     session.run("sphinx-build", *args)
 
 
+@nox.session(python=python_versions[-1])
+def xml(session: Session) -> None:
+    """Build XML version of the docs.
+
+    This can be useful for development, to look at the structure and node types.
+    """
+    args = ["-b", "xml", "-aWTE", "docs", "docs/public/xml"]
+    session.run("poetry", "install", "--no-dev", external=True)
+    session.run("sphinx-build", *args)
+
+
 @nox.session(python="3.7")
 def netlify_test(session: Session) -> None:
     """Test, if netlify can build the docs."""
