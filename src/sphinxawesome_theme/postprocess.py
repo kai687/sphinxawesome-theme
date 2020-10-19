@@ -178,30 +178,6 @@ def _collapsible_nav(tree: BeautifulSoup) -> None:
             link.insert_before(svg)
 
 
-def _divs_to_section(tree: BeautifulSoup) -> None:
-    """Convert ``div.section`` to semantic ``section`` elements.
-
-    With docutils 0.17, this should not be necessary anymore.
-    """
-    for div in tree("div", class_="section"):
-        div.name = "section"
-        del div["class"]
-
-
-def _divs_to_figure(tree: BeautifulSoup) -> None:
-    """Convert ``div.figure`` to semantic ``figure`` elements.
-
-    With docutils 0.17, this should not be necessary anymore.
-    """
-    for div in tree("div", class_="figure"):
-        div.name = "figure"
-        div["class"].remove("figure")
-        caption = div.find("p", class_="caption")
-        if caption:
-            caption.name = "figcaption"
-            del caption["class"]
-
-
 def _expand_current(tree: BeautifulSoup) -> None:
     """Add the ``.expanded`` class to li.current elements."""
     for li in tree("li", class_="current"):
@@ -235,8 +211,6 @@ def _modify_html(html_filename: str, config: Config) -> None:
     with open(html_filename) as html:
         tree = BeautifulSoup(html, "html.parser")
 
-    _divs_to_section(tree)
-    _divs_to_figure(tree)
     _expand_current(tree)
     _collapsible_nav(tree)
     _wrap_literal_blocks(tree)

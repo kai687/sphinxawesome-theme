@@ -101,6 +101,13 @@ class AwesomeHTMLTranslator(HTML5Translator):
             )
             self.body.append(headerlink)
 
+    def visit_caption(self, node: Element) -> None:
+        """Use semantic <figcaption> elements."""
+        if isinstance(node.parent, nodes.figure):
+            self.body.append("<figcaption>")
+        else:
+            super().visit_caption(node)
+
     def depart_caption(self, node: Element) -> None:
         """Change the permalinks for captions.
 
@@ -126,6 +133,8 @@ class AwesomeHTMLTranslator(HTML5Translator):
             "literal_block"
         ):
             self.body.append("</div>\n")
+        elif isinstance(node.parent, nodes.figure):
+            self.body.append("</figcaption>\n")
         else:
             self.body.append("</p>\n")
 
@@ -144,3 +153,26 @@ class AwesomeHTMLTranslator(HTML5Translator):
         if node.get("add_permalink"):
             self.add_permalink_ref(node.parent, _("Copy link to this definition."))
         self.body.append("<br />")
+
+    def visit_section(self, node: Element) -> None:
+        """Use semantic <section> elements."""
+        self.section_level += 1
+        self.body.append(self.starttag(node, "section"))
+
+    def depart_section(self, node: Element) -> None:
+        """Use semantic <section> elements."""
+        self.section_level -= 1
+        self.body.append("</section>\n")
+
+    def visit_figure(self, node: Element) -> None:
+        """Use semantic <figure> elements."""
+        attributes = {}
+        if node.get("width"):
+            attributes["style"] = f"width:{node['width']}"
+        if node.get("align"):
+            attributes["class"] = f"align-{node['align']}"
+        self.body.append(self.starttag(node, "figure", **attributes))
+
+    def depart_figure(self, node: Element) -> None:
+        """Use semantic <figure> elements."""
+        self.body.append("</figure>\n")
