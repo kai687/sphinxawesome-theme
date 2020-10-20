@@ -18,12 +18,10 @@ PurgeCSS.
 """
 
 import os
-import re
 from typing import Any, Dict, List, Optional
 
 from bs4 import BeautifulSoup
 from sphinx.application import Config, Sphinx
-from sphinx.locale import _
 from sphinx.util import logging
 
 from . import __version__
@@ -39,75 +37,6 @@ def _get_html_files(outdir: str) -> List[str]:
             [os.path.join(root, file) for file in files if file.endswith(".html")]
         )
     return html_list
-
-
-def _wrap_literal_blocks(tree: BeautifulSoup) -> None:
-    """Wrap literal blocks in ``div.highlight`` elements.
-
-    This allows us to add 'copy code' buttons to all ``div.highlight``
-    elements.
-    """
-    literal_blocks = tree("pre", class_="literal-block")
-
-    [
-        block.wrap(tree.new_tag("div", attrs={"class": "highlight"}))
-        for block in literal_blocks
-    ]
-
-
-def _unwrap_code_blocks(tree: BeautifulSoup) -> None:
-    """Remove unnecessary nesting of ``div.highlight`` elements.
-
-    For code-blocks, we have:
-
-    <div class="highlight-LANG">
-       <div class="highlight">
-          <pre>
-          ...
-
-    the outer block is unnecessary. As a bonus, we add the highlight
-    language as data attribute to the highlight div.
-    """
-    for block in tree("div", {"class": re.compile("highlight-.*")}):
-        for cl in block.attrs["class"]:
-            match = re.search("highlight-(.*)", cl)
-            if match:
-                lang = match.group(1)
-        hi = block.find("div", class_="highlight")
-        hi["data-highlight-lang"] = lang
-        block.unwrap()
-
-
-def _add_copy_button(tree: BeautifulSoup) -> None:
-    """Add a code copy button to all ``div.highlight`` elements.
-
-    The icon is from the Material Design icon set:
-    https://material.io/resources/icons/?icon=content_copy
-    """
-    for code in tree("div", class_="highlight"):
-        # create the button
-        btn = tree.new_tag("button", attrs={"class": "copy tooltipped tooltipped-nw"})
-        btn["aria-label"] = _("Copy this code")
-
-        # create the SVG icon
-        svg = tree.new_tag(
-            "svg",
-            xmlns="http://www.w3.org/2000/svg",
-            viewBox="0 0 24 24",
-            fill="currentColor",
-        )
-        svg["aria-hidden"] = "true"
-
-        # svg path
-        path = tree.new_tag(
-            "path",
-            d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 "
-            "4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 "
-            "0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z",
-        )
-        svg.append(path)
-        btn.append(svg)
-        code.append(btn)
 
 
 def _add_external_link_icon(tree: BeautifulSoup) -> None:
@@ -184,20 +113,6 @@ def _expand_current(tree: BeautifulSoup) -> None:
         li["class"] += ["expanded"]
 
 
-def _remove_pre_spans(tree: BeautifulSoup) -> None:
-    """Remove unnecessarily nested ``span.pre`` elements in inline ``code``."""
-    for code in tree("code"):
-        for span in code("span", class_="pre"):
-            span.unwrap()
-
-
-def _remove_xref_spans(tree: BeautifulSoup) -> None:
-    """Remove unnecessarily nested ``span.std-ref`` elements in cross-references."""
-    for link in tree("a"):
-        for span in link("span", class_="std-ref"):
-            span.unwrap()
-
-
 def _modify_html(html_filename: str, config: Config) -> None:
     """Modify a single HTML document.
 
@@ -213,13 +128,8 @@ def _modify_html(html_filename: str, config: Config) -> None:
 
     _expand_current(tree)
     _collapsible_nav(tree)
-    _wrap_literal_blocks(tree)
-    _unwrap_code_blocks(tree)
-    _add_copy_button(tree)
     if config.mark_external_links:
         _add_external_link_icon(tree)
-    _remove_pre_spans(tree)
-    _remove_xref_spans(tree)
 
     with open(html_filename, "w") as out_file:
         out_file.write(str(tree))

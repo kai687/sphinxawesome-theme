@@ -10,22 +10,54 @@ extends the default Sphinx ``code-block`` directive.
 :copyright: Copyright Kai Welke.
 :license: MIT, see LICENSE for details.
 """
-from typing import Any, Dict, Generator, List, Tuple
+from typing import Any, Dict, Generator, List, Optional, Tuple
 
 from docutils import nodes
 from docutils.nodes import Node
 from docutils.parsers.rst import directives
+from docutils.statemachine import StringList
 from pygments.formatters import HtmlFormatter
 from pygments.util import get_list_opt
 from sphinx.application import Sphinx
-from sphinx.directives.code import CodeBlock, container_wrapper, dedent_lines
+from sphinx.directives.code import CodeBlock, dedent_lines
 from sphinx.highlighting import PygmentsBridge
 from sphinx.locale import __
 from sphinx.util import logging, parselinenos
+from sphinx.util.docutils import SphinxDirective
 
 from . import __version__
 
 logger = logging.getLogger(__name__)
+
+
+def container_wrapper(
+    directive: SphinxDirective, literal_node: Node, caption: Optional[str]
+) -> nodes.container:
+    """Always wrap a literal node with highlighting in a container node.
+
+    This allows us to add things like the copy button, and the caption to it, when
+    transforming.
+    """
+    container_node = nodes.container("", literal_block=True, classes=["code"])
+    container_node["language"] = literal_node["language"]
+
+    if caption:
+        parsed = nodes.Element()
+        directive.state.nested_parse(
+            StringList([caption], source=""), directive.content_offset, parsed
+        )
+        if isinstance(parsed[0], nodes.system_message):
+            msg = __("Invalid caption: %s" % parsed[0].astext())
+            raise ValueError(msg)
+        elif isinstance(parsed[0], nodes.Element):
+            caption_node = nodes.caption(parsed[0].rawsource, "", *parsed[0].children)
+            caption_node.source = literal_node.source
+            container_node += caption_node
+        else:
+            raise RuntimeError
+
+    container_node += literal_node
+    return container_node
 
 
 class AwesomeHtmlFormatter(HtmlFormatter):
@@ -61,13 +93,25 @@ class AwesomeHtmlFormatter(HtmlFormatter):
             if t != 1:
                 yield t, value
             if i + 1 in self.hl_lines:  # i + 1 because Python indexes start at 0
-                yield 1, '<span class="hll">%s</span>' % value
+                yield 1, "<mark>%s</mark>" % value
             elif i + 1 in self.added_lines:  # I could use semantic <ins> here
-                yield 1, '<span class="ins">%s</span>' % value
+                yield 1, "<ins>%s</ins>" % value
             elif i + 1 in self.removed_lines:  # I could use semantic <del> here
-                yield 1, '<span class="del">%s</span>' % value
+                yield 1, "<del>%s</del>" % value
             else:
                 yield 1, value
+
+    def wrap(self, source: Generator, outfile: Any) -> None:
+        """Return a <pre><code> wrapped element.
+
+        Pygments returns the highlighted block wrapped inside a ``div.highlight``.
+        We want to get the <pre> only, and we'll wrap it in a div later, so that
+        we can add the code button, and an optional caption.
+
+        Returning a <pre><code> block follows the HTML5 specification for marking
+        up code blocks.
+        """
+        return self._wrap_pre(self._wrap_code(source))
 
     def format_unencoded(self, tokensource: Tuple[Any, Any], outfile: Any) -> None:
         """Add added/removed lines highlighting to the formatting pipeline."""
@@ -200,11 +244,10 @@ class AwesomeCodeBlock(CodeBlock):
         self.set_source_info(literal)
 
         caption = self.options.get("caption")
-        if caption:
-            try:
-                literal = container_wrapper(self, literal, caption)
-            except ValueError as exc:
-                return [document.reporter.warning(exc, line=self.lineno)]
+        try:
+            literal = container_wrapper(self, literal, caption)
+        except ValueError as exc:
+            return [document.reporter.warning(exc, line=self.lineno)]
 
         # literal will be note_implicit_target that is linked from caption and numref.
         # when options['name'] is provided, it should be primary ID.
