@@ -1,80 +1,31 @@
-/* ************************
+/*
  * Styles for code elements
- * ************************/
+ */
 
-code {
-  @apply font-mono font-medium text-sm leading-none py-px px-1 bg-gray-200 rounded;
+/* inline code */
+:not(pre) > code {
+  @apply font-medium text-sm leading-none py-px px-1 bg-gray-200 rounded-b-none rounded-t;
 }
 
-pre {
-  font-size: 0.95rem;
-}
-
+/* the outer wrapper for a code block */
 .highlight {
-  @apply relative rounded bg-gray-200 my-6;
-  & pre {
-    @apply p-4 pt-8 overflow-x-auto leading-6;
-  }
-  & .hll,
-  & .ins,
-  & .del {
-    @apply block pl-4 -ml-4 relative;
-  }
-  & .hll {
-    @apply bg-yellow-100;
-  }
-  & .ins {
-    @apply bg-teal-200 bg-opacity-75;
-    &:before {
-      content: "\002b";
-      left: 3px;
-      @apply text-teal-900 absolute;
-    }
-  }
-  & .del {
-    @apply bg-red-300 bg-opacity-75;
-    &:before {
-      content: "\2212";
-      left: 3px;
-      @apply text-red-900 absolute;
-    }
-  }
-  /* This applies when `html_codeblock_linenos_style = inline` */
-  & .linenos {
-    @apply mr-4 pl-0 pr-2 bg-transparent;
-    & + .hll,
-    & + .ins,
-    & + .del {
-      @apply inline;
-    }
-  }
-}
-
-.highlighttable {
-  @apply w-full;
-  & td {
-    @apply p-0;
-    &.linenos {
-      & pre {
-        @apply pl-4 pt-8 pb-4 pr-0 rounded-l bg-gray-100 border-r border-gray-400 select-none pointer-events-none overflow-x-auto text-current leading-6;
-      }
-    }
-  }
-  & .highlight {
-    @apply rounded-l-none;
-    & .hll,
-    & .ins,
-    & .del {
-      @apply block;
-    }
-  }
-}
-
-.literal-block-wrapper {
   @apply my-6;
-  & .code-block-caption {
-    @apply text-sm ml-4 -mb-4;
+  /* the code block itself */
+  & pre {
+    @apply rounded-b rounded-t-none border p-2;
   }
+}
+
+/* the header of a code block */
+.code-header {
+  @apply border-l border-t border-r rounded-t rounded-b-none flex justify-between items-center text-sm text-gray-800;
+  & .caption-text {
+    @apply p-2;
+  }
+}
+
+.code-lang {
+  @apply inline-block p-2 uppercase tracking-wider;
 }
 
 /* make prompts unselectable */
@@ -93,10 +44,10 @@ code > em {
 }
 
 button.copy {
-  @apply absolute right-0 top-0 p-2 text-gray-600;
+  @apply p-2;
   &:focus,
   &:hover {
-    @apply text-pink-500;
+    @apply text-pink-600;
   }
   & > svg {
     @apply h-4 w-4 fill-current;

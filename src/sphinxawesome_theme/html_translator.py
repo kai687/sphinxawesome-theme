@@ -265,7 +265,7 @@ class AwesomeHTMLTranslator(HTML5Translator):
 
     def visit_container(self, node: Element) -> None:
         """Transform code block containers."""
-        if "code" in node.get("classes", []):
+        if node.get("literal_block"):
             captions = list(node.traverse(nodes.caption))
             self.body.append(self.starttag(node, "div", CLASS="highlight"))
             self.body.append("<div class='code-header'>\n")

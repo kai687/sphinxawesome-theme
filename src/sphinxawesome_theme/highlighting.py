@@ -38,7 +38,7 @@ def container_wrapper(
     This allows us to add things like the copy button, and the caption to it, when
     transforming.
     """
-    container_node = nodes.container("", literal_block=True, classes=["code"])
+    container_node = nodes.container("", literal_block=True)
     container_node["language"] = literal_node["language"]
 
     if caption:
