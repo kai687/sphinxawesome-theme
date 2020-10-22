@@ -4,7 +4,12 @@
 
 /* inline code */
 :not(pre) > code {
-  @apply font-medium text-sm leading-none py-px px-1 bg-gray-200 rounded-b-none rounded-t;
+  @apply font-medium text-sm leading-none py-px px-1 bg-gray-200;
+}
+
+/* literal blocks (mostly parsed-literals) not wrapped in div.highlight */
+pre {
+  @apply my-6 rounded border p-2 overflow-x-auto;
 }
 
 /* the outer wrapper for a code block */
@@ -12,7 +17,7 @@
   @apply my-6;
   /* the code block itself */
   & pre {
-    @apply rounded-b rounded-t-none border p-2;
+    @apply rounded-b rounded-t-none m-0;
   }
 }
 

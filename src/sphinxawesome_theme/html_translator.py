@@ -232,7 +232,18 @@ class AwesomeHTMLTranslator(HTML5Translator):
             location=node,
             **highlight_args,
         )
-        self.body.append(highlighted + "\n")
+
+        self.body.append(self.starttag(node, "div", CLASS="highlight"))
+        code_header = "<div class='code-header'>\n"
+        code_header += (
+            f"<span class='code-lang'>{lang.replace('default', 'python')}</span>\n"
+        )
+        code_header += COPY_BUTTON
+        code_header += "</div>\n"
+        self.body.append(code_header)
+
+        # wrap the highlighted string in a div
+        self.body.append(highlighted + "</div>\n")
         raise nodes.SkipNode
 
     def visit_literal(self, node: Element) -> None:
@@ -266,22 +277,6 @@ class AwesomeHTMLTranslator(HTML5Translator):
             if self.in_mailto and self.settings.cloak_email_addresses:
                 encoded = self.cloak_email(encoded)
             self.body.append(encoded)
-
-    def visit_container(self, node: Element) -> None:
-        """Transform code block containers."""
-        if node.get("literal_block"):
-            captions = list(node.traverse(nodes.caption))
-            self.body.append(self.starttag(node, "div", CLASS="highlight"))
-            self.body.append("<div class='code-header'>\n")
-            hl_lang = node["language"]
-            if hl_lang:
-                self.body.append(f"<span class='code-lang'>{hl_lang}</span>\n")
-            if len(captions) == 0:
-                self.body.append(COPY_BUTTON)
-                # close the header if there are no captions
-                self.body.append("</div>\n")
-        else:
-            super().visit_container(node)
 
 
 def setup(app: "Sphinx") -> Dict[str, Any]:

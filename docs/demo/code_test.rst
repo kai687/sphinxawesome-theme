@@ -8,19 +8,22 @@ This is a regular paragraph with some ``inline code``.
 
 ::
 
+   # although it should be highlighted with Python
    This is a literal block without any special meaning
-
 
 ::
 
    # this should be python
    print("Hello world!")
 
-
 .. parsed-literal::
 
    And *this* is a parsed literal block with ReST in it!
 
+
+.. parsed-literal::
+
+   Now what really happens, if I have a super-duper long line. I'm mostly curious about the line break.
 
 .. code-block:: python
 
@@ -39,3 +42,8 @@ This is a regular paragraph with some ``inline code``.
 .. code:: python
 
    print("Hello code directive from docutils.")
+
+
+.. code-block::
+
+   print("This is a super extremely long line. Will it break correctly, I wonder. I'm mostly interested in the overflow properties of these nested elements.")
