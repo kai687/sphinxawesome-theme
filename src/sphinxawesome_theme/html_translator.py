@@ -8,12 +8,16 @@ This is implemented in JavaScript.
 :copyright: Copyright 2020, Kai Welke.
 :license: MIT, see LICENSE for details.
 """
+from typing import Any, Dict
 
 from docutils import nodes
 from docutils.nodes import Element, Text
+from sphinx.application import Sphinx
 from sphinx.locale import _
 from sphinx.util import logging
 from sphinx.writers.html5 import HTML5Translator
+
+from . import __version__
 
 logger = logging.getLogger(__name__)
 
@@ -278,3 +282,18 @@ class AwesomeHTMLTranslator(HTML5Translator):
                 self.body.append("</div>\n")
         else:
             super().visit_container(node)
+
+
+def setup(app: "Sphinx") -> Dict[str, Any]:
+    """Use the AwesomeHTMLTranslator for the html and dirhtml builders.
+
+    This function makes this available as extension.
+    """
+    app.set_translator("html", AwesomeHTMLTranslator)
+    app.set_translator("dirhtml", AwesomeHTMLTranslator)
+
+    return {
+        "version": __version__,
+        "parallel_read_safe": True,
+        "parallel_write_safe": True,
+    }

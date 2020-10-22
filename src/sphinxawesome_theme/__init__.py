@@ -17,7 +17,6 @@ from typing import Any, Dict
 from sphinx.application import Sphinx
 
 from .admonitions_ids import AdmonitionId
-from .html_translator import AwesomeHTMLTranslator
 from .jinja_filter import setup_jinja_filter
 
 try:
@@ -35,8 +34,7 @@ def setup(app: "Sphinx") -> Dict[str, Any]:
     - add the HTML theme
     - activate the ``sphinxawesome.sampdirective`` extension
     - activate the ``sphinxawesome_theme.highlighting`` extension
-    - set the ``AwesomeHTMLTranslator`` for the "html" and "dirhtml"
-      builders
+    - activate the ``sphinxawesome_theme.html_translator`` extension
     - add the ``AdmonitionID`` as post-transform
     - execute the ``post_process_html`` code when the build has finished
     """
@@ -44,8 +42,7 @@ def setup(app: "Sphinx") -> Dict[str, Any]:
     app.setup_extension("sphinxawesome.sampdirective")
     app.setup_extension("sphinxawesome_theme.highlighting")
     app.setup_extension("sphinxawesome_theme.postprocess")
-    app.set_translator("html", AwesomeHTMLTranslator)
-    app.set_translator("dirhtml", AwesomeHTMLTranslator)
+    app.setup_extension("sphinxawesome_theme.html_translator")
     app.add_post_transform(AdmonitionId)
     app.connect("html-page-context", setup_jinja_filter)
 

@@ -113,6 +113,18 @@ class AwesomeHtmlFormatter(HtmlFormatter):
         """
         return self._wrap_pre(self._wrap_code(source))
 
+    def _wrap_pre(self, inner: Generator) -> Generator:
+        """Overwrite because no unecessary empty spans.
+
+        This is a simplification as the theme doesn't use inline styles.
+        """
+        if self.filename:
+            yield 0, ('<span class="filename">' + self.filename + "</span>")
+
+        yield 0, ("<pre>")
+        yield from inner
+        yield 0, ("</pre>")
+
     def format_unencoded(self, tokensource: Tuple[Any, Any], outfile: Any) -> None:
         """Add added/removed lines highlighting to the formatting pipeline."""
         source = self._format_lines(tokensource)
