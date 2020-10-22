@@ -149,7 +149,7 @@ class AwesomeHTMLTranslator(HTML5Translator):
             "literal_block"
         ):
             self.add_permalink_ref(node.parent, _("Copy link to this code block."))
-        elif isinstance(node.parent, nodes.figure):
+        if isinstance(node.parent, nodes.figure):
             self.add_permalink_ref(node.parent, _("Copy link to this image."))
         elif node.parent.get("toctree"):
             self.add_permalink_ref(
@@ -233,17 +233,30 @@ class AwesomeHTMLTranslator(HTML5Translator):
             **highlight_args,
         )
 
-        self.body.append(self.starttag(node, "div", CLASS="highlight"))
-        code_header = "<div class='code-header'>\n"
-        code_header += (
-            f"<span class='code-lang'>{lang.replace('default', 'python')}</span>\n"
-        )
-        code_header += COPY_BUTTON
-        code_header += "</div>\n"
-        self.body.append(code_header)
+        # if the node is not child of a container.literal_block node
+        if not (
+            isinstance(node.parent, nodes.container)
+            and node.parent.get("literal_block")
+        ):
+
+            self.body.append(self.starttag(node, "div", CLASS="highlight"))
+
+            code_header = "<div class='code-header'>\n"
+            code_header += (
+                f"<span class='code-lang'>{lang.replace('default', 'python')}</span>\n"
+            )
+            code_header += COPY_BUTTON
+            code_header += "</div>\n"
+            self.body.append(code_header)
 
         # wrap the highlighted string in a div
-        self.body.append(highlighted + "</div>\n")
+        self.body.append(highlighted)
+
+        if not (
+            isinstance(node.parent, nodes.container)
+            and node.parent.get("literal_block")
+        ):
+            self.body.append("</div>\n")
         raise nodes.SkipNode
 
     def visit_literal(self, node: Element) -> None:
@@ -277,6 +290,17 @@ class AwesomeHTMLTranslator(HTML5Translator):
             if self.in_mailto and self.settings.cloak_email_addresses:
                 encoded = self.cloak_email(encoded)
             self.body.append(encoded)
+
+    def visit_container(self, node: Element) -> None:
+        """Overide for code blocks with captions."""
+        self.body.append(self.starttag(node, "div", CLASS="highlight"))
+        if node.get("literal_block"):
+            lang = node.get("language")
+            code_header = "<div class='code-header'>\n"
+            code_header += (
+                f"<span class='code-lang'>{lang.replace('default', 'python')}</span>\n"
+            )
+            self.body.append(code_header)
 
 
 def setup(app: "Sphinx") -> Dict[str, Any]:

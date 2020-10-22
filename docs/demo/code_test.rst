@@ -1,35 +1,23 @@
 =========================
-This is a sample document
+This is a code test file
 =========================
 
-
-This is a regular paragraph with some ``inline code``.
-
+This is a regular old paragraph with some ``inline code``.
 
 ::
 
-   # although it should be highlighted with Python
-   This is a literal block without any special meaning
-
-::
-
-   # this should be python
-   print("Hello world!")
+   # should be in python
+   print("Hello World")
 
 .. parsed-literal::
 
-   And *this* is a parsed literal block with ReST in it!
+   *This* should be parsed, but not highlighted!!!
 
 
-.. parsed-literal::
+.. code-block:: javascript
 
-   Now what really happens, if I have a super-duper long line. I'm mostly curious about the line break.
+   console.log("Look at the header!")
 
-.. code-block:: python
-
-   def function(greet: str, name: str) -> str:
-      """Some test function."""
-      return f"{greet} {name}!"
 
 .. code-block:: python
    :caption: Codeblock with caption!
@@ -37,13 +25,3 @@ This is a regular paragraph with some ``inline code``.
    def function(greet: str, name: str) -> str:
       """Some test function."""
       return f"{greet} {name}!"
-
-
-.. code:: python
-
-   print("Hello code directive from docutils.")
-
-
-.. code-block::
-
-   print("This is a super extremely long line. Will it break correctly, I wonder. I'm mostly interested in the overflow properties of these nested elements.")

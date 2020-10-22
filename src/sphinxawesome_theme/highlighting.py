@@ -15,6 +15,7 @@ from typing import Any, Dict, Generator, List, Tuple
 from docutils import nodes
 from docutils.nodes import Node
 from docutils.parsers.rst import directives
+from docutils.statemachine import StringList
 from pygments.formatters import HtmlFormatter
 from pygments.util import get_list_opt
 from sphinx.application import Sphinx
@@ -22,10 +23,36 @@ from sphinx.directives.code import CodeBlock, dedent_lines
 from sphinx.highlighting import PygmentsBridge
 from sphinx.locale import __
 from sphinx.util import logging, parselinenos
+from sphinx.util.docutils import SphinxDirective
 
 from . import __version__
 
 logger = logging.getLogger(__name__)
+
+
+def container_wrapper(
+    directive: SphinxDirective, literal_node: Node, caption: str
+) -> nodes.container:
+    """We need the container to have class highlight."""
+    container_node = nodes.container(
+        "", literal_block=True, language=literal_node["language"], classes=["highlight"]
+    )
+    parsed = nodes.Element()
+    directive.state.nested_parse(
+        StringList([caption], source=""), directive.content_offset, parsed
+    )
+    if isinstance(parsed[0], nodes.system_message):
+        msg = __("Invalid caption: %s" % parsed[0].astext())
+        raise ValueError(msg)
+    elif isinstance(parsed[0], nodes.Element):
+        caption_node = nodes.caption(parsed[0].rawsource, "", *parsed[0].children)
+        caption_node.source = literal_node.source
+        caption_node.line = literal_node.line
+        container_node += caption_node
+        container_node += literal_node
+        return container_node
+    else:
+        raise RuntimeError  # never reachedo
 
 
 class AwesomeHtmlFormatter(HtmlFormatter):
@@ -118,18 +145,12 @@ class AwesomeHtmlFormatter(HtmlFormatter):
 class AwesomeCodeBlock(CodeBlock):
     """Add options to highlight added and removed lines to `code-block` directives."""
 
-    option_spec = {
-        "force": directives.flag,
-        "linenos": directives.flag,
-        "dedent": int,
-        "lineno-start": int,
-        "emphasize-lines": directives.unchanged_required,
+    new_options = {
         "emphasize-added": directives.unchanged_required,
         "emphasize-removed": directives.unchanged_required,
-        "caption": directives.unchanged_required,
-        "class": directives.class_option,
-        "name": directives.unchanged,
     }
+
+    option_sec = CodeBlock.option_spec.update(new_options)
 
     def run(self) -> List[Node]:  # noqa: C901
         """Implement option method."""
@@ -222,6 +243,15 @@ class AwesomeCodeBlock(CodeBlock):
         if "lineno-start" in self.options:
             extra_args["linenostart"] = self.options["lineno-start"]
         self.set_source_info(literal)
+
+        # if there is a caption, we need to wrap this node in a container
+        caption = self.options.get("caption")
+        if caption:
+            try:
+                literal = container_wrapper(self, literal, caption)
+            except ValueError as exc:
+                return [document.reporter.warning(exc, line=self.lineno)]
+
         self.add_name(literal)
 
         return [literal]
