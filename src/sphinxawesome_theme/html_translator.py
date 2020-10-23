@@ -292,7 +292,7 @@ class AwesomeHTMLTranslator(HTML5Translator):
 
         if self.protect_literal_text:
             for token in self.words_and_spaces.findall(encoded):
-                if token.strip() or token in " \n":
+                if token.strip() or token in " \n":  # noqa: S105
                     self.body.append(token)
                 else:
                     self.body.append("&#160;" * (len(token) - 1) + " ")
