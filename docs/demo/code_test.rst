@@ -24,6 +24,7 @@ This is a regular old paragraph with some ``inline code``.
    :emphasize-added: 3
    :emphasize-removed: 4
    :emphasize-lines: 6
+   :linenos:
 
    def function(greet: str, name: str) -> str:
       """Some test function."""

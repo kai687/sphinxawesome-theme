@@ -96,7 +96,7 @@ class AwesomeHtmlFormatter(HtmlFormatter):
             else:
                 yield 1, value
 
-    def wrap(self, source: Generator, outfile: Any) -> None:
+    def wrap(self, source: Generator, outfile: Any) -> Generator:
         """Return a <pre><code> wrapped element.
 
         Pygments returns the highlighted block wrapped inside a ``div.highlight``.

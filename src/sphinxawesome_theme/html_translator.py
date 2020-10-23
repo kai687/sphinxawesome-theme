@@ -232,7 +232,7 @@ class AwesomeHTMLTranslator(HTML5Translator):
             opts = {}
 
         if linenos and self.builder.config.html_codeblock_linenos_style:
-            linenos = self.builder.config.html_codeblock_linenos_style
+            linenos = "inline"
 
         highlighted = self.highlighter.highlight_block(
             node.rawsource,
