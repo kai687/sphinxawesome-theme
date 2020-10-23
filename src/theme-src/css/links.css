@@ -10,7 +10,7 @@
   .admonition-title,
   figure,
   dt,
-  .literal-block-wrapper;
+  .code-header;
 
 .headerlink {
   @apply ml-1 text-gray-700;
@@ -74,5 +74,5 @@ a:focus {
 .external-link-icon {
   height: 0.875rem;
   margin-bottom: 2px;
-  @apply ml-px;
+  @apply ml-px fill-current;
 }

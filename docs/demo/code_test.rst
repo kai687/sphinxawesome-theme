@@ -21,7 +21,13 @@ This is a regular old paragraph with some ``inline code``.
 
 .. code-block:: python
    :caption: Codeblock with caption!
+   :emphasize-added: 3
+   :emphasize-removed: 4
+   :emphasize-lines: 6
 
    def function(greet: str, name: str) -> str:
       """Some test function."""
+      tmp = 5
+      tmp = 10
+      tmp = 15
       return f"{greet} {name}!"

@@ -21,7 +21,7 @@ import os
 from typing import Any, Dict, List, Optional
 
 from bs4 import BeautifulSoup
-from sphinx.application import Config, Sphinx
+from sphinx.application import Sphinx
 from sphinx.util import logging
 
 from . import __version__
@@ -37,37 +37,6 @@ def _get_html_files(outdir: str) -> List[str]:
             [os.path.join(root, file) for file in files if file.endswith(".html")]
         )
     return html_list
-
-
-def _add_external_link_icon(tree: BeautifulSoup) -> None:
-    """Add icon to all ``a.external`` elements.
-
-    The icon is from the Materials icons set:
-    https://material.io/resources/icons/?icon=open_in_new
-    """
-    for link in tree("a", class_="external"):
-        # add tooltip to link
-        link["aria-label"] = "Open external website"
-        link["class"] += ["tooltipped", "tooltipped-ne"]
-        # create the icon
-        svg = tree.new_tag(
-            "svg",
-            attrs={
-                "xmlns": "http://www.w3.org/2000/xvg",
-                "viewBox": "0 0 24 24",
-                "class": "external-link-icon",
-                "fill": "currentColor",
-            },
-        )
-        svg["aria-hidden"] = "true"
-        # svg path
-        path = tree.new_tag(
-            "path",
-            d="M19 19H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14c1.1 0 "
-            "2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z",
-        )
-        svg.append(path)
-        link.append(svg)
 
 
 def _collapsible_nav(tree: BeautifulSoup) -> None:
@@ -113,7 +82,7 @@ def _expand_current(tree: BeautifulSoup) -> None:
         li["class"] += ["expanded"]
 
 
-def _modify_html(html_filename: str, config: Config) -> None:
+def _modify_html(html_filename: str) -> None:
     """Modify a single HTML document.
 
     The HTML document is parsed into a BeautifulSoup tree.
@@ -128,8 +97,6 @@ def _modify_html(html_filename: str, config: Config) -> None:
 
     _expand_current(tree)
     _collapsible_nav(tree)
-    if config.mark_external_links:
-        _add_external_link_icon(tree)
 
     with open(html_filename, "w") as out_file:
         out_file.write(str(tree))
@@ -149,7 +116,7 @@ def post_process_html(app: Sphinx, exc: Optional[Exception]) -> None:
         html_files = _get_html_files(app.outdir)
 
         for doc in html_files:
-            _modify_html(doc, app.config)
+            _modify_html(doc)
 
 
 def setup(app: "Sphinx") -> Dict[str, Any]:

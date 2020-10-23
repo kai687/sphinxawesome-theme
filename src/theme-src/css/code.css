@@ -17,7 +17,32 @@ pre {
   @apply my-6;
   /* the code block itself */
   & pre {
-    @apply rounded-b rounded-t-none m-0;
+    @apply rounded-b rounded-t-none m-0 pl-4;
+  }
+  /* emphasized lines */
+  & mark,
+  & ins,
+  & del {
+    @apply block relative -ml-4 pl-4 py-px;
+  }
+  & mark {
+    @apply bg-yellow-200;
+  }
+  & ins {
+    @apply bg-green-300 no-underline;
+    &::before {
+      content: "\002b";
+      left: 4px;
+      @apply absolute text-green-900;
+    }
+  }
+  & del {
+    @apply bg-red-300 no-underline;
+    &::before {
+      content: "\2212";
+      left: 4px;
+      @apply absolute text-red-900;
+    }
   }
 }
 
