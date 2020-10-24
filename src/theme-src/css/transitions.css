@@ -11,12 +11,12 @@
   @apply translate-x-0 translate-y-0 opacity-100;
 }
 
-aside[data-menu="closed"] {
+nav[data-menu="closed"] {
   @apply -translate-x-full;
 }
 
 @screen md {
-  aside[data-menu="closed"] {
+  nav[data-menu="closed"] {
     @apply translate-x-0 opacity-100;
   }
 }

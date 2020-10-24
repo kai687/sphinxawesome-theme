@@ -10,6 +10,7 @@ MASTER
 - feat: better code blocks (#153)
 - feat: moved things from postprocess into translator (#154)
 - fix: unwanted rounding of elements (#147)
+- fix: better navigation menu (#130)
 
 1.13.1
 ~~~~~~

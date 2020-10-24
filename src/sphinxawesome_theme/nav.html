@@ -1,23 +1,24 @@
 {#-
   Template for Sidebar (main navigation menu).
-  Up to medium screens, we show the manual title in the nav.
   Up to medium screens, the nav is "off-canvas" to the left.
 -#}
 
-<aside
+<nav
   role="navigation"
   data-menu="closed"
-  class="h-full w-full md:w-1/3 lg:w-1/4 md:max-w-lg fixed md:relative top-0 left-0 z-20
-         md:z-0 bg-white text-gray-700 border-r overflow-x-hidden pt-16 print:hidden flex flex-col"
+  style="width: 270px;"
+  class="h-full fixed md:relative inset-y-0 left-0 z-20 md:z-0
+         bg-white text-gray-700 border-r overflow-x-hidden pt-16
+         print:hidden flex flex-col"
 >
-  <nav class="nav-toc">
+  <div class="nav-toc">
     {%- if theme_nav_include_hidden|tobool -%}
       {{ toctree(maxdepth=3, collapse=False, includehidden=true) }}
     {%- else -%}
       {{ toctree(maxdepth=3, collapse=False) }}
     {%- endif -%}
-  </nav>
+  </div>
 
   {%- import "buttons.html" as buttons -%}
   {{ buttons.close("closeNavBtn") }}
-</aside>
+</nav>

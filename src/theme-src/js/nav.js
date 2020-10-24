@@ -1,26 +1,40 @@
 // Functionality for opening and closing the navigation menu
 
 function navFunctions() {
-  const nav = document.querySelector('aside[role="navigation"]');
+  const nav = document.querySelector('nav[role="navigation"]');
+  const body = document.querySelector("body");
+  const screen = document.querySelector("#screen");
   const closeNavBtn = document.querySelector("#closeNavBtn");
   const openNavBtn = document.querySelector("#openNavBtn");
 
   if (openNavBtn) {
     openNavBtn.onclick = () => {
       nav.setAttribute("data-menu", "open");
+      body.style.overflow = "hidden";
+      screen.style.display = "initial";
     };
   }
   if (closeNavBtn) {
     closeNavBtn.onclick = () => {
       nav.setAttribute("data-menu", "closed");
+      body.style.removeProperty("overflow");
+      screen.style.display = "none";
     };
   }
-  // We want to close the nav menu also, when clicking on a link in the nav menu on the
-  // current page (but only on small screens (i.e., where the close button is visible))
+
+  screen.onclick = () => {
+    nav.setAttribute("data-menu", "closed");
+    body.style.removeProperty("overflow");
+    screen.style.display = "none";
+  };
+
+  // close the nav menu when clicking on a nav link on the current page
   document.querySelectorAll(".nav-toc li.current a").forEach((link) => {
-    if (closeNavBtn.offsetWidth > 0 && closeNavBtn.offsetHeight > 0) {
+    if (nav.getAttribute("data-menu") === "open") {
       link.onclick = () => {
         nav.setAttribute("data-menu", "closed");
+        body.style.removeProperty("overflow");
+        screen.style.display = "none";
       };
     }
   });

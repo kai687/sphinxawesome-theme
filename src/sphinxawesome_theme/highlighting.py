@@ -56,7 +56,17 @@ def container_wrapper(
 
 
 class AwesomeHtmlFormatter(HtmlFormatter):
-    """Implement additional line-highlighting options."""
+    """Custom HTML formatter for Pygments.
+
+    This produces quite different HTML compared to Sphinx.
+    - the code block is wrapped in ``<pre><code>``
+      as recommended by the HTML living standard.
+    - allow highlighting added/removed lines: this is different from
+      using the ``diff`` syntax, as it can be combined with any syntax.
+    - it only uses the inline line number mechanism
+      that's going to be the future. It's much easier to have consistent
+      styling that way.
+    """
 
     def __init__(self, **options: Any) -> None:
         """Implement `hl_added` and `hl_removed` options."""
@@ -80,18 +90,17 @@ class AwesomeHtmlFormatter(HtmlFormatter):
     def _highlight_lines(self, tokensource: Tuple[Any, Any]) -> Generator:
         """Add classes to `hl_added` and `hl_removed` lines.
 
-        This implementation only deals with class based styling and removes
-        the parent's implementation for inline styling simply because I don't
-        need them in Sphinx.
+        Simplification, because we only need to care about class-based styles
+        for this theme.
         """
         for i, (t, value) in enumerate(tokensource):
             if t != 1:
                 yield t, value
             if i + 1 in self.hl_lines:  # i + 1 because Python indexes start at 0
                 yield 1, "<mark>%s</mark>" % value
-            elif i + 1 in self.added_lines:  # I could use semantic <ins> here
+            elif i + 1 in self.added_lines:
                 yield 1, "<ins>%s</ins>" % value
-            elif i + 1 in self.removed_lines:  # I could use semantic <del> here
+            elif i + 1 in self.removed_lines:
                 yield 1, "<del>%s</del>" % value
             else:
                 yield 1, value
@@ -109,8 +118,9 @@ class AwesomeHtmlFormatter(HtmlFormatter):
         return self._wrap_pre(self._wrap_code(source))
 
     def _wrap_pre(self, inner: Generator) -> Generator:
-        """Overwrite because no unecessary empty spans.
+        """Overwrite this method.
 
+        I don't want an empty span in front of every code block.
         This is a simplification as the theme doesn't use inline styles.
         """
         if self.filename:
@@ -131,7 +141,11 @@ class AwesomeHtmlFormatter(HtmlFormatter):
                 yield 0, line
 
     def format_unencoded(self, tokensource: Tuple[Any, Any], outfile: Any) -> None:
-        """Add added/removed lines highlighting to the formatting pipeline."""
+        """Produce the highlighted code block for Sphinx.
+
+        First, we add the line numbers, then line spans, then add the emphasized lines.
+        This is to have consistent spacing with and without line numbers.
+        """
         source = self._format_lines(tokensource)
 
         # add the line numbers first
