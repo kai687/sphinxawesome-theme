@@ -120,23 +120,31 @@ class AwesomeHtmlFormatter(HtmlFormatter):
         yield from inner
         yield 0, ("</pre>")
 
+    def _wrap_linespans(self, inner: Generator) -> Generator:
+        """Overwrite as I want a class applied to the linespan."""
+        i = self.linenostart - 1
+        for t, line in inner:
+            if t:
+                i += 1
+                yield 1, f"<span id='line-{i}' class='code-line'>{line}</span>"
+            else:
+                yield 0, line
+
     def format_unencoded(self, tokensource: Tuple[Any, Any], outfile: Any) -> None:
         """Add added/removed lines highlighting to the formatting pipeline."""
         source = self._format_lines(tokensource)
+
+        # add the line numbers first
+        if self.linenos == 2:
+            source = self._wrap_inlinelinenos(source)
+            source = self._wrap_linespans(source)
+
+        # then add the highlighted lines
         if self.hl_lines or self.added_lines or self.removed_lines:
             source = self._highlight_lines(source)
-        if not self.nowrap:
-            if self.linenos == 2:
-                source = self._wrap_inlinelinenos(source)
-            if self.lineanchors:
-                source = self._wrap_lineanchors(source)
-            if self.linespans:
-                source = self._wrap_linespans(source)
-            source = self.wrap(source, outfile)
-            if self.linenos == 1:
-                source = self._wrap_tablelinenos(source)
-            if self.full:
-                source = self._wrap_full(source, outfile)
+
+        # wrap the thing in <code> and <pre>
+        source = self.wrap(source, outfile)
 
         for _, piece in source:
             outfile.write(piece)
