@@ -18,12 +18,10 @@ PurgeCSS.
 """
 
 import os
-import re
 from typing import Any, Dict, List, Optional
 
 from bs4 import BeautifulSoup
-from sphinx.application import Config, Sphinx
-from sphinx.locale import _
+from sphinx.application import Sphinx
 from sphinx.util import logging
 
 from . import __version__
@@ -39,106 +37,6 @@ def _get_html_files(outdir: str) -> List[str]:
             [os.path.join(root, file) for file in files if file.endswith(".html")]
         )
     return html_list
-
-
-def _wrap_literal_blocks(tree: BeautifulSoup) -> None:
-    """Wrap literal blocks in ``div.highlight`` elements.
-
-    This allows us to add 'copy code' buttons to all ``div.highlight``
-    elements.
-    """
-    literal_blocks = tree("pre", class_="literal-block")
-
-    [
-        block.wrap(tree.new_tag("div", attrs={"class": "highlight"}))
-        for block in literal_blocks
-    ]
-
-
-def _unwrap_code_blocks(tree: BeautifulSoup) -> None:
-    """Remove unnecessary nesting of ``div.highlight`` elements.
-
-    For code-blocks, we have:
-
-    <div class="highlight-LANG">
-       <div class="highlight">
-          <pre>
-          ...
-
-    the outer block is unnecessary. As a bonus, we add the highlight
-    language as data attribute to the highlight div.
-    """
-    for block in tree("div", {"class": re.compile("highlight-.*")}):
-        for cl in block.attrs["class"]:
-            match = re.search("highlight-(.*)", cl)
-            if match:
-                lang = match.group(1)
-        hi = block.find("div", class_="highlight")
-        hi["data-highlight-lang"] = lang
-        block.unwrap()
-
-
-def _add_copy_button(tree: BeautifulSoup) -> None:
-    """Add a code copy button to all ``div.highlight`` elements.
-
-    The icon is from the Material Design icon set:
-    https://material.io/resources/icons/?icon=content_copy
-    """
-    for code in tree("div", class_="highlight"):
-        # create the button
-        btn = tree.new_tag("button", attrs={"class": "copy tooltipped tooltipped-nw"})
-        btn["aria-label"] = _("Copy this code")
-
-        # create the SVG icon
-        svg = tree.new_tag(
-            "svg",
-            xmlns="http://www.w3.org/2000/svg",
-            viewBox="0 0 24 24",
-            fill="currentColor",
-        )
-        svg["aria-hidden"] = "true"
-
-        # svg path
-        path = tree.new_tag(
-            "path",
-            d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 "
-            "4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 "
-            "0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z",
-        )
-        svg.append(path)
-        btn.append(svg)
-        code.append(btn)
-
-
-def _add_external_link_icon(tree: BeautifulSoup) -> None:
-    """Add icon to all ``a.external`` elements.
-
-    The icon is from the Materials icons set:
-    https://material.io/resources/icons/?icon=open_in_new
-    """
-    for link in tree("a", class_="external"):
-        # add tooltip to link
-        link["aria-label"] = "Open external website"
-        link["class"] += ["tooltipped", "tooltipped-ne"]
-        # create the icon
-        svg = tree.new_tag(
-            "svg",
-            attrs={
-                "xmlns": "http://www.w3.org/2000/xvg",
-                "viewBox": "0 0 24 24",
-                "class": "external-link-icon",
-                "fill": "currentColor",
-            },
-        )
-        svg["aria-hidden"] = "true"
-        # svg path
-        path = tree.new_tag(
-            "path",
-            d="M19 19H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14c1.1 0 "
-            "2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z",
-        )
-        svg.append(path)
-        link.append(svg)
 
 
 def _collapsible_nav(tree: BeautifulSoup) -> None:
@@ -178,51 +76,13 @@ def _collapsible_nav(tree: BeautifulSoup) -> None:
             link.insert_before(svg)
 
 
-def _divs_to_section(tree: BeautifulSoup) -> None:
-    """Convert ``div.section`` to semantic ``section`` elements.
-
-    With docutils 0.17, this should not be necessary anymore.
-    """
-    for div in tree("div", class_="section"):
-        div.name = "section"
-        del div["class"]
-
-
-def _divs_to_figure(tree: BeautifulSoup) -> None:
-    """Convert ``div.figure`` to semantic ``figure`` elements.
-
-    With docutils 0.17, this should not be necessary anymore.
-    """
-    for div in tree("div", class_="figure"):
-        div.name = "figure"
-        div["class"].remove("figure")
-        caption = div.find("p", class_="caption")
-        if caption:
-            caption.name = "figcaption"
-            del caption["class"]
-
-
 def _expand_current(tree: BeautifulSoup) -> None:
     """Add the ``.expanded`` class to li.current elements."""
     for li in tree("li", class_="current"):
         li["class"] += ["expanded"]
 
 
-def _remove_pre_spans(tree: BeautifulSoup) -> None:
-    """Remove unnecessarily nested ``span.pre`` elements in inline ``code``."""
-    for code in tree("code"):
-        for span in code("span", class_="pre"):
-            span.unwrap()
-
-
-def _remove_xref_spans(tree: BeautifulSoup) -> None:
-    """Remove unnecessarily nested ``span.std-ref`` elements in cross-references."""
-    for link in tree("a"):
-        for span in link("span", class_="std-ref"):
-            span.unwrap()
-
-
-def _modify_html(html_filename: str, config: Config) -> None:
+def _modify_html(html_filename: str) -> None:
     """Modify a single HTML document.
 
     The HTML document is parsed into a BeautifulSoup tree.
@@ -235,17 +95,8 @@ def _modify_html(html_filename: str, config: Config) -> None:
     with open(html_filename) as html:
         tree = BeautifulSoup(html, "html.parser")
 
-    _divs_to_section(tree)
-    _divs_to_figure(tree)
     _expand_current(tree)
     _collapsible_nav(tree)
-    _wrap_literal_blocks(tree)
-    _unwrap_code_blocks(tree)
-    _add_copy_button(tree)
-    if config.mark_external_links:
-        _add_external_link_icon(tree)
-    _remove_pre_spans(tree)
-    _remove_xref_spans(tree)
 
     with open(html_filename, "w") as out_file:
         out_file.write(str(tree))
@@ -265,7 +116,7 @@ def post_process_html(app: Sphinx, exc: Optional[Exception]) -> None:
         html_files = _get_html_files(app.outdir)
 
         for doc in html_files:
-            _modify_html(doc, app.config)
+            _modify_html(doc)
 
 
 def setup(app: "Sphinx") -> Dict[str, Any]:

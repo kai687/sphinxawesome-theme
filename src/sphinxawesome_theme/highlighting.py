@@ -15,17 +15,44 @@ from typing import Any, Dict, Generator, List, Tuple
 from docutils import nodes
 from docutils.nodes import Node
 from docutils.parsers.rst import directives
+from docutils.statemachine import StringList
 from pygments.formatters import HtmlFormatter
 from pygments.util import get_list_opt
 from sphinx.application import Sphinx
-from sphinx.directives.code import CodeBlock, container_wrapper, dedent_lines
+from sphinx.directives.code import CodeBlock, dedent_lines
 from sphinx.highlighting import PygmentsBridge
 from sphinx.locale import __
 from sphinx.util import logging, parselinenos
+from sphinx.util.docutils import SphinxDirective
 
 from . import __version__
 
 logger = logging.getLogger(__name__)
+
+
+def container_wrapper(
+    directive: SphinxDirective, literal_node: Node, caption: str
+) -> nodes.container:
+    """We need the container to have class highlight."""
+    container_node = nodes.container(
+        "", literal_block=True, language=literal_node["language"], classes=["highlight"]
+    )
+    parsed = nodes.Element()
+    directive.state.nested_parse(
+        StringList([caption], source=""), directive.content_offset, parsed
+    )
+    if isinstance(parsed[0], nodes.system_message):
+        msg = __("Invalid caption: %s" % parsed[0].astext())
+        raise ValueError(msg)
+    elif isinstance(parsed[0], nodes.Element):
+        caption_node = nodes.caption(parsed[0].rawsource, "", *parsed[0].children)
+        caption_node.source = literal_node.source
+        caption_node.line = literal_node.line
+        container_node += caption_node
+        container_node += literal_node
+        return container_node
+    else:
+        raise RuntimeError  # never reachedo
 
 
 class AwesomeHtmlFormatter(HtmlFormatter):
@@ -61,31 +88,63 @@ class AwesomeHtmlFormatter(HtmlFormatter):
             if t != 1:
                 yield t, value
             if i + 1 in self.hl_lines:  # i + 1 because Python indexes start at 0
-                yield 1, '<span class="hll">%s</span>' % value
+                yield 1, "<mark>%s</mark>" % value
             elif i + 1 in self.added_lines:  # I could use semantic <ins> here
-                yield 1, '<span class="ins">%s</span>' % value
+                yield 1, "<ins>%s</ins>" % value
             elif i + 1 in self.removed_lines:  # I could use semantic <del> here
-                yield 1, '<span class="del">%s</span>' % value
+                yield 1, "<del>%s</del>" % value
             else:
                 yield 1, value
+
+    def wrap(self, source: Generator, outfile: Any) -> Generator:
+        """Return a <pre><code> wrapped element.
+
+        Pygments returns the highlighted block wrapped inside a ``div.highlight``.
+        We want to get the <pre> only, and we'll wrap it in a div later, so that
+        we can add the code button, and an optional caption.
+
+        Returning a <pre><code> block follows the HTML5 specification for marking
+        up code blocks.
+        """
+        return self._wrap_pre(self._wrap_code(source))
+
+    def _wrap_pre(self, inner: Generator) -> Generator:
+        """Overwrite because no unecessary empty spans.
+
+        This is a simplification as the theme doesn't use inline styles.
+        """
+        if self.filename:
+            yield 0, ('<span class="filename">' + self.filename + "</span>")
+
+        yield 0, ("<pre>")
+        yield from inner
+        yield 0, ("</pre>")
+
+    def _wrap_linespans(self, inner: Generator) -> Generator:
+        """Overwrite as I want a class applied to the linespan."""
+        i = self.linenostart - 1
+        for t, line in inner:
+            if t:
+                i += 1
+                yield 1, f"<span id='line-{i}' class='code-line'>{line}</span>"
+            else:
+                yield 0, line
 
     def format_unencoded(self, tokensource: Tuple[Any, Any], outfile: Any) -> None:
         """Add added/removed lines highlighting to the formatting pipeline."""
         source = self._format_lines(tokensource)
+
+        # add the line numbers first
+        if self.linenos == 2:
+            source = self._wrap_inlinelinenos(source)
+            source = self._wrap_linespans(source)
+
+        # then add the highlighted lines
         if self.hl_lines or self.added_lines or self.removed_lines:
             source = self._highlight_lines(source)
-        if not self.nowrap:
-            if self.linenos == 2:
-                source = self._wrap_inlinelinenos(source)
-            if self.lineanchors:
-                source = self._wrap_lineanchors(source)
-            if self.linespans:
-                source = self._wrap_linespans(source)
-            source = self.wrap(source, outfile)
-            if self.linenos == 1:
-                source = self._wrap_tablelinenos(source)
-            if self.full:
-                source = self._wrap_full(source, outfile)
+
+        # wrap the thing in <code> and <pre>
+        source = self.wrap(source, outfile)
 
         for _, piece in source:
             outfile.write(piece)
@@ -94,18 +153,12 @@ class AwesomeHtmlFormatter(HtmlFormatter):
 class AwesomeCodeBlock(CodeBlock):
     """Add options to highlight added and removed lines to `code-block` directives."""
 
-    option_spec = {
-        "force": directives.flag,
-        "linenos": directives.flag,
-        "dedent": int,
-        "lineno-start": int,
-        "emphasize-lines": directives.unchanged_required,
+    new_options = {
         "emphasize-added": directives.unchanged_required,
         "emphasize-removed": directives.unchanged_required,
-        "caption": directives.unchanged_required,
-        "class": directives.class_option,
-        "name": directives.unchanged,
     }
+
+    option_sec = CodeBlock.option_spec.update(new_options)
 
     def run(self) -> List[Node]:  # noqa: C901
         """Implement option method."""
@@ -199,6 +252,7 @@ class AwesomeCodeBlock(CodeBlock):
             extra_args["linenostart"] = self.options["lineno-start"]
         self.set_source_info(literal)
 
+        # if there is a caption, we need to wrap this node in a container
         caption = self.options.get("caption")
         if caption:
             try:
@@ -206,8 +260,6 @@ class AwesomeCodeBlock(CodeBlock):
             except ValueError as exc:
                 return [document.reporter.warning(exc, line=self.lineno)]
 
-        # literal will be note_implicit_target that is linked from caption and numref.
-        # when options['name'] is provided, it should be primary ID.
         self.add_name(literal)
 
         return [literal]
