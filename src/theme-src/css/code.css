@@ -1,85 +1,78 @@
-/* ************************
+/*
  * Styles for code elements
- * ************************/
+ */
 
-code {
-  @apply font-mono font-medium text-sm leading-none py-px px-1 bg-gray-200 rounded;
+/* inline code */
+:not(pre) > code {
+  @apply font-medium text-sm leading-none py-px px-1 bg-gray-200;
 }
 
+/* literal blocks (mostly parsed-literals) not wrapped in div.highlight */
 pre {
-  font-size: 0.95rem;
+  @apply my-6 rounded border p-2 overflow-x-auto;
+  /* give some extra padding to parsed-literals */
+  &.literal-block {
+    @apply p-4;
+  }
 }
 
+/* the outer wrapper for a code block */
 .highlight {
-  @apply relative rounded bg-gray-200 my-6;
+  @apply my-6 rounded;
+  /* the code block itself */
   & pre {
-    @apply p-4 pt-8 overflow-x-auto leading-6;
+    @apply rounded-b rounded-t-none m-0 pl-4;
   }
-  & .hll,
-  & .ins,
-  & .del {
-    @apply block pl-4 -ml-4 relative;
+  /* emphasized lines */
+  & mark,
+  & ins,
+  & del {
+    @apply block relative -ml-4 -mr-2 pl-4 py-px;
   }
-  & .hll {
-    @apply bg-yellow-100;
+  & mark {
+    @apply bg-yellow-200;
   }
-  & .ins {
-    @apply bg-teal-200 bg-opacity-75;
-    &:before {
+  & ins {
+    @apply bg-green-300 no-underline;
+    &::before {
       content: "\002b";
-      left: 3px;
-      @apply text-teal-900 absolute;
+      left: 2px;
+      @apply absolute text-green-900;
     }
   }
-  & .del {
-    @apply bg-red-300 bg-opacity-75;
-    &:before {
+  & del {
+    @apply bg-red-300 no-underline;
+    &::before {
       content: "\2212";
-      left: 3px;
-      @apply text-red-900 absolute;
+      left: 2px;
+      @apply absolute text-red-900;
     }
   }
-  /* This applies when `html_codeblock_linenos_style = inline` */
+  /* line numbers */
   & .linenos {
-    @apply mr-4 pl-0 pr-2 bg-transparent;
-    & + .hll,
-    & + .ins,
-    & + .del {
-      @apply inline;
-    }
+    @apply bg-transparent text-gray-700 p-0 pr-6 select-none;
+  }
+  /* code lines (wrapped around lines with line numbers) */
+  & .code-line {
+    @apply block;
   }
 }
 
-.highlighttable {
-  @apply w-full;
-  & td {
-    @apply p-0;
-    &.linenos {
-      & pre {
-        @apply pl-4 pt-8 pb-4 pr-0 rounded-l bg-gray-100 border-r border-gray-400 select-none pointer-events-none overflow-x-auto text-current leading-6;
-      }
-    }
-  }
-  & .highlight {
-    @apply rounded-l-none;
-    & .hll,
-    & .ins,
-    & .del {
-      @apply block;
-    }
+/* the header of a code block */
+.code-header {
+  @apply border-l border-t border-r rounded-t rounded-b-none flex justify-between items-center text-sm text-gray-800;
+  & .caption-text {
+    @apply p-2;
   }
 }
 
-.literal-block-wrapper {
-  @apply my-6;
-  & .code-block-caption {
-    @apply text-sm ml-4 -mb-4;
-  }
+.code-lang {
+  @apply inline-block p-2 pl-4 uppercase tracking-wider;
 }
 
 /* make prompts unselectable */
 .gp {
-  @apply select-none pointer-events-none;
+  @apply select-none pointer-events-none text-blue-800 font-medium;
 }
 
 /* from the 'samp' directive */
@@ -93,10 +86,10 @@ code > em {
 }
 
 button.copy {
-  @apply absolute right-0 top-0 p-2 text-gray-600;
+  @apply p-2;
   &:focus,
   &:hover {
-    @apply text-pink-500;
+    @apply text-pink-600;
   }
   & > svg {
     @apply h-4 w-4 fill-current;
@@ -106,7 +99,7 @@ button.copy {
 /* autodocs */
 dl.py {
   & dt {
-    @apply bg-gray-200 rounded p-2 my-4 text-black;
+    @apply bg-gray-200 p-2 my-4;
     & > code {
       @apply bg-transparent p-0;
       &.descname {
@@ -114,24 +107,17 @@ dl.py {
       }
     }
   }
-  & em {
-    &.property {
-      @apply text-sm text-purple-900;
-    }
-    &.sig-param {
-      @apply text-purple-900;
-    }
+  & em.property {
+    @apply text-sm text-purple-900;
+  }
+  &.ig-param {
+    @apply text-purple-900;
   }
 }
 
+/* .. option:: */
 dl.option {
-  & dt {
-    @apply bg-gray-200 rounded inline-block;
-    & > code {
-      @apply bg-transparent;
-    }
-    & .sig-prename {
-      @apply italic text-purple-700;
-    }
+  & .sig-prename {
+    @apply italic text-purple-700;
   }
 }

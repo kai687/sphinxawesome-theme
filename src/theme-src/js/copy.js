@@ -27,10 +27,16 @@ function copyEvents () {
     }
   });
 
-  // Use clipboard.js for the code copy buttons. Select the parent node.
+  // Use clipboard.js for the code copy buttons.
+  // The target is complicated due to the structure
+  // <div class="highlight">
+  //   <div class="code-header">
+  //     ... <button class="copy">
+  //   </div>
+  //   <pre>  <-- this is what we need
   const codeClipboard = new ClipboardJS("button.copy", {
     target: (trigger) => {
-      return trigger.parentNode;
+      return trigger.parentNode.nextElementSibling;
     },
   });
 
