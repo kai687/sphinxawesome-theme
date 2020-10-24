@@ -7,6 +7,8 @@ MASTER
 - feat: use clipboard.js
 - feat: HTML simplifications
 - feat: CSS tooltips
+- feat: better code blocks (#153)
+- feat: moved things from postprocess into translator (#154)
 - fix: unwanted rounding of elements (#147)
 
 1.13.1
