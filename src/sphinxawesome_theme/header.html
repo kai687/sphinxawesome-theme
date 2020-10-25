@@ -10,17 +10,25 @@
 <header class="md:sticky top-0 bg-gray-900 shadow-md flex md:flex-row justify-between items-center z-10">
   {#- show logo on the left side of the header -#}
   {%- if logo -%}
-  <a class="hover:bg-gray-700 focus:bg-gray-700 py-4 tooltipped tooltipped-se" href="{{ pathto(master_doc) }}"
-     aria-label="{{ _('Back to homepage') }}">
-    <img class="h-8 mx-5" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo" />
-  </a>
+    {%- if pagename  != master_doc -%}
+    <a class="hover:bg-gray-700 focus:bg-gray-700 py-4 tooltipped tooltipped-se" href="{{ pathto(master_doc) }}"
+      aria-label="{{ _('Back to homepage') }}">
+      <img class="h-8 mx-5" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo" />
+    </a>
+    {%- else -%}
+    <img class="h-8 mx-5 py-4" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo" />
+    {%- endif -%}
   {#- show manual title in the middle -#}
   <h2 class="text-xl text-gray-100 mx-5 py-4">{{ docstitle }}</h2>
   {%- else -%}
-  <a class="hover:bg-gray-700 focus:bg-gray-700 tooltipped tooltipped-se" href="{{ pathto(master_doc) }}"
-     aria-label="{{ _('Back to homepage') }}">
+    {%- if pagename != master_doc -%}
+    <a class="hover:bg-gray-700 focus:bg-gray-700 tooltipped tooltipped-se" href="{{ pathto(master_doc) }}"
+      aria-label="{{ _('Back to homepage') }}">
+      <h2 class="text-xl text-gray-100 mx-5 py-4">{{ docstitle }}</h2>
+    </a>
+    {%- else -%}
     <h2 class="text-xl text-gray-100 mx-5 py-4">{{ docstitle }}</h2>
-  </a>
+    {%- endif %}
   {%- endif -%}
 
   {#- show a search input field on the right side -#}

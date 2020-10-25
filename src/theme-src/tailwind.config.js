@@ -22,8 +22,8 @@ module.exports = {
       screens: {
         print: { raw: "print" },
       },
-      padding: {
-        18: "4.5rem",
+      margin: {
+        fluid: "7%",
       },
     },
   },

@@ -66,6 +66,11 @@ a:focus {
   @apply text-pink-600 !important;
 }
 
+:not(header) > a:hover,
+:not(header) > a:focus {
+  @apply underline;
+}
+
 .footnote-reference {
   vertical-align: super;
   @apply text-sm -ml-1;
