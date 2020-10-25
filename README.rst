@@ -29,27 +29,30 @@ The theme includes several usability improvements:
 
 .. features-start
 
-Better code blocks
+Awesome code blocks
     - Code blocks have a **Copy** button, allowing you to copy code snippets to the
-      clipboard.
-    - Code blocks are enhanced with ``emphasize-added`` and ``emphasize-removed``
-      options, that highlight removed lines in red and added lines in green.
+      clipboard. They also show the programming language of the code block.
+    - Sphinx's ``code-block`` directives are enhanced with ``emphasize-added`` and
+      ``emphasize-removed`` options for highlighting added and removed lines.
 
-New directive for highlighting placeholder variables
+Awesome new directive for highlighting placeholder variables
     The theme supports a new directive ``samp``, which is the equivalent of the
     built-in ``:samp:`` interpreted text role. This allows you to highlight placeholder
     variables in code blocks.
 
-Improved user experience
+Awesome user experience improvements
     A lot of small features make the theme more usable. To name a few:
 
-    - You can tab through headlines and captions enabling easy navigation with the
-      keyboard.
-    - You can link to admonitions. Their titles have the same “permalink” mechanism as
-      headlines and captions.
-    - Clicking on the ``#`` icon for permalinks copies the link to the clipboard.
-    - Collapsible navigation menu: All elements are reachable from all pages.
-    - Keyboard shortcut for the search input: ``/``.
+    - Use the **Tab** key to navigate through all sections of the page. Every page has a
+      *Skip to Content* link to bypass navigation links.
+    - Link to notes, warnings, etc. Their titles have IDs and use the same “permalink”
+      mechanism as headings and other captions.
+    - Better “permalink” mechanism. Hovering over an element with a permalink reveals a
+      *Link* icon.  Select the *Link* icon to copy the link to the clipboard.
+    - Collapsible navigation menu: All pages are reachable from all other pages.
+    - CSS tooltips. Provide more accessible information compared to the ``title``
+      attribute which only works for mouse users.
+    - Press the ``/`` (Slash) key to focus the search input and start searching.
 
 .. features-end
 
