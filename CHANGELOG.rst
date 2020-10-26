@@ -1,4 +1,4 @@
-MASTER
+1.14.0
 ~~~~~~
 
 - feat: switched to Material icons (#144)
