@@ -96,6 +96,7 @@ def lint(session: Session) -> None:
         "flake8-bugbear",
         "flake8-docstrings",
         "flake8-import-order",
+        "flake8-implicit-str-concat",
     )
     session.run("flake8", *args)
 
