@@ -97,21 +97,29 @@ button.copy {
 }
 
 /* autodocs */
-dl.py {
+dl.function,
+dl.class,
+dl.exception,
+dl.option {
   & dt {
-    @apply bg-gray-200 p-2 my-4;
-    & > code {
-      @apply bg-transparent p-0;
-      &.descname {
-        @apply text-base tracking-tight pr-px;
-      }
+    @apply p-2 my-4 border rounded border-l-4;
+    & code {
+      @apply text-base bg-white p-0;
     }
   }
-  & em.property {
-    @apply text-sm text-purple-900;
+}
+
+dl.exception,
+dl.function,
+dl.class {
+  & .sig-prename {
+    @apply text-gray-600;
   }
-  &.ig-param {
-    @apply text-purple-900;
+  & .sig-name {
+    @apply text-lg;
+  }
+  & .sig-paren {
+    @apply px-px;
   }
 }
 
