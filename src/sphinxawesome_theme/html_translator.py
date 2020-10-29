@@ -252,9 +252,8 @@ class AwesomeHTMLTranslator(HTML5Translator):
             self.body.append(self.starttag(node, "div", CLASS="highlight"))
 
             code_header = "<div class='code-header'>\n"
-            code_header += (
-                f"<span class='code-lang'>{lang.replace('default', 'python')}</span>\n"
-            )
+            code_lang = lang.replace("default", "python").replace("console", "shell")
+            code_header += f"<span class='code-lang'>{code_lang}</span>\n"
             code_header += COPY_BUTTON
             code_header += "</div>\n"
             self.body.append(code_header)
