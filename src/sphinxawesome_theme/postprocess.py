@@ -54,32 +54,35 @@ def _collapsible_nav(tree: BeautifulSoup) -> None:
     https://material.io/resources/icons/?icon=chevron_right
     """
     for link in tree.select(".nav-toc a"):
-        # First, all links should be wrapped in a div.nav-link
-        link.wrap(tree.new_tag("div", attrs={"class": "nav-link"}))
-        # Next, insert a span.expand before the link, if the #nav-link
-        # has any sibling elements (a ``ul`` in the navigation menu)
-        if link.parent.next_sibling:
-            # create the icon
-            svg = tree.new_tag(
-                "svg",
-                attrs={
-                    "xmlns": "http://www.w3.org/2000/xvg",
-                    "viewBox": "0 0 24 24",
-                    "class": "expand",
-                    "fill": "currentColor",
-                },
-            )
-            path = tree.new_tag(
-                "path", d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
-            )
-            svg.append(path)
-            link.insert_before(svg)
+        # Don't add the nav-link class twice (#166)
+        if "nav-link" not in link.parent.get("class", []):
+            # First, all links should be wrapped in a div.nav-link
+            link.wrap(tree.new_tag("div", attrs={"class": "nav-link"}))
+            # Next, insert a span.expand before the link, if the #nav-link
+            # has any sibling elements (a ``ul`` in the navigation menu)
+            if link.parent.next_sibling:
+                # create the icon
+                svg = tree.new_tag(
+                    "svg",
+                    attrs={
+                        "xmlns": "http://www.w3.org/2000/xvg",
+                        "viewBox": "0 0 24 24",
+                        "class": "expand",
+                        "fill": "currentColor",
+                    },
+                )
+                path = tree.new_tag(
+                    "path", d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+                )
+                svg.append(path)
+                link.insert_before(svg)
 
 
 def _expand_current(tree: BeautifulSoup) -> None:
     """Add the ``.expanded`` class to li.current elements."""
     for li in tree("li", class_="current"):
-        li["class"] += ["expanded"]
+        if "expanded" not in li.get("class", []):
+            li["class"] += ["expanded"]
 
 
 def _modify_html(html_filename: str) -> None:

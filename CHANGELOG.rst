@@ -1,3 +1,9 @@
+1.15.1
+~~~~~~
+
+- fix: assign nav-link only once (#166)
+
+
 1.15.0
 ~~~~~~
 
@@ -5,6 +11,7 @@
 - feat: redesigned admonitions to not be in your face so much
 - fix: wrongly applied padding to logo on main page
 - feat: unrounded inputs, buttons, and blocks.
+
 
 1.14.0
 ~~~~~~
@@ -20,10 +27,12 @@
 - fix: unwanted rounding of elements (#147)
 - fix: better navigation menu (#130)
 
+
 1.13.1
 ~~~~~~
 
 - fix: modified linenumber styling to work with new Sphinx (#123)
+
 
 1.13.0
 ~~~~~~
