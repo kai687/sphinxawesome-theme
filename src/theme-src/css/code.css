@@ -9,7 +9,7 @@
 
 /* literal blocks (mostly parsed-literals) not wrapped in div.highlight */
 pre {
-  @apply my-6 rounded border p-2 overflow-x-auto;
+  @apply my-6 border p-2 overflow-x-auto;
   /* give some extra padding to parsed-literals */
   &.literal-block {
     @apply p-4;
@@ -18,10 +18,10 @@ pre {
 
 /* the outer wrapper for a code block */
 .highlight {
-  @apply my-6 rounded;
+  @apply my-6;
   /* the code block itself */
   & pre {
-    @apply rounded-b rounded-t-none m-0 pl-4;
+    @apply m-0 pl-4;
   }
   /* emphasized lines */
   & mark,
@@ -60,7 +60,7 @@ pre {
 
 /* the header of a code block */
 .code-header {
-  @apply border-l border-t border-r rounded-t rounded-b-none flex justify-between items-center text-sm text-gray-800;
+  @apply border-l border-t border-r flex justify-between items-center text-sm text-gray-800;
   & .caption-text {
     @apply p-2;
   }
@@ -102,7 +102,7 @@ dl.class,
 dl.exception,
 dl.option {
   & dt {
-    @apply p-2 my-4 border rounded border-l-4;
+    @apply p-2 my-4 border border-l-4;
     & code {
       @apply text-base bg-white p-0;
     }
