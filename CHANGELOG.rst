@@ -1,3 +1,11 @@
+1.15.0
+~~~~~~
+
+- feat: modified autodocs styling
+- feat: redesigned admonitions to not be in your face so much
+- fix: wrongly applied padding to logo on main page
+- feat: unrounded inputs, buttons, and blocks.
+
 1.14.0
 ~~~~~~
 

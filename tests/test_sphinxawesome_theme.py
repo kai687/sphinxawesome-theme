@@ -18,7 +18,7 @@ def html_parse(filename: str) -> BeautifulSoup:
 
 def test_returns_version() -> None:
     """It has the correct version."""
-    assert __version__ == "1.14.0"
+    assert __version__ == "1.15.0"
 
 
 @pytest.mark.sphinx("dummy")
