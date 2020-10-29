@@ -2,6 +2,15 @@
  * Some basic styling
  * ******************/
 
+/* this ought to be part of the normalizer */
+input {
+  @apply rounded-none;
+}
+
+button {
+  @apply rounded-none;
+}
+
 section {
   max-width: 82ch;
 }
