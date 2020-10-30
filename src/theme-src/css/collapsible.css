@@ -1,0 +1,26 @@
+/* Styles for collapsible elements */
+
+.accordion {
+  & .expand-more-icon {
+    @apply text-gray-600 fill-current h-6 w-6 transition-transform transform rotate-0 duration-100 float-right ml-2 ease-out;
+  }
+  &:hover .expand-more-icon {
+    @apply text-pink-600;
+  }
+}
+
+.active {
+  & .expand-more-icon {
+    @apply rotate-180;
+  }
+}
+
+.panel {
+  max-height: 0;
+  @apply overflow-y-hidden opacity-0 transition-opacity duration-500 ease-out;
+}
+
+.active + .panel {
+  max-height: fit-content;
+  @apply overflow-y-visible opacity-100;
+}

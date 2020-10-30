@@ -21,10 +21,11 @@ import os
 from typing import Any, Dict, List, Optional
 
 from bs4 import BeautifulSoup
-from sphinx.application import Sphinx
+from sphinx.application import Sphinx, Config
 from sphinx.util import logging
 
 from . import __version__
+from .html_translator import ICONS
 
 logger = logging.getLogger(__name__)
 
@@ -85,7 +86,35 @@ def _expand_current(tree: BeautifulSoup) -> None:
             li["class"] += ["expanded"]
 
 
-def _modify_html(html_filename: str) -> None:
+def _collapsible_dl(tree: BeautifulSoup) -> None:
+    """Make autodoc function, class, etc. definition lists collapsible."""
+    for dl in tree("dl"):
+        classes = dl.get("class", [])
+        if (
+            "exception" in classes
+            or "class" in classes
+            or "function" in classes
+            or "attribute" in classes
+            or "module" in classes
+            or "method" in classes
+        ):
+            dd = dl.find("dd")
+            # only apply to non-empty tags
+            if len(dd.get_text(strip=True)) > 0:
+                if dd.get("class", []):
+                    dd["class"] += ["panel"]
+                else:
+                    dd["class"] = ["panel"]
+                dt = dl.find("dt")
+                if dt.get("class", []):
+                    dt["class"] += ["accordion"]
+                else:
+                    dt["class"] = ["accordion"]
+                icon = BeautifulSoup(ICONS["expand_more"], "html.parser")
+                dt.append(icon)
+
+
+def _modify_html(html_filename: str, config: Config) -> None:
     """Modify a single HTML document.
 
     The HTML document is parsed into a BeautifulSoup tree.
@@ -100,6 +129,8 @@ def _modify_html(html_filename: str) -> None:
 
     _expand_current(tree)
     _collapsible_nav(tree)
+    if config.collapsible_autodocs:
+        _collapsible_dl(tree)
 
     with open(html_filename, "w") as out_file:
         out_file.write(str(tree))
@@ -119,12 +150,12 @@ def post_process_html(app: Sphinx, exc: Optional[Exception]) -> None:
         html_files = _get_html_files(app.outdir)
 
         for doc in html_files:
-            _modify_html(doc)
+            _modify_html(doc, app.builder.config)
 
 
 def setup(app: "Sphinx") -> Dict[str, Any]:
     """Set this up as internal extension."""
-    app.add_config_value("mark_external_links", True, "env")
+    app.add_config_value("collapsible_autodocs", False, "env")
     app.connect("build-finished", post_process_html)
 
     return {
