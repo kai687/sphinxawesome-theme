@@ -25,7 +25,7 @@ from sphinx.application import Sphinx, Config
 from sphinx.util import logging
 
 from . import __version__
-from .html_translator import ICONS
+from .icons import ICONS
 
 logger = logging.getLogger(__name__)
 
@@ -50,9 +50,6 @@ def _collapsible_nav(tree: BeautifulSoup) -> None:
     Second, an icon is inserted right before the link.
     Adding the icon as separate DOM element allows click events to be
     captured separately between the icon and the link.
-
-    The icon is from the Materials icons set:
-    https://material.io/resources/icons/?icon=chevron_right
     """
     for link in tree.select(".nav-toc a"):
         # Don't add the nav-link class twice (#166)
@@ -63,19 +60,7 @@ def _collapsible_nav(tree: BeautifulSoup) -> None:
             # has any sibling elements (a ``ul`` in the navigation menu)
             if link.parent.next_sibling:
                 # create the icon
-                svg = tree.new_tag(
-                    "svg",
-                    attrs={
-                        "xmlns": "http://www.w3.org/2000/xvg",
-                        "viewBox": "0 0 24 24",
-                        "class": "expand",
-                        "fill": "currentColor",
-                    },
-                )
-                path = tree.new_tag(
-                    "path", d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
-                )
-                svg.append(path)
+                svg = BeautifulSoup(ICONS["chevron_right"], "html.parser")
                 link.insert_before(svg)
 
 

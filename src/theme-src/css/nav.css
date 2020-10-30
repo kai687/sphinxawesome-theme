@@ -28,7 +28,7 @@ nav[data-menu="open"] {
     height: 1.2rem;
     margin-left: -0.4rem;
     transition: transform 150ms ease-out;
-    @apply inline cursor-pointer select-none;
+    @apply inline fill-current cursor-pointer select-none;
     &:hover {
       @apply text-pink-600;
     }
