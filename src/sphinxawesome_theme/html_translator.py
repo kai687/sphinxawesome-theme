@@ -12,6 +12,7 @@ from typing import Any, Dict
 
 from docutils import nodes
 from docutils.nodes import Element, Text
+from sphinx import addnodes
 from sphinx.application import Sphinx
 from sphinx.locale import _
 from sphinx.util import logging
@@ -153,7 +154,9 @@ class AwesomeHTMLTranslator(HTML5Translator):
         if the configuration option ``html_collapsible_definitions``
         is set.
         """
-        if self.config.html_collapsible_definitions:
+        # only add this, if the following dd is not empty.
+        dd = node.next_node(addnodes.desc_content, siblings=True)
+        if self.config.html_collapsible_definitions and len(dd.astext()) > 0:
             self.body.append(self.starttag(node, "dt", CLASS="accordion"))
         else:
             self.body.append(self.starttag(node, "dt"))
@@ -166,7 +169,8 @@ class AwesomeHTMLTranslator(HTML5Translator):
         """
         if not node.get("is_multiline"):
             self.add_permalink_ref(node, _("Copy link to this definition."))
-        if self.config.html_collapsible_definitions:
+        dd = node.next_node(addnodes.desc_content, siblings=True)
+        if self.config.html_collapsible_definitions and len(dd.astext()) > 0:
             self.body.append(ICONS["expand_more"])
         self.body.append("</dt>\n")
 
@@ -180,7 +184,7 @@ class AwesomeHTMLTranslator(HTML5Translator):
 
     def visit_desc_content(self, node: Element) -> None:
         """Add panel class to definitions."""
-        if self.config.html_collapsible_definitions:
+        if self.config.html_collapsible_definitions and len(node.astext()) > 0:
             self.body.append(self.starttag(node, "dd", CLASS="panel"))
         else:
             self.body.append(self.starttag(node, "dd"))
