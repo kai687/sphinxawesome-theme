@@ -47,6 +47,8 @@ html_title = "Sphinx awesome theme"
 html_theme = "sphinxawesome_theme"
 html_theme_path = ["../src"]
 html_last_updated_fmt = ""
+# extra option
+html_collapsible_definitions = True
 
 # -- Register a :dir: interpreted text role ----------------------------------
 

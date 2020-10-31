@@ -149,9 +149,14 @@ class AwesomeHTMLTranslator(HTML5Translator):
     def visit_desc_signature(self, node: Element) -> None:
         """Add the accordion class to the <dt> element.
 
-        This will make the definition list collapsible.
+        This will make the definition list collapsible,
+        if the configuration option ``html_collapsible_definitions``
+        is set.
         """
-        self.body.append(self.starttag(node, "dt", CLASS="accordion"))
+        if self.config.html_collapsible_definitions:
+            self.body.append(self.starttag(node, "dt", CLASS="accordion"))
+        else:
+            self.body.append(self.starttag(node, "dt"))
 
     def depart_desc_signature(self, node: Element) -> None:
         """Change permalinks for code definitions.
@@ -161,19 +166,24 @@ class AwesomeHTMLTranslator(HTML5Translator):
         """
         if not node.get("is_multiline"):
             self.add_permalink_ref(node, _("Copy link to this definition."))
-        self.body.append(ICONS["expand_more"])
+        if self.config.html_collapsible_definitions:
+            self.body.append(ICONS["expand_more"])
         self.body.append("</dt>\n")
 
     def depart_desc_signature_line(self, node: Element) -> None:
         """Change permalinks for code definitions."""
         if node.get("add_permalink"):
             self.add_permalink_ref(node.parent, _("Copy link to this definition."))
-        self.body.append(ICONS["expand_more"])
+        if self.config.html_collapsible_definitions:
+            self.body.append(ICONS["expand_more"])
         self.body.append("<br />")
 
     def visit_desc_content(self, node: Element) -> None:
         """Add panel class to definitions."""
-        self.body.append(self.starttag(node, "dd", CLASS="panel"))
+        if self.config.html_collapsible_definitions:
+            self.body.append(self.starttag(node, "dd", CLASS="panel"))
+        else:
+            self.body.append(self.starttag(node, "dd"))
 
     def visit_section(self, node: Element) -> None:
         """Use semantic <section> elements."""
@@ -308,6 +318,7 @@ def setup(app: "Sphinx") -> Dict[str, Any]:
     """
     app.set_translator("html", AwesomeHTMLTranslator)
     app.set_translator("dirhtml", AwesomeHTMLTranslator)
+    app.add_config_value("html_collapsible_definitions", False, "html")
 
     return {
         "version": __version__,
