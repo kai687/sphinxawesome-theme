@@ -21,7 +21,7 @@ import os
 from typing import Any, Dict, List, Optional
 
 from bs4 import BeautifulSoup
-from sphinx.application import Sphinx, Config
+from sphinx.application import Sphinx
 from sphinx.util import logging
 
 from . import __version__
@@ -99,7 +99,7 @@ def _collapsible_dl(tree: BeautifulSoup) -> None:
                 dt.append(icon)
 
 
-def _modify_html(html_filename: str, config: Config) -> None:
+def _modify_html(html_filename: str) -> None:
     """Modify a single HTML document.
 
     The HTML document is parsed into a BeautifulSoup tree.
@@ -114,8 +114,6 @@ def _modify_html(html_filename: str, config: Config) -> None:
 
     _expand_current(tree)
     _collapsible_nav(tree)
-    if config.collapsible_autodocs:
-        _collapsible_dl(tree)
 
     with open(html_filename, "w") as out_file:
         out_file.write(str(tree))
@@ -135,12 +133,11 @@ def post_process_html(app: Sphinx, exc: Optional[Exception]) -> None:
         html_files = _get_html_files(app.outdir)
 
         for doc in html_files:
-            _modify_html(doc, app.builder.config)
+            _modify_html(doc)
 
 
 def setup(app: "Sphinx") -> Dict[str, Any]:
     """Set this up as internal extension."""
-    app.add_config_value("collapsible_autodocs", False, "env")
     app.connect("build-finished", post_process_html)
 
     return {

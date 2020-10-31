@@ -22,7 +22,6 @@ from .icons import ICONS
 
 logger = logging.getLogger(__name__)
 
-
 COPY_BUTTON = (
     "<button class='copy tooltipped tooltipped-nw' aria-label='Copy this code'>"
     + ICONS["copy"]
@@ -147,6 +146,13 @@ class AwesomeHTMLTranslator(HTML5Translator):
         else:
             self.body.append("</p>\n")
 
+    def visit_desc_signature(self, node: Element) -> None:
+        """Add the accordion class to the <dt> element.
+
+        This will make the definition list collapsible.
+        """
+        self.body.append(self.starttag(node, "dt", CLASS="accordion"))
+
     def depart_desc_signature(self, node: Element) -> None:
         """Change permalinks for code definitions.
 
@@ -155,13 +161,19 @@ class AwesomeHTMLTranslator(HTML5Translator):
         """
         if not node.get("is_multiline"):
             self.add_permalink_ref(node, _("Copy link to this definition."))
+        self.body.append(ICONS["expand_more"])
         self.body.append("</dt>\n")
 
     def depart_desc_signature_line(self, node: Element) -> None:
         """Change permalinks for code definitions."""
         if node.get("add_permalink"):
             self.add_permalink_ref(node.parent, _("Copy link to this definition."))
+        self.body.append(ICONS["expand_more"])
         self.body.append("<br />")
+
+    def visit_desc_content(self, node: Element) -> None:
+        """Add panel class to definitions."""
+        self.body.append(self.starttag(node, "dd", CLASS="panel"))
 
     def visit_section(self, node: Element) -> None:
         """Use semantic <section> elements."""

@@ -1,5 +1,7 @@
 """Provide a central location for icons used in python code."""
 
+from bs4 import BeautifulSoup
+
 # icons are from Material Design icon set
 ICONS = {
     # https://material.io/resources/icons/?icon=content_copy
@@ -43,3 +45,8 @@ ICONS = {
         '<path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>'
     ),
 }
+
+
+def html(icon: str) -> BeautifulSoup:
+    """Return the icon as HTML tag."""
+    return BeautifulSoup(icon, "html.parser")
