@@ -7,7 +7,7 @@ ICONS = {
     # https://material.io/resources/icons/?icon=content_copy
     "copy": (
         "<svg xmlns='http://www.w3.org/2000/xvg' viewBox='0 0 24 24' "
-        "fill=currentColor aria-hidden='true'>"
+        "aria-hidden='true'>"
         "<path d='M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 "
         "4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 "
         "0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z' /></svg>"
@@ -34,8 +34,7 @@ ICONS = {
     # https://material.io/resources/icons/?icon=expand_more
     "expand_more": (
         '<svg xmlns="http://www.w3.org/2000/svg" '
-        'pointer-events="none"'
-        'viewBox="0 0 24 24" class="expand-more-icon" aria-hidden="true">'
+        'pointer-events="none" aria-hidden="true" viewBox="0 0 24 24">'
         '<path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg>'
     ),
     # https://material.io/resources/icons/?icon=chevron_right

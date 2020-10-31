@@ -29,6 +29,13 @@ COPY_BUTTON = (
     + "</button>\n"
 )
 
+EXPAND_MORE_BUTTON = (
+    "<button class='expand-more tooltipped tooltipped-nw' "
+    "aria-label='Expand this section' aria-expanded='false'>"
+    + ICONS["expand_more"]
+    + "</button>"
+)
+
 
 class AwesomeHTMLTranslator(HTML5Translator):
     """Override a few methods to improve the usability.
@@ -171,7 +178,7 @@ class AwesomeHTMLTranslator(HTML5Translator):
             self.add_permalink_ref(node, _("Copy link to this definition."))
         dd = node.next_node(addnodes.desc_content, siblings=True)
         if self.config.html_collapsible_definitions and len(dd.astext()) > 0:
-            self.body.append(ICONS["expand_more"])
+            self.body.append(EXPAND_MORE_BUTTON)
         self.body.append("</dt>\n")
 
     def depart_desc_signature_line(self, node: Element) -> None:
@@ -179,7 +186,7 @@ class AwesomeHTMLTranslator(HTML5Translator):
         if node.get("add_permalink"):
             self.add_permalink_ref(node.parent, _("Copy link to this definition."))
         if self.config.html_collapsible_definitions:
-            self.body.append(ICONS["expand_more"])
+            self.body.append(EXPAND_MORE_BUTTON)
         self.body.append("<br />")
 
     def visit_desc_content(self, node: Element) -> None:
