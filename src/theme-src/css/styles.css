@@ -15,4 +15,5 @@
 @import "transitions.css";
 @import "print.css";
 @import "tooltips.css";
+@import "collapsible.css";
 @import "tailwindcss/utilities";

@@ -25,6 +25,7 @@ from sphinx.application import Sphinx
 from sphinx.util import logging
 
 from . import __version__
+from .icons import ICONS
 
 logger = logging.getLogger(__name__)
 
@@ -49,9 +50,6 @@ def _collapsible_nav(tree: BeautifulSoup) -> None:
     Second, an icon is inserted right before the link.
     Adding the icon as separate DOM element allows click events to be
     captured separately between the icon and the link.
-
-    The icon is from the Materials icons set:
-    https://material.io/resources/icons/?icon=chevron_right
     """
     for link in tree.select(".nav-toc a"):
         # Don't add the nav-link class twice (#166)
@@ -62,19 +60,7 @@ def _collapsible_nav(tree: BeautifulSoup) -> None:
             # has any sibling elements (a ``ul`` in the navigation menu)
             if link.parent.next_sibling:
                 # create the icon
-                svg = tree.new_tag(
-                    "svg",
-                    attrs={
-                        "xmlns": "http://www.w3.org/2000/xvg",
-                        "viewBox": "0 0 24 24",
-                        "class": "expand",
-                        "fill": "currentColor",
-                    },
-                )
-                path = tree.new_tag(
-                    "path", d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
-                )
-                svg.append(path)
+                svg = BeautifulSoup(ICONS["chevron_right"], "html.parser")
                 link.insert_before(svg)
 
 
@@ -83,6 +69,34 @@ def _expand_current(tree: BeautifulSoup) -> None:
     for li in tree("li", class_="current"):
         if "expanded" not in li.get("class", []):
             li["class"] += ["expanded"]
+
+
+def _collapsible_dl(tree: BeautifulSoup) -> None:
+    """Make autodoc function, class, etc. definition lists collapsible."""
+    for dl in tree("dl"):
+        classes = dl.get("class", [])
+        if (
+            "exception" in classes
+            or "class" in classes
+            or "function" in classes
+            or "attribute" in classes
+            or "module" in classes
+            or "method" in classes
+        ):
+            dd = dl.find("dd")
+            # only apply to non-empty tags
+            if len(dd.get_text(strip=True)) > 0:
+                if dd.get("class", []):
+                    dd["class"] += ["panel"]
+                else:
+                    dd["class"] = ["panel"]
+                dt = dl.find("dt")
+                if dt.get("class", []):
+                    dt["class"] += ["accordion"]
+                else:
+                    dt["class"] = ["accordion"]
+                icon = BeautifulSoup(ICONS["expand_more"], "html.parser")
+                dt.append(icon)
 
 
 def _modify_html(html_filename: str) -> None:
@@ -124,7 +138,6 @@ def post_process_html(app: Sphinx, exc: Optional[Exception]) -> None:
 
 def setup(app: "Sphinx") -> Dict[str, Any]:
     """Set this up as internal extension."""
-    app.add_config_value("mark_external_links", True, "env")
     app.connect("build-finished", post_process_html)
 
     return {
