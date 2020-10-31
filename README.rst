@@ -10,9 +10,10 @@ Sphinx awesome theme
    :target: https://pypi.org/project/sphinxawesome-theme
    :alt: PyPI package version number
 
-.. image:: https://img.shields.io/netlify/e6d20a5c-b49e-4ebc-80f6-59fde8f24e22?style=for-the-badge
-   :target: https://sphinxawesome.xyz
+.. image:: https://api.netlify.com/api/v1/badges/e6d20a5c-b49e-4ebc-80f6-59fde8f24e22/deploy-status
+   :target: https://app.netlify.com/sites/sphinxawesome-theme/deploys
    :alt: Netlify Status
+   
 
 This is an awesome theme for the Sphinx_ documentation generator.
 See how the theme looks on the `demo page`_.
