@@ -3,8 +3,8 @@ name: Lint
 
 on:
   push:
-    branches-ignore:
-      - 'docs'
+    paths-ignore:
+      - 'src/theme-src/**'
 
 jobs:
   lint:
