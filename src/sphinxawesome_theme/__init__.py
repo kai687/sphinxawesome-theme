@@ -16,9 +16,6 @@ from typing import Any, Dict
 
 from sphinx.application import Sphinx
 
-from .admonitions_ids import AdmonitionId
-from .jinja_filter import setup_jinja_filter
-
 try:
     __version__ = version(__name__)
     """Obtain the version from the ``pyproject.toml`` file by using ``importlib.metadata``."""
@@ -43,8 +40,8 @@ def setup(app: "Sphinx") -> Dict[str, Any]:
     app.setup_extension("sphinxawesome_theme.highlighting")
     app.setup_extension("sphinxawesome_theme.postprocess")
     app.setup_extension("sphinxawesome_theme.html_translator")
-    app.add_post_transform(AdmonitionId)
-    app.connect("html-page-context", setup_jinja_filter)
+    app.setup_extension("sphinxawesome_theme.admonition_ids")
+    app.setup_extension("sphinxawesome_theme.jinja_filters")
 
     return {
         "version": __version__,
