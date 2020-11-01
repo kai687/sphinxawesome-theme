@@ -7,6 +7,7 @@ repos:
       - id: check-yaml
       - id: end-of-file-fixer
       - id: trailing-whitespace
+      - id: no-commit-to-branch
   - repo: https://github.com/asottile/pyupgrade
     rev: v2.7.3
     hooks:
