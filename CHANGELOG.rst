@@ -2,6 +2,7 @@ MASTER
 ~~~~~~
 
 - feat: new option to make autodocs definitions collapsible (PR #167)
+- fix: accessibility for collapsible (PR #174)
 
 1.15.1
 ~~~~~~
