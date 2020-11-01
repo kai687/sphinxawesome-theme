@@ -3,12 +3,9 @@
  * ******************/
 
 /* this ought to be part of the normalizer */
-input {
-  @apply rounded-none;
-}
-
+input,
 button {
-  @apply rounded-none;
+  @apply rounded-none appearance-none;
 }
 
 section {
