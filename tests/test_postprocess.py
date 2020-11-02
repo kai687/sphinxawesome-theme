@@ -48,6 +48,35 @@ def test_collapsible_nav() -> None:
     assert icons[0].next_sibling.string == "Link 1"
 
 
+def test_skip_collapsible_nav() -> None:
+    """It skips adding it if it's already there."""
+    html = """
+        <nav class="nav-toc">
+            <ul>
+                <li >
+                    <div class="nav-link">
+                        <a>Link 1</a>
+                    </div>
+                    <ul>
+                      <li><a>Sublink1</a></li>
+                      <li><a>Sublink2</a></li>
+                    </ul>
+                </li>
+                <li><a>Link 2</a></li>
+            </ul>
+        </nav>
+    """
+
+    tree = parse_html(html)
+    postprocess._collapsible_nav(tree)
+
+    navlinks = tree("div", class_="nav-link")
+    assert len(navlinks) == 4
+
+    icons = tree("svg")
+    assert len(icons) == 0
+
+
 def test_expand_current() -> None:
     """It adds a class to a li.current but not other li."""
     tree = parse_html("<li class='current'>current</li>")
@@ -57,3 +86,57 @@ def test_expand_current() -> None:
     tree = parse_html("<li>No current</li>")
     postprocess._expand_current(tree)
     assert not tree.li.has_attr("class")
+
+    tree = parse_html("<li class='current expanded'>expanded</li>")
+    postprocess._expand_current(tree)
+    assert tree.li["class"].count("expanded") == 1
+
+
+def test_skip_regular_dl() -> None:
+    """It doesn't add classes to regular definition lists."""
+    tree = parse_html("<dl><dt>term</dt><dd>definition</dd></dl>")
+    postprocess._collapsible_dl(tree)
+
+    dt = tree("dt", class_="accordion")
+    assert len(dt) == 0
+    dd = tree("dd", class_="panel")
+    assert len(dd) == 0
+
+
+def test_skip_empty_dd() -> None:
+    """It skips an autodoc dl with empty dd."""
+    tree = parse_html("<dl class='class'><dt>ClassName</dt><dd></dd></dl>")
+    postprocess._collapsible_dl(tree)
+    dt = tree("dt", class_="accordion")
+    assert len(dt) == 0
+    dd = tree("dd", class_="panel")
+    assert len(dd) == 0
+
+
+def test_add_collapsible_dl() -> None:
+    """It adds accordion and panel class to an autodoc dl."""
+    tree = parse_html(
+        "<dl class='function'><dt>function term</dt><dd>Function definition</dd></dl>"
+    )
+    postprocess._collapsible_dl(tree)
+    dt = tree("dt", class_="accordion")
+    assert len(dt) == 1
+    dd = tree("dd", class_="panel")
+    assert len(dd) == 1
+
+    # does it work, if the <dt> and <dd> already have classes?
+    tree = parse_html(
+        "<dl class='function'><dt class='dummy'>"
+        "function term</dt><dd class='dummy'>Function definition</dd></dl>"
+    )
+    postprocess._collapsible_dl(tree)
+    dt = tree("dt", class_="accordion")
+    assert len(dt) == 1
+    dd = tree("dd", class_="panel")
+    assert len(dd) == 1
+
+
+def test_exception(app: Sphinx) -> None:
+    """It skips when an exception is raised."""
+    e = Exception()
+    postprocess.post_process_html(app, e)
