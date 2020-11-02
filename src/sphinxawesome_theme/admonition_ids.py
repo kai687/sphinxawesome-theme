@@ -44,7 +44,7 @@ class AdmonitionId(SphinxPostTransform):
         title = "undefined"
         for node in self.document.traverse():
             if isinstance(node, nodes.section):
-                if node["names"]:
+                if node["names"]:  # pragma: nocover
                     title = nodes.make_id(node["names"][0])
 
             # <desc> nodes are also admonitions for some reason
