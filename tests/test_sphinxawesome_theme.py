@@ -2,23 +2,15 @@
 
 import os
 
-from bs4 import BeautifulSoup
 import pytest
 from sphinx.application import Sphinx
 
 import sphinxawesome_theme
 
 
-def html_parse(filename: str) -> BeautifulSoup:
-    """Parse the HTML5 output."""
-    with open(filename) as file_handle:
-        tree = BeautifulSoup(file_handle, "html.parser")
-    return tree
-
-
 def test_returns_version() -> None:
     """It has the correct version."""
-    assert sphinxawesome_theme.__version__ == "1.15.1"
+    assert sphinxawesome_theme.__version__ == "1.16.0"
 
 
 @pytest.mark.sphinx("dummy")
