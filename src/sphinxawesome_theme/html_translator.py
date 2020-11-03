@@ -66,10 +66,20 @@ class AwesomeHTMLTranslator(HTML5Translator):
             and node.parent.hasattr("ids")
             and node.parent["ids"]
         ):
-            # add permalink anchor
+            # add permalink anchor to normal headings
             if close_tag.startswith("</h"):
                 self.add_permalink_ref(
                     node.parent, _(f"Copy link to section: {node.astext()}.")
+                )
+            # and to headings when the 'contents' directive is used
+            elif close_tag.startswith("</a></h"):
+                self.body.append(
+                    "</a><a role='button' "
+                    "class='headerlink tooltipped tooltipped-ne' "
+                    'href="#{}" '
+                    'aria-label="Copy link to this section: {}">'.format(
+                        node["ids"][0], node.astext()
+                    )
                 )
             elif isinstance(node.parent, nodes.table):
                 self.body.append("</span>")
