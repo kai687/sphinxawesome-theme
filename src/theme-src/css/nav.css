@@ -7,11 +7,14 @@ nav[data-menu="open"] {
     2px 0 4px -1px rgba(0, 0, 0, 0.06);
 }
 
+.nav-toc .caption,
+.toctree-wrapper .caption,
+.contents.local .topic-title {
+  @apply uppercase text-sm text-gray-900 font-medium tracking-widest;
+}
+
 .nav-toc {
   @apply flex-1 px-5;
-  & .caption {
-    @apply uppercase text-sm text-gray-900 font-medium tracking-widest;
-  }
   & p:first-of-type {
     @apply mt-0;
   }
@@ -55,27 +58,20 @@ nav[data-menu="open"] {
   }
 }
 
-/* This is for on-page navigation menus */
+/* This is for on-page navigation menus
+ * have to set `display: block` explicitly
+ * b/c that's also a class in Tailwind */
 .toctree-wrapper,
 .contents.local {
-  @apply mt-12;
-  & .caption {
-    @apply uppercase text-sm text-gray-700 tracking-widest;
-  }
+  @apply mt-12 block;
   & ul {
     @apply mx-0 !important;
   }
   & li {
     @apply list-none px-0 !important;
-  }
-  & .toctree-l1 > a {
-    @apply block;
-  }
-  & .toctree-l2 > a {
-    @apply block py-3 pl-4;
-  }
-  & .toctree-l3 > a {
-    @apply block py-3 pl-8;
+    & > ul {
+      @apply pl-4;
+    }
   }
   & a.current {
     @apply text-pink-600;
