@@ -2,6 +2,13 @@
  * ADMONITIONS
  * **************************/
 
+blockquote {
+  @apply text-sm px-4 border border bg-gray-100 border-l-4;
+  & .attribution {
+    @apply italic;
+  }
+}
+
 .admonition {
   @apply text-sm my-6 p-4 text-blue-900 border border-blue-400 border-l-4;
 
