@@ -77,3 +77,14 @@ usually has negative consequences.
 
 The ``danger`` and ``error`` admonitions are considered equivalent and appear in
 the same style.
+
+-----------
+Blockquotes
+-----------
+
+Blockquotes are not really admonitions, but are used to quote other material and as such
+are often set apart from the main text.
+
+    "It is my business to know things. That is my trade."
+
+    -- Sherlock Holmes
