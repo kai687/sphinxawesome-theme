@@ -4,6 +4,8 @@ MASTER
 - feat: new option to make autodocs definitions collapsible (PR #167)
 - fix: accessibility for collapsible (PR #174)
 - fix: rounded search input on iOS (PR #181)
+- fix: add styles for blockquotes (PR #192)
+- fix: inconsistent padding in header with and without logo (PR #188)
 
 1.15.1
 ~~~~~~
