@@ -1,4 +1,4 @@
-MASTER
+1.16.0
 ~~~~~~
 
 - feat: new option to make autodocs definitions collapsible (PR #167)
