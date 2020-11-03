@@ -6,11 +6,11 @@ a table of contents on the same page.
 
 
 .. toctree::
-   :caption: Contents
+   :caption: Other pages
    :maxdepth: 1
 
-   code
-   auto
+   ../about
+   ../glossary
 
 
 For displaying only content of the current page, use the ``contents``
@@ -18,6 +18,7 @@ directive with the ``:local:`` option.
 
 .. contents:: On this page
    :local:
+   :backlinks: none
 
 
 Section 1

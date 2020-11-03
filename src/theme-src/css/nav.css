@@ -77,3 +77,9 @@ nav[data-menu="open"] {
     @apply text-pink-600;
   }
 }
+
+/* to make the style more consistent between
+ * .toctree-wrapper and .contents */
+.toctree-wrapper li {
+  @apply my-3;
+}
