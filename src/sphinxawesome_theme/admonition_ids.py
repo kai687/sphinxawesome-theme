@@ -7,12 +7,15 @@ to also be linked to.
 :license: MIT, see LICENSE.
 """
 
-from typing import Any
+from typing import Any, Dict
 
 from docutils import nodes
 from sphinx.addnodes import desc
+from sphinx.application import Sphinx
 from sphinx.transforms.post_transforms import SphinxPostTransform
 from sphinx.util import logging
+
+from . import __version__
 
 logger = logging.getLogger(__name__)
 
@@ -41,10 +44,21 @@ class AdmonitionId(SphinxPostTransform):
         title = "undefined"
         for node in self.document.traverse():
             if isinstance(node, nodes.section):
-                if node["names"]:
+                if node["names"]:  # pragma: nocover
                     title = nodes.make_id(node["names"][0])
 
             # <desc> nodes are also admonitions for some reason
             if isinstance(node, nodes.Admonition) and not isinstance(node, desc):
                 node["ids"] = [f"{title}-note-{note_id}"]
                 note_id += 1
+
+
+def setup(app: Sphinx) -> Dict[str, Any]:
+    """Register this post-transform as extension."""
+    app.add_post_transform(AdmonitionId)
+
+    return {
+        "version": __version__,
+        "parallel_read_safe": True,
+        "parallel_write_safe": True,
+    }

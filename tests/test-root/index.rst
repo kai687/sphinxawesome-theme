@@ -1,3 +1,8 @@
+.. note::
+
+   This is a note before a heading
+
+
 Test the Python extension of the Sphinx Awesome Theme
 =====================================================
 

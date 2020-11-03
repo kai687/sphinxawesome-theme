@@ -8,6 +8,8 @@ from typing import Any, Dict
 from docutils.nodes import make_id, Node
 from sphinx.application import Sphinx
 
+from . import __version__
+
 
 def _make_id_from_title(title: str) -> str:
     """Use the ``docutils.nodes.make_id`` function to create an ID from a title.
@@ -29,3 +31,14 @@ def setup_jinja_filter(
 ) -> None:
     """Register a function as a Jinja2 filter."""
     app.builder.templates.environment.filters["sanitize"] = _make_id_from_title
+
+
+def setup(app: Sphinx) -> Dict[str, Any]:
+    """Register this jinja filter as extension."""
+    app.connect("html-page-context", setup_jinja_filter)
+
+    return {
+        "version": __version__,
+        "parallel_read_safe": True,
+        "parallel_write_safe": True,
+    }

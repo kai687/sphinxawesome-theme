@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 import pytest
 from sphinx.application import Sphinx
 
-from sphinxawesome_theme import __version__
+import sphinxawesome_theme
 
 
 def html_parse(filename: str) -> BeautifulSoup:
@@ -18,7 +18,7 @@ def html_parse(filename: str) -> BeautifulSoup:
 
 def test_returns_version() -> None:
     """It has the correct version."""
-    assert __version__ == "1.15.1"
+    assert sphinxawesome_theme.__version__ == "1.15.1"
 
 
 @pytest.mark.sphinx("dummy")
@@ -27,3 +27,14 @@ def test_can_access_and_compile_test(app: Sphinx) -> None:
     app.builder.build_all()
     assert app.outdir.exists()
     assert not os.listdir(app.outdir)
+
+
+def test_loads_extensions(app: Sphinx) -> None:
+    """It loads all internal extensions."""
+    _ = sphinxawesome_theme.setup(app)
+    assert "sphinxawesome.sampdirective" in app.extensions
+    assert "sphinxawesome_theme.html_translator" in app.extensions
+    assert "sphinxawesome_theme.jinja_filters" in app.extensions
+    assert "sphinxawesome_theme.postprocess" in app.extensions
+    assert "sphinxawesome_theme.admonition_ids" in app.extensions
+    assert "sphinxawesome_theme.highlighting" in app.extensions
