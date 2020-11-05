@@ -1,43 +1,80 @@
 """Unit tests for the admonition_id module."""
 
+from typing import Dict
+
 from bs4 import BeautifulSoup
 import pytest
 from sphinx.application import Sphinx
 from sphinx.testing.util import etree_parse
 
 
-def html_parse(filename: str) -> BeautifulSoup:
-    """Parse the HTML5 output."""
+etree_cache: Dict[str, BeautifulSoup] = {}
+
+
+def cached_parse(filename: str) -> BeautifulSoup:
+    """Parse an HTML file and store the parsed tree in a dictionary."""
+    if filename in etree_cache:
+        return etree_cache[filename]
+
     with open(filename) as file_handle:
         tree = BeautifulSoup(file_handle, "html.parser")
-    return tree
+        etree_cache.clear()
+        etree_cache[filename] = tree
+        return tree
 
 
-@pytest.mark.sphinx("xml", confoverrides={"extensions": ["sphinxawesome_theme"]})
+@pytest.mark.sphinx(
+    "xml", testroot="ids", confoverrides={"extensions": ["sphinxawesome_theme"]}
+)
 def test_does_not_assign_id_in_xml(app: Sphinx) -> None:
-    """It does not assign an ID in XML."""
+    """It does not assign an ID automatically in XML."""
     app.build()
 
     et = etree_parse(app.outdir / "index.xml")
     notes = et.findall(".//note")
-    assert len(notes) == 2
-    for note in notes:
-        assert "id" not in note.attrib
+    assert len(notes) == 3
+
+    assert "ids" not in notes[0].attrib
+    assert "ids" not in notes[1].attrib
+    assert "ids" in notes[2].attrib
+    # explicitly referenced notes should have an id though
+    assert notes[2].attrib["ids"] == "foo"
 
 
-@pytest.mark.sphinx("html", confoverrides={"html_theme": "sphinxawesome_theme"})
-def test_assigns_id_in_html(app: Sphinx) -> None:
-    """It assigns an ID to notes (but not <desc>) in HTML."""
+@pytest.mark.sphinx(
+    "html",
+    testroot="ids",
+    confoverrides={"html_theme": "sphinxawesome_theme"},
+    freshenv=True,
+)
+def test_assign_id_in_html(app: Sphinx) -> None:
+    """It assigns an ID to notes automatically in HTML."""
     app.build()
 
-    tree = html_parse(app.outdir / "index.html")
+    tree = cached_parse(app.outdir / "index.html")
+
     notes = tree.find_all("div", class_="note")
-    assert len(notes) == 2
-    # first note is not inside section
+    assert len(notes) == 3
+
+    # first note is not inside a section
     assert notes[0]["id"] == "undefined-note-1"
-    assert notes[1]["id"] == "test-section-note-2"
-    # <desc> nodes are also admonitions in Sphinx (sphinx.addnodes.desc)
-    # but they should not get any ids
+    # second note is inside a section 'Test'
+    assert notes[1]["id"] == "test-note-2"
+    # third note has an explicit label ``foo``
+    assert notes[2]["id"] == "foo"
+
+
+@pytest.mark.sphinx(
+    "html",
+    testroot="ids",
+    confoverrides={"html_theme": "sphinxawesome_theme"},
+    freshenv=True,
+)
+def test_does_not_assign_id_to_desc(app: Sphinx) -> None:
+    """It doesn't assign an ID to a description node."""
+    app.build()
+
+    tree = cached_parse(app.outdir / "index.html")
     dl = tree.find_all("dl")
     assert len(dl) == 1
     assert "id" not in dl[0]
