@@ -1,20 +1,10 @@
-Test Permalink Behavior
-=======================
-
-A regular section, by default with Sphinx.
-
-.. _foo:
-
 Test Section
-------------
+============
 
-Test explicitly labeled section and permalink.
-
+A test section.
 
 .. contents:: Contents
    :local:
-   :depth: 3
-
 
 After Contents
 --------------
