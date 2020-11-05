@@ -1,7 +1,9 @@
 """Add ids to all admonition nodes.
 
 This allows admonitions, such as notes, warnings, etc.
-to also be linked to.
+to be linked to and tabbed to automatically.
+
+You can still use explicit labels in front of them.
 
 :copyright: Copyright Kai Welke.
 :license: MIT, see LICENSE.
@@ -47,8 +49,13 @@ class AdmonitionId(SphinxPostTransform):
                 if node["names"]:  # pragma: nocover
                     title = nodes.make_id(node["names"][0])
 
-            # <desc> nodes are also admonitions for some reason
-            if isinstance(node, nodes.Admonition) and not isinstance(node, desc):
+            # add automatic IDs only to admonition nodes that are not <desc>
+            # and that don't already have an explicit label
+            if (
+                isinstance(node, nodes.Admonition)
+                and not isinstance(node, desc)
+                and not node["ids"]
+            ):
                 node["ids"] = [f"{title}-note-{note_id}"]
                 note_id += 1
 

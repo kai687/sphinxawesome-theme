@@ -1,3 +1,9 @@
+MASTER
+~~~~~~
+
+- fix: respect explicitly labeled admonitions (PR# 197)
+
+
 1.16.0
 ~~~~~~
 
