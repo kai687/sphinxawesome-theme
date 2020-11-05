@@ -1,11 +1,13 @@
 """Unit tests for the permalink behavior."""
 
+from typing import Dict
+
 from bs4 import BeautifulSoup
 import pytest
 from sphinx.application import Sphinx
 
 
-etree_cache = {}
+etree_cache: Dict[str, BeautifulSoup] = {}
 
 
 def cached_parse(filename: str) -> BeautifulSoup:
