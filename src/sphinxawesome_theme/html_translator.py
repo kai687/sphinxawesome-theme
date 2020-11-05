@@ -78,7 +78,7 @@ class AwesomeHTMLTranslator(HTML5Translator):
                     "class='headerlink tooltipped tooltipped-ne' "
                     'href="#{}" '
                     'aria-label="Copy link to this section: {}">'.format(
-                        node["ids"][0], node.astext()
+                        node.parent["ids"][0], node.astext()
                     )
                 )
             elif isinstance(node.parent, nodes.table):
