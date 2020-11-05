@@ -2,6 +2,7 @@ MASTER
 ~~~~~~
 
 - fix: respect explicitly labeled admonitions (PR# 197)
+- fix: bug in headerlink mechanism (PR #199)
 
 
 1.16.0
