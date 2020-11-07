@@ -16,7 +16,7 @@ def parse_html(filename: str) -> BeautifulSoup:
     return tree
 
 
-@pytest.mark.sphinx("html", testroot="table")
+@pytest.mark.sphinx("html", testroot="table", freshenv=True)
 def test_permalink_table_default_theme(app: Sphinx) -> None:
     """Test the permalink behavior in Tables.
 
@@ -50,7 +50,10 @@ def test_permalink_table_default_theme(app: Sphinx) -> None:
 
 
 @pytest.mark.sphinx(
-    "html", testroot="table", confoverrides={"html_theme": "sphinxawesome_theme"}
+    "html",
+    testroot="table",
+    freshenv=True,
+    confoverrides={"html_theme": "sphinxawesome_theme"},
 )
 def test_permalink_table_awesome_theme(app: Sphinx) -> None:
     """Test the permalink behavior in Tables.
@@ -90,7 +93,7 @@ def test_permalink_table_awesome_theme(app: Sphinx) -> None:
     assert span["id"] == "foo"
 
 
-@pytest.mark.sphinx("html", testroot="figure")
+@pytest.mark.sphinx("html", testroot="figure", freshenv=True)
 def test_permalink_figure_default_theme(app: Sphinx) -> None:
     """It tests the permalink behavior in figures.
 
@@ -135,7 +138,10 @@ def test_permalink_figure_default_theme(app: Sphinx) -> None:
 
 
 @pytest.mark.sphinx(
-    "html", testroot="figure", confoverrides={"html_theme": "sphinxawesome_theme"}
+    "html",
+    testroot="figure",
+    freshenv=True,
+    confoverrides={"html_theme": "sphinxawesome_theme"},
 )
 def test_permalink_figure_awesome_theme(app: Sphinx) -> None:
     """It tests the permalink behavior in figures.

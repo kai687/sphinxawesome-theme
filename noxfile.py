@@ -32,7 +32,9 @@ def tests(session: Session) -> None:
     """Run unit tests."""
     args = session.posargs or ["--cov"]
     session.run("poetry", "install", "--no-dev", external=True)
-    install_constrained_version(session, "coverage[toml]", "pytest", "pytest-cov")
+    install_constrained_version(
+        session, "coverage[toml]", "pytest", "pytest-cov", "pytest-randomly"
+    )
     session.run("pytest", *args)
 
 

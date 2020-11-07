@@ -23,7 +23,7 @@ def parse_html(filename: str) -> BeautifulSoup:
     return tree
 
 
-@pytest.mark.sphinx("html", testroot="headerlinks")
+@pytest.mark.sphinx("html", testroot="headerlinks", freshenv=True)
 def test_headerlink_with_default_theme(app: Sphinx) -> None:
     """It tests the default structure of a headerlink.
 
@@ -65,7 +65,7 @@ def test_headerlink_with_default_theme(app: Sphinx) -> None:
     )
 
 
-@pytest.mark.sphinx("html", testroot="headerlinks")
+@pytest.mark.sphinx("html", testroot="headerlinks", freshenv=True)
 def test_ids_with_default_theme(app: Sphinx) -> None:
     """It tests section IDs.
 
@@ -85,7 +85,10 @@ def test_ids_with_default_theme(app: Sphinx) -> None:
 
 
 @pytest.mark.sphinx(
-    "html", testroot="headerlinks", confoverrides={"html_theme": "sphinxawesome_theme"}
+    "html",
+    testroot="headerlinks",
+    freshenv=True,
+    confoverrides={"html_theme": "sphinxawesome_theme"},
 )
 def test_headerlink_with_awesome_theme(app: Sphinx) -> None:
     """It tests the structure of a headerlink.
@@ -149,7 +152,10 @@ def test_headerlink_with_awesome_theme(app: Sphinx) -> None:
 
 
 @pytest.mark.sphinx(
-    "html", testroot="headerlinks", confoverrides={"html_theme": "sphinxawesome_theme"}
+    "html",
+    testroot="headerlinks",
+    freshenv=True,
+    confoverrides={"html_theme": "sphinxawesome_theme"},
 )
 def test_ids_with_awesome_theme(app: Sphinx) -> None:
     """It tests section IDs.
