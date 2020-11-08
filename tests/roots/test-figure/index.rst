@@ -1,7 +1,7 @@
 Test
 ====
 
-First, we'll test a figure.
+First, test a regular figure.
 
 .. figure:: image.svg
    :alt: A grey placeholder image
@@ -10,7 +10,7 @@ First, we'll test a figure.
 
    This is a legend.
 
-Now, we'll add an explicit label.
+Now, test an explicit label.
 
 .. _foo:
 
@@ -20,3 +20,9 @@ Now, we'll add an explicit label.
    This is an image caption.
 
    This is a legend.
+
+Now, check with :width: and :align: attribute
+
+.. figure:: image.svg
+   :width: 50%
+   :align: left

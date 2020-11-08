@@ -34,8 +34,10 @@ def test_headerlink_with_default_theme(app: Sphinx) -> None:
     """
     app.build()
     tree = parse_html(app.outdir / "index.html")
-    headings = tree.find_all(re.compile("^h[1..2]"), class_=None)
+    headings = tree(re.compile("^h[1..2]"), class_=None)
     assert len(headings) == 4
+    headerlinks = tree("a", class_="headerlink")
+    assert len(headerlinks) == 4
 
     h1 = headings[0]
     assert str(h1) == (
@@ -172,3 +174,22 @@ def test_ids_with_awesome_theme(app: Sphinx) -> None:
     assert sections[1]["id"] == "second-test"
     assert sections[2]["id"] == "third-test"
     assert sections[3]["id"] == "fourth-test"
+
+
+@pytest.mark.sphinx(
+    "html",
+    testroot="headerlinks",
+    freshenv=True,
+    confoverrides={"html_theme": "sphinxawesome_theme", "html_add_permalinks": False},
+)
+def test_no_permalinks(app: Sphinx) -> None:
+    """It tests disabling of the permalink mechanism.
+
+    I'm not sure I want to support this, but here goes.
+    """
+    app.build()
+    tree = parse_html(app.outdir / "index.html")
+    headings = tree(re.compile("^h[1..2]"), class_=None)
+    assert len(headings) == 4
+    headerlinks = tree("a", class_="headerlink")
+    assert len(headerlinks) == 0

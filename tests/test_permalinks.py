@@ -16,6 +16,38 @@ def parse_html(filename: str) -> BeautifulSoup:
     return tree
 
 
+@pytest.mark.sphinx(
+    "html",
+    testroot="table",
+    freshenv=True,
+    confoverrides={"html_theme": "sphinxawesome_theme", "html_add_permalinks": False},
+)
+def test_no_permalinks_on_tables(app: Sphinx) -> None:
+    """It tests parsing a table without headerlinks."""
+    app.build()
+    tree = parse_html(app.outdir / "index.html")
+    tables = tree("table")
+    assert len(tables) == 2
+    headerlinks = tree("a", class_="headerlink")
+    assert len(headerlinks) == 0
+
+
+@pytest.mark.sphinx(
+    "html",
+    testroot="figure",
+    freshenv=True,
+    confoverrides={"html_theme": "sphinxawesome_theme", "html_add_permalinks": False},
+)
+def test_no_permalinks_on_figures(app: Sphinx) -> None:
+    """It tests parsing a figure without headerlinks."""
+    app.build()
+    tree = parse_html(app.outdir / "index.html")
+    figures = tree("figure")
+    assert len(figures) == 3
+    headerlinks = tree("a", class_="headerlink")
+    assert len(headerlinks) == 0
+
+
 @pytest.mark.sphinx("html", testroot="table", freshenv=True)
 def test_permalink_table_default_theme(app: Sphinx) -> None:
     """Test the permalink behavior in Tables.
@@ -28,6 +60,7 @@ def test_permalink_table_default_theme(app: Sphinx) -> None:
     tree = parse_html(app.outdir / "index.html")
 
     tables = tree("table")
+    assert len(tables) == 2
     assert tables[0]["id"] == "id1"
     assert tables[1]["id"] == "id2"
 
@@ -100,12 +133,17 @@ def test_permalink_figure_default_theme(app: Sphinx) -> None:
     This test uses the default ``alabaster`` theme
     to get a good baseline.
     """
+    app.html_add_permalinks = "a"
     app.build()
     tree = parse_html(app.outdir / "index.html")
     figures = tree("div", class_="figure")
-    assert len(figures) == 2
+    assert len(figures) == 3
     assert figures[0]["id"] == "id1"
+    assert figures[0]["class"] == ["figure", "align-default"]
     assert figures[1]["id"] == "id2"
+    assert figures[1]["class"] == ["figure", "align-default"]
+    # figure 3 has no alt text, hence no id
+    assert "id" not in figures[2].attrs
 
     # check the structure for figure 1, first strip newlines
     children = [c for c in figures[0].children if c.strip is None]
@@ -151,9 +189,11 @@ def test_permalink_figure_awesome_theme(app: Sphinx) -> None:
     app.build()
     tree = parse_html(app.outdir / "index.html")
     figures = tree("figure")
-    assert len(figures) == 2
+    assert len(figures) == 3
     assert figures[0]["id"] == "id1"
     assert figures[1]["id"] == "id2"
+    # figure 3 has no alt text, hence no id
+    assert "id" not in figures[2].attrs
 
     # check the structure for figure 1, first strip newlines
     children = [c for c in figures[0].children if c.strip is None]
@@ -190,3 +230,36 @@ def test_permalink_figure_awesome_theme(app: Sphinx) -> None:
             '3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z">'
             "</path></svg></a></figcaption>"
         )
+
+
+@pytest.mark.sphinx(
+    "html",
+    testroot="figure",
+    freshenv=True,
+    confoverrides={"html_theme": "sphinxawesome_theme"},
+)
+def test_figure_attributes(app: Sphinx) -> None:
+    """It tests if width and align attributes are passed."""
+    app.build()
+    tree = parse_html(app.outdir / "index.html")
+    figures = tree("figure")
+    assert len(figures) == 3
+    assert figures[2].attrs["class"] == ["align-left"]
+    img = figures[2].find("img")
+    assert img.attrs["width"] == "50%"
+
+
+@pytest.mark.sphinx(
+    "html",
+    testroot="toctree",
+    freshenv=True,
+    confoverrides={"html_theme": "sphinxawesome_theme"},
+)
+def test_caption_on_toctree(app: Sphinx) -> None:
+    """It tests parsing a table without headerlinks."""
+    app.build()
+    tree = parse_html(app.outdir / "index.html")
+    captions = tree("p", class_="caption")
+    assert len(captions) == 2
+    for cap in captions:
+        assert cap.text == "Foo"

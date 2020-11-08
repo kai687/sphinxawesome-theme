@@ -220,7 +220,7 @@ class AwesomeHTMLTranslator(HTML5Translator):
         """Use semantic <figure> elements."""
         attributes = {}
         if node.get("width"):
-            attributes["style"] = f"width:{node['width']}"
+            attributes["style"] = f"width: {node['width']}"
         if node.get("align"):
             attributes["class"] = f"align-{node['align']}"
         self.body.append(self.starttag(node, "figure", **attributes))

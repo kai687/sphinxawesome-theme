@@ -89,6 +89,24 @@ def test_doctree_awesome_theme(app: Sphinx) -> None:
         assert conti[1].tag == "literal_block"
 
 
+@pytest.mark.sphinx(
+    "html",
+    testroot="code",
+    freshenv=True,
+    confoverrides={"html_theme": "sphinxawesome_theme", "html_add_permalinks": False},
+)
+def test_no_permalinks_on_codeblocks(app: Sphinx) -> None:
+    """It tests codeblocks without headerlinks."""
+    app.build()
+    tree = parse_html(app.outdir / "index.html")
+    code_blocks = tree("div", class_="highlight")
+    assert len(code_blocks) == 7
+    code_headers = tree("div", class_="code-header")
+    assert len(code_headers) == 7
+    headerlinks = tree("a", class_="headerlink")
+    assert len(headerlinks) == 0
+
+
 @pytest.mark.skip(reason="Flaky test.")
 @pytest.mark.sphinx("html", testroot="code", freshenv=True)
 def test_basic_codeblock_default_theme(app: Sphinx) -> None:
