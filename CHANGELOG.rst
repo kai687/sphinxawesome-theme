@@ -1,4 +1,4 @@
-MASTER
+1.16.1
 ~~~~~~
 
 - fix: expand-more buttons systematically applied (PR #209)
