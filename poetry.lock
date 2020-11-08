@@ -593,6 +593,18 @@ pytest = ">=4.6"
 testing = ["fields", "hunter", "process-tests (==2.0.2)", "six", "pytest-xdist", "virtualenv"]
 
 [[package]]
+name = "pytest-randomly"
+version = "3.4.1"
+description = "Pytest plugin to randomly order tests and control random.seed."
+category = "dev"
+optional = false
+python-versions = ">=3.5"
+
+[package.dependencies]
+importlib-metadata = {version = "*", markers = "python_version < \"3.8\""}
+pytest = "*"
+
+[[package]]
 name = "pytz"
 version = "2020.4"
 description = "World timezone definitions, modern and historical"
@@ -864,7 +876,7 @@ testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.6.1,<4.0.0"
-content-hash = "7d90b4d61fc352bf910ceebdf4b103cc3725e5603a1d3d440cc20aa93a32c4ad"
+content-hash = "55503602c2b81028f5350d4d2370194e28c40f8bc32c8cbdc1d202d3abf904bc"
 
 [metadata.files]
 alabaster = [
@@ -1154,6 +1166,10 @@ pytest = [
 pytest-cov = [
     {file = "pytest-cov-2.10.1.tar.gz", hash = "sha256:47bd0ce14056fdd79f93e1713f88fad7bdcc583dcd7783da86ef2f085a0bb88e"},
     {file = "pytest_cov-2.10.1-py2.py3-none-any.whl", hash = "sha256:45ec2d5182f89a81fc3eb29e3d1ed3113b9e9a873bcddb2a71faaab066110191"},
+]
+pytest-randomly = [
+    {file = "pytest-randomly-3.4.1.tar.gz", hash = "sha256:5fd0dbeeb218a7ce029690a8100453cd8d6a7972cf9d8e657690352692e92c69"},
+    {file = "pytest_randomly-3.4.1-py3-none-any.whl", hash = "sha256:2c4df1390db72a33a4f44fac0c780e7883cd5968238efa2a2bdbdd54e3fc6681"},
 ]
 pytz = [
     {file = "pytz-2020.4-py2.py3-none-any.whl", hash = "sha256:5c55e189b682d420be27c6995ba6edce0c0a77dd67bfbe2ae6607134d5851ffd"},

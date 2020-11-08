@@ -14,11 +14,14 @@ a table of contents on the same page.
 
 
 For displaying only content of the current page, use the ``contents``
-directive with the ``:local:`` option.
+directive with the ``:local:`` option. You must provide a title for the
+directive to render. It'll silently fail to render otherwise. By default,
+headings after this directive will be links back to the contents section
+(such as on this page). If you want to disable this behavior,
+use ``:backlinks: none``.
 
 .. contents:: On this page
    :local:
-   :backlinks: none
 
 
 Section 1
