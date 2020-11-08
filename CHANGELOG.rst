@@ -3,6 +3,7 @@ MASTER
 
 - fix: respect explicitly labeled admonitions (PR# 197)
 - fix: bug in headerlink mechanism (PR #199)
+- chore: increased test coverage (PR #201)
 
 
 1.16.0
