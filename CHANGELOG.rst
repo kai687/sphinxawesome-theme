@@ -1,6 +1,12 @@
 1.16.1
 ~~~~~~
 
+- fix: expand-more buttons systematically applied (PR #209)
+
+
+1.16.1
+~~~~~~
+
 - fix: respect explicitly labeled admonitions (PR# 197)
 - fix: bug in headerlink mechanism (PR #199)
 - chore: increased test coverage (PR #201)
