@@ -1,9 +1,16 @@
-"""Modification of the Sphinx HTML5 translator with better handling of permalinks.
+"""Modification of the Sphinx HTML5 translator.
 
-Instead of "permalink to this headline",
-this returns "Copy link to section: *sectionname*".
-Clicking on the permalink anchor will copy the link to the clipboard.
-This is implemented in JavaScript.
+Overwrite several methods to improve the HTML output.
+
+Improve headerlinks
+   Instead of writing "permalink to this headline", we write
+   "Copy link to section: <SECTIONNAME>" and display an icon
+   instead of the '¶' character.
+
+Semantic HTML5 tags
+   Instead of <div class="section"> we'll use <section>
+
+Remove unnecessary nesting
 
 :copyright: Copyright Kai Welke.
 :license: MIT, see LICENSE for details.
@@ -38,15 +45,7 @@ EXPAND_MORE_BUTTON = (
 
 
 class AwesomeHTMLTranslator(HTML5Translator):
-    """Override a few methods to improve the usability.
-
-    By default, Sphinx permalinks have generic titles,
-    such as: "Permalink to this section".
-    In the sphinx awesome theme, clicking on a permalink
-    copies the link to the clipboard. Therefore,
-    the link title attributes are updated to be more
-    specific.
-    """
+    """Override a few methods to improve the usability."""
 
     def depart_title(self, node: Element) -> None:
         """Change the permalinks for headlines.
@@ -80,6 +79,7 @@ class AwesomeHTMLTranslator(HTML5Translator):
                     'aria-label="Copy link to this section: {}">'.format(
                         node.parent["ids"][0], node.astext()
                     )
+                    + ICONS["headerlink"]
                 )
             elif isinstance(node.parent, nodes.table):
                 self.body.append("</span>")
@@ -220,7 +220,7 @@ class AwesomeHTMLTranslator(HTML5Translator):
         """Use semantic <figure> elements."""
         attributes = {}
         if node.get("width"):
-            attributes["style"] = f"width:{node['width']}"
+            attributes["style"] = f"width: {node['width']}"
         if node.get("align"):
             attributes["class"] = f"align-{node['align']}"
         self.body.append(self.starttag(node, "figure", **attributes))
