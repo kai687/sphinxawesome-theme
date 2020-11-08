@@ -50,7 +50,7 @@ def test_no_collapsible_definitions(app: Sphinx) -> None:
     )
 
     assert str(dl[1]).replace("\n", "") == (
-        '<dl class="std option">'
+        '<dl class="std option code-definition">'
         '<dt id="cmdoption-t">'
         '<code class="sig-name descname">-t</code>'
         '<code class="sig-prename descclassname"></code>'
@@ -89,6 +89,7 @@ def test_collapsible_definitions(app: Sphinx) -> None:
     assert str(dl[0]).replace("\n", "") == (
         '<dl class="simple"><dt>term</dt><dd><p>definition</p></dd></dl>'
     )
+    assert "code-definition" in dl[1]["class"]
     dt, dd = [c for c in dl[1].children if c.strip is None]
     assert dt.name == "dt"
     assert dt["class"] == ["accordion"]

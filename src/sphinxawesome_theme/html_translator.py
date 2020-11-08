@@ -164,6 +164,15 @@ class AwesomeHTMLTranslator(HTML5Translator):
         else:
             self.body.append("</p>\n")
 
+    def visit_desc(self, node: Element) -> None:
+        """Add a class ``code-definition`` to definition lists.
+
+        For code objects, like functions, classes, methods, etc.
+        to distinguish them from regular definition lists.
+        """
+        cl = node["objtype"] + " code-definition"
+        self.body.append(self.starttag(node, "dl", CLASS=cl))
+
     def visit_desc_signature(self, node: Element) -> None:
         """Add the accordion class to the <dt> element.
 

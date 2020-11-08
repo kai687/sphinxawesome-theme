@@ -1,6 +1,12 @@
 MASTER
 ~~~~~~
 
+- fix: expand-more buttons systematically applied (PR #209)
+
+
+1.16.1
+~~~~~~
+
 - fix: respect explicitly labeled admonitions (PR# 197)
 - fix: bug in headerlink mechanism (PR #199)
 - chore: increased test coverage (PR #201)
@@ -15,6 +21,7 @@ MASTER
 - fix: add styles for blockquotes (PR #192)
 - fix: inconsistent padding in header with and without logo (PR #188)
 - fix: implementation for headerlinks (PR #194)
+
 
 1.15.1
 ~~~~~~

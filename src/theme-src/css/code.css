@@ -97,10 +97,7 @@ button.copy {
 }
 
 /* autodocs */
-dl.function,
-dl.class,
-dl.exception,
-dl.option {
+dl.code-definition {
   & dt {
     @apply p-2 my-4 border border-l-4;
     & code {
@@ -109,9 +106,7 @@ dl.option {
   }
 }
 
-dl.exception,
-dl.function,
-dl.class {
+dl.code-definition:not(.option) {
   & .sig-prename {
     @apply text-gray-600;
   }
