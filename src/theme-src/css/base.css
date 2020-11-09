@@ -8,7 +8,8 @@ button {
   @apply rounded-none appearance-none;
 }
 
-section {
+section,
+footer {
   max-width: 82ch;
 }
 
