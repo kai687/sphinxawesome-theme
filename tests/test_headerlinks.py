@@ -168,8 +168,7 @@ def test_ids_with_awesome_theme(app: Sphinx) -> None:
     app.build()
     tree = parse_html(app.outdir / "index.html")
     sections = tree("section")
-    # there is <section role="contentinfo"> at the bottom.
-    assert len(sections) == 5
+    assert len(sections) == 4
     assert sections[0]["id"] == "test"
     assert sections[1]["id"] == "second-test"
     assert sections[2]["id"] == "third-test"
