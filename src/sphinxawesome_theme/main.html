@@ -2,10 +2,10 @@
 
 <div id="main-wrapper" class="overflow-y-auto md:w-full flex flex-col flex-1">
   <main role="main" class="px-5 md:ml-fluid flex-1 {% if not theme_show_nav -%}mx-auto{%- endif -%}">
-    {%- if ((pagename != master_doc) and (theme_show_breadcrumbs)) %}
-    {%- include "breadcrumbs.html" %}
+    {%- if pagename != master_doc and theme_show_breadcrumbs %}
+      {%- include "breadcrumbs.html" %}
     {% endif -%}
     {{ body }}
   </main>
-  {% include "copyright.html" %}
+  {% include "footer.html" %}
 </div>
