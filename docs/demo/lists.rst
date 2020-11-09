@@ -52,4 +52,10 @@ Term a
    Definition for term a
 
 Term b
-   Definition for term b
+   Definition for term b. How about a quote in a definition list?
+
+       This is supposed to be a quote.
+       Let's check the spacing.
+
+Term c
+   Definition for term c.

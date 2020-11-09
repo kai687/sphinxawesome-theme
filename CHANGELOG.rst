@@ -1,8 +1,9 @@
-1.16.1
+MASTER
 ~~~~~~
 
 - fix: expand-more buttons systematically applied (PR #209)
 - fix: changed tag and filenames of footer and copyright (#202)
+- fix: inconsistent vertical spacing around blockquotes (#212)
 
 
 1.16.1
