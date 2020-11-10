@@ -82,13 +82,19 @@
       {%- if theme_show_nav -%}
         {%- include "nav.html" %}
       {%- endif %}
-      {% block content %}
-        {% block document %}
-          {% block main %}
-            {% include "main.html" %}
-          {% endblock main %}
-        {% endblock document %}
-      {% endblock content %}
+      <div id="main-wrapper" class="overflow-y-auto md:w-full flex flex-col flex-1">
+        <main role="main" class="px-5 md:ml-fluid flex-1 {% if not theme_show_nav -%}mx-auto{%- endif -%}">
+          {%- if pagename != master_doc and theme_show_breadcrumbs %}
+            {%- include "breadcrumbs.html" %}
+          {% endif -%}
+          {#-
+              for normal pages, the "body" block is rendered in `page.html` which is
+              inherited unmodified from the "basic" theme.
+          -#}
+          {% block body %}{% endblock %}
+        </main>
+        {% include "footer.html" %}
+      </div>
       {% include "menu.html" %}
       {% include "search-pane.html" %}
       {% include "modals.html" %}

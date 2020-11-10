@@ -14,22 +14,12 @@
 <script id="searchindexloader"></script>
 {% endblock %}
 
-{% block main %}
-<div id="main-wrapper" class="overflow-y-auto md:w-full flex flex-col flex-1">
-  <main role="main" class="px-5 flex-1 {% if not theme_show_nav %}mx-auto{%- endif -%}">
-
-    {%- if theme_show_breadcrumbs %}
-      {% include "breadcrumbs.html" %}
-    {%- endif %}
-    {{ body }}
-    <div id="fallback" class="my-8 text-sm text-red-700">
-      <script>document.querySelector("#fallback").style.display = "none"</script>
-      {% trans %}
-      Please activate Javascript to enable searching the documentation.
-      {% endtrans %}
-    </div>
-    <section id="search-results"></section>
-  </main>
-  {% include "footer.html" %}
+{% block body %}
+<div id="fallback" class="my-8 text-sm text-red-700">
+  <script>document.querySelector("#fallback").style.display = "none"</script>
+  {% trans %}
+    Please activate Javascript to enable searching the documentation.
+  {% endtrans %}
 </div>
-{% endblock main %}
+<section id="search-results"></section>
+{% endblock body %}
