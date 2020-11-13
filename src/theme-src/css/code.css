@@ -86,7 +86,7 @@ code > em {
 }
 
 button.copy {
-  @apply p-2;
+  @apply p-2 ml-auto;
   &:focus,
   &:hover {
     @apply text-pink-600;

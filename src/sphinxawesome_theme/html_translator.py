@@ -239,57 +239,84 @@ class AwesomeHTMLTranslator(HTML5Translator):
         self.body.append("</figure>\n")
 
     def visit_literal_block(self, node: Element) -> None:
-        """Don't wrap highlighted blocks any further."""
-        if node.rawsource != node.astext():
-            # most probably a parsed-literal block -- don't highlight
-            return super().visit_literal_block(node)
+        """Overwrite code blocks.
 
-        lang = node.get("language", "default")
-        linenos = node.get("linenos", False)
-        highlight_args = node.get("highlight_args", {})
-        highlight_args["force"] = node.get("force", False)
-        if lang is self.builder.config.highlight_language:
-            # only pass highlighter options for original language
-            opts = self.builder.config.highlight_options
+        All code blocks have a header with at least a copy button.
+        For code blocks with syntax highlighting, the language is
+        shown on the left side and an optional caption is included
+        in the center.
+        """
+        if node.rawsource == node.astext():
+            # node doens't have markup, highlight it!
+            lang = node.get("language", "default")
+            linenos = node.get("linenos", False)
+            highlight_args = node.get("highlight_args", {})
+            highlight_args["force"] = node.get("force", False)
+
+            if lang is self.builder.config.highlight_language:
+                # only pass highlighter options for original language
+                opts = self.builder.config.highlight_options
+            else:
+                opts = {}
+
+            if linenos and self.builder.config.html_codeblock_linenos_style:
+                linenos = "inline"
+
+            highlighted = self.highlighter.highlight_block(
+                node.rawsource,
+                lang,
+                opts=opts,
+                linenos=linenos,
+                location=node,
+                **highlight_args,
+            )
+
+            # if the node is not child of a container.literal_block node
+            if not (
+                isinstance(node.parent, nodes.container)
+                and node.parent.get("literal_block")
+            ):
+
+                self.body.append(self.starttag(node, "div", CLASS="highlight"))
+
+                code_header = "<div class='code-header'>\n"
+                code_lang = lang.replace("default", "python").replace(
+                    "console", "shell"
+                )
+                code_header += f"<span class='code-lang'>{code_lang}</span>\n"
+                code_header += COPY_BUTTON
+                code_header += "</div>\n"
+                self.body.append(code_header)
+
+            # wrap the highlighted string in a div
+            self.body.append(highlighted)
+
+            if not (
+                isinstance(node.parent, nodes.container)
+                and node.parent.get("literal_block")
+            ):
+                self.body.append("</div>\n")
+            # we already included everything here in the `highlighted` string,
+            # so we need to skip further processing
+            raise nodes.SkipNode
         else:
-            opts = {}
-
-        if linenos and self.builder.config.html_codeblock_linenos_style:
-            linenos = "inline"
-
-        highlighted = self.highlighter.highlight_block(
-            node.rawsource,
-            lang,
-            opts=opts,
-            linenos=linenos,
-            location=node,
-            **highlight_args,
-        )
-
-        # if the node is not child of a container.literal_block node
-        if not (
-            isinstance(node.parent, nodes.container)
-            and node.parent.get("literal_block")
-        ):
-
+            # node has markup, it's a samp directive or parsed-literal
             self.body.append(self.starttag(node, "div", CLASS="highlight"))
-
             code_header = "<div class='code-header'>\n"
-            code_lang = lang.replace("default", "python").replace("console", "shell")
-            code_header += f"<span class='code-lang'>{code_lang}</span>\n"
             code_header += COPY_BUTTON
             code_header += "</div>\n"
             self.body.append(code_header)
+            self.body.append("<pre><code>")
 
-        # wrap the highlighted string in a div
-        self.body.append(highlighted)
+    def depart_literal_block(self, node: Element) -> None:
+        """Close literal blocks.
 
-        if not (
-            isinstance(node.parent, nodes.container)
-            and node.parent.get("literal_block")
-        ):
+        We need to provide the closing tag for non-highlighted
+        code blocks.
+        """
+        if node.rawsource != node.astext():
+            self.body.append("</code></pre>\n")
             self.body.append("</div>\n")
-        raise nodes.SkipNode
 
     def visit_literal(self, node: Element) -> None:
         """Simplify inline code elements."""
