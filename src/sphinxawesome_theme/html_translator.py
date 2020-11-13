@@ -18,7 +18,7 @@ Remove unnecessary nesting
 from typing import Any, Dict
 
 from docutils import nodes
-from docutils.nodes import Element, Text
+from docutils.nodes import Element
 from sphinx import addnodes
 from sphinx.application import Sphinx
 from sphinx.locale import _
@@ -201,7 +201,11 @@ class AwesomeHTMLTranslator(HTML5Translator):
         self.body.append("</dt>\n")
 
     def depart_desc_signature_line(self, node: Element) -> None:
-        """Change permalinks for code definitions."""
+        """Change permalinks for code definitions.
+
+        This method is only relevant for mulitline definitions,
+        which I think only happen in C and C++ domains.
+        """
         if node.get("add_permalink"):
             self.add_permalink_ref(node.parent, _("Copy link to this definition."))
         if self.config.html_collapsible_definitions:
@@ -230,7 +234,8 @@ class AwesomeHTMLTranslator(HTML5Translator):
         attributes = {}
         if node.get("width"):
             attributes["style"] = f"width: {node['width']}"
-        if node.get("align"):
+        # in Sphinx this is always set
+        if node.get("align"):  # pragma: nocover
             attributes["class"] = f"align-{node['align']}"
         self.body.append(self.starttag(node, "figure", **attributes))
 
@@ -271,7 +276,8 @@ class AwesomeHTMLTranslator(HTML5Translator):
                 **highlight_args,
             )
 
-            # if the node is not child of a container.literal_block node
+            # Code blocks that don't have a caption are not wrapped inside a <container>
+            # node so we add the header here. With captions, see: visit_caption
             if not (
                 isinstance(node.parent, nodes.container)
                 and node.parent.get("literal_block")
@@ -312,54 +318,24 @@ class AwesomeHTMLTranslator(HTML5Translator):
         """Close literal blocks.
 
         We need to provide the closing tag for non-highlighted
-        code blocks.
+        code blocks. This method is skipped (``raise nodes.SkipNode``)
+        for highlighted code blocks.
         """
-        if node.rawsource != node.astext():
-            self.body.append("</code></pre>\n")
-            self.body.append("</div>\n")
-
-    def visit_literal(self, node: Element) -> None:
-        """Simplify inline code elements."""
-        if "kbd" in node["classes"]:
-            self.body.append(self.starttag(node, "kbd"))
-        else:
-            self.body.append(self.starttag(node, "code"))
-
-        self.protect_literal_text += 1
-
-    def depart_literal(self, node: Element) -> None:
-        """Simplify inline code elements."""
-        if "kbd" in node["classes"]:
-            self.body.append("</kbd>")
-        else:
-            self.body.append("</code>")
-
-    def visit_Text(self, node: Text) -> None:
-        """Simplify inline code elements."""
-        text = node.astext()
-        encoded = self.encode(text)
-
-        if self.protect_literal_text:
-            for token in self.words_and_spaces.findall(encoded):
-                if token.strip() or token in " \n":  # noqa: S105
-                    self.body.append(token)
-                else:
-                    self.body.append("&#160;" * (len(token) - 1) + " ")
-        else:
-            if self.in_mailto and self.settings.cloak_email_addresses:
-                encoded = self.cloak_email(encoded)
-            self.body.append(encoded)
+        self.body.append("</code></pre>\n")
+        self.body.append("</div>\n")
 
     def visit_container(self, node: Element) -> None:
         """Overide for code blocks with captions."""
-        self.body.append(self.starttag(node, "div", CLASS="highlight"))
         if node.get("literal_block"):
+            self.body.append(self.starttag(node, "div", CLASS="highlight"))
             lang = node.get("language")
             code_header = "<div class='code-header'>\n"
             code_header += (
                 f"<span class='code-lang'>{lang.replace('default', 'python')}</span>\n"
             )
             self.body.append(code_header)
+        else:
+            super().visit_container(node)
 
     def depart_reference(self, node: Element) -> None:
         """Add external link icon."""

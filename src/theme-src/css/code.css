@@ -81,7 +81,7 @@ em.var {
 }
 
 /* from the 'samp' role */
-code > em {
+.samp > em {
   @apply text-purple-700;
 }
 

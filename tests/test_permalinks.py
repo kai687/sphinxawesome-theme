@@ -245,6 +245,7 @@ def test_figure_attributes(app: Sphinx) -> None:
     figures = tree("figure")
     assert len(figures) == 3
     assert figures[2].attrs["class"] == ["align-left"]
+    assert figures[2].attrs["style"] == "width: 99%"
     img = figures[2].find("img")
     assert img.attrs["width"] == "50%"
 
