@@ -67,7 +67,7 @@ pre {
 }
 
 .code-lang {
-  @apply inline-block p-2 pl-4 uppercase tracking-wider;
+  @apply inline-block p-2 pl-4 mr-auto uppercase tracking-wider;
 }
 
 /* make prompts unselectable */
