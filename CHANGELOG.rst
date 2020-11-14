@@ -1,3 +1,9 @@
+MASTER
+~~~~~~
+
+- fix: re-enable offline search (#217)
+
+
 1.17.0
 ~~~~~~
 

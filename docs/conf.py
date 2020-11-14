@@ -47,7 +47,10 @@ html_title = "Sphinx awesome theme"
 html_theme = "sphinxawesome_theme"
 html_theme_path = ["../src"]
 html_last_updated_fmt = ""
-# extra option
+html_use_index = False  # Don't create index
+html_domain_indices = False  # Don't need module indices
+
+# extra option from the sphinxawesome_theme
 html_collapsible_definitions = True
 
 # -- Register a :dir: interpreted text role ----------------------------------
