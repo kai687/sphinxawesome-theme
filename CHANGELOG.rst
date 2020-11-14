@@ -1,4 +1,4 @@
-MASTER
+1.17.0
 ~~~~~~
 
 - feat: add copy buttons to all literal blocks (#215)
