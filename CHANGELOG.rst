@@ -1,6 +1,7 @@
-MASTER
+1.17.0
 ~~~~~~
 
+- feat: add copy buttons to all literal blocks (#215)
 - fix: expand-more buttons systematically applied (PR #209)
 - fix: changed tag and filenames of footer and copyright (#202)
 - fix: inconsistent vertical spacing around blockquotes (#212)

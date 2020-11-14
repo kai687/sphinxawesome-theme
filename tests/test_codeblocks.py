@@ -33,7 +33,7 @@ def test_doctree_awesome_theme(app: Sphinx) -> None:
     tree = etree_parse(app.outdir / "index.xml")
     code_blocks = tree.findall(".//literal_block")
 
-    assert len(code_blocks) == 7
+    assert len(code_blocks) == 8
 
     # first block is without anything
     assert code_blocks[0].attrib["language"] == "default"
@@ -70,23 +70,34 @@ def test_doctree_awesome_theme(app: Sphinx) -> None:
 
     # container wrappers
     containers = tree.findall(".//container")
-    assert len(containers) == 2
-    for i, conti in enumerate(containers, 1):
-        assert conti.attrib["classes"] == "highlight"
-        assert conti.attrib["language"] == "python"
-        assert conti.attrib["literal_block"] == "True"
-        if i == 1:
-            assert conti.attrib["ids"] == "id1"
-            assert "names" not in conti.attrib
-        if i == 2:
-            assert conti.attrib["ids"] == "id2 bar"
-            assert conti.attrib["names"] == "bar"
+    assert len(containers) == 3
 
-        # should have two children
-        assert len(conti) == 2
-        assert conti[0].tag == "caption"
-        assert conti[0].text == "test"
-        assert conti[1].tag == "literal_block"
+    assert containers[0].attrib["classes"] == "highlight"
+    assert containers[1].attrib["classes"] == "highlight"
+    assert containers[2].attrib["classes"] == "bogus"
+
+    assert containers[0].attrib["language"] == "python"
+    assert containers[1].attrib["language"] == "python"
+    assert "language" not in containers[2].attrib
+
+    assert containers[0].attrib["literal_block"] == "True"
+    assert containers[1].attrib["literal_block"] == "True"
+    assert "literal_block" not in containers[2].attrib
+
+    assert containers[0].attrib["ids"] == "id1"
+    assert "names" not in containers[0].attrib
+    assert containers[1].attrib["ids"] == "id2 bar"
+    assert containers[1].attrib["names"] == "bar"
+    assert "names" not in containers[2].attrib
+
+    # should have two children
+    assert len(containers[0]) == len(containers[1]) == 2
+    assert containers[0][0].tag == "caption"
+    assert containers[0][0].text == "test"
+    assert containers[0][1].tag == "literal_block"
+    assert containers[1][0].tag == "caption"
+    assert containers[1][0].text == "test"
+    assert containers[1][1].tag == "literal_block"
 
 
 @pytest.mark.sphinx(
@@ -100,9 +111,9 @@ def test_no_permalinks_on_codeblocks(app: Sphinx) -> None:
     app.build()
     tree = parse_html(app.outdir / "index.html")
     code_blocks = tree("div", class_="highlight")
-    assert len(code_blocks) == 7
+    assert len(code_blocks) == 8
     code_headers = tree("div", class_="code-header")
-    assert len(code_headers) == 7
+    assert len(code_headers) == 8
     headerlinks = tree("a", class_="headerlink")
     assert len(headerlinks) == 0
 
@@ -223,7 +234,7 @@ def test_basic_codeblock_awesome_theme(app: Sphinx) -> None:
     app.build()
     tree = parse_html(app.outdir / "index.html")
     code_blocks = tree("div", class_="highlight")
-    assert len(code_blocks) == 7
+    assert len(code_blocks) == 8
     children = [c for c in code_blocks[0].children if c.strip is None]
     assert len(children) == 2
     assert str(children[0]) == (
@@ -358,4 +369,43 @@ def test_codeblocks_with_added_removed_lines_awesome_theme(app: Sphinx) -> None:
         '<del><span class="nb">print</span><span class="p">'
         '(</span><span class="s2">"Removed"</span>'
         '<span class="p">)</span></del></code>'
+    )
+
+
+@pytest.mark.sphinx(
+    "html",
+    testroot="code",
+    confoverrides={"html_theme": "sphinxawesome_theme"},
+)
+def test_non_literal_container(app: Sphinx) -> None:
+    """It transforms a container node that isn't a code block."""
+    app.build()
+    tree = parse_html(app.outdir / "index.html")
+    container_nodes = tree("div", class_="bogus")
+    assert len(container_nodes) == 1
+    assert str(container_nodes[0]).replace("\n", "") == (
+        '<div class="bogus docutils container"><p>Doesn’t do much.</p></div>'
+    )
+
+
+@pytest.mark.sphinx(
+    "html",
+    testroot="code",
+    confoverrides={"html_theme": "sphinxawesome_theme"},
+)
+def test_parsed_literal(app: Sphinx) -> None:
+    """It transforms a parsed literal directive correctly."""
+    app.build()
+    tree = parse_html(app.outdir / "index.html")
+    literal = tree("div", class_="highlight")
+
+    assert len(literal) == 8
+    assert str(literal[7]).replace("\n", "") == (
+        '<div class="highlight"><div class="code-header">'
+        '<button aria-label="Copy this code" class="copy tooltipped tooltipped-nw">'
+        '<svg aria-hidden="true" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/xvg">'
+        '<path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 '
+        '1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z">'
+        "</path></svg></button>"
+        "</div><pre><code><em>Markup</em></code></pre></div>"
     )

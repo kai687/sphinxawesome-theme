@@ -136,6 +136,15 @@ def test_add_collapsible_dl() -> None:
     assert len(dd) == 1
 
 
+def test_unwrap_spans() -> None:
+    """It unwraps span.pre elements."""
+    tree = parse_html("<span class='pre'>Test</span>")
+    postprocess._remove_span_pre(tree)
+    span = tree("span")
+    assert len(span) == 0
+    assert str(tree) == "Test"
+
+
 def test_exception(app: Sphinx) -> None:
     """It skips when an exception is raised."""
     e = Exception()

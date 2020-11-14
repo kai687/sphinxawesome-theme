@@ -26,3 +26,4 @@ Now, check with :width: and :align: attribute
 .. figure:: image.svg
    :width: 50%
    :align: left
+   :figwidth: 99%

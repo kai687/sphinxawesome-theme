@@ -51,3 +51,13 @@ Now, test a code block with added/removed lines
 
    print("Added")
    print("Removed")
+
+Test a non-literal container (for coverage)
+
+.. container:: bogus
+
+   Doesn't do much.
+
+.. parsed-literal::
+
+   *Markup*

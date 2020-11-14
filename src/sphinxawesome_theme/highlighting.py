@@ -52,7 +52,7 @@ def container_wrapper(
         container_node += literal_node
         return container_node
     else:
-        raise RuntimeError  # never reachedo
+        raise RuntimeError  # never reached
 
 
 class AwesomeHtmlFormatter(HtmlFormatter):

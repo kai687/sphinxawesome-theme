@@ -99,6 +99,16 @@ def _collapsible_dl(tree: BeautifulSoup) -> None:
                 dt.append(icon)
 
 
+def _remove_span_pre(tree: BeautifulSoup) -> None:
+    """Unwrap unnecessary spans.
+
+    This gets added by visit_Text(). If I overwrite it there,
+    it's 20 lines of code for only 1 line of change.
+    """
+    for span in tree("span", class_="pre"):
+        span.unwrap()
+
+
 def _modify_html(html_filename: str) -> None:
     """Modify a single HTML document.
 
@@ -114,6 +124,7 @@ def _modify_html(html_filename: str) -> None:
 
     _expand_current(tree)
     _collapsible_nav(tree)
+    _remove_span_pre(tree)
 
     with open(html_filename, "w") as out_file:
         out_file.write(str(tree))

@@ -18,7 +18,7 @@ Remove unnecessary nesting
 from typing import Any, Dict
 
 from docutils import nodes
-from docutils.nodes import Element, Text
+from docutils.nodes import Element
 from sphinx import addnodes
 from sphinx.application import Sphinx
 from sphinx.locale import _
@@ -201,7 +201,11 @@ class AwesomeHTMLTranslator(HTML5Translator):
         self.body.append("</dt>\n")
 
     def depart_desc_signature_line(self, node: Element) -> None:
-        """Change permalinks for code definitions."""
+        """Change permalinks for code definitions.
+
+        This method is only relevant for mulitline definitions,
+        which I think only happen in C and C++ domains.
+        """
         if node.get("add_permalink"):
             self.add_permalink_ref(node.parent, _("Copy link to this definition."))
         if self.config.html_collapsible_definitions:
@@ -230,7 +234,8 @@ class AwesomeHTMLTranslator(HTML5Translator):
         attributes = {}
         if node.get("width"):
             attributes["style"] = f"width: {node['width']}"
-        if node.get("align"):
+        # in Sphinx this is always set
+        if node.get("align"):  # pragma: nocover
             attributes["class"] = f"align-{node['align']}"
         self.body.append(self.starttag(node, "figure", **attributes))
 
@@ -239,100 +244,98 @@ class AwesomeHTMLTranslator(HTML5Translator):
         self.body.append("</figure>\n")
 
     def visit_literal_block(self, node: Element) -> None:
-        """Don't wrap highlighted blocks any further."""
-        if node.rawsource != node.astext():
-            # most probably a parsed-literal block -- don't highlight
-            return super().visit_literal_block(node)
+        """Overwrite code blocks.
 
-        lang = node.get("language", "default")
-        linenos = node.get("linenos", False)
-        highlight_args = node.get("highlight_args", {})
-        highlight_args["force"] = node.get("force", False)
-        if lang is self.builder.config.highlight_language:
-            # only pass highlighter options for original language
-            opts = self.builder.config.highlight_options
+        All code blocks have a header with at least a copy button.
+        For code blocks with syntax highlighting, the language is
+        shown on the left side and an optional caption is included
+        in the center.
+        """
+        if node.rawsource == node.astext():
+            # node doens't have markup, highlight it!
+            lang = node.get("language", "default")
+            linenos = node.get("linenos", False)
+            highlight_args = node.get("highlight_args", {})
+            highlight_args["force"] = node.get("force", False)
+
+            if lang is self.builder.config.highlight_language:
+                # only pass highlighter options for original language
+                opts = self.builder.config.highlight_options
+            else:
+                opts = {}
+
+            if linenos and self.builder.config.html_codeblock_linenos_style:
+                linenos = "inline"
+
+            highlighted = self.highlighter.highlight_block(
+                node.rawsource,
+                lang,
+                opts=opts,
+                linenos=linenos,
+                location=node,
+                **highlight_args,
+            )
+
+            # Code blocks that don't have a caption are not wrapped inside a <container>
+            # node so we add the header here. With captions, see: visit_caption
+            if not (
+                isinstance(node.parent, nodes.container)
+                and node.parent.get("literal_block")
+            ):
+
+                self.body.append(self.starttag(node, "div", CLASS="highlight"))
+
+                code_header = "<div class='code-header'>\n"
+                code_lang = lang.replace("default", "python").replace(
+                    "console", "shell"
+                )
+                code_header += f"<span class='code-lang'>{code_lang}</span>\n"
+                code_header += COPY_BUTTON
+                code_header += "</div>\n"
+                self.body.append(code_header)
+
+            # wrap the highlighted string in a div
+            self.body.append(highlighted)
+
+            if not (
+                isinstance(node.parent, nodes.container)
+                and node.parent.get("literal_block")
+            ):
+                self.body.append("</div>\n")
+            # we already included everything here in the `highlighted` string,
+            # so we need to skip further processing
+            raise nodes.SkipNode
         else:
-            opts = {}
-
-        if linenos and self.builder.config.html_codeblock_linenos_style:
-            linenos = "inline"
-
-        highlighted = self.highlighter.highlight_block(
-            node.rawsource,
-            lang,
-            opts=opts,
-            linenos=linenos,
-            location=node,
-            **highlight_args,
-        )
-
-        # if the node is not child of a container.literal_block node
-        if not (
-            isinstance(node.parent, nodes.container)
-            and node.parent.get("literal_block")
-        ):
-
+            # node has markup, it's a samp directive or parsed-literal
             self.body.append(self.starttag(node, "div", CLASS="highlight"))
-
             code_header = "<div class='code-header'>\n"
-            code_lang = lang.replace("default", "python").replace("console", "shell")
-            code_header += f"<span class='code-lang'>{code_lang}</span>\n"
             code_header += COPY_BUTTON
             code_header += "</div>\n"
             self.body.append(code_header)
+            self.body.append("<pre><code>")
 
-        # wrap the highlighted string in a div
-        self.body.append(highlighted)
+    def depart_literal_block(self, node: Element) -> None:
+        """Close literal blocks.
 
-        if not (
-            isinstance(node.parent, nodes.container)
-            and node.parent.get("literal_block")
-        ):
-            self.body.append("</div>\n")
-        raise nodes.SkipNode
-
-    def visit_literal(self, node: Element) -> None:
-        """Simplify inline code elements."""
-        if "kbd" in node["classes"]:
-            self.body.append(self.starttag(node, "kbd"))
-        else:
-            self.body.append(self.starttag(node, "code"))
-
-        self.protect_literal_text += 1
-
-    def depart_literal(self, node: Element) -> None:
-        """Simplify inline code elements."""
-        if "kbd" in node["classes"]:
-            self.body.append("</kbd>")
-        else:
-            self.body.append("</code>")
-
-    def visit_Text(self, node: Text) -> None:
-        """Simplify inline code elements."""
-        text = node.astext()
-        encoded = self.encode(text)
-
-        if self.protect_literal_text:
-            for token in self.words_and_spaces.findall(encoded):
-                if token.strip() or token in " \n":  # noqa: S105
-                    self.body.append(token)
-                else:
-                    self.body.append("&#160;" * (len(token) - 1) + " ")
-        else:
-            if self.in_mailto and self.settings.cloak_email_addresses:
-                encoded = self.cloak_email(encoded)
-            self.body.append(encoded)
+        We need to provide the closing tag for non-highlighted
+        code blocks. This method is skipped (``raise nodes.SkipNode``)
+        for highlighted code blocks.
+        """
+        self.body.append("</code></pre>\n")
+        self.body.append("</div>\n")
 
     def visit_container(self, node: Element) -> None:
         """Overide for code blocks with captions."""
-        self.body.append(self.starttag(node, "div", CLASS="highlight"))
         if node.get("literal_block"):
+            self.body.append(self.starttag(node, "div", CLASS="highlight"))
             lang = node.get("language")
             code_header = "<div class='code-header'>\n"
             code_header += (
                 f"<span class='code-lang'>{lang.replace('default', 'python')}</span>\n"
             )
             self.body.append(code_header)
+        else:
+            super().visit_container(node)
 
     def depart_reference(self, node: Element) -> None:
         """Add external link icon."""

@@ -67,7 +67,7 @@ pre {
 }
 
 .code-lang {
-  @apply inline-block p-2 pl-4 uppercase tracking-wider;
+  @apply inline-block p-2 pl-4 mr-auto uppercase tracking-wider;
 }
 
 /* make prompts unselectable */
@@ -81,12 +81,12 @@ em.var {
 }
 
 /* from the 'samp' role */
-code > em {
+.samp > em {
   @apply text-purple-700;
 }
 
 button.copy {
-  @apply p-2;
+  @apply p-2 ml-auto;
   &:focus,
   &:hover {
     @apply text-pink-600;
