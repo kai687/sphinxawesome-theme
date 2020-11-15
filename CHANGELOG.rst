@@ -2,6 +2,7 @@ MASTER
 ~~~~~~
 
 - fix: re-enable offline search (#217)
+- chore: search related style fixes
 
 
 1.17.0
