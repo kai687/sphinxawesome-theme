@@ -28,10 +28,8 @@ function clearSearchHighlights() {
     if (highlights.length) {
       snackbar.innerHTML =
         '<a class="tracking-wide" href="javascript:Documentation.hideSearchWords()">' +
-        _("Clear highlighted words") +
+        _("Clear highlighted search results") +
         "</a>";
-      snackbar.classList.remove("bg-gray-900", "text-gray-100");
-      snackbar.classList.add("bg-gray-200", "text-blue-700");
       snackbar.style.opacity = 1;
       snackbar.style.transform = "translate(0,0)";
 
