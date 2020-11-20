@@ -2,7 +2,8 @@ MASTER
 ~~~~~~
 
 - fix: re-enable offline search (#217)
-- chore: search related style fixes
+- fix: search related style fixes
+- chore: update Tailwind to 2.0
 
 
 1.17.0
