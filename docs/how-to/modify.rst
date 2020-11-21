@@ -75,7 +75,8 @@ rebuild the theme:
 For example, if you want to change the appearance of links from the default blue to an
 orange, open :file:`links.css` and change:
 
-.. code-block::
+.. code-block:: css
+   :force:
    :emphasize-removed: 3
    :emphasize-added: 4
 
