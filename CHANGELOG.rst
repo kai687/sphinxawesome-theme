@@ -1,6 +1,7 @@
 MASTER
 ~~~~~~
 
+- feat: add styles for 'diff' highlighting language (PR #230)
 - fix: re-enable offline search (#217)
 - fix: search related style fixes
 - chore: update Tailwind to 2.0
