@@ -33,7 +33,7 @@ pre {
     @apply bg-yellow-200;
   }
   & ins {
-    @apply bg-green-300 no-underline;
+    @apply bg-green-200 no-underline;
     &::before {
       content: "\002b";
       left: 2px;
@@ -41,7 +41,7 @@ pre {
     }
   }
   & del {
-    @apply bg-red-300 no-underline;
+    @apply bg-red-200 no-underline;
     &::before {
       content: "\2212";
       left: 2px;
@@ -56,6 +56,16 @@ pre {
   & .code-line {
     @apply block;
   }
+}
+
+/* Diff highlighting inserted/deleted elements
+   some pygments themes do not have styles for it */
+span.gd {
+  @apply inline-block bg-red-200 py-px;
+}
+
+span.gi {
+  @apply inline-block bg-green-200 py-px;
 }
 
 /* the header of a code block */
