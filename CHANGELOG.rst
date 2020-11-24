@@ -4,6 +4,7 @@ MASTER
 - feat: add styles for 'diff' highlighting language (PR #230)
 - fix: re-enable offline search (#217)
 - fix: search related style fixes
+- fix: add styles for 'kbd' and 'menuselection' roles (PR #231)
 - chore: update Tailwind to 2.0
 
 
