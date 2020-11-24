@@ -61,11 +61,11 @@ pre {
 /* Diff highlighting inserted/deleted elements
    some pygments themes do not have styles for it */
 span.gd {
-  @apply inline-block bg-red-200 py-px;
+  @apply inline-block bg-red-200 py-px w-full;
 }
 
 span.gi {
-  @apply inline-block bg-green-200 py-px;
+  @apply inline-block bg-green-200 py-px w-full;
 }
 
 /* the header of a code block */

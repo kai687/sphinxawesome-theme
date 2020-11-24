@@ -15,10 +15,10 @@ methods to install the Sphinx awesome theme.
 Installing the theme as a Python package (recommended)
 ------------------------------------------------------
 
-For most use cases,
-install the theme as a Python package.
-You can make small modifications by
-adding custom CSS or JavaScript files.
+In most cases,
+you should install the theme as a Python package.
+You can make small modifications
+by adding custom CSS or JavaScript files.
 See :ref:`Adding or overriding styles`
 for more information.
 

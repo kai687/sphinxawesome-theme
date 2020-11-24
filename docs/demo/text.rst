@@ -1,4 +1,3 @@
-=================
 Headings and text
 =================
 
@@ -6,10 +5,12 @@ This page shows basic paragraph and heading styles. Styles for heading levels ``
 ``h2``, ``h3``, ``h4`` and the special rubric heading are defined. Only heading levels
 ``h1``, ``h2``, and ``h3`` show up in the navigation menu.
 
+Inline markup
+-------------
+
 For emphasizing inlined text, you can either *emphasize* it or make it a **strong**
 statement.
 
----------------
 Level 2 heading
 ---------------
 
@@ -20,7 +21,7 @@ facilisis. Duis bibendum tortor sit amet sollicitudin gravida. Donec ut ante mat
 faucibus nulla cursus, dictum dolor.
 
 Level 3 heading
-===============
+~~~~~~~~~~~~~~~
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vehicula lectus est, ac
 volutpat odio fringilla quis. Integer vitae molestie eros, ac eleifend nisi. Proin sit
@@ -29,7 +30,7 @@ facilisis. Duis bibendum tortor sit amet sollicitudin gravida. Donec ut ante mat
 faucibus nulla cursus, dictum dolor.
 
 Level 4 heading
----------------
++++++++++++++++
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vehicula lectus est, ac
 volutpat odio fringilla quis. Integer vitae molestie eros, ac eleifend nisi. Proin sit
