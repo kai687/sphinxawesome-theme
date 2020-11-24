@@ -15,7 +15,8 @@ Sphinx awesome theme
    :alt: Netlify Status
 
 
-This is an awesome theme for the Sphinx_ documentation generator.
+This is an awesome theme and a set of extensions
+for the Sphinx_ documentation generator.
 See how the theme looks on the `demo page`_.
 
 .. _Sphinx: http://www.sphinx-doc.org/en/master/
@@ -26,15 +27,19 @@ See how the theme looks on the `demo page`_.
 Features
 --------
 
-The theme includes several usability improvements:
+This theme is designed with readability and usability in mind.
+The theme includes several extensions that enhance the usability:
 
 .. features-start
 
 Awesome code blocks
-    - Code blocks have a **Copy** button, allowing you to copy code snippets to the
-      clipboard. They also show the programming language of the code block.
-    - Sphinx's ``code-block`` directives are enhanced with ``emphasize-added`` and
-      ``emphasize-removed`` options for highlighting added and removed lines.
+    - Code blocks have a header section, displaying the optional caption,
+      as well as the programming language used for syntax highlighting
+    - The code block headers contain a **Copy** button, allowing you to copy
+      code snippets to the clipboard.
+    - The theme adds two new options to Sphinx's ``code-block`` directive:
+      ``emphasize-added`` and ``emphasize-removed``, allowing you to highlight
+      code changes within other highlighted code.
 
 Awesome new directive for highlighting placeholder variables
     The theme supports a new directive ``samp``, which is the equivalent of the
@@ -42,17 +47,19 @@ Awesome new directive for highlighting placeholder variables
     variables in code blocks.
 
 Awesome user experience improvements
-    A lot of small features make the theme more usable. To name a few:
+    These small features make the theme more usable. To name a few:
 
     - Use the **Tab** key to navigate through all sections of the page. Every page has a
       *Skip to Content* link to bypass navigation links.
     - Link to notes, warnings, etc. Their titles have IDs and use the same “permalink”
       mechanism as headings and other captions.
     - Better “permalink” mechanism. Hovering over an element with a permalink reveals a
-      *Link* icon.  Select the *Link* icon to copy the link to the clipboard.
-    - Collapsible navigation menu: All pages are reachable from all other pages.
+      *Link* icon. Select the *Link* icon to copy the link to the clipboard.
+    - Collapsible navigation menu: all pages are reachable from all other pages.
+    - Collapsible code definitions: API documentation from docstrings using the
+      ``sphinx.ext.autodoc`` extension is collapsible for a better overview.
     - CSS tooltips. Provide more accessible information compared to the ``title``
-      attribute which only works for mouse users.
+      attribute which only works with a mouse.
     - Press the ``/`` (Slash) key to focus the search input and start searching.
 
 .. features-end
