@@ -21,7 +21,8 @@ strong {
   @apply font-medium;
 }
 
-.guilabel {
+.guilabel,
+.menuselection {
   @apply font-medium tracking-wide;
 }
 

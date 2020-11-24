@@ -3,7 +3,8 @@
  */
 
 /* inline code */
-:not(pre) > code {
+:not(pre) > code,
+kbd {
   @apply font-medium text-sm leading-none py-px px-1 bg-gray-100;
 }
 

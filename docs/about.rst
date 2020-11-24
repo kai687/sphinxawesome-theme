@@ -18,7 +18,7 @@ for Python dependencies and :file:`package.json` for JavaScript dependencies.
      - Name/Website
      - License
    * - CSS framework
-     - `Tailwind <https://tailwindcss.com>`_
+     - Tailwind_
      - `MIT License <https://github.com/tailwindlabs/tailwindcss/blob/master/LICENSE>`__
    * - Select and copy stuff
      - `Clipboard.js <https://clipboardjs.com/>`_
@@ -55,7 +55,7 @@ How does it work?
 -----------------
 
 Sphinx themes are a collection of HTML templates, CSS styles and JavaScript files.
-Sphinx uses the Jinja2 templating language.
+Sphinx uses the Jinja2_ templating language.
 The main template is in the file :file:`layout.html`,
 which defines the overall structure of the page,
 loads the CSS and JavaScript files,
@@ -85,38 +85,15 @@ The following tools are vital in order to achieve this:
 - `pre-commit <https://https://pre-commit.com/>`_
 
 The JavaScript and CSS portions of the theme are managed by Webpack_.
-The entry point for Webpack is the file `app.js`_.
+The entry point for Webpack is the file :file:`app.js`.
 In this file, all dependencies are imported
 (including fonts and CSS styles).
 
-The JavaScript is checked with ESLint_, minified, and put in the output directory.
-This file is read and run by the browser.
-
-The CSS is checked with stylelint_ and passed through PostCSS_ with a few plugins.
-Tailwind is defined as a plugin and processes the templates *and* CSS files,
-where it parses the ``@apply`` directives.
-Since Tailwind defines a lot of classes that won't be used in the final project,
-PurgeCSS_ is used by Tailwind to remove these unused classes from the final CSS file.
-
-.. seealso::
-
-   - Webpack_
-   - ESLint_
-   - Stylelint_
-   - PostCSS_
-   - PurgeCSS_
-   - Jinja2_
-   - Docutils_
-   - BeautifulSoup_
-
+Check the Webpack configuration file :file:`webpack.config.js` for the full
+pipeline.
 
 .. _Jinja2: https://jinja.palletsprojects.com
 .. _Webpack: https://webpack.js.org
-.. _app.js: https://github.com/kai687/sphinxawesome-theme/blob/master/src/theme-src/app.js
-.. _ESLint: https://eslint.org/
-.. _stylelint: https://stylelint.io/
-.. _PostCSS: https://postcss.org
 .. _Tailwind: https://tailwindcss.com
-.. _PurgeCSS: https://purgecss.com
 .. _Docutils: https://docutils.sourceforge.io/
 .. _BeautifulSoup: https://www.crummy.com/software/BeautifulSoup/
