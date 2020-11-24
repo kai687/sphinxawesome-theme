@@ -1,13 +1,8 @@
 .. role:: rst(code)
    :language: rst
 
-=========================
-Code, figures, and tables
-=========================
-
-----
-Code
-----
+Code blocks and inline code
+===========================
 
 This theme adds a :guilabel:`Copy` button to all code blocks. Clicking on the button copies
 the text inside the code block to the clipboard.
@@ -103,33 +98,3 @@ A code block can also have line numbers. You can highlight specific lines with t
    print("And this is unimportant again.")
    print("Change this line")
    print("To this line.")
-
-
--------
-Figures
--------
-
-.. figure:: image.svg
-   :alt: A grey placeholder image
-
-   This is an image caption.
-
-   And you can also provide a legend to the figure that contains more information about
-   the image.
-
-------
-Tables
-------
-
-This is a small table.
-
-.. table:: Table caption
-   :width: 100%
-
-   ==========  ==========
-   table head  table head
-   ==========  ==========
-   column      column
-   column      column
-   column      column
-   ==========  ==========

@@ -1,23 +1,32 @@
-=======================
 How to modify the theme
 =======================
 
-First, follow the steps in :ref:`Setting up a development environment`
-to install the Python and JavaScript dependencies.
+Depending on how much you want to modify the theme,
+use one of these options.
 
----------------------------
+.. contents:: On this page
+   :local:
+   :backlinks: none
+
 Adding or overriding styles
 ---------------------------
 
-You can add additional CSS files via the `html_css_files`_
-configuration value,
-and additional JavaScript files via `html_js_files`_
+To override or add additional JavaScript and CSS,
+you don't need to install the theme's dependencies.
+
+To add additional CSS files,
+use the `html_css_files`_ configuration value.
+To add additional JavaScript files, use the `html_js_files`_
+configuration value.
 
 .. _html_css_files: https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-html_js_files
 .. _html_js_files: https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-html_css_files
 
 For example, place additional styles in a file :file:`_static/custom.css`
-and add the following options to your Sphinx configuration in :file:`conf.py`::
+and add the following options to your Sphinx configuration in :file:`conf.py`:
+
+.. code-block:: python
+   :caption: conf.py
 
    html_static_path = ["_static"]
    html_css_files = ["custom.css"]
@@ -29,69 +38,92 @@ For more information, see the
 
 .. note::
 
-   Additional CSS and JavaScript files are not included
-   in the ``webpack`` configuration,
-   that means you can't use Tailwind's classes in these
-   additional files.
+   Since these additional CSS and JavaScript files aren't
+   parsed by Webpack, use your own styles and don't use
+   Tailwind's ``@apply`` directive.
 
----------------------
-Which files to modify
----------------------
 
-The sources of the theme are structured as follows:
+Modifying the templates
+-----------------------
+
+Styles in the templates are applied via Tailwind's utility classes.
 
 .. code-block:: console
+   :emphasize-lines: 1
 
-   src/
+   ./src/
    ├sphinxawesome_theme/
    └theme-src/
 
-This theme uses CSS styles in two ways.
-Everything that's part of the main content
-is styled via Tailwind's ``@apply`` directives.
-This includes everything that's converted from reStructuredText to HTML.
+To modify these styles, follow these steps:
 
-These styles are defined in the files :file:`theme-src/css/*.css`.
-The CSS is categorized according to the elements which they apply to.
-For instance, styles relevant for the navigation menu are in :file:`nav.css`.
+#. Install the Python and JavaScript dependencies.
 
-Everything that's not converted from reStructuredText is styled
-with Tailwind's classes directly in the template files.
-This includes most elements on the page
-except the "main" element, for example
-for example the header, the footer, or the background.
+   See :ref:`Setting up a development environment` for more information.
 
-These styles are defined in the template files in :dir:`sphinxawesome_theme`.
+#. Make your change.
 
-After making changes, either in the template files or in the CSS files,
-rebuild the theme:
+   For example, to change the background color of the header to orange,
+   open :file:`sphinxawesome_theme/header.html` and change:
+
+   .. code-block:: html
+      :emphasize-removed: 1
+      :emphasize-added: 2
+
+      <header class="md:sticky top-0 bg-gray-900 ...">
+      <header class="md:sticky top-0 bg-orange-500 ...">
+
+#. Build the theme.
+
+   .. code-block:: console
+
+      $ yarn build
+
+Modifying CSS files
+-------------------
+
+Everything that's part of the main content,
+including everything that's converted from reStructuredText to HTML
+is styled using Tailwind's ``@apply`` directive.
 
 .. code-block:: console
+   :emphasize-lines: 3
 
-   $ yarn build
+   ./src/
+   ├sphinxawesome_theme/
+   └theme-src/
+    └css/
 
-.. rubric:: Examples
+To modify these styles, follow these steps:
 
-For example, if you want to change the appearance of links from the default blue to an
-orange, open :file:`links.css` and change:
+#. Install the Python and JavaScript dependencies.
 
-.. code-block:: css
-   :force:
-   :emphasize-removed: 3
-   :emphasize-added: 4
+   See :ref:`Setting up a development environment` for more information.
 
-   p:not(.admonition-title) a,
-   #nav-toc a {
-      @apply text-blue-700;
-      @apply text-orange-600;
-   }
+#. Make your change.
 
-For example, to change the background color of the header to orange,
-open :file:`sphinxawesome_theme/header.html` and change:
+   The CSS files are arranged according to the elements they apply to.
+   For example, if you want to change the appearance of links from the default blue to an
+   orange, open :file:`theme-src/css/links.css` and change:
 
-.. code-block:: html
-   :emphasize-removed: 1
-   :emphasize-added: 2
+   .. code-block:: css
+     :force:
+     :emphasize-removed: 7
+     :emphasize-added: 8
 
-   <header class="md:sticky top-0 bg-white ...">
-   <header class="md:sticky top-0 bg-orange-500 ...">
+     p:not(.admonition-title),
+     .nav-toc,
+     .search,
+     .toctree-wrapper,
+     .contents.local {
+       & a {
+         @apply text-blue-700;
+         @apply text-orange-500;
+       }
+     }
+
+#. Build the theme.
+
+   .. code-block:: console
+
+      $ yarn build

@@ -4,7 +4,7 @@
 
 /* inline code */
 :not(pre) > code {
-  @apply font-medium text-sm leading-none py-px px-1 bg-gray-200;
+  @apply font-medium text-sm leading-none py-px px-1 bg-gray-100;
 }
 
 /* literal blocks (mostly parsed-literals) not wrapped in div.highlight */

@@ -1,22 +1,75 @@
 How to use the theme
 ====================
 
+Depending on whether you want to installed the theme
+as a Python package, or if you want to load the theme
+from a local directory, use one of the following methods
+to configure Sphinx.
+
+.. contents:: On this page
+   :local:
+   :backlinks: none
+
+
+Using the theme from a Python package
+-------------------------------------
+
 .. include:: ../../README.rst
    :start-after: use-start
    :end-before: use-end
 
 If you install and load the theme as a Python package,
-the Sphinx extension ``sphinxawesome.sampdirective``
-is installed and used automatically.
-If the theme is loaded from a local directory,
-see :ref:`How to use a local version of the theme`.
+the extension ``sphinxawesome.sampdirective``
+as well as all internal extensions are installed and
+loaded automatically.
 
-How to configure the theme
---------------------------
+Using the theme from a local directory
+--------------------------------------
 
-The following options can be set as key/value pairs
-in the ``html_theme_options`` dictionary
+If you want to make a lot of changes to the theme,
+it may be quicker to skip the packaging and installing
+and load the theme from a directory.
+See :ref:`Installing the theme as a local package` for
+an alternative method.
+
+Follow these steps to load a local version of the theme from
+a directory:
+
+#. :ref:`Create a local copy <Creating a local copy of the theme>`
+
+#. Add the :dir:`src` directory to the Sphinx configuration.
+
+   .. code-block:: python
+      :caption: conf.py
+
+      import os
+      import sys
+
+      sys.path.append(os.path.abspath("sphinxawesome-theme/src"))
+
+#. Add this directory to the ``exclude_patterns`` list to prevent
+   Sphinx from searching this path for restructured text files.
+
+   .. code-block:: python
+      :caption: conf.py
+
+      exclude_patterns = ["sphinxawesome-theme", "..."]
+
+#. Add the theme both as an extension and as a theme.
+
+   .. code-block:: python
+      :caption: conf.py
+
+      extensions = ["sphinxawesome_theme", "..."]
+      html_theme = "sphinxawesome_theme"
+
+Theme and extension options
+---------------------------
+
+You can control some aspects of the theme by modifying
+the ``html_theme_options`` dictionary
 in the Sphinx configuration file :file:`conf.py`.
+The options and their default values are shown below.
 
 .. code-block:: python
    :caption: conf.py
@@ -71,7 +124,7 @@ in the Sphinx configuration file :file:`conf.py`.
 .. confval:: show_breadcrumbs
 
    By default, “breadcrumbs_” navigation links are shown at the top of the
-   content area to show the position of this document relative to the top-level. If you
+   content area to show the position of this document relative to the top level. If you
    want to hide the breadcrumbs navigation links, add:
 
    .. code-block:: python
@@ -96,63 +149,14 @@ in the Sphinx configuration file :file:`conf.py`.
 
 This theme also enables a few internal extensions that enhance the user experience.
 The following additional configuration value is set at the top level in the Sphinx
-configuration file :file`conf.py`:
+configuration file :file:`conf.py`:
 
 .. confval:: html_collapsible_definitions
 
-   Set the ``html_collapsible_definitions`` option to ``True`` to enable collapsible
-   object definitions, such as command line options, classes, methods, and so on.
+   Set this option to ``True`` to enable collapsible object definitions,
+   such as command line options, classes, methods, and so on.
 
    .. code-block:: python
       :caption: conf.py
 
       html_collapsible_definitions = True
-
-How to use a local version of the theme
----------------------------------------
-
-If you didn't install the theme as a Python package,
-you can :ref:`install it locally <Creating a local copy of the theme>`
-
-For example, you have a project structure like this:
-
-.. code-block:: console
-   :emphasize-lines: 3
-
-   ./
-   ├conf.py
-   ├index.rst
-   └sphinxawesome-theme/
-
-Add this directory to the Sphinx configuration in :file:`conf.py`:
-
-.. code-block:: python
-   :caption: conf.py
-
-   import os
-   import sys
-
-   sys.path.append(os.path.abspath("sphinxawesome-theme/src"))
-
-To prevent Sphinx from looking for source files in this directory,
-add it to the ``exclude_patterns`` list:
-
-.. code-block:: python
-   :caption: conf.py
-
-   exclude_patterns = ["sphinxawesome-theme", "..."]
-
-Next, add the ``sphinxawesome_theme`` as extension and ``html_theme``:
-
-.. code-block:: python
-   :caption: conf.py
-
-   extensions = ["sphinxawesome_theme", "..."]
-   html_theme = "sphinxawesome_theme"
-
-.. note::
-
-   These additional steps are necessary
-   in order to create a fully functional local version of the theme.
-   This is because locally installed Sphinx themes
-   are loaded differently than themes installed as Python packages.

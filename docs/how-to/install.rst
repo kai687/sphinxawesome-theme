@@ -15,11 +15,10 @@ methods to install the Sphinx awesome theme.
 Installing the theme as a Python package (recommended)
 ------------------------------------------------------
 
-If you want to use the theme
-without modifying it,
-install it as a Python package.
-You can still override the CSS
-or add additional JavaScript files.
+For most use cases,
+install the theme as a Python package.
+You can make small modifications by
+adding custom CSS or JavaScript files.
 See :ref:`Adding or overriding styles`
 for more information.
 
@@ -42,39 +41,80 @@ but not yet in the released version on PyPI_.
 
 .. _CHANGELOG: https://github.com/kai687/sphinxawesome-theme/blob/master/CHANGELOG.rst
 
+Installing the theme as a local package
+---------------------------------------
+
+If you want to use a modified version of the theme,
+you can load the theme from a local Python package.
+This doesn't require any special configuration,
+but can be slower initially,
+since you need to rebuild and reinstall the local package
+after each modification.
+
+#. :ref:`Create a local copy <Creating a local copy of the theme>`
+
+#. Build the theme as a Python package.
+
+   .. code-block:: console
+
+      $ poetry build
+
+   This command creates a new directory :dir:`dist` containing the
+   source distribution in ``.tar.bz2`` format and as wheel in a ``.whl``
+   file.
+
+#. In your project, install the theme from the locally built package.
+
+   .. code-block:: console
+
+      $ pip install /path/to/sphinxawesome_theme/dist/sphinxawesome_theme-*-py3-none-any.whl
+
+   This command installs the pre-built package in the current environment.
+
+.. tip::
+
+   You can also skip the separate build step and install the top level directory:
+
+   .. code-block:: console
+
+      $ pip install /path/to/sphinxawesome_theme
+
+   This will build and install the package in one step. It is a bit slower than the
+   procedure outlined above.
+
 Setting up a development environment
 ------------------------------------
 
-If you want to modify the theme,
-install the project's dependencies.
-
-The project is split into two separate parts.
-If you want to edit the documentation,
-or modify any Python code,
+The project has two different sets of dependencies.
+If you want to write documentation,
+write tests,
+or modify the Python extensions,
 install the Python dependencies.
-If you *just* want to modify the way
-the theme looks or behaves, that is,
-the HTML, CSS, or JavaScript,
-install the JavaScript dependencies.
+See :ref:`Installing Python dependencies` for more information.
 
-Regardless of which part of the theme
-you want to modify, create a local copy
-first.
+If you want to modify the Jinja2 templates, the CSS,
+or the JavaScript files,
+you also need to install the JavaScript dependencies.
+See :ref:`Installing JavaScript dependencies` for more information.
+
+In both cases,
+create a local copy first.
 
 Creating a local copy of the theme
 ----------------------------------
 
 In order to modify the theme,
-you need to create a local copy first.
+create a local copy first:
 
-To create a local copy of the theme,
-follow these steps:
+#. **Optional:** fork the repository.
 
-#. **Optional:** :term:`Fork the repository <forking a repository>`.
    If you don't want to merge your changes with the original repository,
-   you can skip this step.
+   you can skip this step. See `Fork a repo`_  in the GitHub documentation
+   for more information.
 
-#. :term:`Clone the (forked) repository <cloning a repository>`.
+   .. _Fork a repo: https://docs.github.com/en/github/getting-started-with-github/fork-a-repo
+
+#. Clone the (forked) repository.
 
    If you forked the repository, enter:
 
@@ -88,31 +128,39 @@ follow these steps:
 
        $ git clone https://github.com/kai687/sphinxawesome-theme.git
 
+   See `Cloning a repository`_ in the GitHub documentation for more information.
+
+   .. _Cloning a repository: https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository
+
 Installing Python dependencies
 ------------------------------
 
-If you want to edit the documentation,
-or modify any of the Python code in
-:dir:`sphinxawesome-theme/src/sphinxawesome_theme`,
-follow these steps to install the project's Python dependencies.
+The Sphinx awesome theme uses Poetry_ to
+manage the Python dependencies. Testing,
+linting, and building the documentation
+is handled by Nox_.
 
-#. Install Poetry_ and Nox_.
+.. _Poetry: https://python-poetry.org/
+.. _Nox: https://nox.thea.codes/en/stable/
+
+Follow these steps to install the Python dependencies:
+
+#. Install Poetry and Nox.
+
    Follow the recommended steps for `how to install Poetry`_.
    Install Nox via pip::
 
        $ pip install --user --upgrade nox
 
-   If you want to use the same version of Poetry and Nox
-   as the :term:`upstream` repository,
-   check the file `constraints.txt`_.
+   If you want to use the same version of Poetry and Nox as the original repository,
+   check the file `constraints.txt`_ in the :dir:`.github/workflows` directory.
 
-   .. _Poetry: https://python-poetry.org/
    .. _how to install Poetry: https://python-poetry.org/docs/#installation
-   .. _Nox: https://nox.thea.codes/en/stable/
    .. _constraints.txt: https://github.com/kai687/sphinxawesome-theme/blob/master/.github/workflows/constraints.txt
 
+#. Install the dependencies.
 
-#. Install the project's dependencies inside a virtual environment::
+   .. code-block:: console
 
        $ poetry install
 
@@ -120,68 +168,75 @@ follow these steps to install the project's Python dependencies.
 
    .. _documentation: https://python-poetry.org/docs/basic-usage/
 
-#. Install pre-commit hooks::
+#. **Optional**: install pre-commit hooks.
+
+   .. code-block:: console
 
        $ poetry run pre-commit install
 
-   This command installs pre-commit hooks
-   that are executed,
-   whenever you commit to the repository.
-   Check the file
-   `.pre-commit-config.yaml`_
-   to see which pre-commit hooks are configured.
+   If you don't plan on commiting any changes to the forked respository,
+   you can skip this step.
+   Check the file `.pre-commit-config.yaml`_ to see
+   which pre-commit hooks are active.
 
-  .. _.pre-commit-config.yaml: https://github.com/kai687/sphinxawesome-theme/blob/master/.pre-commit-config.yaml
+   .. _.pre-commit-config.yaml: https://github.com/kai687/sphinxawesome-theme/blob/master/.pre-commit-config.yaml
 
-   To test the pre-commit hooks, run::
+   To test pre-commit in combination with poetry, run::
 
        $ poetry run pre-commit run --all
 
-#. Run a Nox session
+#. Run a Nox session.
 
-   To check if the project is set up correctly,
-   run any of the Nox sessions.
-   For example, to build the documentation
-   with Python 3.8::
-
-      $ nox -s docs -p 3.8
-
+   You can run any Nox session to check if the environment is working.
    To list the available sessions, enter::
 
       $ nox -ls
 
+   Enter ``nox`` without any option to run the default sessions,
+   such as building the docs, testing, and linting.
+
+   To build the documentation, for example, with Python 3.9::
+
+      $ nox -s docs -p 3.9
+
 Installing JavaScript dependencies
 ----------------------------------
 
-If you want to modify the look and behavior of the theme,
-follow these steps to install the JavaScript dependencies.
+Follow these steps to install the JavaScript dependencies:
 
-#. Check, if `Node.js <https://nodejs.org/en/>`_ is installed::
+#. Check, if `Node.js <https://nodejs.org/en/>`_ is installed.
+
+   .. code-block:: console
 
        $ node --version
 
-   If this command does not return a Node.js version, for example::
+   If Node.js is installed, this command returns the version number,
+   for example::
 
-       $ v12.18.3
+       $ v14.15.0
 
-   you need to install Node.js first.
+   If the command fails, you may need to install Node.js first,
+   or activate it in your current terminal session.
+   Have a look at the `Node Version Manager`_
+   project for a way to install and manage multiple versions of Node.js.
 
-#. **Optional:** Install ``yarn``::
+   .. _Node Version Manager: https://github.com/nvm-sh/nvm
+
+#. **Optional:** Install ``yarn``.
+
+   .. code-block:: console
 
        $ npm install --global yarn
 
-   If you don't want to install yarn_,
-   you can use ``npm`` as well.
-   The commands in this documentation use ``yarn``.
-   You can replace the commmands to *run* something,
-   for example, ``yarn build``, with ``npm run build``.
+   The awesome theme uses yarn_ (classic).
+   The dependencies are pinned to the specific versions
+   in the :file:`yarn.lock` file.
+   If you don't want to use the same versions of the JavaScript
+   packages, you can use ``npm`` as well.
 
-   .. _yarn: https://yarnpkg.com/
+   .. _yarn: https://classic.yarnpkg.com/lang/en/
 
 #. Change to the :dir:`theme-src` directory.
-
-   The repository :dir:`sphinxawesome-theme`
-   has the following structure:
 
    .. code-block:: console
       :emphasize-lines: 4
@@ -193,10 +248,14 @@ follow these steps to install the JavaScript dependencies.
         ├docs/
         └...
 
-#. Install the JavaScript dependencies::
+#. Install the JavaScript dependencies.
+
+   .. code-block::
 
        $ yarn install
 
-#. Build the theme::
+#. Build the theme.
+
+   .. code-block:: console
 
        $ yarn build
