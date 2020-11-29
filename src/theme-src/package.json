@@ -71,7 +71,7 @@
     "tailwindcss": "^2.0.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.7",
+    "@babel/core": "^7.12.9",
     "@babel/preset-env": "^7.12.7",
     "autoprefixer": "^10.0.2",
     "babel-loader": "^8.1.0",
