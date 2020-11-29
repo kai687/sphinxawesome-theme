@@ -39,7 +39,7 @@ pytest = "^6.1"
 pytest-cov = "^2.10"
 mypy = "^0.790"
 coverage = { extras = ["toml"], version = "^5.2" }
-flake8_implicit_str_concat = "^0.1.0"
+flake8_implicit_str_concat = "^0.2.0"
 pytest-randomly = "^3.4.1"
 
 [tool.coverage.paths]
