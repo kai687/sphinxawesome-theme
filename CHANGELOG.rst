@@ -5,6 +5,7 @@ MASTER
 - fix: re-enable offline search (#217)
 - fix: search related style fixes
 - fix: add styles for 'kbd' and 'menuselection' roles (PR #231)
+- fix: skip to content link (#182)
 - chore: update Tailwind to 2.0
 
 
