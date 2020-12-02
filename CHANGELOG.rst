@@ -1,6 +1,7 @@
 MASTER
 ~~~~~~
 
+- feat: add previous/next links (optional)
 - feat: add styles for 'diff' highlighting language (PR #230)
 - fix: re-enable offline search (#217)
 - fix: search related style fixes

@@ -78,7 +78,8 @@ The options and their default values are shown below.
        "nav_include_hidden": True,
        "show_nav": True,
        "show_breadcrumbs": True,
-       "breadcrumbs_separator": "/"
+       "breadcrumbs_separator": "/",
+       "show_prev_next": False
    }
 
 .. rubric:: Theme options
@@ -144,6 +145,19 @@ The options and their default values are shown below.
       html_theme_options = \{"breadcrumbs_separator": "{CHAR}"\}
 
    Replace :samp:`{CHAR}` with a character or HTML entity of your choice.
+
+.. confval:: show_prev_next
+
+   If you want to show links to the previous and next pages, set:
+
+   .. code-block:: python
+      :caption: conf.py
+
+      html_theme_options = {"show_prev_next": True}
+
+   In most cases, documentation isn't read from beginning to end, so that this option
+   is disabled by default.
+
 
 .. rubric:: Extension options
 
