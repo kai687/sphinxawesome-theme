@@ -19,7 +19,7 @@ These pages are divided into a *docs* and a *demo* section.
 In the *docs* section,
 you can learn :ref:`How to install the theme`,
 :ref:`How to use the theme`,
-or :ref:`How to modify the theme` the theme.
+or :ref:`How to modify the theme`.
 The *demo* section acts as a style reference.
 If a markup element isn't listed on one of the pages in the *demo* section,
 it's likely that styles for it don't exist yet.
