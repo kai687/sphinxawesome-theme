@@ -1,4 +1,4 @@
-MASTER
+1.18.0
 ~~~~~~
 
 - feat: add previous/next links (optional)
