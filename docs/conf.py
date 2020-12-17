@@ -41,6 +41,9 @@ default_role = "literal"
 autodoc_default_flags = ["members"]
 autodoc_warningiserror = False
 
+# I keep forgetting how to spell this term
+rst_prolog = ".. |rst| replace:: reStructuredText"
+
 # -- Options for HTML output -------------------------------------------------
 
 html_title = "Sphinx awesome theme"

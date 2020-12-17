@@ -48,7 +48,7 @@ a directory:
       sys.path.append(os.path.abspath("sphinxawesome-theme/src"))
 
 #. Add this directory to the ``exclude_patterns`` list to prevent
-   Sphinx from searching this path for restructured text files.
+   Sphinx from searching this path for |rst| files.
 
    .. code-block:: python
       :caption: conf.py
