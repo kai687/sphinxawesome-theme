@@ -79,8 +79,8 @@ after each modification.
 
       $ pip install /path/to/sphinxawesome_theme
 
-   This will build and install the package in one step. It is a bit slower than the
-   procedure outlined above.
+   This command builds and installs the package in one step.
+   It's a bit slower than the procedure outlined before.
 
 Setting up a development environment
 ------------------------------------
@@ -153,7 +153,7 @@ Follow these steps to install the Python dependencies:
        $ pip install --user --upgrade nox
 
    If you want to use the same version of Poetry and Nox as the original repository,
-   check the file `constraints.txt`_ in the :dir:`.github/workflows` directory.
+   see the versions in the file `constraints.txt`_.
 
    .. _how to install Poetry: https://python-poetry.org/docs/#installation
    .. _constraints.txt: https://github.com/kai687/sphinxawesome-theme/blob/master/.github/workflows/constraints.txt
@@ -168,13 +168,13 @@ Follow these steps to install the Python dependencies:
 
    .. _documentation: https://python-poetry.org/docs/basic-usage/
 
-#. **Optional**: install pre-commit hooks.
+#. **Optional:** install pre-commit hooks.
 
    .. code-block:: console
 
        $ poetry run pre-commit install
 
-   If you don't plan on commiting any changes to the forked respository,
+   If you don't plan on committing any changes to the forked repository,
    you can skip this step.
    Check the file `.pre-commit-config.yaml`_ to see
    which pre-commit hooks are active.
@@ -187,7 +187,7 @@ Follow these steps to install the Python dependencies:
 
 #. Run a Nox session.
 
-   You can run any Nox session to check if the environment is working.
+   You can run any Nox session to confirm that the environment is working.
    To list the available sessions, enter::
 
       $ nox -ls
@@ -222,7 +222,7 @@ Follow these steps to install the JavaScript dependencies:
 
    .. _Node Version Manager: https://github.com/nvm-sh/nvm
 
-#. **Optional:** Install ``yarn``.
+#. **Optional:** install ``yarn``.
 
    .. code-block:: console
 
