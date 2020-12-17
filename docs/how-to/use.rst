@@ -1,10 +1,8 @@
 How to use the theme
 ====================
 
-Depending on whether you want to installed the theme
-as a Python package, or if you want to load the theme
-from a local directory, use one of the following methods
-to configure Sphinx.
+Use one of the following methods to configure Sphinx
+to use the awesome theme.
 
 .. contents:: On this page
    :local:
@@ -26,11 +24,9 @@ loaded automatically.
 Using the theme from a local directory
 --------------------------------------
 
-If you want to make a lot of changes to the theme,
-it may be quicker to skip the packaging and installing
-and load the theme from a directory.
-See :ref:`Installing the theme as a local package` for
-an alternative method.
+If you want to make many changes to the theme,
+it may be quicker to skip the packaging
+and to load the theme from a directory.
 
 Follow these steps to load a local version of the theme from
 a directory:
@@ -66,7 +62,7 @@ a directory:
 Theme and extension options
 ---------------------------
 
-You can control some aspects of the theme by modifying
+You can configure the theme by modifying
 the ``html_theme_options`` dictionary
 in the Sphinx configuration file :file:`conf.py`.
 The options and their default values are shown below.

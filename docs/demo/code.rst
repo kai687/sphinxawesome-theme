@@ -83,7 +83,7 @@ More interpreted text roles for code-like elements
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Docutils and Sphinx come with many interpreted text roles
-to mark up very specific elements.
+to mark up specific elements.
 This theme only provides styles for a few of these roles.
 
 Files can be marked up with the :rst:`file` interpreted text role.
@@ -253,12 +253,8 @@ The following example is for testing the previous options with line numbers:
    print("Emphasized line of code")
    print("Normal line of code")
 
-There is currently one known issue with emphasizing lines
+There is currently one visual bug with emphasizing lines
 `#171 <https://github.com/kai687/sphinxawesome-theme/issues/171>`_.
-
-If neighboring lines to highlighted lines are overflowing their containing
-element, the emphasized lines are not overflowing, because they are rendered
-as independent lines.
 
 For example:
 
