@@ -1,7 +1,8 @@
 Admonitions
 ===========
 
-This page highlights the available admonitions, or callouts,
+This page shows the available admonitions,
+or callouts,
 for this theme.
 
 Tips
@@ -77,9 +78,11 @@ the same style.
 Blockquotes
 -----------
 
-Blockquotes are not really admonitions,
+Blockquotes aren't admonitions,
 but are used to quote other material
 and as such are often set apart from the main text.
+
+.. vale off
 
     "It is my business to know things. That is my trade."
 

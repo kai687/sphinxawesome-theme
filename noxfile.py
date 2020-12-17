@@ -126,7 +126,7 @@ def vale(session: Session) -> None:
     """Run vale linter on docs directory."""
     from shutil import which
 
-    install_constrained_version(session, "docutils")
+    install_constrained_version(session, "sphinx")
 
     if which("vale") is not None:
         session.run("vale", "docs", external=True)
