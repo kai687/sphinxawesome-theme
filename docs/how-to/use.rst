@@ -12,14 +12,19 @@ to use the awesome theme.
 Using the theme from a Python package
 -------------------------------------
 
-.. include:: ../../README.rst
-   :start-after: use-start
-   :end-before: use-end
+Add the ``html_theme`` configuration option
+to the Sphinx configuration file ``conf.py``.
+
+.. code-block:: python
+   :caption: conf.py
+
+   html_theme = "sphinxawesome_theme"
 
 If you install and load the theme as a Python package,
 the extension ``sphinxawesome.sampdirective``
 as well as all internal extensions are installed and
 loaded automatically.
+
 
 Using the theme from a local directory
 --------------------------------------

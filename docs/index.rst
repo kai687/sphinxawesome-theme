@@ -8,12 +8,8 @@
 Sphinx awesome theme
 ====================
 
-The Sphinx awesome theme is an awesome theme for the Sphinx_ documentation
-generator. It includes a number of extensions that improve the usability.
-
 .. include:: ../README.rst
-   :start-after: features-start
-   :end-before: features-end
+   :start-after: readme-start
 
 These pages are divided into a *docs* and a *demo* section.
 In the *docs* section,
@@ -26,10 +22,9 @@ it's likely that styles for it don't exist yet.
 Create an issue on GitHub if you need styles for a certain
 markup element, or add your own custom CSS.
 
-The Sphinx awesome theme is open source software and distributed under the MIT license.
+The Sphinx awesome theme is open-source software and distributed under the MIT license.
 The source code is available on GitHub_.
 
-.. _Sphinx: https://www.sphinx-doc.org
 .. _GitHub: https://github.com/kai687/sphinxawesome-theme
 
 .. toctree::
