@@ -9,8 +9,8 @@ to use the awesome theme.
    :backlinks: none
 
 
-Using the theme from a Python package
--------------------------------------
+Load the theme from a Python package
+------------------------------------
 
 Add the ``html_theme`` configuration option
 to the Sphinx configuration file ``conf.py``.
@@ -26,8 +26,8 @@ as well as all internal extensions are installed and
 loaded automatically.
 
 
-Using the theme from a local directory
---------------------------------------
+Load the theme from a local directory
+-------------------------------------
 
 If you want to make many changes to the theme,
 it may be quicker to skip the packaging
@@ -36,7 +36,7 @@ and to load the theme from a directory.
 Follow these steps to load a local version of the theme from
 a directory:
 
-#. :ref:`Create a local copy <Creating a local copy of the theme>`
+#. :ref:`Create a local copy of the theme`
 
 #. Add the :dir:`src` directory to the Sphinx configuration.
 

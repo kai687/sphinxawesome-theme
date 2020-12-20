@@ -82,7 +82,7 @@ The following tools are vital in order to achieve this:
 
 - `Poetry <https://python-poetry.org/>`_
 - `Nox <https://nox.thea.codes/en/stable/>`_
-- `pre-commit <https://https://pre-commit.com/>`_
+- `pre-commit <https://pre-commit.com/>`_
 
 The JavaScript and CSS portions of the theme are managed by Webpack_.
 The entry point for Webpack is the file :file:`app.js`.

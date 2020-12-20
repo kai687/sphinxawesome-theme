@@ -20,7 +20,7 @@ for the Sphinx_ documentation generator.
 Using this theme and extension,
 you can change the look of your documentation website
 and add a number of useful improvements.
-See the theme in action at https://www.sphinxawesome.xyz.
+See the theme in action at https://sphinxawesome.xyz.
 
 .. _Sphinx: http://www.sphinx-doc.org/en/master/
 
@@ -41,7 +41,7 @@ To get started using this theme, follow these steps:
 
    See `How to install the theme`_ for more information.
 
-   .. _How to install the theme: https://sphinxawesome.xyz/docs/install/#how-to-install-the-theme
+   .. _How to install the theme: https://sphinxawesome.xyz/how-to/install
 
 #. Add the ``html_theme`` configuration option
    to the Sphinx configuration file ``conf.py``.
@@ -52,7 +52,7 @@ To get started using this theme, follow these steps:
 
    See `How to use the theme`_ for more information.
 
-   .. _How to use the theme: https://sphinxawesome.xyz/docs/use/#how-to-use-the-theme
+   .. _How to use the theme: https://sphinxawesome.xyz/how-to/use
 
 Features
 --------

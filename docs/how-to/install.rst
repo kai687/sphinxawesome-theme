@@ -12,14 +12,14 @@ methods to install the Sphinx awesome theme.
    :local:
    :backlinks: none
 
-Installing the theme as a Python package (recommended)
-------------------------------------------------------
+Install the theme as a Python package (recommended)
+---------------------------------------------------
 
 In most cases,
 you should install the theme as a Python package.
 You can make small modifications
 by adding custom CSS or JavaScript files.
-See :ref:`Adding or overriding styles`
+See :ref:`Add or override styles`
 for more information.
 
 You can install a released version
@@ -41,8 +41,8 @@ but not yet in the released version on PyPI_.
 
 .. _CHANGELOG: https://github.com/kai687/sphinxawesome-theme/blob/master/CHANGELOG.rst
 
-Installing the theme as a local package
----------------------------------------
+Install the theme as a local package
+------------------------------------
 
 If you want to use a modified version of the theme,
 you can load the theme from a local Python package.
@@ -51,11 +51,11 @@ but can be slower initially,
 since you need to rebuild and reinstall the local package
 after each modification.
 
-#. :ref:`Create a local copy <Creating a local copy of the theme>`
+#. :ref:`Create a local copy of the theme`
 
 #. Build the theme as a Python package.
 
-   .. code-block:: console
+   ::
 
       $ poetry build
 
@@ -65,7 +65,7 @@ after each modification.
 
 #. In your project, install the theme from the locally built package.
 
-   .. code-block:: console
+   ::
 
       $ pip install /path/to/sphinxawesome_theme/dist/sphinxawesome_theme-*-py3-none-any.whl
 
@@ -75,33 +75,33 @@ after each modification.
 
    You can also skip the separate build step and install the top level directory:
 
-   .. code-block:: console
+   ::
 
       $ pip install /path/to/sphinxawesome_theme
 
    This command builds and installs the package in one step.
    It's a bit slower than the procedure outlined before.
 
-Setting up a development environment
-------------------------------------
+Set up a development environment
+--------------------------------
 
 The project has two different sets of dependencies.
 If you want to write documentation,
 write tests,
 or modify the Python extensions,
 install the Python dependencies.
-See :ref:`Installing Python dependencies` for more information.
+See :ref:`Install Python dependencies` for more information.
 
 If you want to modify the Jinja2 templates, the CSS,
 or the JavaScript files,
 you also need to install the JavaScript dependencies.
-See :ref:`Installing JavaScript dependencies` for more information.
+See :ref:`Install JavaScript dependencies` for more information.
 
 In both cases,
 create a local copy first.
 
-Creating a local copy of the theme
-----------------------------------
+Create a local copy of the theme
+--------------------------------
 
 In order to modify the theme,
 create a local copy first:
@@ -132,8 +132,8 @@ create a local copy first:
 
    .. _Cloning a repository: https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository
 
-Installing Python dependencies
-------------------------------
+Install Python dependencies
+---------------------------
 
 The Sphinx awesome theme uses Poetry_ to
 manage the Python dependencies. Testing,
@@ -160,7 +160,7 @@ Follow these steps to install the Python dependencies:
 
 #. Install the dependencies.
 
-   .. code-block:: console
+   ::
 
        $ poetry install
 
@@ -170,7 +170,7 @@ Follow these steps to install the Python dependencies:
 
 #. **Optional:** install pre-commit hooks.
 
-   .. code-block:: console
+   ::
 
        $ poetry run pre-commit install
 
@@ -199,14 +199,14 @@ Follow these steps to install the Python dependencies:
 
       $ nox -s docs -p 3.9
 
-Installing JavaScript dependencies
-----------------------------------
+Install JavaScript dependencies
+-------------------------------
 
 Follow these steps to install the JavaScript dependencies:
 
 #. Check, if `Node.js <https://nodejs.org/en/>`_ is installed.
 
-   .. code-block:: console
+   ::
 
        $ node --version
 
@@ -224,7 +224,7 @@ Follow these steps to install the JavaScript dependencies:
 
 #. **Optional:** install ``yarn``.
 
-   .. code-block:: console
+   ::
 
        $ npm install --global yarn
 
@@ -250,12 +250,12 @@ Follow these steps to install the JavaScript dependencies:
 
 #. Install the JavaScript dependencies.
 
-   .. code-block::
+   ::
 
-       $ yarn install
+      $ yarn install
 
 #. Build the theme.
 
-   .. code-block:: console
+   ::
 
-       $ yarn build
+      $ yarn build

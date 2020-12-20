@@ -8,8 +8,8 @@ use one of these options.
    :local:
    :backlinks: none
 
-Adding or overriding styles
----------------------------
+Add or override styles
+----------------------
 
 To override or add additional JavaScript and CSS,
 you don't need to install the theme's dependencies.
@@ -43,8 +43,8 @@ For more information, see the
    Tailwind's ``@apply`` directive.
 
 
-Modifying the templates
------------------------
+Modify the templates
+--------------------
 
 Styles in the templates are applied via Tailwind's utility classes.
 
@@ -59,7 +59,7 @@ To modify these styles, follow these steps:
 
 #. Install the Python and JavaScript dependencies.
 
-   See :ref:`Setting up a development environment` for more information.
+   See :ref:`Set up a development environment` for more information.
 
 #. Make your change.
 
@@ -79,8 +79,8 @@ To modify these styles, follow these steps:
 
       $ yarn build
 
-Modifying CSS files
--------------------
+Modify CSS files
+----------------
 
 Everything that's part of the main content,
 including everything that's converted from reStructuredText to HTML
@@ -98,7 +98,7 @@ To modify these styles, follow these steps:
 
 #. Install the Python and JavaScript dependencies.
 
-   See :ref:`Setting up a development environment` for more information.
+   See :ref:`Set up a development environment` for more information.
 
 #. Make your change.
 

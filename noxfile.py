@@ -46,6 +46,21 @@ def docs(session: Session) -> None:
     session.run("sphinx-build", *args)
 
 
+@nox.session(python="3.9")
+def linkcheck(session: Session) -> None:
+    """Check links."""
+    args = session.posargs or ["-b", "linkcheck", "-aWTE", "docs", "docs/public/_links"]
+    session.run("poetry", "install", "--no-dev", external=True)
+    session.run("sphinx-build", *args)
+
+
+@nox.session
+def serve(session: Session) -> None:
+    """Serve the built documentation."""
+    args = session.posargs or ["--bind", "127.0.0.1", "--directory", "docs/public"]
+    session.run("python3", "-m", "http.server", *args)
+
+
 @nox.session(python=python_versions[-1])
 def xml(session: Session) -> None:
     """Build XML version of the docs.
@@ -103,7 +118,7 @@ def lint(session: Session) -> None:
     session.run("flake8", *args)
 
 
-@nox.session(python="3.8")
+@nox.session(python="3.9")
 def black(session: Session) -> None:
     """Format python files with black."""
     args = session.posargs or python_files
@@ -121,7 +136,7 @@ def mypy(session: Session) -> None:
     session.run("mypy", *args)
 
 
-@nox.session(python="3.8")
+@nox.session
 def vale(session: Session) -> None:
     """Run vale linter on docs directory."""
     from shutil import which
