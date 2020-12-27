@@ -690,7 +690,7 @@ python-versions = ">=3.5"
 
 [[package]]
 name = "sphinx"
-version = "3.3.1"
+version = "3.4.1"
 description = "Python documentation generator"
 category = "main"
 optional = false
@@ -716,8 +716,8 @@ sphinxcontrib-serializinghtml = "*"
 
 [package.extras]
 docs = ["sphinxcontrib-websupport"]
-lint = ["flake8 (>=3.5.0)", "flake8-import-order", "mypy (>=0.790)", "docutils-stubs"]
-test = ["pytest", "pytest-cov", "html5lib", "typed-ast", "cython"]
+lint = ["flake8 (>=3.5.0)", "isort", "mypy (>=0.790)", "docutils-stubs"]
+test = ["pytest", "pytest-cov", "html5lib", "cython", "typed-ast"]
 
 [[package]]
 name = "sphinxawesome-sampdirective"
@@ -1284,8 +1284,8 @@ soupsieve = [
     {file = "soupsieve-2.1.tar.gz", hash = "sha256:6dc52924dc0bc710a5d16794e6b3480b2c7c08b07729505feab2b2c16661ff6e"},
 ]
 sphinx = [
-    {file = "Sphinx-3.3.1-py3-none-any.whl", hash = "sha256:d4e59ad4ea55efbb3c05cde3bfc83bfc14f0c95aa95c3d75346fcce186a47960"},
-    {file = "Sphinx-3.3.1.tar.gz", hash = "sha256:1e8d592225447104d1172be415bc2972bd1357e3e12fdc76edf2261105db4300"},
+    {file = "Sphinx-3.4.1-py3-none-any.whl", hash = "sha256:aeef652b14629431c82d3fe994ce39ead65b3fe87cf41b9a3714168ff8b83376"},
+    {file = "Sphinx-3.4.1.tar.gz", hash = "sha256:e450cb205ff8924611085183bf1353da26802ae73d9251a8fcdf220a8f8712ef"},
 ]
 sphinxawesome-sampdirective = [
     {file = "sphinxawesome-sampdirective-1.0.5.tar.gz", hash = "sha256:be9d8ded3880d9d82314e23a64d68b0c970bded491df05473e939707d083db31"},
