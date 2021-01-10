@@ -690,7 +690,7 @@ python-versions = ">=3.5"
 
 [[package]]
 name = "sphinx"
-version = "3.4.1"
+version = "3.4.3"
 description = "Python documentation generator"
 category = "main"
 optional = false
@@ -1284,8 +1284,8 @@ soupsieve = [
     {file = "soupsieve-2.1.tar.gz", hash = "sha256:6dc52924dc0bc710a5d16794e6b3480b2c7c08b07729505feab2b2c16661ff6e"},
 ]
 sphinx = [
-    {file = "Sphinx-3.4.1-py3-none-any.whl", hash = "sha256:aeef652b14629431c82d3fe994ce39ead65b3fe87cf41b9a3714168ff8b83376"},
-    {file = "Sphinx-3.4.1.tar.gz", hash = "sha256:e450cb205ff8924611085183bf1353da26802ae73d9251a8fcdf220a8f8712ef"},
+    {file = "Sphinx-3.4.3-py3-none-any.whl", hash = "sha256:c314c857e7cd47c856d2c5adff514ac2e6495f8b8e0f886a8a37e9305dfea0d8"},
+    {file = "Sphinx-3.4.3.tar.gz", hash = "sha256:41cad293f954f7d37f803d97eb184158cfd90f51195131e94875bc07cd08b93c"},
 ]
 sphinxawesome-sampdirective = [
     {file = "sphinxawesome-sampdirective-1.0.5.tar.gz", hash = "sha256:be9d8ded3880d9d82314e23a64d68b0c970bded491df05473e939707d083db31"},
