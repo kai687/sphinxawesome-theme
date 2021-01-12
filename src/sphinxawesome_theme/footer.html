@@ -6,7 +6,7 @@
   role="contentinfo"
   class="mt-20 px-5 md:ml-fluid mb-4 flex-shrink-0 text-sm text-gray-700 {% if not theme_show_nav -%}mx-auto{%- endif -%}"
 >
-{%- if show_copyright -%}
+{%- if show_copyright and copyright|length -%}
   {%- if hasdoc('copyright') -%}
     {%- trans path=pathto('copyright'), copyright=copyright|e -%}
       &copy; <a href="{{ path }}">Copyright</a>{{ copyright }}

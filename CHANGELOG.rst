@@ -1,3 +1,9 @@
+MASTER
+~~~~~~
+
+- fix: prevent printing empty copyright (#285)
+
+
 1.18.0
 ~~~~~~
 
