@@ -10,8 +10,20 @@ figure {
       @apply mt-0;
     }
   }
+  & img {
+    @apply inline-block;
+  }
 }
 
 figcaption {
   @apply text-sm text-gray-800 m-4;
+}
+
+/* aligned things */
+.align-center {
+  @apply text-center mx-auto;
+}
+
+.align-right {
+  @apply text-right ml-auto;
 }

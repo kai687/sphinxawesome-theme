@@ -2,6 +2,7 @@ MASTER
 ~~~~~~
 
 - fix: prevent printing empty copyright (#285)
+- feat: add styles for centered images (#283)
 
 
 1.18.0
