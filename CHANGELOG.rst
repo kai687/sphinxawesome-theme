@@ -1,4 +1,4 @@
-MASTER
+1.19.0
 ~~~~~~
 
 - fix: prevent printing empty copyright (#285)
