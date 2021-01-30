@@ -76,34 +76,44 @@
   </head>
 
   {#-
-    Theme variables are strings and even if they are defined as booleans in the
+    Theme variables are strings. Even if they are defined as booleans in the
     ``html_theme_options`` dictionary, they are treated as strings. Therefore,
     we must use string comparison to check, whether a value is ``true`` or not.
   -#}
 
-  <body class="text-gray-900 antialiased min-h-screen md:h-screen flex flex-col">
-    {% include "skip.html" %}
-    {% include "header.html" %}
-    <div class="md:overflow-hidden flex flex-col md:flex-row flex-1">
+  <body class="text-gray-900 antialiased">
+    <div id="page" x-data="{ showNav: false, showSearch: false }" x-bind:class="{ 'overflow-hidden': showNav }" class="h-screen flex flex-col md:grid md:grid-layout">
+      {% include "skip.html" %}
+      <header class="grid-area-header z-10">
+        {% block header %}
+          {% include "header.html" %}
+        {% endblock %}
+      </header>
       {%- if theme_show_nav|lower == 'true' -%}
-        {%- include "nav.html" %}
+      <aside class="grid-area-sidebar overflow-y-auto print:hidden">
+        {% block sidebar %}
+          {%- include "nav.html" %}
+        {% endblock %}
+      </aside>
       {%- endif %}
-      <div id="main-wrapper" class="overflow-y-auto md:w-full flex flex-col flex-1">
-        <main role="main" class="px-5 md:ml-fluid flex-1 {% if theme_show_nav|lower != 'true' -%}mx-auto{%- endif -%}">
-          {%- if pagename != master_doc and theme_show_breadcrumbs|lower == 'true' %}
-            {%- include "breadcrumbs.html" %}
-          {% endif -%}
-          {#-
-              for normal pages, the "body" block is rendered in `page.html` which is
-              inherited unmodified from the "basic" theme.
-          -#}
-          {% block body %}{% endblock %}
-          {%- if theme_show_prev_next|lower == 'true' %}
-            {%- include "prev_next.html" %}
-          {%- endif %}
-        </main>
-        {% include "footer.html" %}
-      </div>
+      <main role="main" class="grid-area-main px-5 md:ml-fluid md:overflow-y-auto {% if theme_show_nav|lower != 'true' -%}mx-auto{%- endif -%}">
+        {%- if pagename != master_doc and theme_show_breadcrumbs|lower == 'true' %}
+          {%- include "breadcrumbs.html" %}
+        {% endif -%}
+        {#-
+            for normal pages, the "body" block is rendered in `page.html` which is
+            inherited unmodified from the "basic" theme.
+        -#}
+        {% block body %}{% endblock %}
+        {%- if theme_show_prev_next|lower == 'true' %}
+          {%- include "prev_next.html" %}
+        {%- endif %}
+        <footer role="contentinfo">
+          {% block footer %}
+            {% include "footer.html" %}
+          {% endblock %}
+        </footer>
+      </main>
       {% include "menu.html" %}
       {% include "search-pane.html" %}
       {% include "modals.html" %}

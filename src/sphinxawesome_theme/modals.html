@@ -1,17 +1,21 @@
 {#-
-  Template for modals. Modals are not part of the regular flow of the HTML but
-  display some contextual messages.
+  Template for modals. Modals are not part of the regular flow of the HTML
+  but are absolutely positioned elements.
 
   The '#snackbar' appears fixed at the bottom right of the screen and displays
   the message 'Clear highlighted search results'.
-
-  The '#screen' is a transparent gray full-screen overlay that is shown
-  when the navigation menu appears.
-
 -#}
 
 <div
   id="snackbar"
   class="fixed bottom-0 right-0 opacity-0 p-4 m-4 bg-gray-900 text-gray-100 transition transform duration-500 translate-y-full"
 ></div>
-<div id="screen" style="display: none;" class="fixed inset-0 bg-black bg-opacity-50"></div>
+
+{#-
+  A transparent gray full-screen overlay.
+  This screen is shown when the navigation is shown.
+  It blocks interactions with the main screen.
+  On click, the navigation menu is closed.
+-#}
+
+<div x-show="showNav" x-on:click="{ showNav = false }" class="fixed md:hidden inset-0 bg-black bg-opacity-50"></div>

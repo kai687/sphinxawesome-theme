@@ -4,6 +4,7 @@
 
 @import "tailwindcss/base";
 @import "tailwindcss/components";
+@import "fonts.css";
 @import "base.css";
 @import "nav.css";
 @import "links.css";
@@ -16,4 +17,5 @@
 @import "print.css";
 @import "tooltips.css";
 @import "collapsible.css";
+@import "layout.css";
 @import "tailwindcss/utilities";

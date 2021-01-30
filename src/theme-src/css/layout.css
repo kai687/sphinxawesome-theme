@@ -1,0 +1,21 @@
+/* Styling related to the layout */
+
+@layer utilities {
+  @variants responsive {
+    .grid-layout {
+      grid:
+        "header header" min-content
+        "sidebar main" 1fr;
+      grid-template-columns: minmax(10px, 270px) minmax(10px, 1fr);
+    }
+    .grid-area-header {
+      grid-area: header;
+    }
+    .grid-area-sidebar {
+      grid-area: sidebar;
+    }
+    .grid-area-main {
+      grid-area: main;
+    }
+  }
+}

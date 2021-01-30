@@ -5,11 +5,8 @@
 
 <nav
   role="navigation"
-  data-menu="closed"
-  style="width: 270px;"
-  class="h-full fixed md:relative inset-y-0 left-0 z-20 md:z-0
-         bg-white text-gray-700 border-r overflow-x-hidden pt-16
-         print:hidden flex flex-col"
+  x-bind:class="{ 'navIsShown': showNav }"
+  class="bg-white h-full w-sidebar fixed md:relative inset-y-0 left-0 text-gray-700 border-r pt-16 flex flex-col transition-transform transform transform-gpu -translate-x-full duration-300 md:translate-x-0 z-30 md:z-0 overflow-y-auto"
 >
   <div class="nav-toc">
     {%- if theme_nav_include_hidden|lower == 'true' -%}
@@ -20,5 +17,5 @@
   </div>
 
   {%- import "buttons.html" as buttons -%}
-  {{ buttons.close("closeNavBtn") }}
+  {{ buttons.close() }}
 </nav>
