@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "sphinxawesome-theme"
-version = "1.19.0"
+version = "1.19.1"
 description = "An awesome theme for the Sphinx documentation generator"
 readme = "README.rst"
 authors = ["Kai Welke <kai687@pm.me>"]
@@ -37,7 +37,7 @@ black = "^20.8b1"
 pre-commit = "^2.9.3"
 pytest = "^6.2"
 pytest-cov = "^2.11"
-mypy = "^0.800"
+mypy = "0.790"
 coverage = { extras = ["toml"], version = "^5.3" }
 flake8_implicit_str_concat = "^0.2.0"
 pytest-randomly = "^3.4.1"
