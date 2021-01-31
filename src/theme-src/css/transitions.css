@@ -7,10 +7,10 @@
     max-width: 90%;
     @apply translate-x-0 opacity-100 w-full;
   }
-  #page.navIsShown {
+  #page.sidebarIsShown {
     @apply overflow-hidden;
   }
-  #screen.navIsShown {
+  #screen.sidebarIsShown {
     @apply block opacity-100;
   }
   .searchPaneIsShown {
