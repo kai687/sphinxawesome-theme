@@ -88,7 +88,7 @@
       {%- if theme_show_nav|lower == 'true' -%}
         {%- include "nav.html" %}
       {%- endif %}
-      <main class="px-5 md:ml-fluid grid-area-main md:overflow-y-auto {% if theme_show_nav|lower != 'true' -%}mx-auto{%- endif -%}">
+      <main class="px-5 md:ml-fluid grid-area-main overflow-y-auto flex flex-col h-full {% if theme_show_nav|lower != 'true' -%}mx-auto{%- endif -%}">
         {%- if pagename != master_doc and theme_show_breadcrumbs|lower == 'true' %}
           {%- include "breadcrumbs.html" %}
         {% endif -%}
@@ -96,7 +96,7 @@
             for normal pages, the "body" block is rendered in `page.html` which is
             inherited unmodified from the "basic" theme.
         -#}
-        <article role="main">
+        <article role="main" class="flex-1">
           {% block body %}{% endblock %}
         </article>
         {%- if theme_show_prev_next|lower == 'true' %}

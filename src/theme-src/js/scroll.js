@@ -1,13 +1,13 @@
-function scrollActive() {
+export function scrollActive() {
   // Mark sections, that are visible in the browser window also as
   // "current" and update this on scrolling
   // The scrollable window here is not the body, but the <div id="main-wrapper">
-  const mainViewport = document.querySelector("#main-wrapper");
+  const mainViewport = document.querySelector("#page");
   const viewportTop = mainViewport.offsetTop;
   const viewportBottom =
     document.documentElement.offsetHeight || document.body.offsetHeight;
 
-  const sections = document.querySelectorAll("main section");
+  const sections = document.querySelectorAll("article section");
 
   mainViewport.onscroll = () => {
     for (var i = 0; i < sections.length; ++i) {
@@ -31,5 +31,3 @@ function scrollActive() {
     }
   };
 }
-
-export { scrollActive };

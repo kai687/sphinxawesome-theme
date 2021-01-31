@@ -82,8 +82,6 @@ Blockquotes aren't admonitions,
 but are used to quote other material
 and as such are often set apart from the main text.
 
-.. vale off
-
     "It is my business to know things. That is my trade."
 
     -- Sherlock Holmes
