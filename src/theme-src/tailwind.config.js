@@ -1,5 +1,10 @@
 module.exports = {
   purge: ["../sphinxawesome_theme/*.html", "./js/*.js", "./css/*.css"],
+  variants: {
+    extend: {
+      outline: ["active"],
+    },
+  },
   theme: {
     fontFamily: {
       sans: ["Roboto", "sans-serif"],

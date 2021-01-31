@@ -1,5 +1,6 @@
 import "../css/styles.css";
-import { toggleSidebar, collapsibleNav } from "./nav";
+import { collapsibleNav } from "./nav";
+import { toggleSidebar } from "./sidebar";
 import { searchPane, clearSearchHighlights, searchEvents } from "./search";
 import { scrollActive } from "./scroll";
 import { copyEvents } from "./copy";

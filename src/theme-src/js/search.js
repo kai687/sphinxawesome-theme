@@ -1,25 +1,25 @@
 import { hideSnackbar } from "./snackbar";
 
-
 // Some enhancements for the search experience
-function searchPane() {
-  const search = document.querySelector("#search-pane");
+export function searchPane() {
+  const searchPane = document.querySelector("#search-pane");
   const openSearchBtn = document.querySelector("#openSearchBtn");
   const closeSearchBtn = document.querySelector("#closeSearchBtn");
+  const searchPaneShownClass = "searchPaneIsShown";
 
   if (openSearchBtn) {
     openSearchBtn.onclick = () => {
-      search.setAttribute("data-menu", "open");
+      searchPane.classList.add(searchPaneShownClass);
     };
   }
   if (closeSearchBtn) {
     closeSearchBtn.onclick = () => {
-      search.setAttribute("data-menu", "closed");
+      searchPane.classList.remove(searchPaneShownClass);
     };
   }
 }
 
-function clearSearchHighlights() {
+export function clearSearchHighlights() {
   setTimeout(() => {
     const snackbar = document.querySelector("#snackbar");
     const highlights = document.querySelectorAll(".highlighted");
@@ -48,7 +48,7 @@ function clearSearchHighlights() {
   }, 500);
 }
 
-function searchEvents() {
+export function searchEvents() {
   const searchForm = document.querySelector("#searchbox");
   const searchInput = document.querySelector("#search-input");
 
@@ -72,5 +72,3 @@ function searchEvents() {
     }
   });
 }
-
-export { searchPane, clearSearchHighlights, searchEvents };

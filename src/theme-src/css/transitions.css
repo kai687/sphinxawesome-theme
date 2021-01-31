@@ -3,27 +3,17 @@
  * *************************/
 
 @layer utilities {
-  #sidebar nav.navIsShown {
+  #sidebar.sidebarIsShown {
     max-width: 90%;
-    @apply translate-x-0 w-full;
+    @apply translate-x-0 opacity-100 w-full;
   }
   #page.navIsShown {
     @apply overflow-hidden;
   }
   #screen.navIsShown {
-    @apply block;
+    @apply block opacity-100;
   }
-}
-
-[data-menu="closed"] {
-  @apply transition-all transform opacity-0 duration-300;
-}
-
-[data-menu="open"] {
-  transition: transform 0.3s, opacity 0.5s;
-  @apply translate-x-0 translate-y-0 opacity-100;
-}
-
-#search-pane[data-menu="closed"] {
-  @apply translate-y-full;
+  .searchPaneIsShown {
+    @apply translate-y-0 opacity-100;
+  }
 }
