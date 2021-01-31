@@ -84,10 +84,21 @@
   <body class="text-gray-900 antialiased">
     <div id="page" class="h-screen md:grid md:grid-layout">
       {% include "skip.html" %}
-      {% include "header.html" %}
+
+      <header class="grid-area-header z-10">
+        {% block header %}
+          {% include "header.html" %}
+        {% endblock %}
+      </header>
+
       {%- if theme_show_nav|lower == 'true' -%}
-        {%- include "nav.html" %}
+        <aside id="sidebar" class="grid-area-sidebar print:hidden overflow-y-auto">
+          {% block sidebar %}
+            {% include "nav.html" %}
+          {% endblock %}
+        </aside>
       {%- endif %}
+
       <main class="px-5 md:ml-fluid grid-area-main overflow-y-auto flex flex-col h-full {% if theme_show_nav|lower != 'true' -%}mx-auto{%- endif -%}">
         {%- if pagename != master_doc and theme_show_breadcrumbs|lower == 'true' %}
           {%- include "breadcrumbs.html" %}
@@ -102,7 +113,11 @@
         {%- if theme_show_prev_next|lower == 'true' %}
           {%- include "prev_next.html" %}
         {%- endif %}
-        {% include "footer.html" %}
+        <footer>
+          {% block footer %}
+            {% include "footer.html" %}
+          {% endblock %}
+        </footer>
       </main>
       {% include "menu.html" %}
       {% include "search-pane.html" %}

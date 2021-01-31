@@ -2,10 +2,7 @@
     Template for the copyright info at the bottom of the <main> element.
 -#}
 
-<footer
-  role="contentinfo"
-  class="mt-20 mb-4 text-sm text-gray-700 {% if not theme_show_nav -%}mx-auto{%- endif -%}"
->
+<div class="mt-20 mb-4 text-sm text-gray-700">
 {%- if show_copyright and copyright|length -%}
   {%- if hasdoc('copyright') -%}
     {%- trans path=pathto('copyright'), copyright=copyright|e -%}
@@ -27,4 +24,4 @@
     Made with <a href="https://www.sphinx-doc.org">Sphinx {{ sphinx_version }}</a>
   {%- endtrans -%}
 {%- endif -%}
-</footer>
+</div>

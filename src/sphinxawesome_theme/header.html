@@ -7,26 +7,37 @@
 
 {%- import "buttons.html" as buttons -%}
 
-<header class="md:sticky top-0 bg-gray-900 grid-area-header shadow-md flex md:flex-row justify-between items-center z-10">
+{%- set manual_title %}
+<h2 class="text-xl text-gray-100 mx-5 py-4">{{ docstitle }}</h2>
+{%- endset -%}
+
+{%- set logo_img -%}
+<img class="h-8 mx-5" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo" />
+{%- endset -%}
+
+{%- macro headerlink(inner, padding=false) -%}
+<a class="{% if padding %}p-4{% endif %} hover:bg-gray-700 focus:bg-gray-700 tooltipped tooltipped-se"
+   href="{{ pathto(master_doc) }}"
+   aria-label="{{ _('Back to homepage') }}">
+  {{ inner }}
+</a>
+{%- endmacro -%}
+
+<div class="bg-gray-900 shadow-md flex justify-between items-center z-10">
   {#- show logo on the left side of the header -#}
-  {%- if logo -%}
-  <a class="py-4 {% if pagename != master_doc -%}hover:bg-gray-700 focus:bg-gray-700 tooltipped tooltipped-se{%- endif -%}"
-      {% if pagename != master_doc -%}
-      href="{{ pathto(master_doc) }}"
-      aria-label="{{ _('Back to homepage') }}"
-      {%- endif -%}>
-      <img class="h-8 mx-5" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo" />
-    </a>
-    {#- show manual title in the middle -#}
-    <h2 class="text-xl text-gray-100 mx-5 py-4">{{ docstitle }}</h2>
+  {% if logo %}
+    {% if pagename != master_doc %}
+      {{ headerlink(logo_img) }}
+    {% else %}
+      {{ logo_img }}
+    {% endif %}
+    {{ manual_title }}
   {%- else -%}
-  <a {% if pagename != master_doc -%}
-      class="hover:bg-gray-700 focus:bg-gray-700 tooltipped tooltipped-se"
-      href="{{ pathto(master_doc) }}"
-      aria-label="{{ _('Back to homepage') }}"
-    {%- endif -%}>
-    <h2 class="text-xl text-gray-100 mx-5 py-4">{{ docstitle }}</h2>
-    </a>
+    {% if pagename != master_doc %}
+      {{ headerlink(manual_title) }}
+    {% else %}
+      {{ manual_title }}
+    {% endif %}
   {%- endif -%}
 
   {#- show a search input field on the right side -#}
@@ -47,4 +58,4 @@
     />
     {{ buttons.search() }}
   </form>
-</header>
+</div>
