@@ -6,10 +6,9 @@
 <nav
   role="navigation"
   data-menu="closed"
-  style="width: 270px;"
-  class="h-full fixed md:relative inset-y-0 left-0 z-20 md:z-0
-         bg-white text-gray-700 border-r overflow-x-hidden pt-16
-         print:hidden flex flex-col"
+  class="h-full w-sidebar fixed md:relative inset-y-0 left-0 z-20 md:z-0
+         bg-white text-gray-700 border-r overflow-y-auto pt-16
+         print:hidden flex flex-col grid-area-sidebar"
 >
   <div class="nav-toc">
     {%- if theme_nav_include_hidden|lower == 'true' -%}

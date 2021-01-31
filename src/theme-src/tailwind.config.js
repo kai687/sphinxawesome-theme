@@ -19,6 +19,9 @@ module.exports = {
       margin: {
         fluid: "7%",
       },
+      width: {
+        sidebar: "270px",
+      },
     },
     // color palette from Tailwind v1
     colors: {

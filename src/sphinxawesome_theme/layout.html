@@ -81,29 +81,29 @@
     we must use string comparison to check, whether a value is ``true`` or not.
   -#}
 
-  <body class="text-gray-900 antialiased min-h-screen md:h-screen flex flex-col">
-    {% include "skip.html" %}
-    {% include "header.html" %}
-    <div class="md:overflow-hidden flex flex-col md:flex-row flex-1">
+  <body class="text-gray-900 antialiased">
+    <div id="page" class="h-screen md:grid md:grid-layout">
+      {% include "skip.html" %}
+      {% include "header.html" %}
       {%- if theme_show_nav|lower == 'true' -%}
         {%- include "nav.html" %}
       {%- endif %}
-      <div id="main-wrapper" class="overflow-y-auto md:w-full flex flex-col flex-1">
-        <main role="main" class="px-5 md:ml-fluid flex-1 {% if theme_show_nav|lower != 'true' -%}mx-auto{%- endif -%}">
-          {%- if pagename != master_doc and theme_show_breadcrumbs|lower == 'true' %}
-            {%- include "breadcrumbs.html" %}
-          {% endif -%}
-          {#-
-              for normal pages, the "body" block is rendered in `page.html` which is
-              inherited unmodified from the "basic" theme.
-          -#}
+      <main class="px-5 md:ml-fluid grid-area-main md:overflow-y-auto {% if theme_show_nav|lower != 'true' -%}mx-auto{%- endif -%}">
+        {%- if pagename != master_doc and theme_show_breadcrumbs|lower == 'true' %}
+          {%- include "breadcrumbs.html" %}
+        {% endif -%}
+        {#-
+            for normal pages, the "body" block is rendered in `page.html` which is
+            inherited unmodified from the "basic" theme.
+        -#}
+        <article role="main">
           {% block body %}{% endblock %}
-          {%- if theme_show_prev_next|lower == 'true' %}
-            {%- include "prev_next.html" %}
-          {%- endif %}
-        </main>
+        </article>
+        {%- if theme_show_prev_next|lower == 'true' %}
+          {%- include "prev_next.html" %}
+        {%- endif %}
         {% include "footer.html" %}
-      </div>
+      </main>
       {% include "menu.html" %}
       {% include "search-pane.html" %}
       {% include "modals.html" %}

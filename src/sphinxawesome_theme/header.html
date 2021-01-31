@@ -7,7 +7,7 @@
 
 {%- import "buttons.html" as buttons -%}
 
-<header class="md:sticky top-0 bg-gray-900 shadow-md flex md:flex-row justify-between items-center z-10">
+<header class="md:sticky top-0 bg-gray-900 grid-area-header shadow-md flex md:flex-row justify-between items-center z-10">
   {#- show logo on the left side of the header -#}
   {%- if logo -%}
   <a class="py-4 {% if pagename != master_doc -%}hover:bg-gray-700 focus:bg-gray-700 tooltipped tooltipped-se{%- endif -%}"
