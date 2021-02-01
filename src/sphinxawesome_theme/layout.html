@@ -94,7 +94,7 @@
       {%- if theme_show_nav|lower == 'true' -%}
         <aside id="sidebar" class="grid-area-sidebar w-sidebar h-full fixed md:relative inset-y-0 left-0 z-20 md:z-0 print:hidden overflow-y-auto transition-all transform transform-gpu -translate-x-full opacity-0 duration-300 md:translate-x-0 md:opacity-100">
           {% block sidebar %}
-            {% include "nav.html" %}
+            {% include "sidebar.html" %}
           {% endblock %}
         </aside>
       {%- endif %}

@@ -3,42 +3,42 @@ export function toggleSidebar() {
   const sidebar = document.querySelector("#sidebar");
   const page = document.querySelector("#page");
   const screen = document.querySelector("#screen");
-  const openNavBtn = document.querySelector("#openNavBtn");
-  const closeNavBtn = document.querySelector("#closeNavBtn");
-  const navShownClass = "sidebarIsShown"
+  const openBtn = document.querySelector("#openSidebar");
+  const closeBtn = document.querySelector("#closeSidebar");
+  const isShown = "isShown";
 
   // open sidebar when clicking the `menu` button
-  if (openNavBtn) {
-    openNavBtn.onclick = () => {
-      sidebar.classList.add(navShownClass);
-      page.classList.add(navShownClass);
-      screen.classList.add(navShownClass);
+  if (openBtn) {
+    openBtn.onclick = () => {
+      sidebar.classList.add(isShown);
+      page.classList.add(isShown);
+      screen.classList.add(isShown);
     }
   }
 
   // close sidebar when clicking the `close` button inside the sidebar
-  if (closeNavBtn) {
-    closeNavBtn.onclick = () => {
-      sidebar.classList.remove(navShownClass);
-      page.classList.remove(navShownClass);
-      screen.classList.remove(navShownClass);
+  if (closeBtn) {
+    closeBtn.onclick = () => {
+      sidebar.classList.remove(isShown);
+      page.classList.remove(isShown);
+      screen.classList.remove(isShown);
     }
   }
 
   // clicking anywhere on the `screen` element closes the sidebar
   screen.onclick = () => {
-    sidebar.classList.remove(navShownClass);
-    page.classList.remove(navShownClass);
-    screen.classList.remove(navShownClass);
+    sidebar.classList.remove(isShown);
+    page.classList.remove(isShown);
+    screen.classList.remove(isShown);
   }
 
   // clicking on any `current` link closes the sidebar
   const currentLinks = document.querySelectorAll(".nav-toc li.current a")
   currentLinks.forEach((a) => {
     a.onclick = () => {
-      sidebar.classList.remove(navShownClass)
-      page.classList.remove(navShownClass)
-      screen.classList.remove(navShownClass)
+      sidebar.classList.remove(isShown)
+      page.classList.remove(isShown)
+      screen.classList.remove(isShown)
     }
   })
 }

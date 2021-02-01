@@ -1,20 +1,18 @@
-import { hideSnackbar } from "./snackbar";
-
 // Some enhancements for the search experience
 export function searchPane() {
   const searchPane = document.querySelector("#search-pane");
-  const openSearchBtn = document.querySelector("#openSearchBtn");
-  const closeSearchBtn = document.querySelector("#closeSearchBtn");
-  const searchPaneShownClass = "searchPaneIsShown";
+  const openSearch = document.querySelector("#openSearch");
+  const closeSearch = document.querySelector("#closeSearch");
+  const isShown = "isShown";
 
-  if (openSearchBtn) {
-    openSearchBtn.onclick = () => {
-      searchPane.classList.add(searchPaneShownClass);
+  if (openSearch) {
+    openSearch.onclick = () => {
+      searchPane.classList.add(isShown);
     };
   }
-  if (closeSearchBtn) {
-    closeSearchBtn.onclick = () => {
-      searchPane.classList.remove(searchPaneShownClass);
+  if (closeSearch) {
+    closeSearch.onclick = () => {
+      searchPane.classList.remove(isShown);
     };
   }
 }
@@ -22,27 +20,24 @@ export function searchPane() {
 export function clearSearchHighlights() {
   setTimeout(() => {
     const snackbar = document.querySelector("#snackbar");
+    const isShown = "isShown";
     const highlights = document.querySelectorAll(".highlighted");
     const searchInput = document.querySelector("#search-input");
 
     if (highlights.length) {
-      snackbar.innerHTML =
-        '<a class="tracking-wide" href="javascript:Documentation.hideSearchWords()">' +
-        _("Clear highlighted search results") +
-        "</a>";
-      snackbar.style.opacity = 1;
-      snackbar.style.transform = "translate(0,0)";
+      snackbar.classList.add(isShown);
 
-      document.querySelector("#snackbar > a").onclick = () => {
-        hideSnackbar();
+      snackbar.onclick = () => {
+        snackbar.classList.remove(isShown);
+        Documentation.hideSearchWords();
         searchInput.value = "";
-      };
+      }
 
       // Add the currently searched for term in the input
       searchInput.value = highlights[0].textContent;
       searchInput.onsearch = () => {
         Documentation.hideSearchWords();
-        hideSnackbar();
+        snackbar.classList.remove(isShown);
       };
     }
   }, 500);
