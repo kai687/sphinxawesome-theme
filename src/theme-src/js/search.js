@@ -20,9 +20,9 @@ export function searchPane() {
 export function clearSearchHighlights() {
   setTimeout(() => {
     const snackbar = document.querySelector("#snackbar");
-    const isShown = "isShown";
     const highlights = document.querySelectorAll(".highlighted");
     const searchInput = document.querySelector("#search-input");
+    const isShown = "isShown";
 
     if (highlights.length) {
       snackbar.classList.add(isShown);

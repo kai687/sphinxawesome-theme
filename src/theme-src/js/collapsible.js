@@ -1,7 +1,7 @@
 function collapse(element) {
   // "element" should be the <dt> with the icon.
   element.classList.toggle("active");
-  const btn = element.querySelector("button.expand-more")
+  const btn = element.querySelector("button.expand-more");
   if (element.classList.contains("active")) {
     btn.setAttribute("aria-expanded", "true");
     btn.setAttribute("aria-label", "Collapse this section");
