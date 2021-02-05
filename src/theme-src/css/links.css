@@ -55,7 +55,7 @@ p:not(.admonition-title),
 }
 
 .highlighted {
-  @apply py-px bg-yellow-200 font-medium;
+  @apply py-px bg-yellow-100 font-medium;
 }
 
 .highlight-link {

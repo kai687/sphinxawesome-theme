@@ -31,7 +31,7 @@ pre {
     @apply block relative -ml-4 -mr-2 pl-4 py-px;
   }
   & mark {
-    @apply bg-yellow-200;
+    @apply bg-yellow-50;
   }
   & ins {
     @apply bg-green-200 no-underline;
@@ -97,11 +97,7 @@ em.var {
 }
 
 button.copy {
-  @apply p-2 ml-auto;
-  &:focus,
-  &:hover {
-    @apply text-pink-600;
-  }
+  @apply p-2 ml-auto focus:text-pink-600 hover:text-pink-600;
   & > svg {
     @apply h-4 w-4 fill-current;
   }
