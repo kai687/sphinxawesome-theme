@@ -56,5 +56,5 @@ show_missing = true
 "sphinxawesome_theme" = "sphinxawesome_theme"
 
 [build-system]
-requires = ["poetry>=0.12"]
-build-backend = "poetry.masonry.api"
+requires = ["poetry_core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
