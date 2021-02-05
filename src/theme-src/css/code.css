@@ -35,7 +35,7 @@ pre {
   }
   & ins {
     @apply bg-green-200 no-underline;
-    &::before {
+    &:before {
       content: "\002b";
       left: 2px;
       @apply absolute text-green-900;
@@ -43,7 +43,7 @@ pre {
   }
   & del {
     @apply bg-red-200 no-underline;
-    &::before {
+    &:before {
       content: "\2212";
       left: 2px;
       @apply absolute text-red-900;

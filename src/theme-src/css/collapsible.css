@@ -1,12 +1,8 @@
 /* Styles for collapsible elements */
 button.expand-more {
-  @apply ml-2 float-right text-gray-600;
+  @apply ml-2 float-right text-gray-600 hover:text-pink-600 focus:text-pink-600;
   & > svg {
     @apply fill-current h-6 w-6 transition-transform transform rotate-0 duration-100 ease-out;
-  }
-  &:hover,
-  &:focus {
-    @apply text-pink-600;
   }
 }
 
