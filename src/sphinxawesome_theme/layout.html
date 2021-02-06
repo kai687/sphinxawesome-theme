@@ -86,16 +86,12 @@
       {% include "skip.html" %}
 
       <header class="grid-area-header z-10">
-        {% block header %}
-          {% include "header.html" %}
-        {% endblock %}
+        {% include "header.html" %}
       </header>
 
       {%- if theme_show_nav|lower == 'true' -%}
         <aside id="sidebar" class="grid-area-sidebar w-sidebar h-full fixed md:relative inset-y-0 left-0 z-20 md:z-0 print:hidden overflow-y-auto transition-all transform transform-gpu -translate-x-full opacity-0 duration-300 md:translate-x-0 md:opacity-100">
-          {% block sidebar %}
-            {% include "sidebar.html" %}
-          {% endblock %}
+          {% include "sidebar.html" %}
         </aside>
       {%- endif %}
 
@@ -105,8 +101,8 @@
         {% endif -%}
 
         {#-
-            for normal pages, the "body" block is rendered in `page.html` which is
-            inherited unmodified from the "basic" theme.
+          The `body` block is rendered from the `page.html` template.
+          The `page.html` template is inherited from the `basic` theme.
         -#}
 
         <article role="main" class="flex-1">
