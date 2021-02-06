@@ -10,8 +10,11 @@
   #page.isShown {
     @apply overflow-hidden;
   }
-  #screen.isShown {
+  #scrolltop.isShown {
     @apply block opacity-100;
+  }
+  #screen.isShown {
+    @apply block;
   }
   #search-pane.isShown,
   #snackbar.isShown {
