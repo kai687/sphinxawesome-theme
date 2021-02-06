@@ -31,7 +31,10 @@ export function clearSearchHighlights() {
         snackbar.classList.remove(isShown);
         Documentation.hideSearchWords();
         searchInput.value = "";
-      }
+        // remove the `?highlight=term` query parameter from the URL
+        const newURL = window.location.origin + window.location.pathname;
+        window.history.replaceState({}, document.title, newURL);
+      };
 
       // Add the currently searched for term in the input
       searchInput.value = highlights[0].textContent;

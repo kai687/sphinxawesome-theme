@@ -14,7 +14,7 @@
     @apply block opacity-100;
   }
   #search-pane.isShown,
-  #snackBar.isShown {
+  #snackbar.isShown {
     @apply translate-y-0 opacity-100;
   }
 }
