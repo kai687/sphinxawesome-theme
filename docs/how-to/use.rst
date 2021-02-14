@@ -80,7 +80,8 @@ The options and their default values are shown below.
        "show_nav": True,
        "show_breadcrumbs": True,
        "breadcrumbs_separator": "/",
-       "show_prev_next": False
+       "show_prev_next": False,
+       "show_scrolltop": False
    }
 
 .. rubric:: Theme options
@@ -158,6 +159,16 @@ The options and their default values are shown below.
 
    In most cases, documentation isn't read from beginning to end, so that this option
    is disabled by default.
+
+.. confval:: show_scrolltop
+
+   For longer pages, scrolling to the top can be a hassle. If you want to show a button,
+   that scrolls to the top of the page when clicked, set:
+
+   .. code-block:: python
+      :caption: conf.py
+
+      html_theme_options = {"show_scrolltop": True}
 
 
 .. rubric:: Extension options
