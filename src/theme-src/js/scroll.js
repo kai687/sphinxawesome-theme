@@ -3,7 +3,7 @@ export function scrollActive() {
   // Use the `IntersectionObserver` API
   const sections = document.querySelectorAll("article section");
   const options = {
-    rootMargin: "-50% 0px",
+    rootMargin: "-40% 0px -40% 0px",
   };
 
   const observer = new IntersectionObserver((entries) => {
