@@ -1,34 +1,25 @@
 export function scrollActive() {
-  // Mark sections, that are visible in the browser window also as
-  // "current" and update this on scrolling
-  const mainViewport = document.querySelector("#page");
-  const viewportTop = mainViewport.offsetTop;
-  const viewportBottom =
-    document.documentElement.offsetHeight || document.body.offsetHeight;
-
+  // Mark the currently visible section as active in the sidebar
+  // Use the `IntersectionObserver` API
   const sections = document.querySelectorAll("article section");
-
-  mainViewport.onscroll = () => {
-    for (var i = 0; i < sections.length; ++i) {
-      const rect = sections[i].getBoundingClientRect();
-      if (viewportTop <= rect.top && rect.top <= viewportBottom) {
-        const test = document.querySelector(
-          `.nav-toc a[href*=${sections[i].id}]`
-        );
-        if (test) {
-          test.classList.add("current");
-        }
-      }
-      if (rect.top < viewportTop || rect.top > viewportBottom) {
-        const test = document.querySelector(
-          `.nav-toc a[href*=${sections[i].id}]`
-        );
-        if (test) {
-          test.classList.remove("current");
-        }
-      }
-    }
+  const options = {
+    rootMargin: "-50% 0px",
   };
+
+  const observer = new IntersectionObserver((entries) => {
+    const section = entries[0].target;
+    // find the link in the sidebar that matches the section ID
+    const matchingNavLink = document.querySelector(
+      `.nav-toc a[href*=${section.id}]`
+    );
+    if (matchingNavLink) {
+      matchingNavLink.classList.toggle("current");
+    }
+  }, options);
+
+  sections.forEach((section) => {
+    observer.observe(section);
+  });
 }
 
 export function scrollToTop() {
