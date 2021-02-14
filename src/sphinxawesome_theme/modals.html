@@ -1,5 +1,8 @@
-{#- Template for modals. Modals are not part of the regular flow of the HTML.
--#} {#- for the 'Clear search highlights button' -#}
+{#-
+  Template for modals. Modals are not part of the regular flow of the HTML.
+-#}
+
+{#- for the 'Clear search highlights button' -#}
 <button
   id="snackbar"
   class="fixed bottom-0 right-0 opacity-0 p-4 m-4 tracking-wide bg-gray-900 text-gray-100 transition transform transform-gpu duration-500 translate-y-full"
@@ -13,8 +16,8 @@
 {#- scroll to top button -#}
 <button
   id="scrolltop"
-  class="fixed bottom-0 right-0 p-2 m-4 rounded-full bg-gray-900 text-gray-100 opacity-0
-  transition-opacity duration-1000 pointer-events-none"
+  class="fixed bottom-0 right-0 p-2 m-4 rounded-full bg-gray-700 text-white opacity-0 transition-opacity duration-1000 pointer-events-none hover:bg-gray-200 hover:text-pink-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-gray-200 focus:text-pink-500 tooltipped tooltipped-nw"
+  aria-label="{{ _('Scroll to top') }}"
 >
   <svg
     class="fill-current stroke-current h-8"
