@@ -25,17 +25,21 @@ export function scrollActive() {
 export function scrollToTop() {
   const scrollTop = document.querySelector("#scrolltop");
 
-  if (scrollTop) {
-    const main = document.querySelector("main");
-    main.onscroll = () => {
-      if (main.scrollTop > 50) {
-        scrollTop.classList.add("isShown");
-      } else {
-        scrollTop.classList.remove("isShown");
-      }
-    };
-    scrollTop.onclick = () => {
-      main.scrollTop = 0;
-    };
+  if (!scrollTop) {
+    return;
   }
+
+  const main = document.querySelector("main");
+
+  main.onscroll = () => {
+    if (main.scrollTop > 100) {
+      scrollTop.classList.add("isShown");
+    } else {
+        scrollTop.classList.remove("isShown");
+    }
+  };
+
+  scrollTop.onclick = () => {
+    main.scrollTop = 0;
+  };
 }

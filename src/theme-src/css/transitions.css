@@ -11,7 +11,7 @@
     @apply overflow-hidden;
   }
   #scrolltop.isShown {
-    @apply block opacity-100;
+    @apply pointer-events-auto opacity-100;
   }
   #screen.isShown {
     @apply block;
