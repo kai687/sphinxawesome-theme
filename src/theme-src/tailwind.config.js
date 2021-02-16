@@ -1,7 +1,10 @@
 const colors = require("tailwindcss/colors");
 
 module.exports = {
-  purge: ["../sphinxawesome_theme/*.html", "./js/*.js", "./css/*.css"],
+  corePlugins: {
+    animation: false,
+  },
+  purge: ["../sphinxawesome_theme/*.html", "./js/*.js"],
   variants: {
     extend: {
       outline: ["active"],
