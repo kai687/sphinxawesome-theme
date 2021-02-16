@@ -24,10 +24,7 @@ module.exports = {
         print: { raw: "print" },
       },
       margin: {
-        fluid: "7%",
-      },
-      width: {
-        sidebar: "var(--sidebar-width)",
+        fluid: "var(--fluid-margin)",
       },
       colors: {
         blue: colors.lightBlue,

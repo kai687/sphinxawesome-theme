@@ -3,7 +3,8 @@
  * ******************/
 
 :root {
-  --sidebar-width: 270px;
+  --sidebar-width: 300px;
+  --fluid-margin: 5vw;
 }
 
 @layer base {
