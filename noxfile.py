@@ -135,7 +135,7 @@ def black(session: Session) -> None:
 @nox.session(python=python_versions)
 def mypy(session: Session) -> None:
     """Typecheck python files with mypy."""
-    args = session.posargs or python_files
+    args = session.posargs
 
     install_constrained_version(session, "mypy")
     session.run("mypy", *args)
