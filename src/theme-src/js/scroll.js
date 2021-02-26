@@ -3,18 +3,26 @@ export function scrollActive() {
   // Use the `IntersectionObserver` API
   const sections = document.querySelectorAll("article section");
   const options = {
-    rootMargin: "-45% 0px -45% 0px",
+    root: document.querySelector("main"),
+    rootMargin: "0px 0px -85% 0px",
   };
 
   const observer = new IntersectionObserver((entries) => {
-    const section = entries[0].target;
-    // find the link in the sidebar that matches the section ID
-    const matchingNavLink = document.querySelector(
-      `.nav-toc a[href*=${section.id}]`
-    );
-    if (matchingNavLink) {
-      matchingNavLink.classList.toggle("current");
-    }
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const matchingLink = document.querySelector(
+          `.nav-toc a[href*=${entry.target.id}]`
+        );
+        matchingLink?.classList.add("current");
+        console.log(`Section ${entry.target.id} is intersecting`);
+      } else {
+        const matchingLink = document.querySelector(
+          `.nav-toc a[href*=${entry.target.id}]`
+        );
+        matchingLink?.classList.remove("current");
+        console.log(`Section ${entry.target.id} is not intersecting`);
+      }
+    });
   }, options);
 
   sections.forEach((section) => {
@@ -35,11 +43,12 @@ export function scrollToTop() {
     if (main.scrollTop > 100) {
       scrollTop.classList.add("isShown");
     } else {
-        scrollTop.classList.remove("isShown");
+      scrollTop.classList.remove("isShown");
     }
   };
 
   scrollTop.onclick = () => {
     main.scrollTop = 0;
+    scrollTop.blur();
   };
 }
