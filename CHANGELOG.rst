@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 HEAD
 ~~~~
 
@@ -6,6 +7,12 @@ HEAD
 - feat: add optional scroll to top button
 - feat: restructuring for easier customization (#245)
 - feat: use Tailwind 2 colors
+
+MASTER
+~~~~~~
+
+- fix: permalink behavior for Sphinx 3.5 (#336)
+- chore: mypy configuration update
 
 1.19.1
 ~~~~~~

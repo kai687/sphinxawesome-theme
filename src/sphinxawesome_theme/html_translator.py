@@ -60,7 +60,7 @@ class AwesomeHTMLTranslator(HTML5Translator):
         """
         close_tag = self.context[-1]
         if (
-            self.permalink_text
+            self.config.html_permalinks
             and self.builder.add_permalinks
             and node.parent.hasattr("ids")
             and node.parent["ids"]
@@ -110,7 +110,7 @@ class AwesomeHTMLTranslator(HTML5Translator):
         this should be a button element, but there is some magic with the
         resolution of `href` attributes happening in Sphinx.
         """
-        if node["ids"] and self.builder.add_permalinks and self.permalink_text:
+        if node["ids"] and self.builder.add_permalinks and self.config.html_permalinks:
             headerlink = (
                 '<a role="button" class="headerlink tooltipped tooltipped-ne" '
                 'href="#{}" aria-label="{}">'.format(node["ids"][0], title)
