@@ -2,6 +2,7 @@ MASTER
 ~~~~~~
 
 - fix: permalink behavior for Sphinx 3.5 (#336)
+- chore: mypy configuration update
 
 1.19.1
 ~~~~~~
