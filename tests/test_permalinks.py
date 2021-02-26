@@ -20,10 +20,11 @@ def parse_html(filename: str) -> BeautifulSoup:
     "html",
     testroot="table",
     freshenv=True,
-    confoverrides={"html_theme": "sphinxawesome_theme", "html_permalinks": False},
+    confoverrides={"html_theme": "sphinxawesome_theme"},
 )
 def test_no_permalinks_on_tables(app: Sphinx) -> None:
     """It tests parsing a table without headerlinks."""
+    app.config.html_permalinks = False
     app.build()
     tree = parse_html(app.outdir / "index.html")
     tables = tree("table")
@@ -36,10 +37,11 @@ def test_no_permalinks_on_tables(app: Sphinx) -> None:
     "html",
     testroot="figure",
     freshenv=True,
-    confoverrides={"html_theme": "sphinxawesome_theme", "html_permalinks": False},
+    confoverrides={"html_theme": "sphinxawesome_theme"},
 )
 def test_no_permalinks_on_figures(app: Sphinx) -> None:
     """It tests parsing a figure without headerlinks."""
+    app.config.html_permalinks = False
     app.build()
     tree = parse_html(app.outdir / "index.html")
     figures = tree("figure")

@@ -104,10 +104,11 @@ def test_doctree_awesome_theme(app: Sphinx) -> None:
     "html",
     testroot="code",
     freshenv=True,
-    confoverrides={"html_theme": "sphinxawesome_theme", "html_permalinks": False},
+    confoverrides={"html_theme": "sphinxawesome_theme"},
 )
 def test_no_permalinks_on_codeblocks(app: Sphinx) -> None:
     """It tests codeblocks without headerlinks."""
+    app.config.html_permalinks = False
     app.build()
     tree = parse_html(app.outdir / "index.html")
     code_blocks = tree("div", class_="highlight")
