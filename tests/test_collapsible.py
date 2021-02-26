@@ -20,7 +20,7 @@ def parse_html(filename: str) -> BeautifulSoup:
 @pytest.mark.sphinx(
     "html",
     testroot="collapsible",
-    confoverrides={"html_theme": "sphinxawesome_theme", "html_add_permalinks": False},
+    confoverrides={"html_theme": "sphinxawesome_theme", "html_permalinks": False},
 )
 def test_no_permalinks(app: Sphinx) -> None:
     """It tests that there are no permalinks."""
@@ -80,7 +80,8 @@ def test_collapsible_definitions(app: Sphinx) -> None:
     """
     # if specified in 'confoverrides', this returns a warning
     app.config.html_collapsible_definitions = True
-    app.config.html_add_permalinks = "a"
+    app.config.html_permalinks = True
+    app.config.html_permalinks_icon = "a"
     app.build()
     tree = parse_html(app.outdir / "index.html")
     dl = tree("dl")
