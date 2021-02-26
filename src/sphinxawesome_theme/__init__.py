@@ -42,6 +42,7 @@ def setup(app: "Sphinx") -> Dict[str, Any]:
     app.setup_extension("sphinxawesome_theme.html_translator")
     app.setup_extension("sphinxawesome_theme.admonition_ids")
     app.setup_extension("sphinxawesome_theme.jinja_filters")
+    app.setup_extension("sphinxawesome_theme.permalinks_backport")
 
     return {
         "version": __version__,

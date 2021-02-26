@@ -179,13 +179,14 @@ def test_ids_with_awesome_theme(app: Sphinx) -> None:
     "html",
     testroot="headerlinks",
     freshenv=True,
-    confoverrides={"html_theme": "sphinxawesome_theme", "html_add_permalinks": False},
+    confoverrides={"html_theme": "sphinxawesome_theme"},
 )
 def test_no_permalinks(app: Sphinx) -> None:
     """It tests disabling of the permalink mechanism.
 
     I'm not sure I want to support this, but here goes.
     """
+    app.config.html_permalinks = False
     app.build()
     tree = parse_html(app.outdir / "index.html")
     headings = tree(re.compile("^h[1..2]"), class_=None)

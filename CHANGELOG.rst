@@ -1,3 +1,8 @@
+MASTER
+~~~~~~
+
+- fix: permalink behavior for Sphinx 3.5 (#336)
+
 1.19.1
 ~~~~~~
 
