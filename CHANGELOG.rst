@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 HEAD
 ~~~~
 
@@ -8,7 +7,7 @@ HEAD
 - feat: restructuring for easier customization (#245)
 - feat: use Tailwind 2 colors
 
-MASTER
+1.19.2
 ~~~~~~
 
 - fix: permalink behavior for Sphinx 3.5 (#336)
