@@ -4,7 +4,9 @@
 
 @import "tailwindcss/base";
 @import "tailwindcss/components";
+@import "fonts.css";
 @import "base.css";
+@import "layout.css";
 @import "nav.css";
 @import "links.css";
 @import "code.css";

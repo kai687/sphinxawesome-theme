@@ -1,46 +1,6 @@
-// Functionality for opening and closing the navigation menu
+// collapse / expand the navigation sections inside the sidebar
 
-function navFunctions() {
-  const nav = document.querySelector('nav[role="navigation"]');
-  const body = document.querySelector("body");
-  const screen = document.querySelector("#screen");
-  const closeNavBtn = document.querySelector("#closeNavBtn");
-  const openNavBtn = document.querySelector("#openNavBtn");
-
-  if (openNavBtn) {
-    openNavBtn.onclick = () => {
-      nav.setAttribute("data-menu", "open");
-      body.style.overflow = "hidden";
-      screen.style.display = "initial";
-    };
-  }
-  if (closeNavBtn) {
-    closeNavBtn.onclick = () => {
-      nav.setAttribute("data-menu", "closed");
-      body.style.removeProperty("overflow");
-      screen.style.display = "none";
-    };
-  }
-
-  screen.onclick = () => {
-    nav.setAttribute("data-menu", "closed");
-    body.style.removeProperty("overflow");
-    screen.style.display = "none";
-  };
-
-  // close the nav menu when clicking on a nav link on the current page
-  document.querySelectorAll(".nav-toc li.current a").forEach((link) => {
-    if (nav.getAttribute("data-menu") === "open") {
-      link.onclick = () => {
-        nav.setAttribute("data-menu", "closed");
-        body.style.removeProperty("overflow");
-        screen.style.display = "none";
-      };
-    }
-  });
-}
-
-function collapsibleNav() {
+export function collapsibleNav() {
   document.querySelectorAll(".expand").forEach((span) => {
     span.onclick = () => {
       span.parentElement.parentElement.classList.toggle("expanded");
@@ -64,5 +24,3 @@ function collapsibleNav() {
     };
   });
 }
-
-export { navFunctions, collapsibleNav };

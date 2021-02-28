@@ -1,35 +1,54 @@
-function scrollActive() {
-  // Mark sections, that are visible in the browser window also as
-  // "current" and update this on scrolling
-  // The scrollable window here is not the body, but the <div id="main-wrapper">
-  const mainViewport = document.querySelector("#main-wrapper");
-  const viewportTop = mainViewport.offsetTop;
-  const viewportBottom =
-    document.documentElement.offsetHeight || document.body.offsetHeight;
-
-  const sections = document.querySelectorAll("main section");
-
-  mainViewport.onscroll = () => {
-    for (var i = 0; i < sections.length; ++i) {
-      const rect = sections[i].getBoundingClientRect();
-      if (viewportTop <= rect.top && rect.top <= viewportBottom) {
-        const test = document.querySelector(
-          `.nav-toc a[href*=${sections[i].id}]`
-        );
-        if (test) {
-          test.classList.add("current");
-        }
-      }
-      if (rect.top < viewportTop || rect.top > viewportBottom) {
-        const test = document.querySelector(
-          `.nav-toc a[href*=${sections[i].id}]`
-        );
-        if (test) {
-          test.classList.remove("current");
-        }
-      }
-    }
+export function scrollActive() {
+  // Mark the currently visible section as active in the sidebar
+  // Use the `IntersectionObserver` API
+  const sections = document.querySelectorAll("article section");
+  const options = {
+    root: document.querySelector("main"),
+    rootMargin: "0px 0px -95% 0px",
   };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const matchingLink = document.querySelector(
+          `.nav-toc a[href*=${entry.target.id}]`
+        );
+        matchingLink?.classList.add("current");
+        console.log(`Section ${entry.target.id} is intersecting`);
+      } else {
+        const matchingLink = document.querySelector(
+          `.nav-toc a[href*=${entry.target.id}]`
+        );
+        matchingLink?.classList.remove("current");
+        console.log(`Section ${entry.target.id} is not intersecting`);
+      }
+    });
+  }, options);
+
+  sections.forEach((section) => {
+    observer.observe(section);
+  });
 }
 
-export { scrollActive };
+export function scrollToTop() {
+  const scrollTop = document.querySelector("#scrolltop");
+
+  if (!scrollTop) {
+    return;
+  }
+
+  const main = document.querySelector("main");
+
+  main.onscroll = () => {
+    if (main.scrollTop > 100) {
+      scrollTop.classList.add("isShown");
+    } else {
+      scrollTop.classList.remove("isShown");
+    }
+  };
+
+  scrollTop.onclick = () => {
+    main.scrollTop = 0;
+    scrollTop.blur();
+  };
+}

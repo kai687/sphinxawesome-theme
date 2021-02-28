@@ -48,7 +48,8 @@
         {
           "ignoreAtRules": [
             "screen",
-            "layer"
+            "layer",
+            "variants"
           ]
         }
       ],
@@ -60,7 +61,6 @@
       "no-invalid-double-slash-comments": true,
       "length-zero-no-unit": true,
       "font-weight-notation": "numeric",
-      "declaration-block-no-redundant-longhand-properties": true,
       "string-quotes": "double"
     }
   },

@@ -1,0 +1,21 @@
+{#-
+  Template for the sidebar which contains the main navigation
+  menu. Up to medoim screens, the sidebar is "off-canvas"
+  to the left and slides in when clicking the "menu" button.
+-#}
+
+<nav
+  role="navigation"
+  class="h-full overflow-y-auto bg-white text-gray-700 border-r pt-16 flex flex-col"
+>
+  <div class="nav-toc flex-1 px-5">
+    {%- if theme_nav_include_hidden|lower == 'true' -%}
+      {{ toctree(maxdepth=3, collapse=False, includehidden=true) }}
+    {%- else -%}
+      {{ toctree(maxdepth=3, collapse=False) }}
+    {%- endif -%}
+  </div>
+
+  {%- import "buttons.html" as buttons -%}
+  {{ buttons.close("closeSidebar") }}
+</nav>

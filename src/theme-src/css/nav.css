@@ -2,11 +2,6 @@
  * Styles for the navigation menu on the left side .nav-toc
  * ********************************************************/
 
-nav[data-menu="open"] {
-  box-shadow: 4px 0 6px -1px rgba(0, 0, 0, 0.1),
-    2px 0 4px -1px rgba(0, 0, 0, 0.06);
-}
-
 .nav-toc .caption,
 .toctree-wrapper .caption,
 .contents.local .topic-title {
@@ -14,7 +9,6 @@ nav[data-menu="open"] {
 }
 
 .nav-toc {
-  @apply flex-1 px-5;
   & p:first-of-type {
     @apply mt-0;
   }
@@ -30,30 +24,20 @@ nav[data-menu="open"] {
   & .expand {
     height: 1.2rem;
     margin-left: -0.4rem;
-    transition: transform 150ms ease-out;
-    @apply inline fill-current cursor-pointer select-none;
-    &:hover {
-      @apply text-pink-600;
-    }
-    &:focus,
-    &:active {
-      @apply outline-none;
-    }
+    @apply inline fill-current cursor-pointer select-none hover:text-pink-600 focus:outline-none active:outline-none transition-transform transform transform-gpu duration-150 ease-out;
   }
   & li > ul {
-    max-height: 0;
-    overflow-y: hidden;
-    @apply pl-4;
+    @apply pl-4 overflow-y-hidden max-h-0;
   }
   & .expanded {
     & > div > a.current {
       @apply font-medium;
     }
     & > div > .expand {
-      transform: rotate(90deg);
+      @apply rotate-90;
     }
     & > ul {
-      max-height: 100%;
+      @apply max-h-full;
     }
   }
 }

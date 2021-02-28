@@ -38,7 +38,7 @@ def test_default_options(app: Sphinx) -> None:
     assert "/" in nav[0].text
 
     # navigation menu should be present
-    nav = tree("nav", attrs={"role": "navigation", "data-menu": "closed"})
+    nav = tree.select("#sidebar > nav")
     assert len(nav) == 1
 
     # prev_next should not be present (doesn't have better pattern)
@@ -87,7 +87,7 @@ def test_no_nav(app: Sphinx) -> None:
     """It tests deactivating the navigation menu theme option."""
     app.build()
     tree = parse_html(app.outdir / "another.html")
-    nav = tree("nav", attrs={"role": "navigation", "data-menu": "closed"})
+    nav = tree.select("#sidebar > nav")
     assert len(nav) == 0
 
 
@@ -114,7 +114,7 @@ def test_no_include_hidden(app: Sphinx) -> None:
     """It tests deactivating the ``nav_include_hidden`` option."""
     app.build()
     tree = parse_html(app.outdir / "another.html")
-    nav = tree.find("nav", attrs={"role": "navigation", "data-menu": "closed"})
+    nav = tree.select("#sidebar > nav")
     # navigation should include the 'another' document (toctree with hidden option)
-    li = nav("li", class_="current")
+    li = nav[0]("li", class_="current")
     assert len(li) == 0

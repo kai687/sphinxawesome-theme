@@ -2,46 +2,53 @@
  * Some basic styling
  * ******************/
 
-/* this ought to be part of the normalizer */
-input,
-button {
-  @apply rounded-none appearance-none;
+:root {
+  --sidebar-width: 300px;
+  --fluid-margin: 5vw;
 }
 
-section,
-footer {
-  max-width: 82ch;
-}
-
-p {
-  @apply my-6;
-}
-
-strong {
-  @apply font-medium;
-}
-
-.guilabel,
-.menuselection {
-  @apply font-medium tracking-wide;
-}
-
-svg {
-  @apply inline;
-}
-
-main {
-  & h1 {
-    @apply text-gray-800 text-4xl leading-tight mb-12 mt-12;
+@layer base {
+  /* this ought to be part of the normalizer */
+  input,
+  button {
+    @apply rounded-none appearance-none;
   }
-  & h2 {
-    @apply text-gray-800 text-2xl leading-snug mb-8 mt-16;
+
+  section,
+  footer {
+    max-width: 82ch;
   }
-  & h3 {
-    @apply text-gray-800 text-xl font-medium leading-snug mb-6 mt-8;
+
+  p {
+    @apply my-6;
   }
-  & h4,
-  & .rubric {
-    @apply text-gray-800 font-medium my-6;
+
+  strong {
+    @apply font-medium;
+  }
+
+  .guilabel,
+  .menuselection {
+    @apply font-medium tracking-wide;
+  }
+
+  svg {
+    @apply inline;
+  }
+
+  main {
+    & h1 {
+      @apply text-gray-800 text-4xl leading-tight mb-12 mt-12;
+    }
+    & h2 {
+      @apply text-gray-800 text-2xl leading-snug mb-8 mt-16;
+    }
+    & h3 {
+      @apply text-gray-800 text-xl font-medium leading-snug mb-6 mt-8;
+    }
+    & h4,
+    & .rubric {
+      @apply text-gray-800 font-medium my-6;
+    }
   }
 }

@@ -6,6 +6,7 @@
   h1,
   h2,
   h3,
+  h4,
   table,
   .admonition-title,
   figure,
@@ -37,7 +38,7 @@ p:not(.admonition-title),
 .toctree-wrapper,
 .contents.local {
   & a {
-    @apply text-blue-700;
+    @apply text-blue-700 hover:text-pink-600 focus:text-pink-600;
   }
 }
 
@@ -54,21 +55,15 @@ p:not(.admonition-title),
 }
 
 .highlighted {
-  @apply py-px bg-yellow-200 font-medium;
+  @apply py-px bg-yellow-100 font-medium;
 }
 
 .highlight-link {
   @apply hidden;
 }
 
-a:hover,
-a:focus {
-  @apply text-pink-600 !important;
-}
-
-:not(header) > a:hover,
-:not(header) > a:focus {
-  @apply underline;
+:not(header) > a {
+  @apply hover:underline focus:underline;
 }
 
 .footnote-reference {

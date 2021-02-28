@@ -1,54 +1,52 @@
-import { hideSnackbar } from "./snackbar";
-
-
 // Some enhancements for the search experience
-function searchPane() {
-  const search = document.querySelector("#search-pane");
-  const openSearchBtn = document.querySelector("#openSearchBtn");
-  const closeSearchBtn = document.querySelector("#closeSearchBtn");
+export function searchPane() {
+  const searchPane = document.querySelector("#search-pane");
+  const openSearch = document.querySelector("#openSearch");
+  const closeSearch = document.querySelector("#closeSearch");
+  const isShown = "isShown";
 
-  if (openSearchBtn) {
-    openSearchBtn.onclick = () => {
-      search.setAttribute("data-menu", "open");
+  if (openSearch) {
+    openSearch.onclick = () => {
+      searchPane.classList.add(isShown);
     };
   }
-  if (closeSearchBtn) {
-    closeSearchBtn.onclick = () => {
-      search.setAttribute("data-menu", "closed");
+  if (closeSearch) {
+    closeSearch.onclick = () => {
+      searchPane.classList.remove(isShown);
     };
   }
 }
 
-function clearSearchHighlights() {
+export function clearSearchHighlights() {
   setTimeout(() => {
     const snackbar = document.querySelector("#snackbar");
     const highlights = document.querySelectorAll(".highlighted");
     const searchInput = document.querySelector("#search-input");
+    const isShown = "isShown";
 
     if (highlights.length) {
-      snackbar.innerHTML =
-        '<a class="tracking-wide" href="javascript:Documentation.hideSearchWords()">' +
-        _("Clear highlighted search results") +
-        "</a>";
-      snackbar.style.opacity = 1;
-      snackbar.style.transform = "translate(0,0)";
+      snackbar.classList.add(isShown);
 
-      document.querySelector("#snackbar > a").onclick = () => {
-        hideSnackbar();
+      snackbar.onclick = () => {
+        snackbar.classList.remove(isShown);
+        Documentation.hideSearchWords();
         searchInput.value = "";
+        // remove the `?highlight=term` query parameter from the URL
+        const newURL = window.location.origin + window.location.pathname;
+        window.history.replaceState({}, document.title, newURL);
       };
 
       // Add the currently searched for term in the input
       searchInput.value = highlights[0].textContent;
       searchInput.onsearch = () => {
         Documentation.hideSearchWords();
-        hideSnackbar();
+        snackbar.classList.remove(isShown);
       };
     }
   }, 500);
 }
 
-function searchEvents() {
+export function searchEvents() {
   const searchForm = document.querySelector("#searchbox");
   const searchInput = document.querySelector("#search-input");
 
@@ -72,5 +70,3 @@ function searchEvents() {
     }
   });
 }
-
-export { searchPane, clearSearchHighlights, searchEvents };

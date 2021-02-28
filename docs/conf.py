@@ -26,8 +26,6 @@ copyright = f"{author}."
 extensions = [
     "sphinx.ext.autosectionlabel",
     "sphinx.ext.autodoc",
-    "sphinx.ext.coverage",
-    "sphinx.ext.napoleon",
     "sphinxawesome_theme",
 ]
 
@@ -55,6 +53,8 @@ html_domain_indices = False  # Don't need module indices
 
 # extra option from the sphinxawesome_theme
 html_collapsible_definitions = True
+
+html_theme_options = {"show_scrolltop": True}
 
 # -- Register a :dir: interpreted text role ----------------------------------
 

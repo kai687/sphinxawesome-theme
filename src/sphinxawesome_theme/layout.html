@@ -81,29 +81,45 @@
     we must use string comparison to check, whether a value is ``true`` or not.
   -#}
 
-  <body class="text-gray-900 antialiased min-h-screen md:h-screen flex flex-col">
-    {% include "skip.html" %}
-    {% include "header.html" %}
-    <div class="md:overflow-hidden flex flex-col md:flex-row flex-1">
+  <body class="text-gray-900 antialiased">
+    <div id="page" class="h-screen md:grid md:grid-layout">
+      {% include "skip.html" %}
+
+      <header class="grid-area-header z-10">
+        {% include "header.html" %}
+      </header>
+
       {%- if theme_show_nav|lower == 'true' -%}
-        {%- include "nav.html" %}
+        <aside id="sidebar" class="grid-area-sidebar h-full fixed md:relative inset-y-0 left-0 z-20 md:z-0 print:hidden overflow-y-auto transition-all transform transform-gpu -translate-x-full opacity-0 duration-300 md:translate-x-0 md:opacity-100">
+          {% include "sidebar.html" %}
+        </aside>
       {%- endif %}
-      <div id="main-wrapper" class="overflow-y-auto md:w-full flex flex-col flex-1">
-        <main role="main" class="px-5 md:ml-fluid flex-1 {% if theme_show_nav|lower != 'true' -%}mx-auto{%- endif -%}">
-          {%- if pagename != master_doc and theme_show_breadcrumbs|lower == 'true' %}
-            {%- include "breadcrumbs.html" %}
-          {% endif -%}
-          {#-
-              for normal pages, the "body" block is rendered in `page.html` which is
-              inherited unmodified from the "basic" theme.
-          -#}
+
+      <main class="px-5 lg:ml-fluid grid-area-main overflow-y-auto flex flex-col h-full {% if theme_show_nav|lower != 'true' -%}mx-auto{%- endif -%}">
+        {%- if pagename != master_doc and theme_show_breadcrumbs|lower == 'true' %}
+          {%- include "breadcrumbs.html" %}
+        {% endif -%}
+
+        {#-
+          The `body` block is rendered from the `page.html` template.
+          The `page.html` template is inherited from the `basic` theme.
+        -#}
+
+        <article role="main" class="flex-1">
           {% block body %}{% endblock %}
-          {%- if theme_show_prev_next|lower == 'true' %}
-            {%- include "prev_next.html" %}
-          {%- endif %}
-        </main>
-        {% include "footer.html" %}
-      </div>
+        </article>
+
+        {%- if theme_show_prev_next|lower == 'true' %}
+          {%- include "prev_next.html" %}
+        {%- endif %}
+
+        <footer>
+          {% block footer %}
+            {% include "footer.html" %}
+          {% endblock %}
+        </footer>
+      </main>
+
       {% include "menu.html" %}
       {% include "search-pane.html" %}
       {% include "modals.html" %}

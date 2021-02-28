@@ -2,25 +2,22 @@
  * TRANSITIONS
  * *************************/
 
-[data-menu="closed"] {
-  @apply transition-all transform opacity-0 duration-300;
-}
-
-[data-menu="open"] {
-  transition: transform 0.3s, opacity 0.5s;
-  @apply translate-x-0 translate-y-0 opacity-100;
-}
-
-nav[data-menu="closed"] {
-  @apply -translate-x-full;
-}
-
-@screen md {
-  nav[data-menu="closed"] {
-    @apply translate-x-0 opacity-100;
+@layer utilities {
+  #sidebar.isShown {
+    max-width: 90%;
+    @apply translate-x-0 opacity-100 w-full;
   }
-}
-
-#search-pane[data-menu="closed"] {
-  @apply translate-y-full;
+  #page.isShown {
+    @apply overflow-hidden;
+  }
+  #scrolltop.isShown {
+    @apply pointer-events-auto opacity-100;
+  }
+  #screen.isShown {
+    @apply block;
+  }
+  #search-pane.isShown,
+  #snackbar.isShown {
+    @apply translate-y-0 opacity-100;
+  }
 }

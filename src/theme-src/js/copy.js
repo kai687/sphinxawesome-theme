@@ -10,7 +10,7 @@ function showSuccessTooltip (event) {
   }, 2500);
 }
 
-function copyEvents () {
+export function copyEvents () {
   // Use clipboard.js for the headerlinks. Copy the href.
   const headerlinkClipboard = new ClipboardJS(".headerlink", {
     text: (trigger) => {
@@ -42,5 +42,3 @@ function copyEvents () {
 
   codeClipboard.on("success", showSuccessTooltip);
 }
-
-export { copyEvents }
