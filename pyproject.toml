@@ -38,7 +38,7 @@ pre-commit = "^2.10.1"
 pytest = "^6.2"
 pytest-cov = "^2.11"
 mypy = "0.812"
-coverage = { extras = ["toml"], version = "^5.3" }
+coverage = { extras = ["toml"], version = "^5.5" }
 flake8_implicit_str_concat = "^0.2.0"
 pytest-randomly = "^3.4.1"
 
