@@ -68,7 +68,7 @@
   "license": "MIT",
   "dependencies": {
     "clipboard": "^2.0.8",
-    "tailwindcss": "^2.0.3"
+    "tailwindcss": "^2.0.4"
   },
   "devDependencies": {
     "@babel/core": "^7.12.17",
