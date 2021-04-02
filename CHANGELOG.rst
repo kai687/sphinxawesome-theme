@@ -6,6 +6,7 @@ HEAD
 - feat: add optional scroll to top button
 - feat: restructuring for easier customization (#245)
 - feat: use Tailwind 2 colors
+- fix: style for guilabel role was missing (#376)
 
 1.19.2
 ~~~~~~
