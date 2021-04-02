@@ -1,3 +1,18 @@
+HEAD
+~~~~
+
+- feat: use CSS grid for layout
+- feat: use intersection observer api for "scrollspy"
+- feat: add optional scroll to top button
+- feat: restructuring for easier customization (#245)
+- feat: use Tailwind 2 colors
+
+1.19.3
+~~~~~~
+
+- fix: style for guilabel role was missing (#376)
+- fix: include encoding in postprocessing (#386)
+
 1.19.2
 ~~~~~~
 

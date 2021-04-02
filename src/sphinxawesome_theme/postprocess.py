@@ -126,7 +126,7 @@ def _modify_html(html_filename: str) -> None:
     _collapsible_nav(tree)
     _remove_span_pre(tree)
 
-    with open(html_filename, "w") as out_file:
+    with open(html_filename, "w", encoding="utf-8") as out_file:
         out_file.write(str(tree))
 
 

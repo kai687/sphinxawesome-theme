@@ -135,3 +135,8 @@ dl.option {
     @apply italic text-purple-700;
   }
 }
+
+.guilabel,
+.menuselection {
+  @apply font-medium tracking-wide;
+}

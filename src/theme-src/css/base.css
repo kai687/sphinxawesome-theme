@@ -21,11 +21,6 @@ strong {
   @apply font-medium;
 }
 
-.guilabel,
-.menuselection {
-  @apply font-medium tracking-wide;
-}
-
 svg {
   @apply inline;
 }
