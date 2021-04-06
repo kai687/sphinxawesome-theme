@@ -75,14 +75,15 @@ def _collapsible_dl(tree: BeautifulSoup) -> None:
     """Make autodoc function, class, etc. definition lists collapsible."""
     for dl in tree("dl"):
         classes = dl.get("class", [])
-        if (
-            "exception" in classes
-            or "class" in classes
-            or "function" in classes
-            or "attribute" in classes
-            or "module" in classes
-            or "method" in classes
-        ):
+        collapsible_candidates = [
+            "exception",
+            "class",
+            "function",
+            "attribute",
+            "module",
+            "method",
+        ]
+        if any(item in classes for item in collapsible_candidates):
             dd = dl.find("dd")
             # only apply to non-empty tags
             if len(dd.get_text(strip=True)) > 0:
