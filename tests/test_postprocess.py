@@ -92,50 +92,6 @@ def test_expand_current() -> None:
     assert tree.li["class"].count("expanded") == 1
 
 
-def test_skip_regular_dl() -> None:
-    """It doesn't add classes to regular definition lists."""
-    tree = parse_html("<dl><dt>term</dt><dd>definition</dd></dl>")
-    postprocess._collapsible_dl(tree)
-
-    dt = tree("dt", class_="accordion")
-    assert len(dt) == 0
-    dd = tree("dd", class_="panel")
-    assert len(dd) == 0
-
-
-def test_skip_empty_dd() -> None:
-    """It skips an autodoc dl with empty dd."""
-    tree = parse_html("<dl class='class'><dt>ClassName</dt><dd></dd></dl>")
-    postprocess._collapsible_dl(tree)
-    dt = tree("dt", class_="accordion")
-    assert len(dt) == 0
-    dd = tree("dd", class_="panel")
-    assert len(dd) == 0
-
-
-def test_add_collapsible_dl() -> None:
-    """It adds accordion and panel class to an autodoc dl."""
-    tree = parse_html(
-        "<dl class='function'><dt>function term</dt><dd>Function definition</dd></dl>"
-    )
-    postprocess._collapsible_dl(tree)
-    dt = tree("dt", class_="accordion")
-    assert len(dt) == 1
-    dd = tree("dd", class_="panel")
-    assert len(dd) == 1
-
-    # does it work, if the <dt> and <dd> already have classes?
-    tree = parse_html(
-        "<dl class='function'><dt class='dummy'>"
-        "function term</dt><dd class='dummy'>Function definition</dd></dl>"
-    )
-    postprocess._collapsible_dl(tree)
-    dt = tree("dt", class_="accordion")
-    assert len(dt) == 1
-    dd = tree("dd", class_="panel")
-    assert len(dd) == 1
-
-
 def test_unwrap_spans() -> None:
     """It unwraps span.pre elements."""
     tree = parse_html("<span class='pre'>Test</span>")

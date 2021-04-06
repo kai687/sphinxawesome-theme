@@ -71,34 +71,6 @@ def _expand_current(tree: BeautifulSoup) -> None:
             li["class"] += ["expanded"]
 
 
-def _collapsible_dl(tree: BeautifulSoup) -> None:
-    """Make autodoc function, class, etc. definition lists collapsible."""
-    for dl in tree("dl"):
-        classes = dl.get("class", [])
-        if (
-            "exception" in classes
-            or "class" in classes
-            or "function" in classes
-            or "attribute" in classes
-            or "module" in classes
-            or "method" in classes
-        ):
-            dd = dl.find("dd")
-            # only apply to non-empty tags
-            if len(dd.get_text(strip=True)) > 0:
-                if dd.get("class", []):
-                    dd["class"] += ["panel"]
-                else:
-                    dd["class"] = ["panel"]
-                dt = dl.find("dt")
-                if dt.get("class", []):
-                    dt["class"] += ["accordion"]
-                else:
-                    dt["class"] = ["accordion"]
-                icon = BeautifulSoup(ICONS["expand_more"], "html.parser")
-                dt.append(icon)
-
-
 def _remove_span_pre(tree: BeautifulSoup) -> None:
     """Unwrap unnecessary spans.
 
@@ -119,7 +91,7 @@ def _modify_html(html_filename: str) -> None:
     After these modifications, the HTML is written into a file,
     overwriting the original file.
     """
-    with open(html_filename) as html:
+    with open(html_filename, encoding="utf-8") as html:
         tree = BeautifulSoup(html, "html.parser")
 
     _expand_current(tree)

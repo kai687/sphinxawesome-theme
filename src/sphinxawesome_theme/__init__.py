@@ -11,7 +11,7 @@ try:
 except ImportError:  # pragma: no cover
     from importlib_metadata import version, PackageNotFoundError  # type: ignore
 
-from os import path
+from os import environ, path
 from typing import Any, Dict
 
 from sphinx.application import Sphinx
@@ -38,11 +38,14 @@ def setup(app: "Sphinx") -> Dict[str, Any]:
     app.add_html_theme("sphinxawesome_theme", path.abspath(path.dirname(__file__)))
     app.setup_extension("sphinxawesome.sampdirective")
     app.setup_extension("sphinxawesome_theme.highlighting")
-    app.setup_extension("sphinxawesome_theme.postprocess")
     app.setup_extension("sphinxawesome_theme.html_translator")
     app.setup_extension("sphinxawesome_theme.admonition_ids")
     app.setup_extension("sphinxawesome_theme.jinja_filters")
     app.setup_extension("sphinxawesome_theme.permalinks_backport")
+
+    # if this environment variable is defined, skip the postprocessing
+    if "SPHINX_AWESOME_THEME_NO_POSTPROCESSING" not in environ:
+        app.setup_extension("sphinxawesome_theme.postprocess")
 
     return {
         "version": __version__,
