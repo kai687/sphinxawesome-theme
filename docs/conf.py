@@ -1,7 +1,7 @@
 """Sphinx configuration file."""
 
-from pathlib import Path
 import sys
+from pathlib import Path
 from typing import List, Tuple
 
 from docutils import nodes

@@ -2,8 +2,8 @@
 
 from pathlib import Path
 
-from _pytest.config import Config
 import pytest
+from _pytest.config import Config
 from sphinx.testing.path import path
 
 pytest_plugins = "sphinx.testing.fixtures"

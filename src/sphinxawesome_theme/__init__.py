@@ -7,7 +7,7 @@
 """
 
 try:
-    from importlib.metadata import version, PackageNotFoundError  # type: ignore
+    from importlib.metadata import PackageNotFoundError, version  # type: ignore
 except ImportError:  # pragma: no cover
     from importlib_metadata import version, PackageNotFoundError  # type: ignore
 
@@ -17,8 +17,8 @@ from typing import Any, Dict
 from sphinx.application import Sphinx
 
 try:
+    # obtain version from `pyproject.toml` via `importlib.metadata.version()`
     __version__ = version(__name__)
-    """Obtain the version from the ``pyproject.toml`` file by using ``importlib.metadata``."""
 except PackageNotFoundError:  # pragma: no cover
     __version__ = "unknown"
 
