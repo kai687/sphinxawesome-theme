@@ -117,7 +117,6 @@ def lint(session: Session) -> None:
         "flake8-black",
         "flake8-bugbear",
         "flake8-docstrings",
-        "flake8-import-order",
         "flake8-implicit-str-concat",
     )
     session.run("flake8", *args)
@@ -130,6 +129,15 @@ def black(session: Session) -> None:
 
     install_constrained_version(session, "black")
     session.run("black", *args)
+
+
+@nox.session(python="3.9")
+def isort(session: Session) -> None:
+    """Rearrange imports on all Python files."""
+    args = session.posarts or "."
+
+    install_constrained_version(session, "isort")
+    session.run("isort", *args)
 
 
 @nox.session(python=python_versions)
