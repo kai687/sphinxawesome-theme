@@ -1,8 +1,8 @@
 """Unit tests for the HTML post-processor."""
 
 
-from bs4 import BeautifulSoup
 import pytest
+from bs4 import BeautifulSoup
 from sphinx.application import Sphinx
 
 from sphinxawesome_theme import postprocess

@@ -5,8 +5,8 @@ Test for the presence and absence of certain HTML elements.
 
 import re
 
-from bs4 import BeautifulSoup
 import pytest
+from bs4 import BeautifulSoup
 from sphinx.application import Sphinx
 
 

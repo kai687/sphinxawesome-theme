@@ -4,8 +4,8 @@ This tests for the correct permalink behavior
 except headings, which are tested in ``test_headerlinks.py``
 """
 
-from bs4 import BeautifulSoup
 import pytest
+from bs4 import BeautifulSoup
 from sphinx.application import Sphinx
 
 

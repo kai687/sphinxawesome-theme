@@ -1,9 +1,8 @@
 [flake8]
-select = ANN,BLK,B,B89,B9,C,D,E,F,I,S,W,ISC
-ignore = E501, W503, E203, ANN101
+select = ANN,BLK,B,B89,B9,C,D,E,F,S,W,ISC
+ignore = E203, ANN101
+extend-ignore = W203, W503
 max-complexity = 10
 max-line-length = 88
-application-import-names = sphinxawesome_theme, tests
-import-order-style = google
 docstring-convention = google
 per-file-ignores = tests/*:S101

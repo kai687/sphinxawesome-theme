@@ -11,8 +11,8 @@ require changes from me.
 
 import re
 
-from bs4 import BeautifulSoup
 import pytest
+from bs4 import BeautifulSoup
 from sphinx.application import Sphinx
 
 
