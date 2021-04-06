@@ -7,8 +7,8 @@ Issue #285.
 """
 import re
 
-from bs4 import BeautifulSoup
 import pytest
+from bs4 import BeautifulSoup
 from sphinx.application import Sphinx
 
 

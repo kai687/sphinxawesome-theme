@@ -2,11 +2,10 @@
 
 from typing import Dict
 
-from bs4 import BeautifulSoup
 import pytest
+from bs4 import BeautifulSoup
 from sphinx.application import Sphinx
 from sphinx.testing.util import etree_parse
-
 
 etree_cache: Dict[str, BeautifulSoup] = {}
 

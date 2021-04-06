@@ -4,8 +4,8 @@ External links should have an icon.
 Internal links should not.
 """
 
-from bs4 import BeautifulSoup
 import pytest
+from bs4 import BeautifulSoup
 from sphinx.application import Sphinx
 
 

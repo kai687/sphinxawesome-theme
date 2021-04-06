@@ -5,7 +5,7 @@
 """
 from typing import Any, Dict
 
-from docutils.nodes import make_id, Node
+from docutils.nodes import Node, make_id
 from sphinx.application import Sphinx
 
 from . import __version__

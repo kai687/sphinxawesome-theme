@@ -8,8 +8,8 @@ for the default and to catch, if something
 has changed.
 """
 
-from bs4 import BeautifulSoup
 import pytest
+from bs4 import BeautifulSoup
 from sphinx.application import Sphinx
 from sphinx.testing.util import etree_parse
 

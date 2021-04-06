@@ -5,8 +5,8 @@ is ``True``, some HTML classes should be added
 to some definition lists but not all of them.
 """
 
-from bs4 import BeautifulSoup
 import pytest
+from bs4 import BeautifulSoup
 from sphinx.application import Sphinx
 
 
