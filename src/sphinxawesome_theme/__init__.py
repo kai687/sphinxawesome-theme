@@ -7,8 +7,7 @@
 """
 
 try:
-    from importlib.metadata import (PackageNotFoundError,  # type: ignore
-                                    version)
+    from importlib.metadata import PackageNotFoundError, version  # type: ignore
 except ImportError:  # pragma: no cover
     from importlib_metadata import version, PackageNotFoundError  # type: ignore
 

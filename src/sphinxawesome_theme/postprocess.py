@@ -71,35 +71,6 @@ def _expand_current(tree: BeautifulSoup) -> None:
             li["class"] += ["expanded"]
 
 
-def _collapsible_dl(tree: BeautifulSoup) -> None:
-    """Make autodoc function, class, etc. definition lists collapsible."""
-    for dl in tree("dl"):
-        classes = dl.get("class", [])
-        collapsible_candidates = [
-            "exception",
-            "class",
-            "function",
-            "attribute",
-            "module",
-            "method",
-        ]
-        if any(item in classes for item in collapsible_candidates):
-            dd = dl.find("dd")
-            # only apply to non-empty tags
-            if len(dd.get_text(strip=True)) > 0:
-                if dd.get("class", []):
-                    dd["class"] += ["panel"]
-                else:
-                    dd["class"] = ["panel"]
-                dt = dl.find("dt")
-                if dt.get("class", []):
-                    dt["class"] += ["accordion"]
-                else:
-                    dt["class"] = ["accordion"]
-                icon = BeautifulSoup(ICONS["expand_more"], "html.parser")
-                dt.append(icon)
-
-
 def _remove_span_pre(tree: BeautifulSoup) -> None:
     """Unwrap unnecessary spans.
 
