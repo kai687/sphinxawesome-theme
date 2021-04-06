@@ -134,7 +134,7 @@ def black(session: Session) -> None:
 @nox.session(python="3.9")
 def isort(session: Session) -> None:
     """Rearrange imports on all Python files."""
-    args = session.posarts or "."
+    args = session.posargs or python_files
 
     install_constrained_version(session, "isort")
     session.run("isort", *args)

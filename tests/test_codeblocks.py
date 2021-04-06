@@ -404,7 +404,7 @@ def test_parsed_literal(app: Sphinx) -> None:
     assert str(literal[7]).replace("\n", "") == (
         '<div class="highlight"><div class="code-header">'
         '<button aria-label="Copy this code" class="copy tooltipped tooltipped-nw">'
-        '<svg aria-hidden="true" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/xvg">'
+        '<svg aria-hidden="true" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/xvg">'  # noqa: E501,B950
         '<path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 '
         '1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z">'
         "</path></svg></button>"
