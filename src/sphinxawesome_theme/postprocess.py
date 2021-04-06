@@ -119,7 +119,7 @@ def _modify_html(html_filename: str) -> None:
     After these modifications, the HTML is written into a file,
     overwriting the original file.
     """
-    with open(html_filename) as html:
+    with open(html_filename, encoding="utf-8") as html:
         tree = BeautifulSoup(html, "html.parser")
 
     _expand_current(tree)
