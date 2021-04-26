@@ -68,7 +68,7 @@
   "license": "MIT",
   "dependencies": {
     "clipboard": "^2.0.8",
-    "tailwindcss": "^2.0.4"
+    "tailwindcss": "^2.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.13.16",
@@ -80,7 +80,7 @@
     "cssnano": "^5.0.0",
     "cssnano-preset-advanced": "^5.0.0",
     "eslint": "^7.25.0",
-    "eslint-webpack-plugin": "^2.5.3",
+    "eslint-webpack-plugin": "^2.5.4",
     "file-loader": "^6.2.0",
     "mini-css-extract-plugin": "^1.5.0",
     "postcss": "^8.2.12",
