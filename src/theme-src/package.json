@@ -78,7 +78,7 @@
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^5.2.4",
     "cssnano": "^5.0.1",
-    "cssnano-preset-advanced": "^5.0.0",
+    "cssnano-preset-advanced": "^5.0.1",
     "eslint": "^7.25.0",
     "eslint-webpack-plugin": "^2.5.4",
     "file-loader": "^6.2.0",
