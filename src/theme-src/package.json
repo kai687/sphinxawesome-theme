@@ -82,7 +82,7 @@
     "eslint": "^7.25.0",
     "eslint-webpack-plugin": "^2.5.4",
     "file-loader": "^6.2.0",
-    "mini-css-extract-plugin": "^1.5.0",
+    "mini-css-extract-plugin": "^1.5.1",
     "postcss": "^8.2.12",
     "postcss-import": "^14.0.1",
     "postcss-loader": "^5.2.0",
@@ -92,7 +92,7 @@
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-prettier": "^1.2.0",
     "stylelint-webpack-plugin": "^2.0.0",
-    "webpack": "^5.35.1",
+    "webpack": "^5.36.1",
     "webpack-cli": "^4.6.0"
   }
 }
