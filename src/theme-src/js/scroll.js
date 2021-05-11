@@ -13,13 +13,13 @@ export function scrollActive() {
         const matchingLink = document.querySelector(
           `.nav-toc a[href*=${entry.target.id}]`
         );
-        matchingLink?.classList.add("current");
+        matchingLink.classList.add("current");
         console.log(`Section ${entry.target.id} is intersecting`);
       } else {
         const matchingLink = document.querySelector(
           `.nav-toc a[href*=${entry.target.id}]`
         );
-        matchingLink?.classList.remove("current");
+        matchingLink.classList.remove("current");
         console.log(`Section ${entry.target.id} is not intersecting`);
       }
     });

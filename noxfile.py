@@ -28,26 +28,21 @@ def install_constrained_version(session: Session, *args: str, **kwargs: Any) -> 
 
 
 @nox.session(python=python_versions)
-@nox.parametrize("sphinx", [">3.5", "<3.5"])
-def tests(session: Session, sphinx: str) -> None:
+def tests(session: Session) -> None:
     """Run unit tests."""
     args = session.posargs or ["--cov"]
     session.run("poetry", "install", "--no-dev", external=True)
     install_constrained_version(
         session, "coverage[toml]", "pytest", "pytest-cov", "pytest-randomly"
     )
-    session.install(f"sphinx{sphinx}")
     session.run("pytest", *args)
 
 
 @nox.session(python=python_versions)
-@nox.parametrize("sphinx", [">3.5", "<3.5"])
-def docs(session: Session, sphinx: str) -> None:
+def docs(session: Session) -> None:
     """Build the docs."""
     args = session.posargs or ["-b", "dirhtml", "-aWTE", "docs", "docs/public"]
     session.run("poetry", "install", "--no-dev", external=True)
-    # install specific sphinx version
-    session.install(f"sphinx{sphinx}")
     session.run("sphinx-build", *args)
 
 

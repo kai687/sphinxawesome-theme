@@ -327,6 +327,8 @@ class AwesomeHTMLTranslator(HTML5Translator):
     def visit_container(self, node: Element) -> None:
         """Overide for code blocks with captions."""
         if node.get("literal_block"):
+            # for docutils >0.17
+            node.html5tagname = "div"
             self.body.append(self.starttag(node, "div", CLASS="highlight"))
             lang = node.get("language")
             code_header = "<div class='code-header'>\n"
