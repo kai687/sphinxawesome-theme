@@ -7,9 +7,6 @@ Improve headerlinks
    "Copy link to section: <SECTIONNAME>" and display an icon
    instead of the '¶' character.
 
-Semantic HTML5 tags
-   Instead of <div class="section"> we'll use <section>
-
 Remove unnecessary nesting
 
 :copyright: Copyright Kai Welke.
@@ -159,8 +156,6 @@ class AwesomeHTMLTranslator(HTML5Translator):
         ):
             self.body.append(COPY_BUTTON)
             self.body.append("</div>\n")
-        elif isinstance(node.parent, nodes.figure):
-            self.body.append("</figcaption>\n")
         else:
             self.body.append("</p>\n")
 
@@ -218,30 +213,6 @@ class AwesomeHTMLTranslator(HTML5Translator):
             self.body.append(self.starttag(node, "dd", CLASS="panel"))
         else:
             self.body.append(self.starttag(node, "dd"))
-
-    def visit_section(self, node: Element) -> None:
-        """Use semantic <section> elements."""
-        self.section_level += 1
-        self.body.append(self.starttag(node, "section"))
-
-    def depart_section(self, node: Element) -> None:
-        """Use semantic <section> elements."""
-        self.section_level -= 1
-        self.body.append("</section>\n")
-
-    def visit_figure(self, node: Element) -> None:
-        """Use semantic <figure> elements."""
-        attributes = {}
-        if node.get("width"):
-            attributes["style"] = f"width: {node['width']}"
-        # in Sphinx this is always set
-        if node.get("align"):  # pragma: nocover
-            attributes["class"] = f"align-{node['align']}"
-        self.body.append(self.starttag(node, "figure", **attributes))
-
-    def depart_figure(self, node: Element) -> None:
-        """Use semantic <figure> elements."""
-        self.body.append("</figure>\n")
 
     def visit_literal_block(self, node: Element) -> None:
         """Overwrite code blocks.
