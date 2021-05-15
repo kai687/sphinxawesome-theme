@@ -51,22 +51,15 @@ def test_no_collapsible_definitions(app: Sphinx) -> None:
         '<dl class="simple"><dt>term</dt><dd><p>definition</p></dd></dl>'
     )
 
-    assert str(dl[1]).replace("\n", "") == (
-        '<dl class="std option code-definition">'
-        '<dt id="cmdoption-t">'
-        '<code class="sig-name descname">-t</code>'
-        '<code class="sig-prename descclassname"></code>'
-        '<a aria-label="Copy link to this definition." '
-        'class="headerlink tooltipped tooltipped-ne" '
-        'href="#cmdoption-t" role="button">'
-        '<svg pointer-events="none" viewbox="0 0 24 24" '
-        'xmlns="http://www.w3.org/2000/svg"><path d="M3.9 12c0-1.71 '
-        "1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 "
-        "5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 "
-        "13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 "
-        '3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z">'
-        "</path></svg></a></dt><dd><p>test</p></dd></dl>"
-    )
+    assert dl[1]["class"] == ["std", "option", "code-definition"]
+    dt, dd = [c for c in dl[1].children if c.strip is None]
+    assert dt.name == "dt"
+    assert "accordion" not in dt["class"]
+    assert dd.name == "dd"
+    assert "class" not in dd
+
+    expand_more_button = dt("button", class_="expand-more")
+    assert len(expand_more_button) == 0
 
 
 @pytest.mark.sphinx(
@@ -93,7 +86,7 @@ def test_collapsible_definitions(app: Sphinx) -> None:
     assert "code-definition" in dl[1]["class"]
     dt, dd = [c for c in dl[1].children if c.strip is None]
     assert dt.name == "dt"
-    assert dt["class"] == ["accordion"]
+    assert dt["class"] == ["sig", "sig-object", "std", "accordion"]
     assert dd.name == "dd"
     assert dd["class"] == ["panel"]
 

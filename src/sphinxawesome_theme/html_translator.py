@@ -182,12 +182,16 @@ class AwesomeHTMLTranslator(HTML5Translator):
         else:
             self.body.append(self.starttag(node, "dt"))
 
+        self.protect_literal_text += 1
+
     def depart_desc_signature(self, node: Element) -> None:
         """Change permalinks for code definitions.
 
         Functions, methods, command line options, etc.
         "Copy link to this definition"
         """
+        self.protect_literal_text -= 1
+
         if not node.get("is_multiline"):
             self.add_permalink_ref(node, _("Copy link to this definition."))
         dd = node.next_node(addnodes.desc_content, siblings=True)
@@ -213,6 +217,30 @@ class AwesomeHTMLTranslator(HTML5Translator):
             self.body.append(self.starttag(node, "dd", CLASS="panel"))
         else:
             self.body.append(self.starttag(node, "dd"))
+
+    def visit_desc_inline(self, node: Element) -> None:
+        """Change `span` to `code`."""
+        self.body.append(self.starttag(node, "code", ""))
+
+    def depart_desc_inline(self, node: Element) -> None:
+        """Change `span` to `code`."""
+        self.body.append("</code>")
+
+    def visit_desc_name(self, node: Element) -> None:
+        """Change `span` to `code`."""
+        self.body.append(self.starttag(node, "code", ""))
+
+    def depart_desc_name(self, node: Element) -> None:
+        """Change `span` to `code`."""
+        self.body.append("</code>")
+
+    def visit_desc_addname(self, node: Element) -> None:
+        """Change `span` to `code`."""
+        self.body.append(self.starttag(node, "code", ""))
+
+    def depart_desc_addname(self, node: Element) -> None:
+        """Change `span` to `code`."""
+        self.body.append("</code>")
 
     def visit_literal_block(self, node: Element) -> None:
         """Overwrite code blocks.
