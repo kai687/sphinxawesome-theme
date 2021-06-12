@@ -139,43 +139,39 @@ def test_permalink_figure_default_theme(app: Sphinx) -> None:
     app.html_permalinks_icon = "a"
     app.build()
     tree = parse_html(app.outdir / "index.html")
-    figures = tree("div", class_="figure")
+    figures = tree("figure")
     assert len(figures) == 3
     assert figures[0]["id"] == "id1"
-    assert figures[0]["class"] == ["figure", "align-default"]
+    assert figures[0]["class"] == ["align-default"]
     assert figures[1]["id"] == "id2"
-    assert figures[1]["class"] == ["figure", "align-default"]
+    assert figures[1]["class"] == ["align-default"]
     # figure 3 has no alt text, hence no id
     assert "id" not in figures[2].attrs
 
     # check the structure for figure 1, first strip newlines
     children = [c for c in figures[0].children if c.strip is None]
-    assert len(children) == 3
+    assert len(children) == 2
     assert children[0].name == "img"
-    assert children[1].name == "p"
-    assert children[2].name == "div"
-    assert children[2].attrs["class"] == ["legend"]
+    assert children[1].name == "figcaption"
 
     # check the structure for figure 2, first strip newlines
     children = [c for c in figures[1].children if c.strip is None]
-    assert len(children) == 4
+    assert len(children) == 3
     # the explicit label is inserted before the img
     assert children[0].name == "span"
     assert children[0]["id"] == "foo"
     assert children[1].name == "img"
-    assert children[2].name == "p"
-    assert children[3].name == "div"
-    assert children[3].attrs["class"] == ["legend"]
+    assert children[2].name == "figcaption"
 
-    captions = tree("p", class_="caption")
+    captions = tree("figcaption")
     assert len(captions) == 2
 
-    for i, caption in enumerate(captions, 1):
-        assert str(caption) == (
-            '<p class="caption"><span class="caption-text">'
-            'This is an image caption.</span><a class="headerlink" '
-            f'href="#id{i}" title="Permalink to this image">¶</a></p>'
-        )
+    for caption in captions:
+        children = [c for c in caption.children if c.strip is None]
+        assert len(children) == 2
+        assert children[0].name == "p"
+        assert children[1].name == "div"
+        assert children[1]["class"] == ["legend"]
 
 
 @pytest.mark.sphinx(
@@ -200,39 +196,32 @@ def test_permalink_figure_awesome_theme(app: Sphinx) -> None:
 
     # check the structure for figure 1, first strip newlines
     children = [c for c in figures[0].children if c.strip is None]
-    assert len(children) == 3
+    assert len(children) == 2
     assert children[0].name == "img"
     assert children[1].name == "figcaption"
-    assert children[2].name == "div"
-    assert children[2].attrs["class"] == ["legend"]
 
     # check the structure for figure 2, first strip newlines
     children = [c for c in figures[1].children if c.strip is None]
-    assert len(children) == 4
+    assert len(children) == 3
     # the explicit label is inserted before the img
     assert children[0].name == "span"
     assert children[0]["id"] == "foo"
     assert children[1].name == "img"
     assert children[2].name == "figcaption"
-    assert children[3].name == "div"
-    assert children[3].attrs["class"] == ["legend"]
 
     captions = tree("figcaption")
     assert len(captions) == 2
 
     for i, caption in enumerate(captions, 1):
-        assert str(caption) == (
-            '<figcaption><span class="caption-text">'
-            "This is an image caption.</span>"
-            '<a aria-label="Copy link to this image." '
-            f'class="headerlink tooltipped tooltipped-ne" href="#id{i}" '
-            'role="button"><svg pointer-events="none" viewbox="0 0 24 24" '
-            'xmlns="http://www.w3.org/2000/svg"><path d="M3.9 12c0-1.71 '
-            "1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 "
-            "0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 "
-            '3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z">'
-            "</path></svg></a></figcaption>"
-        )
+        children = [c for c in caption.children if c.strip is None]
+        assert len(children) == 3
+        assert children[0].name == "span"
+        assert children[0]["class"] == ["caption-text"]
+        assert children[1].name == "a"
+        assert children[1]["href"] == f"#id{i}"
+        assert children[1]["aria-label"] == "Copy link to this image."
+        assert children[2].name == "div"
+        assert children[2]["class"] == ["legend"]
 
 
 @pytest.mark.sphinx(

@@ -78,7 +78,7 @@ def test_ids_with_default_theme(app: Sphinx) -> None:
     """
     app.build()
     tree = parse_html(app.outdir / "index.html")
-    sections = tree("div", class_="section")
+    sections = tree("section")
     assert len(sections) == 4
     assert sections[0]["id"] == "test"
     assert sections[1]["id"] == "second-test"

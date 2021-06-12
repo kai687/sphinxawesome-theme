@@ -76,20 +76,20 @@ Awesome new directive for highlighting placeholder variables
 
 Awesome user experience improvements
     These small features make the theme more usable. To name a few:
-    
+
     - better keyboard navigation:
-    
+
       - use the ``Tab`` key to navigate through all sections on the page
       - use the *Skip to Content* link to bypass the navigation links
       - use the ``/`` key (forward Slash) to focus the search input element
-      
+
     - better “permalink” mechanism:
-    
+
       - hovering over an element with a permalink reveals a *Link* icon
       - selecting the *Link* icon copies the link to the clipboard
       - notes, warnings and other admonitions have permalinks by default
-      
-    - collapsible elements: 
-    
+
+    - collapsible elements:
+
       - nested navigation links – all pages are reachable from all other pages
       - code definitions – code object definitions (functions, classes, modules, etc.), for example obtained via the ``sphinx.ext.autodoc`` extension.

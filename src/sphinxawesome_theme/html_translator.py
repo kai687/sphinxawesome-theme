@@ -7,9 +7,6 @@ Improve headerlinks
    "Copy link to section: <SECTIONNAME>" and display an icon
    instead of the '¶' character.
 
-Semantic HTML5 tags
-   Instead of <div class="section"> we'll use <section>
-
 Remove unnecessary nesting
 
 :copyright: Copyright Kai Welke.
@@ -159,8 +156,6 @@ class AwesomeHTMLTranslator(HTML5Translator):
         ):
             self.body.append(COPY_BUTTON)
             self.body.append("</div>\n")
-        elif isinstance(node.parent, nodes.figure):
-            self.body.append("</figcaption>\n")
         else:
             self.body.append("</p>\n")
 
@@ -187,12 +182,16 @@ class AwesomeHTMLTranslator(HTML5Translator):
         else:
             self.body.append(self.starttag(node, "dt"))
 
+        self.protect_literal_text += 1
+
     def depart_desc_signature(self, node: Element) -> None:
         """Change permalinks for code definitions.
 
         Functions, methods, command line options, etc.
         "Copy link to this definition"
         """
+        self.protect_literal_text -= 1
+
         if not node.get("is_multiline"):
             self.add_permalink_ref(node, _("Copy link to this definition."))
         dd = node.next_node(addnodes.desc_content, siblings=True)
@@ -219,29 +218,29 @@ class AwesomeHTMLTranslator(HTML5Translator):
         else:
             self.body.append(self.starttag(node, "dd"))
 
-    def visit_section(self, node: Element) -> None:
-        """Use semantic <section> elements."""
-        self.section_level += 1
-        self.body.append(self.starttag(node, "section"))
+    def visit_desc_inline(self, node: Element) -> None:
+        """Change `span` to `code`."""
+        self.body.append(self.starttag(node, "code", ""))
 
-    def depart_section(self, node: Element) -> None:
-        """Use semantic <section> elements."""
-        self.section_level -= 1
-        self.body.append("</section>\n")
+    def depart_desc_inline(self, node: Element) -> None:
+        """Change `span` to `code`."""
+        self.body.append("</code>")
 
-    def visit_figure(self, node: Element) -> None:
-        """Use semantic <figure> elements."""
-        attributes = {}
-        if node.get("width"):
-            attributes["style"] = f"width: {node['width']}"
-        # in Sphinx this is always set
-        if node.get("align"):  # pragma: nocover
-            attributes["class"] = f"align-{node['align']}"
-        self.body.append(self.starttag(node, "figure", **attributes))
+    def visit_desc_name(self, node: Element) -> None:
+        """Change `span` to `code`."""
+        self.body.append(self.starttag(node, "code", ""))
 
-    def depart_figure(self, node: Element) -> None:
-        """Use semantic <figure> elements."""
-        self.body.append("</figure>\n")
+    def depart_desc_name(self, node: Element) -> None:
+        """Change `span` to `code`."""
+        self.body.append("</code>")
+
+    def visit_desc_addname(self, node: Element) -> None:
+        """Change `span` to `code`."""
+        self.body.append(self.starttag(node, "code", ""))
+
+    def depart_desc_addname(self, node: Element) -> None:
+        """Change `span` to `code`."""
+        self.body.append("</code>")
 
     def visit_literal_block(self, node: Element) -> None:
         """Overwrite code blocks.
@@ -327,6 +326,8 @@ class AwesomeHTMLTranslator(HTML5Translator):
     def visit_container(self, node: Element) -> None:
         """Overide for code blocks with captions."""
         if node.get("literal_block"):
+            # for docutils >0.17
+            node.html5tagname = "div"
             self.body.append(self.starttag(node, "div", CLASS="highlight"))
             lang = node.get("language")
             code_header = "<div class='code-header'>\n"
