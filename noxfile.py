@@ -50,7 +50,7 @@ def docs(session: Session) -> None:
 def linkcheck(session: Session) -> None:
     """Check links."""
     args = session.posargs or ["-b", "linkcheck", "-aWTE", "docs", "docs/public/_links"]
-    session.run("poetry", "install", "--no-dev", external=True)
+    session.run("poetry", "install", external=True)
     session.run("sphinx-build", *args)
 
 

@@ -10,15 +10,15 @@ You can check the complete list of dependencies
 in the files `pyproject.toml` for Python dependencies and
 `package.json` for JavaScript dependencies.
 
-| Feature                                               | Name/Website                                           | License                                                                        |
-| ----------------------------------------------------- | ------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| CSS framework                                         | [Tailwind]                                             | [MIT License](https://github.com/tailwindlabs/tailwindcss/blob/master/LICENSE) |
-| Copy to clipboard                                     | [Clipboard.js](https://clipboardjs.com/)               | [MIT License](https://github.com/zenorocha/clipboard.js/blob/master/LICENSE)   |
-| Fonts                                                 | [Roboto](https://github.com/googlefonts/roboto)        | [Apache License, Version 2.0]                                                  |
-| Icons                                                 | [Material icons](https://material.io/resources/icons/) | [Apache License, Version 2.0]                                                  |
-| Tooltips                                              | [Primer/CSS](https://primer.style/css/)                | [MIT License](https://github.com/primer/css/blob/main/LICENSE)                 |
-| **Note:** versions ≤ 1.13.1 used these icons instead: | [Entypo](http://www.entypo.com) by Daniel Bruce        | [Creative Commons Attribution-ShareAlike 4.0]                                  |
-|                                                       | [Zondicons](http://www.zondicons.com) by Steve Schoger | ?                                                                              |
+| Feature                                               | Name/Website                                                             | License                                                                        |
+| ----------------------------------------------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| CSS framework                                         | [Tailwind]                                                               | [MIT License](https://github.com/tailwindlabs/tailwindcss/blob/master/LICENSE) |
+| Copy to clipboard                                     | [Clipboard.js](https://clipboardjs.com/)                                 | [MIT License](https://github.com/zenorocha/clipboard.js/blob/master/LICENSE)   |
+| Fonts                                                 | [Roboto](https://github.com/googlefonts/roboto)                          | [Apache License, Version 2.0]                                                  |
+| Icons                                                 | [Material icons](https://fonts.google.com/icons?selected=Material+Icons) | [Apache License, Version 2.0]                                                  |
+| Tooltips                                              | [Primer/CSS](https://primer.style/css/)                                  | [MIT License](https://github.com/primer/css/blob/main/LICENSE)                 |
+| **Note:** versions ≤ 1.13.1 used these icons instead: | [Entypo](http://www.entypo.com) by Daniel Bruce                          | [Creative Commons Attribution-ShareAlike 4.0]                                  |
+|                                                       | [Zondicons](http://www.zondicons.com) by Steve Schoger                   | ?                                                                              |
 
 [creative commons attribution-sharealike 4.0]: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 [apache license, version 2.0]: https://www.apache.org/licenses/LICENSE-2.0.html

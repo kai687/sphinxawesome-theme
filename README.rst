@@ -22,7 +22,7 @@ you can change the look of your documentation website
 and add a number of useful improvements.
 See the theme in action at https://sphinxawesome.xyz.
 
-.. _Sphinx: http://www.sphinx-doc.org/en/master/
+.. _Sphinx: https://www.sphinx-doc.org/en/master/
 
 Getting started
 ---------------
