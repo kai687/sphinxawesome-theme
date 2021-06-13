@@ -10,3 +10,4 @@ docs/public/xml
 .coverage
 .vscode
 .history
+.python-version

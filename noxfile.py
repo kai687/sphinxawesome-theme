@@ -27,6 +27,18 @@ def install_constrained_version(session: Session, *args: str, **kwargs: Any) -> 
         session.install(f"--constraint={requirements.name}", *args, **kwargs)
 
 
+def append_to_requirements(filename: str, package_name: str, version: str) -> None:
+    """Add additional dependency to requirements file.
+
+    This is a hack because I only need the `myst-parser` for building the docs on
+    Netlify. It's neither a real dependency, nor a development dependency. I would need
+    to define it as an optional development dependency. This will potentially be
+    possible with poetry 1.2.
+    """
+    with open(filename, "a") as requirements:
+        requirements.write(f"{package_name}=={version}")
+
+
 @nox.session(python=python_versions)
 def tests(session: Session) -> None:
     """Run unit tests."""
@@ -97,6 +109,7 @@ def export(session: Session) -> None:
         "--output=requirements.txt",
         external=True,
     )
+    append_to_requirements("requirements.txt", "myst-parser", "0.15.0")
 
 
 @nox.session(python=python_versions)
