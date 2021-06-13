@@ -42,7 +42,7 @@ def tests(session: Session) -> None:
 def docs(session: Session) -> None:
     """Build the docs."""
     args = session.posargs or ["-b", "dirhtml", "-aWTE", "docs", "docs/public"]
-    session.run("poetry", "install", "--no-dev", external=True)
+    session.run("poetry", "install", external=True)
     session.run("sphinx-build", *args)
 
 

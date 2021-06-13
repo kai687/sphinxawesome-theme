@@ -8,3 +8,5 @@ docs/public
 docs/public/xml
 .nox
 .coverage
+.vscode
+.history

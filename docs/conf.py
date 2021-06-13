@@ -27,7 +27,10 @@ extensions = [
     "sphinx.ext.autosectionlabel",
     "sphinx.ext.autodoc",
     "sphinxawesome_theme",
+    "myst_parser",
 ]
+
+myst_enable_extensions = ["colon_fence", "deflist"]
 
 exclude_patterns = ["public"]
 nitpicky = True
