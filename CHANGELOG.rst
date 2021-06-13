@@ -1,5 +1,7 @@
-HEAD
-~~~~
+2.0.0
+~~~~~
+
+**This version requires Sphinx >4.0**
 
 - feat: use CSS grid for layout
 - feat: use intersection observer api for "scrollspy"
@@ -7,6 +9,7 @@ HEAD
 - feat: restructuring for easier customization (#245)
 - feat: use Tailwind 2 colors
 - fix: style for guilabel role was missing (#376)
+- fix: update for Sphinx 4.0/docutils 0.17
 
 1.19.2
 ~~~~~~

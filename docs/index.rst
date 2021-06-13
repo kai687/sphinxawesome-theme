@@ -35,6 +35,7 @@ The source code is available on GitHub_.
    how-to/use
    how-to/modify
    about
+   update
 
 .. toctree::
    :hidden:

@@ -112,7 +112,7 @@ create a local copy first:
    you can skip this step. See `Fork a repo`_  in the GitHub documentation
    for more information.
 
-   .. _Fork a repo: https://docs.github.com/en/github/getting-started-with-github/fork-a-repo
+   .. _Fork a repo: https://docs.github.com/en/github/getting-started-with-github/quickstart/fork-a-repo
 
 #. Clone the (forked) repository.
 
@@ -130,7 +130,7 @@ create a local copy first:
 
    See `Cloning a repository`_ in the GitHub documentation for more information.
 
-   .. _Cloning a repository: https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository
+   .. _Cloning a repository: https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository
 
 Install Python dependencies
 ---------------------------
