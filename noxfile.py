@@ -80,7 +80,7 @@ def xml(session: Session) -> None:
     This can be useful for development, to look at the structure and node types.
     """
     args = ["-b", "xml", "-aWTE", "docs", "docs/public/xml"]
-    session.run("poetry", "install", "--no-dev", external=True)
+    session.run("poetry", "install", external=True)
     session.run("sphinx-build", *args)
 
 
