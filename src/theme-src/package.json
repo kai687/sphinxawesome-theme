@@ -83,7 +83,7 @@
     "eslint-webpack-plugin": "^2.5.4",
     "file-loader": "^6.2.0",
     "mini-css-extract-plugin": "^1.6.0",
-    "postcss": "^8.3.0",
+    "postcss": "^8.3.5",
     "postcss-import": "^14.0.2",
     "postcss-loader": "^5.3.0",
     "postcss-preset-env": "^6.7.0",
