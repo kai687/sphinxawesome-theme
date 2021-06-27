@@ -40,7 +40,7 @@ mypy = "0.812"
 coverage = { extras = ["toml"], version = "^5.5" }
 flake8_implicit_str_concat = "^0.2.0"
 pytest-randomly = "^3.4.1"
-isort = "^5.8.0"
+isort = "^5.9.1"
 myst-parser = "^0.15.1"
 
 [tool.coverage.paths]
