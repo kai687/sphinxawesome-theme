@@ -3,17 +3,12 @@
 External links should have an icon.
 Internal links should not.
 """
+from pathlib import Path
 
 import pytest
-from bs4 import BeautifulSoup
 from sphinx.application import Sphinx
 
-
-def parse_html(filename: str) -> BeautifulSoup:
-    """Parse an HTML file into a BeautifulSoup tree."""
-    with open(filename) as file_handle:
-        tree = BeautifulSoup(file_handle, "html.parser")
-    return tree
+from .util import parse_html
 
 
 @pytest.mark.sphinx(
@@ -25,7 +20,7 @@ def parse_html(filename: str) -> BeautifulSoup:
 def test_external_links(app: Sphinx) -> None:
     """It distinguishes internal and external links correctly."""
     app.build()
-    tree = parse_html(app.outdir / "index.html")
+    tree = parse_html(Path(app.outdir) / "index.html")
     section = tree("section", attrs={"id": "test"})
     assert len(section) == 1
     internal = section[0].find_all("a", class_="internal")

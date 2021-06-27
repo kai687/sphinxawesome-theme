@@ -4,16 +4,12 @@ This tests for the correct permalink behavior
 except headings, which are tested in ``test_headerlinks.py``
 """
 
+from pathlib import Path
+
 import pytest
-from bs4 import BeautifulSoup
 from sphinx.application import Sphinx
 
-
-def parse_html(filename: str) -> BeautifulSoup:
-    """Parse an HTML file into a BeautifulSoup tree."""
-    with open(filename) as file_handle:
-        tree = BeautifulSoup(file_handle, "html.parser")
-    return tree
+from .util import parse_html
 
 
 @pytest.mark.sphinx(
@@ -26,7 +22,7 @@ def test_no_permalinks_on_tables(app: Sphinx) -> None:
     """It tests parsing a table without headerlinks."""
     app.config.html_permalinks = False
     app.build()
-    tree = parse_html(app.outdir / "index.html")
+    tree = parse_html(Path(app.outdir) / "index.html")
     tables = tree("table")
     assert len(tables) == 2
     headerlinks = tree("a", class_="headerlink")
@@ -43,7 +39,7 @@ def test_no_permalinks_on_figures(app: Sphinx) -> None:
     """It tests parsing a figure without headerlinks."""
     app.config.html_permalinks = False
     app.build()
-    tree = parse_html(app.outdir / "index.html")
+    tree = parse_html(Path(app.outdir) / "index.html")
     figures = tree("figure")
     assert len(figures) == 3
     headerlinks = tree("a", class_="headerlink")
@@ -59,7 +55,7 @@ def test_permalink_table_default_theme(app: Sphinx) -> None:
     """
     app.build()
 
-    tree = parse_html(app.outdir / "index.html")
+    tree = parse_html(Path(app.outdir) / "index.html")
 
     tables = tree("table")
     assert len(tables) == 2
@@ -97,7 +93,7 @@ def test_permalink_table_awesome_theme(app: Sphinx) -> None:
     """
     app.build()
 
-    tree = parse_html(app.outdir / "index.html")
+    tree = parse_html(Path(app.outdir) / "index.html")
 
     tables = tree("table")
     assert tables[0]["id"] == "id1"
@@ -138,7 +134,7 @@ def test_permalink_figure_default_theme(app: Sphinx) -> None:
     app.html_permalinks = True
     app.html_permalinks_icon = "a"
     app.build()
-    tree = parse_html(app.outdir / "index.html")
+    tree = parse_html(Path(app.outdir) / "index.html")
     figures = tree("figure")
     assert len(figures) == 3
     assert figures[0]["id"] == "id1"
@@ -186,7 +182,7 @@ def test_permalink_figure_awesome_theme(app: Sphinx) -> None:
     This test uses the awesome theme.
     """
     app.build()
-    tree = parse_html(app.outdir / "index.html")
+    tree = parse_html(Path(app.outdir) / "index.html")
     figures = tree("figure")
     assert len(figures) == 3
     assert figures[0]["id"] == "id1"
@@ -233,7 +229,7 @@ def test_permalink_figure_awesome_theme(app: Sphinx) -> None:
 def test_figure_attributes(app: Sphinx) -> None:
     """It tests if width and align attributes are passed."""
     app.build()
-    tree = parse_html(app.outdir / "index.html")
+    tree = parse_html(Path(app.outdir) / "index.html")
     figures = tree("figure")
     assert len(figures) == 3
     assert figures[2].attrs["class"] == ["align-left"]
@@ -251,7 +247,7 @@ def test_figure_attributes(app: Sphinx) -> None:
 def test_caption_on_toctree(app: Sphinx) -> None:
     """It tests parsing a table without headerlinks."""
     app.build()
-    tree = parse_html(app.outdir / "index.html")
+    tree = parse_html(Path(app.outdir) / "index.html")
     captions = tree("p", class_="caption")
     assert len(captions) == 2
     for cap in captions:

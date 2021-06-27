@@ -14,7 +14,7 @@ from typing import Any, Dict, Generator, List, Tuple
 
 from docutils import nodes
 from docutils.nodes import Node
-from docutils.parsers.rst import directives
+from docutils.parsers.rst import directives  # type: ignore[attr-defined]
 from docutils.statemachine import StringList
 from pygments.formatters import HtmlFormatter
 from pygments.util import get_list_opt

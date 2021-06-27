@@ -153,7 +153,9 @@ def mypy(session: Session) -> None:
     """Typecheck python files with mypy."""
     args = session.posargs
 
-    install_constrained_version(session, "mypy")
+    install_constrained_version(
+        session, "mypy", "pytest", "sphinx", "types-docutils", "bs4", "nox"
+    )
     session.run("mypy", *args)
 
 

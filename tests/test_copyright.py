@@ -6,17 +6,12 @@ no copyright info should be printed.
 Issue #285.
 """
 import re
+from pathlib import Path
 
 import pytest
-from bs4 import BeautifulSoup
 from sphinx.application import Sphinx
 
-
-def parse_html(filename: str) -> BeautifulSoup:
-    """Parse an HTML file into a BeautifulSoup tree."""
-    with open(filename) as file_handle:
-        tree = BeautifulSoup(file_handle, "html.parser")
-    return tree
+from .util import parse_html
 
 
 @pytest.mark.sphinx(
@@ -26,7 +21,7 @@ def parse_html(filename: str) -> BeautifulSoup:
 def test_empty_copyright_info(app: Sphinx) -> None:
     """It does not contain any Copyright info in the footer."""
     app.build()
-    tree = parse_html(app.outdir / "index.html")
+    tree = parse_html(Path(app.outdir) / "index.html")
     footer = tree("footer")
     assert len(footer) == 1
 
@@ -44,7 +39,7 @@ def test_empty_copyright_info(app: Sphinx) -> None:
 def test_dont_show_copyright(app: Sphinx) -> None:
     """It does notcontain any Copyright info in the footer."""
     app.build()
-    tree = parse_html(app.outdir / "index.html")
+    tree = parse_html(Path(app.outdir) / "index.html")
     footer = tree("footer")
     assert len(footer) == 1
 
@@ -62,7 +57,7 @@ def test_dont_show_copyright(app: Sphinx) -> None:
 def test_show_copyright(app: Sphinx) -> None:
     """It contains any Copyright info in the footer."""
     app.build()
-    tree = parse_html(app.outdir / "index.html")
+    tree = parse_html(Path(app.outdir) / "index.html")
     footer = tree("footer")
     assert len(footer) == 1
 
