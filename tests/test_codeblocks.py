@@ -104,7 +104,7 @@ def test_doctree_awesome_theme(app: Sphinx) -> None:
 )
 def test_no_permalinks_on_codeblocks(app: Sphinx) -> None:
     """It tests codeblocks without headerlinks."""
-    app.config.html_permalinks = False
+    app.config.html_permalinks = False  # type: ignore[attr-defined]
     app.build()
     tree = parse_html(Path(app.outdir) / "index.html")
     code_blocks = tree("div", class_="highlight")

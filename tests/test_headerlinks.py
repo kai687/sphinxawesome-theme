@@ -180,7 +180,7 @@ def test_no_permalinks(app: Sphinx) -> None:
 
     I'm not sure I want to support this, but here goes.
     """
-    app.config.html_permalinks = False
+    app.config.html_permalinks = False  # type: ignore[attr-defined]
     app.build()
     tree = parse_html(Path(app.outdir) / "index.html")
     headings = tree(re.compile("^h[1..2]"), class_=None)

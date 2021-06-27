@@ -11,13 +11,16 @@ from sphinx.application import Sphinx
 from . import __version__
 
 
-def _make_id_from_title(title: str) -> str:
+def _make_id_from_title(title: str) -> Any:
     """Use the ``docutils.nodes.make_id`` function to create an ID from a title.
 
     This can be used for creating link targets from headlines.
     E.g. transform "Code, Figures, and Tables" into "code-figures-and-tables",
     which can then be used like this:
     ``<a href=#{{ title|sanitize }}>{{ title }}</a>``
+
+    Note: `docutils.nodes.make_id` returns Any. Setting the return type to `str`
+    here results in a mypy error in strict mode because of that.
     """
     return make_id(title)
 

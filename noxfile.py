@@ -156,7 +156,7 @@ def mypy(session: Session) -> None:
     install_constrained_version(
         session, "mypy", "pytest", "sphinx", "types-docutils", "bs4", "nox"
     )
-    session.run("mypy", *args)
+    session.run("mypy", "--strict", *args)
 
 
 @nox.session

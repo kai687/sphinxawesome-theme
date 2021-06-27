@@ -21,7 +21,7 @@ from .util import parse_html
 )
 def test_no_permalinks(app: Sphinx) -> None:
     """It tests that there are no permalinks."""
-    app.config.html_permalinks = False
+    app.config.html_permalinks = False  # type: ignore[attr-defined]
     app.build()
     tree = parse_html(Path(app.outdir) / "index.html")
     dl = tree("dl")
@@ -70,7 +70,7 @@ def test_collapsible_definitions(app: Sphinx) -> None:
     It should not add the classes to normal definition lists.
     """
     # if specified in 'confoverrides', this returns a warning
-    app.config.html_collapsible_definitions = True
+    app.config.html_collapsible_definitions = True  # type: ignore[attr-defined]
     app.build()
     tree = parse_html(Path(app.outdir) / "index.html")
     dl = tree("dl")
