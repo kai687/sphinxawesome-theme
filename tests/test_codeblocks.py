@@ -7,18 +7,14 @@ default, but it'll still be a good reference
 for the default and to catch, if something
 has changed.
 """
+import os
+from pathlib import Path
 
 import pytest
-from bs4 import BeautifulSoup
 from sphinx.application import Sphinx
 from sphinx.testing.util import etree_parse
 
-
-def parse_html(filename: str) -> BeautifulSoup:
-    """Parse an HTML file into a BeautifulSoup tree."""
-    with open(filename) as file_handle:
-        tree = BeautifulSoup(file_handle, "html.parser")
-    return tree
+from .util import parse_html
 
 
 @pytest.mark.sphinx(
@@ -30,7 +26,7 @@ def parse_html(filename: str) -> BeautifulSoup:
 def test_doctree_awesome_theme(app: Sphinx) -> None:
     """It tests the correct structure of the doctree."""
     app.build()
-    tree = etree_parse(app.outdir / "index.xml")
+    tree = etree_parse(os.path.join(app.outdir, "index.xml"))
     code_blocks = tree.findall(".//literal_block")
 
     assert len(code_blocks) == 8
@@ -108,9 +104,9 @@ def test_doctree_awesome_theme(app: Sphinx) -> None:
 )
 def test_no_permalinks_on_codeblocks(app: Sphinx) -> None:
     """It tests codeblocks without headerlinks."""
-    app.config.html_permalinks = False
+    app.config.html_permalinks = False  # type: ignore[attr-defined]
     app.build()
-    tree = parse_html(app.outdir / "index.html")
+    tree = parse_html(Path(app.outdir) / "index.html")
     code_blocks = tree("div", class_="highlight")
     assert len(code_blocks) == 8
     code_headers = tree("div", class_="code-header")
@@ -135,7 +131,7 @@ def test_basic_codeblock_default_theme(app: Sphinx) -> None:
        in combination with default Sphinx.
     """
     app.build()
-    tree = parse_html(app.outdir / "index.html")
+    tree = parse_html(Path(app.outdir) / "index.html")
 
     # blocks without caption
     default_blocks = tree("div", class_="highlight-default")
@@ -172,7 +168,7 @@ def test_captioned_codeblocks_with_default_theme(app: Sphinx) -> None:
        in combination with default Sphinx.
     """
     app.build()
-    tree = parse_html(app.outdir / "index.html")
+    tree = parse_html(Path(app.outdir) / "index.html")
     default_blocks = tree("div", class_="literal-block-wrapper")
 
     assert len(default_blocks) == 2
@@ -233,7 +229,7 @@ def test_basic_codeblock_awesome_theme(app: Sphinx) -> None:
     The code block itself should come wrapped in a ``<pre><code>``.
     """
     app.build()
-    tree = parse_html(app.outdir / "index.html")
+    tree = parse_html(Path(app.outdir) / "index.html")
     code_blocks = tree("div", class_="highlight")
     assert len(code_blocks) == 8
     children = [c for c in code_blocks[0].children if c.strip is None]
@@ -270,7 +266,7 @@ def test_basic_codeblock_awesome_theme(app: Sphinx) -> None:
 def test_captioned_codeblocks_with_awesome_theme(app: Sphinx) -> None:
     """It parses a codeblock with captions."""
     app.build()
-    tree = parse_html(app.outdir / "index.html")
+    tree = parse_html(Path(app.outdir) / "index.html")
     code_blocks = tree("div", class_="highlight")
     code_header = code_blocks[2].find_all("div", class_="code-header")
     assert len(code_header) == 1
@@ -314,7 +310,7 @@ def test_captioned_codeblocks_with_awesome_theme(app: Sphinx) -> None:
 def test_codeblocks_with_linenumbers_awesome_theme(app: Sphinx) -> None:
     """It highlights codeblock with inline linenumbers."""
     app.build()
-    tree = parse_html(app.outdir / "index.html")
+    tree = parse_html(Path(app.outdir) / "index.html")
     code_blocks = tree("div", class_="highlight")
     block = code_blocks[4]
     code = block.select("pre > code")
@@ -337,7 +333,7 @@ def test_codeblocks_with_linenumbers_awesome_theme(app: Sphinx) -> None:
 def test_codeblocks_with_emph_lines_awesome_theme(app: Sphinx) -> None:
     """It highlights codeblock with emphasized lines."""
     app.build()
-    tree = parse_html(app.outdir / "index.html")
+    tree = parse_html(Path(app.outdir) / "index.html")
     code_blocks = tree("div", class_="highlight")
     block = code_blocks[5]
     mark = block.select("pre > code > mark")
@@ -358,7 +354,7 @@ def test_codeblocks_with_emph_lines_awesome_theme(app: Sphinx) -> None:
 def test_codeblocks_with_added_removed_lines_awesome_theme(app: Sphinx) -> None:
     """It highlights codeblocks with added and removed lines."""
     app.build()
-    tree = parse_html(app.outdir / "index.html")
+    tree = parse_html(Path(app.outdir) / "index.html")
     code_blocks = tree("div", class_="highlight")
     block = code_blocks[6]
     code = block.select("pre > code")
@@ -381,7 +377,7 @@ def test_codeblocks_with_added_removed_lines_awesome_theme(app: Sphinx) -> None:
 def test_non_literal_container(app: Sphinx) -> None:
     """It transforms a container node that isn't a code block."""
     app.build()
-    tree = parse_html(app.outdir / "index.html")
+    tree = parse_html(Path(app.outdir) / "index.html")
     container_nodes = tree("div", class_="bogus")
     assert len(container_nodes) == 1
     assert str(container_nodes[0]).replace("\n", "") == (
@@ -397,7 +393,7 @@ def test_non_literal_container(app: Sphinx) -> None:
 def test_parsed_literal(app: Sphinx) -> None:
     """It transforms a parsed literal directive correctly."""
     app.build()
-    tree = parse_html(app.outdir / "index.html")
+    tree = parse_html(Path(app.outdir) / "index.html")
     literal = tree("div", class_="highlight")
 
     assert len(literal) == 8

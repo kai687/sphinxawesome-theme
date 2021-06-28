@@ -5,16 +5,12 @@ is ``True``, some HTML classes should be added
 to some definition lists but not all of them.
 """
 
+from pathlib import Path
+
 import pytest
-from bs4 import BeautifulSoup
 from sphinx.application import Sphinx
 
-
-def parse_html(filename: str) -> BeautifulSoup:
-    """Parse an HTML file into a BeautifulSoup tree."""
-    with open(filename) as file_handle:
-        tree = BeautifulSoup(file_handle, "html.parser")
-    return tree
+from .util import parse_html
 
 
 @pytest.mark.sphinx(
@@ -25,9 +21,9 @@ def parse_html(filename: str) -> BeautifulSoup:
 )
 def test_no_permalinks(app: Sphinx) -> None:
     """It tests that there are no permalinks."""
-    app.config.html_permalinks = False
+    app.config.html_permalinks = False  # type: ignore[attr-defined]
     app.build()
-    tree = parse_html(app.outdir / "index.html")
+    tree = parse_html(Path(app.outdir) / "index.html")
     dl = tree("dl")
     assert len(dl) == 2
     headerlinks = tree("a", class_="headerlink")
@@ -43,7 +39,7 @@ def test_no_permalinks(app: Sphinx) -> None:
 def test_no_collapsible_definitions(app: Sphinx) -> None:
     """By default, no classes should be added."""
     app.build()
-    tree = parse_html(app.outdir / "index.html")
+    tree = parse_html(Path(app.outdir) / "index.html")
     dl = tree("dl")
     assert len(dl) == 2
 
@@ -52,7 +48,7 @@ def test_no_collapsible_definitions(app: Sphinx) -> None:
     )
 
     assert dl[1]["class"] == ["std", "option", "code-definition"]
-    dt, dd = [c for c in dl[1].children if c.strip is None]
+    dt, dd = (c for c in dl[1].children if c.strip is None)
     assert dt.name == "dt"
     assert "accordion" not in dt["class"]
     assert dd.name == "dd"
@@ -74,9 +70,9 @@ def test_collapsible_definitions(app: Sphinx) -> None:
     It should not add the classes to normal definition lists.
     """
     # if specified in 'confoverrides', this returns a warning
-    app.config.html_collapsible_definitions = True
+    app.config.html_collapsible_definitions = True  # type: ignore[attr-defined]
     app.build()
-    tree = parse_html(app.outdir / "index.html")
+    tree = parse_html(Path(app.outdir) / "index.html")
     dl = tree("dl")
 
     assert len(dl) == 2
@@ -84,7 +80,7 @@ def test_collapsible_definitions(app: Sphinx) -> None:
         '<dl class="simple"><dt>term</dt><dd><p>definition</p></dd></dl>'
     )
     assert "code-definition" in dl[1]["class"]
-    dt, dd = [c for c in dl[1].children if c.strip is None]
+    dt, dd = (c for c in dl[1].children if c.strip is None)
     assert dt.name == "dt"
     assert dt["class"] == ["sig", "sig-object", "std", "accordion"]
     assert dd.name == "dd"

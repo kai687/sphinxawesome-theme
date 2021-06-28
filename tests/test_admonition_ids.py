@@ -1,5 +1,5 @@
 """Unit tests for the admonition_id module."""
-
+import os
 from typing import Dict
 
 import pytest
@@ -29,7 +29,7 @@ def test_does_not_assign_id_in_xml(app: Sphinx) -> None:
     """It does not assign an ID automatically in XML."""
     app.build()
 
-    et = etree_parse(app.outdir / "index.xml")
+    et = etree_parse(os.path.join(app.outdir, "index.xml"))
     notes = et.findall(".//note")
     assert len(notes) == 3
 
@@ -50,7 +50,7 @@ def test_assign_id_in_html(app: Sphinx) -> None:
     """It assigns an ID to notes automatically in HTML."""
     app.build()
 
-    tree = cached_parse(app.outdir / "index.html")
+    tree = cached_parse(os.path.join(app.outdir, "index.html"))
 
     notes = tree.find_all("div", class_="note")
     assert len(notes) == 3
@@ -73,7 +73,7 @@ def test_does_not_assign_id_to_desc(app: Sphinx) -> None:
     """It doesn't assign an ID to a description node."""
     app.build()
 
-    tree = cached_parse(app.outdir / "index.html")
+    tree = cached_parse(os.path.join(app.outdir, "index.html"))
     dl = tree.find_all("dl")
     assert len(dl) == 1
     assert "id" not in dl[0]

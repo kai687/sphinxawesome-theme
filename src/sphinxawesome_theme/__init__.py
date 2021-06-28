@@ -9,6 +9,7 @@
 try:
     from importlib.metadata import PackageNotFoundError, version  # type: ignore
 except ImportError:  # pragma: no cover
+    # ignore mypy error about incompatible imports
     from importlib_metadata import version, PackageNotFoundError  # type: ignore
 
 from os import environ, path
@@ -41,7 +42,6 @@ def setup(app: "Sphinx") -> Dict[str, Any]:
     app.setup_extension("sphinxawesome_theme.html_translator")
     app.setup_extension("sphinxawesome_theme.admonition_ids")
     app.setup_extension("sphinxawesome_theme.jinja_filters")
-    app.setup_extension("sphinxawesome_theme.permalinks_backport")
 
     # if this environment variable is defined, skip the postprocessing
     if "SPHINX_AWESOME_THEME_NO_POSTPROCESSING" not in environ:

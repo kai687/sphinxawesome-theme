@@ -8,19 +8,13 @@ theme. This allows us to see, if anything changed
 in the default Sphinx implementation, that might
 require changes from me.
 """
-
 import re
+from pathlib import Path
 
 import pytest
-from bs4 import BeautifulSoup
 from sphinx.application import Sphinx
 
-
-def parse_html(filename: str) -> BeautifulSoup:
-    """Parse an HTML file into a BeautifulSoup tree."""
-    with open(filename) as file_handle:
-        tree = BeautifulSoup(file_handle, "html.parser")
-    return tree
+from .util import parse_html
 
 
 @pytest.mark.sphinx("html", testroot="headerlinks", freshenv=True)
@@ -33,7 +27,7 @@ def test_headerlink_with_default_theme(app: Sphinx) -> None:
     our modifications.
     """
     app.build()
-    tree = parse_html(app.outdir / "index.html")
+    tree = parse_html(Path(app.outdir) / "index.html")
     headings = tree(re.compile("^h[1..2]"), class_=None)
     assert len(headings) == 4
     headerlinks = tree("a", class_="headerlink")
@@ -77,7 +71,7 @@ def test_ids_with_default_theme(app: Sphinx) -> None:
     our modifications.
     """
     app.build()
-    tree = parse_html(app.outdir / "index.html")
+    tree = parse_html(Path(app.outdir) / "index.html")
     sections = tree("section")
     assert len(sections) == 4
     assert sections[0]["id"] == "test"
@@ -98,7 +92,7 @@ def test_headerlink_with_awesome_theme(app: Sphinx) -> None:
     Using the Sphinxawesome theme.
     """
     app.build()
-    tree = parse_html(app.outdir / "index.html")
+    tree = parse_html(Path(app.outdir) / "index.html")
     headings = tree.find_all(re.compile("^h[1..2]"), class_=None)
     assert len(headings) == 4
 
@@ -166,7 +160,7 @@ def test_ids_with_awesome_theme(app: Sphinx) -> None:
     the result should be the same.
     """
     app.build()
-    tree = parse_html(app.outdir / "index.html")
+    tree = parse_html(Path(app.outdir) / "index.html")
     sections = tree("section")
     assert len(sections) == 4
     assert sections[0]["id"] == "test"
@@ -186,9 +180,9 @@ def test_no_permalinks(app: Sphinx) -> None:
 
     I'm not sure I want to support this, but here goes.
     """
-    app.config.html_permalinks = False
+    app.config.html_permalinks = False  # type: ignore[attr-defined]
     app.build()
-    tree = parse_html(app.outdir / "index.html")
+    tree = parse_html(Path(app.outdir) / "index.html")
     headings = tree(re.compile("^h[1..2]"), class_=None)
     assert len(headings) == 4
     headerlinks = tree("a", class_="headerlink")

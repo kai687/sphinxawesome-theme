@@ -14,7 +14,7 @@ from typing import Any, Dict, Generator, List, Tuple
 
 from docutils import nodes
 from docutils.nodes import Node
-from docutils.parsers.rst import directives
+from docutils.parsers.rst import directives  # type: ignore[attr-defined]
 from docutils.statemachine import StringList
 from pygments.formatters import HtmlFormatter
 from pygments.util import get_list_opt
@@ -28,6 +28,9 @@ from sphinx.util.docutils import SphinxDirective
 from . import __version__
 
 logger = logging.getLogger(__name__)
+
+# type alias
+TokenStream = Generator[Tuple[int, str], None, None]
 
 
 def container_wrapper(
@@ -55,7 +58,7 @@ def container_wrapper(
         raise RuntimeError  # never reached
 
 
-class AwesomeHtmlFormatter(HtmlFormatter):
+class AwesomeHtmlFormatter(HtmlFormatter):  # type: ignore
     """Custom HTML formatter for Pygments.
 
     This produces quite different HTML compared to Sphinx.
@@ -87,7 +90,7 @@ class AwesomeHtmlFormatter(HtmlFormatter):
 
         super().__init__(**options)
 
-    def _highlight_lines(self, tokensource: Tuple[Any, Any]) -> Generator:
+    def _highlight_lines(self, tokensource: TokenStream) -> TokenStream:
         """Add classes to `hl_added` and `hl_removed` lines.
 
         Simplification, because we only need to care about class-based styles
@@ -105,7 +108,7 @@ class AwesomeHtmlFormatter(HtmlFormatter):
             else:
                 yield 1, value
 
-    def wrap(self, source: Generator, outfile: Any) -> Generator:
+    def wrap(self, source: TokenStream, outfile: Any) -> TokenStream:
         """Return a <pre><code> wrapped element.
 
         Pygments returns the highlighted block wrapped inside a ``div.highlight``.
@@ -117,7 +120,7 @@ class AwesomeHtmlFormatter(HtmlFormatter):
         """
         return self._wrap_pre(self._wrap_code(source))
 
-    def _wrap_pre(self, inner: Generator) -> Generator:
+    def _wrap_pre(self, inner: TokenStream) -> TokenStream:
         """Overwrite this method.
 
         I don't want an empty span in front of every code block.
@@ -130,7 +133,7 @@ class AwesomeHtmlFormatter(HtmlFormatter):
         yield from inner
         yield 0, ("</pre>")
 
-    def _wrap_linespans(self, inner: Generator) -> Generator:
+    def _wrap_linespans(self, inner: TokenStream) -> TokenStream:
         """Overwrite as I want a class applied to the linespan."""
         i = self.linenostart - 1
         for t, line in inner:
@@ -196,7 +199,7 @@ class AwesomeCodeBlock(CodeBlock):
             except ValueError as err:
                 return [document.reporter.warning(err, line=self.lineno)]
         else:
-            hl_lines = None
+            hl_lines = []
 
         # add parsing for hl_added and hl_removed
         linespec = self.options.get("emphasize-added")
@@ -214,7 +217,7 @@ class AwesomeCodeBlock(CodeBlock):
             except ValueError as err:
                 return [document.reporter.warning(err, line=self.lineno)]
         else:
-            hl_added = None
+            hl_added = []
 
         # add parsing for hl_added and hl_removed
         linespec = self.options.get("emphasize-removed")
@@ -232,7 +235,7 @@ class AwesomeCodeBlock(CodeBlock):
             except ValueError as err:
                 return [document.reporter.warning(err, line=self.lineno)]
         else:
-            hl_removed = None
+            hl_removed = []
 
         if "dedent" in self.options:
             location = self.state_machine.get_source_and_line(self.lineno)
@@ -256,11 +259,11 @@ class AwesomeCodeBlock(CodeBlock):
                 "highlight_language", self.config.highlight_language
             )
         extra_args = literal["highlight_args"] = {}
-        if hl_lines is not None:
+        if hl_lines:
             extra_args["hl_lines"] = hl_lines
-        if hl_added is not None:
+        if hl_added:
             extra_args["hl_added"] = hl_added
-        if hl_removed is not None:
+        if hl_removed:
             extra_args["hl_removed"] = hl_removed
         if "lineno-start" in self.options:
             extra_args["linenostart"] = self.options["lineno-start"]
