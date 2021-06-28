@@ -151,12 +151,12 @@ def isort(session: Session) -> None:
 @nox.session(python=python_versions)
 def mypy(session: Session) -> None:
     """Typecheck python files with mypy."""
-    args = session.posargs
+    args = session.posargs or ["--strict", "--no-warn-unused-ignores"]
 
     install_constrained_version(
         session, "mypy", "pytest", "sphinx", "types-docutils", "bs4", "nox"
     )
-    session.run("mypy", "--strict", *args)
+    session.run("mypy", *args)
 
 
 @nox.session
