@@ -37,7 +37,7 @@ dd {
 }
 
 dl.footnote {
-  @apply text-sm border-t pt-4;
+  @apply text-sm pt-4;
   & dt {
     @apply float-left text-blue-700;
   }
