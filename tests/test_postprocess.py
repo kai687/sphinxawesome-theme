@@ -16,7 +16,8 @@ def parse_html(html: str) -> BeautifulSoup:
 @pytest.mark.sphinx("html")
 def test_get_filelist(app: Sphinx) -> None:
     """It gets the correct number of HTML files."""
-    app.builder.build_all()
+    if app.builder is not None:
+        app.builder.build_all()
 
     html_files = postprocess._get_html_files(app.outdir)
     assert len(html_files) == 3

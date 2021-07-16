@@ -33,7 +33,8 @@ def setup_jinja_filter(
     doctree: Node,
 ) -> None:
     """Register a function as a Jinja2 filter."""
-    app.builder.templates.environment.filters["sanitize"] = _make_id_from_title
+    if app.builder is not None:
+        app.builder.templates.environment.filters["sanitize"] = _make_id_from_title
 
 
 def setup(app: Sphinx) -> Dict[str, Any]:

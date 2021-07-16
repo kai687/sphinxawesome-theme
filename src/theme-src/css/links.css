@@ -68,7 +68,7 @@ p:not(.admonition-title),
 
 .footnote-reference {
   vertical-align: super;
-  @apply text-sm -ml-1;
+  @apply text-sm;
 }
 
 .external-link-icon {
