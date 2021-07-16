@@ -16,7 +16,8 @@ def test_returns_version() -> None:
 @pytest.mark.sphinx("dummy")
 def test_can_access_and_compile_test(app: Sphinx) -> None:
     """It compiles the basic test files."""
-    app.builder.build_all()
+    if app.builder is not None:
+        app.builder.build_all()
     assert os.path.exists(app.outdir)
     assert not os.listdir(app.outdir)
 

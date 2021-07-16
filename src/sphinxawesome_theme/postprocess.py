@@ -109,7 +109,7 @@ def post_process_html(app: Sphinx, exc: Optional[Exception]) -> None:
     files in the output directory, then runs the ``_modify_html``
     function on each of them.
     """
-    if app.builder.name not in ["html", "dirhtml"]:
+    if app.builder is not None and app.builder.name not in ["html", "dirhtml"]:
         return
 
     if exc is None:
