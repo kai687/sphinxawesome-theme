@@ -29,13 +29,12 @@ The source code is available on GitHub_.
 
 .. toctree::
    :hidden:
-   :caption: docs
+   :caption: how-to
 
    how-to/install
    how-to/use
    how-to/modify
-   about
-   update
+   how-to/update
 
 .. toctree::
    :hidden:
@@ -43,3 +42,8 @@ The source code is available on GitHub_.
    :glob:
 
    demo/*
+
+.. toctree::
+   :hidden:
+
+   about
