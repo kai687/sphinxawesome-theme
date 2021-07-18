@@ -60,19 +60,19 @@ several extensions that enhance the usability:
 - **Awesome user experience improvements**. These small features make the theme more
   usable:
 
-    - better keyboard navigation:
+    - Better keyboard navigation:
 
-      - use the `Tab` key to navigate through all sections on the page
-      - use the *Skip to Content* link to bypass the navigation links
-      - use the `/` key (forward Slash) to start a search
+      - Use the `Tab` key to navigate through all sections on the page
+      - Use the *Skip to Content* link to bypass the navigation links
+      - Use the `/` key (forward Slash) to start a search
 
-    - better "permalink" mechanism:
+    - Better "permalink" mechanism:
 
-      - hovering over an element with a permalink reveals a *Link* icon
-      - selecting the *Link* icon copies the link to the clipboard
-      - notes, warnings and other admonitions have permalinks by default
+      - Hovering over an element with a permalink reveals a *Link* icon
+      - Selecting the *Link* icon copies the link to the clipboard
+      - Notes, warnings and other admonitions have permalinks by default
 
-    - collapsible elements:
+    - Collapsible elements:
 
-      - nested navigation links---all pages are reachable from all other pages
-      - code definitions---code object definitions (functions, classes, modules, etc.), for example, obtained via the `sphinx.ext.autodoc` extension.
+      - Nested navigation links---all pages are reachable from all other pages
+      - Code definitions---code object definitions (functions, classes, modules, etc.), for example, obtained via the `sphinx.ext.autodoc` extension.
