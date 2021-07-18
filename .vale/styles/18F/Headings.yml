@@ -1,7 +1,0 @@
----
-extends: capitalization
-message: "'%s' should be in sentence case."
-link: https://content-guide.18f.gov/capitalization/#headings
-level: warning
-scope: heading
-match: $sentence

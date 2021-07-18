@@ -2,7 +2,7 @@
 name = "sphinxawesome-theme"
 version = "2.0.0"
 description = "An awesome theme for the Sphinx documentation generator"
-readme = "README.rst"
+readme = "README.md"
 authors = ["Kai Welke <kai687@pm.me>"]
 repository = "https://github.com/kai687/sphinxawesome-theme"
 license = "MIT"
@@ -42,6 +42,7 @@ flake8_implicit_str_concat = "^0.2.0"
 pytest-randomly = "^3.4.1"
 isort = "^5.9.2"
 myst-parser = "^0.15.1"
+sphinx-autobuild = "^2021.3.14"
 
 [tool.coverage.paths]
 source = ["src"]

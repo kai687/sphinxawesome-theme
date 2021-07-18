@@ -15,6 +15,9 @@
   & > ul {
     @apply -mt-4;
   }
+  & > ul + ul {
+    @apply mt-6;
+  }
   & .nav-link {
     @apply py-2;
   }

@@ -8,11 +8,13 @@ This page shows basic paragraph and heading styles. Styles for heading levels ``
 Inline markup
 -------------
 
-For emphasizing inlined text, you can either *emphasize* it or make it a **strong**
+For emphasizing inline text, you can either *emphasize* it or make it a **strong**
 statement.
 
 Level 2 heading
 ---------------
+
+.. vale Awesome.SpellCheck = NO
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vehicula lectus est, ac
 volutpat odio fringilla quis. Integer vitae molestie eros, ac eleifend nisi. Proin sit
@@ -38,6 +40,7 @@ amet odio non turpis mattis laoreet finibus vitae nisi. Nam vehicula sapien vel 
 facilisis. Duis bibendum tortor sit amet sollicitudin gravida. Donec ut ante mattis,
 faucibus nulla cursus, dictum dolor.
 
+.. vale Awesome.SpellCheck = YES
 
 .. rubric:: Rubric heading
 

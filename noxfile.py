@@ -53,9 +53,19 @@ def tests(session: Session) -> None:
 @nox.session(python=python_versions)
 def docs(session: Session) -> None:
     """Build the docs."""
-    args = session.posargs or ["-b", "dirhtml", "-aWTE", "docs", "docs/public"]
-    session.run("poetry", "install", external=True)
+    args = session.posargs or ["-b", "dirhtml", "-aqWTE", "docs", "docs/public"]
+    session.run("poetry", "install", "--no-dev", external=True)
+    install_constrained_version(session, "myst-parser")
     session.run("sphinx-build", *args)
+
+
+@nox.session(python=python_versions[-1])
+def live_docs(session: Session) -> None:
+    """Build the docs and live-reload."""
+    args = session.posargs or ["-b", "dirhtml", "-aWTE", "docs", "docs/public"]
+    session.run("poetry", "install", "--no-dev", external=True)
+    install_constrained_version(session, "myst-parser", "sphinx-autobuild")
+    session.run("sphinx-autobuild", *args)
 
 
 @nox.session(python="3.9")
@@ -64,13 +74,6 @@ def linkcheck(session: Session) -> None:
     args = session.posargs or ["-b", "linkcheck", "-aWTE", "docs", "docs/public/_links"]
     session.run("poetry", "install", external=True)
     session.run("sphinx-build", *args)
-
-
-@nox.session
-def serve(session: Session) -> None:
-    """Serve the built documentation."""
-    args = session.posargs or ["--bind", "127.0.0.1", "--directory", "docs/public"]
-    session.run("python3", "-m", "http.server", *args)
 
 
 @nox.session(python=python_versions[-1])
@@ -157,16 +160,3 @@ def mypy(session: Session) -> None:
         session, "mypy", "pytest", "sphinx", "types-docutils", "bs4", "nox"
     )
     session.run("mypy", *args)
-
-
-@nox.session
-def vale(session: Session) -> None:
-    """Run vale linter on docs directory."""
-    from shutil import which
-
-    install_constrained_version(session, "sphinx")
-
-    if which("vale") is not None:
-        session.run("vale", "docs", external=True)
-    else:
-        session.skip("Vale executable not found. Skipping.")

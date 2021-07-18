@@ -1,31 +1,25 @@
 Admonitions
 ===========
 
-This page shows the available admonitions,
-or callouts,
-for this theme.
+This page shows the available admonitions for this theme.
 
 Tips
 ----
 
-Tips are positive admonitions.
-A tip can be a shortcut for an action
-that was further explained in the main text,
-or a confirmation.
+Tips are positive admonitions. A tip can be a shortcut for an action that was further
+explained in the main text, or a confirmation.
 
 .. tip::
 
    This is how a tip appears.
 
-The ``hint`` admonition is considered equivalent
-and appears in the same style.
+The ``hint`` admonition is considered equivalent and appears in the same style.
 
 Notes
 -----
 
-Notes are neutral admonitions,
-that can draw the attention of the reader,
-but usually don't have a positive or negative effect.
+Notes are neutral admonitions, that can draw the attention of the reader, but usually
+don't have a positive or negative effect.
 
 .. note::
 
@@ -52,8 +46,8 @@ Use a general admonition for notes with custom titles.
 Caution
 -------
 
-Use a ``caution`` admonition to make the user aware of important issues,
-or consequences.
+Use a ``caution`` admonition to make the user aware of important issues, or
+consequences.
 
 .. caution::
 
@@ -64,23 +58,24 @@ The ``important`` admonition is considered equivalent and appears in the same st
 Warning
 -------
 
-A ``warning`` is a negative admonition.
-Typically, anything involving security should be emphasized with a warning.
-Ignoring the information in a warning usually has negative consequences.
+A ``warning`` is a negative admonition. Typically, anything involving security should
+be emphasized with a warning. Ignoring the information in a warning usually has
+negative consequences.
 
 .. warning::
 
    This is how a warning appears.
 
-The ``danger`` and ``error`` admonitions are considered equivalent and appear in
-the same style.
+The ``danger`` and ``error`` admonitions are considered equivalent and appear in the
+same style.
 
-Blockquotes
------------
+Block quotations
+----------------
 
-Blockquotes aren't admonitions,
-but are used to quote other material
-and as such are often set apart from the main text.
+.. vale off
+
+Block quotations aren't admonitions, but are used to quote other material and as such
+are often set apart from the main text.
 
     "It is my business to know things. That is my trade."
 

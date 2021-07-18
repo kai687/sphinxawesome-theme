@@ -6,7 +6,7 @@ On this page, styles for figures and tables are shown.
 Images
 ------
 
-For simple images without captions, use the ``image`` directive.
+For straightforward images without captions, use the ``image`` directive.
 
 .. image:: image.svg
    :alt: A placeholder image

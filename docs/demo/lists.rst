@@ -12,6 +12,8 @@ Unordered lists
 
 Choose an unordered, or bulleted, list, when the order of items don't matter.
 
+.. vale Awesome.SpellCheck = NO
+
 - item a
 - item b
 
@@ -41,6 +43,8 @@ and so on.
 
 #. Step 3
 
+.. vale Awesome.SpellCheck = YES
+
 ----------------
 Definition lists
 ----------------
@@ -55,7 +59,7 @@ Term b
    Definition for term b. How about a quote in a definition list?
 
        This is supposed to be a quote.
-       Let's check the spacing.
+       Is the spacing okay?
 
 Term c
    Definition for term c.
