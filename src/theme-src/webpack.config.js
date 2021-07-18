@@ -21,6 +21,7 @@ module.exports = {
       failOnWarning: true,
       failOnError: true,
       files: "./js/*.js",
+      fix: true,
     }),
     new MiniCssExtractPlugin({
       filename: "theme.css",
@@ -42,7 +43,7 @@ module.exports = {
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
-        use: ["file-loader"],
+        type: "asset/resource",
       },
       {
         test: /\.js$/,

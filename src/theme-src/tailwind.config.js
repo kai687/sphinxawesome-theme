@@ -31,7 +31,7 @@ module.exports = {
         fluid: "var(--fluid-margin)",
       },
       colors: {
-        blue: colors.lightBlue,
+        blue: colors.sky,
       },
     },
   },
