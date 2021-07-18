@@ -55,7 +55,7 @@ Term b
    Definition for term b. How about a quote in a definition list?
 
        This is supposed to be a quote.
-       Let's check the spacing.
+       Is the spacing okay?
 
 Term c
    Definition for term c.

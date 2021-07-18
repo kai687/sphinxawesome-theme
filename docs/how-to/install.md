@@ -26,7 +26,9 @@ You can also install the latest development version of the theme directly from G
 pip install git+https://github.com/kai687/sphinxawesome-theme.git
 ```
 
+<!-- vale 18F.UnexpandedAcronyms = NO -->
 Check the "HEAD" section at the top of the
+<!-- vale 18F.UnexpandedAcronyms = YES -->
 [CHANGELOG](https://github.com/kai687/sphinxawesome-theme/blob/master/CHANGELOG.rst)
 file. These features and bugfixes are available in the version on GitHub but not yet in
 the released version on PyPI\*.
@@ -69,15 +71,21 @@ modification.
 
 ## Set up a development environment
 
-The project has two different sets of dependencies, for Python and JavaScript. If you want
-to write documentation, write tests, or modify the Python extensions, install the Python
-dependencies. See {ref}`Install Python dependencies` for more information.
+The project has two different sets of dependencies, for Python and JavaScript. If you
+want to write documentation, write tests, or modify the Python extensions, install the
+Python dependencies. See {ref}`Install Python dependencies` for more information.
 
-If you want to modify the Jinja2 templates[^1], the CSS, or the JavaScript files, you also
-need to install the JavaScript dependencies. See {ref}`Install JavaScript dependencies`
-for more information.
+If you want to modify the Jinja2 templates[^1], the CSS, or the JavaScript files, you
+also need to install the JavaScript dependencies. See {ref}`Install JavaScript
+dependencies` for more information.
 
-[^1]: Technically, you only need to add the JavaScript dependencies, if you want to _change_ the CSS classes inside the templates. For example, if you add a utility class that wasn't previously used, you need to run the JavaScript/CSS pipeline again to include it in the final stylesheet.
+<!-- vale Google.Colons = NO -->
+<!-- vale 18F.SentenceLength = NO -->
+<!-- vale 18F.Reading = NO -->
+[^1]: Technically, you only need to add the JavaScript dependencies, if you want to _change_ the CSS classes inside the templates. For example, if you add a utility class that wasn't previously used, you need to run the JavaScript/CSS pipeline again to include it in the final style sheet.
+<!-- vale Google.Colons = YES -->
+<!-- vale 18F.SentenceLength = YES -->
+<!-- vale 18F.Reading = YES -->
 
 In both cases, create a local copy first.
 
@@ -113,10 +121,9 @@ In order to modify the theme, create a local copy first:
 
 ## Install Python dependencies
 
-The Sphinx awesome theme uses [Poetry](https://python-poetry.org/) to
-manage the Python dependencies. Testing,
-linting, and building the documentation
-is handled by [Nox](https://nox.thea.codes/en/stable/).
+The Sphinx awesome theme uses [Poetry](https://python-poetry.org/) to manage the Python
+dependencies. Testing, linting, and building the documentation is handled by
+[Nox](https://nox.thea.codes/en/stable/).
 
 Follow these steps to install the Python dependencies:
 
@@ -140,8 +147,9 @@ Follow these steps to install the Python dependencies:
    pip install --user --upgrade nox
    ```
 
-   If you want to use the same version of Poetry and Nox as the original repository,
-   see the versions in the file [`constraints.txt`](https://github.com/kai687/sphinxawesome-theme/blob/master/.github/workflows/constraints.txt)
+   If you want to use the same version of Poetry and Nox as the original repository, see
+   the versions in the file
+   [`constraints.txt`](https://github.com/kai687/sphinxawesome-theme/blob/master/.github/workflows/constraints.txt)
 
 1. Install the Python dependencies:
 
@@ -151,6 +159,7 @@ Follow these steps to install the Python dependencies:
 
 Check Poetry's [documentation](https://python-poetry.org/docs/basic-usage/) for more information.
 
+<!-- vale 18F.Clarity = NO -->
 1. **Optional:** install pre-commit hooks:
 
    ```console
@@ -167,6 +176,7 @@ Check Poetry's [documentation](https://python-poetry.org/docs/basic-usage/) for 
    ```console
    poetry run pre-commit run --all
    ```
+<!-- vale 18F.Clarity = YES -->
 
 1. Run a Nox session.
 

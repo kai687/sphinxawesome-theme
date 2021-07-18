@@ -3,15 +3,15 @@
 Use one of the following methods to configure Sphinx to use the awesome theme.
 
 ```{contents} On this page
-:local:
-:backlinks: none
+---
+local: true
+backlinks: none
+---
 ```
 
 ## Load the theme from a Python package
 
-Add the `html_theme` configuration option
-to the Sphinx configuration file `conf.py`.
-
+Add the `html_theme` configuration option to the Sphinx configuration file `conf.py`.
 
 ```{code-block} python
 ---
@@ -24,11 +24,10 @@ If you install and load the theme as a Python package, the extension
 `sphinxawesome.sampdirective` as well as all internal extensions are installed and
 loaded automatically.
 
-
 ## Load the theme from a local directory
 
-If you want to make many changes to the theme, it may be quicker to skip the packaging
-and to load the theme from a directory.
+If you want to make many changes to the theme, you can also skip the packaging.
+It may be quicker to load the theme from a local directory.
 
 Follow these steps to load a local version of the theme from a directory:
 
@@ -92,10 +91,10 @@ html_theme_options = {
 
 By default, the
 [toctree](https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-toctree)
-directive both includes the content as well as prints a list of links in the content
-area, where the directive is included.  A `toctree` directive with the `:hidden:` option
+directive includes the content and prints a list of links in the content
+area. A `toctree` directive with the `:hidden:` option
 includes the content, but doesn't print the list of links in the content area. This can
-be useful if navigation links are elsewhere on the page, and printing the same list of
+be useful if navigation links are elsewhere on the page. Printing the same list of
 links in the content area would be redundant.
 
 If you don't want to include elements from a _hidden_ toctree directive in the
@@ -109,8 +108,7 @@ html_theme_options = {"nav_include_hidden": False}
 ```
 
 When using the `toctree` directive without the `:hidden:` option, insert a headline or
-provide a caption with the `:caption:` option for the list of links in the content area.
-For example:
+provide a caption with the `:caption:` option. For example:
 
 ```{code-block} rst
 .. toctree::
@@ -134,7 +132,7 @@ html_theme_options = {"show_nav": False}
 :::{confval} show_breadcrumbs
 
 By default, "[breadcrumbs](https://en.wikipedia.org/wiki/Breadcrumb_navigation)"
-navigation links are shown at the top of the content area to show the position of this
+navigation links are shown at the top of the content area. They show the position of this
 document relative to the top level. If you want to hide the breadcrumbs navigation
 links, add:
 
@@ -168,8 +166,8 @@ caption: conf.py
 html_theme_options = {"show_prev_next": True}
 ```
 
-In most cases, documentation isn't read from beginning to end, so that this option
-is disabled by default.
+In most cases, documentation isn't read from beginning to end. That's why this option is
+turned off by default.
 :::
 
 :::{confval} show_scrolltop
