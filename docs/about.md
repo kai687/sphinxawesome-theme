@@ -9,6 +9,8 @@ The Sphinx awesome theme relies on the following assets. You can find the comple
 of dependencies in the files `pyproject.toml` for Python dependencies and `package.json`
 for JavaScript dependencies.
 
+<!-- vale Awesome.SpellCheck = NO -->
+
 | Feature                                               | Name/Website                                                             | License                                                                        |
 | ----------------------------------------------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
 | CSS framework                                         | [Tailwind]                                                               | [MIT License](https://github.com/tailwindlabs/tailwindcss/blob/master/LICENSE) |
@@ -18,6 +20,8 @@ for JavaScript dependencies.
 | Tooltips                                              | [Primer/CSS](https://primer.style/css/)                                  | [MIT License](https://github.com/primer/css/blob/main/LICENSE)                 |
 | **Note:** versions ≤ 1.13.1 used these icons instead: | [Entypo](http://www.entypo.com) by Daniel Bruce                          | [Creative Commons Attribution-ShareAlike 4.0]                                  |
 |                                                       | [Zondicons](http://www.zondicons.com) by Steve Schoger                   | ?                                                                              |
+
+<!-- vale Awesome.SpellCheck = YES -->
 
 [creative commons attribution-sharealike 4.0]: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 [apache license, version 2.0]: https://www.apache.org/licenses/LICENSE-2.0.html
@@ -51,7 +55,7 @@ achieve this:
 <!-- vale 18F.Clarity = YES -->
 
 [Webpack] manages the JavaScript and CSS portions of the theme. The entry point for
-Webpack is the file `app.js`. All dependencies are imported here, including fonts and
+webpack is the file `app.js`. All dependencies are imported here, including fonts and
 CSS.
 
 See the Webpack configuration file `webpack.config.js` for the full pipeline.

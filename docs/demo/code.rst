@@ -155,7 +155,7 @@ Clicking the button copies the text inside the code block to the clipboard.
 The header also contains a label for the highlighting language as well as
 the caption.
 
-.. vale off
+.. vale Google.FirstPerson = NO
 
 .. caution::
 
@@ -172,7 +172,7 @@ the caption.
    to *interactive python session*. This theme replaces ``default`` with ``python`` in
    the header section.
 
-.. vale on
+.. vale Google.FirstPerson = YES
 
 The following example shows a code block for JavaScript with a caption.
 

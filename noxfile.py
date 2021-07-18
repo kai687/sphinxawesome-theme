@@ -160,16 +160,3 @@ def mypy(session: Session) -> None:
         session, "mypy", "pytest", "sphinx", "types-docutils", "bs4", "nox"
     )
     session.run("mypy", *args)
-
-
-@nox.session
-def vale(session: Session) -> None:
-    """Run vale linter on docs directory."""
-    from shutil import which
-
-    install_constrained_version(session, "sphinx")
-
-    if which("vale") is not None:
-        session.run("vale", "docs", external=True)
-    else:
-        session.skip("Vale executable not found. Skipping.")

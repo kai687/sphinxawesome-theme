@@ -12,6 +12,8 @@ Unordered lists
 
 Choose an unordered, or bulleted, list, when the order of items don't matter.
 
+.. vale Awesome.SpellCheck = NO
+
 - item a
 - item b
 
@@ -40,6 +42,8 @@ and so on.
    #. Substep 3
 
 #. Step 3
+
+.. vale Awesome.SpellCheck = YES
 
 ----------------
 Definition lists

@@ -170,7 +170,9 @@ In most cases, documentation isn't read from beginning to end. That's why this o
 turned off by default.
 :::
 
+<!-- vale Awesome.SpellCheck = NO -->
 :::{confval} show_scrolltop
+<!-- vale Awesome.SpellCheck = YES -->
 
 For longer pages, scrolling to the top can be a hassle. If you want to show a button,
 that scrolls to the top of the page when clicked, set:
@@ -189,7 +191,9 @@ This theme also enables a few internal extensions that enhance the user experien
 following additional configuration value is set at the top level in the Sphinx
 configuration file `conf.py`:
 
+<!-- vale Awesome.SpellCheck = NO -->
 :::{confval} html_collapsible_definitions
+<!-- vale Awesome.SpellCheck = YES -->
 
 Set this option to ``True`` to enable collapsible object definitions, such as command
 line options, classes, or methods.
