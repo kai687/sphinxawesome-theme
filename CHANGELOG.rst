@@ -1,3 +1,9 @@
+2.0.1
+~~~~~
+
+- fix: style issues (PR #500)
+- documentation update
+
 2.0.0
 ~~~~~
 

@@ -10,7 +10,7 @@ ol {
 }
 
 section:not(#search-results) ul {
-  @apply list-disc ml-4;
+  @apply list-disc ml-6;
   & ul {
     @apply list-square;
   }

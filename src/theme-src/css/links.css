@@ -14,7 +14,7 @@
   .code-header;
 
 .headerlink {
-  @apply ml-1 text-gray-700;
+  @apply ml-1 text-gray-700 hover:text-pink-600;
   & > svg {
     height: 0.875em;
     @apply invisible fill-current outline-none;
