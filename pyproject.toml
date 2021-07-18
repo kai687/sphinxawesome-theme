@@ -2,7 +2,7 @@
 name = "sphinxawesome-theme"
 version = "2.0.0"
 description = "An awesome theme for the Sphinx documentation generator"
-readme = "README.rst"
+readme = "README.md"
 authors = ["Kai Welke <kai687@pm.me>"]
 repository = "https://github.com/kai687/sphinxawesome-theme"
 license = "MIT"

@@ -7,9 +7,10 @@ keywords: documentation, sphinx, python
 
 # Sphinx awesome theme
 
-```{eval-rst}
-.. include:: ../README.rst
-   :start-after: readme-start
+```{include} ../README.md
+---
+start-after: readme-start -->
+---
 ```
 
 These pages are divided into a _how-to_ and a _demo_ section. In the _how-to_ section,
