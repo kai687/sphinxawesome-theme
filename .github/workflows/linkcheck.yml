@@ -1,0 +1,26 @@
+---
+name: Check Links
+
+on:
+  pull_request:
+    paths:
+      - './docs/**'
+      - 'README.md'
+
+jobs:
+  linkcheck:
+    runs-on: ubuntu-latest
+    name: Check links
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+      - name: Install dependencies
+        run: |
+          pip install --constraint=.github/workflows/constraints.txt poetry nox
+      - name: Run nox workflow
+        run: |
+          nox -s linkcheck

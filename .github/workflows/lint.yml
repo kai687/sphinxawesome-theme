@@ -28,6 +28,3 @@ jobs:
       - name: Run nox workflow
         run: |
           nox -p ${{ matrix.python-version }}
-      - name: Run linkcheck session
-        run: |
-          nox -s linkcheck
