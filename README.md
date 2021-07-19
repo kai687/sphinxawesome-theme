@@ -11,7 +11,8 @@
 This is an awesome theme and a set of extensions for the
 [Sphinx](https://www.sphinx-doc.org/en/master/) documentation generator. Using this
 theme and extension, you can change the look of your documentation website and add a
-number of useful improvements. See the theme in action at https://sphinxawesome.xyz.
+number of useful improvements. See the theme in action at
+[sphinxawesome.xyz](https://sphinxawesome.xyz).
 
 ## Getting started
 
