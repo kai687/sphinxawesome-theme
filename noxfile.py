@@ -2,7 +2,8 @@
 
 import re
 import tempfile
-from typing import Any
+from enum import Enum
+from typing import Any, List, Type, TypeVar
 
 import nox
 from nox.sessions import Session
@@ -10,7 +11,28 @@ from nox.sessions import Session
 nox.options.stop_on_first_error = True
 nox.options.sessions = ["docs", "lint", "black", "mypy", "netlify_test", "tests"]
 python_files = ["src/sphinxawesome_theme", "noxfile.py", "tests", "docs/conf.py"]
-python_versions = ["3.6", "3.7", "3.8", "3.9"]
+
+VersionType = TypeVar("VersionType", bound="Versions")
+
+
+class Versions(Enum):
+    """Python versions as `Enum`."""
+
+    THREE_SIX: str = "3.6"
+    THREE_SEVEN: str = "3.7"
+    THREE_EIGHT: str = "3.8"
+    THREE_NINE: str = "3.9"
+
+    @classmethod
+    def all(cls: Type[VersionType]) -> List[str]:
+        """Return the supported versions as strings."""
+        return [i.value for i in cls]
+
+    @classmethod
+    def latest(cls: Type[VersionType]) -> str:
+        """Return the latest supported version string."""
+        versions = cls.all()
+        return versions[-1]
 
 
 def install_constrained_version(session: Session, *args: str, **kwargs: Any) -> None:
@@ -61,7 +83,7 @@ def append_to_requirements(session: Session, *package_names: str) -> None:
             requirement_file.write(package)
 
 
-@nox.session(python=python_versions)
+@nox.session(python=Versions.all())
 def tests(session: Session) -> None:
     """Run unit tests."""
     args = session.posargs or ["--cov"]
@@ -72,7 +94,7 @@ def tests(session: Session) -> None:
     session.run("pytest", *args)
 
 
-@nox.session(python=python_versions)
+@nox.session(python=Versions.all())
 def docs(session: Session) -> None:
     """Build the docs."""
     args = session.posargs or ["-b", "dirhtml", "-aqWTE", "docs", "docs/public"]
@@ -81,7 +103,7 @@ def docs(session: Session) -> None:
     session.run("sphinx-build", *args)
 
 
-@nox.session(python=python_versions[-1])
+@nox.session(python=Versions.latest())
 def live_docs(session: Session) -> None:
     """Build the docs and live-reload."""
     args = session.posargs or ["-b", "dirhtml", "-aWTE", "docs", "docs/public"]
@@ -90,7 +112,7 @@ def live_docs(session: Session) -> None:
     session.run("sphinx-autobuild", *args)
 
 
-@nox.session(python="3.9")
+@nox.session()
 def linkcheck(session: Session) -> None:
     """Check links."""
     args = session.posargs or ["-b", "linkcheck", "-aWTE", "docs", "docs/public/_links"]
@@ -99,7 +121,7 @@ def linkcheck(session: Session) -> None:
     session.run("sphinx-build", *args)
 
 
-@nox.session(python=python_versions[-1])
+@nox.session()
 def xml(session: Session) -> None:
     """Build XML version of the docs.
 
@@ -110,7 +132,7 @@ def xml(session: Session) -> None:
     session.run("sphinx-build", *args)
 
 
-@nox.session(python="3.7")
+@nox.session(python=Versions.THREE_SEVEN.value)
 def netlify_test(session: Session) -> None:
     """Test, if netlify can build the docs."""
     args = ["-b", "dirhtml", "-T", "-W", "docs/", "docs/public"]
@@ -121,7 +143,7 @@ def netlify_test(session: Session) -> None:
     session.run("sphinx-build", *args)
 
 
-@nox.session(python="3.7")
+@nox.session(python=Versions.THREE_SEVEN.value)
 def export(session: Session) -> None:
     """Export requirements from poetry.lock for Netlify.
 
@@ -138,7 +160,7 @@ def export(session: Session) -> None:
     append_to_requirements(session, "myst-parser", "linkify")
 
 
-@nox.session(python=python_versions)
+@nox.session(python=Versions.all())
 def lint(session: Session) -> None:
     """Lint python files with flake8."""
     args = session.posargs or python_files
@@ -156,7 +178,7 @@ def lint(session: Session) -> None:
     session.run("flake8", *args)
 
 
-@nox.session(python="3.9")
+@nox.session(python=Versions.latest())
 def black(session: Session) -> None:
     """Format python files with black."""
     args = session.posargs or python_files
@@ -165,7 +187,7 @@ def black(session: Session) -> None:
     session.run("black", *args)
 
 
-@nox.session(python="3.9")
+@nox.session(python=Versions.latest())
 def isort(session: Session) -> None:
     """Rearrange imports on all Python files."""
     args = session.posargs or python_files
@@ -174,7 +196,7 @@ def isort(session: Session) -> None:
     session.run("isort", *args)
 
 
-@nox.session(python=python_versions)
+@nox.session(python=Versions.all())
 def mypy(session: Session) -> None:
     """Typecheck python files with mypy."""
     args = session.posargs or ["--strict", "--no-warn-unused-ignores"]
