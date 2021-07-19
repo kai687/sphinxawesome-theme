@@ -1,6 +1,7 @@
 bugfixes
 docutils
 monospace
+netlify
 nox
 postprocessing
 pygments

@@ -2,7 +2,7 @@
 
 
 ![GitHub](https://img.shields.io/github/license/kai687/sphinxawesome-theme?color=blue&style=for-the-badge)
-![PyPI](https://img.shields.io/pypi/v/sphinxawesome-theme?color=pink&style=for-the-badge)
+![PyPI](https://img.shields.io/pypi/v/sphinxawesome-theme?color=eb5&style=for-the-badge&logo=pypi)
 ![Netlify](https://img.shields.io/netlify/e6d20a5c-b49e-4ebc-80f6-59fde8f24e22?logo=netlify&style=for-the-badge)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/kai687/sphinxawesome-theme/Lint?label=Lint&logo=Github&style=for-the-badge)
 
@@ -62,9 +62,11 @@ several extensions that enhance the usability:
 
     - Better keyboard navigation:
 
+      <!-- vale 18F.Clarity = NO -->
       - Use the `Tab` key to navigate through all sections on the page
       - Use the *Skip to Content* link to bypass the navigation links
       - Use the `/` key (forward Slash) to start a search
+      <!-- vale 18F.Clarity = YES -->
 
     - Better "permalink" mechanism:
 
