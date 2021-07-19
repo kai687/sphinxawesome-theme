@@ -4,11 +4,11 @@
 The Sphinx awesome theme version 2.0 requires Sphinx 4.0 or newer.
 :::
 
-If you didn't pin the version of the `sphinxawesome-theme` package, the theme's version
 <!-- vale Google.WordList = NO -->
+If you didn't pin the version of the `sphinxawesome-theme` package, the theme's version
 should be updated automatically. If you use custom CSS or custom templates, check
-<!-- vale Google.WordList = YES -->
 carefully, if you need to update your custom additions.
+<!-- vale Google.WordList = YES -->
 
 Version 2.0 of the Sphinx awesome theme includes these **major breaking changes**:
 
