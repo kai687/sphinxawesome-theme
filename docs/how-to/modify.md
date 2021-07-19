@@ -55,14 +55,14 @@ emphasize-lines: 1
 
 To modify these styles, follow these steps:
 
-1. Install the Python and JavaScript dependencies
+1. Install the Python and JavaScript dependencies:
 
    See {ref}`Set up a development environment` for more information.
 
-1. Make your change
+1. Make your change.
 
    For example, to change the background color of the header to orange,
-   open :file:`sphinxawesome_theme/header.html` and change:
+   open the file `sphinxawesome_theme/header.html` and change:
 
    ```{code-block} html
    ---
@@ -73,7 +73,7 @@ To modify these styles, follow these steps:
    <header class="md:sticky top-0 bg-orange-500 ...">
    ```
 
-1. Build the theme
+1. Build the theme:
 
    ```console
    yarn build
@@ -81,9 +81,8 @@ To modify these styles, follow these steps:
 
 ## Modify CSS files
 
-Everything that's part of the main content,
-including everything that's converted from reStructuredText to HTML
-is styled using Tailwind's `@apply` directive.
+Everything that's part of the main content, including everything that's converted from
+reStructuredText to HTML is styled using Tailwind's `@apply` directive.
 
 ```{code-block} console
 ---
@@ -97,11 +96,11 @@ emphasize-lines: 3
 
 To modify these styles, follow these steps:
 
-1. Install the Python and JavaScript dependencies
+1. Install the Python and JavaScript dependencies.
 
    See {ref}`Set up a development environment` for more information.
 
-1. Make your change
+1. Make your change.
 
    The CSS files are arranged according to the elements they apply to. For example, if you
    want to change the appearance of links from the default blue to an orange, open the file
@@ -125,7 +124,7 @@ To modify these styles, follow these steps:
    }
    ```
 
-1. Build the theme
+1. Build the theme:
 
    ```console
    yarn build
