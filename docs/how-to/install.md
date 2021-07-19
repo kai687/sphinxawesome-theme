@@ -98,7 +98,7 @@ In order to modify the theme, create a local copy first:
    If you don't want to merge your changes with the original repository, you can skip
    this step. See
    <!-- vale Awesome.SpellCheck = NO -->
-   [Fork a repo](https://docs.github.com/en/github/getting-started-with-github/quickstart/fork-a-repo)
+   [Fork a repo](https://docs.github.com/en/get-started/quickstart/fork-a-repo)
    <!-- vale Awesome.SpellCheck = YES -->
    in the GitHub documentation for more information.
 
