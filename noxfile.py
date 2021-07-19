@@ -1,5 +1,6 @@
 """Nox sessions."""
 
+import re
 import tempfile
 from typing import Any
 
@@ -27,16 +28,37 @@ def install_constrained_version(session: Session, *args: str, **kwargs: Any) -> 
         session.install(f"--constraint={requirements.name}", *args, **kwargs)
 
 
-def append_to_requirements(filename: str, package_name: str, version: str) -> None:
+def append_to_requirements(session: Session, *package_names: str) -> None:
     """Add additional dependency to requirements file.
 
-    This is a hack because I only need the `myst-parser` for building the docs on
-    Netlify. It's neither a real dependency, nor a development dependency. I would need
-    to define it as an optional development dependency. This will potentially be
-    possible with poetry 1.2.
+    Poetry doesn't have optional development dependencies yet (potentially in 1.2).
+    For building the docs, I need some depencenies that you don't need to run the
+    package. I also don't want to import _all_ development dependencies on netlify.
+
+    This function exports a temporary requirement.txt with dependencies, extracts
+    matching lines and appends that to the `requirements.txt` file.
+
+    The final `requirements.txt` file has only the `production` dependencies plus
+    some extra (development) dependencies.
     """
-    with open(filename, "a") as requirements:
-        requirements.write(f"{package_name}=={version}")
+    pattern = re.compile("|".join(package_names))
+
+    with tempfile.NamedTemporaryFile() as requirements:
+        session.run(
+            "poetry",
+            "export",
+            "--without-hashes",
+            "--dev",
+            f"--output={requirements.name}",
+            external=True,
+        )
+
+        with open(requirements.name) as tmpfile:
+            packages = [line for line in tmpfile if pattern.search(line)]
+
+    with open("requirements.txt", "a") as requirement_file:
+        for package in packages:
+            requirement_file.write(package)
 
 
 @nox.session(python=python_versions)
@@ -109,11 +131,11 @@ def export(session: Session) -> None:
         "poetry",
         "export",
         "--without-hashes",
-        "--format=requirements.txt",
         "--output=requirements.txt",
         external=True,
     )
-    append_to_requirements("requirements.txt", "myst-parser", "0.15.0")
+
+    append_to_requirements(session, "myst-parser", "linkify")
 
 
 @nox.session(python=python_versions)
