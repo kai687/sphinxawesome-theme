@@ -2,7 +2,7 @@ name: Check documentation quality
 on:
   pull_request:
     paths:
-      - './docs/**'
+      - 'docs/**'
       - 'README.md'
 
 jobs:

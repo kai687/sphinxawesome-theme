@@ -4,7 +4,7 @@ name: Check Links
 on:
   pull_request:
     paths:
-      - './docs/**'
+      - 'docs/**'
       - 'README.md'
 
 jobs:
