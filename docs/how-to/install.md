@@ -28,10 +28,10 @@ pip install git+https://github.com/kai687/sphinxawesome-theme.git
 
 <!-- vale 18F.UnexpandedAcronyms = NO -->
 Check the "HEAD" section at the top of the
-<!-- vale 18F.UnexpandedAcronyms = YES -->
 [CHANGELOG](https://github.com/kai687/sphinxawesome-theme/blob/master/CHANGELOG.rst)
 file. These features and bugfixes are available in the version on GitHub but not yet in
-the released version on PyPI\*.
+the released version on PyPI.
+<!-- vale 18F.UnexpandedAcronyms = YES -->
 
 ## Install the theme as a local package
 
@@ -95,12 +95,12 @@ In order to modify the theme, create a local copy first:
 
 1. **Optional:** fork the repository
 
-   If you don't want to merge your changes with the original repository, you can skip
-   this step. See
    <!-- vale Awesome.SpellCheck = NO -->
-   [Fork a repo](https://docs.github.com/en/get-started/quickstart/fork-a-repo)
+   If you don't want to merge your changes with the original repository, you can skip
+   this step. See [Fork a
+   repo](https://docs.github.com/en/get-started/quickstart/fork-a-repo) in the GitHub
+   documentation for more information.
    <!-- vale Awesome.SpellCheck = YES -->
-   in the GitHub documentation for more information.
 
 1. Clone the (forked) repository:
 
@@ -134,13 +134,13 @@ Follow these steps to install the Python dependencies:
    On macOS and Linux, enter:
 
    ```console
-   curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+   curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | python -
    ```
 
    On Windows PowerShell:
 
    ```PowerShell
-   (Invoke-WebRequest -Uri https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py -UseBasicParsing).Content | python -
+   (Invoke-WebRequest -Uri https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py -UseBasicParsing).Content | python -
    ```
 
 1. Install Nox via pip:
@@ -212,7 +212,7 @@ Follow these steps to install the JavaScript dependencies:
    for example:
 
    ```console
-   v14.15.0
+   v14.17.3
    ```
 
    If the command fails, you may need to install Node.js first,
