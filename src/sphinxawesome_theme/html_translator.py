@@ -28,9 +28,11 @@ from .icons import ICONS
 logger = logging.getLogger(__name__)
 
 COPY_BUTTON = (
-    "<button class='copy tooltipped tooltipped-nw' aria-label='Copy this code'>"
-    + ICONS["copy"]
-    + "</button>\n"
+    "<button class='copy tooltipped tooltipped-nw' "
+    "aria-label='Copy this code' "
+    "data-controller='clipboard' data-action='clipboard#copyCode'>"
+    f"{ICONS['copy']}"
+    "</button>\n"
 )
 
 EXPAND_MORE_BUTTON = (
@@ -73,6 +75,8 @@ class AwesomeHTMLTranslator(HTML5Translator):
                     "</a><a role='button' "
                     "class='headerlink tooltipped tooltipped-ne' "
                     'href="#{}" '
+                    'data-controller="clipboard" '
+                    'data-action="click->clipboard#copyHeaderLink" '
                     'aria-label="Copy link to this section: {}">'.format(
                         node.parent["ids"][0], node.astext()
                     )
@@ -110,6 +114,8 @@ class AwesomeHTMLTranslator(HTML5Translator):
         if node["ids"] and self.builder.add_permalinks and self.config.html_permalinks:
             headerlink = (
                 '<a role="button" class="headerlink tooltipped tooltipped-ne" '
+                'data-controller="clipboard" '
+                'data-action="click->clipboard#copyHeaderLink" '
                 'href="#{}" aria-label="{}">'.format(node["ids"][0], title)
             )
             headerlink += ICONS["headerlink"] + "</a>"
