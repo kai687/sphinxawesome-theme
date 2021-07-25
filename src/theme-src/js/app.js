@@ -1,5 +1,4 @@
 import "../css/styles.css";
-import { collapsibleNav } from "./nav";
 import { toggleSidebar } from "./sidebar";
 import { searchPane, clearSearchHighlights, searchEvents } from "./search";
 import { scrollActive, scrollToTop } from "./scroll";
@@ -17,7 +16,6 @@ window.addEventListener("DOMContentLoaded", () => {
   searchPane();
   clearSearchHighlights();
   searchEvents();
-  collapsibleNav();
   scrollActive();
   scrollToTop();
   collapsible();

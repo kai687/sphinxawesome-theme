@@ -55,12 +55,21 @@ def _collapsible_nav(tree: BeautifulSoup) -> None:
         # Don't add the nav-link class twice (#166)
         if "nav-link" not in link.parent.get("class", []):
             # First, all links should be wrapped in a div.nav-link
-            link.wrap(tree.new_tag("div", attrs={"class": "nav-link"}))
+            link.wrap(
+                tree.new_tag(
+                    "div",
+                    attrs={"class": "nav-link", "data-controller": "collapsibleNav"},
+                )
+            )
             # Next, insert a span.expand before the link, if the #nav-link
             # has any sibling elements (a ``ul`` in the navigation menu)
             if link.parent.next_sibling:
+                link["data-action"] = "focus->collapsibleNav#expandOnFocus"
                 # create the icon
-                svg = BeautifulSoup(ICONS["chevron_right"], "html.parser")
+                svg = BeautifulSoup(ICONS["chevron_right"], "html.parser").svg
+                svg["aria-hidden"] = "true"
+                svg["class"] = "expand"
+                svg["data-action"] = "click->collapsibleNav#expand"
                 link.insert_before(svg)
 
 
