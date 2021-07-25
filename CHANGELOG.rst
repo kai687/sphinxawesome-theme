@@ -1,3 +1,8 @@
+2.0.2
+~~~~~
+
+- fix: remove duplicate inclusion of style sheets
+
 2.0.1
 ~~~~~
 
