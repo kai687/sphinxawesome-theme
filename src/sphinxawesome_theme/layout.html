@@ -33,14 +33,6 @@
       {{ title|striptags|e if title else docstitle }}{{ titlesuffix }}
     </title>
     {%- endblock %}
-    <link
-      rel="stylesheet"
-      href="{{ pathto('_static/pygments.css', 1) }}"
-    />
-    <link
-      rel="stylesheet"
-      href="{{ pathto('_static/' + style, 1) }}"
-    />
     {#- Extra CSS files for overriding stuff #}
     {%- for css in css_files %}
       <link rel="stylesheet" href="{{ pathto(css, 1) }}" />
