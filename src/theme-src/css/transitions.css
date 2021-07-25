@@ -20,4 +20,7 @@
   #snackbar.isShown {
     @apply translate-y-0 opacity-100;
   }
+  #snackbar.isShown {
+    @apply duration-500 ease-out;
+  }
 }

@@ -74,7 +74,12 @@
   -#}
 
   <body class="text-gray-900 antialiased">
-    <div id="page" class="h-screen md:grid md:grid-layout" data-controller="sidebar search">
+    <div
+      id="page"
+      data-controller="sidebar search"
+      data-action="keydown@window->search#focus"
+      class="h-screen md:grid md:grid-layout"
+    >
       {% include "skip.html" %}
 
       <header class="grid-area-header z-10">
