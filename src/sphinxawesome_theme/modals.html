@@ -19,20 +19,3 @@
   data-action="click->sidebar#close"
   class="fixed hidden inset-0 bg-black bg-opacity-50">
 </div>
-
-{#- scroll to top button -#}
-{%- if theme_show_scrolltop | lower == "true" -%}
-<button
-  id="scrolltop"
-  class="fixed bottom-0 right-0 p-2 m-4 rounded-full bg-gray-700 text-white opacity-0 transition-opacity duration-1000 pointer-events-none hover:bg-gray-200 hover:text-pink-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-gray-200 focus:text-pink-500 tooltipped tooltipped-nw"
-  aria-label="{{ _('Scroll to top') }}"
->
-  <svg
-    class="fill-current stroke-current h-8"
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-  >
-    <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
-  </svg>
-</button>
-{%- endif -%}
