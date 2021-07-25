@@ -20,4 +20,10 @@ export default class extends Controller {
     this.sidebarTarget.classList.remove("isShown")
     this.screenTarget.classList.remove("isShown")
   }
+
+  // collapse/expand navigation sections
+  expand(event) {
+    const icon = event.currentTarget
+    icon.parentElement.parentElement.classList.toggle("expanded")
+  }
 }

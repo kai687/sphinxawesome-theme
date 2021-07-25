@@ -1,22 +1,4 @@
 // Some enhancements for the search experience
-export function searchPane() {
-  const searchPane = document.querySelector("#search-pane");
-  const openSearch = document.querySelector("#openSearch");
-  const closeSearch = document.querySelector("#closeSearch");
-  const isShown = "isShown";
-
-  if (openSearch) {
-    openSearch.onclick = () => {
-      searchPane.classList.add(isShown);
-    };
-  }
-  if (closeSearch) {
-    closeSearch.onclick = () => {
-      searchPane.classList.remove(isShown);
-    };
-  }
-}
-
 export function clearSearchHighlights() {
   setTimeout(() => {
     const snackbar = document.querySelector("#snackbar");

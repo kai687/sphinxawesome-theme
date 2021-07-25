@@ -1,6 +1,5 @@
 import "../css/styles.css";
-import { toggleSidebar } from "./sidebar";
-import { searchPane, clearSearchHighlights, searchEvents } from "./search";
+// import { clearSearchHighlights, searchEvents } from "./search";
 import { scrollActive, scrollToTop } from "./scroll";
 import { collapsible } from "./collapsible";
 
@@ -12,10 +11,8 @@ const ctx = require.context("./controllers", true, /.js$/)
 app.load(definitionsFromContext(ctx))
 
 window.addEventListener("DOMContentLoaded", () => {
-  toggleSidebar();
-  searchPane();
-  clearSearchHighlights();
-  searchEvents();
+  // clearSearchHighlights();
+  // searchEvents();
   scrollActive();
   scrollToTop();
   collapsible();
