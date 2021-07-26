@@ -234,19 +234,18 @@ def test_basic_codeblock_awesome_theme(app: Sphinx) -> None:
     assert len(code_blocks) == 8
     children = [c for c in code_blocks[0].children if c.strip is None]
     assert len(children) == 2
-    assert str(children[0]) == (
-        '<div class="code-header">\n'
-        '<span class="code-lang">python</span>\n'
-        '<button aria-label="Copy this code" '
-        'class="copy tooltipped tooltipped-nw">'
-        '<svg aria-hidden="true" viewbox="0 0 24 24" '
-        'xmlns="http://www.w3.org/2000/xvg">'
-        '<path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 '
-        "4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 "
-        '2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z">'
-        "</path></svg></button>\n</div>"
-    )
-    assert str(children[1]) == (
+
+    header, code = children
+    assert header["class"] == ["code-header"]
+    span, button = list(header.children)
+    assert span["class"] == ["code-lang"]
+    assert button["class"] == ["copy", "tooltipped", "tooltipped-nw"]
+    assert button["data-controller"] == "clipboard"
+    assert button["data-action"] == "clipboard#copyCodeBlock"
+    assert len(button.children) == 1
+    icon = button.children[0]
+    assert icon.name == "svg"
+    assert str(code) == (
         '<pre><code><span class="nb">print</span>'
         '<span class="p">(</span><span class="s2">"Hello"</span>'
         '<span class="p">)</span>\n'
@@ -275,30 +274,20 @@ def test_captioned_codeblocks_with_awesome_theme(app: Sphinx) -> None:
     children = [c for c in code_header[0].children if c.strip is None]
     assert len(children) == 3
     assert str(children[0]) == '<span class="code-lang">python</span>'
-    assert str(children[1]) == (
-        '<span><span class="caption-text">test</span>'
-        '<a aria-label="Copy link to this code block." '
-        'class="headerlink tooltipped tooltipped-ne" '
-        'href="#id1" role="button">'
-        '<svg pointer-events="none" viewbox="0 0 24 24" '
-        'xmlns="http://www.w3.org/2000/svg">'
-        '<path d="M3.9 12c0-1.71 1.39-3.1 '
-        "3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 "
-        "5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 "
-        "13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 "
-        "3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 "
-        '5-5s-2.24-5-5-5z"></path></svg></a></span>'
-    )
-    assert str(children[2]) == (
-        '<button aria-label="Copy this code" '
-        'class="copy tooltipped tooltipped-nw">'
-        '<svg aria-hidden="true" viewbox="0 0 24 24" '
-        'xmlns="http://www.w3.org/2000/xvg">'
-        '<path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 '
-        "4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 "
-        '2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z">'
-        "</path></svg></button>"
-    )
+
+    caption = children[1]
+    assert caption.name == "span"
+    caption_text, link = caption.children
+    assert caption_text["class"] == ["caption-text"]
+    assert link["aria-label"] == ["Copy link to this code block"]
+    assert link["data-controller"] == "clipboard"
+    assert link["data-action"] == "click->clipboard#copyHeaderLink"
+
+    copy_code = children[2]
+    assert copy_code["aria-label"] == "Copy this code"
+    assert copy_code["data-controller"] == "clipboard"
+    assert "copy" in copy_code["class"]
+    assert copy_code["data-action"] == "clipboard#copyCodeBlock"
 
 
 @pytest.mark.sphinx(
