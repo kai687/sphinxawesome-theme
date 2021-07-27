@@ -10,7 +10,7 @@ kbd {
 
 /* literal blocks (mostly parsed-literals) not wrapped in div.highlight */
 pre {
-  @apply my-6 border p-2 overflow-x-auto rounded-xs;
+  @apply my-6 border p-2 overflow-x-auto rounded-sm shadow;
   /* give some extra padding to parsed-literals */
   &.literal-block {
     @apply p-4;
@@ -19,10 +19,10 @@ pre {
 
 /* the outer wrapper for a code block */
 .highlight {
-  @apply my-6;
+  @apply my-6 shadow;
   /* the code block itself */
   & pre {
-    @apply m-0 pl-4;
+    @apply m-0 pl-4 rounded-t-none shadow-none;
   }
   /* emphasized lines */
   & mark,
@@ -71,7 +71,7 @@ span.gi {
 
 /* the header of a code block */
 .code-header {
-  @apply border-l border-t border-r flex justify-between items-center text-sm text-gray-100 bg-gray-800 border-gray-800 rounded-xs;
+  @apply border-l border-t border-r flex justify-between items-center text-sm text-gray-100 bg-gray-800 border-gray-800 rounded-t-sm rounded-b-none;
   & .caption-text {
     @apply p-2;
   }

@@ -3,14 +3,14 @@
  * **************************/
 
 blockquote {
-  @apply text-sm my-6 px-4 border bg-gray-100 border-l-4 rounded-xs;
+  @apply text-sm my-6 px-4 border bg-gray-100 border-l-4 rounded-sm shadow-sm;
   & .attribution {
     @apply italic;
   }
 }
 
 .admonition {
-  @apply text-sm my-6 p-4 text-blue-900 border border-blue-400 border-l-4 rounded-xs bg-blue-400 bg-opacity-2;
+  @apply text-sm my-6 p-4 text-blue-900 border border-blue-400 border-l-4 rounded-sm bg-blue-400 bg-opacity-2 shadow-sm;
 
   & p:not(.admonition-title) {
     @apply my-4;
