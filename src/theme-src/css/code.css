@@ -5,7 +5,7 @@
 /* inline code */
 :not(pre) > code,
 kbd {
-  @apply font-medium text-sm leading-none py-px px-1 bg-gray-100;
+  @apply font-medium px-1;
 }
 
 /* literal blocks (mostly parsed-literals) not wrapped in div.highlight */
