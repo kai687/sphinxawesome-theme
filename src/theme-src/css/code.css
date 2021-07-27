@@ -5,7 +5,7 @@
 /* inline code */
 :not(pre) > code,
 kbd {
-  @apply font-medium text-sm leading-none py-px px-1 bg-gray-100;
+  @apply font-medium px-1;
 }
 
 /* literal blocks (mostly parsed-literals) not wrapped in div.highlight */
@@ -71,7 +71,7 @@ span.gi {
 
 /* the header of a code block */
 .code-header {
-  @apply border-l border-t border-r flex justify-between items-center text-sm text-gray-100 bg-gray-800 rounded-xs;
+  @apply border-l border-t border-r flex justify-between items-center text-sm text-gray-100 bg-gray-800 border-gray-800 rounded-xs;
   & .caption-text {
     @apply p-2;
   }

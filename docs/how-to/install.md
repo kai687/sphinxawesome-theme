@@ -27,10 +27,12 @@ pip install git+https://github.com/kai687/sphinxawesome-theme.git
 ```
 
 <!-- vale 18F.UnexpandedAcronyms = NO -->
+
 Check the "HEAD" section at the top of the
 [CHANGELOG](https://github.com/kai687/sphinxawesome-theme/blob/master/CHANGELOG.rst)
 file. These features and bugfixes are available in the version on GitHub but not yet in
 the released version on PyPI.
+
 <!-- vale 18F.UnexpandedAcronyms = YES -->
 
 ## Install the theme as a local package
@@ -76,13 +78,15 @@ want to write documentation, write tests, or modify the Python extensions, insta
 Python dependencies. See {ref}`Install Python dependencies` for more information.
 
 If you want to modify the Jinja2 templates[^1], the CSS, or the JavaScript files, you
-also need to install the JavaScript dependencies. See {ref}`Install JavaScript
-dependencies` for more information.
+also need to install the JavaScript dependencies. See
+{ref}`Install JavaScript dependencies` for more information.
 
 <!-- vale Google.Colons = NO -->
 <!-- vale 18F.SentenceLength = NO -->
 <!-- vale 18F.Reading = NO -->
+
 [^1]: Technically, you only need to add the JavaScript dependencies, if you want to _change_ the CSS classes inside the templates. For example, if you add a utility class that wasn't previously used, you need to run the JavaScript/CSS pipeline again to include it in the final style sheet.
+
 <!-- vale Google.Colons = YES -->
 <!-- vale 18F.SentenceLength = YES -->
 <!-- vale 18F.Reading = YES -->
@@ -96,6 +100,7 @@ In order to modify the theme, create a local copy first:
 1. **Optional:** fork the repository
 
    <!-- vale Awesome.SpellCheck = NO -->
+
    If you don't want to merge your changes with the original repository, you can skip
    this step. See [Fork a
    repo](https://docs.github.com/en/get-started/quickstart/fork-a-repo) in the GitHub
@@ -162,6 +167,7 @@ Follow these steps to install the Python dependencies:
 Check Poetry's [documentation](https://python-poetry.org/docs/basic-usage/) for more information.
 
 <!-- vale 18F.Clarity = NO -->
+
 1. **Optional:** install pre-commit hooks:
 
    ```console
@@ -178,7 +184,8 @@ Check Poetry's [documentation](https://python-poetry.org/docs/basic-usage/) for 
    ```console
    poetry run pre-commit run --all
    ```
-<!-- vale 18F.Clarity = YES -->
+
+   <!-- vale 18F.Clarity = YES -->
 
 1. Run a Nox session.
 
