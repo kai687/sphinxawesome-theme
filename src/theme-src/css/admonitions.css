@@ -3,14 +3,14 @@
  * **************************/
 
 blockquote {
-  @apply text-sm my-6 px-4 border bg-gray-100 border-l-4;
+  @apply text-sm my-6 px-4 border bg-gray-100 border-l-4 rounded-xs;
   & .attribution {
     @apply italic;
   }
 }
 
 .admonition {
-  @apply text-sm my-6 p-4 text-blue-900 border border-blue-400 border-l-4;
+  @apply text-sm my-6 p-4 text-blue-900 border border-blue-400 border-l-4 rounded-xs bg-blue-400 bg-opacity-2;
 
   & p:not(.admonition-title) {
     @apply my-4;
@@ -34,18 +34,18 @@ blockquote {
 
 .tip,
 .hint {
-  @apply text-green-900 border-green-400;
+  @apply text-green-900 border-green-400 bg-green-400 bg-opacity-2;
 }
 
 .warning,
 .danger,
 .error {
-  @apply text-red-900 border-red-400;
+  @apply text-red-900 border-red-400 bg-red-400 bg-opacity-2;
 }
 
 .caution,
 .important {
-  @apply text-yellow-900 border-yellow-400;
+  @apply text-yellow-900 border-yellow-400 bg-yellow-400 bg-opacity-2;
 }
 
 .admonition-title {

@@ -33,6 +33,12 @@ module.exports = {
       colors: {
         blue: colors.sky,
       },
+      borderRadius: {
+        xs: "1px",
+      },
+      backgroundOpacity: {
+        "2": "0.02",
+      },
     },
   },
 };
