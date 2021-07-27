@@ -10,7 +10,7 @@ kbd {
 
 /* literal blocks (mostly parsed-literals) not wrapped in div.highlight */
 pre {
-  @apply my-6 border p-2 overflow-x-auto;
+  @apply my-6 border p-2 overflow-x-auto rounded-xs;
   /* give some extra padding to parsed-literals */
   &.literal-block {
     @apply p-4;
@@ -71,14 +71,14 @@ span.gi {
 
 /* the header of a code block */
 .code-header {
-  @apply border-l border-t border-r flex justify-between items-center text-sm text-gray-800;
+  @apply border-l border-t border-r flex justify-between items-center text-sm text-gray-100 bg-gray-800 rounded-xs;
   & .caption-text {
     @apply p-2;
   }
 }
 
 .code-lang {
-  @apply inline-block p-2 pl-4 mr-auto uppercase tracking-wider;
+  @apply inline-block p-2 pl-4 mr-auto font-mono uppercase tracking-widest;
 }
 
 /* make prompts unselectable */
@@ -97,7 +97,7 @@ em.var {
 }
 
 button.copy {
-  @apply p-2 ml-auto focus:text-pink-600 hover:text-pink-600;
+  @apply p-2 ml-auto text-gray-100 focus:text-pink-600 hover:text-pink-600;
   & > svg {
     @apply h-4 w-4 fill-current;
   }
