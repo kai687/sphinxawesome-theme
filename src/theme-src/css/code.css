@@ -17,12 +17,17 @@ pre {
   }
 }
 
+.admonition pre,
+.admonition .highlight {
+  @apply shadow-none;
+}
+
 /* the outer wrapper for a code block */
 .highlight {
   @apply my-6 shadow;
   /* the code block itself */
   & pre {
-    @apply m-0 pl-4 rounded-t-none shadow-none;
+    @apply m-0 pl-4 rounded-t-none shadow-none bg-gray-50;
   }
   /* emphasized lines */
   & mark,
