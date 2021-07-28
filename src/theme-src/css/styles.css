@@ -1,10 +1,7 @@
-/* This is the main source file for the Sphinx Next Theme
- * We import the Tailwind CSS and all styling for our theme
- * comes in the theme-custom.css file */
+/* This is the main source file for the Sphinx Awesome Theme */
 
 @import "tailwindcss/base";
 @import "tailwindcss/components";
-@import "fonts.css";
 @import "base.css";
 @import "layout.css";
 @import "nav.css";

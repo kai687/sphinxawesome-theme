@@ -14,7 +14,8 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: ["Roboto", "sans-serif"],
-      mono: ["Roboto\\ Mono", "monospace"],
+      mono: ["JetBrains\\ Mono", "monospace"],
+      // mono: ["Roboto\\ Mono", "monospace"],
     },
     listStyleType: {
       none: "none",
