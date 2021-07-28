@@ -71,7 +71,7 @@ class AwesomeHTMLTranslator(HTML5Translator):
             elif close_tag.startswith("</a></h"):
                 self.body.append(
                     "</a><a role='button' "
-                    "class='headerlink tooltipped tooltipped-ne' "
+                    "class='headerlink tooltipped tooltipped-n' "
                     'href="#{}" '
                     'aria-label="Copy link to this section: {}">'.format(
                         node.parent["ids"][0], node.astext()
@@ -109,7 +109,7 @@ class AwesomeHTMLTranslator(HTML5Translator):
         """
         if node["ids"] and self.builder.add_permalinks and self.config.html_permalinks:
             headerlink = (
-                '<a role="button" class="headerlink tooltipped tooltipped-ne" '
+                '<a role="button" class="headerlink tooltipped tooltipped-n" '
                 'href="#{}" aria-label="{}">'.format(node["ids"][0], title)
             )
             headerlink += ICONS["headerlink"] + "</a>"

@@ -17,17 +17,7 @@
   letter-spacing: normal;
   word-wrap: break-word;
   content: attr(aria-label);
-  @apply opacity-0 px-2 py-3 rounded bg-gray-900 pointer-events-none whitespace-pre font-normal text-center text-xs text-white tracking-wide hidden absolute no-underline;
-}
-
-/* This is the tooltip arrow */
-.tooltipped:before {
-  z-index: 1000001;
-  width: 0;
-  height: 0;
-  content: "";
-  border: 6px solid transparent;
-  @apply opacity-0 pointer-events-none text-gray-900 hidden absolute;
+  @apply opacity-0 px-2 py-1 rounded-sm bg-gray-800 pointer-events-none whitespace-pre font-normal text-center text-xs text-white tracking-wide hidden absolute no-underline bg-opacity-75;
 }
 
 /* delay animation for tooltip */
