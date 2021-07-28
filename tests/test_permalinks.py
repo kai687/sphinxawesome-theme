@@ -107,7 +107,7 @@ def test_permalink_table_awesome_theme(app: Sphinx) -> None:
         assert str(caption) == (
             '<caption><span class="caption-text">Table</span>'
             '<a aria-label="Copy link to this table." '
-            'class="headerlink tooltipped tooltipped-ne" '
+            'class="headerlink tooltipped tooltipped-n" '
             f'href="#id{i}" role="button"><svg pointer-events="none" '
             'viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">'
             '<path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 '

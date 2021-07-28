@@ -278,7 +278,7 @@ def test_captioned_codeblocks_with_awesome_theme(app: Sphinx) -> None:
     assert str(children[1]) == (
         '<span><span class="caption-text">test</span>'
         '<a aria-label="Copy link to this code block." '
-        'class="headerlink tooltipped tooltipped-ne" '
+        'class="headerlink tooltipped tooltipped-n" '
         'href="#id1" role="button">'
         '<svg pointer-events="none" viewbox="0 0 24 24" '
         'xmlns="http://www.w3.org/2000/svg">'
