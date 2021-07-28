@@ -3,15 +3,18 @@
  */
 
 /* inline code */
-:not(pre) > code,
-kbd {
+:not(pre) > code {
   font-size: 15px;
   @apply font-medium px-1 bg-gray-50 border;
 }
 
+kbd {
+  @apply inline-block font-medium text-xs p-1 border border-gray-800 rounded-sm;
+}
+
 /* literal blocks (mostly parsed-literals) not wrapped in div.highlight */
 pre {
-  @apply my-6 border p-2 overflow-x-auto rounded-sm shadow;
+  @apply my-6 border p-2 overflow-x-auto rounded-sm shadow-md;
   /* give some extra padding to parsed-literals */
   &.literal-block {
     @apply p-4;
