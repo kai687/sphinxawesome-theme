@@ -5,6 +5,7 @@
 /* inline code */
 :not(pre) > code,
 kbd {
+  font-size: 15px;
   @apply font-medium px-1 bg-gray-50 border;
 }
 
