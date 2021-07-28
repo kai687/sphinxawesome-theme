@@ -23,11 +23,11 @@ pre {
 }
 
 /* the outer wrapper for a code block */
-.highlight {
+.highlight:not(.docutils) {
   @apply my-6 shadow;
   /* the code block itself */
   & pre {
-    @apply m-0 pl-4 rounded-t-none shadow-none bg-gray-50;
+    @apply m-0 pl-4 py-4 rounded-t-none shadow-none border-none;
   }
   /* emphasized lines */
   & mark,
