@@ -33,7 +33,7 @@ module.exports = {
       },
       colors: {
         blue: colors.sky,
-        highlight: "var(--color-highlight)",
+        brand: "var(--color-brand)",
         link: "var(--color-link)",
       },
       borderRadius: {
