@@ -34,6 +34,7 @@ module.exports = {
       colors: {
         blue: colors.sky,
         highlight: "var(--color-highlight)",
+        link: "var(--color-link)",
       },
       borderRadius: {
         xs: "1px",

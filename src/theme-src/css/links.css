@@ -14,7 +14,7 @@
   .code-header;
 
 .headerlink {
-  @apply ml-1 text-gray-700 hover:text-pink-600;
+  @apply ml-1 text-gray-700 hover:text-highlight;
   & > svg {
     height: 0.875em;
     @apply invisible fill-current outline-none;
@@ -37,7 +37,7 @@ p:not(.admonition-title),
 .toctree-wrapper,
 .contents.local {
   & a {
-    @apply text-blue-700 hover:text-pink-600 focus:text-pink-600;
+    @apply text-link hover:text-highlight focus:text-highlight;
   }
 }
 

@@ -22,12 +22,12 @@
     @apply py-1;
   }
   & a.current {
-    @apply text-pink-600;
+    @apply text-highlight;
   }
   & .expand {
     height: 1.2rem;
     margin-left: -0.4rem;
-    @apply inline fill-current cursor-pointer select-none hover:text-pink-600 focus:outline-none active:outline-none transition-transform transform transform-gpu duration-150 ease-out;
+    @apply inline fill-current cursor-pointer select-none hover:text-highlight focus:outline-none active:outline-none transition-transform transform transform-gpu duration-150 ease-out;
   }
   & li > ul {
     @apply pl-4 overflow-y-hidden max-h-0;
@@ -61,7 +61,7 @@
     }
   }
   & a.current {
-    @apply text-pink-600;
+    @apply text-highlight;
   }
 }
 

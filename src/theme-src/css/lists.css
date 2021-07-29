@@ -39,7 +39,7 @@ dd {
 dl.footnote {
   @apply text-sm pt-4;
   & dt {
-    @apply float-left text-blue-700;
+    @apply float-left text-link;
   }
   & dd > p:first-child {
     @apply mt-0;

@@ -14,7 +14,7 @@ kbd {
 
 /* literal blocks (mostly parsed-literals) not wrapped in div.highlight */
 pre {
-  @apply my-6 border p-2 overflow-x-auto rounded-sm shadow-md;
+  @apply relative my-6 border p-2 overflow-x-auto rounded-sm shadow-md;
   /* give some extra padding to parsed-literals */
   &.literal-block {
     @apply p-4;
@@ -103,13 +103,6 @@ em.var {
 /* from the 'samp' role */
 .samp > em {
   @apply text-purple-700;
-}
-
-button.copy {
-  @apply p-2 ml-auto text-gray-100 focus:text-pink-600 hover:text-pink-600;
-  & > svg {
-    @apply h-4 w-4 fill-current;
-  }
 }
 
 /* autodocs */
