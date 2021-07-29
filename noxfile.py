@@ -9,8 +9,8 @@ import nox
 from nox.sessions import Session
 
 nox.options.stop_on_first_error = True
-nox.options.sessions = ["docs", "lint", "black", "mypy", "netlify_test", "tests"]
-python_files = ["src/sphinxawesome_theme", "noxfile.py", "tests", "docs/conf.py"]
+nox.options.sessions = ["docs", "lint", "black", "mypy", "netlify_test"]
+python_files = ["src/sphinxawesome_theme", "noxfile.py", "docs/conf.py"]
 
 VersionType = TypeVar("VersionType", bound="Versions")
 
