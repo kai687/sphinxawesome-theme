@@ -14,7 +14,7 @@
   .code-header;
 
 .headerlink {
-  @apply ml-1 text-gray-700 hover:text-brand;
+  @apply ml-1 text-gray-700 hover:text-brand focus:text-brand;
   & > svg {
     height: 0.875em;
     @apply invisible fill-current outline-none;
@@ -42,7 +42,7 @@ p:not(.admonition-title),
 }
 
 .nav-toc a {
-  @apply font-medium text-sm hover:text-black;
+  @apply font-medium text-sm hover:text-black focus-visible:text-brand;
 }
 
 .search {

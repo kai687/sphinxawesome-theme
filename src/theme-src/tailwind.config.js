@@ -9,6 +9,7 @@ module.exports = {
   variants: {
     extend: {
       outline: ["active"],
+      textColor: ["group-focus", "focus-visible"],
     },
   },
   theme: {
