@@ -1,8 +1,5 @@
 {#-
   Template file for the header.
-
-  If there is a logo, clicking the logo leads back to the homepage.
-  If there is no logo, clicking the manual title leads back to the homepage.
 -#}
 
 {%- set manual_title %}
@@ -24,19 +21,13 @@
 <div class="bg-gray-900 shadow-md flex items-center z-10">
   {#- show logo on the left side of the header -#}
   <div class="sidebar-width flex items-center">
-  {% if logo %}
-    {% if pagename != master_doc %}
-      {{ headerlink(logo_img) }}
-    {% else %}
-      {{ logo_img }}
-    {% endif %}
-    {{ manual_title }}
+  {%- if logo -%}
+    {{ logo_img }}
+  {% endif %}
+  {%- if pagename != master_doc %}
+    {{ headerlink(manual_title) }}
   {%- else -%}
-    {% if pagename != master_doc %}
-      {{ headerlink(manual_title) }}
-    {% else %}
-      {{ manual_title }}
-    {% endif %}
+    {{ manual_title }}
   {%- endif -%}
   </div>
 
