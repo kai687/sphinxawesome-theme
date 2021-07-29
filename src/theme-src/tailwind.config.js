@@ -14,7 +14,8 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: ["Roboto", "sans-serif"],
-      mono: ["Roboto\\ Mono", "monospace"],
+      mono: ["JetBrains\\ Mono", "monospace"],
+      // mono: ["Roboto\\ Mono", "monospace"],
     },
     listStyleType: {
       none: "none",
@@ -32,6 +33,14 @@ module.exports = {
       },
       colors: {
         blue: colors.sky,
+        highlight: "var(--color-highlight)",
+        link: "var(--color-link)",
+      },
+      borderRadius: {
+        xs: "1px",
+      },
+      backgroundOpacity: {
+        "2": "0.02",
       },
     },
   },

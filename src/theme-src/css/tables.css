@@ -16,11 +16,11 @@ table:not(.highlighttable) {
   & p + p {
     @apply mt-4;
   }
-  & tr {
-    @apply border-b border-t border-gray-400;
+  & tbody tr {
+    @apply border-t;
   }
   & th {
-    @apply font-medium bg-gray-200 tracking-wide py-3 px-2 text-left align-top;
+    @apply font-medium tracking-wide py-3 px-2 text-left align-top;
   }
   & td {
     @apply px-2 py-3 text-left align-top;

@@ -5,6 +5,10 @@
 :root {
   --sidebar-width: 300px;
   --fluid-margin: 5vw;
+  /* sky-500 */
+  --color-highlight: rgb(14, 165, 233);
+  /* sky-700 */
+  --color-link: rgb(3, 105, 161);
 }
 
 @layer base {

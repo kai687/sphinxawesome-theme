@@ -3,26 +3,35 @@
  */
 
 /* inline code */
-:not(pre) > code,
+:not(pre) > code {
+  font-size: 15px;
+  @apply font-medium px-1 bg-gray-50 border;
+}
+
 kbd {
-  @apply font-medium text-sm leading-none py-px px-1 bg-gray-100;
+  @apply inline-block font-medium text-xs p-1 border border-gray-800 rounded-sm;
 }
 
 /* literal blocks (mostly parsed-literals) not wrapped in div.highlight */
 pre {
-  @apply my-6 border p-2 overflow-x-auto;
+  @apply relative my-6 border p-2 overflow-x-auto rounded-sm shadow-md;
   /* give some extra padding to parsed-literals */
   &.literal-block {
     @apply p-4;
   }
 }
 
+.admonition pre,
+.admonition .highlight {
+  @apply shadow-none;
+}
+
 /* the outer wrapper for a code block */
-.highlight {
-  @apply my-6;
+.highlight:not(.docutils) {
+  @apply my-6 shadow;
   /* the code block itself */
   & pre {
-    @apply m-0 pl-4;
+    @apply m-0 pl-4 py-4 rounded-t-none shadow-none border-none;
   }
   /* emphasized lines */
   & mark,
@@ -71,14 +80,14 @@ span.gi {
 
 /* the header of a code block */
 .code-header {
-  @apply border-l border-t border-r flex justify-between items-center text-sm text-gray-800;
+  @apply border-l border-t border-r flex justify-between items-center text-sm text-gray-100 bg-gray-800 border-gray-800 rounded-t-sm rounded-b-none;
   & .caption-text {
     @apply p-2;
   }
 }
 
 .code-lang {
-  @apply inline-block p-2 pl-4 mr-auto uppercase tracking-wider;
+  @apply inline-block p-2 pl-4 mr-auto font-mono uppercase tracking-widest;
 }
 
 /* make prompts unselectable */
@@ -94,13 +103,6 @@ em.var {
 /* from the 'samp' role */
 .samp > em {
   @apply text-purple-700;
-}
-
-button.copy {
-  @apply p-2 ml-auto focus:text-pink-600 hover:text-pink-600;
-  & > svg {
-    @apply h-4 w-4 fill-current;
-  }
 }
 
 /* autodocs */

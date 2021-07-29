@@ -27,14 +27,6 @@ from .icons import ICONS
 
 logger = logging.getLogger(__name__)
 
-COPY_BUTTON = (
-    "<button class='copy tooltipped tooltipped-nw' "
-    "aria-label='Copy this code' "
-    "data-controller='clipboard' data-action='clipboard#copyCode'>"
-    f"{ICONS['copy']}"
-    "</button>\n"
-)
-
 EXPAND_MORE_BUTTON = (
     "<button class='expand-more tooltipped tooltipped-nw' "
     "aria-label='Expand this section' aria-expanded='false' "
@@ -72,7 +64,7 @@ class AwesomeHTMLTranslator(HTML5Translator):
             elif close_tag.startswith("</a></h"):
                 self.body.append(
                     "</a><a role='button' "
-                    "class='headerlink tooltipped tooltipped-ne' "
+                    "class='headerlink tooltipped tooltipped-n' "
                     'href="#{}" '
                     'data-controller="clipboard" '
                     'data-action="click->clipboard#copyHeaderLink" '
@@ -129,7 +121,6 @@ class AwesomeHTMLTranslator(HTML5Translator):
         elif isinstance(node.parent, nodes.container) and node.parent.get(
             "literal_block"
         ):
-            self.body.append(self.starttag(node, "span", ""))
             self.body.append(self.starttag(node, "span", "", CLASS="caption-text"))
         else:
             self.body.append(self.starttag(node, "p", "", CLASS="caption"))
@@ -137,7 +128,6 @@ class AwesomeHTMLTranslator(HTML5Translator):
     def depart_caption(self, node: Element) -> None:
         """Change the permalinks for captions.
 
-        - for code blocks: Copy link to this code block
         - for images: Copy link to this image
         - for table of contents: Copy link to this table of contents.
         """
@@ -148,7 +138,6 @@ class AwesomeHTMLTranslator(HTML5Translator):
             "literal_block"
         ):
             self.add_permalink_ref(node.parent, _("Copy link to this code block."))
-            self.body.append("</span>")
         if isinstance(node.parent, nodes.figure):
             self.add_permalink_ref(node.parent, _("Copy link to this image."))
         elif node.parent.get("toctree"):
@@ -159,7 +148,6 @@ class AwesomeHTMLTranslator(HTML5Translator):
         if isinstance(node.parent, nodes.container) and node.parent.get(
             "literal_block"
         ):
-            self.body.append(COPY_BUTTON)
             self.body.append("</div>\n")
         else:
             self.body.append("</p>\n")
@@ -298,7 +286,6 @@ class AwesomeHTMLTranslator(HTML5Translator):
                     "console", "shell"
                 )
                 code_header += f"<span class='code-lang'>{code_lang}</span>\n"
-                code_header += COPY_BUTTON
                 code_header += "</div>\n"
                 self.body.append(code_header)
 
@@ -315,11 +302,6 @@ class AwesomeHTMLTranslator(HTML5Translator):
             raise nodes.SkipNode
         else:
             # node has markup, it's a samp directive or parsed-literal
-            self.body.append(self.starttag(node, "div", CLASS="highlight"))
-            code_header = "<div class='code-header'>\n"
-            code_header += COPY_BUTTON
-            code_header += "</div>\n"
-            self.body.append(code_header)
             self.body.append("<pre><code>")
 
     def depart_literal_block(self, node: Element) -> None:
@@ -330,7 +312,6 @@ class AwesomeHTMLTranslator(HTML5Translator):
         for highlighted code blocks.
         """
         self.body.append("</code></pre>\n")
-        self.body.append("</div>\n")
 
     def visit_container(self, node: Element) -> None:
         """Overide for code blocks with captions."""
