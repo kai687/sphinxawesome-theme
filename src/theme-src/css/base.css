@@ -5,6 +5,7 @@
 :root {
   --sidebar-width: 300px;
   --fluid-margin: 5vw;
+  --color-highlight: #0ea5e9;
 }
 
 @layer base {
