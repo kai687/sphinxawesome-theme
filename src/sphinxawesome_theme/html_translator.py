@@ -29,9 +29,8 @@ logger = logging.getLogger(__name__)
 
 EXPAND_MORE_BUTTON = (
     "<button class='expand-more tooltipped tooltipped-nw' "
-    "aria-label='Expand this section' aria-expanded='false'>"
-    + ICONS["expand_more"]
-    + "</button>"
+    "aria-label='Expand this section' aria-expanded='false' "
+    f"data-action='collapsible#expandMore'>{ICONS['expand_more']}</button>"
 )
 
 
@@ -67,6 +66,8 @@ class AwesomeHTMLTranslator(HTML5Translator):
                     "</a><a role='button' "
                     "class='headerlink tooltipped tooltipped-n' "
                     'href="#{}" '
+                    'data-controller="clipboard" '
+                    'data-action="click->clipboard#copyHeaderLink" '
                     'aria-label="Copy link to this section: {}">'.format(
                         node.parent["ids"][0], node.astext()
                     )
@@ -103,7 +104,9 @@ class AwesomeHTMLTranslator(HTML5Translator):
         """
         if node["ids"] and self.builder.add_permalinks and self.config.html_permalinks:
             headerlink = (
-                '<a role="button" class="headerlink tooltipped tooltipped-n" '
+                '<a role="button" class="headerlink tooltipped tooltipped-ne" '
+                'data-controller="clipboard" '
+                'data-action="click->clipboard#copyHeaderLink" '
                 'href="#{}" aria-label="{}">'.format(node["ids"][0], title)
             )
             headerlink += ICONS["headerlink"] + "</a>"
@@ -165,10 +168,14 @@ class AwesomeHTMLTranslator(HTML5Translator):
         if the configuration option ``html_collapsible_definitions``
         is set.
         """
+        attrs = {
+            "data-controller": "collapsible",
+            "data-action": "click->collapsible#expandAccordion",
+        }
         # only add this, if the following dd is not empty.
         dd = node.next_node(addnodes.desc_content, siblings=True)
         if self.config.html_collapsible_definitions and len(dd.astext()) > 0:
-            self.body.append(self.starttag(node, "dt", CLASS="accordion"))
+            self.body.append(self.starttag(node, "dt", CLASS="accordion", **attrs))
         else:
             self.body.append(self.starttag(node, "dt"))
 

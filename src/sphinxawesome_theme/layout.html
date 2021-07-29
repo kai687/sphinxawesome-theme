@@ -74,7 +74,12 @@
   -#}
 
   <body class="text-gray-900 antialiased">
-    <div id="page" class="h-screen md:grid md:grid-layout">
+    <div
+      id="page"
+      data-controller="sidebar search"
+      data-action="keydown@window->search#focus"
+      class="h-screen md:grid md:grid-layout"
+    >
       {% include "skip.html" %}
 
       <header class="grid-area-header z-10">
@@ -82,12 +87,16 @@
       </header>
 
       {%- if theme_show_nav|lower == 'true' -%}
-        <aside id="sidebar" class="grid-area-sidebar h-full fixed md:relative inset-y-0 left-0 z-20 md:z-0 print:hidden overflow-y-auto transition-all transform transform-gpu -translate-x-full opacity-0 duration-300 md:translate-x-0 md:opacity-100">
+        <aside id="sidebar" data-sidebar-target="sidebar" class="grid-area-sidebar h-full fixed md:relative inset-y-0 left-0 z-20 md:z-0 print:hidden overflow-y-auto transition-all transform transform-gpu -translate-x-full opacity-0 duration-300 md:translate-x-0 md:opacity-100">
           {% include "sidebar.html" %}
         </aside>
       {%- endif %}
 
-      <main class="px-5 lg:ml-fluid grid-area-main overflow-y-auto flex flex-col h-full {% if theme_show_nav|lower != 'true' -%}mx-auto{%- endif -%}">
+      <main
+        data-controller="scroll"
+        data-action="scroll->scroll#showButton"
+        class="px-5 lg:ml-fluid grid-area-main overflow-y-auto flex flex-col h-full {% if theme_show_nav|lower != 'true' -%}mx-auto{%- endif -%}"
+      >
         {%- if pagename != master_doc and theme_show_breadcrumbs|lower == 'true' %}
           {%- include "breadcrumbs.html" %}
         {% endif -%}
@@ -110,6 +119,24 @@
             {% include "footer.html" %}
           {% endblock %}
         </footer>
+
+        {#- scroll to top button -#}
+        {%- if theme_show_scrolltop|lower == "true" -%}
+        <button id="scrolltop"
+          data-scroll-target="scrollToTop"
+          data-action="scroll#scrollToTop"
+          class="fixed bottom-0 right-0 p-2 m-4 rounded-full bg-gray-700 text-white opacity-0 transition-opacity duration-1000 pointer-events-none hover:bg-gray-200 hover:text-pink-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-gray-200 focus:text-pink-500 tooltipped tooltipped-nw"
+          aria-label="{{ _('Scroll to top') }}"
+        >
+          <svg
+            class="fill-current stroke-current h-8"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+          >
+            <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
+          </svg>
+        </button>
+        {%- endif -%}
       </main>
 
       {% include "menu.html" %}

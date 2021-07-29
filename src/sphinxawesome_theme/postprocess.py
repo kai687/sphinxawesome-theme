@@ -52,6 +52,7 @@ def _collapsible_nav(tree: BeautifulSoup) -> None:
     captured separately between the icon and the link.
     """
     for link in tree.select(".nav-toc a"):
+        link["data-action"] = "click->sidebar#close"
         # Don't add the nav-link class twice (#166)
         if "nav-link" not in link.parent.get("class", []):
             # First, all links should be wrapped in a div.nav-link
@@ -60,7 +61,10 @@ def _collapsible_nav(tree: BeautifulSoup) -> None:
             # has any sibling elements (a ``ul`` in the navigation menu)
             if link.parent.next_sibling:
                 # create the icon
-                svg = BeautifulSoup(ICONS["chevron_right"], "html.parser")
+                svg = BeautifulSoup(ICONS["chevron_right"], "html.parser").svg
+                svg["aria-hidden"] = "true"
+                svg["class"] = ["expand"]
+                svg["data-action"] = "click->sidebar#expand"
                 link.insert_before(svg)
 
 
