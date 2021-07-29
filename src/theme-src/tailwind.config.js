@@ -5,7 +5,7 @@ module.exports = {
     animation: false,
   },
   mode: "jit",
-  purge: ["../sphinxawesome_theme/*.html", "./js/*.js"],
+  purge: ["../sphinxawesome_theme/*.html", "./js/**/*.js"],
   variants: {
     extend: {
       outline: ["active"],
