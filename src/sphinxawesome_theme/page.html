@@ -1,0 +1,9 @@
+{% if theme_show_nav|tobool %}
+  {%- extends "with-sidebar.html" -%}
+{% else %}
+  {%- extends "without-sidebar.html" -%}
+{% endif %}
+
+{% block body %}
+  {{ body }}
+{% endblock %}

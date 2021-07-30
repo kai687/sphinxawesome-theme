@@ -5,7 +5,7 @@
 <div class="sticky bottom-0 md:hidden print:hidden bg-white">
   <div class="flex justify-center items-center">
     {#- The menu button displays the nav -#}
-    {%- if theme_show_nav|lower == 'true' %}
+    {%- if theme_show_nav|tobool %}
     <button
       data-action="sidebar#open"
       aria-labelledby="menuLabel"

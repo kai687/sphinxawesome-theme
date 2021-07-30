@@ -56,6 +56,10 @@ html_copy_source = False
 html_logo = "assets/auto_awesome.svg"
 html_favicon = "assets/favicon-128x128.png"
 
+# if you want to include other pages than docs
+# templates_path = ["_templates"]
+# html_additional_pages = {"about": "about.html"}
+
 # extra option from the sphinxawesome_theme
 html_collapsible_definitions = True
 
