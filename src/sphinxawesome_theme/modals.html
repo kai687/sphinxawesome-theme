@@ -4,7 +4,6 @@
 
 {#- for the 'Clear search highlights button' -#}
 <button
-  id="snackbar"
   data-search-target="snackbar"
   data-action="search#hideSnackbar"
   class="fixed bottom-0 right-0 opacity-0 p-4 m-4 tracking-wide bg-gray-900 text-gray-100 transition transform transform-gpu duration-500 translate-y-full"
@@ -14,7 +13,6 @@
 
 {#- a semi-transparent gray full-screen overlay "behind" the sidebar -#}
 <div
-  id="screen"
   data-sidebar-target="screen"
   data-action="click->sidebar#close"
   class="fixed hidden inset-0 bg-black bg-opacity-50">
