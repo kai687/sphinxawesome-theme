@@ -19,6 +19,14 @@ pre {
   &.literal-block {
     @apply p-4;
   }
+
+  & .copy {
+    @apply absolute top-1.5 right-1.5 border p-1 uppercase text-xs tracking-wide rounded-sm text-gray-700 shadow-sm bg-white opacity-0 transition-all duration-500 transform active:translate-x-0.5 active:translate-y-0.5;
+  }
+
+  &:hover .copy {
+    @apply opacity-100;
+  }
 }
 
 .admonition pre,

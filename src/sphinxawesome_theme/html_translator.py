@@ -279,7 +279,8 @@ class AwesomeHTMLTranslator(HTML5Translator):
                 and node.parent.get("literal_block")
             ):
 
-                self.body.append(self.starttag(node, "div", CLASS="highlight"))
+                # self.body.append(self.starttag(node, "div", CLASS="highlight"))
+                self.body.append('<div class="highlight" data-controller="code">\n')
 
                 code_header = "<div class='code-header'>\n"
                 code_lang = lang.replace("default", "python").replace(
@@ -318,7 +319,7 @@ class AwesomeHTMLTranslator(HTML5Translator):
         if node.get("literal_block"):
             # for docutils >0.17
             node.html5tagname = "div"
-            self.body.append(self.starttag(node, "div", CLASS="highlight"))
+            self.body.append('<div class="highlight" data-controller="code">\n')
             lang = node.get("language")
             code_header = "<div class='code-header'>\n"
             code_header += (

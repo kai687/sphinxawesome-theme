@@ -1,20 +1,11 @@
 /*
- * Copy elements to clipboard
+ * Copy headerlinks to clipboard
  *
  */
 import { Controller } from "stimulus"
 import ClipboardJS from "clipboard"
 
 export default class extends Controller {
-
-  copyCode() {
-    const codeClipboard = new ClipboardJS("button.copy", {
-      target: (trigger) => {
-        return trigger.parentNode.nextElementSibling
-      }
-    })
-    codeClipboard.on("success", this.showTooltip)
-  }
 
   copyHeaderLink(event) {
     const hlClipboard = new ClipboardJS('.headerlink', {
