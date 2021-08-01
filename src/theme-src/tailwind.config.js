@@ -29,9 +29,19 @@ module.exports = {
     extend: {
       screens: {
         print: { raw: "print" },
+        xs: "400px",
+      },
+      maxWidth: {
+        prose: "760px",
+      },
+      lineHeight: {
+        header: "4.5rem",
       },
       margin: {
         fluid: "var(--fluid-margin)",
+      },
+      spacing: {
+        "18": "4.5rem",
       },
       colors: {
         blue: colors.sky,
