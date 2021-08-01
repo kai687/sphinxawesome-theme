@@ -8,7 +8,7 @@
   role="navigation"
   class="h-full overflow-y-auto bg-white text-gray-600 pt-8 flex flex-col"
 >
-  <div class="nav-toc flex-1 px-5">
+  <div class="nav-toc flex-1 pl-6">
     {%- if theme_nav_include_hidden|tobool -%}
       {{ toctree(maxdepth=3, collapse=False, includehidden=true) }}
     {%- else -%}
