@@ -1,6 +1,8 @@
 # How to modify the theme
 
+```{rst-class} lead
 Depending on how you want to modify the theme, use one of these options.
+```
 
 ```{contents} On this page
 ---

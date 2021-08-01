@@ -2,47 +2,48 @@
  * Styles for lists
  * ****************/
 
-ol {
-  @apply list-decimal ml-4;
-  & ol {
-    @apply list-latin;
-  }
-}
-
-section:not(#search-results) ul {
-  @apply list-disc ml-6;
-  & ul {
-    @apply list-square;
-  }
-}
-
-ol > li,
-section ul > li {
-  @apply pl-2;
-}
-
-li > p {
-  @apply my-3;
-}
-
-dt {
-  @apply font-medium;
-}
-
-dd {
-  @apply pl-6;
-  & > p {
-    @apply mt-2;
+@layer base {
+  section {
+    & > ol {
+      @apply list-decimal my-4 pl-5;
+      & ol {
+        @apply list-latin my-4 pl-5;
+      }
+      & li {
+        @apply pl-3 my-2;
+        &::marker {
+          @apply font-medium text-gray-dark;
+        }
+      }
+    }
+    & > ul {
+      @apply list-disc my-4 pl-5;
+      & ul {
+        @apply list-disc my-4 pl-5;
+      }
+      & li {
+        @apply pl-3 my-2;
+        &::marker {
+          @apply text-gray-light;
+        }
+      }
+    }
+    & dt {
+      @apply font-medium my-4;
+    }
+    & dd {
+      @apply pl-5;
+      & p {
+        @apply my-4;
+      }
+    }
   }
 }
 
 dl.footnote {
-  @apply text-sm pt-4;
+  @apply text-sm flex;
   & dt {
-    @apply float-left text-link;
-  }
-  & dd > p:first-child {
-    @apply mt-0;
+    @apply text-link;
   }
   & span.brackets {
     &:before {

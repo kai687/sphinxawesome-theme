@@ -1,7 +1,9 @@
 # About
 
+```{rst-class} lead
 This page describes the external assets of the Sphinx awesome theme and topics that
 didn't fit anywhere else.
+```
 
 ## Assets
 

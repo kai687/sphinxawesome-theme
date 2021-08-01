@@ -9,7 +9,7 @@
 }
 
 kbd {
-  @apply inline-block font-medium text-xs p-1 border border-gray-800 rounded-sm;
+  @apply inline-block font-medium text-xs p-1 border border-gray-dark rounded-sm;
 }
 
 /* literal blocks (mostly parsed-literals) not wrapped in div.highlight */
@@ -88,7 +88,7 @@ span.gi {
 
 /* the header of a code block */
 .code-header {
-  @apply border-l border-t border-r flex justify-between items-center text-sm text-gray-100 bg-gray-800 border-gray-800 rounded-t-sm rounded-b-none;
+  @apply border-l border-t border-r flex justify-between items-center text-sm text-gray-100 bg-gray-dark border-gray-dark rounded-t-sm rounded-b-none;
   & .caption-text {
     @apply p-2;
   }

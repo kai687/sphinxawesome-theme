@@ -7,11 +7,12 @@ keywords: documentation, sphinx, python
 
 # Sphinx awesome theme
 
-```{include} ../README.md
----
-start-after: readme-start -->
----
+```{rst-class} lead
+Bring your Sphinx documentation to the modern times and create beautiful documentation
+websites that don't look like from the previous millenium.
 ```
+
+---
 
 These pages are divided into a _how-to_ and a _demo_ section. In the _how-to_ section,
 you can learn:

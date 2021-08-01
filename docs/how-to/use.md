@@ -1,6 +1,8 @@
 # How to use the theme
 
+```{rst-class} lead
 Use one of the following methods to configure Sphinx to use the awesome theme.
+```
 
 ```{contents} On this page
 ---
@@ -114,6 +116,7 @@ provide a caption with the `:caption:` option. For example:
 .. toctree::
    :caption: Contents
 ```
+
 :::
 
 :::{confval} show_nav
@@ -127,6 +130,7 @@ caption: conf.py
 ---
 html_theme_options = {"show_nav": False}
 ```
+
 :::
 
 :::{confval} show_breadcrumbs
@@ -142,6 +146,7 @@ caption: conf.py
 ---
 html_theme_options = {"show_breadcrumbs": False}
 ```
+
 :::
 
 :::{confval} breadcrumbs_separator
@@ -152,6 +157,7 @@ set:
 ```{samp}
 html_theme_options = \{"breadcrumbs_separator": "{CHAR}"\}
 ```
+
 Replace {samp}`{CHAR}` with a character or HTML entity of your choice.
 :::
 
@@ -171,7 +177,9 @@ turned off by default.
 :::
 
 <!-- vale Awesome.SpellCheck = NO -->
+
 :::{confval} show_scrolltop
+
 <!-- vale Awesome.SpellCheck = YES -->
 
 For longer pages, scrolling to the top can be a hassle. If you want to show a button,
@@ -183,6 +191,7 @@ caption: conf.py
 ---
 html_theme_options = {"show_scrolltop": True}
 ```
+
 :::
 
 ### Extension options
@@ -192,10 +201,12 @@ following additional configuration value is set at the top level in the Sphinx
 configuration file `conf.py`:
 
 <!-- vale Awesome.SpellCheck = NO -->
+
 :::{confval} html_collapsible_definitions
+
 <!-- vale Awesome.SpellCheck = YES -->
 
-Set this option to ``True`` to enable collapsible object definitions, such as command
+Set this option to `True` to enable collapsible object definitions, such as command
 line options, classes, or methods.
 
 ```{code-block} python
@@ -204,4 +215,5 @@ caption: conf.py
 ---
 html_collapsible_definitions = True
 ```
+
 :::
