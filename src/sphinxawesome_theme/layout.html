@@ -73,16 +73,16 @@
     we must use string comparison to check, whether a value is ``true`` or not.
   -#}
 
-  <body class="text-gray-900 antialiased">
+  <body class="antialiased text-sm sm:text-base text-gray">
     <div
       id="page"
       data-controller="sidebar search"
       data-action="keydown@window->search#focus"
-      class="h-screen md:grid md:grid-layout"
+      class="h-screen xl:grid xl:grid-layout"
     >
       {% include "skip.html" %}
 
-      <header class="grid-area-header z-10">
+      <header class="grid-area-header z-10 h-18">
         {% include "header.html" %}
       </header>
 

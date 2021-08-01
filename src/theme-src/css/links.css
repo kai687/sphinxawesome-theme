@@ -14,7 +14,7 @@
   .code-header;
 
 .headerlink {
-  @apply ml-1 text-gray-700 hover:text-brand focus:text-brand;
+  @apply ml-1 text-gray-light hover:text-brand focus:text-brand;
   & > svg {
     height: 0.875em;
     @apply invisible fill-current outline-none;
@@ -24,25 +24,15 @@
   }
 }
 
-:--headerlinkable:hover {
-  & .headerlink {
-    & > svg {
-      @apply visible;
-    }
-  }
+:--headerlinkable:hover .headerlink svg {
+  @apply visible;
 }
 
 p:not(.admonition-title),
-.search,
-.toctree-wrapper,
-.contents.local {
+.search {
   & a {
     @apply text-link hover:text-brand focus:text-brand;
   }
-}
-
-.nav-toc a {
-  @apply font-medium text-sm hover:text-black focus-visible:text-brand;
 }
 
 .search {

@@ -3,7 +3,7 @@
  * **************************/
 
 blockquote {
-  @apply text-sm my-6 px-4 bg-gray-100 border-l-4 border rounded-sm shadow;
+  @apply text-sm my-6 p-4 bg-gray-100 border-l-4 border rounded-sm shadow;
   & .attribution {
     @apply italic;
   }

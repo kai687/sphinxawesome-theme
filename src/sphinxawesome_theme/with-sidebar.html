@@ -7,20 +7,20 @@
 
 
 {% block document %}
-  <aside data-sidebar-target="sidebar" class="grid-area-sidebar h-full fixed md:relative inset-y-0 left-0 z-20 md:z-0 print:hidden overflow-y-auto transition-all transform transform-gpu -translate-x-full opacity-0 duration-300 md:translate-x-0 md:opacity-100">
+  <aside data-sidebar-target="sidebar" class="grid-area-sidebar h-full fixed xl:relative inset-y-0 left-0 z-20 xl:z-0 print:hidden overflow-y-auto transition-all transform transform-gpu -translate-x-full opacity-0 duration-300 xl:translate-x-0 xl:opacity-100">
     {% include "sidebar.html" %}
   </aside>
 
   <main
     data-controller="scroll"
     data-action="scroll->scroll#showButton"
-    class="px-5 lg:ml-fluid grid-area-main overflow-y-auto flex flex-col h-full"
+    class="px-10 xl:ml-fluid grid-area-main overflow-y-auto flex flex-col h-full"
   >
     {%- if pagename != master_doc and theme_show_breadcrumbs|tobool %}
       {%- include "breadcrumbs.html" %}
     {% endif -%}
 
-    <article role="main" class="flex-1">
+    <article role="main" class="flex-1 mx-0 md:mx-auto xl:mx-0">
       {% block body %}{% endblock %}
     </article>
 

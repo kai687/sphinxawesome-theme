@@ -1,7 +1,9 @@
 # How to install the theme
 
+```{rst-class} lead
 Depending on how you want to use the theme and its extensions, use one of the following
 methods to install the Sphinx awesome theme.
+```
 
 ```{contents} On this page
 :local:
@@ -60,7 +62,7 @@ modification.
 
    This command installs the pre-built package in the current environment.
 
-   :::{tip}
+   ````{tip}
    You can also skip the separate build step and install the top level directory:
 
    ```console
@@ -69,7 +71,7 @@ modification.
 
    This command builds and installs the package in one step. It's a bit slower than the
    procedure outlined before.
-   :::
+   ````
 
 ## Set up a development environment
 
@@ -164,7 +166,7 @@ Follow these steps to install the Python dependencies:
    poetry install
    ```
 
-Check Poetry's [documentation](https://python-poetry.org/docs/basic-usage/) for more information.
+   Check Poetry's [documentation](https://python-poetry.org/docs/basic-usage/) for more information.
 
 <!-- vale 18F.Clarity = NO -->
 
