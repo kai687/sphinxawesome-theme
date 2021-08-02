@@ -18,10 +18,10 @@ VersionType = TypeVar("VersionType", bound="Versions")
 class Versions(Enum):
     """Python versions as `Enum`."""
 
-    THREE_SIX: str = "3.6"
-    THREE_SEVEN: str = "3.7"
-    THREE_EIGHT: str = "3.8"
-    THREE_NINE: str = "3.9"
+    THREE_SIX = "3.6"
+    THREE_SEVEN = "3.7"
+    THREE_EIGHT = "3.8"
+    THREE_NINE = "3.9"
 
     @classmethod
     def all(cls: Type[VersionType]) -> List[str]:
