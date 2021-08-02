@@ -33,6 +33,9 @@
   & p:first-of-type {
     @apply pt-4;
   }
+  & > ul:first-child {
+    @apply pt-4;
+  }
   & .expand {
     height: 1.2rem;
     margin-left: -0.4rem;
@@ -60,5 +63,19 @@
   }
   & ul + ul {
     @apply mt-8;
+  }
+}
+
+/* The `.. toctree::` (if not used with `:hidden:`) */
+.toctree-wrapper {
+  & .caption {
+    @apply uppercase text-m font-medium tracking-wider font-mono text-gray-dark pb-6;
+  }
+  @apply my-12 border-t pt-12;
+  & li li {
+    @apply pl-4;
+  }
+  & a {
+    @apply block text-link py-1 hover:text-brand focus:text-brand;
   }
 }
