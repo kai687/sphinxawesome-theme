@@ -35,7 +35,7 @@ pre {
 }
 
 /* the outer wrapper for a code block */
-.highlight:not(.docutils) {
+div.highlight:not(.docutils) {
   @apply my-6 shadow;
   /* the code block itself */
   & pre {
@@ -100,7 +100,7 @@ span.gi {
 
 /* make prompts unselectable */
 .gp {
-  @apply select-none pointer-events-none text-blue-800 font-medium;
+  @apply select-none pointer-events-none;
 }
 
 /* from the 'samp' directive */
@@ -114,35 +114,20 @@ em.var {
 }
 
 /* autodocs */
-dl.code-definition {
-  & dt {
-    @apply p-2 my-4 border border-l-4;
-    & code {
-      @apply text-base bg-white p-0;
-    }
-  }
-}
-
-dl.code-definition:not(.option) {
-  & .sig-prename {
-    @apply text-gray-600;
-  }
-  & .sig-name {
-    @apply text-lg;
-  }
-  & .sig-paren {
-    @apply px-px;
-  }
-}
-
-/* .. option:: */
-dl.option {
-  & .sig-prename {
-    @apply italic text-purple-700;
-  }
-}
-
 .guilabel,
 .menuselection {
-  @apply font-medium tracking-wide;
+  @apply font-medium text-gray-dark tracking-wide;
+}
+
+dl.code-definition {
+  @apply mt-6 pt-6 mb-12 border-t;
+  & dt {
+    @apply font-normal;
+    & > code {
+      @apply border-none bg-transparent text-gray-dark px-0;
+    }
+  }
+  & .property {
+    @apply text-gray-light;
+  }
 }
