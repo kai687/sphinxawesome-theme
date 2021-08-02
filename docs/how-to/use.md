@@ -22,10 +22,6 @@ caption: conf.py
 html_theme = "sphinxawesome_theme"
 ```
 
-If you install and load the theme as a Python package, the extension
-`sphinxawesome.sampdirective` as well as all internal extensions are installed and
-loaded automatically.
-
 ## Load the theme from a local directory
 
 If you want to make many changes to the theme, you can also skip the packaging.
@@ -154,8 +150,12 @@ html_theme_options = {"show_breadcrumbs": False}
 If you want to select a different separator for the breadcrumbs navigation links,
 set:
 
-```{samp}
-html_theme_options = \{"breadcrumbs_separator": "{CHAR}"\}
+```{code-block} python
+---
+caption: conf.py
+emphasize-text: CHAR
+---
+html_theme_options = {"breadcrumbs_separator": "CHAR"}
 ```
 
 Replace {samp}`{CHAR}` with a character or HTML entity of your choice.

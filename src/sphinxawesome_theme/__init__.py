@@ -37,7 +37,6 @@ def setup(app: "Sphinx") -> Dict[str, Any]:
     - execute the ``post_process_html`` code when the build has finished
     """
     app.add_html_theme("sphinxawesome_theme", path.abspath(path.dirname(__file__)))
-    app.setup_extension("sphinxawesome.sampdirective")
     app.setup_extension("sphinxawesome_theme.highlighting")
     app.setup_extension("sphinxawesome_theme.html_translator")
     app.setup_extension("sphinxawesome_theme.admonition_ids")

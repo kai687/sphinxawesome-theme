@@ -18,13 +18,13 @@ modifications by adding custom CSS or JavaScript files. See {ref}`Add or overrid
 You can install a released version from the Python Package Index,
 [PyPI](https://pypi.org/project/sphinxawesome-theme/):
 
-```console
+```shell
 pip install sphinxawesome-theme
 ```
 
 You can also install the latest development version of the theme directly from GitHub:
 
-```console
+```shell
 pip install git+https://github.com/kai687/sphinxawesome-theme.git
 ```
 
@@ -47,7 +47,7 @@ modification.
 1. {ref}`Create a local copy of the theme`
 1. Build the theme as a Python package:
 
-   ```console
+   ```shell
    poetry build
    ```
 
@@ -56,7 +56,7 @@ modification.
 
 1. In your project, install the theme from the locally built package:
 
-   ```console
+   ```shell
    pip install /path/to/sphinxawesome_theme/dist/sphinxawesome_theme-*-py3-none-any.whl
    ```
 
@@ -65,7 +65,7 @@ modification.
    ````{tip}
    You can also skip the separate build step and install the top level directory:
 
-   ```console
+   ```shell
    pip install /path/to/sphinxawesome_theme
    ```
 
@@ -113,14 +113,17 @@ In order to modify the theme, create a local copy first:
 
    If you forked the repository, enter:
 
-   ```{samp}
-   git clone https://github.com/{YOUR_GITHUB_USERNAME}/sphinxawesome-theme.git
+   ```{code-block} shell
+   ---
+   emphasize-text: YOUR_GITHUB_USERNAME
+   ---
+   git clone https://github.com/YOUR_GITHUB_USERNAME/sphinxawesome-theme.git
    ```
 
    Replace {samp}`{YOUR_GITHUB_USERNAME}` with your GitHub username. If you didn't fork
    the repository, clone the original repository:
 
-   ```console
+   ```shell
    git clone https://github.com/kai687/sphinxawesome-theme.git
    ```
 
@@ -140,7 +143,7 @@ Follow these steps to install the Python dependencies:
 
    On macOS and Linux, enter:
 
-   ```console
+   ```shell
    curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | python -
    ```
 
@@ -152,7 +155,7 @@ Follow these steps to install the Python dependencies:
 
 1. Install Nox via pip:
 
-   ```console
+   ```shell
    pip install --user --upgrade nox
    ```
 
@@ -162,7 +165,7 @@ Follow these steps to install the Python dependencies:
 
 1. Install the Python dependencies:
 
-   ```console
+   ```shell
    poetry install
    ```
 
@@ -172,7 +175,7 @@ Follow these steps to install the Python dependencies:
 
 1. **Optional:** install pre-commit hooks:
 
-   ```console
+   ```shell
    poetry run pre-commit install
    ```
 
@@ -183,7 +186,7 @@ Follow these steps to install the Python dependencies:
 
    To test pre-commit in combination with poetry, run:
 
-   ```console
+   ```shell
    poetry run pre-commit run --all
    ```
 
@@ -194,7 +197,7 @@ Follow these steps to install the Python dependencies:
    You can run any Nox session to confirm that the environment is working.
    To list the available sessions, enter:
 
-   ```console
+   ```shell
    nox -ls
    ```
 
@@ -203,7 +206,7 @@ Follow these steps to install the Python dependencies:
 
    For example, to build the documentation with Python 3.9, enter:
 
-   ```console
+   ```shell
    nox -s docs -p 3.9
    ```
 
@@ -213,14 +216,14 @@ Follow these steps to install the JavaScript dependencies:
 
 1. Check, if [Node.js](https://nodejs.org/en/) is installed:
 
-   ```console
+   ```shell
    node --version
    ```
 
    If Node.js is installed, this command returns the version number,
    for example:
 
-   ```console
+   ```shell
    v14.17.3
    ```
 
@@ -231,7 +234,7 @@ Follow these steps to install the JavaScript dependencies:
 
 1. **Optional:** install [`yarn`](https://classic.yarnpkg.com/lang/en/):
 
-   ```console
+   ```shell
    npm install --global yarn
    ```
 
@@ -241,7 +244,7 @@ Follow these steps to install the JavaScript dependencies:
 
 1. Change to the `theme-src/` directory:
 
-   ```{code-block} console
+   ```{code-block} shell
    ---
    emphasize-lines: 4
    ---
@@ -255,12 +258,12 @@ Follow these steps to install the JavaScript dependencies:
 
 1. Install the JavaScript dependencies:
 
-   ```console
+   ```shell
    yarn install
    ```
 
 1. Build the theme:
 
-   ```console
+   ```shell
    yarn build
    ```
