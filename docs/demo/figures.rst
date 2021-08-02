@@ -1,7 +1,12 @@
 Figures and tables
 ==================
 
-On this page, styles for figures and tables are shown.
+.. rst-class:: lead
+
+   On this page, you can see how images, figures and tables look like.
+   Sphinx distinguishes between *images* and *figures*.
+
+----
 
 Images
 ------
