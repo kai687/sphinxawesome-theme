@@ -17,7 +17,7 @@ kbd {
 
 /* literal blocks (mostly parsed-literals) not wrapped in div.highlight */
 pre {
-  @apply relative my-6 border p-2 overflow-x-auto rounded-sm shadow-md;
+  @apply relative my-6 border p-2 overflow-x-auto rounded-sm shadow-md leading-normal;
   /* give some extra padding to parsed-literals */
   &.literal-block {
     @apply p-4;
@@ -42,7 +42,7 @@ pre {
   @apply my-6 shadow;
   /* the code block itself */
   & pre {
-    @apply m-0 pl-4 py-4 rounded-t-none shadow-none border-none;
+    @apply m-0 pl-4 py-4 rounded-t-none shadow-none border-none leading-normal;
   }
   /* emphasized lines */
   & mark,
@@ -51,7 +51,7 @@ pre {
     @apply block relative -ml-4 -mr-2 pl-4 py-px;
   }
   & mark {
-    @apply bg-yellow-50;
+    @apply bg-yellow-200;
   }
   & ins {
     @apply bg-green-200 no-underline;
