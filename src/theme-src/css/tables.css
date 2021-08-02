@@ -4,15 +4,12 @@
 
 table {
   & caption {
-    @apply text-left text-sm text-gray-800 px-2 mb-4;
+    @apply text-left text-sm text-gray-light tracking-wide mb-4;
   }
 }
 
 table:not(.highlighttable) {
   @apply text-sm my-10;
-  & p {
-    @apply p-0 m-0;
-  }
   & p + p {
     @apply mt-4;
   }
@@ -20,14 +17,14 @@ table:not(.highlighttable) {
     @apply border-t;
   }
   & th {
-    @apply font-medium tracking-wide py-3 px-2 text-left align-top;
+    @apply font-medium tracking-wide py-3 text-left align-top;
   }
   & td {
-    @apply px-2 py-3 text-left align-top;
+    @apply py-2 text-left align-top;
   }
 }
 
 /* both for table and figure caption numbers */
 .caption-number {
-  @apply font-medium tracking-wide;
+  @apply font-medium text-sm text-gray-light;
 }
