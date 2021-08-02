@@ -12,6 +12,7 @@ Remove unnecessary nesting
 :copyright: Copyright Kai Welke.
 :license: MIT, see LICENSE for details.
 """
+import re
 from typing import Any, Dict
 
 from docutils import nodes
@@ -271,6 +272,13 @@ class AwesomeHTMLTranslator(HTML5Translator):
                 location=node,
                 **highlight_args,
             )
+            if "hl_text" in highlight_args:
+                placeholder = highlight_args["hl_text"]
+                highlighted = re.sub(
+                    placeholder,
+                    f"<em class='placeholder'>{placeholder}</em>",
+                    highlighted,
+                )
 
             # Code blocks that don't have a caption are not wrapped inside a <container>
             # node so we add the header here. With captions, see: visit_caption
@@ -278,14 +286,10 @@ class AwesomeHTMLTranslator(HTML5Translator):
                 isinstance(node.parent, nodes.container)
                 and node.parent.get("literal_block")
             ):
-
-                # self.body.append(self.starttag(node, "div", CLASS="highlight"))
                 self.body.append('<div class="highlight" data-controller="code">\n')
 
                 code_header = "<div class='code-header'>\n"
-                code_lang = lang.replace("default", "python").replace(
-                    "console", "shell"
-                )
+                code_lang = lang.replace("default", "python")
                 code_header += f"<span class='code-lang'>{code_lang}</span>\n"
                 code_header += "</div>\n"
                 self.body.append(code_header)

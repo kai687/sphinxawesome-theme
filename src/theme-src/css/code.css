@@ -108,14 +108,10 @@ span.gi {
   @apply select-none pointer-events-none;
 }
 
-/* from the 'samp' directive */
-em.var {
-  @apply text-purple-700 font-medium;
-}
-
 /* from the 'samp' role */
-.samp > em {
-  @apply text-purple-700;
+.samp > em,
+.placeholder {
+  @apply text-blue-800;
 }
 
 /* autodocs */
