@@ -6,6 +6,9 @@
 :not(pre) > code {
   font-size: 15px;
   @apply font-medium px-1 bg-gray-50 border;
+  &.highlight {
+    @apply bg-gray-50;
+  }
 }
 
 kbd {
@@ -35,7 +38,7 @@ pre {
 }
 
 /* the outer wrapper for a code block */
-div.highlight:not(.docutils) {
+.highlight:not(.docutils) {
   @apply my-6 shadow;
   /* the code block itself */
   & pre {
