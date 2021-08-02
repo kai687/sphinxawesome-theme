@@ -23,6 +23,7 @@ for JavaScript dependencies.
 | Tooltips                                              | [Primer/CSS](https://primer.style/css/)                                  | [MIT License](https://github.com/primer/css/blob/main/LICENSE)                               |
 | **Note:** versions ≤ 1.13.1 used these icons instead: | [Entypo](http://www.entypo.com) by Daniel Bruce                          | [Creative Commons Attribution-ShareAlike 4.0]                                                |
 |                                                       | [Zondicons](http://www.zondicons.com) by Steve Schoger                   | ?                                                                                            |
+| Illustrations                                         | [undraw.co](https://undraw.co)                                           | [custom](https://undraw.co/license)                                                          |
 
 <!-- vale Awesome.SpellCheck = YES -->
 

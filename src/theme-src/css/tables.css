@@ -9,7 +9,7 @@ table {
 }
 
 table:not(.highlighttable) {
-  @apply text-sm my-10;
+  @apply text-sm my-12;
   & p + p {
     @apply mt-4;
   }
