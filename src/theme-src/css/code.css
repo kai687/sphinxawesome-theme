@@ -108,10 +108,10 @@ span.gi {
   @apply select-none pointer-events-none;
 }
 
-/* from the 'samp' role */
-.samp > em,
-.placeholder {
-  @apply text-purple-800;
+/* Placeholder text, this assumes that ``var`` isn't used elsewhere in docutils/Sphinx
+ */
+var {
+  @apply italic text-purple-800;
 }
 
 /* autodocs */

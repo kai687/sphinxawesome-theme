@@ -1,13 +1,19 @@
 """Modification of the Sphinx HTML5 translator.
 
 Overwrite several methods to improve the HTML output.
+This HTML translator is active for the ``html`` and ``dirhtml`` builders.
 
 Improve headerlinks
-   Instead of writing "permalink to this headline", we write
-   "Copy link to section: <SECTIONNAME>" and display an icon
-   instead of the '¶' character.
+   Add an SVG icon to each title/headline/caption with an ``id``
+   with a tooltip.
 
-Remove unnecessary nesting
+Code blocks
+   The handling of code blocks is modified. Code blocks have a ``header``
+   section that displays the highlighting language.
+   The caption is also shown in the header.
+
+Code definition lists
+   Definitions for ``autodoc`` codes get a ``expand`` button.
 
 :copyright: Copyright Kai Welke.
 :license: MIT, see LICENSE for details.
@@ -129,7 +135,7 @@ class AwesomeHTMLTranslator(HTML5Translator):
     def depart_caption(self, node: Element) -> None:
         """Change the permalinks for captions.
 
-        - for images: Copy link to this image
+        - for figures: Copy link to this image
         - for table of contents: Copy link to this table of contents.
         """
         self.body.append("</span>")
@@ -243,10 +249,8 @@ class AwesomeHTMLTranslator(HTML5Translator):
     def visit_literal_block(self, node: Element) -> None:
         """Overwrite code blocks.
 
-        All code blocks have a header with at least a copy button.
-        For code blocks with syntax highlighting, the language is
-        shown on the left side and an optional caption is included
-        in the center.
+        All code blocks have a header showing the highlighting language
+        and an optional caption.
         """
         if node.rawsource == node.astext():
             # node doens't have markup, highlight it!
@@ -273,10 +277,12 @@ class AwesomeHTMLTranslator(HTML5Translator):
                 **highlight_args,
             )
             if "hl_text" in highlight_args:
+                # this markup follows Google's recommendation
+                # https://developers.google.com/style/placeholders
                 placeholder = highlight_args["hl_text"]
                 highlighted = re.sub(
                     placeholder,
-                    f"<em class='placeholder'>{placeholder}</em>",
+                    f"<var>{placeholder}</var>",
                     highlighted,
                 )
 
@@ -312,8 +318,8 @@ class AwesomeHTMLTranslator(HTML5Translator):
     def depart_literal_block(self, node: Element) -> None:
         """Close literal blocks.
 
-        We need to provide the closing tag for non-highlighted
-        code blocks. This method is skipped (``raise nodes.SkipNode``)
+        Provide the closing tag for non-highlighted code blocks.
+        This method is skipped with ``raise nodes.SkipNode``
         for highlighted code blocks.
         """
         self.body.append("</code></pre>\n")
@@ -338,6 +344,24 @@ class AwesomeHTMLTranslator(HTML5Translator):
         if "refuri" in node and not node.get("internal"):
             self.body.append(ICONS["external_link"])
         super().depart_reference(node)
+
+    def visit_emphasis(self, node: Element) -> None:
+        """Change tags for emphasized literals.
+
+        Google recommends using ``<var>`` tags inside ``<code>`` tags
+        for placeholders.
+
+        https://developers.google.com/style/placeholders#placeholder-variables-in-inline-text
+        """
+        if isinstance(node.parent, nodes.literal):
+            self.body.append(self.starttag(node, "var", ""))
+        else:
+            super().visit_emphasis(node)
+
+    def depart_emphasis(self, node: Element) -> None:
+        """Change closing tag for emphasized literals."""
+        if isinstance(node.parent, nodes.literal):
+            self.body.append("</var>")
 
 
 def setup(app: "Sphinx") -> Dict[str, Any]:
