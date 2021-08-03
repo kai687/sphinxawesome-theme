@@ -6,10 +6,10 @@
 
 <nav
   role="navigation"
-  class="h-full overflow-y-auto bg-white text-gray-700 border-r pt-16 flex flex-col"
+  class="h-full overflow-y-auto bg-white text-gray-600 pt-8 flex flex-col"
 >
-  <div class="nav-toc flex-1 px-5">
-    {%- if theme_nav_include_hidden|lower == 'true' -%}
+  <div class="nav-toc flex-1 pl-6">
+    {%- if theme_nav_include_hidden|tobool -%}
       {{ toctree(maxdepth=3, collapse=False, includehidden=true) }}
     {%- else -%}
       {{ toctree(maxdepth=3, collapse=False) }}
@@ -17,5 +17,5 @@
   </div>
 
   {%- import "buttons.html" as buttons -%}
-  {{ buttons.close("closeSidebar") }}
+  {{ buttons.close(action="sidebar#close") }}
 </nav>

@@ -1,6 +1,8 @@
 # How to modify the theme
 
+```{rst-class} lead
 Depending on how you want to modify the theme, use one of these options.
+```
 
 ```{contents} On this page
 ---
@@ -44,7 +46,7 @@ styles and don't use Tailwind's `@apply` directive.
 
 Styles in the templates are applied via Tailwind's utility classes.
 
-```{code-block} console
+```{code-block} shell
 ---
 emphasize-lines: 1
 ---
@@ -75,7 +77,7 @@ To modify these styles, follow these steps:
 
 1. Build the theme:
 
-   ```console
+   ```shell
    yarn build
    ```
 
@@ -84,7 +86,7 @@ To modify these styles, follow these steps:
 Everything that's part of the main content, including everything that's converted from
 reStructuredText to HTML is styled using Tailwind's `@apply` directive.
 
-```{code-block} console
+```{code-block} shell
 ---
 emphasize-lines: 3
 ---
@@ -126,6 +128,6 @@ To modify these styles, follow these steps:
 
 1. Build the theme:
 
-   ```console
+   ```shell
    yarn build
    ```

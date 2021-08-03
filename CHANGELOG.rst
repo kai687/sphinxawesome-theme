@@ -1,3 +1,11 @@
+3.0.0
+~~~~~
+
+- feat: almost complete redesign
+- Solid JavaScript foundation based on Stimulus
+- Even better code blocks (support arbitrary emphasizing text inside code blocks; no
+  need for special ``samp`` directive)
+
 2.0.2
 ~~~~~
 

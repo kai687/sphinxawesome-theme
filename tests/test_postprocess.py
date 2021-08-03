@@ -2,22 +2,17 @@
 
 
 import pytest
-from bs4 import BeautifulSoup
 from sphinx.application import Sphinx
 
 from sphinxawesome_theme import postprocess
 
-
-def parse_html(html: str) -> BeautifulSoup:
-    """Take a HTML as string and return a BeautifulSoup tree."""
-    return BeautifulSoup(html, "html.parser")
+from .util import parse_html
 
 
 @pytest.mark.sphinx("html")
 def test_get_filelist(app: Sphinx) -> None:
     """It gets the correct number of HTML files."""
-    if app.builder is not None:
-        app.builder.build_all()
+    app.build()
 
     html_files = postprocess._get_html_files(app.outdir)
     assert len(html_files) == 3

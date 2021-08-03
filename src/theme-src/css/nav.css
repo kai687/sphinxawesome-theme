@@ -1,72 +1,81 @@
 /* ********************************************************
- * Styles for the navigation menu on the left side .nav-toc
+ * Styles for various navigation menus / tables of contents
  * ********************************************************/
 
-.nav-toc .caption,
-.toctree-wrapper .caption,
-.contents.local .topic-title {
-  @apply uppercase text-sm text-gray-900 font-medium tracking-widest;
+/* For displaying on-site elements
+ * Note: `.contents` is a Tailwind class (display: contents)
+ *       that's why we set `block` here explicitly.
+ */
+.contents.local {
+  @apply mt-12 pb-12 border-b block;
+  & .topic-title {
+    @apply uppercase text-sm font-medium text-gray-light mt-0 mb-2 font-mono;
+  }
+  & ul {
+    @apply pt-2;
+  }
+  & li {
+    @apply pl-4 py-2;
+  }
+  & > ul > li {
+    @apply border-l-2;
+  }
+  & a {
+    @apply block text-gray-light text-sm hover:text-gray-dark focus:text-gray-dark tracking-extended;
+  }
 }
 
+/* The side bar */
 .nav-toc {
+  & .caption {
+    @apply uppercase text-m font-medium tracking-wider font-mono text-gray-dark pt-10 pb-3;
+  }
   & p:first-of-type {
-    @apply mt-0;
+    @apply pt-4;
   }
-  & > ul {
-    @apply -mt-4;
-  }
-  & > ul + ul {
-    @apply mt-6;
-  }
-  & .nav-link {
-    @apply py-2;
-  }
-  & a.current {
-    @apply text-pink-600;
+  & > ul:first-child {
+    @apply pt-4;
   }
   & .expand {
     height: 1.2rem;
     margin-left: -0.4rem;
-    @apply inline fill-current cursor-pointer select-none hover:text-pink-600 focus:outline-none active:outline-none transition-transform transform transform-gpu duration-150 ease-out;
+    @apply inline fill-current cursor-pointer select-none hover:text-brand focus:outline-none transition-transform transform duration-150 ease-out;
   }
   & li > ul {
     @apply pl-4 overflow-y-hidden max-h-0;
   }
   & .expanded {
-    & > div > a.current {
-      @apply font-medium;
-    }
     & > div > .expand {
       @apply rotate-90;
     }
     & > ul {
       @apply max-h-full;
+      & a.current {
+        @apply text-brand;
+      }
     }
+  }
+  & a {
+    @apply text-gray-light text-sm inline-block py-1 hover:text-brand focus:text-brand;
+    &.current {
+      @apply text-gray-dark font-medium;
+    }
+  }
+  & ul + ul {
+    @apply mt-8;
   }
 }
 
-/* This is for on-page navigation menus
- * have to set `display: block` explicitly
- * b/c that's also a class in Tailwind */
-.toctree-wrapper,
-.contents.local {
-  @apply mt-12 block;
-  & ul {
-    @apply mx-0 !important;
+/* The `.. toctree::` (if not used with `:hidden:`) */
+.toctree-wrapper {
+  & .caption {
+    @apply uppercase text-m font-medium tracking-wider font-mono text-gray-dark pb-6;
   }
-  & li {
-    @apply list-none px-0 !important;
-    & > ul {
-      @apply pl-4;
-    }
+  @apply my-12 border-t pt-12;
+  & li li {
+    @apply pl-4;
   }
-  & a.current {
-    @apply text-pink-600;
+  & a {
+    @apply block text-link py-1 hover:text-brand focus:text-brand;
   }
-}
-
-/* to make the style more consistent between
- * .toctree-wrapper and .contents */
-.toctree-wrapper li {
-  @apply my-3;
 }

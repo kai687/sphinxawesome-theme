@@ -1,18 +1,13 @@
 {#-
   Template file for the header.
-
-  If there is a logo, clicking the logo leads back to the homepage.
-  If there is no logo, clicking the manual title leads back to the homepage.
 -#}
 
-{%- import "buttons.html" as buttons -%}
-
 {%- set manual_title %}
-<h2 class="text-xl text-gray-100 mx-5 py-4">{{ docstitle }}</h2>
+<span class="hidden xs:inline-block font-medium text-gray-100 mx-5 leading-header">{{ docstitle }}</span>
 {%- endset -%}
 
 {%- set logo_img -%}
-<img class="h-8 mx-5" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo" />
+<img class="h-18 w-18 p-5" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo" />
 {%- endset -%}
 
 {%- macro headerlink(inner, padding=false) -%}
@@ -23,39 +18,46 @@
 </a>
 {%- endmacro -%}
 
-<div class="bg-gray-900 shadow-md flex justify-between items-center z-10">
+<div class="bg-gray-dark shadow-md flex items-center h-full xl:px-2">
   {#- show logo on the left side of the header -#}
-  {% if logo %}
-    {% if pagename != master_doc %}
-      {{ headerlink(logo_img) }}
-    {% else %}
-      {{ logo_img }}
-    {% endif %}
-    {{ manual_title }}
+  <div class="sidebar-width flex items-center">
+  {%- if logo -%}
+    {{ logo_img }}
+  {% endif %}
+  {%- if pagename != master_doc %}
+    {{ headerlink(manual_title) }}
   {%- else -%}
-    {% if pagename != master_doc %}
-      {{ headerlink(manual_title) }}
-    {% else %}
-      {{ manual_title }}
-    {% endif %}
+    {{ manual_title }}
   {%- endif -%}
+  </div>
 
   {#- show a search input field on the right side -#}
-  <form
-    id="searchbox"
-    action="{{ pathto('search') }}"
-    method="get"
-    class="hidden md:flex my-auto mx-5 justify-between items-center print:hidden">
-
-    <input
-      name="q"
-      id="search-input"
-      type="search"
-      aria-label="Search the docs"
-      placeholder="{{ _('Search the docs') }}"
-      class="p-2 flex-1 focus:bg-yellow-50 rounded-none"
+  <div class="lg:ml-fluid flex justify-between items-center">
+    <form
+      id="searchbox"
+      action="{{ pathto('search') }}"
+      method="get"
       style="width: 300px;"
-    />
-    {{ buttons.search() }}
-  </form>
+      class="hidden xl:flex print:hidden justify-between items-center leading-header ml-4
+      bg-gray-dark hover:bg-gray-700 text-sm text-gray-300 hover:text-brand focus-within:bg-gray-50
+      focus-within:text-gray-800 group">
+
+      <button class="text-inherit group-hover:text-brand focus:text-brand h-18 w-18
+        group-focus:text-brand focus:outline-none" aria-label="{{ _('Get search results') }}">
+        <svg aria-hidden="true" class="fill-current stroke-current h-8 w-8" stroke-width="0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+      </button>
+
+      <input
+        name="q"
+        id="search-input"
+        data-search-target="searchInput"
+        type="search"
+        aria-label="Search the docs"
+        placeholder="{{ _('Search the docs') }}"
+        class="pr-2 flex-1 bg-transparent text-inherit
+               group-hover:text-brand focus:text-gray-800
+               group-focus:text-gray-800 focus:outline-none"
+      />
+    </form>
+  </div>
 </div>

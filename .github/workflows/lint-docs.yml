@@ -14,5 +14,7 @@ jobs:
 
       - name: Vale
         uses: errata-ai/vale-action@v1.4.0
+        with:
+          files: '["docs/", "README.md"]'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -13,7 +13,7 @@ classes instead of using Tailwind's utility classes.
 This is because this Python file is not processed by
 PurgeCSS.
 
-:copyright: Copyright 2020, Kai Welke.
+:copyright: Copyright Kai Welke.
 :license: MIT, see LICENSE.
 """
 
@@ -33,7 +33,7 @@ logger = logging.getLogger(__name__)
 def _get_html_files(outdir: str) -> List[str]:
     """Get a list of HTML files."""
     html_list = []
-    for root, _dirs, files in os.walk(outdir):
+    for root, _, files in os.walk(outdir):
         html_list.extend(
             [os.path.join(root, file) for file in files if file.endswith(".html")]
         )
@@ -52,6 +52,7 @@ def _collapsible_nav(tree: BeautifulSoup) -> None:
     captured separately between the icon and the link.
     """
     for link in tree.select(".nav-toc a"):
+        link["data-action"] = "click->sidebar#close"
         # Don't add the nav-link class twice (#166)
         if "nav-link" not in link.parent.get("class", []):
             # First, all links should be wrapped in a div.nav-link
@@ -60,7 +61,10 @@ def _collapsible_nav(tree: BeautifulSoup) -> None:
             # has any sibling elements (a ``ul`` in the navigation menu)
             if link.parent.next_sibling:
                 # create the icon
-                svg = BeautifulSoup(ICONS["chevron_right"], "html.parser")
+                svg = BeautifulSoup(ICONS["chevron_right"], "html.parser").svg
+                svg["aria-hidden"] = "true"
+                svg["class"] = ["expand"]
+                svg["data-action"] = "click->sidebar#expand"
                 link.insert_before(svg)
 
 
@@ -81,6 +85,19 @@ def _remove_span_pre(tree: BeautifulSoup) -> None:
         span.unwrap()
 
 
+def _remove_empty_toctree(tree: BeautifulSoup) -> None:
+    """Remove empty toctree divs.
+
+    If you include a `toctree` with the `hidden` option,
+    an empty `div` is inserted. Remove them.
+    The empty `div` contains a single `end-of-line` character.
+    """
+    for div in tree("div", class_="toctree-wrapper"):
+        children = list(div.children)
+        if len(children) == 1 and not children[0].strip():
+            div.decompose()
+
+
 def _modify_html(html_filename: str) -> None:
     """Modify a single HTML document.
 
@@ -97,6 +114,7 @@ def _modify_html(html_filename: str) -> None:
     _expand_current(tree)
     _collapsible_nav(tree)
     _remove_span_pre(tree)
+    _remove_empty_toctree(tree)
 
     with open(html_filename, "w") as out_file:
         out_file.write(str(tree))

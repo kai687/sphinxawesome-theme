@@ -1,7 +1,12 @@
 Figures and tables
 ==================
 
-On this page, styles for figures and tables are shown.
+.. rst-class:: lead
+
+   On this page, you can see how images, figures and tables look like.
+   Sphinx distinguishes between *images* and *figures*.
+
+----
 
 Images
 ------
@@ -35,11 +40,11 @@ If you want to add captions and legends to the image, use the ``figure`` directi
 
    This is an image caption.
 
-   And you can also provide a legend to the figure that contains more information about
-   the image.
+   You can also provide a legend to the figure with the ``:legend:`` option.
+   The images on this page are from https://undraw.co/.
 
 
-You can control the image alignment by using the `:align:` option.
+You can control the image alignment by using the ``:align:`` option.
 
 
 .. figure:: image.svg

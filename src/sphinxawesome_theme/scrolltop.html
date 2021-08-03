@@ -1,0 +1,15 @@
+{#-
+  A `scroll to top` button. Is shown at the bottom right if `show_scrolltop` is true.
+-#}
+
+
+<button
+  data-scroll-target="scrollToTop"
+  data-action="scroll#scrollToTop"
+  class="fixed bottom-0 right-0 p-2 m-4 z-10 rounded-full bg-gray-700 text-white opacity-0 transition-opacity duration-1000 pointer-events-none hover:bg-gray-300 hover:text-link focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-gray-200 focus:text-link tooltipped tooltipped-nw"
+  aria-label="{{ _('Scroll to top') }}"
+>
+  <svg class="fill-current stroke-current h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
+  </svg>
+</button>

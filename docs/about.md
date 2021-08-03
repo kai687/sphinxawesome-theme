@@ -1,7 +1,9 @@
 # About
 
+```{rst-class} lead
 This page describes the external assets of the Sphinx awesome theme and topics that
 didn't fit anywhere else.
+```
 
 ## Assets
 
@@ -11,15 +13,17 @@ for JavaScript dependencies.
 
 <!-- vale Awesome.SpellCheck = NO -->
 
-| Feature                                               | Name/Website                                                             | License                                                                        |
-| ----------------------------------------------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| CSS framework                                         | [Tailwind]                                                               | [MIT License](https://github.com/tailwindlabs/tailwindcss/blob/master/LICENSE) |
-| Copy to clipboard                                     | [Clipboard.js](https://clipboardjs.com/)                                 | [MIT License](https://github.com/zenorocha/clipboard.js/blob/master/LICENSE)   |
-| Fonts                                                 | [Roboto](https://github.com/googlefonts/roboto)                          | [Apache License, Version 2.0]                                                  |
-| Icons                                                 | [Material icons](https://fonts.google.com/icons?selected=Material+Icons) | [Apache License, Version 2.0]                                                  |
-| Tooltips                                              | [Primer/CSS](https://primer.style/css/)                                  | [MIT License](https://github.com/primer/css/blob/main/LICENSE)                 |
-| **Note:** versions ≤ 1.13.1 used these icons instead: | [Entypo](http://www.entypo.com) by Daniel Bruce                          | [Creative Commons Attribution-ShareAlike 4.0]                                  |
-|                                                       | [Zondicons](http://www.zondicons.com) by Steve Schoger                   | ?                                                                              |
+| Feature                                               | Name/Website                                                             | License                                                                                      |
+| ----------------------------------------------------- | ------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------- |
+| CSS framework                                         | [Tailwind]                                                               | [MIT License](https://github.com/tailwindlabs/tailwindcss/blob/master/LICENSE)               |
+| Copy to clipboard                                     | [Clipboard.js](https://clipboardjs.com/)                                 | [MIT License](https://github.com/zenorocha/clipboard.js/blob/master/LICENSE)                 |
+| Fonts                                                 | [Roboto](https://github.com/googlefonts/roboto)                          | [Apache License, Version 2.0]                                                                |
+|                                                       | [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono/)            | [SIL Open Font License, 1.1](https://github.com/JetBrains/JetBrainsMono/blob/master/OFL.txt) |
+| Icons                                                 | [Material icons](https://fonts.google.com/icons?selected=Material+Icons) | [Apache License, Version 2.0]                                                                |
+| Tooltips                                              | [Primer/CSS](https://primer.style/css/)                                  | [MIT License](https://github.com/primer/css/blob/main/LICENSE)                               |
+| **Note:** versions ≤ 1.13.1 used these icons instead: | [Entypo](http://www.entypo.com) by Daniel Bruce                          | [Creative Commons Attribution-ShareAlike 4.0]                                                |
+|                                                       | [Zondicons](http://www.zondicons.com) by Steve Schoger                   | ?                                                                                            |
+| Illustrations                                         | [undraw.co](https://undraw.co)                                           | [custom](https://undraw.co/license)                                                          |
 
 <!-- vale Awesome.SpellCheck = YES -->
 

@@ -99,7 +99,7 @@ def test_headerlink_with_awesome_theme(app: Sphinx) -> None:
     h1 = headings[0]
     assert str(h1) == (
         '<h1>Test<a aria-label="Copy link to section: Test." '
-        'class="headerlink tooltipped tooltipped-ne" '
+        'class="headerlink tooltipped tooltipped-n" '
         'href="#test" role="button"><svg pointer-events="none" '
         'viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">'
         '<path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 '
@@ -111,7 +111,7 @@ def test_headerlink_with_awesome_theme(app: Sphinx) -> None:
     h1 = headings[1]
     assert str(h1) == (
         '<h1>Second Test<a aria-label="Copy link to section: Second Test." '
-        'class="headerlink tooltipped tooltipped-ne" href="#second-test" '
+        'class="headerlink tooltipped tooltipped-n" href="#second-test" '
         'role="button"><svg pointer-events="none" viewbox="0 0 24 24" '
         'xmlns="http://www.w3.org/2000/svg"><path d="M3.9 12c0-1.71 '
         "1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 "
@@ -124,7 +124,7 @@ def test_headerlink_with_awesome_theme(app: Sphinx) -> None:
     assert str(h2) == (
         '<h2><a class="toc-backref" href="#id1">Third Test</a>'
         '<a aria-label="Copy link to this section: Third Test" '
-        'class="headerlink tooltipped tooltipped-ne" href="#third-test" '
+        'class="headerlink tooltipped tooltipped-n" href="#third-test" '
         'role="button"><svg pointer-events="none" viewbox="0 0 24 24" '
         'xmlns="http://www.w3.org/2000/svg"><path d="M3.9 12c0-1.71 '
         "1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 "
@@ -136,7 +136,7 @@ def test_headerlink_with_awesome_theme(app: Sphinx) -> None:
     assert str(h2) == (
         '<h2><a class="toc-backref" href="#id2">Fourth Test</a>'
         '<a aria-label="Copy link to this section: Fourth Test" '
-        'class="headerlink tooltipped tooltipped-ne" '
+        'class="headerlink tooltipped tooltipped-n" '
         'href="#fourth-test" role="button"><svg pointer-events="none" '
         'viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">'
         '<path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 '

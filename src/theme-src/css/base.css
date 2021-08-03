@@ -4,7 +4,11 @@
 
 :root {
   --sidebar-width: 300px;
-  --fluid-margin: 5vw;
+  --fluid-margin: 7.5vw;
+  /* sky-500 */
+  --color-brand: rgb(14, 165, 233);
+  /* sky-700 */
+  --color-link: rgb(3, 105, 161);
 }
 
 @layer base {
@@ -16,11 +20,20 @@
 
   section,
   footer {
-    max-width: 82ch;
+    @apply max-w-prose;
   }
 
-  p {
-    @apply my-6;
+  section > section {
+    @apply py-12;
+  }
+
+  section > p {
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+
+  hr {
+    @apply mb-12;
   }
 
   strong {
@@ -31,19 +44,28 @@
     @apply inline;
   }
 
-  main {
-    & h1 {
-      @apply text-gray-800 text-4xl leading-tight mb-12 mt-12;
-    }
-    & h2 {
-      @apply text-gray-800 text-2xl leading-snug mb-8 mt-16;
-    }
-    & h3 {
-      @apply text-gray-800 text-xl font-medium leading-snug mb-6 mt-8;
-    }
-    & h4,
-    & .rubric {
-      @apply text-gray-800 font-medium my-6;
-    }
+  h1 {
+    @apply mt-20 text-gray-dark tracking-tight text-4xl sm:text-5xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply mb-8 text-gray-dark tracking-tight text-xl sm:text-2xl lg:text-3xl;
+  }
+
+  h3 {
+    @apply text-gray-dark text-lg lg:text-xl;
+  }
+
+  h4 {
+    @apply text-gray-dark font-medium;
+  }
+}
+
+@layer utilities {
+  .lead {
+    @apply text-gray-dark leading-loose mt-4 mb-16;
+  }
+  p.rubric {
+    @apply text-gray-dark font-medium mt-12 mb-0;
   }
 }

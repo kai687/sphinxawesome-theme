@@ -5,13 +5,16 @@ const StyleLintPlugin = require("stylelint-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const webpack = require("webpack");
 
+
+const THEME_STATIC_DIR = path.resolve(__dirname, "../sphinxawesome_theme/static/")
+
 module.exports = {
   mode: process.env.NODE_ENV || "development",
   entry: {
     theme: "./js/app.js",
   },
   output: {
-    path: path.resolve(__dirname, "../sphinxawesome_theme/static/"),
+    path: THEME_STATIC_DIR,
     publicPath: "",
   },
   plugins: [

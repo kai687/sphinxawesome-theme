@@ -1,17 +1,24 @@
 """Modification of the Sphinx HTML5 translator.
 
 Overwrite several methods to improve the HTML output.
+This HTML translator is active for the ``html`` and ``dirhtml`` builders.
 
 Improve headerlinks
-   Instead of writing "permalink to this headline", we write
-   "Copy link to section: <SECTIONNAME>" and display an icon
-   instead of the '¶' character.
+   Add an SVG icon to each title/headline/caption with an ``id``
+   with a tooltip.
 
-Remove unnecessary nesting
+Code blocks
+   The handling of code blocks is modified. Code blocks have a ``header``
+   section that displays the highlighting language.
+   The caption is also shown in the header.
+
+Code definition lists
+   Definitions for ``autodoc`` codes get a ``expand`` button.
 
 :copyright: Copyright Kai Welke.
 :license: MIT, see LICENSE for details.
 """
+import re
 from typing import Any, Dict
 
 from docutils import nodes
@@ -27,17 +34,10 @@ from .icons import ICONS
 
 logger = logging.getLogger(__name__)
 
-COPY_BUTTON = (
-    "<button class='copy tooltipped tooltipped-nw' aria-label='Copy this code'>"
-    + ICONS["copy"]
-    + "</button>\n"
-)
-
 EXPAND_MORE_BUTTON = (
     "<button class='expand-more tooltipped tooltipped-nw' "
-    "aria-label='Expand this section' aria-expanded='false'>"
-    + ICONS["expand_more"]
-    + "</button>"
+    "aria-label='Expand this section' aria-expanded='false' "
+    f"data-action='collapsible#expandMore'>{ICONS['expand_more']}</button>"
 )
 
 
@@ -71,8 +71,10 @@ class AwesomeHTMLTranslator(HTML5Translator):
             elif close_tag.startswith("</a></h"):
                 self.body.append(
                     "</a><a role='button' "
-                    "class='headerlink tooltipped tooltipped-ne' "
+                    "class='headerlink tooltipped tooltipped-n' "
                     'href="#{}" '
+                    'data-controller="clipboard" '
+                    'data-action="click->clipboard#copyHeaderLink" '
                     'aria-label="Copy link to this section: {}">'.format(
                         node.parent["ids"][0], node.astext()
                     )
@@ -110,6 +112,8 @@ class AwesomeHTMLTranslator(HTML5Translator):
         if node["ids"] and self.builder.add_permalinks and self.config.html_permalinks:
             headerlink = (
                 '<a role="button" class="headerlink tooltipped tooltipped-ne" '
+                'data-controller="clipboard" '
+                'data-action="click->clipboard#copyHeaderLink" '
                 'href="#{}" aria-label="{}">'.format(node["ids"][0], title)
             )
             headerlink += ICONS["headerlink"] + "</a>"
@@ -124,7 +128,6 @@ class AwesomeHTMLTranslator(HTML5Translator):
         elif isinstance(node.parent, nodes.container) and node.parent.get(
             "literal_block"
         ):
-            self.body.append(self.starttag(node, "span", ""))
             self.body.append(self.starttag(node, "span", "", CLASS="caption-text"))
         else:
             self.body.append(self.starttag(node, "p", "", CLASS="caption"))
@@ -132,8 +135,7 @@ class AwesomeHTMLTranslator(HTML5Translator):
     def depart_caption(self, node: Element) -> None:
         """Change the permalinks for captions.
 
-        - for code blocks: Copy link to this code block
-        - for images: Copy link to this image
+        - for figures: Copy link to this image
         - for table of contents: Copy link to this table of contents.
         """
         self.body.append("</span>")
@@ -143,7 +145,6 @@ class AwesomeHTMLTranslator(HTML5Translator):
             "literal_block"
         ):
             self.add_permalink_ref(node.parent, _("Copy link to this code block."))
-            self.body.append("</span>")
         if isinstance(node.parent, nodes.figure):
             self.add_permalink_ref(node.parent, _("Copy link to this image."))
         elif node.parent.get("toctree"):
@@ -154,7 +155,6 @@ class AwesomeHTMLTranslator(HTML5Translator):
         if isinstance(node.parent, nodes.container) and node.parent.get(
             "literal_block"
         ):
-            self.body.append(COPY_BUTTON)
             self.body.append("</div>\n")
         else:
             self.body.append("</p>\n")
@@ -175,10 +175,14 @@ class AwesomeHTMLTranslator(HTML5Translator):
         if the configuration option ``html_collapsible_definitions``
         is set.
         """
+        attrs = {
+            "data-controller": "collapsible",
+            "data-action": "click->collapsible#expandAccordion",
+        }
         # only add this, if the following dd is not empty.
         dd = node.next_node(addnodes.desc_content, siblings=True)
         if self.config.html_collapsible_definitions and len(dd.astext()) > 0:
-            self.body.append(self.starttag(node, "dt", CLASS="accordion"))
+            self.body.append(self.starttag(node, "dt", CLASS="accordion", **attrs))
         else:
             self.body.append(self.starttag(node, "dt"))
 
@@ -245,10 +249,8 @@ class AwesomeHTMLTranslator(HTML5Translator):
     def visit_literal_block(self, node: Element) -> None:
         """Overwrite code blocks.
 
-        All code blocks have a header with at least a copy button.
-        For code blocks with syntax highlighting, the language is
-        shown on the left side and an optional caption is included
-        in the center.
+        All code blocks have a header showing the highlighting language
+        and an optional caption.
         """
         if node.rawsource == node.astext():
             # node doens't have markup, highlight it!
@@ -274,6 +276,15 @@ class AwesomeHTMLTranslator(HTML5Translator):
                 location=node,
                 **highlight_args,
             )
+            if "hl_text" in highlight_args:
+                # this markup follows Google's recommendation
+                # https://developers.google.com/style/placeholders
+                placeholder = highlight_args["hl_text"]
+                highlighted = re.sub(
+                    placeholder,
+                    f"<var>{placeholder}</var>",
+                    highlighted,
+                )
 
             # Code blocks that don't have a caption are not wrapped inside a <container>
             # node so we add the header here. With captions, see: visit_caption
@@ -281,15 +292,23 @@ class AwesomeHTMLTranslator(HTML5Translator):
                 isinstance(node.parent, nodes.container)
                 and node.parent.get("literal_block")
             ):
-
-                self.body.append(self.starttag(node, "div", CLASS="highlight"))
+                self.body.append('<div class="highlight" data-controller="code">\n')
 
                 code_header = "<div class='code-header'>\n"
-                code_lang = lang.replace("default", "python").replace(
-                    "console", "shell"
-                )
-                code_header += f"<span class='code-lang'>{code_lang}</span>\n"
-                code_header += COPY_BUTTON
+                lang_alias = {
+                    # Sphinx default highlighter is essentially Python
+                    "default": "python",
+                    # Shorter in headlines
+                    "shell-session": "shell",
+                    # Interactive PowerShell sessions
+                    "ps1con": "powershell",
+                }
+                if lang in lang_alias:
+                    code_lang = lang.replace(lang, lang_alias[lang])
+                else:
+                    code_lang = lang
+
+                code_header += f"<span class='code-lang'>{code_lang}</span>"
                 code_header += "</div>\n"
                 self.body.append(code_header)
 
@@ -306,29 +325,23 @@ class AwesomeHTMLTranslator(HTML5Translator):
             raise nodes.SkipNode
         else:
             # node has markup, it's a samp directive or parsed-literal
-            self.body.append(self.starttag(node, "div", CLASS="highlight"))
-            code_header = "<div class='code-header'>\n"
-            code_header += COPY_BUTTON
-            code_header += "</div>\n"
-            self.body.append(code_header)
             self.body.append("<pre><code>")
 
     def depart_literal_block(self, node: Element) -> None:
         """Close literal blocks.
 
-        We need to provide the closing tag for non-highlighted
-        code blocks. This method is skipped (``raise nodes.SkipNode``)
+        Provide the closing tag for non-highlighted code blocks.
+        This method is skipped with ``raise nodes.SkipNode``
         for highlighted code blocks.
         """
         self.body.append("</code></pre>\n")
-        self.body.append("</div>\n")
 
     def visit_container(self, node: Element) -> None:
         """Overide for code blocks with captions."""
         if node.get("literal_block"):
             # for docutils >0.17
             node.html5tagname = "div"
-            self.body.append(self.starttag(node, "div", CLASS="highlight"))
+            self.body.append('<div class="highlight" data-controller="code">\n')
             lang = node.get("language")
             code_header = "<div class='code-header'>\n"
             code_header += (
@@ -343,6 +356,24 @@ class AwesomeHTMLTranslator(HTML5Translator):
         if "refuri" in node and not node.get("internal"):
             self.body.append(ICONS["external_link"])
         super().depart_reference(node)
+
+    def visit_emphasis(self, node: Element) -> None:
+        """Change tags for emphasized literals.
+
+        Google recommends using ``<var>`` tags inside ``<code>`` tags
+        for placeholders.
+
+        https://developers.google.com/style/placeholders
+        """
+        if isinstance(node.parent, nodes.literal):
+            self.body.append(self.starttag(node, "var", ""))
+        else:
+            super().visit_emphasis(node)
+
+    def depart_emphasis(self, node: Element) -> None:
+        """Change closing tag for emphasized literals."""
+        if isinstance(node.parent, nodes.literal):
+            self.body.append("</var>")
 
 
 def setup(app: "Sphinx") -> Dict[str, Any]:

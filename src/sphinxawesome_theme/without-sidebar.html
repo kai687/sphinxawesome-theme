@@ -1,0 +1,39 @@
+{#-
+  Layout without sidebar -- used when `theme_show_nav` is false or for
+  extra templates that don't need a sidebar, for example, an about page,
+  or a landing page.
+-#}
+
+{% extends "layout.html" %}
+
+
+{% block document %}
+  <main
+    data-controller="scroll"
+    data-action="scroll->scroll#showButton"
+    class="px-10 col-span-full overflow-y-auto flex flex-col h-full"
+  >
+    {%- if pagename != master_doc and theme_show_breadcrumbs|tobool %}
+      {%- include "breadcrumbs.html" %}
+    {% endif -%}
+
+    <article role="main" class="flex-1 max-w-prose mx-auto">
+      {% block body %}{% endblock %}
+    </article>
+
+    {%- if theme_show_prev_next|tobool %}
+      {%- include "prev_next.html" %}
+    {%- endif %}
+
+    <footer>
+      {% block footer %}
+        {% include "footer.html" %}
+      {% endblock %}
+    </footer>
+
+    {#- scroll to top button -#}
+    {%- if theme_show_scrolltop|tobool -%}
+      {%- include "scrolltop.html" %}
+    {%- endif -%}
+  </main>
+{% endblock %}

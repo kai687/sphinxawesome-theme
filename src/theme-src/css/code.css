@@ -3,26 +3,48 @@
  */
 
 /* inline code */
-:not(pre) > code,
+:not(pre) > code {
+  font-size: 15px;
+  @apply font-medium px-1 bg-gray-50 border;
+  &.highlight {
+    @apply bg-gray-50;
+  }
+}
+
 kbd {
-  @apply font-medium text-sm leading-none py-px px-1 bg-gray-100;
+  @apply inline-block font-medium text-xs p-1 border border-gray-dark rounded-sm;
 }
 
 /* literal blocks (mostly parsed-literals) not wrapped in div.highlight */
 pre {
-  @apply my-6 border p-2 overflow-x-auto;
+  @apply relative border overflow-x-hidden rounded-sm shadow-md leading-normal my-6;
   /* give some extra padding to parsed-literals */
   &.literal-block {
-    @apply p-4;
+    @apply p-4 overflow-x-auto;
+  }
+  & code {
+    @apply block p-4 overflow-x-auto;
+  }
+  & .copy {
+    @apply absolute top-1.5 right-1.5 border p-1 uppercase text-xs tracking-wide rounded-sm text-gray-700 shadow-sm bg-white opacity-0 focus:opacity-100 transition-all duration-500 transform active:translate-x-0.5 active:translate-y-0.5 z-10;
+  }
+
+  &:hover .copy {
+    @apply opacity-100;
   }
 }
 
+.admonition pre,
+.admonition .highlight {
+  @apply shadow-none;
+}
+
 /* the outer wrapper for a code block */
-.highlight {
-  @apply my-6;
+.highlight:not(.docutils) {
+  @apply my-6 shadow;
   /* the code block itself */
   & pre {
-    @apply m-0 pl-4;
+    @apply my-0 rounded-t-none shadow-none border-none;
   }
   /* emphasized lines */
   & mark,
@@ -31,7 +53,7 @@ pre {
     @apply block relative -ml-4 -mr-2 pl-4 py-px;
   }
   & mark {
-    @apply bg-yellow-50;
+    @apply bg-yellow-200;
   }
   & ins {
     @apply bg-green-200 no-underline;
@@ -71,68 +93,42 @@ span.gi {
 
 /* the header of a code block */
 .code-header {
-  @apply border-l border-t border-r flex justify-between items-center text-sm text-gray-800;
+  @apply border-l border-t border-r flex justify-between items-center text-sm text-gray-100 bg-gray-dark border-gray-dark rounded-t-sm rounded-b-none;
   & .caption-text {
     @apply p-2;
   }
 }
 
 .code-lang {
-  @apply inline-block p-2 pl-4 mr-auto uppercase tracking-wider;
+  @apply inline-block p-2 pl-4 mr-auto font-mono uppercase tracking-widest;
 }
 
 /* make prompts unselectable */
 .gp {
-  @apply select-none pointer-events-none text-blue-800 font-medium;
+  @apply select-none pointer-events-none;
 }
 
-/* from the 'samp' directive */
-em.var {
-  @apply text-purple-700 font-medium;
-}
-
-/* from the 'samp' role */
-.samp > em {
-  @apply text-purple-700;
-}
-
-button.copy {
-  @apply p-2 ml-auto focus:text-pink-600 hover:text-pink-600;
-  & > svg {
-    @apply h-4 w-4 fill-current;
-  }
+/* Placeholder text, this assumes that ``var`` isn't used elsewhere in docutils/Sphinx
+ */
+var {
+  @apply italic text-purple-800;
 }
 
 /* autodocs */
-dl.code-definition {
-  & dt {
-    @apply p-2 my-4 border border-l-4;
-    & code {
-      @apply text-base bg-white p-0;
-    }
-  }
-}
-
-dl.code-definition:not(.option) {
-  & .sig-prename {
-    @apply text-gray-600;
-  }
-  & .sig-name {
-    @apply text-lg;
-  }
-  & .sig-paren {
-    @apply px-px;
-  }
-}
-
-/* .. option:: */
-dl.option {
-  & .sig-prename {
-    @apply italic text-purple-700;
-  }
-}
-
 .guilabel,
 .menuselection {
-  @apply font-medium tracking-wide;
+  @apply font-medium text-gray-dark tracking-wide;
+}
+
+dl.code-definition {
+  @apply mt-6 pt-6 mb-12 border-t;
+  & dt {
+    @apply font-normal;
+    & > code {
+      @apply border-none bg-transparent text-gray-dark px-0;
+    }
+  }
+  & .property {
+    @apply text-gray-light;
+  }
 }

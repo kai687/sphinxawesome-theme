@@ -173,6 +173,7 @@ class AwesomeCodeBlock(CodeBlock):
     new_options = {
         "emphasize-added": directives.unchanged_required,
         "emphasize-removed": directives.unchanged_required,
+        "emphasize-text": directives.unchanged_required,
     }
 
     option_sec = CodeBlock.option_spec.update(new_options)
@@ -267,6 +268,8 @@ class AwesomeCodeBlock(CodeBlock):
             extra_args["hl_removed"] = hl_removed
         if "lineno-start" in self.options:
             extra_args["linenostart"] = self.options["lineno-start"]
+        if "emphasize-text" in self.options:
+            extra_args["hl_text"] = self.options["emphasize-text"]
         self.set_source_info(literal)
 
         # if there is a caption, we need to wrap this node in a container

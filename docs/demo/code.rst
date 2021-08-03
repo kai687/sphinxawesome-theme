@@ -155,35 +155,17 @@ Clicking the button copies the text inside the code block to the clipboard.
 The header also contains a label for the highlighting language as well as
 the caption.
 
-.. vale Google.FirstPerson = NO
-
-.. caution::
-
-   For interactive shell sessions, Pygments provides the ``shell-session`` lexer, with
-   an alias of ``console``. The former is too long and the latter to old-fashioned for
-   my taste.
-
-   This theme replaces the label ``console`` with the label ``shell`` in the header
-   section of code blocks. Unfortunately, ``shell`` is also an alias for shell scripts.
-   As shell scripts are likely to be specific to a certain type of shell, I recommend
-   being more specific, such as using ``sh``, ``bash``, or ``zsh``.
-
-   If no highlighting language is defined, Sphinx uses ``default``. This is translated
-   to *interactive python session*. This theme replaces ``default`` with ``python`` in
-   the header section.
-
-.. vale Google.FirstPerson = YES
-
 The following example shows a code block for JavaScript with a caption.
 
 .. code-block:: javascript
    :caption: Example code
 
-   console.log("Hello World")
+   .log("Hello World")
 
 Use the ``linenos`` option to show line numbers in the code block.
 
 .. vale off
+
 .. code-block:: python
    :linenos:
 
@@ -275,34 +257,27 @@ hyperlinks, use a :rst:`parsed-literal` directive.
 
 You can't use syntax highlighting with :rst:`parsed-literal` blocks.
 
-Samp directive
---------------
+Highlighting placeholders
+-------------------------
 
-If you want to highlight placeholder variables, and you can accept only minimal
-highlighting, you can use the :rst:`samp` directive.
+It can be useful to highlight *placeholder* text in code, for example, to indicate
+variables that users should replace with their own.
+
+You can add the `emphasize-text` option to provide a string with the placeholder text.
 
 For example:
 
 .. code-block:: rst
-   :caption: samp directive
+   :caption: Placeholder text
 
-   .. samp::
+   .. code-block::
+      :emphasize-text: PLACEHOLDER
 
-      $ echo "Enter {PLACEHOLDER}"
+      echo "Enter PLACEHOLDER
 
 is rendered as:
 
-.. samp::
+.. code-block:: shell
+   :emphasize-text: PLACEHOLDER
 
-   $ echo "Enter {PLACEHOLDER}"
-
-.. note::
-
-   The Sphinx awesome theme provides a style for the directive that integrates well with
-   the rest of the theme. The parsing is handled by a separate extension
-   `sphinxawesome-sampdirective
-   <https://github.com/kai687/sphinxawesome-sampdirective>`_. This extension is
-   automatically installed and loaded, if the Sphinx awesome theme is installed as a
-   Python package. See :ref:`How to install the theme` for more information.
-
-   You can install and activate the extension separately for using with other themes.
+   echo "Enter PLACEHOLDER"

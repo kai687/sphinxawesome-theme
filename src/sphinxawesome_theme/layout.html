@@ -73,44 +73,21 @@
     we must use string comparison to check, whether a value is ``true`` or not.
   -#}
 
-  <body class="text-gray-900 antialiased">
-    <div id="page" class="h-screen md:grid md:grid-layout">
+  <body class="antialiased text-sm sm:text-base text-gray">
+    <div
+      id="page"
+      data-controller="sidebar search"
+      data-action="keydown@window->search#focus"
+      class="h-screen xl:grid xl:grid-layout"
+    >
       {% include "skip.html" %}
 
-      <header class="grid-area-header z-10">
+      <header class="grid-area-header z-10 h-18">
         {% include "header.html" %}
       </header>
 
-      {%- if theme_show_nav|lower == 'true' -%}
-        <aside id="sidebar" class="grid-area-sidebar h-full fixed md:relative inset-y-0 left-0 z-20 md:z-0 print:hidden overflow-y-auto transition-all transform transform-gpu -translate-x-full opacity-0 duration-300 md:translate-x-0 md:opacity-100">
-          {% include "sidebar.html" %}
-        </aside>
-      {%- endif %}
-
-      <main class="px-5 lg:ml-fluid grid-area-main overflow-y-auto flex flex-col h-full {% if theme_show_nav|lower != 'true' -%}mx-auto{%- endif -%}">
-        {%- if pagename != master_doc and theme_show_breadcrumbs|lower == 'true' %}
-          {%- include "breadcrumbs.html" %}
-        {% endif -%}
-
-        {#-
-          The `body` block is rendered from the `page.html` template.
-          The `page.html` template is inherited from the `basic` theme.
-        -#}
-
-        <article role="main" class="flex-1">
-          {% block body %}{% endblock %}
-        </article>
-
-        {%- if theme_show_prev_next|lower == 'true' %}
-          {%- include "prev_next.html" %}
-        {%- endif %}
-
-        <footer>
-          {% block footer %}
-            {% include "footer.html" %}
-          {% endblock %}
-        </footer>
-      </main>
+      {% block document %}
+      {% endblock %}
 
       {% include "menu.html" %}
       {% include "search-pane.html" %}
