@@ -1,8 +1,8 @@
 # How to install the theme
 
 ```{rst-class} lead
-Depending on how you want to use the theme and its extensions, use one of the following
-methods to install the Sphinx awesome theme.
+Depending on how you want to use the Sphinx awesome theme,
+install it as a Python package or load it from a directory.
 ```
 
 ```{contents} On this page
@@ -12,28 +12,30 @@ methods to install the Sphinx awesome theme.
 
 ## Install the theme as a Python package (recommended)
 
-In most use cases, you should install the theme as a Python package. You can make small
-modifications by adding custom CSS or JavaScript files. See {ref}`Add or override styles` for more information.
+In most cases, it's best to install the theme as a Python package.
+You can still modify the look and feel of the theme by adding
+custom CSS or JavaScript files.
+See {ref}`Add or override styles` for more information.
 
-You can install a released version from the Python Package Index,
-[PyPI](https://pypi.org/project/sphinxawesome-theme/):
+**To install the latest released version** from the Python Package Index
+[PyPI](https://pypi.org/project/sphinxawesome-theme/), enter the following:
 
-```shell
-pip install sphinxawesome-theme
+```shell-session
+$ pip install sphinxawesome-theme
 ```
 
-You can also install the latest development version of the theme directly from GitHub:
+To install the latest development version of the theme directly from GitHub:
 
-```shell
-pip install git+https://github.com/kai687/sphinxawesome-theme.git
+```shell-session
+$ pip install git+https://github.com/kai687/sphinxawesome-theme.git
 ```
 
 <!-- vale 18F.UnexpandedAcronyms = NO -->
 
-Check the "HEAD" section at the top of the
+See the "HEAD" section at the top of the
 [CHANGELOG](https://github.com/kai687/sphinxawesome-theme/blob/master/CHANGELOG.rst)
-file. These features and bugfixes are available in the version on GitHub but not yet in
-the released version on PyPI.
+file for features and bugfixes are available in the version on GitHub but not yet in
+the released version.
 
 <!-- vale 18F.UnexpandedAcronyms = YES -->
 
@@ -47,8 +49,8 @@ modification.
 1. {ref}`Create a local copy of the theme`
 1. Build the theme as a Python package:
 
-   ```shell
-   poetry build
+   ```shell-session
+   $ poetry build
    ```
 
    This command creates a new directory `dist/` containing the source distribution in
@@ -56,8 +58,8 @@ modification.
 
 1. In your project, install the theme from the locally built package:
 
-   ```shell
-   pip install /path/to/sphinxawesome_theme/dist/sphinxawesome_theme-*-py3-none-any.whl
+   ```shell-session
+   $ pip install /path/to/sphinxawesome_theme/dist/sphinxawesome_theme-*-py3-none-any.whl
    ```
 
    This command installs the pre-built package in the current environment.
@@ -65,8 +67,8 @@ modification.
    ````{tip}
    You can also skip the separate build step and install the top level directory:
 
-   ```shell
-   pip install /path/to/sphinxawesome_theme
+   ```shell-session
+   $ pip install /path/to/sphinxawesome_theme
    ```
 
    This command builds and installs the package in one step. It's a bit slower than the
@@ -113,18 +115,18 @@ In order to modify the theme, create a local copy first:
 
    If you forked the repository, enter:
 
-   ```{code-block} shell
+   ```{code-block} shell-session
    ---
-   emphasize-text: YOUR_GITHUB_USERNAME
+   emphasize-text: GITHUB_USERNAME
    ---
-   git clone https://github.com/YOUR_GITHUB_USERNAME/sphinxawesome-theme.git
+   $ git clone https://github.com/GITHUB_USERNAME/sphinxawesome-theme.git
    ```
 
-   Replace {samp}`{YOUR_GITHUB_USERNAME}` with your GitHub username. If you didn't fork
+   Replace {samp}`{GITHUB_USERNAME}` with your GitHub username. If you didn't fork
    the repository, clone the original repository:
 
-   ```shell
-   git clone https://github.com/kai687/sphinxawesome-theme.git
+   ```shell-session
+   $ git clone https://github.com/kai687/sphinxawesome-theme.git
    ```
 
    See [Cloning a
@@ -143,20 +145,20 @@ Follow these steps to install the Python dependencies:
 
    On macOS and Linux, enter:
 
-   ```shell
-   curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | python -
+   ```shell-session
+   $ curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | python -
    ```
 
    On Windows PowerShell:
 
-   ```PowerShell
+   ```Powershell
    (Invoke-WebRequest -Uri https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py -UseBasicParsing).Content | python -
    ```
 
 1. Install Nox via pip:
 
-   ```shell
-   pip install --user --upgrade nox
+   ```shell-session
+   $ pip install --user --upgrade nox
    ```
 
    If you want to use the same version of Poetry and Nox as the original repository, see
@@ -165,8 +167,8 @@ Follow these steps to install the Python dependencies:
 
 1. Install the Python dependencies:
 
-   ```shell
-   poetry install
+   ```shell-session
+   $ poetry install
    ```
 
    Check Poetry's [documentation](https://python-poetry.org/docs/basic-usage/) for more information.
@@ -175,8 +177,8 @@ Follow these steps to install the Python dependencies:
 
 1. **Optional:** install pre-commit hooks:
 
-   ```shell
-   poetry run pre-commit install
+   ```shell-session
+   $ poetry run pre-commit install
    ```
 
    If you don't plan on committing any changes to the forked repository, you can skip
@@ -186,8 +188,8 @@ Follow these steps to install the Python dependencies:
 
    To test pre-commit in combination with poetry, run:
 
-   ```shell
-   poetry run pre-commit run --all
+   ```shell-session
+   $ poetry run pre-commit run --all
    ```
 
    <!-- vale 18F.Clarity = YES -->
@@ -197,8 +199,8 @@ Follow these steps to install the Python dependencies:
    You can run any Nox session to confirm that the environment is working.
    To list the available sessions, enter:
 
-   ```shell
-   nox -ls
+   ```shell-session
+   $ nox -ls
    ```
 
    Enter `nox` without any option to run the default sessions,
@@ -206,8 +208,8 @@ Follow these steps to install the Python dependencies:
 
    For example, to build the documentation with Python 3.9, enter:
 
-   ```shell
-   nox -s docs -p 3.9
+   ```shell-session
+   $ nox -s docs -p 3.9
    ```
 
 ## Install JavaScript dependencies
@@ -216,15 +218,15 @@ Follow these steps to install the JavaScript dependencies:
 
 1. Check, if [Node.js](https://nodejs.org/en/) is installed:
 
-   ```shell
-   node --version
+   ```shell-session
+   $ node --version
    ```
 
    If Node.js is installed, this command returns the version number,
    for example:
 
-   ```shell
-   v14.17.3
+   ```shell-session
+   v14.17.4
    ```
 
    If the command fails, you may need to install Node.js first,
@@ -234,8 +236,8 @@ Follow these steps to install the JavaScript dependencies:
 
 1. **Optional:** install [`yarn`](https://classic.yarnpkg.com/lang/en/):
 
-   ```shell
-   npm install --global yarn
+   ```shell-session
+   $ npm install --global yarn
    ```
 
    The awesome theme uses yarn (classic). The dependencies are pinned to the specific
@@ -258,12 +260,12 @@ Follow these steps to install the JavaScript dependencies:
 
 1. Install the JavaScript dependencies:
 
-   ```shell
-   yarn install
+   ```shell-session
+   $ yarn install
    ```
 
 1. Build the theme:
 
-   ```shell
-   yarn build
+   ```shell-session
+   $ yarn build
    ```

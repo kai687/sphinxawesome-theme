@@ -295,8 +295,20 @@ class AwesomeHTMLTranslator(HTML5Translator):
                 self.body.append('<div class="highlight" data-controller="code">\n')
 
                 code_header = "<div class='code-header'>\n"
-                code_lang = lang.replace("default", "python")
-                code_header += f"<span class='code-lang'>{code_lang}</span>\n"
+                lang_alias = {
+                    # Sphinx default highlighter is essentially Python
+                    "default": "python",
+                    # Shorter in headlines
+                    "shell-session": "shell",
+                    # Interactive PowerShell sessions
+                    "ps1con": "powershell",
+                }
+                if lang in lang_alias:
+                    code_lang = lang.replace(lang, lang_alias[lang])
+                else:
+                    code_lang = lang
+
+                code_header += f"<span class='code-lang'>{code_lang}</span>"
                 code_header += "</div>\n"
                 self.body.append(code_header)
 
@@ -351,7 +363,7 @@ class AwesomeHTMLTranslator(HTML5Translator):
         Google recommends using ``<var>`` tags inside ``<code>`` tags
         for placeholders.
 
-        https://developers.google.com/style/placeholders#placeholder-variables-in-inline-text
+        https://developers.google.com/style/placeholders
         """
         if isinstance(node.parent, nodes.literal):
             self.body.append(self.starttag(node, "var", ""))
