@@ -173,7 +173,7 @@ Follow these steps to install the Python dependencies:
 
    Check Poetry's [documentation](https://python-poetry.org/docs/basic-usage/) for more information.
 
-<!-- vale 18F.Clarity = NO -->
+   <!-- vale 18F.Clarity = NO -->
 
 1. **Optional:** install pre-commit hooks:
 
