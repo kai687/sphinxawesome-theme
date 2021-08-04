@@ -24,6 +24,7 @@ extensions = [
     "sphinx.ext.autodoc",
     "sphinxawesome_theme",
     "myst_parser",
+    "sphinx_sitemap",
 ]
 
 myst_enable_extensions = ["colon_fence", "deflist"]
@@ -65,6 +66,8 @@ html_permalinks_icon = (
     "3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 "
     '5-5s-2.24-5-5-5z"/></svg>'
 )
+html_baseurl = "https://sphinxawesome.xyz/"
+html_extra_path = ["robots.txt"]
 
 # if you want to include other pages than docs
 # templates_path = ["_templates"]
