@@ -119,7 +119,7 @@ def linkcheck(session: Session) -> None:
     """Check links."""
     args = session.posargs or ["-b", "linkcheck", "-aWTE", "docs", "docs/public/_links"]
     session.run("poetry", "install", "--no-dev", external=True)
-    install_constrained_version(session, "myst-parser")
+    install_constrained_version(session, "myst-parser", "sphinx-sitemap")
     session.run("sphinx-build", *args)
 
 
