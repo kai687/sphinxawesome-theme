@@ -12,7 +12,7 @@ except ImportError:  # pragma: no cover
     # ignore mypy error about incompatible imports
     from importlib_metadata import version, PackageNotFoundError  # type: ignore
 
-from os import environ, path
+from os import path
 from typing import Any, Dict
 
 from sphinx.application import Sphinx
@@ -36,12 +36,12 @@ def setup(app: "Sphinx") -> Dict[str, Any]:
     - execute the ``post_process_html`` code when the build has finished
     """
     app.add_html_theme("sphinxawesome_theme", path.abspath(path.dirname(__file__)))
+    app.add_config_value("html_awesome_postprocessing", True, "html")
     app.setup_extension("sphinxawesome_theme.highlighting")
     app.setup_extension("sphinxawesome_theme.html_translator")
     app.setup_extension("sphinxawesome_theme.jinja_filters")
 
-    # if this environment variable is defined, skip the postprocessing
-    if "SPHINX_AWESOME_THEME_NO_POSTPROCESSING" not in environ:
+    if app.config.html_awesome_postprocessing:
         app.setup_extension("sphinxawesome_theme.postprocess")
 
     return {

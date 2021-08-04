@@ -1,17 +1,18 @@
 """Post-process the HTML produced by Sphinx.
 
-Modifications that can be done on the finished HTML
-are better done using BeautifulSoup. Here, a simple
-pipeline is defined for reading all HTML files,
-parsing them with BeautifulSoup and perform a chain
-of actions on the tree in place.
+Some modifications can be done more easily on the finished HTML.
+
+This module defines a simple pipeline:
+
+1. Read all HTML files
+2. Parse them with `BeautifulSoup`
+3. Perform a chain of actions on the tree in place
+
 See the `_modify_html()` function for the list of
 transformations.
 
-Note: If you add elements to the HTML, add traditional
-classes instead of using Tailwind's utility classes.
-This is because this Python file is not processed by
-PurgeCSS.
+Note: This file is not processed by Webpack; don't use Tailwind utility classes.
+They might not show up in the final CSS.
 
 :copyright: Copyright Kai Welke.
 :license: MIT, see LICENSE.
@@ -20,7 +21,7 @@ PurgeCSS.
 import os
 from typing import Any, Dict, List, Optional
 
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, Comment
 from sphinx.application import Sphinx
 from sphinx.util import logging
 
@@ -98,14 +99,28 @@ def _remove_empty_toctree(tree: BeautifulSoup) -> None:
             div.decompose()
 
 
-def _modify_html(html_filename: str) -> None:
+def _headerlinks(tree: BeautifulSoup) -> None:
+    """Enhance the headerlink experience."""
+    for link in tree("a", class_="headerlink"):
+        link["data-controller"] = "clipboard"
+        link["data-action"] = "click->clipboard#copyHeaderLink"
+        link["aria-label"] = "Click to copy this link"
+        del link["title"]
+        link["class"].extend(["tooltipped", "tooltipped-ne"])
+
+
+def _strip_comments(tree: BeautifulSoup) -> None:
+    """Remove HTML comments from documents."""
+    comments = tree.find_all(string=lambda text: isinstance(text, Comment))
+    (c.decompose() for c in comments)
+
+
+def _modify_html(html_filename: str, app: Sphinx) -> None:
     """Modify a single HTML document.
 
-    The HTML document is parsed into a BeautifulSoup tree.
-
-    The modifications are performed in order and in place.
-
-    After these modifications, the HTML is written into a file,
+    1. The HTML document is parsed into a BeautifulSoup tree.
+    2. The modifications are performed in order and in place.
+    3. After these modifications, the HTML is written into a file,
     overwriting the original file.
     """
     with open(html_filename, encoding="utf-8") as html:
@@ -115,6 +130,9 @@ def _modify_html(html_filename: str) -> None:
     _collapsible_nav(tree)
     _remove_span_pre(tree)
     _remove_empty_toctree(tree)
+    if app.config.html_awesome_headerlinks:
+        _headerlinks(tree)
+    _strip_comments(tree)
 
     with open(html_filename, "w") as out_file:
         out_file.write(str(tree))
@@ -134,12 +152,13 @@ def post_process_html(app: Sphinx, exc: Optional[Exception]) -> None:
         html_files = _get_html_files(app.outdir)
 
         for doc in html_files:
-            _modify_html(doc)
+            _modify_html(doc, app)
 
 
 def setup(app: "Sphinx") -> Dict[str, Any]:
     """Set this up as internal extension."""
     app.connect("build-finished", post_process_html)
+    app.add_config_value("html_awesome_headerlinks", True, "html")
 
     return {
         "version": __version__,
