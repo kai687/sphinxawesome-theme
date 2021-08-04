@@ -2,8 +2,12 @@
   Template for the search results page.
 -#}
 
+{% if theme_show_nav|tobool %}
+  {%- extends "with-sidebar.html" -%}
+{% else %}
+  {%- extends "without-sidebar.html" -%}
+{% endif %}
 
-{% extends "with-sidebar.html" %}
 {% set title = _('Search') %}
 {% block scripts %}
 {{ super() }}
@@ -19,5 +23,5 @@
     Please activate Javascript to enable searching the documentation.
   {% endtrans %}
 </div>
-<div id="search-results" class="max-w-prose"></div>
+<div id="search-results" class="max-w-prose mt-16"></div>
 {% endblock body %}
