@@ -14,22 +14,33 @@
   .code-header;
 
 .headerlink {
-  @apply ml-1 text-gray-500 hover:text-brand focus:text-brand;
-  & > svg {
-    height: 0.65em;
+  @apply ml-1 hover:text-brand focus:text-brand;
+  & svg {
+    height: 1em;
     @apply invisible fill-current outline-none;
   }
-  &:focus > svg {
+  &:focus svg {
     @apply visible;
   }
 }
 
-/* tweak style in code headers */
-.code-header .headerlink {
-  @apply mr-2 text-gray-100 hover:text-brand focus:text-brand;
-  & > svg {
-    height: 0.875em;
+h1,
+h2,
+h3 {
+  & .headerlink {
+    @apply text-gray-400 hover:text-brand focus:text-brand;
   }
+}
+
+h1 .headerlink svg {
+  height: 0.65em;
+}
+h2 .headerlink svg {
+  height: 0.75em;
+}
+
+.code-header .headerlink {
+  @apply mr-2;
 }
 
 :--headerlinkable:hover .headerlink svg {
