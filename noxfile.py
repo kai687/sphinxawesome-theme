@@ -99,7 +99,7 @@ def docs(session: Session) -> None:
     """Build the docs."""
     args = session.posargs or ["-b", "dirhtml", "-aqWTE", "docs", "docs/public"]
     session.run("poetry", "install", "--no-dev", external=True)
-    install_constrained_version(session, "myst-parser")
+    install_constrained_version(session, "myst-parser", "sphinx-sitemap")
     session.run("sphinx-build", *args)
 
 
@@ -108,7 +108,9 @@ def live_docs(session: Session) -> None:
     """Build the docs and live-reload."""
     args = session.posargs or ["-b", "dirhtml", "-aWTE", "docs", "docs/public"]
     session.run("poetry", "install", "--no-dev", external=True)
-    install_constrained_version(session, "myst-parser", "sphinx-autobuild")
+    install_constrained_version(
+        session, "myst-parser", "sphinx-autobuild", "sphinx-sitemap"
+    )
     session.run("sphinx-autobuild", *args)
 
 
@@ -157,7 +159,7 @@ def export(session: Session) -> None:
         external=True,
     )
 
-    append_to_requirements(session, "myst-parser", "linkify")
+    append_to_requirements(session, "myst-parser", "linkify", "sphinx-sitemap")
 
 
 @nox.session(python=Versions.all())
