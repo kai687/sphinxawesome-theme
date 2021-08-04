@@ -197,7 +197,7 @@ html_theme_options = {"show_scrolltop": True}
 ### Extension options
 
 This theme also enables a few internal extensions that enhance the user experience. The
-following additional configuration value is set at the top level in the Sphinx
+following configuration values are set at the top level in the Sphinx
 configuration file `conf.py`:
 
 <!-- vale Awesome.SpellCheck = NO -->
@@ -206,14 +206,31 @@ configuration file `conf.py`:
 
 <!-- vale Awesome.SpellCheck = YES -->
 
-Set this option to `True` to enable collapsible object definitions, such as command
-line options, classes, or methods.
+Set this option to `True` to make code references, such as classes, methods, and other
+objects, collapsible and expandable. By default, this option is turned off.
 
 ```{code-block} python
 ---
 caption: conf.py
 ---
+# This option is ``False`` by default
 html_collapsible_definitions = True
+```
+
+:::
+
+:::{confval} html_awesome_headerlinks
+
+Set this option to `False` to use the default behavior for headerlinks. By default, this
+option is enabled. You can click on a headerlink icon to copy it to the clipboard
+immediately.
+
+```{code-block} python
+---
+caption: conf.py
+---
+# This option is ``True`` by default
+html_awesome_headerlinks = False
 ```
 
 :::

@@ -27,7 +27,8 @@ extensions = [
     "sphinx_sitemap",
 ]
 
-myst_enable_extensions = ["colon_fence", "deflist"]
+myst_enable_extensions = ["colon_fence", "deflist", "replacements", "substitution"]
+myst_substitutions = {"title": project}
 
 exclude_patterns = ["public"]
 
@@ -47,7 +48,7 @@ rst_prolog = ".. |rst| replace:: reStructuredText"
 
 # -- Options for HTML output -------------------------------------------------
 
-html_title = "Awesome Sphinx Theme"
+html_title = project
 html_theme = "sphinxawesome_theme"
 html_theme_path = ["../src"]
 html_last_updated_fmt = ""
@@ -75,7 +76,6 @@ html_extra_path = ["robots.txt"]
 
 # extra option from the sphinxawesome_theme
 html_collapsible_definitions = True
-
 html_theme_options = {"show_scrolltop": True}
 
 
