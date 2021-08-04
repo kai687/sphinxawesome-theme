@@ -33,13 +33,11 @@ def setup(app: "Sphinx") -> Dict[str, Any]:
     - activate the ``sphinxawesome.sampdirective`` extension
     - activate the ``sphinxawesome_theme.highlighting`` extension
     - activate the ``sphinxawesome_theme.html_translator`` extension
-    - add the ``AdmonitionID`` as post-transform
     - execute the ``post_process_html`` code when the build has finished
     """
     app.add_html_theme("sphinxawesome_theme", path.abspath(path.dirname(__file__)))
     app.setup_extension("sphinxawesome_theme.highlighting")
     app.setup_extension("sphinxawesome_theme.html_translator")
-    app.setup_extension("sphinxawesome_theme.admonition_ids")
     app.setup_extension("sphinxawesome_theme.jinja_filters")
 
     # if this environment variable is defined, skip the postprocessing
