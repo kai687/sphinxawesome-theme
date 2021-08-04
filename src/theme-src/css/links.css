@@ -27,10 +27,6 @@
   }
 }
 
-.headerlink:empty {
-  @apply invisible;
-}
-
 h1,
 h2,
 h3 {
