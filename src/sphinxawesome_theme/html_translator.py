@@ -3,10 +3,6 @@
 Overwrite several methods to improve the HTML output.
 This HTML translator is active for the ``html`` and ``dirhtml`` builders.
 
-Improve headerlinks
-   Add an SVG icon to each title/headline/caption with an ``id``
-   with a tooltip.
-
 Code blocks
    The handling of code blocks is modified. Code blocks have a ``header``
    section that displays the highlighting language.
@@ -25,7 +21,6 @@ from docutils import nodes
 from docutils.nodes import Element
 from sphinx import addnodes
 from sphinx.application import Sphinx
-from sphinx.locale import _
 from sphinx.util import logging
 from sphinx.writers.html5 import HTML5Translator
 
@@ -44,81 +39,6 @@ EXPAND_MORE_BUTTON = (
 class AwesomeHTMLTranslator(HTML5Translator):
     """Override a few methods to improve the usability."""
 
-    def depart_title(self, node: Element) -> None:
-        """Change the permalinks for headlines.
-
-        - for headlines: "Copy link to section: <section title>"
-        - for tables: "Copy link to this table"
-        - for admonitions: "Copy link to this <type>"
-
-        Admonitions don't have an ID by default.
-        The AdmonitionID post-transform adds
-        IDs to admonitions.
-        """
-        close_tag = self.context[-1]
-        if (
-            self.config.html_permalinks
-            and self.builder.add_permalinks
-            and node.parent.hasattr("ids")
-            and node.parent["ids"]
-        ):
-            # add permalink anchor to normal headings
-            if close_tag.startswith("</h"):
-                self.add_permalink_ref(
-                    node.parent, _(f"Copy link to section: {node.astext()}.")
-                )
-            # and to headings when the 'contents' directive is used
-            elif close_tag.startswith("</a></h"):
-                self.body.append(
-                    "</a><a role='button' "
-                    "class='headerlink tooltipped tooltipped-n' "
-                    'href="#{}" '
-                    'data-controller="clipboard" '
-                    'data-action="click->clipboard#copyHeaderLink" '
-                    'aria-label="Copy link to this section: {}">'.format(
-                        node.parent["ids"][0], node.astext()
-                    )
-                    + ICONS["headerlink"]
-                )
-            elif isinstance(node.parent, nodes.table):
-                self.body.append("</span>")
-                self.add_permalink_ref(node.parent, _("Copy link to this table."))
-            elif isinstance(node.parent, nodes.Admonition):
-                admon_type = type(node.parent).__name__
-                self.add_permalink_ref(
-                    node.parent, _(f"Copy link to this {admon_type}.")
-                )
-        elif isinstance(node.parent, nodes.table):
-            self.body.append("</span>")
-
-        self.body.append(self.context.pop())
-        if self.in_document_title:  # type: ignore
-            self.title = self.body[self.in_document_title : -1]  # type: ignore
-            self.in_document_title = 0
-            self.body_pre_docinfo.extend(self.body)
-            self.html_title.extend(self.body)
-            del self.body[:]
-
-    def add_permalink_ref(self, node: Element, title: str) -> None:
-        """Add an icon instead of the ¶ symbol.
-
-        Note that user-defined permalink characters specified via
-        `html_add_permalinks` are ignored.
-
-        Since clicking the permalink icon copies the link to the clipboard,
-        this should be a button element, but there is some magic with the
-        resolution of `href` attributes happening in Sphinx.
-        """
-        if node["ids"] and self.builder.add_permalinks and self.config.html_permalinks:
-            headerlink = (
-                '<a role="button" class="headerlink tooltipped tooltipped-ne" '
-                'data-controller="clipboard" '
-                'data-action="click->clipboard#copyHeaderLink" '
-                'href="#{}" aria-label="{}">'.format(node["ids"][0], title)
-            )
-            headerlink += ICONS["headerlink"] + "</a>"
-            self.body.append(headerlink)
-
     def visit_caption(self, node: Element) -> None:
         """Use semantic elements."""
         if isinstance(node.parent, nodes.figure):
@@ -131,33 +51,6 @@ class AwesomeHTMLTranslator(HTML5Translator):
             self.body.append(self.starttag(node, "span", "", CLASS="caption-text"))
         else:
             self.body.append(self.starttag(node, "p", "", CLASS="caption"))
-
-    def depart_caption(self, node: Element) -> None:
-        """Change the permalinks for captions.
-
-        - for figures: Copy link to this image
-        - for table of contents: Copy link to this table of contents.
-        """
-        self.body.append("</span>")
-
-        # append permalink if available
-        if isinstance(node.parent, nodes.container) and node.parent.get(
-            "literal_block"
-        ):
-            self.add_permalink_ref(node.parent, _("Copy link to this code block."))
-        if isinstance(node.parent, nodes.figure):
-            self.add_permalink_ref(node.parent, _("Copy link to this image."))
-        elif node.parent.get("toctree"):
-            self.add_permalink_ref(
-                node.parent.parent, _("Copy link to this table of contents.")
-            )
-
-        if isinstance(node.parent, nodes.container) and node.parent.get(
-            "literal_block"
-        ):
-            self.body.append("</div>\n")
-        else:
-            self.body.append("</p>\n")
 
     def visit_desc(self, node: Element) -> None:
         """Add a class ``code-definition`` to definition lists.
@@ -194,14 +87,11 @@ class AwesomeHTMLTranslator(HTML5Translator):
         Functions, methods, command line options, etc.
         "Copy link to this definition"
         """
-        self.protect_literal_text -= 1
-
-        if not node.get("is_multiline"):
-            self.add_permalink_ref(node, _("Copy link to this definition."))
         dd = node.next_node(addnodes.desc_content, siblings=True)
         if self.config.html_collapsible_definitions and len(dd.astext()) > 0:
             self.body.append(EXPAND_MORE_BUTTON)
-        self.body.append("</dt>\n")
+
+        super().depart_desc_signature(node)
 
     def depart_desc_signature_line(self, node: Element) -> None:
         """Change permalinks for code definitions.
@@ -209,11 +99,9 @@ class AwesomeHTMLTranslator(HTML5Translator):
         This method is only relevant for mulitline definitions,
         which I think only happen in C and C++ domains.
         """
-        if node.get("add_permalink"):
-            self.add_permalink_ref(node.parent, _("Copy link to this definition."))
         if self.config.html_collapsible_definitions:
             self.body.append(EXPAND_MORE_BUTTON)
-        self.body.append("<br />")
+        super().depart_desc_signature_line(node)
 
     def visit_desc_content(self, node: Element) -> None:
         """Add panel class to definitions."""
