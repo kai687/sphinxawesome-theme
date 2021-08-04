@@ -1,11 +1,11 @@
 ---
 description: A theme for Sphinx to create beautiful documentation with Python.
 keywords: documentation, sphinx, python
-"og:title": Sphinx awesome theme
+"og:title": Awesome Sphinx Theme
 "og:description": A theme for Sphinx to create beautiful documentation with Python.
 ---
 
-# Sphinx awesome theme
+# Awesome Sphinx Theme
 
 ```{rst-class} lead
 Bring your Sphinx documentation to the modern times and create beautiful documentation
