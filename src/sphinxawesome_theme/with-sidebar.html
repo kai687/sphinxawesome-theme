@@ -11,32 +11,34 @@
     {% include "sidebar.html" %}
   </aside>
 
-  <main
+  <div
     data-controller="scroll"
     data-action="scroll->scroll#showButton"
     class="px-10 xl:ml-fluid grid-area-main overflow-y-auto flex flex-col h-full"
   >
-    {%- if pagename != master_doc and theme_show_breadcrumbs|tobool %}
-      {%- include "breadcrumbs.html" %}
-    {% endif -%}
+    <main role="main" class="flex-1 mx-0 md:mx-auto xl:mx-0 flex flex-col">
+      {%- if pagename != master_doc and theme_show_breadcrumbs|tobool %}
+        {%- include "breadcrumbs.html" %}
+      {% endif -%}
 
-    <article role="main" class="flex-1 mx-0 md:mx-auto xl:mx-0">
-      {% block body %}{% endblock %}
-    </article>
+      <article class="flex-1">
+        {% block body %}{% endblock %}
+      </article>
 
-    {%- if theme_show_prev_next|tobool %}
-      {%- include "prev_next.html" %}
-    {%- endif %}
+      {%- if theme_show_prev_next|tobool %}
+        {%- include "prev_next.html" %}
+      {%- endif %}
 
-    <footer>
-      {% block footer %}
-        {% include "footer.html" %}
-      {% endblock %}
-    </footer>
+      <footer>
+        {% block footer %}
+          {% include "footer.html" %}
+        {% endblock %}
+      </footer>
+    </main>
 
     {#- scroll to top button -#}
     {%- if theme_show_scrolltop|tobool -%}
       {%- include "scrolltop.html" %}
     {%- endif -%}
-  </main>
+  </div>
 {% endblock %}
