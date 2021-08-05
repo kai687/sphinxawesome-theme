@@ -30,16 +30,16 @@ def setup(app: "Sphinx") -> Dict[str, Any]:
     The setup function of this theme accomplishes the following:
 
     - add the HTML theme
-    - activate the ``sphinxawesome.sampdirective`` extension
-    - activate the ``sphinxawesome_theme.highlighting`` extension
-    - activate the ``sphinxawesome_theme.html_translator`` extension
-    - execute the ``post_process_html`` code when the build has finished
+    - set up internal extensions
     """
     app.add_html_theme("sphinxawesome_theme", path.abspath(path.dirname(__file__)))
     app.add_config_value("html_awesome_postprocessing", True, "html")
+    app.add_config_value("html_awesome_html_translator", True, "html")
     app.setup_extension("sphinxawesome_theme.highlighting")
-    app.setup_extension("sphinxawesome_theme.html_translator")
     app.setup_extension("sphinxawesome_theme.jinja_filters")
+
+    if app.config.html_awesome_html_translator:
+        app.setup_extension("sphinxawesome_theme.html_translator")
 
     if app.config.html_awesome_postprocessing:
         app.setup_extension("sphinxawesome_theme.postprocess")
