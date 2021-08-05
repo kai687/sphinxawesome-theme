@@ -96,7 +96,7 @@ def _remove_empty_toctree(tree: BeautifulSoup) -> None:
     for div in tree("div", class_="toctree-wrapper"):
         children = list(div.children)
         if len(children) == 1 and not children[0].strip():
-            div.decompose()
+            div.extract()
 
 
 def _headerlinks(tree: BeautifulSoup) -> None:
@@ -109,10 +109,17 @@ def _headerlinks(tree: BeautifulSoup) -> None:
         link["class"].extend(["tooltipped", "tooltipped-ne"])
 
 
+def _external_links(tree: BeautifulSoup) -> None:
+    """Add `rel="nofollow noopener"` to external links."""
+    for link in tree("a", class_="reference external"):
+        link["rel"] = "nofollow noopener"
+
+
 def _strip_comments(tree: BeautifulSoup) -> None:
     """Remove HTML comments from documents."""
     comments = tree.find_all(string=lambda text: isinstance(text, Comment))
-    (c.decompose() for c in comments)
+    for c in comments:
+        c.extract()
 
 
 def _modify_html(html_filename: str, app: Sphinx) -> None:
@@ -130,6 +137,7 @@ def _modify_html(html_filename: str, app: Sphinx) -> None:
     _collapsible_nav(tree)
     _remove_span_pre(tree)
     _remove_empty_toctree(tree)
+    _external_links(tree)
     if app.config.html_awesome_headerlinks:
         _headerlinks(tree)
     _strip_comments(tree)
