@@ -262,6 +262,8 @@ class AwesomeHTMLTranslator(HTML5Translator):
         """Change closing tag for emphasized literals."""
         if isinstance(node.parent, nodes.literal):
             self.body.append("</var>")
+        else:
+            super().depart_emphasis(node)
 
 
 def setup(app: "Sphinx") -> Dict[str, Any]:
