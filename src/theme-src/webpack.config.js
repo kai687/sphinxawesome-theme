@@ -1,9 +1,10 @@
-const path = require("path");
-const ESLintPlugin = require("eslint-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const StyleLintPlugin = require("stylelint-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const webpack = require("webpack");
+const path = require("path")
+const ESLintPlugin = require("eslint-webpack-plugin")
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const { WebpackManifestPlugin } = require("webpack-manifest-plugin")
+const StyleLintPlugin = require("stylelint-webpack-plugin")
+const { CleanWebpackPlugin } = require("clean-webpack-plugin")
+const webpack = require("webpack")
 
 
 const THEME_STATIC_DIR = path.resolve(__dirname, "../sphinxawesome_theme/static/")
@@ -16,6 +17,7 @@ module.exports = {
   output: {
     path: THEME_STATIC_DIR,
     publicPath: "",
+    filename: "[name].[contenthash].js",
   },
   plugins: [
     new webpack.ProgressPlugin(),
@@ -27,11 +29,15 @@ module.exports = {
       fix: true,
     }),
     new MiniCssExtractPlugin({
-      filename: "theme.css",
+      filename: "[name].[contenthash].css",
     }),
     new StyleLintPlugin({
       files: "css/*.css",
       fix: true,
+    }),
+    new WebpackManifestPlugin({
+      basePath: "_static/",
+      publicPath: "_static/",
     }),
   ],
   module: {
@@ -60,4 +66,4 @@ module.exports = {
       },
     ],
   },
-};
+}
