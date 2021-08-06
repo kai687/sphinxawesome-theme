@@ -2,7 +2,7 @@
   Templates for previous/next links.
 -#}
 
-{%- set captionclasses = "uppercase text-sm font-medium text-gray-600 tracking-wider block mb-2" -%}
+{%- set captionclasses = "uppercase text-xs text-gray-light tracking-wider block mb-2" -%}
 {%- set linkclasses = "block text-link hover:text-brand focus:text-brand hover:underline focus:underline" -%}
 
 <section class="flex justify-between pt-4 mt-12">
@@ -13,7 +13,7 @@
       href="{{ prev.link|e }}"
       title="Go to previous page"
       class="{{ linkclasses }}"
-      >&larr;&nbsp;{{ prev.title|striptags|e }}</a>
+      >{{ prev.title|striptags|e }}</a>
   </div>
   {% endif %}
   {% if next %}
@@ -23,7 +23,7 @@
       href="{{ next.link|e }}"
       title="Go to next page"
       class="{{ linkclasses }}"
-      >{{ next.title|striptags|e }}&nbsp;&rarr;</a>
+      >{{ next.title|striptags|e }}</a>
   </div>
   {% endif %}
 </section>
