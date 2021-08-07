@@ -1,6 +1,7 @@
 3.0.0
 ~~~~~
 
+- asset hashing
 - feat: almost complete redesign
 - Solid JavaScript foundation based on Stimulus
 - Even better code blocks (support arbitrary emphasizing text inside code blocks; no
