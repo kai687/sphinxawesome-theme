@@ -1,5 +1,5 @@
-Notes, warnings, and blockquotes
-================================
+Notes, warnings, and quotations
+===============================
 
 .. rst-class:: lead
 

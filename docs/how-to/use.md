@@ -219,11 +219,15 @@ html_collapsible_definitions = True
 
 :::
 
+<!-- vale Awesome.SpellCheck = NO -->
+
 :::{confval} html_awesome_headerlinks
 
 Set this option to `False` to use the default behavior for headerlinks. By default, this
-option is enabled. You can click on a headerlink icon to copy it to the clipboard
+option is enabled. You can click a headerlink icon to copy it to the clipboard
 immediately.
+
+<!-- vale Awesome.SpellCheck = YES -->
 
 ```{code-block} python
 ---
