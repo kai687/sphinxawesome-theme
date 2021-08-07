@@ -10,9 +10,12 @@
         @apply list-latin my-4 pl-5;
       }
       & li {
-        @apply pl-3 my-2;
+        @apply pl-3 my-4;
         &::marker {
           @apply font-medium text-gray-dark;
+        }
+        & p {
+          @apply my-2;
         }
       }
     }
@@ -22,9 +25,12 @@
         @apply list-disc my-4 pl-5;
       }
       & li {
-        @apply pl-3 my-2;
+        @apply pl-3 my-4;
         &::marker {
           @apply text-gray-light;
+        }
+        & p {
+          @apply my-2;
         }
       }
     }

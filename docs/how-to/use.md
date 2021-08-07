@@ -17,7 +17,7 @@ Add the `html_theme` configuration option to the Sphinx configuration file `conf
 
 ```{code-block} python
 ---
-caption: conf.py
+caption: "File: conf.py"
 ---
 html_theme = "sphinxawesome_theme"
 ```
@@ -35,7 +35,7 @@ Follow these steps to load a local version of the theme from a directory:
 
    ```{code-block} python
    ---
-   caption: conf.py
+   caption: "File: conf.py"
    ---
    import os
    import sys
@@ -48,7 +48,7 @@ Follow these steps to load a local version of the theme from a directory:
 
    ```{code-block} python
    ---
-   caption: conf.py
+   caption: "File: conf.py"
    ---
    exclude_patterns = ["sphinxawesome-theme", "..."]
    ```
@@ -57,7 +57,7 @@ Follow these steps to load a local version of the theme from a directory:
 
    ```{code-block} python
    ---
-   caption: conf.py
+   caption: "File: conf.py"
    ---
    extensions = ["sphinxawesome_theme", "..."]
    html_theme = "sphinxawesome_theme"
@@ -71,7 +71,7 @@ below.
 
 ```{code-block} python
 ---
-caption: conf.py
+caption: "File: conf.py"
 ---
 html_theme_options = {
       "nav_include_hidden": True,
@@ -89,18 +89,18 @@ html_theme_options = {
 
 By default, the
 [toctree](https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-toctree)
-directive includes the content and prints a list of links in the content
-area. A `toctree` directive with the `:hidden:` option
-includes the content, but doesn't print the list of links in the content area. This can
-be useful if navigation links are elsewhere on the page. Printing the same list of
-links in the content area would be redundant.
+directive includes the content and prints a list of links in the content area. A
+`toctree` directive with the `:hidden:` option includes the content, but doesn't print
+the list of links in the content area. This can be useful if navigation links are
+elsewhere on the page. Printing the same list of links in the content area would be
+redundant.
 
 If you don't want to include elements from a _hidden_ toctree directive in the
 navigation menu on the left, set:
 
 ```{code-block} python
 ---
-caption: conf.py
+caption: "File: conf.py"
 ---
 html_theme_options = {"nav_include_hidden": False}
 ```
@@ -122,7 +122,7 @@ want to hide the navigation menu completely, add:
 
 ```{code-block} python
 ---
-caption: conf.py
+caption: "File: conf.py"
 ---
 html_theme_options = {"show_nav": False}
 ```
@@ -132,13 +132,13 @@ html_theme_options = {"show_nav": False}
 :::{confval} show_breadcrumbs
 
 By default, "[breadcrumbs](https://en.wikipedia.org/wiki/Breadcrumb_navigation)"
-navigation links are shown at the top of the content area. They show the position of this
-document relative to the top level. If you want to hide the breadcrumbs navigation
+navigation links are shown at the top of the content area. They show the position of
+this document relative to the top level. If you want to hide the breadcrumbs navigation
 links, add:
 
 ```{code-block} python
 ---
-caption: conf.py
+caption: "File: conf.py"
 ---
 html_theme_options = {"show_breadcrumbs": False}
 ```
@@ -152,7 +152,7 @@ set:
 
 ```{code-block} python
 ---
-caption: conf.py
+caption: "File: conf.py"
 emphasize-text: CHAR
 ---
 html_theme_options = {"breadcrumbs_separator": "CHAR"}
@@ -167,7 +167,7 @@ If you want to show links to the previous and next pages, set:
 
 ```{code-block} python
 ---
-caption: conf.py
+caption: "File: conf.py"
 ---
 html_theme_options = {"show_prev_next": True}
 ```
@@ -187,7 +187,7 @@ that scrolls to the top of the page when clicked, set:
 
 ```{code-block} python
 ---
-caption: conf.py
+caption: "File: conf.py"
 ---
 html_theme_options = {"show_scrolltop": True}
 ```
@@ -211,7 +211,7 @@ objects, collapsible and expandable. By default, this option is turned off.
 
 ```{code-block} python
 ---
-caption: conf.py
+caption: "File: conf.py"
 ---
 # This option is ``False`` by default
 html_collapsible_definitions = True
@@ -231,7 +231,7 @@ immediately.
 
 ```{code-block} python
 ---
-caption: conf.py
+caption: "File: conf.py"
 ---
 # This option is ``True`` by default
 html_awesome_headerlinks = False
