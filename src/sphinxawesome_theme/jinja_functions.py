@@ -29,18 +29,30 @@ def _make_id_from_title(title: str) -> Any:
     return make_id(title)
 
 
-def _make_asset_url(app: Sphinx, asset: str) -> str:
-    """Turn a *clean* asset file name to a hashed one.
+def _get_manifest_json(app: Sphinx) -> Dict:
+    """Read the ``manifest.json`` file.
 
-    Webpack writes a file ``manifest.json`` that has the mapping
-    between unhashed and hashed filenames.
+    Webpack writes a file ``manifest.json`` in the theme's static directory.
+    This file has the mapping between hashed and unhashed filenames.
+    Returns a dictionary with this mapping.
     """
-    manifest = path.join(app.outdir, "_static", "manifest.json")
-    with open(manifest) as m:
-        hashed_filenames = json.load(m)
+    if app.builder.theme:
+        # find the first 'manifest.json' file in the theme's directories
+        for entry in app.builder.theme.get_theme_dirs()[::-1]:
+            manifest = path.join(entry, "static", "manifest.json")
+            if path.isfile(manifest):
+                with open(manifest) as m:
+                    return json.load(m)
+        else:
+            return {}
+
+
+def _make_asset_url(app: Sphinx, asset: str) -> str:
+    """Turn a *clean* asset file name to a hashed one."""
+    manifest = _get_manifest_json(app)
 
     # return the asset itself if it is not in the manifest
-    return hashed_filenames.get(asset, asset)
+    return manifest.get(asset, asset)
 
 
 def setup_jinja(

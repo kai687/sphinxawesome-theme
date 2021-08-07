@@ -25,18 +25,12 @@ except PackageNotFoundError:  # pragma: no cover
 
 
 def setup(app: "Sphinx") -> Dict[str, Any]:
-    """Register the theme and its extensions wih Sphinx.
-
-    The setup function of this theme accomplishes the following:
-
-    - add the HTML theme
-    - set up internal extensions
-    """
+    """Register the theme and its extensions wih Sphinx."""
     app.add_html_theme("sphinxawesome_theme", path.abspath(path.dirname(__file__)))
     app.add_config_value("html_awesome_postprocessing", True, "html")
     app.add_config_value("html_awesome_html_translator", True, "html")
     app.setup_extension("sphinxawesome_theme.highlighting")
-    app.setup_extension("sphinxawesome_theme.jinja_filters")
+    app.setup_extension("sphinxawesome_theme.jinja_functions")
 
     if app.config.html_awesome_html_translator:
         app.setup_extension("sphinxawesome_theme.html_translator")
