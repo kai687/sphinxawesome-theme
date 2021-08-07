@@ -4,7 +4,6 @@ module.exports = {
   corePlugins: {
     animation: false,
   },
-  mode: "jit",
   purge: {
     content: ["../sphinxawesome_theme/*.html", "./js/**/*.js"],
     safelist: ["lead", "rubric"],

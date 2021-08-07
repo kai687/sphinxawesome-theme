@@ -21,35 +21,36 @@ Inline Code
 
 You can mark up generic inline code using two backticks like this: ``inline code``.
 
-Syntax highlighted inline code
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Syntax highlighting in inline code
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you want to use syntax highlighting for inline code, such as this:
-:python:`print("Hello World")`, perform these steps:
+By default, Sphinx doesn't highlight inline code. With the following extra steps,
+you can enable it.
 
-#. Create docutils configuration file :file:`docutils.conf`.
+#. Create a docutils configuration file :file:`docutils.conf` in the same directory as
+   the Sphinx configuration file :file:`conf.py`.
 
-   Place this file in the same directory as the Sphinx configuration file
-   :file:`conf.py`.
-
-#. Make the syntax highlighter use *short* class names.
-
-   Add this section to the file :file:`docutils.conf`:
+#. Add to the docutils configuration file :file:`docutils.conf`:
 
    .. code-block:: ini
-      :caption: docutils.conf
+      :caption: File: docutils.conf
 
       [restructuredtext parser]
       syntax_highlight = short
 
-   This creates "short" class names for syntax highlighting, the same as used by
-   Sphinx's code blocks.
+   This makes ``docutils`` use short class names for syntax highlighting, the same
+   setting as Sphinx uses to highlight code blocks.
 
-#. Define custom interpreted text roles using docutils :rst:`role` directive.
+   .. note::
 
-   For each language you want to highlight, create a custom interpreted text role. For
-   example, to highlight inline Python code, add this to the beginning of the |rst|
-   file:
+      This is necessary so that you can re-use the Pygments stylesheet
+      :file:`pygments.css` that Sphinx already uses for code blocks.
+
+#. For each language you want to highlight, create a custom interpreted text role using
+   docutils' :rst:`role` directive.
+
+   For example, to highlight inline Python code, add the following code to the beginning
+   of the |rst| file, in which you want to use the highlighting:
 
    .. code-block:: rst
 
@@ -57,63 +58,82 @@ If you want to use syntax highlighting for inline code, such as this:
         :language: python
         :class: highlight
 
-   This adds the class ``highlight`` to the list of classes for the inline code, which
-   automatically applies the same styles as for code blocks.
 
-#. Use the new role to markup and highlight inline code.
+   This renders a ``code`` element with a class of ``highlight``, which uses the
+   highlighting styles from Pygment---the same as for code blocks.
 
-   For example:
+#. Use the new role to highlight inline code. For example:
 
    .. code-block:: rst
 
       :python:`print("Hello World")`
 
-   renders into :python:`print("Hello World")`.
+   renders :python:`print("Hello World")`.
 
-.. note::
 
-   Inline syntax highlighting is performed by the docutils module on which Sphinx is
-   based. Sphinx doesn't provide or extend this feature, which means the user needs to
-   perform these additional steps.
-
-More interpreted text roles for code-like elements
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Interpreted text roles for code-like elements
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Docutils and Sphinx come with many interpreted text roles to mark up specific elements.
-This theme only provides styles for a few of these roles.
+While this can be useful to convey semantic intentions in the |rst| source files,
+it's a good idea to use only a few different roles:
 
-Files can be marked up with the :rst:`file` interpreted text role.
+- The difference between the many roles are lost in the rendered output. Most of these
+  roles are rendered in code font, and most users don't read the |rst| sources.
+
+- Using too many directives puts a burden on documentation writers, who may be more
+  familiar with the Markdown format. They have to agree and remember when to use which
+  role.
+
+The awesome theme only provides styles for the following interpreted text roles.
+
+.. rubric:: Files and directories
+
+You can designate files with the :rst:`file` role.
 
 .. code-block:: rst
 
-   :file:`Some filename`
+   :file:`Some file name`
 
-This is rendered as :file:`Some filename`.
+This renders as :file:`Some filename`. You can highlight placeholder text in file and
+directory names using the following syntax:
 
-You can highlight inline code with placeholders using the :rst:`samp` interpreted text
-role.
+.. code-block:: rst
+
+   :file:`/home/{USERNAME}/`
+
+This renders as :file:`/home/{USERNAME}/`. If you want to distinguish directories from
+file names, you can append a Slash (``/``) character to directory names.
+
+
+.. rubric:: Inline code with placeholder text
+
+To highlight inline code with placeholder text, use the :rst:`samp` interpreted text
+role:
 
 .. code-block:: rst
 
    :samp:`Replace {PLACEHOLDER}`
 
-This is rendered as :samp:`Replace {PLACEHOLDER}`. The same placeholder syntax can also
-be used with the :rst:`file` role.
+This renders as :samp:`Replace {PLACEHOLDER}`.
 
-Keyboard shortcuts can be entered using the :rst:`kbd` interpreted text role.
+.. rubric:: Keyboard input
+
+You can highlight key combinations using the :rst:`kbd` interpreted text role:
 
 .. code-block:: rst
 
    :kbd:`Ctrl+F`
 
-This is rendered as :kbd:`Ctrl+F`.
+This renders as :kbd:`Ctrl+F`.
 
 Interpreted text roles for graphical user interface documentation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Graphical user interface elements are often rendered in a bold font, in contrast to the
-monospace font for code elements.  Use the :rst:`guilabel` role to document buttons and
-other user interface elements.
+monospace font for code elements.
+
+Use the :rst:`guilabel` role to highlight user interface elements, such as buttons:
 
 .. code-block:: rst
 
@@ -129,40 +149,57 @@ Use the :rst:`menuselection` role to document items in menus.
 
 This renders as :menuselection:`Start --> Program`.
 
-Awesome code blocks
--------------------
 
-You can render code blocks using the :rst:`code-block` directive. If you don't specify
-a language as an argument to the code block, the default highlighting language is used.
+Code blocks
+-----------
+
+Sphinx and docutils come with several different methods to render code blocks. In most
+cases, you should use Sphinx's :rst:`code-block` directive to mark up code blocks.
+If you don't provide an explicit language to the directive, a fallback is used:
+
+- You can set the default fallback language for highlighting on a per-document basis
+  using the :rst:`highlight` directive. Any code block after this directive will be
+  highlighted using that language.
+
+- You can set the global fallback language for highlighting in the Sphinx configuration
+  file with the ``highlight_language`` option.
+
+.. seealso::
+
+   `highlight directive <https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-highlight>`_,
+   `highlight_language <https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-highlight_language>`_
+
+It's best to be explicit, unless it's very clear that *all* code blocks in your documentation
+are highlighted with the same language.
 
 For example:
+
+.. code-block:: rst
+
+   .. code-block:: python
+
+      print("Hello World")
+
+renders as:
 
 .. code-block:: python
 
    print("Hello World")
 
-This uses the Python lexer of Pygments to apply syntax highlighting. Use the
-:rst:`highlight` directive to set the default highlighting language on a per-document
-basis. See `highlight directive
-<https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-highlight>`_
-for more information. Use the :rst:`highlight_language` configuration setting to set
-the default highlighting language for the whole project. See `highlight_language
-<https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-highlight_language>`_
-for more information.
+All code blocks have a :guilabel:`Copy` button. Clicking the button copies
+the code in the code block to the clipboard.
 
-All code blocks have a header section with a :guilabel:`Copy` button.
-Clicking the button copies the text inside the code block to the clipboard.
-The header also contains a label for the highlighting language as well as
-the caption.
+Sphinx's :rst:`code-block` directives have many options:
 
-The following example shows a code block for JavaScript with a caption.
+You can **add a caption** using the :samp:`:caption: {CAPTION_TEXT}` option:
 
 .. code-block:: javascript
    :caption: Example code
 
    .log("Hello World")
 
-Use the ``linenos`` option to show line numbers in the code block.
+
+To show **line numbers** in the code block, use the ``:linenos:`` option:
 
 .. vale off
 
@@ -174,7 +211,8 @@ Use the ``linenos`` option to show line numbers in the code block.
 
 .. vale on
 
-To emphasize specific lines in code blocks, use the ``:emphasize-lines:`` option:
+To emphasize specific lines in code blocks, use the
+:samp:`:emphasize-lines: {LINE_NUMBERS}` option:
 
 .. code-block:: bash
    :emphasize-lines: 2
@@ -183,8 +221,15 @@ To emphasize specific lines in code blocks, use the ``:emphasize-lines:`` option
    echo "Emphasize this"
    echo "Don't emphasize this either"
 
-Likewise, you can emphasize code changes using the ``:emphasize-added:`` and
-``:emphasize-removed:`` options.
+.. rubric:: Highlight code changes
+
+Often, you want to highlight, which code needs to be changed. **The awesome theme
+adds two additional options** to the :rst:`code-block` directive.
+
+Use the :samp:`:emphasize-added: {LINE_NUMBERS}` option to highlight lines that
+need to be added to the code.
+Likewise, use the :samp:`:emphasize-removed: {LINE_NUMBERS}` option to highlight lines
+that need to be removed.
 
 .. code-block:: python
    :emphasize-removed: 1
@@ -194,17 +239,11 @@ Likewise, you can emphasize code changes using the ``:emphasize-added:`` and
    print("green")
    print("regular highlighting is applied")
 
-Note, how the lines are still highlighted using Python syntax. Copy the code and note,
-how the ``+`` and ``-`` characters aren't copied.
+The ``:emphasize-added:`` and ``:emphasize-removed:`` option allow the rest of the code
+to be highlighted in another language. The ``+`` and ``-`` characters aren't copied with
+the code.
 
-.. note::
-
-   The ``:emphasize-added:`` and ``:emphasize-removed:`` options only work in this
-   theme. If you later change the theme, leaving these options generate a warning and
-   skip rendering all code blocks with these options. I recommend using ``sphinx-build
-   -W`` to turn warnings into errors.
-
-A portable, built-in alternative is to use Pygments' ``diff`` lexer.
+If you don't want to use these option, you can use Pygments built-in ``diff`` format:
 
 .. code-block:: diff
 
@@ -212,9 +251,8 @@ A portable, built-in alternative is to use Pygments' ``diff`` lexer.
    - print("green")
      print("no highlighting is applied here")
 
-This works with all themes, but doesn't highlight the other lines in the code block.
-When selecting the code to copy to the clipboard, the ``+`` and ``-`` characters at the
-beginning are copied as well.
+Note, how there's no additional syntax highlighting. If you copy the code to the
+clipboard, the ``+`` and ``-`` characters are copied as well.
 
 The following example is for testing the previous options with line numbers:
 
@@ -236,34 +274,30 @@ There is currently one visual bug with emphasizing lines `#171
 For example:
 
 .. code-block::
-   :caption: Really long line
+   :caption: A really long line
    :emphasize-lines: 1
 
    print("A shorter line of code.")
    print("And a really long line of code that should overflow the container on most screen sizes which illustrates the issue.")
 
+You can't include |rst| markup in code blocks, such as bold text or hyperlinks.
 
-Code blocks can't contain any markup, such as bold text or hyperlinks.
+Docutils code directive
+~~~~~~~~~~~~~~~~~~~~~~~
 
-Parsed literal blocks
----------------------
+The :rst:`code-block` directive only works with Sphinx. If you want to re-use your
+documentation also with other renderers, for example, ``rst2html``, you can also use the
+``code`` directive to mark up code blocks.
 
-If you want to write blocks of literal text containing any markup, such as bold text or
-hyperlinks, use a :rst:`parsed-literal` directive.
+.. code:: shell
 
-.. parsed-literal::
+   echo "This is rendered with the docutils' code directive"
 
-   This *can* contain markup, but **not** syntax highlighting.
+Highlight placeholder text in code blocks
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can't use syntax highlighting with :rst:`parsed-literal` blocks.
-
-Highlighting placeholders
--------------------------
-
-It can be useful to highlight *placeholder* text in code, for example, to indicate
-variables that users should replace with their own.
-
-You can add the `emphasize-text` option to provide a string with the placeholder text.
+To highlight placeholder text in code blocks, you can add the
+:samp:`emphasize-text: {PLACEHOLDER}` option.
 
 For example:
 
@@ -281,3 +315,16 @@ is rendered as:
    :emphasize-text: PLACEHOLDER
 
    echo "Enter PLACEHOLDER"
+
+
+Parsed literal blocks
+---------------------
+
+If you want to write blocks of literal text containing any markup, such as bold text or
+hyperlinks, use a :rst:`parsed-literal` directive.
+
+.. parsed-literal::
+
+   This *can* contain markup, but **not** syntax highlighting.
+
+You can't use syntax highlighting with :rst:`parsed-literal` blocks.
