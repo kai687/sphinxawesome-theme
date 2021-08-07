@@ -36,7 +36,7 @@ def _get_manifest_json(app: Sphinx) -> Dict:
     This file has the mapping between hashed and unhashed filenames.
     Returns a dictionary with this mapping.
     """
-    if app.builder.theme:
+    if app.builder and app.builder.theme:
         # find the first 'manifest.json' file in the theme's directories
         for entry in app.builder.theme.get_theme_dirs()[::-1]:
             manifest = path.join(entry, "static", "manifest.json")
@@ -45,6 +45,8 @@ def _get_manifest_json(app: Sphinx) -> Dict:
                     return json.load(m)
         else:
             return {}
+    else:
+        return {}
 
 
 def _make_asset_url(app: Sphinx, asset: str) -> str:
