@@ -106,7 +106,15 @@ def docs(session: Session) -> None:
 @nox.session(python=Versions.latest())
 def live_docs(session: Session) -> None:
     """Build the docs and live-reload."""
-    args = session.posargs or ["-b", "dirhtml", "-aWTE", "docs", "docs/public"]
+    args = session.posargs or [
+        "-b",
+        "dirhtml",
+        "-aWTE",
+        "docs",
+        "docs/public",
+        "--watch",
+        "src/sphinxawesome_theme/*",
+    ]
     session.run("poetry", "install", "--no-dev", external=True)
     install_constrained_version(
         session, "myst-parser", "sphinx-autobuild", "sphinx-sitemap"

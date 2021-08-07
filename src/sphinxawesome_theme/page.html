@@ -1,7 +1,11 @@
-{% if theme_show_nav|tobool %}
-  {%- extends "with-sidebar.html" -%}
+{% if meta.layout %}
+  {%- extends meta.layout + ".html"|default("with-sidebar.html") -%}
 {% else %}
-  {%- extends "without-sidebar.html" -%}
+  {% if theme_show_nav|tobool %}
+    {%- extends "with-sidebar.html" -%}
+  {% else %}
+    {%- extends "without-sidebar.html" -%}
+  {% endif %}
 {% endif %}
 
 {% block body %}

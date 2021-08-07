@@ -1,3 +1,8 @@
+---
+orphan: true
+layout: about
+---
+
 # About
 
 ```{rst-class} lead

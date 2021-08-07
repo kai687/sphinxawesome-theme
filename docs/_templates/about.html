@@ -1,7 +1,5 @@
 {#-
-  Layout without sidebar -- used when `theme_show_nav` is false or for
-  extra templates that don't need a sidebar, for example, an about page,
-  or a landing page.
+  Layout for the `about page`
 -#}
 
 {% extends "layout.html" %}
@@ -14,17 +12,9 @@
     class="px-10 col-span-full overflow-y-auto flex flex-col h-full"
   >
     <main role="main" class="flex-1 max-w-prose mx-auto flex flex-col">
-      {%- if pagename != master_doc and theme_show_breadcrumbs|tobool) %}
-        {%- include "breadcrumbs.html" %}
-      {% endif -%}
-
       <article class="flex-1">
         {% block body %}{% endblock %}
       </article>
-
-      {%- if theme_show_prev_next|tobool %}
-        {%- include "prev_next.html" %}
-      {%- endif %}
 
       <footer>
         {% block footer %}
@@ -33,7 +23,6 @@
       </footer>
     </article>
 
-    {#- scroll to top button -#}
     {%- if theme_show_scrolltop|tobool -%}
       {%- include "scrolltop.html" %}
     {%- endif -%}

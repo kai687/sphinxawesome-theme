@@ -71,12 +71,18 @@ html_baseurl = "https://sphinxawesome.xyz/"
 html_extra_path = ["robots.txt"]
 
 # if you want to include other pages than docs
-# templates_path = ["_templates"]
+templates_path = ["_templates"]
 # html_additional_pages = {"about": "about.html"}
 
 # extra option from the sphinxawesome_theme
 html_collapsible_definitions = True
-html_theme_options = {"show_scrolltop": True}
+html_theme_options = {
+    "show_scrolltop": True,
+    "extra_header_links": {
+        "docs": "/index",
+        "about": "/about",
+    },
+}
 
 
 # -- Register a :confval: interpreted text role ----------------------------------

@@ -10,13 +10,19 @@
 <img class="h-18 w-18 p-5" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo" />
 {%- endset -%}
 
-{%- macro headerlink(inner, padding=false) -%}
-<a class="{% if padding %}p-4{% endif %} hover:bg-gray-700 focus:bg-gray-700 tooltipped tooltipped-se"
+{%- macro homepagelink(inner, padding=false) -%}
+<a class="{% if padding %}p-4{% endif %} hover:bg-gray-700 focus:bg-gray-700 focus:outline-none tooltipped tooltipped-se"
    href="{{ pathto(master_doc) }}"
    aria-label="{{ _('Back to homepage') }}">
   {{ inner }}
 </a>
 {%- endmacro -%}
+
+{%- macro extra_link(text, url) -%}
+  {%- set bg = "bg-gray-700" if pagename in url else "bg-transparent" -%}
+  <a href="{{ pathto(url) }}" class="h-18 inline-block leading-header text-gray-100 {{ bg }} uppercase tracking-wide font-medium hover:bg-gray-700 hover:text-brand focus:bg-gray-700 focus:outline-none hover:no-underline focus:text-brand px-4">{{ text }}</a>
+{%- endmacro -%}
+
 
 <div class="bg-gray-dark shadow-md flex items-center h-full xl:px-2">
   {#- show logo on the left side of the header -#}
@@ -25,14 +31,14 @@
     {{ logo_img }}
   {% endif %}
   {%- if pagename != master_doc %}
-    {{ headerlink(manual_title) }}
+    {{ homepagelink(manual_title) }}
   {%- else -%}
     {{ manual_title }}
   {%- endif -%}
   </div>
 
   {#- show a search input field on the right side -#}
-  <div class="lg:ml-fluid flex justify-between items-center">
+  <div class="lg:ml-fluid flex justify-between items-center w-full">
     <form
       id="searchbox"
       action="{{ pathto('search') }}"
@@ -59,5 +65,13 @@
                group-focus:text-gray-800 focus:outline-none"
       />
     </form>
+
+    {%- if theme_extra_header_links|tobool -%}
+      <div>
+        {%- for text, url in theme_extra_header_links.items() -%}
+          {{ extra_link(text, url) }}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
   </div>
 </div>
