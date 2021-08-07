@@ -6,7 +6,7 @@
 {%- for js in script_files %}
 {{ js_tag(js) }}
 {%- endfor %}
-<script src="{{ pathto('_static/theme.js', 1) }}" defer></script>
+<script src="{{ pathto(asset('_static/theme.js'), 1) }}" defer></script>
 {%- endmacro -%}
 
 {%- set lang_attr = "en" if language == None else (language|replace('_','-')) -%}
@@ -35,7 +35,7 @@
     {%- endblock %}
     {#- Extra CSS files for overriding stuff #}
     {%- for css in css_files %}
-      <link rel="stylesheet" href="{{ pathto(css, 1) }}" />
+      <link rel="stylesheet" href="{{ pathto(asset(css), 1) }}" />
     {%- endfor %}
     {%- if pageurl %}
       <link rel="canonical" href="{{ pageurl }}" />
