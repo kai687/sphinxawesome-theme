@@ -5,7 +5,11 @@ keywords: documentation, sphinx, python
 "og:description": A theme for Sphinx to create beautiful documentation with Python.
 ---
 
+<!-- vale Google.Headings = NO -->
+
 # {{ title }}
+
+<!-- vale Google.Headings = YES -->
 
 ```{rst-class} lead
 Bring your Sphinx documentation to the modern times and create beautiful documentation

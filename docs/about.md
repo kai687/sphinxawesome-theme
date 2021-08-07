@@ -12,6 +12,7 @@ of dependencies in the files `pyproject.toml` for Python dependencies and `packa
 for JavaScript dependencies.
 
 <!-- vale Awesome.SpellCheck = NO -->
+<!-- vale 18F.UnexpandedAcronyms = NO -->
 
 | Feature                                               | Name/Website                                                             | License                                                                                      |
 | ----------------------------------------------------- | ------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------- |
@@ -26,6 +27,7 @@ for JavaScript dependencies.
 | Illustrations                                         | [undraw.co](https://undraw.co)                                           | [custom](https://undraw.co/license)                                                          |
 
 <!-- vale Awesome.SpellCheck = YES -->
+<!-- vale 18F.UnexpandedAcronyms = YES -->
 
 [creative commons attribution-sharealike 4.0]: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 [apache license, version 2.0]: https://www.apache.org/licenses/LICENSE-2.0.html

@@ -13,12 +13,12 @@ install it as a Python package or load it from a directory.
 ## Install the theme as a Python package (recommended)
 
 In most cases, it's best to install the theme as a Python package.
-You can still modify the look and feel of the theme by adding
+You can modify the look and feel of the theme by adding
 custom CSS or JavaScript files.
 See {ref}`Add or override styles` for more information.
 
 **To install the latest released version** from the Python Package Index
-[PyPI](https://pypi.org/project/sphinxawesome-theme/), enter the following:
+[PyPI](https://pypi.org/project/sphinxawesome-theme/):
 
 ```shell-session
 $ pip install sphinxawesome-theme
@@ -32,48 +32,27 @@ $ pip install git+https://github.com/kai687/sphinxawesome-theme.git
 
 <!-- vale 18F.UnexpandedAcronyms = NO -->
 
-See the "HEAD" section at the top of the
+See the
 [CHANGELOG](https://github.com/kai687/sphinxawesome-theme/blob/master/CHANGELOG.rst)
-file for features and bugfixes are available in the version on GitHub but not yet in
-the released version.
+file for extra features and bugfixes in the development features.
 
 <!-- vale 18F.UnexpandedAcronyms = YES -->
 
 ## Install the theme as a local package
 
-If you want to use a modified version of the theme, you can load the theme from a local
-Python package. This doesn't require any special configuration, but can be slower
-initially, since you need to rebuild and reinstall the local package after each
-modification.
+You can install the theme as a local package. This can be useful if you want to modify
+the theme and test your local modifications.
 
 1. {ref}`Create a local copy of the theme`
-1. Build the theme as a Python package:
-
-   ```shell-session
-   $ poetry build
-   ```
-
-   This command creates a new directory `dist/` containing the source distribution in
-   `.tar.bz2` format and as wheel in a `.whl` file.
-
-1. In your project, install the theme from the locally built package:
-
-   ```shell-session
-   $ pip install /path/to/sphinxawesome_theme/dist/sphinxawesome_theme-*-py3-none-any.whl
-   ```
-
-   This command installs the pre-built package in the current environment.
-
-   ````{tip}
-   You can also skip the separate build step and install the top level directory:
+1. To install the local version of the theme in your project:
 
    ```shell-session
    $ pip install /path/to/sphinxawesome_theme
    ```
 
-   This command builds and installs the package in one step. It's a bit slower than the
-   procedure outlined before.
-   ````
+   ```{note}
+   Enter the path with the ``pyproject.toml`` file.
+   ```
 
 ## Set up a development environment
 
@@ -81,19 +60,16 @@ The project has two different sets of dependencies, for Python and JavaScript. I
 want to write documentation, write tests, or modify the Python extensions, install the
 Python dependencies. See {ref}`Install Python dependencies` for more information.
 
-If you want to modify the Jinja2 templates[^1], the CSS, or the JavaScript files, you
+If you want to modify the Jinja2 templates, the CSS, or the JavaScript files, you
 also need to install the JavaScript dependencies. See
 {ref}`Install JavaScript dependencies` for more information.
 
-<!-- vale Google.Colons = NO -->
-<!-- vale 18F.SentenceLength = NO -->
-<!-- vale 18F.Reading = NO -->
-
-[^1]: Technically, you only need to add the JavaScript dependencies, if you want to _change_ the CSS classes inside the templates. For example, if you add a utility class that wasn't previously used, you need to run the JavaScript/CSS pipeline again to include it in the final style sheet.
-
-<!-- vale Google.Colons = YES -->
-<!-- vale 18F.SentenceLength = YES -->
-<!-- vale 18F.Reading = YES -->
+```{note}
+It's best to install the JavaScript dependencies, even if you just want to edit the
+Jinja2 templates. The theme uses [Tailwind CSS](https://tailwindcss.com) and
+[webpack](https://webpack.js.org). If you add new classes from Tailwind, you need to run
+webpack to include them in the output CSS.
+```
 
 In both cases, create a local copy first.
 
