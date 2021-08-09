@@ -3,14 +3,14 @@
 -#}
 
 {%- set manual_title %}
-<span class="hidden xs:inline-block font-medium text-gray-100 mx-5 leading-header">{{ docstitle }}</span>
+<span class="hidden xs:inline-block font-medium text-gray-100 mx-5 leading-header tracking-wider">{{ docstitle }}</span>
 {%- endset -%}
 
 {%- set logo_img -%}
 <img class="h-18 w-18 p-5" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo" />
 {%- endset -%}
 
-{%- macro homepagelink(inner, padding=false) -%}
+{%- macro home_link(inner, padding=false) -%}
 <a class="{% if padding %}p-4{% endif %} hover:bg-gray-700 focus:bg-gray-700 focus:outline-none tooltipped tooltipped-se"
    href="{{ pathto(master_doc) }}"
    aria-label="{{ _('Back to homepage') }}">
@@ -19,8 +19,8 @@
 {%- endmacro -%}
 
 {%- macro extra_link(text, url) -%}
-  {%- set bg = "bg-gray-700" if pagename in url else "bg-transparent" -%}
-  <a href="{{ pathto(url) }}" class="h-18 inline-block leading-header text-gray-100 {{ bg }} uppercase tracking-wide font-medium hover:bg-gray-700 hover:text-brand focus:bg-gray-700 focus:outline-none hover:no-underline focus:text-brand px-4">{{ text }}</a>
+  {%- set active = "bg-gray-700 border-b-4 border-brand" if pagename in url else "bg-transparent" -%}
+  <a href="{{ pathto(url) }}" class="h-18 inline-block leading-header text-gray-100 {{ active }} tracking-wide font-medium hover:bg-gray-700 hover:text-brand focus:bg-gray-700 focus:outline-none hover:no-underline focus:text-brand px-4">{{ text }}</a>
 {%- endmacro -%}
 
 
@@ -31,7 +31,7 @@
     {{ logo_img }}
   {% endif %}
   {%- if pagename != master_doc %}
-    {{ homepagelink(manual_title) }}
+    {{ home_link(manual_title) }}
   {%- else -%}
     {{ manual_title }}
   {%- endif -%}
@@ -39,7 +39,7 @@
 
   {#- show a search input field on the right side -#}
   <div class="lg:ml-fluid flex justify-between items-center w-full">
-    <form
+<form
       id="searchbox"
       action="{{ pathto('search') }}"
       method="get"

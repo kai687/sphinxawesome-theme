@@ -79,8 +79,8 @@ html_collapsible_definitions = True
 html_theme_options = {
     "show_scrolltop": True,
     "extra_header_links": {
-        "docs": "/index",
-        "about": "/about",
+        "Docs": "/index",
+        "About": "/about",
     },
 }
 
