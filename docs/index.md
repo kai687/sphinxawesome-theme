@@ -56,11 +56,3 @@ glob: true
 
 demo/*
 ```
-
-```{toctree}
----
-hidden: true
----
-
-about
-```
