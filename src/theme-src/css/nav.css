@@ -28,7 +28,7 @@
 /* The side bar */
 .nav-toc {
   & .caption {
-    @apply uppercase text-m font-medium tracking-wider font-mono text-gray-dark pt-10 pb-3;
+    @apply text-m font-medium tracking-wide text-gray pt-10 pb-3;
   }
   & p:first-of-type {
     @apply pt-4;

@@ -38,7 +38,7 @@ The source code is available on [GitHub](https://github.com/kai687/sphinxawesome
 ```{toctree}
 ---
 hidden: true
-caption: how-to
+caption: How-To
 ---
 
 how-to/install
@@ -50,7 +50,7 @@ how-to/update
 ```{toctree}
 ---
 hidden: true
-caption: demo
+caption: Demo
 glob: true
 ---
 
