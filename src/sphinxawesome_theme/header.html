@@ -60,9 +60,12 @@
       bg-gray-dark hover:bg-gray-700 text-sm text-gray-300 hover:text-brand focus-within:bg-gray-50
       focus-within:text-gray-800 group">
 
-      <button class="text-inherit group-hover:text-brand focus:text-brand h-18 w-18
-        group-focus:text-brand focus:outline-none" aria-label="{{ _('Get search results') }}">
-        <svg aria-hidden="true" class="fill-current stroke-current h-8 w-8" stroke-width="0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+      <button
+        class="text-inherit group-hover:text-brand focus:text-brand h-18 w-18 group-focus:text-brand focus:outline-none"
+        aria-label="{{ _('Get search results') }}"
+        data-search-target="searchButton"
+      >
+          <svg aria-hidden="true" class="fill-current stroke-current h-8 w-8" stroke-width="0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
       </button>
 
       <input

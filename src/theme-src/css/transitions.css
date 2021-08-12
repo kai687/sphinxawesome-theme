@@ -3,12 +3,12 @@
  * *************************/
 
 @layer utilities {
+  #page.isShown {
+    @apply overflow-hidden;
+  }
   [data-sidebar-target="sidebar"].isShown {
     max-width: 90%;
     @apply translate-x-0 opacity-100 w-full;
-  }
-  #page.isShown {
-    @apply overflow-hidden;
   }
   [data-scroll-target="scrollToTop"].isShown {
     @apply pointer-events-auto opacity-100;
@@ -16,11 +16,7 @@
   [data-sidebar-target="screen"].isShown {
     @apply block;
   }
-  [data-search-target="searchPane"].isShown,
   [data-search-target="snackbar"].isShown {
-    @apply translate-y-0 opacity-100;
-  }
-  [data-search-target="snackbar"].isShown {
-    @apply duration-500 ease-out;
+    @apply translate-y-0 opacity-100 duration-500 ease-out;
   }
 }
