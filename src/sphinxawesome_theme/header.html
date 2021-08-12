@@ -2,8 +2,17 @@
   Template file for the header.
 -#}
 
+{%- set hamburger -%}
+<button
+    data-action="sidebar#open"
+    class="xl:hidden h-18 w-18 leading-header text-gray-100 hover:bg-gray-700 hover:text-brand
+    focus:outline-none focus:bg-gray-700 focus:text-brand">
+  <svg aria-hidden="true" class="fill-current h-8 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+</button>
+{%- endset -%}
+
 {%- set manual_title %}
-<span class="hidden xs:inline-block font-medium text-gray-100 mx-5 leading-header tracking-wider">{{ docstitle }}</span>
+<span class="hidden xs:inline-block flex-shrink-0 font-medium text-gray-100 mx-5 leading-header tracking-wider">{{ docstitle }}</span>
 {%- endset -%}
 
 {%- set logo_img -%}
@@ -26,25 +35,28 @@
 
 <div class="bg-gray-dark shadow-md flex items-center h-full xl:px-2">
   {#- show logo on the left side of the header -#}
-  <div class="sidebar-width flex items-center">
-  {%- if logo -%}
-    {{ logo_img }}
-  {% endif %}
-  {%- if pagename != master_doc %}
-    {{ home_link(manual_title) }}
-  {%- else -%}
-    {{ manual_title }}
-  {%- endif -%}
+  <div class="flex items-center">
+    {%- if theme_show_nav|tobool %}
+      {{ hamburger }}
+    {%- endif %}
+    {%- if logo -%}
+      {{ logo_img }}
+    {% endif %}
+    {%- if pagename != master_doc %}
+      {{ home_link(manual_title) }}
+    {%- else -%}
+      {{ manual_title }}
+    {%- endif -%}
   </div>
 
   {#- show a search input field on the right side -#}
-  <div class="lg:ml-fluid flex justify-between items-center w-full">
-<form
+  <div class="lg:ml-fluid flex justify-between items-center flex-1">
+    <form
       id="searchbox"
       action="{{ pathto('search') }}"
       method="get"
       style="width: 300px;"
-      class="hidden xl:flex print:hidden justify-between items-center leading-header ml-4
+      class="flex print:hidden justify-between items-center leading-header ml-4
       bg-gray-dark hover:bg-gray-700 text-sm text-gray-300 hover:text-brand focus-within:bg-gray-50
       focus-within:text-gray-800 group">
 
