@@ -13,6 +13,7 @@ module.exports = {
     extend: {
       outline: ["active"],
       translate: ["active"],
+      width: ["group-focus", "focus"],
       textColor: ["group-focus", "focus-visible"],
     },
   },

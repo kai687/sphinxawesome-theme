@@ -5,8 +5,7 @@
 {%- set hamburger -%}
 <button
     data-action="sidebar#open"
-    class="xl:hidden h-18 w-18 leading-header text-gray-100 hover:bg-gray-700 hover:text-brand
-    focus:outline-none focus:bg-gray-700 focus:text-brand">
+    class="xl:hidden h-18 w-18 leading-header text-gray-100 hover:bg-gray-700 hover:text-brand focus:outline-none focus:bg-gray-700 focus:text-brand">
   <svg aria-hidden="true" class="fill-current h-8 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
 </button>
 {%- endset -%}
@@ -19,8 +18,8 @@
 <img class="h-18 w-18 p-5" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo" />
 {%- endset -%}
 
-{%- macro home_link(inner, padding=false) -%}
-<a class="{% if padding %}p-4{% endif %} hover:bg-gray-700 focus:bg-gray-700 focus:outline-none tooltipped tooltipped-se"
+{%- macro home_link(inner) -%}
+<a class="hover:bg-gray-700 focus:bg-gray-700 focus:outline-none tooltipped tooltipped-se"
    href="{{ pathto(master_doc) }}"
    aria-label="{{ _('Back to homepage') }}">
   {{ inner }}
@@ -29,13 +28,13 @@
 
 {%- macro extra_link(text, url) -%}
   {%- set active = "bg-gray-700 border-b-4 border-brand" if pagename in url else "bg-transparent" -%}
-  <a href="{{ pathto(url) }}" class="h-18 inline-block leading-header text-gray-100 {{ active }} tracking-wide font-medium hover:bg-gray-700 hover:text-brand focus:bg-gray-700 focus:outline-none hover:no-underline focus:text-brand px-4">{{ text }}</a>
+  <a href="{{ pathto(url) }}" class="h-18 inline-block leading-header text-gray-100 {{ active }} tracking-wide font-medium hover:text-brand focus:bg-gray-700 focus:outline-none hover:no-underline focus:text-brand px-4">{{ text }}</a>
 {%- endmacro -%}
 
 
 <div class="bg-gray-dark shadow-md flex items-center h-full xl:px-2">
   {#- show logo on the left side of the header -#}
-  <div class="xl:w-sidebar flex items-center">
+  <div class="flex items-center">
     {%- if theme_show_nav|tobool %}
       {{ hamburger }}
     {%- endif %}
@@ -50,19 +49,18 @@
   </div>
 
   {#- show a search input field on the right side -#}
-  <div class="lg:ml-fluid flex justify-between items-center flex-1">
+  <div class="flex justify-end items-center flex-1">
     <form
       id="searchbox"
       action="{{ pathto('search') }}"
       method="get"
-      class="flex print:hidden justify-between items-center leading-header md:ml-4
-      bg-gray-dark hover:bg-gray-700 text-sm text-gray-300 hover:text-brand focus-within:bg-gray-50
-      focus-within:text-gray-800 group">
+      class="flex print:hidden justify-between items-center leading-header md:ml-4 bg-gray-dark text-gray-300 focus-within:bg-gray-50 focus-within:text-gray-800 focus-within:w-full group">
 
       <button
-        class="text-inherit group-hover:text-brand focus:text-brand h-18 w-18 group-focus:text-brand focus:outline-none"
+        class="text-inherit focus:text-brand h-18 w-18 group-focus:text-brand focus:outline-none"
         aria-label="{{ _('Get search results') }}"
         data-search-target="searchButton"
+        tabindex="-1"
       >
           <svg aria-hidden="true" class="fill-current stroke-current h-8 w-8" stroke-width="0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
       </button>
@@ -74,10 +72,7 @@
         type="search"
         aria-label="Search the docs"
         placeholder="{{ _('Search the docs') }}"
-        class="pr-2 flex-1 bg-transparent text-inherit
-               hidden sm:block
-               group-hover:text-brand focus:text-gray-800
-               group-focus:text-gray-800 focus:outline-none"
+        class="pr-2 bg-transparent text-inherit focus:outline-none w-0 md:w-auto focus:w-full group-focus:w-full transition-all duration-100"
       />
     </form>
 
