@@ -12,7 +12,7 @@
 {%- endset -%}
 
 {%- set manual_title %}
-<span class="hidden xs:inline-block flex-shrink-0 font-medium text-gray-100 mx-5 leading-header tracking-wider">{{ docstitle }}</span>
+<span class="hidden lg:inline-block flex-shrink-0 font-medium text-gray-100 mx-5 leading-header tracking-wider">{{ docstitle }}</span>
 {%- endset -%}
 
 {%- set logo_img -%}
@@ -35,7 +35,7 @@
 
 <div class="bg-gray-dark shadow-md flex items-center h-full xl:px-2">
   {#- show logo on the left side of the header -#}
-  <div class="flex items-center">
+  <div class="xl:w-sidebar flex items-center">
     {%- if theme_show_nav|tobool %}
       {{ hamburger }}
     {%- endif %}
@@ -55,8 +55,7 @@
       id="searchbox"
       action="{{ pathto('search') }}"
       method="get"
-      style="width: 300px;"
-      class="flex print:hidden justify-between items-center leading-header ml-4
+      class="flex print:hidden justify-between items-center leading-header md:ml-4
       bg-gray-dark hover:bg-gray-700 text-sm text-gray-300 hover:text-brand focus-within:bg-gray-50
       focus-within:text-gray-800 group">
 
@@ -76,13 +75,14 @@
         aria-label="Search the docs"
         placeholder="{{ _('Search the docs') }}"
         class="pr-2 flex-1 bg-transparent text-inherit
+               hidden sm:block
                group-hover:text-brand focus:text-gray-800
                group-focus:text-gray-800 focus:outline-none"
       />
     </form>
 
     {%- if theme_extra_header_links|tobool -%}
-      <div>
+      <div class="flex-shrink-0">
         {%- for text, url in theme_extra_header_links.items() -%}
           {{ extra_link(text, url) }}
         {%- endfor -%}

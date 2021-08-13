@@ -4,6 +4,7 @@ module.exports = {
   corePlugins: {
     animation: false,
   },
+  mode: process.env.NODE_ENV === 'production' ? 'jit' : '',
   purge: {
     content: ["../sphinxawesome_theme/*.html", "./js/**/*.js"],
     safelist: ["lead", "rubric"],
@@ -55,6 +56,9 @@ module.exports = {
       },
       margin: {
         fluid: "var(--fluid-margin)",
+      },
+      width: {
+        sidebar: "max(var(--sidebar-width), 17%)",
       },
       spacing: {
         "18": "4.5rem",
