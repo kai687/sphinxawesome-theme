@@ -13,8 +13,10 @@ module.exports = {
     extend: {
       outline: ["active"],
       translate: ["active"],
-      width: ["group-focus", "focus"],
+      width: ["group-focus", "focus-within", "focus"],
       textColor: ["group-focus", "focus-visible"],
+      position: ["focus-within"],
+      inset: ["focus-within"],
     },
   },
   theme: {
@@ -50,7 +52,8 @@ module.exports = {
         prose: "760px",
       },
       lineHeight: {
-        header: "4.5rem",
+        "14": "3.5rem",
+        "18": "4.5rem",
       },
       letterSpacing: {
         extended: "0.017em",
