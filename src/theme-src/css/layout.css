@@ -1,10 +1,6 @@
 /* layout related styles */
 
 @layer utilities {
-  .sidebar-width {
-    width: max(var(--sidebar-width), 17%);
-  }
-
   @variants responsive {
     .grid-layout {
       grid-template-areas:
