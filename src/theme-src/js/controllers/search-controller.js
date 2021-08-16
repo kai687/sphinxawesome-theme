@@ -19,7 +19,6 @@ export default class extends Controller {
 
   focusSearchInput() {
     this.searchInputTarget.focus()
-    this.searchInputTarget.value = ""
   }
 
   blurSearchInput() {
