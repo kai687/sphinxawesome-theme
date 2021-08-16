@@ -38,7 +38,7 @@ pytest-cov = "^2.12"
 mypy = "^0.910"
 coverage = { extras = ["toml"], version = "^5.5" }
 flake8_implicit_str_concat = "^0.2.0"
-pytest-randomly = "^3.4.1"
+pytest-randomly = "^3.10.1"
 isort = "^5.9.2"
 myst-parser = "^0.15.1"
 sphinx-autobuild = "^2021.3.14"
