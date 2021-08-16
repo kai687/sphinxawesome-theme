@@ -4,6 +4,7 @@ module.exports = {
   corePlugins: {
     animation: false,
   },
+  mode: process.env.NODE_ENV === 'production' ? 'jit' : '',
   purge: {
     content: ["../sphinxawesome_theme/*.html", "./js/**/*.js"],
     safelist: ["lead", "rubric"],
@@ -12,7 +13,10 @@ module.exports = {
     extend: {
       outline: ["active"],
       translate: ["active"],
+      width: ["group-focus", "focus-within", "focus"],
       textColor: ["group-focus", "focus-visible"],
+      position: ["focus-within"],
+      inset: ["focus-within"],
     },
   },
   theme: {
@@ -48,13 +52,17 @@ module.exports = {
         prose: "760px",
       },
       lineHeight: {
-        header: "4.5rem",
+        "14": "3.5rem",
+        "18": "4.5rem",
       },
       letterSpacing: {
         extended: "0.017em",
       },
       margin: {
         fluid: "var(--fluid-margin)",
+      },
+      width: {
+        sidebar: "max(var(--sidebar-width), 17%)",
       },
       spacing: {
         "18": "4.5rem",

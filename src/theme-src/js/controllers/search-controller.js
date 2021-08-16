@@ -3,15 +3,7 @@ import { Controller } from "stimulus"
 
 export default class extends Controller {
 
-  static targets = ["searchInput", "searchPane", "snackbar"]
-
-  open() {
-    this.searchPaneTarget.classList.add("isShown")
-  }
-
-  close() {
-    this.searchPaneTarget.classList.remove("isShown")
-  }
+  static targets = ["searchInput", "snackbar"]
 
   focus(event) {
     if (event.code === 'Slash') {

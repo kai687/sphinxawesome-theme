@@ -82,15 +82,13 @@
     >
       {% include "skip.html" %}
 
-      <header class="grid-area-header z-10 h-18">
+      <header class="grid-area-header z-10 h-14 sm:h-18">
         {% include "header.html" %}
       </header>
 
       {% block document %}
       {% endblock %}
 
-      {% include "menu.html" %}
-      {% include "search-pane.html" %}
       {% include "modals.html" %}
     </div>
     {% block scripts %}
