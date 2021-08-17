@@ -55,7 +55,7 @@
       action="{{ pathto('search') }}"
       data-action="click->search#focusSearchInput"
       method="get"
-      class="flex print:hidden justify-between items-center leading-14 sm:leading-18 md:ml-4 bg-gray-dark text-gray-300 focus-within:absolute focus-within:inset-x-0 focus-within:top-0 md:focus-within:w-full md:focus-within:static">
+      class="flex print:hidden justify-between items-center leading-14 sm:leading-18 md:ml-4 bg-gray-dark text-gray-300 focus-within:bg-gray-50 focus-within:text-gray-800 focus-within:absolute focus-within:inset-x-0 focus-within:top-0 md:focus-within:w-full md:focus-within:static">
 
       <button
         class="text-inherit h-14 w-14 sm:h-18 sm:w-18"
@@ -72,7 +72,7 @@
         type="search"
         aria-label="Search the docs"
         placeholder="{{ _('Search the docs') }}"
-        class="pr-2 bg-transparent text-inherit focus:outline-none focus:text-gray-800 focus:bg-gray-50 w-0 md:w-auto focus:w-full transition-all duration-100"
+        class="pr-2 bg-transparent text-inherit focus:outline-none w-0 md:w-auto focus:w-full transition-all duration-100"
       />
     </form>
 
