@@ -11,10 +11,8 @@ module.exports = {
   },
   variants: {
     extend: {
-      outline: ["active"],
       translate: ["active"],
-      width: ["group-focus", "focus-within", "focus"],
-      textColor: ["group-focus", "focus-visible"],
+      width: ["focus-within", "focus"],
       position: ["focus-within"],
       inset: ["focus-within"],
     },
