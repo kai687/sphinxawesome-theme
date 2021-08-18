@@ -4,8 +4,7 @@
 
 /* inline code */
 :not(pre) > code {
-  font-size: 15px;
-  @apply font-medium px-1 bg-gray-50 border;
+  @apply font-medium px-1 bg-gray-50 border sm:text-code;
   &.highlight {
     @apply bg-gray-50;
   }
