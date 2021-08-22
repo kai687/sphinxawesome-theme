@@ -63,7 +63,7 @@ def _collapsible_nav(tree: BeautifulSoup) -> None:
             if link.parent.next_sibling:
                 # create the icon
                 svg = BeautifulSoup(ICONS["chevron_right"], "html.parser").svg
-                svg["aria-hidden"] = "true"
+                svg["tabindex"] = "0"
                 svg["class"] = ["expand"]
                 svg["data-action"] = "click->sidebar#expand"
                 link.insert_before(svg)
