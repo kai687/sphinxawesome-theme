@@ -27,25 +27,29 @@ export default class extends Controller {
     this.removeAllFocus()
   }
 
+  expandKeyPressed(event) {
+    if (event.code === "Enter" || event.code === "Space") {
+      this.expand(event)
+    }
+  }
+
   // collapse/expand navigation sections
   expand(event) {
     const icon = event.currentTarget
     const expandable = icon.parentElement.parentElement
     expandable.classList.toggle("expanded")
-    const expandableLinks = expandable.querySelectorAll("ul > li > .nav-link > a")
 
-    // handle focus
     if (expandable.classList.contains("expanded")) {
-      expandableLinks.forEach((link) => {
+      // add focus to first-generation children of `expanded` section
+      expandable.parentElement.querySelectorAll(".expanded > ul > li > .nav-link > a").forEach((link) => {
         link.setAttribute("tabindex", "0")
         this.setIconFocus(link.previousElementSibling, "0")
       })
     } else {
-      expandableLinks.forEach((link) => {
-        if (!link.parentNode.parentNode.classList.contains("toctree-l1")) {
-          link.setAttribute("tabindex", "-1")
-          this.setIconFocus(link.previousElementSibling, "-1")
-        }
+      // remove focus from all links below (targets the `ul`)
+      icon.parentElement.nextElementSibling.querySelectorAll("a").forEach((link) => {
+        link.setAttribute("tabindex", "-1")
+        this.setIconFocus(link.previousElementSibling, "-1")
       })
     }
   }

@@ -65,7 +65,9 @@ def _collapsible_nav(tree: BeautifulSoup) -> None:
                 svg = BeautifulSoup(ICONS["chevron_right"], "html.parser").svg
                 svg["tabindex"] = "0"
                 svg["class"] = ["expand"]
-                svg["data-action"] = "click->sidebar#expand"
+                svg[
+                    "data-action"
+                ] = "click->sidebar#expand keydown->sidebar#expandKeyPressed"
                 link.insert_before(svg)
 
 
