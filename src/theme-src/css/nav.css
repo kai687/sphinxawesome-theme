@@ -39,7 +39,7 @@
   & .expand {
     height: 1.2rem;
     margin-left: -0.4rem;
-    @apply inline fill-current cursor-pointer select-none hover:text-brand focus:outline-none transition-transform transform duration-150 ease-out;
+    @apply inline fill-current cursor-pointer select-none hover:text-brand focus:text-brand transition-transform transform duration-150 ease-out;
   }
   & li > ul {
     @apply pl-4 overflow-y-hidden max-h-0;
