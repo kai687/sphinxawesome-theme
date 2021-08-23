@@ -1,16 +1,15 @@
 // scroll events
-import { Controller } from "stimulus"
+import { Controller } from "stimulus";
 
 export default class extends Controller {
-
-  static targets = ["scrollToTop"]
+  static targets = ["scrollToTop"];
 
   initialize() {
-    const sections = document.querySelectorAll("article section")
+    const sections = document.querySelectorAll("article section");
     const options = {
       root: this.element,
       rootMargin: "0px 0px -95% 0px",
-    }
+    };
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -34,18 +33,17 @@ export default class extends Controller {
   }
 
   scrollToTop() {
-    this.element.scrollTop = 0
-    this.scrollToTopTarget.blur()
+    this.element.scrollTop = 0;
+    this.scrollToTopTarget.blur();
   }
 
   showButton() {
-    const target = this.scrollToTopTarget
+    const target = this.scrollToTopTarget;
 
     if (this.element.scrollTop > 100) {
-      target.classList.add("isShown")
+      target.classList.add("isShown");
     } else {
-      target.classList.remove("isShown")
+      target.classList.remove("isShown");
     }
   }
-
 }
