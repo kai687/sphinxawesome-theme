@@ -17,8 +17,10 @@ figure {
 }
 
 /* images inserted with the `image` directive */
-:not(figure) > img {
-  @apply my-12;
+main {
+  & :not(figure) > img {
+    @apply my-12;
+  }
 }
 
 figcaption {

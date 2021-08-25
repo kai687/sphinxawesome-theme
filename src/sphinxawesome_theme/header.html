@@ -5,24 +5,20 @@
 {%- set hamburger -%}
 <button
     data-action="sidebar#open"
+    data-sidebar-target="hamburger"
     class="xl:hidden h-14 w-14 sm:h-18 sm:w-18 leading-14 sm:leading-18 text-gray-100 hover:bg-gray-700 hover:text-brand focus:outline-none focus:bg-gray-700 focus:text-brand">
   <svg aria-hidden="true" class="fill-current h-8 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
 </button>
 {%- endset -%}
 
-{%- set manual_title %}
-<span class="hidden lg:inline-block flex-shrink-0 font-medium text-gray-100 mx-5 leading-14 sm:leading-18 tracking-wider">{{ docstitle }}</span>
-{%- endset -%}
-
-{%- set logo_img -%}
-<img class="h-18 w-18 p-5" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo" />
-{%- endset -%}
-
-{%- macro home_link(inner) -%}
-<a class="hover:bg-gray-700 focus:bg-gray-700 focus:outline-none tooltipped tooltipped-se"
+{%- macro home_link(logo=false) -%}
+<a class="hover:bg-gray-700 focus:bg-gray-700 focus:outline-none"
    href="{{ pathto(master_doc) }}"
-   aria-label="{{ _('Back to homepage') }}">
-  {{ inner }}
+   title="{{ _('Back to homepage') }}">
+  {%- if logo -%}
+    <img class="h-14 w-14 sm:h-18 sm:w-18 p-3 sm:p-5 inline-block" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo" />
+  {%- endif -%}
+  <span class="hidden lg:inline-block flex-shrink-0 font-medium text-gray-100 mx-5 leading-14 sm:leading-18 tracking-wider">{{ docstitle }}</span>
 </a>
 {%- endmacro -%}
 
@@ -38,14 +34,9 @@
     {%- if theme_show_nav|tobool %}
       {{ hamburger }}
     {%- endif %}
-    {%- if logo -%}
-      {{ logo_img }}
-    {% endif %}
-    {%- if pagename != master_doc %}
-      {{ home_link(manual_title) }}
-    {%- else -%}
-      {{ manual_title }}
-    {%- endif -%}
+    {%- block logo -%}
+      {{ home_link(logo) }}
+    {%- endblock -%}
   </div>
 
   {#- show a search input field on the right side -#}
@@ -77,11 +68,13 @@
     </form>
 
     {%- if theme_extra_header_links|tobool -%}
+      {%- block extra_header_links -%}
       <div class="flex-shrink-0">
         {%- for text, url in theme_extra_header_links.items() -%}
           {{ extra_link(text, url) }}
         {%- endfor -%}
       </div>
+      {%- endblock -%}
     {%- endif -%}
   </div>
 </div>
