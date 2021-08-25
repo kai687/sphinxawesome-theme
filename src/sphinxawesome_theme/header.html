@@ -12,9 +12,9 @@
 {%- endset -%}
 
 {%- macro home_link(logo=false) -%}
-<a class="hover:bg-gray-700 focus:bg-gray-700 focus:outline-none"
+<a class="hover:bg-gray-700 focus:bg-gray-700 focus:outline-none tooltipped tooltipped-sw"
    href="{{ pathto(master_doc) }}"
-   title="{{ _('Back to homepage') }}">
+   aria-label="{{ _('Back to homepage') }}">
   {%- if logo -%}
     <img class="h-14 w-14 sm:h-18 sm:w-18 p-3 sm:p-5 inline-block" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo" />
   {%- endif -%}
