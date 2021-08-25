@@ -8,30 +8,28 @@
 
 
 {% block document %}
-  <div
+  <main
     data-controller="scroll"
     data-action="scroll->scroll#showButton"
-    class="px-10 col-span-full overflow-y-auto flex flex-col h-full"
+    class="px-10 col-span-full overflow-y-auto flex flex-col h-full mx-auto max-w-prose"
   >
-    <main role="main" class="flex-1 max-w-prose mx-auto flex flex-col">
-      {%- if pagename != master_doc and theme_show_breadcrumbs|tobool) %}
-        {%- include "breadcrumbs.html" %}
-      {% endif -%}
+    {%- if pagename != master_doc and theme_show_breadcrumbs|tobool) %}
+      {%- include "breadcrumbs.html" %}
+    {% endif -%}
 
-      <article class="flex-1">
-        {% block body %}{% endblock %}
-      </article>
-
-      {%- if theme_show_prev_next|tobool %}
-        {%- include "prev_next.html" %}
-      {%- endif %}
-
-      <footer>
-        {% block footer %}
-          {% include "footer.html" %}
-        {% endblock %}
-      </footer>
+    <article role="main" class="flex-1">
+      {% block body %}{% endblock %}
     </article>
+
+    {%- if theme_show_prev_next|tobool %}
+      {%- include "prev_next.html" %}
+    {%- endif %}
+
+    <footer>
+      {% block footer %}
+        {% include "footer.html" %}
+      {% endblock %}
+    </footer>
 
     {#- scroll to top button -#}
     {%- if theme_show_scrolltop|tobool -%}

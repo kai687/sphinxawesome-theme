@@ -2,14 +2,21 @@
 import { Controller } from "stimulus";
 
 export default class extends Controller {
-  static targets = ["sidebar", "screen"];
+  static targets = ["sidebar", "screen", "hamburger"];
 
   initialize() {
     this.page = this.element;
+
+    // remove the hamburger button, if there's no sidebar
+    if (!this.hasSidebarTarget) {
+      this.hamburgerTarget.remove();
+    }
   }
 
   connect() {
-    this.handleFocus();
+    if (this.hasSidebarTarget) {
+      this.handleFocus();
+    }
   }
 
   open() {
