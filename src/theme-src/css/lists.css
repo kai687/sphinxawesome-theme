@@ -3,8 +3,8 @@
  * ****************/
 
 @layer base {
-  section {
-    & > ol {
+  article {
+    & ol {
       @apply list-decimal my-4 pl-5;
       & ol {
         @apply list-latin my-4 pl-5;
@@ -19,11 +19,8 @@
         }
       }
     }
-    & > ul {
+    & ul {
       @apply list-disc my-4 pl-5;
-      & ul {
-        @apply list-disc my-4 pl-5;
-      }
       & li {
         @apply pl-3 my-4;
         &::marker {

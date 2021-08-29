@@ -3,7 +3,7 @@
  * **************************/
 
 blockquote {
-  @apply text-sm my-6 p-4 bg-gray-100 border-l-4 border rounded-sm shadow;
+  @apply text-sm my-6 p-4 bg-gray-100 bg-opacity-40 border-l-4 border rounded-sm shadow;
   & .attribution {
     @apply italic;
   }
@@ -24,10 +24,28 @@ blockquote {
 }
 
 .seealso {
-  & ul {
-    & p {
-      margin-top: 0 !important;
-      margin-bottom: 0 !important;
+  @apply p-2 border-none text-gray-light bg-transparent;
+
+  & .admonition-title {
+    @apply px-2;
+  }
+
+  & a {
+    @apply bg-gray-100 bg-opacity-40 inline-block p-2 transition-all;
+    &.internal:after {
+      content: "\2192";
+      @apply ml-2 opacity-0 duration-150;
+    }
+    &:hover {
+      color: white !important;
+      text-decoration: none !important;
+      @apply bg-brand;
+      &:after {
+        @apply opacity-100;
+      }
+    }
+    & code {
+      @apply bg-transparent border-none;
     }
   }
 }

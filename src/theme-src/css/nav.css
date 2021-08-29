@@ -12,13 +12,13 @@
     @apply uppercase text-sm font-medium text-gray-light mt-0 mb-2 font-mono;
   }
   & ul {
-    @apply pt-2;
+    @apply pt-2 list-none my-0 pl-0;
   }
   & li {
-    @apply pl-4 py-2;
-  }
-  & > ul > li {
-    @apply border-l-2;
+    @apply py-2 pl-0 my-0;
+    & p {
+      @apply my-0;
+    }
   }
   & a {
     @apply block text-gray-light text-sm hover:text-gray-dark focus:text-gray-dark tracking-extended;
