@@ -531,7 +531,7 @@ python-versions = "*"
 
 [[package]]
 name = "myst-parser"
-version = "0.15.1"
+version = "0.15.2"
 description = "An extended commonmark compliant parser, with bridges to docutils & sphinx."
 category = "dev"
 optional = false
@@ -543,7 +543,7 @@ jinja2 = "*"
 markdown-it-py = ">=1.0.0,<2.0.0"
 mdit-py-plugins = ">=0.2.8,<0.3.0"
 pyyaml = "*"
-sphinx = ">=3,<5"
+sphinx = ">=3.1,<5"
 
 [package.extras]
 code_style = ["pre-commit (>=2.12,<3.0)"]
@@ -1039,7 +1039,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.6.2,<4.0.0"
-content-hash = "a0133dd8b5bce315aabdda1d9a0da43d1095925c6a599b56dc71b1174922a48b"
+content-hash = "aee0cdc01aa7d5974d662e786cf9ef1f97c55388e0e649d0e980b3f591c64968"
 
 [metadata.files]
 alabaster = [
@@ -1345,8 +1345,8 @@ mypy-extensions = [
     {file = "mypy_extensions-0.4.3.tar.gz", hash = "sha256:2d82818f5bb3e369420cb3c4060a7970edba416647068eb4c5343488a6c604a8"},
 ]
 myst-parser = [
-    {file = "myst-parser-0.15.1.tar.gz", hash = "sha256:7c3c78a36c4bc30ce6a67933ebd800a880c8d81f1688fad5c2ebd82cddbc1603"},
-    {file = "myst_parser-0.15.1-py3-none-any.whl", hash = "sha256:e8baa9959dac0bcf0f3ea5fc32a1a28792959471d8a8094e3ed5ee0de9733ade"},
+    {file = "myst-parser-0.15.2.tar.gz", hash = "sha256:f7f3b2d62db7655cde658eb5d62b2ec2a4631308137bd8d10f296a40d57bbbeb"},
+    {file = "myst_parser-0.15.2-py3-none-any.whl", hash = "sha256:40124b6f27a4c42ac7f06b385e23a9dcd03d84801e9c7130b59b3729a554b1f9"},
 ]
 nodeenv = [
     {file = "nodeenv-1.6.0-py2.py3-none-any.whl", hash = "sha256:621e6b7076565ddcacd2db0294c0381e01fd28945ab36bcf00f41c5daf63bef7"},
