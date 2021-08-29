@@ -1,8 +1,8 @@
 ---
-description: A theme for Sphinx to create beautiful documentation with Python.
+description: "{{ description }}"
 keywords: documentation, sphinx, python
 "og:title": "{{ title }}"
-"og:description": A theme for Sphinx to create beautiful documentation with Python.
+"og:description": "{{ description }}"
 ---
 
 <!-- vale Google.Headings = NO -->
@@ -12,25 +12,48 @@ keywords: documentation, sphinx, python
 <!-- vale Google.Headings = YES -->
 
 ```{rst-class} lead
-Bring your Sphinx documentation to the modern times and create beautiful documentation
-websites that don't look like from the previous millenium.
+{{ description }}
 ```
 
 ---
 
-These pages are divided into a _how-to_ and a _demo_ section. In the _how-to_ section,
-you can learn:
+## Get started
 
-- {ref}`How to install the theme`
-- {ref}`How to use the theme`
-- {ref}`How to modify the theme`
+1. Install the theme:
 
-The _demo_ section acts as a style reference. If you can't find a markup element in the
-_demo_ section, it's likely that styles for it don't exist yet. Create an issue on
-GitHub if you need styles for a certain markup element, or add your own custom CSS.
+   ```shell-session
+   pip install sphinxawesome-theme
+   ```
 
-The Sphinx awesome theme is open source software and distributed under the MIT license.
-The source code is available on [GitHub](https://github.com/kai687/sphinxawesome-theme).
+   ```{seealso}
+   {ref}`sec:install`
+   ```
+
+2. Add the theme to your Sphinx configuration:
+
+   ```{code-block} python
+   ---
+   caption: "File: conf.py"
+   ---
+   html_theme = ["sphinxawesome_theme"]
+   ```
+
+   ```{seealso}
+   {ref}`sec:load`
+   {confval}`sphinx:html_theme`
+   ```
+
+3. Build your documentation with Sphinx.
+
+   ```{seealso}
+   [Get started with Sphinx](https://www.sphinx-doc.org/en/master/usage/quickstart.html)
+   ```
+
+In the _how-to_ section, you can learn more about the different
+{ref}`Theme <sec:theme-options>` and
+{ref}`sec:extension-options` or
+{ref}`sec:customize`.
+You can get an overview over all available styles in the _demo_ section.
 
 <!-- vale Google.Headings = NO -->
 <!-- vale 18F.Headings = NO -->
@@ -43,6 +66,7 @@ caption: How-To
 
 how-to/install
 how-to/use
+how-to/customize
 how-to/modify
 how-to/update
 ```

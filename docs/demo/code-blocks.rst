@@ -155,29 +155,6 @@ documentation outside Sphinx, for example, ``rst2html``, you can also use the
 
    echo "This is rendered with the docutils' code directive"
 
-Highlight placeholder text in code blocks
------------------------------------------
-
-To highlight placeholder text in code blocks, you can add the
-:samp:`emphasize-text: {PLACEHOLDER}` option.
-
-For example:
-
-.. code-block:: rst
-   :caption: Placeholder text
-
-   .. code-block::
-      :emphasize-text: PLACEHOLDER
-
-      echo "Enter PLACEHOLDER
-
-is rendered as:
-
-.. code-block:: shell
-   :emphasize-text: PLACEHOLDER
-
-   echo "Enter PLACEHOLDER"
-
 
 Parsed literal blocks
 ---------------------
