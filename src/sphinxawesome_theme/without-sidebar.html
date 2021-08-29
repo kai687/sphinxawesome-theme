@@ -11,29 +11,31 @@
   <main
     data-controller="scroll"
     data-action="scroll->scroll#showButton"
-    class="px-10 col-span-full overflow-y-auto flex flex-col h-full mx-auto max-w-prose"
-  >
-    {%- if pagename != master_doc and theme_show_breadcrumbs|tobool) %}
-      {%- include "breadcrumbs.html" %}
-    {% endif -%}
+    class="px-10 col-span-full overflow-y-auto flex flex-col h-full w-full"
+    >
+    <div class="flex flex-col h-full mx-auto max-w-prose">
+      {%- if pagename != master_doc and theme_show_breadcrumbs|tobool %}
+        {%- include "breadcrumbs.html" %}
+      {% endif -%}
 
-    <article role="main" class="flex-1">
-      {% block body %}{% endblock %}
-    </article>
+      <article role="main" class="flex-1">
+        {% block body %}{% endblock %}
+      </article>
 
-    {%- if theme_show_prev_next|tobool %}
-      {%- include "prev_next.html" %}
-    {%- endif %}
+      {%- if theme_show_prev_next|tobool %}
+        {%- include "prev_next.html" %}
+      {%- endif %}
 
-    <footer>
-      {% block footer %}
-        {% include "footer.html" %}
-      {% endblock %}
-    </footer>
+      <footer>
+        {% block footer %}
+          {% include "footer.html" %}
+        {% endblock %}
+      </footer>
 
-    {#- scroll to top button -#}
-    {%- if theme_show_scrolltop|tobool -%}
-      {%- include "scrolltop.html" %}
-    {%- endif -%}
+      {#- scroll to top button -#}
+      {%- if theme_show_scrolltop|tobool -%}
+        {%- include "scrolltop.html" %}
+      {%- endif -%}
+    </div>
   </main>
 {% endblock %}
