@@ -19,8 +19,9 @@ copyright = f"{author}."
 # -- General configuration ---------------------------------------------------
 
 extensions = [
-    "sphinx.ext.autosectionlabel",
     "sphinx.ext.autodoc",
+    "sphinx.ext.intersphinx",
+    "sphinx.ext.extlinks",
     "sphinxawesome_theme",
     "myst_parser",
     "sphinx_sitemap",
@@ -47,6 +48,15 @@ autodoc_warningiserror = False
 
 # I keep forgetting how to spell this term
 rst_prolog = ".. |rst| replace:: reStructuredText"
+
+intersphinx_mapping = {
+    "sphinx": ("https://www.sphinx-doc.org/en/master/", None),
+}
+
+extlinks = {
+    "gh": ("https://github.com/kai687/sphinxawesome-theme/blob/master/%s", "%s"),
+    "ghdir": ("https://github.com/kai687/sphinxawesome-theme/tree/master/%s", "%s"),
+}
 
 # -- Options for HTML output -------------------------------------------------
 
