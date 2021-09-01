@@ -1,5 +1,4 @@
 """Sphinx configuration file."""
-
 import sys
 from pathlib import Path
 
@@ -20,15 +19,25 @@ copyright = f"{author}."
 # -- General configuration ---------------------------------------------------
 
 extensions = [
-    "sphinx.ext.autosectionlabel",
     "sphinx.ext.autodoc",
+    "sphinx.ext.extlinks",
+    "sphinx.ext.intersphinx",
     "sphinxawesome_theme",
     "myst_parser",
     "sphinx_sitemap",
 ]
 
-myst_enable_extensions = ["colon_fence", "deflist", "replacements", "substitution"]
-myst_substitutions = {"title": project}
+myst_enable_extensions = [
+    "colon_fence",
+    "deflist",
+    "replacements",
+    "substitution",
+]
+
+myst_substitutions = {
+    "title": project,
+    "description": "Create beautiful and modern documentation websites with Sphinx.",
+}
 
 exclude_patterns = ["public"]
 
@@ -71,7 +80,7 @@ html_baseurl = "https://sphinxawesome.xyz/"
 html_extra_path = ["robots.txt"]
 
 # if you want to include other pages than docs
-templates_path = ["_templates"]
+# templates_path = ["_templates"]
 # html_additional_pages = {"about": "about.html"}
 
 # extra option from the sphinxawesome_theme
@@ -84,6 +93,14 @@ html_theme_options = {
     },
 }
 
+intersphinx_mapping = {
+    "sphinx": ("https://www.sphinx-doc.org/", None),
+}
+
+extlinks = {
+    "ghdir": ("https://github.com/kai687/sphinxawesome-theme/tree/master/%s", "%s/"),
+    "gh": ("https://github.com/kai687/sphinxawesome-theme/blob/master/%s", "%s"),
+}
 
 # -- Register a :confval: interpreted text role ----------------------------------
 def setup(app: Sphinx) -> None:
