@@ -1,10 +1,10 @@
-const colors = require("tailwindcss/colors")
+const colors = require("tailwindcss/colors");
 
 module.exports = {
   corePlugins: {
     animation: false,
   },
-  mode: process.env.NODE_ENV === 'production' ? 'jit' : '',
+  mode: process.env.NODE_ENV === "production" ? "jit" : "",
   purge: {
     content: ["../sphinxawesome_theme/*.html", "./js/**/*.js"],
     safelist: ["lead", "rubric"],
@@ -36,13 +36,10 @@ module.exports = {
       "5xl": ["3.125rem", "1.2"],
       "6xl": ["3.75rem", "1.2"],
     },
-    listStyleType: {
-      // none: "none",
-      disc: "disc",
-      decimal: "decimal",
-      latin: "lower-latin",
-    },
     extend: {
+      listStyleType: {
+        latin: "lower-latin",
+      },
       screens: {
         print: { raw: "print" },
         xs: "400px",
@@ -51,8 +48,8 @@ module.exports = {
         prose: "760px",
       },
       lineHeight: {
-        "14": "3.5rem",
-        "18": "4.5rem",
+        14: "3.5rem",
+        18: "4.5rem",
       },
       letterSpacing: {
         extended: "0.017em",
@@ -64,7 +61,7 @@ module.exports = {
         sidebar: "max(var(--sidebar-width), 17%)",
       },
       spacing: {
-        "18": "4.5rem",
+        18: "4.5rem",
       },
       colors: {
         blue: colors.sky,
@@ -81,7 +78,7 @@ module.exports = {
         xs: "1px",
       },
       backgroundOpacity: {
-        "2": "0.02",
+        2: "0.02",
       },
     },
   },

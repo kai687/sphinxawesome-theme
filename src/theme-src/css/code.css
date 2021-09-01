@@ -100,7 +100,7 @@ span.gi {
 
 /* make prompts unselectable */
 .gp {
-  @apply select-none pointer-events-none;
+  @apply select-none pointer-events-none font-medium;
 }
 
 /* Placeholder text, this assumes that ``var`` isn't used elsewhere in docutils/Sphinx
