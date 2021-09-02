@@ -1,25 +1,20 @@
 # Sphinx awesome theme
 
-
 ![GitHub](https://img.shields.io/github/license/kai687/sphinxawesome-theme?color=blue&style=for-the-badge)
 ![PyPI](https://img.shields.io/pypi/v/sphinxawesome-theme?color=eb5&style=for-the-badge&logo=pypi)
 ![Netlify](https://img.shields.io/netlify/e6d20a5c-b49e-4ebc-80f6-59fde8f24e22?logo=netlify&style=for-the-badge)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/kai687/sphinxawesome-theme/Lint?label=Lint&logo=Github&style=for-the-badge)
 
-<!-- readme-start -->
+Create beautiful and awesome documentation websites with
+[Sphinx](https://www.sphinx-doc.org/en/master/).
 
-This is an awesome theme and a set of extensions for the
-[Sphinx](https://www.sphinx-doc.org/en/master/) documentation generator. Using this
-theme and extension, you can change the look of your documentation website and add a
-number of useful improvements. See the theme in action at
-[sphinxawesome.xyz](https://sphinxawesome.xyz).
+Go to [sphinxawesome.xyz](https://sphinxawesome.xyz) to get an impression of how the
+theme looks like.
 
-## Getting started
+## Get started
 
-You can install the awesome theme from the Python package index and modify the Sphinx
-configuration file `conf.py`.
-
-To get started using this theme, follow these steps:
+To use this theme for your documentation, install it via `pip` and add it to your
+Sphinx configuration.
 
 1. Install the theme as a Python package:
 
@@ -29,53 +24,47 @@ To get started using this theme, follow these steps:
 
    See [How to install the theme](https://sphinxawesome.xyz/how-to/install/) for more information.
 
-1. Add the `html_theme` configuration option to the Sphinx configuration file
-   `conf.py`:
+1. Set `html_theme` in the Sphinx configuration file `conf.py`:
 
    ```python
    html_theme = "sphinxawesome_theme"
    ```
 
-   See [How to use the theme](https://sphinxawesome.xyz/how-to/use/) for more information.
+   See [How to load the theme](https://sphinxawesome.xyz/how-to/load/) for more information.
+
+You can change some parts of this theme.
+See [How to configure the theme](https://sphinxawesome.xyz/how-to/configure/) for more
+information.
 
 ## Features
 
-This theme is designed with readability and usability in mind. The theme includes
-several extensions that enhance the usability:
+With this awesome theme, you can build documentation websites that are readable,
+functional, and easily scannable for content. Compared to regular Sphinx themes,
+these features enhance the user experience:
 
-- **Awesome code blocks**
+- **Code blocks.** The code block shows the language of the code in a header. Each code
+  block has a **Copy** button for easy copying. This theme adds three new options to
+  Sphinx's `code-block` directive:
 
-    - Code blocks have a header section, displaying the optional caption, as well as the
-      programming language used for syntax highlighting
-    - The code block headers contain a **Copy** button, allowing you to copy code
-      snippets to the clipboard.
-    - The theme adds two new options to Sphinx's `code-block` directive:
-      `emphasize-added` and `emphasize-removed`, for highlighting changes within other
-      highlighted code.
+  - `emphasize-added`: highlight lines that should be added to code
+  - `emphasize-removed`: highlight lines that should be removed from the code
+  - `emphasize-placeholder: PLACEHOLDER`: highlight `PLACEHOLDER` in the code block to
+    emphasize placeholder text the user should replace.
 
-- **Awesome new directive for highlighting placeholder variables**. The theme supports a
-  new directive `samp`, which is the equivalent of the built-in
-  `:samp:` interpreted text role. This allows you to highlight placeholder variables
-  in code blocks.
+- **Collapsible elements.**
+  Nested navigation links allow you to reach all pages from all other pages.
+  You can make code object definitions, like methods, classes, or modules,
+  collapsible as well, to focus on one block at a time.
 
-- **Awesome user experience improvements**. These small features make the theme more
-  usable:
+<!-- vale Awesome.SpellCheck = NO -->
 
-    - Better keyboard navigation:
+- **Better headerlinks.**
+  Clicking the link icon after a header or caption automatically copies the URL to the clipboard.
 
-      <!-- vale 18F.Clarity = NO -->
-      - Use the `Tab` key to navigate through all sections on the page
-      - Use the *Skip to Content* link to bypass the navigation links
-      - Use the `/` key (forward Slash) to start a search
-      <!-- vale 18F.Clarity = YES -->
+<!-- vale Awesome.SpellCheck = YES -->
 
-    - Better "permalink" mechanism:
-
-      - Hovering over an element with a permalink reveals a *Link* icon
-      - Selecting the *Link* icon copies the link to the clipboard
-      - Notes, warnings and other admonitions have permalinks by default
-
-    - Collapsible elements:
-
-      - Nested navigation links---all pages are reachable from all other pages
-      - Code definitions---code object definitions (functions, classes, modules, etc.), for example, obtained via the `sphinx.ext.autodoc` extension.
+- **Better keyboard navigation.**
+  <!-- vale 18F.Clarity = NO -->
+  Use the `/` key to start searching.
+  Use the `Tab` key to quickly skip through all sections on the page.
+  Use the `Space` key to expand or collapse items in the navigation menu or in code definitions.
