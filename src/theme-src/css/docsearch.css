@@ -1,0 +1,30 @@
+/*
+ * Custom styles for Docsearch
+ */
+:root {
+  --docsearch-searchbox-background: transparent;
+  --docsearch-key-gradient: transparent;
+  --docsearch-primary-color: var(--color-brand);
+  --docsearch-text-color: "rgba(209,213,219,1)";
+  --docsearch-modal-width: 960px;
+}
+
+.DocSearch-Button {
+  @apply rounded-none h-14 leading-14 sm:h-18 sm:leading-18 pr-4;
+}
+
+.DocSearch-Button-Key {
+  @apply h-5 p-4 text-sm shadow-none border;
+}
+
+.DocSearch-Button:hover .DocSearch-Button-Key {
+  @apply text-gray-dark border-gray-dark;
+}
+
+.DocSearch-Search-Icon {
+  stroke-width: 2.5;
+}
+
+.DocSearch-Button-Placeholder {
+  padding-left: 12px;
+}

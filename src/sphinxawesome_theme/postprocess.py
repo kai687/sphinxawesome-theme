@@ -168,7 +168,6 @@ def post_process_html(app: Sphinx, exc: Optional[Exception]) -> None:
 def setup(app: "Sphinx") -> Dict[str, Any]:
     """Set this up as internal extension."""
     app.connect("build-finished", post_process_html)
-    app.add_config_value("html_awesome_headerlinks", True, "html")
 
     return {
         "version": __version__,
