@@ -42,7 +42,7 @@ def setup_docsearch(
             os.getenv("DOCSEARCH_INDEX_NAME") or app.config.docsearch_index_name
         ),
     }
-    app.builder.globalcontext.update(docsearch_config)
+    app.builder.globalcontext.update(docsearch_config)  # type: ignore[union-attr]
 
 
 def setup(app: Sphinx) -> Dict[str, Any]:
