@@ -16,6 +16,11 @@
     {%- endif -%}
   </div>
 
-  {%- import "buttons.html" as buttons -%}
-  {{ buttons.close(action="sidebar#close") }}
+  <button
+      data-action="{{ action }}"
+      title="{{ _('Close navigation menu') }}"
+      class="text-4xl text-gray-800 p-4 bottom-0 hover:text-brand xl:hidden focus:text-brand self-center">
+    <span class="sr-only">Close navigation menu</span>
+    <svg aria-hidden="true" class="fill-current stroke-current h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+  </button>
 </nav>
