@@ -5,14 +5,16 @@ export default class extends Controller {
   static targets = ["searchInput", "snackbar"];
 
   focus(event) {
-    if (event.code === "Slash") {
-      event.preventDefault();
-      this.focusSearchInput();
-    }
+    if (this.hasSearchInputTarget) {
+      if (event.code === "Slash") {
+        event.preventDefault();
+        this.focusSearchInput();
+      }
 
-    if (event.code === "Escape") {
-      event.preventDefault();
-      this.blurSearchInput();
+      if (event.code === "Escape") {
+        event.preventDefault();
+        this.blurSearchInput();
+      }
     }
   }
 
