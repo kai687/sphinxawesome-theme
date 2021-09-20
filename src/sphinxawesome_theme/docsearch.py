@@ -25,30 +25,35 @@ def setup_docsearch(
     context: Dict[str, Any],
     doctree: Node,
 ) -> None:
-    """Set up Docsearch.
+    """Set up the DocSearch files.
 
     Merge the config to the global context.
     This allows replacing of Jinja2 templates
     """
+    load_dotenv(dotenv_path=(Path(app.confdir) / ".env"))
+
     docsearch_config = {
-        "docsearch": app.config.html_awesome_docsearch,
-        "docsearch_container": (
-            os.getenv("DOCSEARCH_CONTAINER") or app.config.docsearch_container
+        "container": (
+            os.getenv("DOCSEARCH_CONTAINER")
+            or app.config.docsearch_config.get("container", "#docsearch")
         ),
-        "docsearch_api_key": (
-            os.getenv("DOCSEARCH_API_KEY") or app.config.docsearch_api_key
+        "api_key": (
+            os.getenv("DOCSEARCH_API_KEY") or app.config.docsearch_config.get("api_key")
         ),
-        "docsearch_index_name": (
-            os.getenv("DOCSEARCH_INDEX_NAME") or app.config.docsearch_index_name
+        "index_name": (
+            os.getenv("DOCSEARCH_INDEX_NAME")
+            or app.config.docsearch_config.get("index_name")
         ),
     }
-    app.builder.globalcontext.update(docsearch_config)  # type: ignore[union-attr]
+
+    context["docsearch"] = app.config.html_awesome_docsearch
+    context["docsearch_config"] = docsearch_config
+    app.builder.globalcontext["docsearch_config"] = docsearch_config
 
 
 def setup(app: Sphinx) -> Dict[str, Any]:
     """Register the extension."""
     app.add_css_file("docsearch.css", priority=150)
-    load_dotenv(dotenv_path=(Path(app.confdir) / ".env"))
     app.connect("html-page-context", setup_docsearch)
 
     return {

@@ -86,13 +86,18 @@ html_extra_path = ["robots.txt"]
 # templates_path = ["_templates"]
 # html_additional_pages = {"about": "about.html"}
 
-# extra option from the sphinxawesome_theme
+# extra options from the sphinxawesome_theme
 html_collapsible_definitions = True
-
 html_awesome_docsearch = True
-# These variables are read from `.env` file
-# docsearch_api_key = ""
-# docsearch_index_name = ""
+
+# DocSearch is configured via an `.env` key here.
+# You can also use the following dictionary
+#
+# docsearch_config = {
+# "api_key": "",
+# "container": "",
+# "index_name": "",
+# }
 
 html_theme_options = {
     "show_scrolltop": True,

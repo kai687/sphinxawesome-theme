@@ -52,13 +52,7 @@ def setup(app: "Sphinx") -> Dict[str, Any]:
         name="html_awesome_docsearch", default=False, rebuild="html", types=(bool)
     )
     app.add_config_value(
-        name="docsearch_container", default="#docsearch", rebuild="html", types=(str)
-    )
-    app.add_config_value(
-        name="docsearch_api_key", default="", rebuild="html", types=(str)
-    )
-    app.add_config_value(
-        name="docsearch_index_name", default="", rebuild="html", types=(str)
+        name="docsearch_config", default={}, rebuild="html", types=(dict)
     )
     app.add_config_value(
         name="html_collapsible_definitions", default=False, rebuild="html", types=(str)
