@@ -25,11 +25,12 @@ def setup_docsearch(
     context: Dict[str, Any],
     doctree: Node,
 ) -> None:
-    """Set up the DocSearch files.
+    """Set up DocSearch.
 
-    Merge the config to the global context.
-    This allows replacing of Jinja2 templates
+    Config can be provided via environment variables, a `.env.` file,
+    or the Sphinx configuration file.
     """
+    # load `.env` file into environment
     load_dotenv(dotenv_path=(Path(app.confdir) / ".env"))
 
     docsearch_config = {
@@ -46,8 +47,14 @@ def setup_docsearch(
         ),
     }
 
+    # if we want to use `docsearch` we don't need any other JS file from Sphinx
+    if app.config.html_awesome_docsearch:
+        context["script_files"] = []
+
     context["docsearch"] = app.config.html_awesome_docsearch
+    # update local context for rendering the `layout.html` templates for every page
     context["docsearch_config"] = docsearch_config
+    # update the global context for writing the `docsearch_config.js` file
     app.builder.globalcontext["docsearch_config"] = docsearch_config  # type: ignore [union-attr] # noqa: B950,E501
 
 
