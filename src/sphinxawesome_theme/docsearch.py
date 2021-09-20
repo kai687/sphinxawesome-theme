@@ -48,7 +48,7 @@ def setup_docsearch(
 
     context["docsearch"] = app.config.html_awesome_docsearch
     context["docsearch_config"] = docsearch_config
-    app.builder.globalcontext["docsearch_config"] = docsearch_config
+    app.builder.globalcontext["docsearch_config"] = docsearch_config  # type: ignore [union-attr] # noqa: B950,E501
 
 
 def setup(app: Sphinx) -> Dict[str, Any]:
