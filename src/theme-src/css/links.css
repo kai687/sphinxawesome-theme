@@ -88,7 +88,7 @@ ul.search {
   @apply hidden;
 }
 
-:not(header) > a {
+article p a {
   @apply hover:underline focus:underline;
 }
 
