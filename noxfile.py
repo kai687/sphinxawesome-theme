@@ -142,7 +142,7 @@ def xml(session: Session) -> None:
     session.run("sphinx-build", *args)
 
 
-@nox.session(python=Versions.THREE_SEVEN.value)
+@nox.session(python=Versions.THREE_EIGHT.value)
 def netlify_test(session: Session) -> None:
     """Test, if netlify can build the docs."""
     args = ["-b", "dirhtml", "-T", "-W", "docs/", "docs/public"]
@@ -153,11 +153,11 @@ def netlify_test(session: Session) -> None:
     session.run("sphinx-build", *args)
 
 
-@nox.session(python=Versions.THREE_SEVEN.value)
+@nox.session(python=Versions.THREE_EIGHT.value)
 def export(session: Session) -> None:
     """Export requirements from poetry.lock for Netlify.
 
-    Netlify uses Python 3.7.
+    Netlify uses Python 3.8.
     """
     session.run(
         "poetry",
