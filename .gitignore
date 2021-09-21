@@ -11,3 +11,4 @@ docs/public/xml
 .vscode
 .history
 .python-version
+.env
