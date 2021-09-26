@@ -3742,12 +3742,10 @@ postcss-focus-visible@^4.0.0:
   dependencies:
     postcss "^7.0.2"
 
-postcss-focus-visible@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/postcss-focus-visible/-/postcss-focus-visible-5.0.0.tgz#61e0909244cd15b9075bd40a4f176aa4e2446dbc"
-  integrity sha512-KWMjuX+6Mbt7BvD7L9YETXXx8pmNSlT881Zdebbi5zLKdRIM0FIlwG87i/RXiwTf5nGJdaHA1KKsE6gW+O719A==
-  dependencies:
-    postcss "^7.0.27"
+postcss-focus-visible@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/postcss-focus-visible/-/postcss-focus-visible-6.0.1.tgz#b12a859616eca7152976fec24ef337ab29bbc405"
+  integrity sha512-UddLlBmJ78Nu7OrKME70EKxCPBdxTx7pKIyD3GDNRM8Tnq19zmscT9QzsvR8gygz0i0nNUjMtSz4N3AEWZ5R/Q==
 
 postcss-focus-within@^3.0.0:
   version "3.0.0"
@@ -4251,7 +4249,7 @@ postcss-zindex@^5.0.1:
   resolved "https://registry.yarnpkg.com/postcss-zindex/-/postcss-zindex-5.0.1.tgz#c585724beb69d356af8c7e68847b28d6298ece03"
   integrity sha512-nwgtJJys+XmmSGoYCcgkf/VczP8Mp/0OfSv3v0+fw0uABY4yxw+eFs0Xp9nAZHIKnS5j+e9ywQ+RD+ONyvl5pA==
 
-postcss@7.x.x, postcss@^7.0.14, postcss@^7.0.17, postcss@^7.0.2, postcss@^7.0.21, postcss@^7.0.26, postcss@^7.0.27, postcss@^7.0.32, postcss@^7.0.35, postcss@^7.0.5, postcss@^7.0.6:
+postcss@7.x.x, postcss@^7.0.14, postcss@^7.0.17, postcss@^7.0.2, postcss@^7.0.21, postcss@^7.0.26, postcss@^7.0.32, postcss@^7.0.35, postcss@^7.0.5, postcss@^7.0.6:
   version "7.0.36"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-7.0.36.tgz#056f8cffa939662a8f5905950c07d5285644dfcb"
   integrity sha512-BebJSIUMwJHRH0HAQoxN4u1CN86glsrwsW0q7T+/m44eXOUAxSNdHRkNZPYz5vVUbg17hFgOQDE7fZk7li3pZw==
