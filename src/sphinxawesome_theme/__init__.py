@@ -16,6 +16,9 @@ from os import path
 from typing import Any, Dict
 
 from sphinx.application import Sphinx
+from sphinxcontrib.serializinghtml import JSONHTMLBuilder
+
+from . import jsonimpl
 
 try:
     # obtain version from `pyproject.toml` via `importlib.metadata.version()`
@@ -31,6 +34,10 @@ def setup(app: "Sphinx") -> Dict[str, Any]:
     app.add_config_value("html_awesome_html_translator", True, "html")
     app.setup_extension("sphinxawesome_theme.highlighting")
     app.setup_extension("sphinxawesome_theme.jinja_functions")
+
+    JSONHTMLBuilder.out_suffix = ".json"
+    JSONHTMLBuilder.implementation = jsonimpl
+    JSONHTMLBuilder.indexer_format = jsonimpl
 
     if app.config.html_awesome_html_translator:
         app.setup_extension("sphinxawesome_theme.html_translator")
