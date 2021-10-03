@@ -64,7 +64,7 @@ show_error_codes = true
 pretty = true
 
 [[tool.mypy.overrides]]
-module = ["pygments.*", "bs4"]
+module = ["pygments.*", "bs4", "sphinxcontrib.serializinghtml"]
 ignore_missing_imports = true
 
 [tool.poetry.plugins."sphinx.html_themes"]
