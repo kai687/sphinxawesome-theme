@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",
-    "@babel/preset-env": "^7.15.6",
+    "@babel/preset-env": "^7.15.8",
     "@fontsource/jetbrains-mono": "^4.5.0",
     "@fontsource/roboto": "^4.5.1",
     "autoprefixer": "^10.3.7",
