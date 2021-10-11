@@ -23,7 +23,7 @@
     "@babel/preset-env": "^7.15.6",
     "@fontsource/jetbrains-mono": "^4.5.0",
     "@fontsource/roboto": "^4.5.1",
-    "autoprefixer": "^10.3.5",
+    "autoprefixer": "^10.3.7",
     "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.3.0",
