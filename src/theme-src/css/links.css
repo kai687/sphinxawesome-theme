@@ -64,9 +64,13 @@ p:not(.admonition-title),
   }
 }
 
+ul.search {
+  @apply list-none pl-0;
+}
+
 .search {
   & li {
-    @apply border-t my-4 py-4;
+    @apply border-t my-4 py-4 pl-0;
     & a {
       @apply text-lg;
     }
@@ -84,7 +88,7 @@ p:not(.admonition-title),
   @apply hidden;
 }
 
-:not(header) > a {
+article p a {
   @apply hover:underline focus:underline;
 }
 

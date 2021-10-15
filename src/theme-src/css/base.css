@@ -18,9 +18,11 @@
     @apply rounded-none appearance-none;
   }
 
-  section,
-  footer {
-    @apply max-w-prose;
+  main {
+    & section,
+    & footer {
+      @apply max-w-prose;
+    }
   }
 
   section > section {

@@ -97,7 +97,7 @@ def tests(session: Session) -> None:
 @nox.session(python=Versions.all())
 def docs(session: Session) -> None:
     """Build the docs."""
-    args = session.posargs or ["-b", "dirhtml", "-aqWTE", "docs", "docs/public"]
+    args = session.posargs or ["-b", "dirhtml", "-aWTE", "docs", "docs/public"]
     session.run("poetry", "install", "--no-dev", external=True)
     install_constrained_version(session, "myst-parser", "sphinx-sitemap")
     session.run("sphinx-build", *args)

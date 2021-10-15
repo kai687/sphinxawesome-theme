@@ -273,7 +273,6 @@ def setup(app: "Sphinx") -> Dict[str, Any]:
     """
     app.set_translator("html", AwesomeHTMLTranslator)
     app.set_translator("dirhtml", AwesomeHTMLTranslator)
-    app.add_config_value("html_collapsible_definitions", False, "html")
 
     return {
         "version": __version__,

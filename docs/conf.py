@@ -66,7 +66,7 @@ html_theme_path = ["../src"]
 html_last_updated_fmt = ""
 html_use_index = False  # Don't create index
 html_domain_indices = False  # Don't need module indices
-html_copy_source = True
+html_copy_source = False  # Don't need sources
 html_logo = "assets/auto_awesome.svg"
 html_favicon = "assets/favicon-128x128.png"
 html_permalinks_icon = (
@@ -86,8 +86,19 @@ html_extra_path = ["robots.txt"]
 # templates_path = ["_templates"]
 # html_additional_pages = {"about": "about.html"}
 
-# extra option from the sphinxawesome_theme
+# extra options from the sphinxawesome_theme
 html_collapsible_definitions = True
+html_awesome_docsearch = True
+
+# DocSearch is configured via an `.env` key here.
+# You can also use the following dictionary
+#
+# docsearch_config = {
+# "api_key": "",
+# "container": "",
+# "index_name": "",
+# }
+
 html_theme_options = {
     "show_scrolltop": True,
     "extra_header_links": {

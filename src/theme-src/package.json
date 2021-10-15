@@ -1,7 +1,6 @@
 {
-  "name": "sphinx-next-theme",
-  "version": "2.0.2",
-  "description": "A new Sphinx theme using Tailwind CSS",
+  "name": "sphinxawesome-theme",
+  "version": "3.1.0",
   "scripts": {
     "build": "NODE_ENV=production webpack",
     "dev": "NODE_ENV=development webpack --watch --progress",
@@ -15,6 +14,7 @@
   "author": "Kai Welke",
   "license": "MIT",
   "dependencies": {
+    "@docsearch/js": "^3.0.0-alpha.40",
     "clipboard": "^2.0.8",
     "stimulus": "^3.0.1"
   },
@@ -26,6 +26,7 @@
     "autoprefixer": "^10.3.7",
     "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^9.0.1",
     "css-loader": "^6.4.0",
     "cssnano": "^5.0.7",
     "cssnano-preset-advanced": "^5.1.2",
@@ -35,7 +36,6 @@
     "eslint-webpack-plugin": "^3.0.1",
     "mini-css-extract-plugin": "^2.4.2",
     "postcss": "^8.3.9",
-    "postcss-focus-visible": "^5.0.0",
     "postcss-import": "^14.0.2",
     "postcss-loader": "^6.1.1",
     "postcss-preset-env": "^6.7.0",

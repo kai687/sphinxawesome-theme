@@ -1,0 +1,5 @@
+docsearch({
+  container: "{{ docsearch_config.container|default('#docsearch') }}",
+  apiKey: "{{ docsearch_config.api_key }}",
+  indexName: "{{ docsearch_config.index_name }}",
+});

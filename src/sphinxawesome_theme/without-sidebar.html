@@ -16,7 +16,7 @@
     <div class="flex flex-col h-full mx-auto max-w-prose">
       {%- if pagename != master_doc and theme_show_breadcrumbs|tobool %}
         {%- include "breadcrumbs.html" %}
-      {% endif -%}
+      {%- endif %}
 
       <article role="main" class="flex-1">
         {% block body %}{% endblock %}
@@ -27,9 +27,9 @@
       {%- endif %}
 
       <footer>
-        {% block footer %}
-          {% include "footer.html" %}
-        {% endblock %}
+        {%- block footer %}
+          {%- include "footer.html" %}
+        {%- endblock %}
       </footer>
 
       {#- scroll to top button -#}

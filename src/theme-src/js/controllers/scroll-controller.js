@@ -13,15 +13,13 @@ export default class extends Controller {
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const matchingLink = document.querySelector(
-            `.nav-toc a[href*=${entry.target.id}]`
-          );
+        const matchingLink = document.querySelector(
+          `.nav-toc a[href*=${entry.target.id}]`
+        );
+
+        if (entry.isIntersecting && matchingLink) {
           matchingLink.classList.add("current");
-        } else {
-          const matchingLink = document.querySelector(
-            `.nav-toc a[href*=${entry.target.id}]`
-          );
+        } else if (matchingLink) {
           matchingLink.classList.remove("current");
         }
       });
