@@ -17,6 +17,9 @@ from typing import Any, Dict
 
 from sphinx.application import Sphinx
 from sphinx.config import Config
+from sphinxcontrib.serializinghtml import JSONHTMLBuilder
+
+from . import jsonimpl
 
 try:
     # obtain version from `pyproject.toml` via `importlib.metadata.version()`
@@ -65,6 +68,16 @@ def setup(app: "Sphinx") -> Dict[str, Any]:
     app.setup_extension("sphinxawesome_theme.jinja_functions")
 
     app.connect("config-inited", conditional_setup)
+
+    JSONHTMLBuilder.out_suffix = ".json"
+    JSONHTMLBuilder.implementation = jsonimpl
+    JSONHTMLBuilder.indexer_format = jsonimpl
+
+    if app.config.html_awesome_html_translator:
+        app.setup_extension("sphinxawesome_theme.html_translator")
+
+    if app.config.html_awesome_postprocessing:
+        app.setup_extension("sphinxawesome_theme.postprocess")
 
     return {
         "version": __version__,
