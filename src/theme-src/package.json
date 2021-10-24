@@ -14,7 +14,7 @@
   "author": "Kai Welke",
   "license": "MIT",
   "dependencies": {
-    "@docsearch/js": "^3.0.0-alpha.40",
+    "@docsearch/js": "^3.0.0-alpha.41",
     "clipboard": "^2.0.8",
     "stimulus": "^3.0.1"
   },
