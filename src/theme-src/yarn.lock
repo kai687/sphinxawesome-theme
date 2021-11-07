@@ -1211,10 +1211,10 @@
   resolved "https://registry.yarnpkg.com/@types/parse-json/-/parse-json-4.0.0.tgz#2f8bb441434d163b35fb8ffdccd7138927ffb8c0"
   integrity sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==
 
-"@types/stylelint@^13.13.1":
-  version "13.13.2"
-  resolved "https://registry.yarnpkg.com/@types/stylelint/-/stylelint-13.13.2.tgz#7a8a99bdbe19187b973a290dd3f821cfe5caff6e"
-  integrity sha512-5Yt1LQenR7uk+efCydQmN7ubOtO2qJ8Z9K/qqnlW87X1zkIQ8RkMCZbaOgZj/aBrR/h5Q738mJU6CYhXOj9sEg==
+"@types/stylelint@^13.13.3":
+  version "13.13.3"
+  resolved "https://registry.yarnpkg.com/@types/stylelint/-/stylelint-13.13.3.tgz#29ba9b7179e5632b12853252da191443607d32fc"
+  integrity sha512-xvYwobi9L69FXbJTimKYRNHyMwtmcJxMd1woI3U822rkW/f7wcZ6fsV1DqYPT+sNaO0qUtngiBhTQfMeItUvUA==
   dependencies:
     globby "11.x.x"
     postcss "7.x.x"
@@ -4887,17 +4887,17 @@ stylelint-prettier@^1.2.0:
   dependencies:
     prettier-linter-helpers "^1.0.0"
 
-stylelint-webpack-plugin@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/stylelint-webpack-plugin/-/stylelint-webpack-plugin-3.0.1.tgz#51832909fb92745fd9afa702b772a35aa60610fc"
-  integrity sha512-1qUJTjXSGEGxsdYelZCmDZgA87H6/XR0xrl5a4mwAlIcWcNvr0QeH0e0ZY3ZJTY/rJ2xjKnt5ETvFzOZpPbuDg==
+stylelint-webpack-plugin@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/stylelint-webpack-plugin/-/stylelint-webpack-plugin-3.1.0.tgz#97cf140c0973515a13e2db970e3f94a8f13e9c56"
+  integrity sha512-qKBj9s2BVnxwQXdqRKd637gtASYel6FA/a9PfyfsplUqiBmBjJeeTrcJPp9v/HEN4FRw2CJDNbO2xuYUF7DsuA==
   dependencies:
-    "@types/stylelint" "^13.13.1"
+    "@types/stylelint" "^13.13.3"
     globby "^11.0.4"
-    jest-worker "^27.0.6"
+    jest-worker "^27.3.1"
     micromatch "^4.0.4"
     normalize-path "^3.0.0"
-    schema-utils "^3.1.0"
+    schema-utils "^3.1.1"
 
 stylelint@^13.13.1:
   version "13.13.1"
