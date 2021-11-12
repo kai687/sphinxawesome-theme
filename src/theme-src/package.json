@@ -6,11 +6,7 @@
     "dev": "NODE_ENV=development webpack --watch --progress",
     "format": "prettier --write js/**/*.js"
   },
-  "browserslist": [
-    "last 2 versions",
-    "not dead",
-    "> 1%"
-  ],
+  "browserslist": ["last 2 versions", "not dead", "> 1%"],
   "author": "Kai Welke",
   "license": "MIT",
   "dependencies": {
@@ -40,9 +36,9 @@
     "postcss-loader": "^6.1.1",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.4.1",
-    "stylelint": "^13.13.1",
+    "stylelint": "^14",
     "stylelint-config-prettier": "^9.0.3",
-    "stylelint-prettier": "^1.2.0",
+    "stylelint-prettier": "^2",
     "stylelint-webpack-plugin": "^3.1.0",
     "tailwindcss": "^2.2.19",
     "webpack": "^5.62.1",
