@@ -29,7 +29,7 @@ Sphinx configuration file `conf.py`.
 :::{confval} nav_include_hidden
 
 By default, theme
-{sphinxdocs}`toctree <usage/restructuredtext/directives.html#directive-toctree`
+{sphinxdocs}`toctree <usage/restructuredtext/directives.html#directive-toctree>`
 directive includes the content and prints a list of links in the content area. A
 `toctree` directive with the `:hidden:` option includes the content, but doesn't print
 the list of links in the content area. This can be useful if navigation links are
