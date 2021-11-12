@@ -27,8 +27,8 @@ blocks. If you don't provide an explicit language to the directive, a fallback i
 
 .. seealso::
 
-   `highlight directive <https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-highlight>`_,
-   `highlight_language <https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-highlight_language>`_
+   :sphinxdocs:`highlight directive <usage/restructuredtext/directives.html#directive-highlight>`
+   :confval:`sphinx:highlight_language`
 
 Explicit is better than implicit. Unless *all* code blocks in your documentation are
 highlighted with the same language, always provide the highlighting language to the code

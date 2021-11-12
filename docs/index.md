@@ -46,7 +46,7 @@ keywords: documentation, sphinx, python
 3. Build your documentation with Sphinx.
 
    ```{seealso}
-   [Get started with Sphinx](https://www.sphinx-doc.org/en/master/usage/quickstart.html)
+   {sphinxdocs}`Getting started with Sphinx <usage/quickstart.html>`
    ```
 
 In the _how-to_ section, you can learn more about the different
