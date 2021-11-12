@@ -37,7 +37,7 @@ To include a list of references, you can use the ``seealso`` directive.
 
 .. seealso::
 
-   `Sphinx directives <https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html>`_,
+   :sphinxdocs:`Sphinx directives <usage/restructuredtext/directives.html>`
    `Docutils directives <https://docutils.sourceforge.io/docs/ref/rst/directives.html>`_
 
 

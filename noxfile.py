@@ -22,6 +22,7 @@ class Versions(Enum):
     THREE_SEVEN = "3.7"
     THREE_EIGHT = "3.8"
     THREE_NINE = "3.9"
+    THREE_TEN = "3.10"
 
     @classmethod
     def all(cls: Type[VersionType]) -> List[str]:
