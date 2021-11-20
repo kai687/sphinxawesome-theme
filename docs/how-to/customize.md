@@ -1,3 +1,10 @@
+---
+html_meta:
+  description: |
+    Adapt the theme to your needs by adding custom styles,
+    using custom layouts, or changing the default templates.
+---
+
 (sec:customize)=
 
 # Customize the theme

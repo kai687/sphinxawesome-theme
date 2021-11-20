@@ -1,3 +1,8 @@
+---
+html_meta:
+  description: Find out how to leverage the features of the theme to make your Sphinx documentation awesome
+---
+
 # Make your documentation awesome
 
 ```{rst-class} lead

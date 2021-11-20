@@ -1,3 +1,6 @@
+.. meta::
+   :description: See how code blocks look like with this theme and discover the awesome enhancements.
+
 .. role:: rst(code)
    :language: rst
    :class: highlight

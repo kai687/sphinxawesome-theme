@@ -1,3 +1,9 @@
+---
+html_meta:
+  description: |
+    Configure the theme by changing an option in your Sphinx configuration file.
+---
+
 (sec:configure)=
 
 # How to configure the theme
@@ -28,13 +34,17 @@ Sphinx configuration file `conf.py`.
 
 :::{confval} nav_include_hidden
 
-By default, theme
+<!-- vale Awesome.SpellCheck = NO -->
+
+By default, the
 {sphinxdocs}`toctree <usage/restructuredtext/directives.html#directive-toctree>`
 directive includes the content and prints a list of links in the content area. A
 `toctree` directive with the `:hidden:` option includes the content, but doesn't print
 the list of links in the content area. This can be useful if navigation links are
 elsewhere on the page. Printing the same list of links in the content area would be
 redundant.
+
+<!-- vale Awesome.SpellCheck = YES -->
 
 If you don't want to include elements from a _hidden_ toctree directive in the
 navigation menu on the left, set:

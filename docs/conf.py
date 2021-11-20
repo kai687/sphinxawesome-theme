@@ -28,11 +28,6 @@ extensions = [
 ]
 
 myst_enable_extensions = ["colon_fence", "deflist", "replacements", "substitution"]
-myst_substitutions = {
-    "title": project,
-    "description": "Create beautiful and modern documentation websites with Sphinx.",
-}
-
 exclude_patterns = ["public"]
 
 nitpicky = True

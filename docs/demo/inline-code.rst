@@ -1,3 +1,6 @@
+.. meta::
+   :description: Learn how you can mark up inline code in Sphinx and see how it would look like on your website.
+
 .. role:: rst(code)
    :language: rst
    :class: highlight

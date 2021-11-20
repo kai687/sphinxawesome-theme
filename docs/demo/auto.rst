@@ -1,3 +1,7 @@
+.. meta::
+   :description: See an example how module documentation looks like with this theme. Sphinx generates module documentation from docstrings in the source code.
+
+
 ====================
 Module documentation
 ====================

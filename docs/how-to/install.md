@@ -1,3 +1,9 @@
+---
+html_theme:
+  description: |
+    Learn the different methods to install the theme, depending on your use case.
+---
+
 (sec:install)=
 
 # Install the theme

@@ -1,3 +1,6 @@
+.. meta::
+   :description: Discover how the theme styles figures, images and their supporting elements, such as captions.
+
 Figures and tables
 ==================
 

@@ -1,3 +1,6 @@
+.. meta::
+   :description: Notes and warnings allow you to draw attention to issues or provide extra information. See how they look like with this theme.
+
 Notes, warnings, and quotations
 ===============================
 

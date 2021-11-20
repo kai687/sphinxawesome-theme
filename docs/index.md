@@ -1,18 +1,18 @@
 ---
-description: "{{ description }}"
-keywords: documentation, sphinx, python
-"og:title": "{{ title }}"
-"og:description": "{{ description }}"
+html_meta:
+  title: The Awesome Sphinx Theme
+  description: Create functional and beautiful websites for your documentation with Sphinx.
+  keywords: Documentation, Sphinx, Python
 ---
 
 <!-- vale Google.Headings = NO -->
 
-# {{ title }}
+# Awesome Sphinx Theme
 
 <!-- vale Google.Headings = YES -->
 
 ```{rst-class} lead
-{{ description }}
+Create functional and beautiful websites for your documentation with Sphinx.
 ```
 
 ---
@@ -55,7 +55,7 @@ In the _how-to_ section, you can learn more about the different
 {ref}`sec:customize`.
 You can get an overview over all available styles in the _demo_ section.
 
-## Get in touch
+## Give feedback
 
 Is something broken or missing?
 Create a [GitHub issue](https://github.com/kai687/sphinxawesome-theme/issues/new).
