@@ -55,7 +55,7 @@ In the _how-to_ section, you can learn more about the different
 {ref}`sec:customize`.
 You can get an overview over all available styles in the _demo_ section.
 
-## Get in touch
+## Give feedback
 
 Is something broken or missing?
 Create a [GitHub issue](https://github.com/kai687/sphinxawesome-theme/issues/new).

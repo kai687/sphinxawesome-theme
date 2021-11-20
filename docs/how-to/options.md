@@ -34,6 +34,8 @@ Sphinx configuration file `conf.py`.
 
 :::{confval} nav_include_hidden
 
+<!-- vale Awesome.SpellCheck = NO -->
+
 By default, the
 {sphinxdocs}`toctree <usage/restructuredtext/directives.html#directive-toctree>`
 directive includes the content and prints a list of links in the content area. A
@@ -41,6 +43,8 @@ directive includes the content and prints a list of links in the content area. A
 the list of links in the content area. This can be useful if navigation links are
 elsewhere on the page. Printing the same list of links in the content area would be
 redundant.
+
+<!-- vale Awesome.SpellCheck = YES -->
 
 If you don't want to include elements from a _hidden_ toctree directive in the
 navigation menu on the left, set:
