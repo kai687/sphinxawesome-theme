@@ -5,6 +5,7 @@
 """
 
 import json
+import posixpath
 from functools import partial
 from os import path
 from typing import Any, Dict
@@ -68,6 +69,8 @@ def setup_jinja(
     if app.builder is not None:
         app.builder.templates.environment.filters["sanitize"] = _make_id_from_title
         context["asset"] = partial(_make_asset_url, app)
+        # must override `pageurl` for directory builder
+        context["pageurl"] = posixpath.join(app.config.html_baseurl, pagename + "/")
 
 
 def setup(app: Sphinx) -> Dict[str, Any]:
