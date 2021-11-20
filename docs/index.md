@@ -1,18 +1,18 @@
 ---
-description: "{{ description }}"
-keywords: documentation, sphinx, python
-"og:title": "{{ title }}"
-"og:description": "{{ description }}"
+html_meta:
+  title: The Awesome Sphinx Theme
+  description: Create functional and beautiful websites for your documentation with Sphinx.
+  keywords: Documentation, Sphinx, Python
 ---
 
 <!-- vale Google.Headings = NO -->
 
-# {{ title }}
+# Awesome Sphinx Theme
 
 <!-- vale Google.Headings = YES -->
 
 ```{rst-class} lead
-{{ description }}
+Create functional and beautiful websites for your documentation with Sphinx.
 ```
 
 ---

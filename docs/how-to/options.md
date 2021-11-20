@@ -1,3 +1,9 @@
+---
+html_meta:
+  description: |
+    Configure the theme by changing an option in your Sphinx configuration file.
+---
+
 (sec:configure)=
 
 # How to configure the theme
@@ -28,7 +34,7 @@ Sphinx configuration file `conf.py`.
 
 :::{confval} nav_include_hidden
 
-By default, theme
+By default, the
 {sphinxdocs}`toctree <usage/restructuredtext/directives.html#directive-toctree>`
 directive includes the content and prints a list of links in the content area. A
 `toctree` directive with the `:hidden:` option includes the content, but doesn't print

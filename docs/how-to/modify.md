@@ -1,3 +1,10 @@
+---
+html_theme:
+  description: |
+    Make your own theme by building on top of this theme.
+    Fully customize the styles, JavaScript, and templates.
+---
+
 (sec:modify)=
 
 # Modify the theme
@@ -15,9 +22,7 @@ backlinks: none
 
 ## Modify the templates
 
-You can
-
-Styles in the templates are applied via Tailwind's utility classes.
+You can apply styles in the templates with Tailwind's utility classes.
 
 ```{code-block} shell
 ---

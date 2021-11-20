@@ -1,3 +1,6 @@
+.. meta::
+   :description: See how different lists look like in this theme. Discover the styles for ordered lists, unordered lists, and description lists.
+
 =====
 Lists
 =====

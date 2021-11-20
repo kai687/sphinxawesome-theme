@@ -1,3 +1,6 @@
+.. meta::
+   :description: Textual elements like paragraphs and headings are essential parts of any documentation. Find out how they look like in this theme.
+
 Headings and text
 =================
 

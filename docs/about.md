@@ -1,6 +1,8 @@
 ---
 orphan: true
 layout: "without-sidebar"
+html_meta:
+  description: The Awesome Sphinx Theme is built on top of open-source assets. Click to learn more.
 ---
 
 (sec:about)=

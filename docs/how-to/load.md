@@ -1,3 +1,9 @@
+---
+html_theme:
+  description: |
+    Learn about the different ways to add the theme to your Sphinx project.
+---
+
 (sec:load)=
 
 # Load the theme

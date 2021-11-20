@@ -1,3 +1,10 @@
+---
+html_meta:
+  description: |
+    Updating the Sphinx awesome theme is straightforward for most users.
+    Find out what you should consider when updating between major versions.
+---
+
 # Update the theme
 
 ```{rst-class} lead
