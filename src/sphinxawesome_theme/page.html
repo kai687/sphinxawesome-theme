@@ -1,4 +1,4 @@
-{% if meta.layout %}
+{% if meta and meta.layout %}
   {%- extends meta.layout + ".html"|default("with-sidebar.html") -%}
 {% else %}
   {% if theme_show_nav|tobool %}
