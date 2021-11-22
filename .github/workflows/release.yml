@@ -15,18 +15,15 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: '3.10'
-      - name: Download and Install Poetry
+      - name: Install Poetry
         run: |
-          curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
-          source $HOME/.poetry/env
+          pip install --constraint=.github/workflows/constraints.txt poetry
           poetry install -v --no-dev
       - name: Build Packages
         run: |
-          source $HOME/.poetry/env
           poetry build
       - name: Publish to PyPI
         env:
           POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_TOKEN }}
         run: |
-          source $HOME/.poetry/env
           poetry publish
