@@ -9,7 +9,7 @@
 
 <p align="center">
    Create beautiful and awesome documentation websites with <a href="https://www.sphinx-doc.org/en/master/">Sphinx</a>.
-   See how it looks like on <a href="https://sphinxawesome.xyz">sphinxawesome.xyz</a>.
+   See how the theme looks like on <a href="https://sphinxawesome.xyz">sphinxawesome.xyz</a>.
 </p>
 
 ## Get started
@@ -45,7 +45,7 @@ Compared to other Sphinx themes, these features enhance the user experience:
 ### Awesome code blocks
 
 The code block shows the language of the code in a header.
-Each code block has a **Copy** button for easy copying. 
+Each code block has a **Copy** button for easy copying.
 This theme enhances Sphinx's `code-block` directive with:
 
 - `emphasize-added`: highlight lines that should be added to code
@@ -67,6 +67,7 @@ Clicking the link icon after a header or caption automatically copies the URL to
 <!-- vale Awesome.SpellCheck = YES -->
 
 ### Better keyboard navigation
+
 <!-- vale 18F.Clarity = NO -->
 
 Use the `/` key to start searching.

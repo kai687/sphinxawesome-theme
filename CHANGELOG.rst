@@ -1,3 +1,10 @@
+3.1.0
+~~~~~
+
+- add DocSearch
+- bugfix when highlight_language is undefined
+- bugfix for canonical links when using the DirectoryBuilder
+
 3.0.0
 ~~~~~
 
