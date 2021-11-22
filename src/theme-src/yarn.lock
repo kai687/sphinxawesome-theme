@@ -1942,19 +1942,19 @@ cssesc@^3.0.0:
   resolved "https://registry.yarnpkg.com/cssesc/-/cssesc-3.0.0.tgz#37741919903b868565e1c09ea747445cd18983ee"
   integrity sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==
 
-cssnano-preset-advanced@^5.1.6:
-  version "5.1.6"
-  resolved "https://registry.yarnpkg.com/cssnano-preset-advanced/-/cssnano-preset-advanced-5.1.6.tgz#182fdeb69fde30efdc9961365461f79a751bdcfe"
-  integrity sha512-rkuQ16aS/0zNaTNbJIw/IOhwboqWfBfsmUnchP1qR54ml5lP2qSu8s3Ux7khNBHAi08FTMQq1819/RpDgawXNQ==
+cssnano-preset-advanced@^5.1.7:
+  version "5.1.7"
+  resolved "https://registry.yarnpkg.com/cssnano-preset-advanced/-/cssnano-preset-advanced-5.1.7.tgz#3ee2a72b0653e49a426626ad767a29a310ded207"
+  integrity sha512-ber3aZxajguRaVOjngCPUwbodAUiiEhYwmU2s4IY4Xs2YVCcGgSnIahzLYk0v/XxPhfUwhBlfnKTYJrCNgHKDw==
   dependencies:
     autoprefixer "^10.3.7"
-    cssnano-preset-default "^5.1.6"
+    cssnano-preset-default "^5.1.7"
     postcss-discard-unused "^5.0.1"
     postcss-merge-idents "^5.0.1"
     postcss-reduce-idents "^5.0.1"
     postcss-zindex "^5.0.1"
 
-cssnano-preset-default@^5.1.6, cssnano-preset-default@^5.1.7:
+cssnano-preset-default@^5.1.7:
   version "5.1.7"
   resolved "https://registry.yarnpkg.com/cssnano-preset-default/-/cssnano-preset-default-5.1.7.tgz#68c3ad1ec6a810482ec7d06b2d70fc34b6b0d70c"
   integrity sha512-bWDjtTY+BOqrqBtsSQIbN0RLGD2Yr2CnecpP0ydHNafh9ZUEre8c8VYTaH9FEbyOt0eIfEUAYYk5zj92ioO8LA==
