@@ -70,7 +70,8 @@ def setup_jinja(
         app.builder.templates.environment.filters["sanitize"] = _make_id_from_title
         context["asset"] = partial(_make_asset_url, app)
         # must override `pageurl` for directory builder
-        context["pageurl"] = posixpath.join(app.config.html_baseurl, pagename + "/")
+        if app.builder.name == "dirhtml":
+            context["pageurl"] = posixpath.join(app.config.html_baseurl, pagename + "/")
 
 
 def setup(app: Sphinx) -> Dict[str, Any]:

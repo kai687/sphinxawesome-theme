@@ -230,7 +230,7 @@ class AwesomeHTMLTranslator(HTML5Translator):
             # for docutils >0.17
             node.html5tagname = "div"
             self.body.append('<div class="highlight" data-controller="code">\n')
-            lang = node.get("language")
+            lang = node.get("language", "")
             code_header = "<div class='code-header'>\n"
             code_header += (
                 f"<span class='code-lang'>{lang.replace('default', 'python')}</span>\n"
