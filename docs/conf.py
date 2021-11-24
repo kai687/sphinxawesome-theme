@@ -38,8 +38,8 @@ nitpick_ignore = [
 
 default_role = "literal"
 
-autodoc_default_flags = ["members"]
-autodoc_warningiserror = False
+# autodoc_default_flags = ["members"]
+# autodoc_warningiserror = False
 
 # I keep forgetting how to spell this term
 rst_prolog = ".. |rst| replace:: reStructuredText"
