@@ -39,7 +39,7 @@ pre {
 }
 
 /* the outer wrapper for a code block */
-.highlight:not(.docutils) {
+.code-wrapper {
   @apply my-6;
   & .caption-text {
     @apply text-gray-light tracking-wide;
