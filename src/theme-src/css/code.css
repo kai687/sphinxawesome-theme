@@ -120,10 +120,16 @@ dl.code-definition {
   & dt {
     @apply font-normal;
     & > code {
-      @apply border-none bg-transparent text-gray-dark px-0;
+      @apply border-none bg-transparent text-base font-semibold text-gray-dark px-0;
     }
   }
   & .property {
-    @apply text-gray-light;
+    @apply text-gray-light font-mono font-medium;
+  }
+  & .sig-param {
+    @apply font-mono text-blue-900;
+  }
+  & .sig-paren {
+    @apply mx-1;
   }
 }
