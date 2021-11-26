@@ -118,7 +118,13 @@ class AwesomeHtmlFormatter(HtmlFormatter):  # type: ignore
         Returning a <pre><code> block follows the HTML5 specification for marking
         up code blocks.
         """
-        return self._wrap_pre(self._wrap_code(source))
+        return self._wrap_div(self._wrap_pre(self._wrap_code(source)))
+
+    def _wrap_div(self, inner: TokenStream) -> TokenStream:
+        """Wrap the highlighted code in a div for easier styling."""
+        yield 0, ('<div class="highlight">')
+        yield from inner
+        yield 0, ("</div>")
 
     def _wrap_pre(self, inner: TokenStream) -> TokenStream:
         """Overwrite this method.

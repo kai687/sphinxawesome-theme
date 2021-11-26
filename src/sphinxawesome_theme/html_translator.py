@@ -180,7 +180,7 @@ class AwesomeHTMLTranslator(HTML5Translator):
                 isinstance(node.parent, nodes.container)
                 and node.parent.get("literal_block")
             ):
-                self.body.append('<div class="highlight" data-controller="code">\n')
+                self.body.append('<div class="code-wrapper" data-controller="code">\n')
 
                 code_header = "<div class='code-header'>\n"
                 lang_alias = {
@@ -229,7 +229,7 @@ class AwesomeHTMLTranslator(HTML5Translator):
         if node.get("literal_block"):
             # for docutils >0.17
             node.html5tagname = "div"
-            self.body.append('<div class="highlight" data-controller="code">\n')
+            self.body.append('<div class="code-wrapper" data-controller="code">\n')
             lang = node.get("language", "")
             code_header = "<div class='code-header'>\n"
             code_header += (

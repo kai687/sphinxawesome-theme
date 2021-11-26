@@ -22,6 +22,7 @@ extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.intersphinx",
     "sphinx.ext.extlinks",
+    "sphinx.ext.viewcode",
     "sphinxawesome_theme",
     "myst_parser",
     "sphinx_sitemap",
@@ -38,10 +39,6 @@ nitpick_ignore = [
 
 default_role = "literal"
 
-# autodoc_default_flags = ["members"]
-# autodoc_warningiserror = False
-
-# I keep forgetting how to spell this term
 rst_prolog = ".. |rst| replace:: reStructuredText"
 
 intersphinx_mapping = {

@@ -1,3 +1,8 @@
+3.2.1
+~~~~~
+
+- add styles for view code extension
+
 3.1.1
 ~~~~~
 
