@@ -127,7 +127,7 @@ dl.code-definition {
     @apply text-gray-light font-mono font-medium;
   }
   & .sig-param {
-    @apply font-mono text-indigo-900;
+    @apply font-mono text-blue-900;
   }
   & .sig-paren {
     @apply mx-1;
