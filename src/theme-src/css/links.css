@@ -102,3 +102,11 @@ article p a {
   margin-bottom: 2px;
   @apply ml-px fill-current;
 }
+
+.viewcode-link {
+  @apply text-link hover:text-brand focus:text-brand ml-4;
+}
+
+.viewcode-back {
+  @apply text-link hover:text-brand focus:text-brand absolute right-4;
+}
