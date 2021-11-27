@@ -66,6 +66,9 @@
   .lead {
     @apply text-gray-dark leading-loose mt-4 mb-16 text-base sm:text-m;
   }
+  .centered {
+    @apply text-center;
+  }
   p.rubric {
     @apply text-gray-dark font-medium mt-12 mb-0;
   }

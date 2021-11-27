@@ -1,6 +1,11 @@
 3.2.1
 ~~~~~
 
+- Fix footnote styles (#667)
+
+3.2.0
+~~~~~
+
 - add styles for view code extension
 
 3.1.1

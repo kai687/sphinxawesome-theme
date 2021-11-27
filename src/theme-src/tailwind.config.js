@@ -7,7 +7,7 @@ module.exports = {
   mode: process.env.NODE_ENV === "production" ? "jit" : "",
   purge: {
     content: ["../sphinxawesome_theme/*.html", "./js/**/*.js"],
-    safelist: ["lead", "rubric"],
+    safelist: ["lead", "rubric", "centered"],
   },
   variants: {
     extend: {
