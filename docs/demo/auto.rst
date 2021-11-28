@@ -47,7 +47,11 @@ Autofunction example
 Command line options
 --------------------
 
-.. option:: --help
+If you want to document command-line options, you have two choices.
+Sphinx comes with the ``option`` directive. This renders every option
+into its own element, including links:
+
+.. option:: -h, --help
 
    Display a (hopefully) useful message.
 
@@ -58,3 +62,14 @@ Command line options
 .. option:: -v, --verbose
 
    Increase the verbosity.
+
+
+------------
+Option lists
+------------
+
+A more compact way is built into the ``docutils`` module and works in Sphinx too:
+
+-h, --help              Display a helpful message.
+-i FILE, --input FILE   Specify an input file.
+-v, --verbose           Increase the verbosity.

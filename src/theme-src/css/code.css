@@ -115,11 +115,13 @@ var {
   @apply font-medium text-gray-dark tracking-wide;
 }
 
-dl.code-definition {
+dl.code-definition,
+dl.option-list {
   @apply mt-6 pt-6 mb-12 border-t;
   & dt {
     @apply font-normal;
-    & > code {
+    & > code,
+    & > kbd {
       @apply border-none bg-transparent text-base font-semibold text-gray-dark px-0;
     }
   }
