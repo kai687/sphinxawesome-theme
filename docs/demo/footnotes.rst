@@ -6,10 +6,9 @@ Footnotes
 
 .. rst-class:: lead
 
-   Footnotes are another way of putting information outside of the main text.
-   They're a concept from print writing that doesn't apply well to online media,
-   especially on mobile devices. If you're creating a documentation website,
-   consider not using footnotes at all.
+   Footnotes are a way in printed documents to add more information outside of the main
+   flow of text.
+   They don't apply well to the online experience, especially on mobile devices.
 
 ----
 
