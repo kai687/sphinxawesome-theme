@@ -14,6 +14,8 @@ Inline markup
 For emphasizing inline text, you can either *emphasize* it or make it a **strong**
 statement.
 
+.. centered:: For even more emphasis, you *could* use a ``centered`` directive.
+
 Level 2 heading
 ---------------
 

@@ -51,6 +51,9 @@ extlinks = {
     "sphinxdocs": ("https://www.sphinx-doc.org/en/master/%s", "%s"),
 }
 
+# doesn't seem to be reachable at the moment (2021-11-28)
+linkcheck_ignore = ["http://www.entypo.com/"]
+
 # -- Options for HTML output -------------------------------------------------
 
 html_title = project

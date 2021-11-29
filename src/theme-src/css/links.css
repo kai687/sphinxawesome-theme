@@ -94,7 +94,7 @@ article p a {
 
 .footnote-reference {
   vertical-align: super;
-  @apply text-sm;
+  @apply text-xs;
 }
 
 .external-link-icon {

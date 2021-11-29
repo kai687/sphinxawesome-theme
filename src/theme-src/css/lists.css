@@ -44,7 +44,8 @@
 }
 
 dl.footnote {
-  @apply text-sm flex;
+  @apply text-sm grid;
+  grid-template-columns: max-content auto;
   & dt {
     @apply text-link;
   }
