@@ -2,6 +2,7 @@
 ~~~~~
 
 - Fix footnote styles (#667)
+- Fix option list styles
 
 3.2.0
 ~~~~~
