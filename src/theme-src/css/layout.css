@@ -1,22 +1,20 @@
 /* layout related styles */
 
 @layer utilities {
-  @variants responsive {
-    .grid-layout {
-      grid-template-areas:
-        "header header"
-        "sidebar main";
-      grid-template-columns: max(var(--sidebar-width), 17%) 1fr;
-      grid-template-rows: min-content 1fr;
-    }
-    .grid-area-header {
-      grid-area: header;
-    }
-    .grid-area-sidebar {
-      grid-area: sidebar;
-    }
-    .grid-area-main {
-      grid-area: main;
-    }
+  .grid-layout {
+    grid-template-areas:
+      "header header"
+      "sidebar main";
+    grid-template-columns: max(var(--sidebar-width), 17%) 1fr;
+    grid-template-rows: min-content 1fr;
+  }
+  .grid-area-header {
+    grid-area: header;
+  }
+  .grid-area-sidebar {
+    grid-area: sidebar;
+  }
+  .grid-area-main {
+    grid-area: main;
   }
 }

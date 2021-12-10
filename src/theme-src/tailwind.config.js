@@ -4,19 +4,8 @@ module.exports = {
   corePlugins: {
     animation: false,
   },
-  mode: process.env.NODE_ENV === "production" ? "jit" : "",
-  purge: {
-    content: ["../sphinxawesome_theme/*.html", "./js/**/*.js"],
-    safelist: ["lead", "rubric", "centered"],
-  },
-  variants: {
-    extend: {
-      translate: ["active"],
-      width: ["focus-within", "focus"],
-      position: ["focus-within"],
-      inset: ["focus-within"],
-    },
-  },
+  content: ["../sphinxawesome_theme/*.html", "./js/**/*.js"],
+  safelist: ["lead", "rubric", "centered"],
   theme: {
     fontFamily: {
       sans: ["Roboto", "sans-serif"],
@@ -65,7 +54,6 @@ module.exports = {
       },
       colors: {
         blue: colors.sky,
-        yellow: colors.yellow,
         brand: "var(--color-brand)",
         link: "var(--color-link)",
         gray: {

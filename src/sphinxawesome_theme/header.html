@@ -19,7 +19,7 @@
   {%- if logo -%}
     <img class="h-14 w-14 sm:h-18 sm:w-18 p-3 sm:p-5 inline-block" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo" />
   {%- endif -%}
-  <span class="hidden lg:inline-block flex-shrink-0 font-medium text-gray-100 mx-5 leading-14 sm:leading-18 tracking-wider">{{ docstitle }}</span>
+  <span class="hidden lg:inline-block shrink-0 font-medium text-gray-100 mx-5 leading-14 sm:leading-18 tracking-wider">{{ docstitle }}</span>
 </a>
 {%- endmacro -%}
 
@@ -46,7 +46,7 @@
 
     {%- if theme_extra_header_links|tobool -%}
       {%- block extra_header_links -%}
-      <div class="flex-shrink-0">
+      <div class="shrink-0">
         {%- for text, url in theme_extra_header_links.items() -%}
           {{ extra_link(text, url) }}
         {%- endfor -%}
