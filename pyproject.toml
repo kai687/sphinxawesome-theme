@@ -36,7 +36,7 @@ black = "^21.10b0"
 pre-commit = "^2.16.0"
 pytest = "^6.2"
 pytest-cov = "^3.0"
-mypy = "^0.910"
+mypy = "^0.920"
 coverage = { extras = ["toml"], version = "^6.2" }
 flake8_implicit_str_concat = "^0.2.0"
 pytest-randomly = "^3.10.3"
