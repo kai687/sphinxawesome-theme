@@ -41,7 +41,7 @@ coverage = { extras = ["toml"], version = "^6.2" }
 flake8_implicit_str_concat = "^0.2.0"
 pytest-randomly = "^3.10.3"
 isort = "^5.10.0"
-myst-parser = "^0.16.0"
+myst-parser = "^0.16.1"
 sphinx-autobuild = "^2021.3.14"
 sphinx-sitemap = "^2.2.0"
 
