@@ -1,5 +1,7 @@
+Algolia
 bugfixes
 deps
+docsearch
 docutils
 gh
 headerlink
