@@ -22,7 +22,7 @@ backlinks: none
 ```{admonition} What's the difference between theme and extension options?
 It's a technical distinction due to the way Sphinx builds a project.
 Theme options are defined in the HTML template and only control layout/styling behavior.
-Extension options are used when building the website, but before rendering tahe HTML.
+Extension options are used when building the website, but before rendering the HTML.
 ```
 
 (sec:theme-options)=
@@ -216,6 +216,53 @@ caption: "File: conf.py"
 ---
 # This option is `True` by default
 html_awesome_headerlinks = False
+```
+
+:::
+
+<!-- vale Awesome.SpellCheck = NO -->
+
+:::{confval} html_awesome_docsearch
+
+<!-- vale Awesome.SpellCheck = YES -->
+
+Set this option to `True` to use [Algolia DocSearch](https://docsearch.algolia.com/)
+instead of the built-in Search. Before you can use DocSearch, you need to request your
+credentials. Specifically, you'll need an _App id_, an _API key_, and the name of your _index_.
+
+The best way to configure DocSearch for your project is using environment variables.
+Create a `.env` file in your main documentation directory and add these environment
+variables:
+
+```{code-block} shell
+---
+caption: "File: .env"
+---
+DOCSEARCH_APP_ID=""
+DOCSEARCH_API_KEY=""
+DOCSEARCH_INDEX_NAME=""
+```
+
+```{important}
+Don't commit this `.env` file to your Git repository.
+While the API key only allows searching your index on Algolia,
+it's still better not to expose it, for example,
+to prevent unwanted search requests spamming your Algolia app.
+```
+
+Alternatively, you can also configure docsearch via a `docsearch_config` dictionary in
+your Sphinx configuration file `conf.py`:
+
+```{code-block} python
+---
+caption: "File: conf.py"
+---
+
+docsearch_config = {
+  app_id: "",
+  api_key: "",
+  index_name: ""
+}
 ```
 
 :::
