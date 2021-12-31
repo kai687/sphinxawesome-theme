@@ -38,6 +38,9 @@ def setup_docsearch(
             os.getenv("DOCSEARCH_CONTAINER")
             or app.config.docsearch_config.get("container", "#docsearch")
         ),
+        "app_id": (
+            os.getenv("DOCSEARCH_APP_ID") or app.config.docsearch_config.get("app_id")
+        ),
         "api_key": (
             os.getenv("DOCSEARCH_API_KEY") or app.config.docsearch_config.get("api_key")
         ),
