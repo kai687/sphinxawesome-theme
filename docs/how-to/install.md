@@ -1,7 +1,7 @@
 ---
 html_theme:
   description: |
-    Learn the different methods to install the theme, depending on your use case.
+    Learn the different methods to install the Awesome Theme, depending on your use case.
 ---
 
 (sec:install)=
@@ -9,7 +9,7 @@ html_theme:
 # Install the theme
 
 ```{rst-class} lead
-Depending on how you want to use the theme,
+Depending on how you want to use the Awesome Theme,
 install it as a Python package or copy it into a local directory.
 ```
 
@@ -47,9 +47,9 @@ development version that aren't released yet.
 
 ## Install the theme as a local package
 
-You can install the theme as a local package. This can be useful if you want to modify
-the theme and test your local modifications. It can also be useful if you want to keep
-your documentation and theme separate.
+Installing the theme as a local package can be useful if you want to modify the theme
+and test your local modifications. It can also be useful if you want to keep your theme
+in a separate directory.
 
 1. {ref}`sec:fork-and-clone`.
 1. To install the local version of the theme in your project:
@@ -88,14 +88,14 @@ In both cases, create a local copy first.
 
 ## Create a local copy of the theme
 
-In order to modify the theme, create a local copy first:
+To modify the theme, create a local copy:
 
-1. **Optional:** [fork the repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo).
+1. Optional: [fork the repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo).
 
    If you don't want to merge your changes with the original repository, you can skip
    this step.
 
-1. Clone the (forked) repository:
+1. Clone the repository:
 
    - If you forked the repository, enter:
 
@@ -122,7 +122,7 @@ In order to modify the theme, create a local copy first:
 
 ## Install Python dependencies
 
-The Sphinx awesome theme uses [Poetry](https://python-poetry.org/) to manage the Python
+The Awesome Theme uses [Poetry](https://python-poetry.org/) to manage the Python
 dependencies and [Nox](https://nox.thea.codes/en/stable/) to test and lint the code.
 
 Follow these steps to install the Python dependencies:
@@ -160,7 +160,7 @@ Follow these steps to install the Python dependencies:
 
    <!-- vale 18F.Clarity = NO -->
 
-1. **Optional:** install pre-commit hooks:
+1. Optional: install pre-commit hooks:
 
    ```shell-session
    poetry run pre-commit install
@@ -214,17 +214,16 @@ Follow these steps to install the JavaScript dependencies:
    Have a look at the [Node Version Manager](https://github.com/nvm-sh/nvm)
    project for a way to install and manage multiple versions of Node.js.
 
-1. **Optional:** install [`yarn`](https://classic.yarnpkg.com/lang/en/):
+1. Optional: install [`yarn`](https://classic.yarnpkg.com/lang/en/):
 
    ```shell-session
    npm install --global yarn
    ```
 
-   The awesome theme uses yarn (classic). The dependencies are pinned to the specific
-   versions in the `yarn.lock` file. If you don't want to use the same versions of the
-   JavaScript packages, you can use `npm` as well.
+   The Awesome Theme uses yarn (classic) and the versions of the npm packages
+   are _pinned_ in the `yarn.lock` file.
 
-1. Change to the `theme-src/` directory:
+1. Change the directory to `theme-src/`:
 
    ```{code-block} shell
    ---
