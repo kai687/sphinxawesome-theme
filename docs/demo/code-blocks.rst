@@ -34,7 +34,7 @@ blocks. If you don't provide an explicit language to the directive, a fallback i
    :sphinxdocs:`highlight directive <usage/restructuredtext/directives.html#directive-highlight>`
    :confval:`sphinx:highlight_language`
 
-Explicit is better than implicit---unless *all* code blocks in your docs are in the same
+**Explicit is better than implicit.** Unless *all* code blocks in your docs are in the same
 language, it's better to provide the language of the code block to the :rst:`code-block`
 directive:
 

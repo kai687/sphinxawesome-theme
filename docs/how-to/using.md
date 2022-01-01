@@ -115,8 +115,12 @@ Using this approach, you _only_ highlight the changes. The rest of the lines ren
 plain text without syntax highlighting. If you copy the code, the `+` and `-` characters
 are copied as well.
 
-## Provide an awesome search experience with Algolia DocSearch
+<!-- vale Google.Headings = NO -->
+
+## Add as-you-type search with Algolia DocSearch
+
+<!-- vale Google.Headings = YES -->
 
 To get a fast and relevant _search-as-you-type_ experience,
 you can use Algolia DocSearch as a replacement for Sphinx' built-in search.
-It's free for open-source documentation projects and blogs with technical content.
+It's free for open source documentation projects and blogs with technical content.
