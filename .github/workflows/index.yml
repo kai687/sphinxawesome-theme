@@ -8,10 +8,17 @@ on:
 
 jobs:
   index:
+    runs_on: ubuntu-latest
+
+    name: Index Docs with Algolia
+
     steps:
-      - name: Algolia
+      - name: Check-out repo
+        uses: actions/checkout@v2
+
+      - name: Algolia Crawler
         uses: algolia/algoliasearch-crawler-github-actions@v1.0.10
-        id: algolia_crawler
+        id: index_after_push
         with:
           crawler-user-id: ${{ secrets.CRAWLER_USER_ID }}
           crawler-api-key: ${{ secrets.CRAWLER_API_KEY }}

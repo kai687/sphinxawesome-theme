@@ -1,15 +1,15 @@
 ---
 html_meta:
   description: |
-    Configure the theme by changing an option in your Sphinx configuration file.
+    Configure the Awesome Theme by changing an option in your Sphinx configuration file.
 ---
 
 (sec:configure)=
 
-# How to configure the theme
+# Configure the theme
 
 ```{rst-class} lead
-Configure the theme by changing one of its options.
+Configure the Awesome Theme by changing one of its options.
 ```
 
 ```{contents} On this page
@@ -101,7 +101,7 @@ html_theme_options = {"show_breadcrumbs": False}
 
 :::{confval} breadcrumbs_separator
 
-If you want to select a different separator for the breadcrumbs navigation links,
+To select a different separator for the breadcrumbs navigation links,
 set:
 
 ```{code-block} python
@@ -118,7 +118,7 @@ Replace {samp}`{CHAR}` with a character or HTML entity of your choice.
 
 :::{confval} show_prev_next
 
-If you want to show links to the previous and next pages, set:
+To show links to the previous and next pages, set:
 
 ```{code-block} python
 ---
@@ -138,8 +138,8 @@ turned off by default.
 
 <!-- vale Awesome.SpellCheck = YES -->
 
-For longer pages, scrolling to the top can be a hassle. If you want to show a button,
-that scrolls to the top of the page when clicked, set:
+On longer pages, scrolling to the top can be a hassle.
+To show a button that scrolls to the top when clicked, set the following option:
 
 ```{code-block} python
 ---
@@ -153,8 +153,7 @@ html_theme_options = {"show_scrolltop": True}
 
 :::{confval} extra_header_links
 
-If you want to add extra links to the header of your documentation, for example, similar
-to what you can see on this page, set:
+To add extra links to the header of your documentation, set the following option:
 
 ```{code-block} python
 ---
@@ -206,7 +205,7 @@ html_collapsible_definitions = True
 :::{confval} html_awesome_headerlinks
 
 Set this option to `False` to restore Sphinx's default behavior for headerlinks.
-Using this theme, clicking a headerlink immediately copies the URL to the clipboard.
+In the Awesome Theme, clicking a headerlink immediately copies the URL to the clipboard.
 
 <!-- vale Awesome.SpellCheck = YES -->
 
@@ -227,30 +226,18 @@ html_awesome_headerlinks = False
 <!-- vale Awesome.SpellCheck = YES -->
 
 Set this option to `True` to use [Algolia DocSearch](https://docsearch.algolia.com/)
-instead of the built-in Search. Before you can use DocSearch, you need to request your
-credentials. Specifically, you'll need an _App id_, an _API key_, and the name of your _index_.
+instead of the built-in search.
 
-The best way to configure DocSearch for your project is using environment variables.
-Create a `.env` file in your main documentation directory and add these environment
-variables:
+To configure DocSearch, create a `.env` file in your documentation project directory and
+add your Algolia credentials:
 
-```{code-block} shell
----
-caption: "File: .env"
----
-DOCSEARCH_APP_ID=""
-DOCSEARCH_API_KEY=""
-DOCSEARCH_INDEX_NAME=""
-```
+- `DOCSEARCH_APP_ID`: the id of your Algolia app
+- `DOCSEARCH_API_KEY`: the API key for searching your index on Algolia
+- `DOCSEARCH_INDEX_NAME`: the index name
 
-```{important}
-Don't commit this `.env` file to your Git repository.
-While the API key only allows searching your index on Algolia,
-it's still better not to expose it, for example,
-to prevent unwanted search requests spamming your Algolia app.
-```
+You can also define these environment variables on the command line.
 
-Alternatively, you can also configure docsearch via a `docsearch_config` dictionary in
+Alternatively, you can also configure DocSearch via a `docsearch_config` dictionary in
 your Sphinx configuration file `conf.py`:
 
 ```{code-block} python

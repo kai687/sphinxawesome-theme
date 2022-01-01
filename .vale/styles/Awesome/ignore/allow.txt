@@ -8,6 +8,7 @@ headerlink
 monospace
 netlify
 nox
+npm
 postprocessing
 pygments
 toolchain

@@ -1,17 +1,16 @@
 ---
 html_meta:
   description: |
-    Updating the Sphinx awesome theme is straightforward for most users.
+    Updating the Awesome Theme is straightforward for most users.
     Find out what you should consider when updating between major versions.
 ---
 
 # Update the theme
 
 ```{rst-class} lead
-If you use any customization on top of this theme and you don't use your own fork,
-you might have to update your own modifications, as template structure and names might
-have changed. If you don't like any of the changes of a new update, you can always
-_pin the version_ of the theme.
+Updating the Awesome Theme is straightforward for most users.
+If you use any customization on top of the Awesome Theme,
+you might have to update these modifications.
 ```
 
 ---
@@ -42,13 +41,13 @@ Restructure
 
 <!-- vale Google.WordList = YES -->
 
-Version 2.0 of the Sphinx awesome theme includes these **major breaking changes**:
+Version 2.0 of the Awesome Theme includes these **major breaking changes**:
 
 Require Sphinx 4 or newer
 : Sphinx 4 depends on docutils 0.17, which creates more semantic HTML by default.
 This allows to reduce the amount of custom transformations.
 
 Restructure a few templates
-: Sphinx awesome theme 2.0 changes the main layout philosophy to [CSS
-grid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout). This allows
-reducing the amount of container elements in the templates.
+: the layout use
+[CSS grid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout).
+This leads to fewer container elements in the templates.

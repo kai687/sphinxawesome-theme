@@ -1,7 +1,7 @@
 ---
 html_theme:
   description: |
-    Learn about the different ways to add the theme to your Sphinx project.
+    Learn about the different ways to add the Awesome Theme to your Sphinx project.
 ---
 
 (sec:load)=
@@ -9,7 +9,7 @@ html_theme:
 # Load the theme
 
 ```{rst-class} lead
-Learn how to add the theme to your Sphinx project.
+Learn how to add the Awesome Theme to your Sphinx project.
 ```
 
 ```{contents} On this page
@@ -21,7 +21,8 @@ backlinks: none
 
 ## Load the theme from a Python package
 
-Add the `html_theme` configuration option to your Sphinx configuration file `conf.py`:
+If you installed the Awesome Theme {ref}`as a Python package <sec:install_python_package>`,
+add the `html_theme` configuration option to your Sphinx configuration file `conf.py`:
 
 ```{code-block} python
 ---
@@ -32,9 +33,9 @@ html_theme = "sphinxawesome_theme"
 
 ## Load the theme from a local directory
 
-You can load the theme from a directory on your computer. This can be useful if you
-want to build your own theme, and you don't want to separate your documentation from the
-theme.
+You can load the Awesome Theme from a directory on your computer. This can be useful if you
+want to build your own theme, and you want to keep your documentation and the theme
+together.
 
 :::{note}
 When loading the theme from a local directory, you need to manage the dependencies
@@ -44,6 +45,10 @@ yourself. This theme needs the `beautifulsoup` package to run. You can install i
 ```shell-session
 pip install bs4
 ```
+
+:::
+
+:::{rubric} Example
 
 :::
 
