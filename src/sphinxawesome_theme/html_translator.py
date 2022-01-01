@@ -164,17 +164,21 @@ class AwesomeHTMLTranslator(HTML5Translator):
                 location=node,
                 **highlight_args,
             )
-            if "hl_text" in highlight_args:
-                # this markup follows Google's recommendation
-                # https://developers.google.com/style/placeholders
-                placeholder = highlight_args["hl_text"]
-                highlighted = re.sub(
-                    placeholder,
-                    f"<var>{placeholder}</var>",
-                    highlighted,
-                )
 
-            # Code blocks that don't have a caption are not wrapped inside a <container>
+            # wrap `placeholder` strings with `<var>` elements.
+            # this follows Google's recommendations
+            # https://developers.google.com/style/placeholders
+
+            if "hl_text" in highlight_args:
+                for placeholder in highlight_args["hl_text"].split(","):
+                    placeholder = placeholder.strip()
+                    highlighted = re.sub(
+                        placeholder,
+                        f"<var>{placeholder}</var>",
+                        highlighted,
+                    )
+
+            # Code blocks without captions aren't wrapped inside a <container>
             # node so we add the header here. With captions, see: visit_caption
             if not (
                 isinstance(node.parent, nodes.container)
