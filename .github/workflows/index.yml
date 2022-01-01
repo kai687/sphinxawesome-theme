@@ -8,7 +8,7 @@ on:
 
 jobs:
   index:
-    runs_on: ubuntu-latest
+    runs-on: ubuntu-latest
 
     name: Index Docs with Algolia
 
