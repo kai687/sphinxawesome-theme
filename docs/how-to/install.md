@@ -20,6 +20,8 @@ backlinks: none
 ---
 ```
 
+(sec:install_python_package)=
+
 ## Install the theme as a Python package (recommended)
 
 It's most convenient to install the theme as a Python package.
