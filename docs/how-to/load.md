@@ -50,6 +50,8 @@ pip install bs4
 
 :::{rubric} Example
 
+:::
+
 The following example assumes you have a Sphinx project with the following structure,
 and you want to load the theme from the `_themes/` folder.
 
@@ -105,5 +107,3 @@ To load the theme from a local directory:
    extensions = ["sphinxawesome_theme"]
    html_theme = "sphinxawesome_theme"
    ```
-
-:::
