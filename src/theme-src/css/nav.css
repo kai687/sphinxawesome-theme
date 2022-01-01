@@ -69,7 +69,7 @@
 /* The `.. toctree::` (if not used with `:hidden:`) */
 .toctree-wrapper {
   & .caption {
-    @apply uppercase text-m font-medium tracking-wider font-mono text-gray-dark pb-6;
+    @apply uppercase text-sm font-medium font-mono text-gray-light pb-6;
   }
   @apply my-12 border-t pt-12;
   & li li {

@@ -50,7 +50,7 @@
   }
 
   h2 {
-    @apply mb-8 text-gray-dark tracking-tight text-xl sm:text-2xl lg:text-3xl;
+    @apply mb-8 text-gray-dark tracking-tight leading-6 text-xl sm:text-2xl lg:text-3xl;
   }
 
   h3 {
@@ -64,7 +64,7 @@
 
 @layer utilities {
   .lead {
-    @apply text-gray-dark leading-loose mt-4 mb-16 text-base sm:text-m;
+    @apply text-gray-dark mt-4 mb-16 text-m;
   }
   .centered {
     @apply text-center;

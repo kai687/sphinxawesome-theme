@@ -51,10 +51,10 @@ pre {
     @apply block relative -ml-4 pl-4 py-px;
   }
   & mark {
-    @apply bg-yellow-200;
+    @apply bg-blue-200/70;
   }
   & ins {
-    @apply bg-green-200 no-underline;
+    @apply bg-green-200/70 no-underline;
     &:before {
       content: "\002b";
       left: 2px;
@@ -62,7 +62,7 @@ pre {
     }
   }
   & del {
-    @apply bg-red-200 no-underline;
+    @apply bg-red-200/70 no-underline;
     &:before {
       content: "\2212";
       left: 2px;
