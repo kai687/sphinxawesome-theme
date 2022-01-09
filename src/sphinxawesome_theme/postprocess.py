@@ -144,7 +144,7 @@ def _modify_html(html_filename: str, app: Sphinx) -> None:
         _headerlinks(tree)
     _strip_comments(tree)
 
-    with open(html_filename, "w") as out_file:
+    with open(html_filename, "w", encoding="utf-8") as out_file:
         out_file.write(str(tree))
 
 
