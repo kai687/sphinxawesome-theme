@@ -1,3 +1,8 @@
+3.2.2
+~~~~~
+
+- Fix encoding issues on Windows (#720)
+
 3.2.1
 ~~~~~
 

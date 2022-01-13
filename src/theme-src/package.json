@@ -1,16 +1,12 @@
 {
   "name": "sphinxawesome-theme",
-  "version": "3.1.0",
+  "version": "3.2.2",
   "scripts": {
     "build": "NODE_ENV=production webpack",
     "dev": "NODE_ENV=development webpack --watch --progress",
     "format": "prettier --write js/**/*.js"
   },
-  "browserslist": [
-    "last 2 versions",
-    "not dead",
-    "> 1%"
-  ],
+  "browserslist": ["last 2 versions", "not dead", "> 1%"],
   "author": "Kai Welke",
   "license": "MIT",
   "dependencies": {
