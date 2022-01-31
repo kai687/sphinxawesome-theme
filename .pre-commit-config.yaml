@@ -1,14 +1,14 @@
 ---
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.0.1
+    rev: v4.1.0
     hooks:
       - id: check-toml
       - id: check-yaml
       - id: trailing-whitespace
       - id: no-commit-to-branch
   - repo: https://github.com/asottile/pyupgrade
-    rev: v2.24.0
+    rev: v2.31.0
     hooks:
       - id: pyupgrade
         args: [--py36-plus]
@@ -30,7 +30,7 @@ repos:
         language: system
         types: [python]
   - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: 'v2.3.2'
+    rev: 'v2.5.1'
     hooks:
       - id: prettier
         types: [javascript]
