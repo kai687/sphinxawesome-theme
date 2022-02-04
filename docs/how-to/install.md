@@ -42,7 +42,7 @@ pip install git+https://github.com/kai687/sphinxawesome-theme.git
 
 <!-- vale 18F.UnexpandedAcronyms = NO -->
 
-See the {gh}`CHANGELOG <CHANGELOG.rst>` file for extra features and bugfixes in the
+See the {gh}`CHANGELOG <CHANGELOG.rst>` file for extra features and updates in the
 development version that aren't released yet.
 
 <!-- vale 18F.UnexpandedAcronyms = YES -->
@@ -127,30 +127,22 @@ To modify the theme, create a local copy:
 The Awesome Theme uses [Poetry](https://python-poetry.org/) to manage the Python
 dependencies and [Nox](https://nox.thea.codes/en/stable/) to test and lint the code.
 
+:::note
+The commands below install the latest versions of Nox and Poetry.
+In case of a version conflict,
+see the file {gh}`constraints.txt <.github/workflows/constraints.txt>`
+for the version numbers used when building the Awesome Theme Python package.
+:::
+
 Follow these steps to install the Python dependencies:
 
-1. Follow the recommended steps for [how to install Poetry](https://python-poetry.org/docs/#installation).
+1. [Install Poetry](https://python-poetry.org/docs/master/#installing-with-the-official-installer).
 
-   On macOS and Linux, enter:
-
-   ```shell-session
-   curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | python -
-   ```
-
-   On Windows PowerShell:
-
-   ```Powershell
-   (Invoke-WebRequest -Uri https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py -UseBasicParsing).Content | python -
-   ```
-
-1. Install Nox via pip:
+1. Install Nox:
 
    ```shell-session
    pip install --user --upgrade nox
    ```
-
-   If you want to use the same version of Poetry and Nox as the original repository, see
-   the versions in the file {gh}`constraints.txt <.github/workflows/constraints.txt>`.
 
 1. Install the Python dependencies:
 
@@ -158,7 +150,7 @@ Follow these steps to install the Python dependencies:
    poetry install
    ```
 
-   Check Poetry's [documentation](https://python-poetry.org/docs/basic-usage/) for more information.
+   See Poetry's [documentation](https://python-poetry.org/docs/basic-usage/) for more information.
 
    <!-- vale 18F.Clarity = NO -->
 
@@ -169,10 +161,10 @@ Follow these steps to install the Python dependencies:
    ```
 
    If you don't plan on committing any changes to the forked repository, you can skip
-   this step. Check the file {gh}`.pre-commit-config.yaml` to see which pre-commit hooks
-   are active.
+   this step. To see which pre-commit hooks are active for this repository,
+   see the file {gh}`.pre-commit-config.yaml`.
 
-   To test pre-commit in combination with poetry, run:
+   To test pre-commit with Poetry, run:
 
    ```shell-session
    poetry run pre-commit run --all
@@ -192,29 +184,29 @@ Follow these steps to install the Python dependencies:
    Enter `nox` without any option to run the default sessions,
    such as building the docs, testing, and linting.
 
-   For example, to build the documentation with Python 3.9, enter:
+   For example, to build the documentation with Python 3.10, enter:
 
    ```shell-session
-   nox -s docs -p 3.9
+   nox -s docs -p 3.10
    ```
 
 (sec:install-js-deps)=
 
 ## Install JavaScript dependencies
 
-Follow these steps to install the JavaScript dependencies:
-
-1. Check, if [Node.js](https://nodejs.org/en/) is installed:
+1. Confirm that [Node.js](https://nodejs.org/en/) is installed:
 
    ```shell-session
    $ node --version
-   v14.17.5
+   v16.2.0
    ```
 
-   If the command fails, you may need to install Node.js first,
-   or activate it in your current terminal session.
-   Have a look at the [Node Version Manager](https://github.com/nvm-sh/nvm)
-   project for a way to install and manage multiple versions of Node.js.
+   If the preceding command fails, make sure that you installed Node.js.
+   If you installed Node.js, make sure that the path to the `node`
+   executable is in your `PATH` environment variable.
+
+   To install and manage multiple versions of Node.js,
+   see the [Node Version Manager](https://github.com/nvm-sh/nvm) project.
 
 1. Optional: install [`yarn`](https://classic.yarnpkg.com/lang/en/):
 
@@ -222,10 +214,10 @@ Follow these steps to install the JavaScript dependencies:
    npm install --global yarn
    ```
 
-   The Awesome Theme uses yarn (classic) and the versions of the npm packages
-   are _pinned_ in the `yarn.lock` file.
+   If you want to use the same versions of JavaScript packages as in the Awesome Theme
+   repository, use the Yarn package manager.
 
-1. Change the directory to `theme-src/`:
+1. Go to the `theme-src/` directory:
 
    ```{code-block} shell
    ---
