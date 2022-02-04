@@ -127,12 +127,12 @@ To modify the theme, create a local copy:
 The Awesome Theme uses [Poetry](https://python-poetry.org/) to manage the Python
 dependencies and [Nox](https://nox.thea.codes/en/stable/) to test and lint the code.
 
-:::note
+```{note}
 The commands below install the latest versions of Nox and Poetry.
 In case of a version conflict,
 see the file {gh}`constraints.txt <.github/workflows/constraints.txt>`
 for the version numbers used when building the Awesome Theme Python package.
-:::
+```
 
 Follow these steps to install the Python dependencies:
 
