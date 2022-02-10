@@ -21,7 +21,7 @@
     }
   }
   & a {
-    @apply block text-gray-light text-sm hover:text-gray-dark focus:text-gray-dark tracking-extended;
+    @apply block text-gray-light hover:text-gray-dark focus:text-gray-dark;
   }
 }
 
@@ -56,7 +56,7 @@
     }
   }
   & a {
-    @apply text-gray-light text-sm inline-block py-1 hover:text-brand focus:text-brand;
+    @apply text-gray-light inline-block py-1 hover:text-brand focus:text-brand;
     &.current {
       @apply text-gray-dark font-medium;
     }
