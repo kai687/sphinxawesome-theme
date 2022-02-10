@@ -21,10 +21,10 @@ module.exports = {
   output: {
     path: THEME_STATIC_DIR,
     publicPath: "",
-    filename: "[name].[contenthash].js",
+    filename:
+      this.mode === "production" ? "[name].[contenthash].js" : "[name].js",
   },
   plugins: [
-    new webpack.ProgressPlugin(),
     new CleanWebpackPlugin(),
     new ESLintPlugin({
       failOnWarning: true,
@@ -33,7 +33,8 @@ module.exports = {
       fix: true,
     }),
     new MiniCssExtractPlugin({
-      filename: "[name].[contenthash].css",
+      filename:
+        this.mode === "production" ? "[name].[contenthash].css" : "[name].css",
     }),
     new StyleLintPlugin({
       files: "css/*.css",
