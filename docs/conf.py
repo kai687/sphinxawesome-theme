@@ -29,6 +29,7 @@ extensions = [
 ]
 
 myst_enable_extensions = ["colon_fence", "deflist", "replacements", "substitution"]
+
 exclude_patterns = ["public"]
 
 nitpicky = True
@@ -39,7 +40,14 @@ nitpick_ignore = [
 
 default_role = "literal"
 
-rst_prolog = ".. |rst| replace:: reStructuredText"
+# Global substitutions for Markdown files
+myst_substitutions = {"product": "Awesome Theme"}
+
+# Global substitutions for reStructuredText files
+rst_prolog = """
+    .. |rst| replace:: reStructuredText
+    .. |product| replace:: Awesome Theme
+"""
 
 intersphinx_mapping = {
     "sphinx": ("https://www.sphinx-doc.org/en/master/", None),

@@ -85,7 +85,7 @@ To emphasize specific lines in code blocks, use the
 .. rubric:: Highlight code changes
 
 Often, you want to highlight what code need to be changed.
-With the Awesome Theme, you can use the following options for the :rst:`code-block`
+With the |product|, you can use the following options for the :rst:`code-block`
 directive:
 
 - To highlight lines, that need to be added,

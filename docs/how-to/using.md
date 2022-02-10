@@ -8,8 +8,8 @@ html_meta:
 # Make your documentation awesome
 
 ```{rst-class} lead
-Make the most out of your Sphinx documentation by using the features of the Awesome
-Theme.
+Make the most out of your Sphinx documentation by using the features of the
+{{ product }}.
 ```
 
 ```{contents} On this page

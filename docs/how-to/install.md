@@ -9,7 +9,7 @@ html_theme:
 # Install the theme
 
 ```{rst-class} lead
-Depending on how you want to use the Awesome Theme,
+Depending on how you want to use the {{ product }},
 install it as a Python package or copy it into a local directory.
 ```
 
@@ -78,7 +78,7 @@ need to {ref}`install the JavaScript dependencies <sec:install-js-deps>`.
 
 ```{note}
 It's best to install the JavaScript dependencies, even if you just want to edit the
-Jinja2 templates. The theme uses [Tailwind CSS](https://tailwindcss.com) and
+Jinja2 templates. The {{ product }} uses [Tailwind CSS](https://tailwindcss.com) and
 [webpack](https://webpack.js.org). If you add new classes from Tailwind, you need to run
 webpack to include them in the output CSS.
 ```
@@ -121,14 +121,14 @@ To modify the theme, create a local copy:
 
 ## Install Python dependencies
 
-The Awesome Theme uses [Poetry](https://python-poetry.org/) to manage the Python
+The {{ product }} uses [Poetry](https://python-poetry.org/) to manage the Python
 dependencies and [Nox](https://nox.thea.codes/en/stable/) to test and lint the code.
 
 ```{note}
 The commands below install the latest versions of Nox and Poetry.
 In case of a version conflict,
 see the file {gh}`constraints.txt <.github/workflows/constraints.txt>`
-for the version numbers used when building the Awesome Theme Python package.
+for the version numbers used when building the {{ product }} Python package.
 ```
 
 Follow these steps to install the Python dependencies:
@@ -207,7 +207,7 @@ Follow these steps to install the Python dependencies:
    npm install --global yarn
    ```
 
-   If you want to use the same versions of JavaScript packages as in the Awesome Theme
+   If you want to use the same versions of JavaScript packages as in the {{ product }}
    repository, use the Yarn package manager.
 
 1. {ref}`sec:fork-and-clone`.

@@ -9,7 +9,7 @@ html_meta:
 # Configure the theme
 
 ```{rst-class} lead
-Configure the Awesome Theme by changing one of its options.
+Configure the {{ product }} by changing one of its options.
 ```
 
 ```{contents} On this page
@@ -21,8 +21,10 @@ backlinks: none
 
 ```{admonition} What's the difference between theme and extension options?
 It's a technical distinction due to the way Sphinx builds a project.
-Theme options are defined in the HTML template and only control layout/styling behavior.
-Extension options are used when building the website, but before rendering the HTML.
+
+- **Theme options** are defined in the HTML templates. They only control layout/styling aspects.
+- **Extension options** are defined in the Python code of the extensions.
+  They can control more aspects when building the documentation.
 ```
 
 (sec:theme-options)=
@@ -205,7 +207,7 @@ html_collapsible_definitions = True
 :::{confval} html_awesome_headerlinks
 
 Set this option to `False` to restore Sphinx's default behavior for headerlinks.
-In the Awesome Theme, clicking a headerlink immediately copies the URL to the clipboard.
+In the {{ product }}, clicking a headerlink immediately copies the URL to the clipboard.
 
 <!-- vale Awesome.SpellCheck = YES -->
 
@@ -227,6 +229,14 @@ html_awesome_headerlinks = False
 
 Set this option to `True` to use [Algolia DocSearch](https://docsearch.algolia.com/)
 instead of the built-in search.
+
+```{code-block} python
+---
+caption: "File: conf.py"
+---
+# This option is `False` by default
+html_awesome_docsearch = True
+```
 
 To configure DocSearch, create a `.env` file in your documentation project directory and
 add your Algolia credentials:

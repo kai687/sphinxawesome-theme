@@ -1,7 +1,7 @@
 ---
 html_meta:
   description: |
-    Adapt the theme to your needs by adding custom styles,
+    Adapt the Awesome Theme to your needs by adding custom styles,
     using custom layouts, or changing the default templates.
 ---
 
@@ -10,7 +10,7 @@ html_meta:
 # Customize the theme
 
 ```{rst-class} lead
-You can customize the theme by adding custom CSS, using custom layouts, or modify
+You can customize the {{ product }} by adding custom CSS, using custom layouts, or modify
 existing templates.
 ```
 
@@ -22,7 +22,7 @@ backlinks: none
 ```
 
 For the methods listed on this page, it's better to use traditional methods to style
-your templates. Extra files, aren't processed by webpack, so you can't use Tailwind's
+your templates. Extra files aren't processed by webpack, so you can't use Tailwind's
 `@apply` directive. See {ref}`sec:modify`, if you want to modify the
 existing templates and use (almost) the full power of Tailwind.
 
@@ -99,7 +99,9 @@ To add additional page layouts to your Sphinx documentation:
    - If you write your Sphinx documentation in Markdown, see
      {ref}`sec:override-layouts-locally`.
 
-   - If you {ref}`sec:override-layouts-globally`, you can _extend_ your custom layout.
+   - If you don't write your Sphinx documentation in Markdown,
+     you can {ref}`sec:override-layouts-globally`.
+
      For example, you can override the `page` template and use the `extra-layout`
      template defined previously:
 
@@ -122,23 +124,22 @@ To add additional page layouts to your Sphinx documentation:
 ## Override page layouts globally
 
 If you want to override a template for _all pages of your documentation_,
-place a template file in a custom `_templates` directory, as described in
-{ref}`sec:additional-layouts`.
+place a template file in a custom `_templates` directory.
+See {ref}`sec:additional-layouts` for more information.
 
-To override an existing template, you need to name it the same. For example, to use a
-custom header on all pages:
+To override an existing template, you need to name it the same as the original.
+For example, to use a custom header on all pages,
+create a file `header.html` in the `_templates` directory:
 
-1. Create a file `header.html` in the `_templates` directory:
+```{code-block} html+jinja
+---
+caption: "File: header.html"
+---
 
-   ```{code-block} html+jinja
-   ---
-   caption: "File: header.html"
-   ---
+HEADER
+```
 
-   HEADER
-   ```
-
-   This shows the word _HEADER_ on every page of your documentation.
+This shows the word _HEADER_ on every page of your documentation.
 
 The main templates you may want to override include:
 
@@ -157,7 +158,7 @@ The `page` template extends the layout `with-sidebar` or `without-sidebar`
 depending on the context.
 
 `without-sidebar.html`
-: Template without navigation sidebar. This template is used, when the theme option
+: Template without navigation sidebar. This template is used when the option
 {confval}`show_nav` is set to `False`, or when you set `layout: "without-sidebar"` in
 the front matter of your Markdown document. This template extends the main template
 `layout`
@@ -173,19 +174,18 @@ documentation pages. It extends from the main template `layout`.
 <!-- vale Google.Colons = YES -->
 
 For more information, see the available templates in the directory
-`src/sphinxawesome_theme/` on GitHub.
+`src/sphinxawesome_theme/`.
 
 (sec:override-layouts-locally)=
 
 ## Override page layout per page
 
 ```{caution}
-This section only applies if you use the
-[`myst-parser`](https://myst-parser.readthedocs.io/en/latest/index.html) for writing
-Sphinx documentation in Markdown.
+You can only select per-page layouts if you write your documentation in Markdown
+using the [`myst-parser`](https://myst-parser.readthedocs.io/en/latest/index.html).
 ```
 
-The theme has two page layouts. The default layout shows a sidebar with all navigation
+The {{ product }} has two page layouts. The default layout shows a sidebar with all navigation
 links on the left side.
 
 <!-- vale 18F.UnexpandedAcronyms = NO -->
