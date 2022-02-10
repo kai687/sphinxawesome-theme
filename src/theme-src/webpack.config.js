@@ -12,8 +12,11 @@ const THEME_STATIC_DIR = path.resolve(
   "../sphinxawesome_theme/static/"
 );
 
+const mode = process.env.NODE_ENV || "development";
+const production = mode === "production";
+
 module.exports = {
-  mode: process.env.NODE_ENV || "development",
+  mode: mode,
   entry: {
     theme: "./js/app.js",
     docsearch: "./js/search.js",
@@ -21,8 +24,7 @@ module.exports = {
   output: {
     path: THEME_STATIC_DIR,
     publicPath: "",
-    filename:
-      this.mode === "production" ? "[name].[contenthash].js" : "[name].js",
+    filename: production ? "[name].[contenthash].js" : "[name].js",
   },
   plugins: [
     new CleanWebpackPlugin(),
@@ -33,8 +35,7 @@ module.exports = {
       fix: true,
     }),
     new MiniCssExtractPlugin({
-      filename:
-        this.mode === "production" ? "[name].[contenthash].css" : "[name].css",
+      filename: production ? "[name].[contenthash].css" : "[name].css",
     }),
     new StyleLintPlugin({
       files: "css/*.css",
