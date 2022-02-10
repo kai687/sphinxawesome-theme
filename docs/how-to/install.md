@@ -20,21 +20,18 @@ backlinks: none
 ---
 ```
 
-(sec:install_python_package)=
+(sec:install-python-package)=
 
 ## Install the theme as a Python package (recommended)
 
-It's most convenient to install the theme as a Python package.
-You can {ref}`customize the theme <sec:customize>` by adding styles or extra templates.
-
-To install the latest **released version** from the Python Package Index
+Install the latest **released version** from the Python Package Index
 [PyPI](https://pypi.org/project/sphinxawesome-theme/):
 
 ```shell-session
 pip install sphinxawesome-theme
 ```
 
-To install the latest **development version** of the theme directly from GitHub:
+You can also install the latest **development version**:
 
 ```shell-session
 pip install git+https://github.com/kai687/sphinxawesome-theme.git
@@ -47,11 +44,13 @@ development version that aren't released yet.
 
 <!-- vale 18F.UnexpandedAcronyms = YES -->
 
+If you want to add styles or extra templates,
+see {ref}`customize the theme <sec:customize>`.
+
 ## Install the theme as a local package
 
 Installing the theme as a local package can be useful if you want to modify the theme
-and test your local modifications. It can also be useful if you want to keep your theme
-in a separate directory.
+and test your local modifications.
 
 1. {ref}`sec:fork-and-clone`.
 1. To install the local version of the theme in your project:
@@ -63,8 +62,8 @@ in a separate directory.
    pip install /path/to/sphinxawesome_theme
    ```
 
-   Replace {samp}`{/path/to/sphinxawesome_theme}` with the path to the directory
-   containing the `pyproject.toml` file.
+   Replace {samp}`{/path/to/sphinxawesome_theme}` with the path to your local directory
+   with the theme (the directory with the `pyproject.toml` file).
 
 (sec:dev-env)=
 
@@ -83,8 +82,6 @@ Jinja2 templates. The theme uses [Tailwind CSS](https://tailwindcss.com) and
 [webpack](https://webpack.js.org). If you add new classes from Tailwind, you need to run
 webpack to include them in the output CSS.
 ```
-
-In both cases, create a local copy first.
 
 (sec:fork-and-clone)=
 
@@ -136,6 +133,8 @@ for the version numbers used when building the Awesome Theme Python package.
 
 Follow these steps to install the Python dependencies:
 
+1. {ref}`sec:fork-and-clone`.
+
 1. [Install Poetry](https://python-poetry.org/docs/master/#installing-with-the-official-installer).
 
 1. Install Nox:
@@ -150,8 +149,6 @@ Follow these steps to install the Python dependencies:
    poetry install
    ```
 
-   See Poetry's [documentation](https://python-poetry.org/docs/basic-usage/) for more information.
-
    <!-- vale 18F.Clarity = NO -->
 
 1. Optional: install pre-commit hooks:
@@ -160,9 +157,8 @@ Follow these steps to install the Python dependencies:
    poetry run pre-commit install
    ```
 
-   If you don't plan on committing any changes to the forked repository, you can skip
-   this step. To see which pre-commit hooks are active for this repository,
-   see the file {gh}`.pre-commit-config.yaml`.
+   If you don't plan on committing any changes to the repository, you can skip
+   this step. The active pre-commit hooks are defined in the file {gh}`.pre-commit-config.yaml`.
 
    To test pre-commit with Poetry, run:
 
@@ -180,9 +176,6 @@ Follow these steps to install the Python dependencies:
    ```shell-session
    nox -ls
    ```
-
-   Enter `nox` without any option to run the default sessions,
-   such as building the docs, testing, and linting.
 
    For example, to build the documentation with Python 3.10, enter:
 
@@ -217,9 +210,11 @@ Follow these steps to install the Python dependencies:
    If you want to use the same versions of JavaScript packages as in the Awesome Theme
    repository, use the Yarn package manager.
 
+1. {ref}`sec:fork-and-clone`.
+
 1. Go to the `theme-src/` directory:
 
-   ```{code-block} shell
+   ```{code-block} shell-session
    ---
    emphasize-lines: 4
    ---

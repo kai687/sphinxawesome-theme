@@ -21,7 +21,7 @@ backlinks: none
 
 ## Load the theme from a Python package
 
-If you installed the Awesome Theme {ref}`as a Python package <sec:install_python_package>`,
+If you installed the Awesome Theme {ref}`as a Python package <sec:install-python-package>`,
 add the `html_theme` configuration option to your Sphinx configuration file `conf.py`:
 
 ```{code-block} python
