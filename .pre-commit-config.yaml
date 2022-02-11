@@ -4,14 +4,14 @@ repos:
     hooks:
       - id: check-hooks-apply
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.1.0
+    rev: 40cc31b02ceb72045509576e51d9c82503751422
     hooks:
       - id: check-toml
       - id: check-yaml
       - id: trailing-whitespace
       - id: no-commit-to-branch
   - repo: https://github.com/asottile/pyupgrade
-    rev: v2.31.0
+    rev: d71f806ce2fa0799c8dbe8cdcba7f9d5af2fd167
     hooks:
       - id: pyupgrade
         args: [--py36-plus]
@@ -33,10 +33,11 @@ repos:
         language: system
         types: [python]
       - id: sync
-        name: package sync
+        name: sync requirements.txt
         entry: nox -s export
+        pass_filenames: false
         language: system
-        files: "poetry.lock"
+        files: 'pyproject\.toml'
   - repo: https://github.com/pre-commit/mirrors-prettier
     rev: 'v2.5.1'
     hooks:
