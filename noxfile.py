@@ -118,7 +118,11 @@ def live_docs(session: Session) -> None:
     ]
     session.run("poetry", "install", "--no-dev", external=True)
     install_constrained_version(
-        session, "myst-parser", "sphinx-autobuild", "sphinx-sitemap"
+        session,
+        "myst-parser",
+        "sphinx-autobuild",
+        "sphinx-sitemap",
+        "sphinxcontrib-programoutput",
     )
     session.run("sphinx-autobuild", *args)
 
@@ -128,7 +132,12 @@ def linkcheck(session: Session) -> None:
     """Check links."""
     args = session.posargs or ["-b", "linkcheck", "-aWTE", "docs", "docs/public/_links"]
     session.run("poetry", "install", "--no-dev", external=True)
-    install_constrained_version(session, "myst-parser", "sphinx-sitemap")
+    install_constrained_version(
+        session,
+        "myst-parser",
+        "sphinx-sitemap",
+        "sphinxcontrib-programoutput",
+    )
     session.run("sphinx-build", *args)
 
 

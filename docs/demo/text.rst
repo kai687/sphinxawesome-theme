@@ -4,9 +4,13 @@
 Headings and text
 =================
 
-This page shows basic paragraph and heading styles. Styles for heading levels ``h1``,
-``h2``, ``h3``, ``h4`` and the special rubric heading are defined. Only heading levels
-``h1``, ``h2``, and ``h3`` show up in the navigation menu.
+.. rst-class:: lead
+
+   See on this page, how basic text elements appear in the |product|.
+
+The |product| includes styles for heading levels ``h1``, ``h2``, ``h3``, ``h4``,
+as well as the special rubric heading.
+Only heading levels ``h1``, ``h2``, and ``h3`` show up in the navigation sidebar.
 
 Inline markup
 -------------

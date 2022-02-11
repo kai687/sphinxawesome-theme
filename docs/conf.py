@@ -26,6 +26,7 @@ extensions = [
     "sphinxawesome_theme",
     "myst_parser",
     "sphinx_sitemap",
+    "sphinxcontrib.programoutput",
 ]
 
 myst_enable_extensions = ["colon_fence", "deflist", "replacements", "substitution"]
@@ -45,8 +46,8 @@ myst_substitutions = {"product": "Awesome Theme"}
 
 # Global substitutions for reStructuredText files
 rst_prolog = """
-    .. |rst| replace:: reStructuredText
-    .. |product| replace:: Awesome Theme
+.. |rst| replace:: reStructuredText
+.. |product| replace:: Awesome Theme
 """
 
 intersphinx_mapping = {

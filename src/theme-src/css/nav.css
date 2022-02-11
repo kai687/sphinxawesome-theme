@@ -13,6 +13,9 @@
   }
   & ul {
     @apply pt-2 list-none my-0 pl-0;
+    & ul {
+      @apply ml-4;
+    }
   }
   & li {
     @apply py-2 pl-0 my-0;

@@ -33,9 +33,9 @@ html_theme = "sphinxawesome_theme"
 
 ## Load the theme from a local directory
 
-Loading the {{ product }} from a local directory on your computer can be useful
-if you want to build your own theme,
-and you want to keep your documentation and the theme together.
+If you want to keep your documentation and theme as a single project,
+you can load the {{ product }} from a local directory.
+This can be useful, if you want to modify the theme.
 
 :::{note}
 When loading the theme from a local directory, you need to manage the dependencies
@@ -55,7 +55,10 @@ pip install bs4
 The following example assumes you have a Sphinx project with the following structure,
 and you want to load the theme from the `_themes/` folder.
 
-```shell-session
+```{code-block} shell-session
+---
+emphasize-lines: 4
+---
 ./
 ├── conf.py
 ├── index.rst
@@ -68,7 +71,7 @@ To load the theme from a local directory, follow these steps:
 1. {ref}`sec:fork-and-clone`.
 
 1. Copy the directory `sphinxawesome-theme/src/sphinxawesome_theme/` into your
-   `_themes/` directory in the Sphinx project:
+   Sphinx project:
 
    ```shell-session
    cp -r sphinxawesome-theme/src/sphinxawesome_theme _themes/
@@ -86,10 +89,9 @@ To load the theme from a local directory, follow these steps:
    sys.path.append(os.path.abspath("_themes"))
    ```
 
-   Adding this directory makes it discoverable for Python.
+   Adding this directory makes it discoverable for Sphinx.
 
-1. Add the `themes` directory to the `exclude_patterns` list to prevent Sphinx from
-   searching this path for documentation files:
+1. Add the `_themes/` directory to the `exclude_patterns`:
 
    ```{code-block} python
    ---
@@ -97,6 +99,8 @@ To load the theme from a local directory, follow these steps:
    ---
    exclude_patterns = ["_themes"]
    ```
+
+   This prevents Sphinx from searching the `_themes/` directory for documentation files.
 
 1. Add the theme as an extension and as a theme:
 

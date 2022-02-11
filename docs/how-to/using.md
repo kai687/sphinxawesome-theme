@@ -19,11 +19,12 @@ Make the most out of your Sphinx documentation by using the features of the
 
 ## Use headerlink icons
 
-Sphinx shows a `¶` character after section titles and captions.
+By default, Sphinx shows a `¶` character after section titles and captions
+("permalinks").
 Since Sphinx 3.5, you can change the default with the setting
 {confval}`sphinx:html_permalinks_icon`.
 
-For example, replace the default character with a `#` character:
+For example, you can replace the default character with a `#` character:
 
 ```{code-block} python
 ---
@@ -32,12 +33,16 @@ caption: "File: conf.py"
 html_permalinks_icon = "<span>#</span>"
 ```
 
-If you want to use plain characters, it's better to wrap them in a HTML `<span>` element.
-This way, the icon is only shown when you hover over the heading.
-You can also use SVG icons.
+You can use SVG icons (like on this page) or plain characters.
+If you're using plain characters with the {{ product }},
+wrap them in a `<span>` element.
+This shows the headerlinks only when hovering over the heading,
+or changing focus with your keyboard.
 
-Clicking any headerlink directly copies the URL to the clipboard. To revert to the
-default behavior, set the option {confval}`html_awesome_headerlinks` to `False`.
+Headerlinks are often used to share links to specific sections in documentation.
+The {{ product }} makes that a little easier by copying the URL to the clipboard
+when clicking a headerlink.
+To revert to the default behavior, set the option {confval}`html_awesome_headerlinks` to `False`.
 
 ## Highlight placeholder text in code blocks
 

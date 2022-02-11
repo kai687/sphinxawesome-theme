@@ -38,18 +38,9 @@ Sphinx configuration file `conf.py`.
 
 <!-- vale Awesome.SpellCheck = NO -->
 
-By default, the
+If you don't want to include entries from a _hidden_
 {sphinxdocs}`toctree <usage/restructuredtext/directives.html#directive-toctree>`
-directive includes the content and prints a list of links in the content area. A
-`toctree` directive with the `:hidden:` option includes the content, but doesn't print
-the list of links in the content area. This can be useful if navigation links are
-elsewhere on the page. Printing the same list of links in the content area would be
-redundant.
-
-<!-- vale Awesome.SpellCheck = YES -->
-
-If you don't want to include elements from a _hidden_ toctree directive in the
-navigation menu on the left, set:
+directive in the sidebar, set `nav_include_hidden` to `False`.
 
 ```{code-block} python
 ---
@@ -59,20 +50,19 @@ caption: "File: conf.py"
 html_theme_options = {"nav_include_hidden": False}
 ```
 
-When using the `toctree` directive without the `:hidden:` option, insert a headline or
-provide a caption with the `:caption:` option. For example:
+By default, the `toctree` directive includes your content _and_ generates a list of links in the content
+area of the page. With the `hidden` option, the content is still included,
+but no links are printed in the main content area.
 
-```{code-block} rst
-.. toctree::
-   :caption: Contents
-```
+<!-- vale Awesome.SpellCheck = YES -->
 
 :::
 
 :::{confval} show_nav
 
-By default, the navigation links are shown in a navigation menu on the left side. If you
-want to hide the navigation menu completely, add:
+The {{ product }} shows links to all your documentation pages in sidebar on the left
+side.
+If you want to hide the sidebar on all pages, set this option to `False`:
 
 ```{code-block} python
 ---
@@ -86,10 +76,10 @@ html_theme_options = {"show_nav": False}
 
 :::{confval} show_breadcrumbs
 
-By default, "[breadcrumbs](https://en.wikipedia.org/wiki/Breadcrumb_navigation)"
-navigation links are shown at the top of the content area. They show the position of
-this document relative to the top level. If you want to hide the breadcrumbs navigation
-links, add:
+The {{ product }} shows
+[breadcrumbs](https://en.wikipedia.org/wiki/Breadcrumb_navigation)
+links at the top of each page
+To hide the breadcrumbs, set this option to `False`:
 
 ```{code-block} python
 ---
@@ -120,7 +110,7 @@ Replace {samp}`{CHAR}` with a character or HTML entity of your choice.
 
 :::{confval} show_prev_next
 
-To show links to the previous and next pages, set:
+To show links to the previous and next pages, set this option to `True`:
 
 ```{code-block} python
 ---
@@ -130,8 +120,6 @@ caption: "File: conf.py"
 html_theme_options = {"show_prev_next": True}
 ```
 
-In most cases, documentation isn't read from beginning to end. That's why this option is
-turned off by default.
 :::
 
 <!-- vale Awesome.SpellCheck = NO -->
@@ -140,8 +128,8 @@ turned off by default.
 
 <!-- vale Awesome.SpellCheck = YES -->
 
-On longer pages, scrolling to the top can be a hassle.
-To show a button that scrolls to the top when clicked, set the following option:
+To show a button that scrolls to the top of the page when clicked,
+set this option to `True`:
 
 ```{code-block} python
 ---
@@ -170,8 +158,8 @@ html_theme_options = {
 }
 ```
 
-The keys of the `extra_header_links` dictionary are the link texts. The values are the
-absolute URLs to the pages you want to link.
+The keys of the `extra_header_links` dictionary are the link texts.
+The values are absolute URLs.
 
 :::
 
@@ -238,14 +226,23 @@ caption: "File: conf.py"
 html_awesome_docsearch = True
 ```
 
-To configure DocSearch, create a `.env` file in your documentation project directory and
-add your Algolia credentials:
+To configure DocSearch, add these environment variables:
 
-- `DOCSEARCH_APP_ID`: the id of your Algolia app
-- `DOCSEARCH_API_KEY`: the API key for searching your index on Algolia
-- `DOCSEARCH_INDEX_NAME`: the index name
+<!-- vale Google.Colons = NO -->
 
-You can also define these environment variables on the command line.
+`DOCSEARCH_APP_ID`
+: The id of your Algolia app
+
+`DOCSEARCH_API_KEY`
+: The API key for searching your index on Algolia
+
+`DOCSEARCH_INDEX_NAME`
+: The name of your Algolia index for your documentation project.
+
+<!-- vale Google.Colons = YES -->
+
+You can write them in a `.env` file in your Sphinx project directory
+or provide them on the command line.
 
 Alternatively, you can also configure DocSearch via a `docsearch_config` dictionary in
 your Sphinx configuration file `conf.py`:
@@ -260,6 +257,11 @@ docsearch_config = {
   api_key: "",
   index_name: ""
 }
+```
+
+```{note}
+Algolia DocSearch is an external web service. You need to apply and receive your
+credentials before you can use it.
 ```
 
 :::

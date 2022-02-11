@@ -12,7 +12,9 @@
 Inline code
 ===========
 
-Sphinx supports different ways to mark up inline code.
+.. rst-class:: lead
+
+   See how inline markup looks like in the |product|.
 
 
 .. contents:: On this page
@@ -74,15 +76,15 @@ you can enable it.
    This renders :python:`print("Hello World")`.
 
 
-Interpreted text roles for code-like elements
----------------------------------------------
+More interpreted text roles
+---------------------------
 
 Docutils and Sphinx come with many interpreted text roles to mark up specific elements.
 While this can be useful to convey semantic intentions in the |rst| source files,
 it's a good idea to use only a few different roles:
 
 - The difference between the many roles are lost in the rendered output. Most of these
-  roles are rendered in code font, and most users don't read the |rst| sources.
+  roles are rendered like code (or bold).
 
 - Using too many directives puts a burden on documentation writers, who may be more
   familiar with the Markdown format. They have to agree and remember when to use which
@@ -123,7 +125,9 @@ role:
 
 This renders as :samp:`Replace {PLACEHOLDER}`.
 
-.. rubric:: Keyboard input
+
+Keyboard input
+~~~~~~~~~~~~~~
 
 You can highlight keyboard combinations using the :rst:`kbd` interpreted text role:
 
@@ -133,11 +137,10 @@ You can highlight keyboard combinations using the :rst:`kbd` interpreted text ro
 
 This renders as :kbd:`Ctrl+F`.
 
-Interpreted text roles for graphical user interface documentation
------------------------------------------------------------------
+User interface elements
+~~~~~~~~~~~~~~~~~~~~~~~
 
-Graphical user interface elements are often rendered in a bold font, in contrast to the
-monospace font for code elements.
+Graphical user interface elements are often rendered in a bold font.
 
 Use the :rst:`guilabel` role to highlight user interface elements, such as buttons:
 
