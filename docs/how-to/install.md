@@ -1,7 +1,7 @@
 ---
 html_theme:
   description: |
-    Learn the different methods to install the Awesome Theme, depending on your use case.
+    Learn how to install the Awesome Theme for your documentation project.
 ---
 
 (sec:install)=
@@ -9,8 +9,9 @@ html_theme:
 # Install the theme
 
 ```{rst-class} lead
-Depending on how you want to use the {{ product }},
-install it as a Python package or copy it into a local directory.
+Install the {{ product }} as a Python package,
+copy it into a local directory,
+or install the development dependencies to create your own theme.
 ```
 
 ```{contents} On this page
@@ -47,10 +48,10 @@ development version that aren't released yet.
 If you want to add styles or extra templates,
 see {ref}`customize the theme <sec:customize>`.
 
-## Install the theme as a local package
+## Install the theme as a local Python package
 
-Installing the theme as a local package can be useful if you want to modify the theme
-and test your local modifications.
+If you want to modify the theme and test your modifications first,
+you can install the theme as a local Python package.
 
 1. {ref}`sec:fork-and-clone`.
 1. To install the local version of the theme in your project:
@@ -69,18 +70,18 @@ and test your local modifications.
 
 ## Set up a development environment
 
-The project has two different sets of dependencies, for Python and JavaScript. If you
-want to write documentation, write tests, or modify the Python extensions,
+The project has two different sets of dependencies---for Python and JavaScript. If you
+want to write documentation or modify the Python extensions,
 {ref}`install the Python dependencies <sec:install-python-deps>`.
 
 If you want to modify the Jinja2 templates, the CSS, or the JavaScript files, you also
 need to {ref}`install the JavaScript dependencies <sec:install-js-deps>`.
 
 ```{note}
-It's best to install the JavaScript dependencies, even if you just want to edit the
-Jinja2 templates. The {{ product }} uses [Tailwind CSS](https://tailwindcss.com) and
-[webpack](https://webpack.js.org). If you add new classes from Tailwind, you need to run
-webpack to include them in the output CSS.
+Because this theme uses [Tailwind CSS](https://tailwindcss.com) to apply styles,
+you need to _build_ the theme when you make modifications to the styles.
+It's best to install the JavaScript dependencies,
+even if you just want to edit the HTML templates.
 ```
 
 (sec:fork-and-clone)=
@@ -151,7 +152,7 @@ Follow these steps to install the Python dependencies:
 
    <!-- vale 18F.Clarity = NO -->
 
-1. Optional: install pre-commit hooks:
+1. Optional: install and test the pre-commit hooks:
 
    ```shell-session
    poetry run pre-commit install
@@ -168,7 +169,7 @@ Follow these steps to install the Python dependencies:
 
    <!-- vale 18F.Clarity = YES -->
 
-1. Run a Nox session.
+1. Test your Nox environment.
 
    You can run any Nox session to confirm that the environment is working.
    To list the available sessions, enter:
@@ -189,9 +190,8 @@ Follow these steps to install the Python dependencies:
 
 1. Confirm that [Node.js](https://nodejs.org/en/) is installed:
 
-   ```shell-session
-   $ node --version
-   v16.2.0
+   ```{command-output} node --version
+
    ```
 
    If the preceding command fails, make sure that you installed Node.js.

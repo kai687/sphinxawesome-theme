@@ -1,15 +1,13 @@
 .. meta::
-   :description: See how different lists look like in this theme. Discover the styles for ordered lists, unordered lists, and description lists.
+   :description: See how lists look like in the Awesome Theme. Discover the styles for ordered, unordered, and description lists.
 
-=====
 Lists
 =====
 
-Lists, well, list multiple things. Lists work well for one-dimensional categories. When
-you want to list things in two dimensions, choose a table instead. There are three basic
-category of lists.
+.. rst-class:: lead
 
----------------
+   See how lists appear in the |product|
+
 Unordered lists
 ---------------
 
@@ -26,16 +24,12 @@ Choose an unordered, or bulleted, list, when the order of items don't matter.
 
 - item c
 
--------------
 Ordered lists
 -------------
 
 Choose an ordered list,
 when the order of the items matter.
-For example, in most cases
-you need to perform the second step
-*after* the first step,
-and so on.
+For example, in step-by-step instructions.
 
 #. Step 1
 #. Step 2
@@ -48,12 +42,10 @@ and so on.
 
 .. vale Awesome.SpellCheck = YES
 
-----------------
 Definition lists
 ----------------
 
-A nice way of describing categories is via definition lists. Think of it as an unordered
-list with additional explanations to each item.
+A nice way of describing categories is via definition lists.
 
 Term a
    Definition for term a

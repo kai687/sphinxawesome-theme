@@ -4,14 +4,17 @@
 On-page navigation
 ==================
 
-To display only content of the current page,
+.. rst-class:: lead
+
+   When you have many sections on a page, it's good to provide
+   a table of contents for a better overview.
+
+To show a table of contents for the current page,
 use the ``contents`` directive with the ``:local:`` option.
 You must provide a title for the directive to render.
-It silently fails to render otherwise.
 By default, headings included after this directive are links back to the contents section
-(such as on this page).
-If you want to turn off this behavior,
-use ``:backlinks: none``.
+(as you can see on this page).
+If you want to turn off this behavior, use ``:backlinks: none``.
 
 .. contents:: On this page
    :local:

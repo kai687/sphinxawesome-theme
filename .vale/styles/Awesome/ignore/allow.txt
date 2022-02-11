@@ -5,6 +5,7 @@ docsearch
 docutils
 gh
 headerlink
+headerlinks
 monospace
 netlify
 nox

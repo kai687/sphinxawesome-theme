@@ -12,6 +12,14 @@ nox.options.stop_on_first_error = True
 nox.options.sessions = ["docs", "lint", "black", "mypy", "netlify_test"]
 python_files = ["src/sphinxawesome_theme", "noxfile.py", "docs/conf.py"]
 
+# Poetry doesn't support extra environments,
+# and I don't want to import all development dependencies when just building the docs.
+extra_docs_dependencies = [
+    "myst-parser",
+    "sphinx-sitemap",
+    "sphinxcontrib-programoutput",
+]
+
 VersionType = TypeVar("VersionType", bound="Versions")
 
 
@@ -53,10 +61,6 @@ def install_constrained_version(session: Session, *args: str, **kwargs: Any) -> 
 
 def append_to_requirements(session: Session, *package_names: str) -> None:
     """Add additional dependency to requirements file.
-
-    Poetry doesn't have optional development dependencies yet (potentially in 1.2).
-    For building the docs, I need some depencenies that you don't need to run the
-    package. I also don't want to import _all_ development dependencies on netlify.
 
     This function exports a temporary requirement.txt with dependencies, extracts
     matching lines and appends that to the `requirements.txt` file.
@@ -100,7 +104,7 @@ def docs(session: Session) -> None:
     """Build the docs."""
     args = session.posargs or ["-b", "dirhtml", "-aWTE", "docs", "docs/public"]
     session.run("poetry", "install", "--no-dev", external=True)
-    install_constrained_version(session, "myst-parser", "sphinx-sitemap")
+    install_constrained_version(session, *extra_docs_dependencies)
     session.run("sphinx-build", *args)
 
 
@@ -117,9 +121,7 @@ def live_docs(session: Session) -> None:
         "src/sphinxawesome_theme/*",
     ]
     session.run("poetry", "install", "--no-dev", external=True)
-    install_constrained_version(
-        session, "myst-parser", "sphinx-autobuild", "sphinx-sitemap"
-    )
+    install_constrained_version(session, "sphinx-autobuild", *extra_docs_dependencies)
     session.run("sphinx-autobuild", *args)
 
 
@@ -128,7 +130,7 @@ def linkcheck(session: Session) -> None:
     """Check links."""
     args = session.posargs or ["-b", "linkcheck", "-aWTE", "docs", "docs/public/_links"]
     session.run("poetry", "install", "--no-dev", external=True)
-    install_constrained_version(session, "myst-parser", "sphinx-sitemap")
+    install_constrained_version(session, *extra_docs_dependencies)
     session.run("sphinx-build", *args)
 
 
@@ -168,7 +170,7 @@ def export(session: Session) -> None:
         external=True,
     )
 
-    append_to_requirements(session, "myst-parser", "linkify", "sphinx-sitemap")
+    append_to_requirements(session, *extra_docs_dependencies)
 
 
 @nox.session(python=Versions.all())

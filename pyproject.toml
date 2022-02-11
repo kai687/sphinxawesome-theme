@@ -44,6 +44,7 @@ isort = "^5.10.0"
 myst-parser = "^0.16.1"
 sphinx-autobuild = "^2021.3.14"
 sphinx-sitemap = "^2.2.0"
+sphinxcontrib-programoutput = "^0.17"
 
 [tool.coverage.paths]
 source = ["src"]

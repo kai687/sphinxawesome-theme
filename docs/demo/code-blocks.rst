@@ -10,7 +10,7 @@ Code blocks
 
 .. rst-class:: lead
 
-   This page shows awesome features of code blocks.
+   See, how code blocks look like in the |product|.
 
 .. contents:: On this page
    :local:
@@ -20,11 +20,12 @@ Code blocks
 Sphinx code-block directive
 ---------------------------
 
-In most cases, you should use Sphinx's :rst:`code-block` directive to mark up code
-blocks. If you don't provide an explicit language to the directive, a fallback is used:
+To document code blocks with syntax highlighting,
+use Sphinx's :rst:`code-block` directive.
+If you don't provide an explicit language to the directive, a fallback is used:
 
 #. You used the :rst:`highlight` directive to set a default on a per-document basis.
-   Any code block _after_ this directive is highlighted with the language you specified.
+   Any code block *after* this directive is highlighted with the language you specified.
 
 #. You set the global fallback language for highlighting in the Sphinx configuration
    file with the ``highlight_language`` option.
@@ -34,9 +35,7 @@ blocks. If you don't provide an explicit language to the directive, a fallback i
    :sphinxdocs:`highlight directive <usage/restructuredtext/directives.html#directive-highlight>`
    :confval:`sphinx:highlight_language`
 
-**Explicit is better than implicit.** Unless *all* code blocks in your docs are in the same
-language, it's better to provide the language of the code block to the :rst:`code-block`
-directive:
+You can provide the language for syntax highlighting to the :rst:`code-block` directive:
 
 .. code-block:: rst
 
@@ -53,14 +52,21 @@ This renders as:
 All code blocks have a :guilabel:`Copy` button.
 Clicking the button copies the code to the clipboard.
 
-To **add a caption** to a code block, use the :samp:`:caption: {CAPTION_TEXT}` option:
+Add captions to code blocks
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can provide captions to code blocks with the :samp:`:caption: {CAPTION_TEXT}` option:
 
 .. code-block:: javascript
    :caption: Example code
 
    console.log("Hello World")
 
-To show **line numbers** in the code block, use the ``:linenos:`` option:
+
+Show line numbers in code blocks
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can show line numbers in code blocks with the ``:linenos:`` option:
 
 .. vale off
 
@@ -72,6 +78,10 @@ To show **line numbers** in the code block, use the ``:linenos:`` option:
 
 .. vale on
 
+
+Highlight lines in code blocks
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 To emphasize specific lines in code blocks, use the
 :samp:`:emphasize-lines: {LINE_NUMBERS}` option:
 
@@ -82,7 +92,8 @@ To emphasize specific lines in code blocks, use the
    echo "Emphasize this"
    echo "Don't emphasize this either"
 
-.. rubric:: Highlight code changes
+Highlight changes in code blocks
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Often, you want to highlight what code need to be changed.
 With the |product|, you can use the following options for the :rst:`code-block`
@@ -146,9 +157,9 @@ You can't include |rst| markup in code blocks, such as bold text or hyperlinks.
 Docutils code directive
 -----------------------
 
-The :rst:`code-block` directive only works with Sphinx. If you want to re-use your
-documentation outside Sphinx, for example, ``rst2html``, you can also use the
-``code`` directive to mark up code blocks.
+The :rst:`code-block` directive only works with Sphinx.
+If you want to re-use your |rst| documentation outside Sphinx,
+you can also use the ``code`` directive:
 
 .. code:: shell
 

@@ -6,9 +6,10 @@
 Module documentation
 ====================
 
-On this page, you'll see an example how automatically generated
-module documentation looks like in Sphinx.
+.. rst-class:: lead
 
+   See, how automatically generated documentation from Python source code
+   looks like with the |product|.
 
 .. vale Awesome.SpellCheck = NO
 
@@ -49,7 +50,7 @@ Command line options
 
 If you want to document command-line options, you have two choices.
 Sphinx comes with the ``option`` directive. This renders every option
-into its own element, including links:
+into its own element, including permalinks:
 
 .. option:: -h, --help
 
