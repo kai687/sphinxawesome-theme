@@ -115,7 +115,7 @@ To modify the theme, create a local copy:
      ```
 
 ```{seealso}
-[Clone a repository from GitHub](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository)
+[Clone a repository from GitHub](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
 ```
 
 (sec:install-python-deps)=
