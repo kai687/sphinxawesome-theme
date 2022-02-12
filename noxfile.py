@@ -147,9 +147,18 @@ def isort(session: Session) -> None:
 @session(python=Versions.all())
 def mypy(session: Session) -> None:
     """Typecheck python files with mypy."""
-    args = session.posargs or ["--strict", "--no-warn-unused-ignores"]
+    args = session.posargs
 
-    deps = ["mypy", "pytest", "sphinx", "types-docutils", "bs4", "nox"]
+    # Install these packages in the venv so that mypy can find the libs/types
+    deps = [
+        "mypy",
+        "pytest",
+        "sphinx",
+        "types-docutils",
+        "bs4",
+        "nox",
+        "nox-poetry",
+    ]
 
     session.install(".", *deps)
     session.run("mypy", *args)

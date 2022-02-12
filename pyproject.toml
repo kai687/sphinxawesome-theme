@@ -66,7 +66,12 @@ profile = "black"
 [tool.mypy]
 files = ["src/sphinxawesome_theme/*.py", "tests/*.py", "noxfile.py", "docs/*.py"]
 show_error_codes = true
+show_error_context = true
 pretty = true
+strict = true
+show_column_numbers = true
+warn_unreachable = true
+warn_unused_ignores = false
 
 [[tool.mypy.overrides]]
 module = ["pygments.*", "bs4", "dotenv", "sphinxcontrib.serializinghtml"]
