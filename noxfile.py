@@ -1,5 +1,6 @@
 """Nox sessions."""
 
+import shutil
 from enum import Enum
 from typing import List, Type, TypeVar
 
@@ -55,6 +56,7 @@ def tests(session: Session) -> None:
 @session(python=Versions.all())
 def docs(session: Session) -> None:
     """Build the docs."""
+    export(session)
     args = session.posargs or ["-b", "dirhtml", "-aWTE", "docs", "docs/public"]
     session.install(".", *docs_dependencies)
     session.run("sphinx-build", *args)
@@ -96,32 +98,13 @@ def xml(session: Session) -> None:
 
 
 @session(python=Versions.THREE_EIGHT.value)
-def netlify_test(session: Session) -> None:
-    """Test, if netlify can build the docs."""
-    args = ["-b", "dirhtml", "-T", "-W", "docs/", "docs/public"]
-
-    export(session)
-
-    session.install("-r", "requirements.txt")
-    session.run("sphinx-build", *args)
-
-
-@session(python=Versions.THREE_EIGHT.value)
 def export(session: Session) -> None:
     """Export requirements from poetry.lock for Netlify.
 
     Netlify uses Python 3.8.
     """
-    # session.run(
-    #     "poetry",
-    #     "export",
-    #     "--without-hashes",
-    #     "--extras",
-    #     "docs",
-    #     "--output=requirements.txt",
-    #     external=True,
-    # )
-    session.poetry.export_requirements()
+    requirements = session.poetry.export_requirements()
+    shutil.copy(requirements, "requirements.txt")
 
 
 @session(python=Versions.all())
