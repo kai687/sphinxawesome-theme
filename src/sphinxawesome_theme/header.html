@@ -25,12 +25,12 @@
 
 {%- macro extra_link(text, url) -%}
   {% if url is string %}
-    {% url = url if url.startswith("http") else pathto(url) %}
+    {% set url = url if url.startswith("http") else pathto(url) %}
     {%- set active = "bg-gray-700 border-b-4 border-brand" if pagename in url else "bg-transparent" -%}
     <a href="{{ url }}" class="h-14 sm:h-18 inline-block leading-14 sm:leading-18 text-gray-100 {{ active }} tracking-wide font-medium hover:text-brand focus:bg-gray-700 focus:outline-none hover:no-underline focus:text-brand px-4">{{ text }}</a>
   {% endif %}
   {% if url is mapping %}
-    {% url = url.link if url.link.startswith("http") else pathto(url.link) %}
+    {% set url = url.link if url.link.startswith("http") else pathto(url.link) %}
     <a href="{{ url }}" aria-label="Visit {{ text }}" class="tooltipped tooltipped-sw h-14 sm:h-18 inline-block text-gray-100 leading-14 sm:leading-18 hover:text-brand focus:bg-gray-700 focus:outline-none hover:no-underline focus:text-brand px-4">{{ url.icon }}</a>
   {% endif %}
 {%- endmacro -%}
