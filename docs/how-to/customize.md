@@ -51,6 +51,29 @@ If you want to **override existing styles**, you might have to add `!important`.
 [CSS Specificity (MDN Web Docs)](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity)
 ```
 
+## Override CSS custom properties
+
+You can override these custom properties (variables):
+
+<!-- vale Google.Colons = NO -->
+
+`--color-brand`
+: The color for hover, focus, and highlight styles
+
+`--color-links`
+: The color for links in the main text.
+
+<!-- vale Google.Colons = YES -->
+
+To override custom properties, {ref}`add a custom CSS file <sec:override-styles>` with
+new values. For example, change the link color to green:
+
+```CSS
+:root {
+  --color-links: green;
+}
+```
+
 (sec:additional-layouts)=
 
 ## Add additional page layouts
@@ -178,7 +201,7 @@ For more information, see the available templates in the directory
 
 (sec:override-layouts-locally)=
 
-## Override page layout per page
+## Override per-page layout
 
 ```{caution}
 You can only select per-page layouts if you write your documentation in Markdown
