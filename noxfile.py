@@ -1,20 +1,20 @@
 """Nox sessions."""
 
-import re
-import tempfile
+import shutil
 from enum import Enum
-from typing import Any, List, Type, TypeVar
+from typing import List, Type, TypeVar
 
 import nox
-from nox.sessions import Session
+from nox_poetry import Session, session
 
 nox.options.stop_on_first_error = True
-nox.options.sessions = ["docs", "lint", "black", "mypy", "netlify_test"]
+nox.options.sessions = ["docs", "lint", "black", "mypy"]
+
 python_files = ["src/sphinxawesome_theme", "noxfile.py", "docs/conf.py"]
 
-# Poetry doesn't support extra environments,
-# and I don't want to import all development dependencies when just building the docs.
-extra_docs_dependencies = [
+docs_dependencies = [
+    "sphinx",
+    "bs4",
     "myst-parser",
     "sphinx-sitemap",
     "sphinxcontrib-programoutput",
@@ -44,71 +44,25 @@ class Versions(Enum):
         return versions[-1]
 
 
-def install_constrained_version(session: Session, *args: str, **kwargs: Any) -> None:
-    """Install packages with version constraints from poetry.lock."""
-    with tempfile.NamedTemporaryFile() as requirements:
-        session.run(
-            "poetry",
-            "export",
-            "--format=requirements.txt",
-            "--without-hashes",
-            "--dev",
-            f"--output={requirements.name}",
-            external=True,
-        )
-        session.install(f"--constraint={requirements.name}", *args, **kwargs)
-
-
-def append_to_requirements(session: Session, *package_names: str) -> None:
-    """Add additional dependency to requirements file.
-
-    This function exports a temporary requirement.txt with dependencies, extracts
-    matching lines and appends that to the `requirements.txt` file.
-
-    The final `requirements.txt` file has only the `production` dependencies plus
-    some extra (development) dependencies.
-    """
-    pattern = re.compile("|".join(package_names))
-
-    with tempfile.NamedTemporaryFile() as requirements:
-        session.run(
-            "poetry",
-            "export",
-            "--without-hashes",
-            "--dev",
-            f"--output={requirements.name}",
-            external=True,
-        )
-
-        with open(requirements.name) as tmpfile:
-            packages = [line for line in tmpfile if pattern.search(line)]
-
-    with open("requirements.txt", "a") as requirement_file:
-        for package in packages:
-            requirement_file.write(package)
-
-
-@nox.session(python=Versions.all())
+@session(python=Versions.all())
 def tests(session: Session) -> None:
     """Run unit tests."""
     args = session.posargs or ["--cov"]
-    session.run("poetry", "install", "--no-dev", external=True)
-    install_constrained_version(
-        session, "coverage[toml]", "pytest", "pytest-cov", "pytest-randomly"
-    )
+    deps = ["coverage[toml]", "pytest", "pytest-cov", "pytest-randomly"]
+    session.install(".", *deps)
     session.run("pytest", *args)
 
 
-@nox.session(python=Versions.all())
+@session(python=Versions.all())
 def docs(session: Session) -> None:
     """Build the docs."""
+    export(session)
     args = session.posargs or ["-b", "dirhtml", "-aWTE", "docs", "docs/public"]
-    session.run("poetry", "install", "--no-dev", external=True)
-    install_constrained_version(session, *extra_docs_dependencies)
+    session.install(".", *docs_dependencies)
     session.run("sphinx-build", *args)
 
 
-@nox.session(python=Versions.latest())
+@session(python=Versions.latest())
 def live_docs(session: Session) -> None:
     """Build the docs and live-reload."""
     args = session.posargs or [
@@ -120,66 +74,45 @@ def live_docs(session: Session) -> None:
         "--watch",
         "src/sphinxawesome_theme/*",
     ]
-    session.run("poetry", "install", "--no-dev", external=True)
-    install_constrained_version(session, "sphinx-autobuild", *extra_docs_dependencies)
+    session.install(".", "sphinx-autobuild", *docs_dependencies)
     session.run("sphinx-autobuild", *args)
 
 
-@nox.session()
+@session()
 def linkcheck(session: Session) -> None:
     """Check links."""
     args = session.posargs or ["-b", "linkcheck", "-aWTE", "docs", "docs/public/_links"]
-    session.run("poetry", "install", "--no-dev", external=True)
-    install_constrained_version(session, *extra_docs_dependencies)
+    session.install(".", *docs_dependencies)
     session.run("sphinx-build", *args)
 
 
-@nox.session()
+@session()
 def xml(session: Session) -> None:
     """Build XML version of the docs.
 
     This can be useful for development, to look at the structure and node types.
     """
     args = ["-b", "xml", "-aWTE", "docs", "docs/public/xml"]
-    session.run("poetry", "install", external=True)
+    session.install(".", *docs_dependencies)
     session.run("sphinx-build", *args)
 
 
-@nox.session(python=Versions.THREE_EIGHT.value)
-def netlify_test(session: Session) -> None:
-    """Test, if netlify can build the docs."""
-    args = ["-b", "dirhtml", "-T", "-W", "docs/", "docs/public"]
-
-    export(session)
-
-    session.install("-r", "requirements.txt")
-    session.run("sphinx-build", *args)
-
-
-@nox.session(python=Versions.THREE_EIGHT.value)
+@session(python=Versions.THREE_EIGHT.value)
 def export(session: Session) -> None:
     """Export requirements from poetry.lock for Netlify.
 
     Netlify uses Python 3.8.
     """
-    session.run(
-        "poetry",
-        "export",
-        "--without-hashes",
-        "--output=requirements.txt",
-        external=True,
-    )
-
-    append_to_requirements(session, *extra_docs_dependencies)
+    requirements = session.poetry.export_requirements()
+    shutil.copy(requirements, "requirements.txt")
 
 
-@nox.session(python=Versions.all())
+@session(python=Versions.all())
 def lint(session: Session) -> None:
     """Lint python files with flake8."""
     args = session.posargs or python_files
 
-    install_constrained_version(
-        session,
+    deps = [
         "flake8",
         "flake8-annotations",
         "flake8-bandit",
@@ -187,34 +120,45 @@ def lint(session: Session) -> None:
         "flake8-bugbear",
         "flake8-docstrings",
         "flake8-implicit-str-concat",
-    )
+    ]
+
+    session.install(".", *deps)
     session.run("flake8", *args)
 
 
-@nox.session(python=Versions.latest())
+@session(python=Versions.latest())
 def black(session: Session) -> None:
     """Format python files with black."""
     args = session.posargs or python_files
 
-    install_constrained_version(session, "black")
+    session.install(".", "black")
     session.run("black", *args)
 
 
-@nox.session(python=Versions.latest())
+@session(python=Versions.latest())
 def isort(session: Session) -> None:
     """Rearrange imports on all Python files."""
     args = session.posargs or python_files
 
-    install_constrained_version(session, "isort")
+    session.install(".", "isort")
     session.run("isort", *args)
 
 
-@nox.session(python=Versions.all())
+@session(python=Versions.all())
 def mypy(session: Session) -> None:
     """Typecheck python files with mypy."""
-    args = session.posargs or ["--strict", "--no-warn-unused-ignores"]
+    args = session.posargs
 
-    install_constrained_version(
-        session, "mypy", "pytest", "sphinx", "types-docutils", "bs4", "nox"
-    )
+    # Install these packages in the venv so that mypy can find the libs/types
+    deps = [
+        "mypy",
+        "pytest",
+        "sphinx",
+        "types-docutils",
+        "bs4",
+        "nox",
+        "nox-poetry",
+    ]
+
+    session.install(".", *deps)
     session.run("mypy", *args)
