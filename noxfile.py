@@ -8,7 +8,7 @@ import nox
 from nox_poetry import Session, session
 
 nox.options.stop_on_first_error = True
-nox.options.sessions = ["docs", "lint", "black", "mypy", "netlify_test"]
+nox.options.sessions = ["docs", "lint", "black", "mypy"]
 
 python_files = ["src/sphinxawesome_theme", "noxfile.py", "docs/conf.py"]
 
