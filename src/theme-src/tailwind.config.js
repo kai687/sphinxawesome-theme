@@ -38,7 +38,6 @@ module.exports = {
       },
       lineHeight: {
         14: "3.5rem",
-        18: "4.5rem",
       },
       letterSpacing: {
         extended: "0.017em",
@@ -48,9 +47,6 @@ module.exports = {
       },
       width: {
         sidebar: "max(var(--sidebar-width), 17%)",
-      },
-      spacing: {
-        18: "4.5rem",
       },
       colors: {
         blue: colors.sky,
