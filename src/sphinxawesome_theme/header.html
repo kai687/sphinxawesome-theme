@@ -6,7 +6,7 @@
 <button
     data-action="sidebar#open"
     data-sidebar-target="hamburger"
-    class="xl:hidden h-14 w-14 sm:h-18 sm:w-18 leading-14 sm:leading-18 text-gray-100 hover:bg-gray-700 hover:text-brand focus:outline-none focus:bg-gray-700 focus:text-brand">
+    class="xl:hidden h-14 w-14 leading-14 text-gray-100 hover:bg-gray-700 hover:text-brand focus:outline-none focus:bg-gray-700 focus:text-brand">
   <span class="sr-only">Open navigation menu</span>
   <svg aria-hidden="true" class="fill-current h-8 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
 </button>
@@ -17,9 +17,9 @@
    href="{{ pathto(master_doc) }}"
    aria-label="{{ _('Back to homepage') }}">
   {%- if logo -%}
-    <img class="h-14 w-14 sm:h-18 sm:w-18 p-3 sm:p-5 inline-block" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo" />
+    <img class="h-14 w-14 p-3 sm:p-5 inline-block" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo" />
   {%- endif -%}
-  <span class="hidden lg:inline-block shrink-0 font-medium text-gray-100 mx-5 leading-14 sm:leading-18 tracking-wider">{{ docstitle }}</span>
+  <span class="hidden lg:inline-block shrink-0 font-medium text-gray-100 mx-5 leading-14 tracking-wider">{{ docstitle }}</span>
 </a>
 {%- endmacro -%}
 
@@ -27,11 +27,11 @@
   {% if url is string %}
     {% set url = url if url.startswith("http") else pathto(url) %}
     {%- set active = "bg-gray-700 border-b-4 border-brand" if pagename in url else "bg-transparent" -%}
-    <a href="{{ url }}" class="h-14 sm:h-18 inline-block leading-14 sm:leading-18 text-gray-100 {{ active }} tracking-wide font-medium hover:text-brand focus:bg-gray-700 focus:outline-none hover:no-underline focus:text-brand px-4">{{ text }}</a>
+    <a href="{{ url }}" class="h-14 inline-block leading-14 text-gray-100 {{ active }} tracking-wide font-medium hover:text-brand focus:bg-gray-700 focus:outline-none hover:no-underline focus:text-brand px-4">{{ text }}</a>
   {% endif %}
   {% if url is mapping %}
     {% set link = url.link if url.link.startswith("http") else pathto(url.link) %}
-    <a href="{{ link }}" aria-label="Visit {{ text }}" class="tooltipped tooltipped-sw h-14 sm:h-18 inline-block text-gray-100 leading-14 sm:leading-18 hover:text-brand focus:bg-gray-700 focus:outline-none hover:no-underline focus:text-brand px-4">{{ url.icon }}</a>
+    <a href="{{ link }}" aria-label="Visit {{ text }}" class="tooltipped tooltipped-sw h-14 inline-block text-gray-100 leading-14 hover:text-brand focus:bg-gray-700 focus:outline-none hover:no-underline focus:text-brand px-4">{{ url.icon }}</a>
   {% endif %}
 {%- endmacro -%}
 

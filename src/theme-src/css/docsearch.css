@@ -10,7 +10,7 @@
 }
 
 .DocSearch-Button {
-  @apply rounded-none h-14 leading-14 sm:h-18 sm:leading-18 pr-4;
+  @apply rounded-none h-14 leading-14 pr-4;
 }
 
 .DocSearch-Button-Key {
