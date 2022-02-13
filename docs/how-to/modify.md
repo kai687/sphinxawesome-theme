@@ -24,7 +24,7 @@ backlinks: none
 
 You can apply styles in the templates with Tailwind's utility classes.
 
-```{code-block} shell
+```{code-block} terminal
 ---
 emphasize-lines: 1
 ---
@@ -55,7 +55,7 @@ To modify these styles, follow these steps:
 
 1. Build the theme:
 
-   ```shell
+   ```terminal
    yarn build
    ```
 
@@ -64,7 +64,7 @@ To modify these styles, follow these steps:
 Everything that's part of the main content, including everything that's converted from
 reStructuredText to HTML is styled using Tailwind's `@apply` directive.
 
-```{code-block} shell
+```{code-block} terminal
 ---
 emphasize-lines: 3
 ---
@@ -86,6 +86,6 @@ To modify these styles, follow these steps:
 
 1. Build the theme:
 
-   ```shell
+   ```terminal
    yarn build
    ```
