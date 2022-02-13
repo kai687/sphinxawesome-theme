@@ -17,6 +17,7 @@ from docutils.nodes import Node
 from docutils.parsers.rst import directives  # type: ignore[attr-defined]
 from docutils.statemachine import StringList
 from pygments.formatters import HtmlFormatter
+from pygments.lexers.shell import BashSessionLexer
 from pygments.util import get_list_opt
 from sphinx.application import Sphinx
 from sphinx.directives.code import CodeBlock, dedent_lines
@@ -31,6 +32,16 @@ logger = logging.getLogger(__name__)
 
 # type alias
 TokenStream = Generator[Tuple[int, str], None, None]
+
+
+class TerminalLexer(BashSessionLexer):  # type: ignore
+    """Convenience lexer for terminal sessions.
+
+    This allows using the `terminal` language code for interactive shell sessions.
+    This is an alternative to `shell-session` and `console`.
+    """
+
+    aliases = ["terminal"]
 
 
 def container_wrapper(
@@ -295,6 +306,8 @@ def setup(app: "Sphinx") -> Dict[str, Any]:
     """Set up this internal extension."""
     PygmentsBridge.html_formatter = AwesomeHtmlFormatter
     directives.register_directive("code-block", AwesomeCodeBlock)
+
+    app.add_lexer("terminal", TerminalLexer)
 
     return {
         "version": __version__,

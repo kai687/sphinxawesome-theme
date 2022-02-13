@@ -21,7 +21,7 @@ Create functional and beautiful websites for your documentation with Sphinx.
 
 1. Install the theme:
 
-   ```shell-session
+   ```terminal
    pip install sphinxawesome-theme
    ```
 

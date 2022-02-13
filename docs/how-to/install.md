@@ -28,13 +28,13 @@ backlinks: none
 Install the latest **released version** from the Python Package Index
 [PyPI](https://pypi.org/project/sphinxawesome-theme/):
 
-```shell-session
+```terminal
 pip install sphinxawesome-theme
 ```
 
 You can also install the latest **development version**:
 
-```shell-session
+```terminal
 pip install git+https://github.com/kai687/sphinxawesome-theme.git
 ```
 
@@ -56,7 +56,7 @@ you can install the theme as a local Python package.
 1. {ref}`sec:fork-and-clone`.
 1. To install the local version of the theme in your project:
 
-   ```{code-block} shell-session
+   ```{code-block} terminal
    ---
    emphasize-text: "/path/to/sphinxawesome_theme"
    ---
@@ -99,7 +99,7 @@ To modify the theme, create a local copy:
 
    - If you forked the repository, enter:
 
-     ```{code-block} shell-session
+     ```{code-block} terminal
      ---
      emphasize-text: GITHUB_USERNAME
      ---
@@ -110,7 +110,7 @@ To modify the theme, create a local copy:
 
    - If you didn't fork the repository, clone the original repository:
 
-     ```shell-session
+     ```terminal
      git clone https://github.com/kai687/sphinxawesome-theme.git
      ```
 
@@ -140,13 +140,13 @@ Follow these steps to install the Python dependencies:
 
 1. Install Nox:
 
-   ```shell-session
+   ```terminal
    pip install --user --upgrade nox
    ```
 
 1. Install the Python dependencies:
 
-   ```shell-session
+   ```terminal
    poetry install
    ```
 
@@ -154,7 +154,7 @@ Follow these steps to install the Python dependencies:
 
 1. Optional: install and test the pre-commit hooks:
 
-   ```shell-session
+   ```terminal
    poetry run pre-commit install
    ```
 
@@ -163,7 +163,7 @@ Follow these steps to install the Python dependencies:
 
    To test pre-commit with Poetry, run:
 
-   ```shell-session
+   ```terminal
    poetry run pre-commit run --all
    ```
 
@@ -174,13 +174,13 @@ Follow these steps to install the Python dependencies:
    You can run any Nox session to confirm that the environment is working.
    To list the available sessions, enter:
 
-   ```shell-session
+   ```terminal
    nox -ls
    ```
 
    For example, to build the documentation with Python 3.10, enter:
 
-   ```shell-session
+   ```terminal
    nox -s docs -p 3.10
    ```
 
@@ -203,7 +203,7 @@ Follow these steps to install the Python dependencies:
 
 1. Optional: install [`yarn`](https://classic.yarnpkg.com/lang/en/):
 
-   ```shell-session
+   ```terminal
    npm install --global yarn
    ```
 
@@ -214,7 +214,7 @@ Follow these steps to install the Python dependencies:
 
 1. Go to the `theme-src/` directory:
 
-   ```{code-block} shell-session
+   ```{code-block} terminal
    ---
    emphasize-lines: 4
    ---
@@ -229,12 +229,12 @@ Follow these steps to install the Python dependencies:
 
 1. Install the JavaScript dependencies:
 
-   ```shell-session
+   ```terminal
    yarn install
    ```
 
 1. Build the theme:
 
-   ```shell-session
+   ```terminal
    yarn build
    ```
