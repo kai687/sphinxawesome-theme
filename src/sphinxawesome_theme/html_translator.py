@@ -187,20 +187,7 @@ class AwesomeHTMLTranslator(HTML5Translator):
                 self.body.append('<div class="code-wrapper" data-controller="code">\n')
 
                 code_header = "<div class='code-header'>\n"
-                lang_alias = {
-                    # Sphinx default highlighter is essentially Python
-                    "default": "python",
-                    # Shorter in headlines
-                    "shell-session": "shell",
-                    # Interactive PowerShell sessions
-                    "ps1con": "powershell",
-                }
-                if lang in lang_alias:
-                    code_lang = lang.replace(lang, lang_alias[lang])
-                else:
-                    code_lang = lang
-
-                code_header += f"<span class='code-lang'>{code_lang}</span>"
+                code_header += f"<span class='code-lang'>{lang}</span>"
                 code_header += "</div>\n"
                 self.body.append(code_header)
 

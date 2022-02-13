@@ -17,10 +17,11 @@ from docutils.nodes import Node
 from docutils.parsers.rst import directives  # type: ignore[attr-defined]
 from docutils.statemachine import StringList
 from pygments.formatters import HtmlFormatter
+from pygments.lexers.shell import BashSessionLexer
 from pygments.util import get_list_opt
 from sphinx.application import Sphinx
 from sphinx.directives.code import CodeBlock, dedent_lines
-from sphinx.highlighting import PygmentsBridge
+from sphinx.highlighting import PygmentsBridge, lexers
 from sphinx.locale import __
 from sphinx.util import logging, parselinenos
 from sphinx.util.docutils import SphinxDirective
@@ -31,6 +32,19 @@ logger = logging.getLogger(__name__)
 
 # type alias
 TokenStream = Generator[Tuple[int, str], None, None]
+
+
+class TerminalLexer(BashSessionLexer):
+    """Convenience lexer for terminal sessions.
+
+    This allows using the `terminal` language code for interactive shell sessions.
+    This is an alternative to `shell-session` and `console`.
+    """
+
+    aliases = ["terminal"]
+
+
+lexers["terminal"] = TerminalLexer()
 
 
 def container_wrapper(
