@@ -42,7 +42,7 @@ When loading the theme from a local directory, you need to manage the dependenci
 yourself. This theme needs the `beautifulsoup` package to run. You can install it with
 `pip`:
 
-```shell-session
+```terminal
 pip install bs4
 ```
 
@@ -55,7 +55,7 @@ pip install bs4
 The following example assumes you have a Sphinx project with the following structure,
 and you want to load the theme from the `_themes/` folder.
 
-```{code-block} shell-session
+```{code-block} terminal
 ---
 emphasize-lines: 4
 ---
@@ -73,7 +73,7 @@ To load the theme from a local directory, follow these steps:
 1. Copy the directory `sphinxawesome-theme/src/sphinxawesome_theme/` into your
    Sphinx project:
 
-   ```shell-session
+   ```terminal
    cp -r sphinxawesome-theme/src/sphinxawesome_theme _themes/
    ```
 
