@@ -112,8 +112,8 @@ html_theme_options = {
         "repository on GitHub": {
             "link": "https://github.com/kai687/sphinxawesome-theme",
             "icon": (
-                '<svg style="height: 30px;" viewBox="0 0 45 44" fill="currentColor" '
-                'xmlns="http://www.w3.org/2000/svg">'
+                '<svg style="height: 26px; margin-top: -2px;" viewBox="0 0 45 44" '
+                'fill="currentColor" xmlns="http://www.w3.org/2000/svg">'
                 '<path fill-rule="evenodd" clip-rule="evenodd" '
                 'd="M22.477.927C10.485.927.76 10.65.76 22.647c0 9.596 6.223 17.736 '
                 "14.853 20.608 1.087.2 1.483-.47 1.483-1.047 "
