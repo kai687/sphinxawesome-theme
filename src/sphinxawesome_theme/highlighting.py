@@ -21,7 +21,7 @@ from pygments.lexers.shell import BashSessionLexer
 from pygments.util import get_list_opt
 from sphinx.application import Sphinx
 from sphinx.directives.code import CodeBlock, dedent_lines
-from sphinx.highlighting import PygmentsBridge, lexers
+from sphinx.highlighting import PygmentsBridge
 from sphinx.locale import __
 from sphinx.util import logging, parselinenos
 from sphinx.util.docutils import SphinxDirective
@@ -42,9 +42,6 @@ class TerminalLexer(BashSessionLexer):
     """
 
     aliases = ["terminal"]
-
-
-lexers["terminal"] = TerminalLexer()
 
 
 def container_wrapper(
@@ -309,6 +306,8 @@ def setup(app: "Sphinx") -> Dict[str, Any]:
     """Set up this internal extension."""
     PygmentsBridge.html_formatter = AwesomeHtmlFormatter
     directives.register_directive("code-block", AwesomeCodeBlock)
+
+    app.add_lexer("terminal", TerminalLexer)
 
     return {
         "version": __version__,
