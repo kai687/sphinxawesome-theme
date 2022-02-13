@@ -34,7 +34,7 @@ logger = logging.getLogger(__name__)
 TokenStream = Generator[Tuple[int, str], None, None]
 
 
-class TerminalLexer(BashSessionLexer):
+class TerminalLexer(BashSessionLexer):  # type: ignore
     """Convenience lexer for terminal sessions.
 
     This allows using the `terminal` language code for interactive shell sessions.
