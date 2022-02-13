@@ -34,7 +34,7 @@ Sphinx configuration.
    See [How to load the theme](https://sphinxawesome.xyz/how-to/load/) for more information.
 
 You can change some parts of this theme.
-See [How to configure the theme](https://sphinxawesome.xyz/how-to/configure/) for more
+See [How to configure the theme](https://sphinxawesome.xyz/how-to/options/) for more
 information.
 
 ## Features
