@@ -90,9 +90,9 @@ style.
 
    This is how a potentially dangerous step appears.
 
-.. warning::
+.. error::
 
-   This is how a warning appears.
+   This is how an error appears.
 
 
 Block quotations
