@@ -3,7 +3,7 @@
  * **************************/
 
 blockquote {
-  @apply text-sm my-6 p-4 bg-gray-100 bg-opacity-40 border-l-4 border rounded-sm shadow;
+  @apply text-sm my-6 p-4 bg-gray-50/30 border-l-4 rounded-sm shadow;
   & .attribution {
     @apply italic;
   }
@@ -31,7 +31,7 @@ blockquote {
   }
 
   & a {
-    @apply bg-gray-100 bg-opacity-40 inline-block p-2 transition-all;
+    @apply bg-gray-50/40 inline-block p-2 transition-all;
     &.internal:after {
       content: "\2192";
       @apply ml-2 opacity-0 duration-150;
