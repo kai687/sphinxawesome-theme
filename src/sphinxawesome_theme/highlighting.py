@@ -193,7 +193,8 @@ class AwesomeCodeBlock(CodeBlock):
         "emphasize-text": directives.unchanged_required,
     }
 
-    option_sec = CodeBlock.option_spec.update(new_options)
+    option_spec = CodeBlock.option_spec
+    option_spec.update(new_options)
 
     def run(self) -> List[Node]:  # noqa: C901
         """Implement option method."""
