@@ -34,16 +34,6 @@ logger = logging.getLogger(__name__)
 TokenStream = Generator[Tuple[int, str], None, None]
 
 
-class TerminalLexer(BashSessionLexer):  # type: ignore
-    """Convenience lexer for terminal sessions.
-
-    This allows using the `terminal` language code for interactive shell sessions.
-    This is an alternative to `shell-session` and `console`.
-    """
-
-    aliases = ["terminal"]
-
-
 def container_wrapper(
     directive: SphinxDirective, literal_node: Node, caption: str
 ) -> nodes.container:
@@ -308,7 +298,9 @@ def setup(app: "Sphinx") -> Dict[str, Any]:
     PygmentsBridge.html_formatter = AwesomeHtmlFormatter
     directives.register_directive("code-block", AwesomeCodeBlock)
 
-    app.add_lexer("terminal", TerminalLexer)
+    # Allow using `terminal` in addition to `shell-session` and `console`
+    # for interactive command-line sessions
+    app.add_lexer("terminal", BashSessionLexer)
 
     return {
         "version": __version__,
