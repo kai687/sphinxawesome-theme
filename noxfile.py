@@ -72,7 +72,11 @@ def live_docs(session: Session) -> None:
         "docs",
         "docs/public",
         "--watch",
-        "src/sphinxawesome_theme/*",
+        "src/sphinxawesome_theme",
+        "--ignore",
+        "*woff*",
+        "--ignore",
+        "docsearch*",
     ]
     session.install(".", "sphinx-autobuild", *docs_dependencies)
     session.run("sphinx-autobuild", *args)
