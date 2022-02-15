@@ -16,7 +16,7 @@ kbd:not(.compound) {
 
 /* code blocks */
 pre {
-  @apply relative border overflow-x-hidden rounded-sm shadow leading-normal mb-6;
+  @apply relative border overflow-x-hidden rounded-sm leading-normal mb-6;
   /* give some extra padding to parsed-literals */
   &.literal-block {
     @apply py-4 pl-4 overflow-x-auto;
@@ -25,7 +25,7 @@ pre {
     @apply block pl-4 py-4 overflow-x-auto;
   }
   & .copy {
-    @apply absolute top-3 right-1.5 border p-1 uppercase text-xs tracking-wide rounded-sm text-gray-700 shadow-sm bg-white opacity-0 focus:opacity-100 transition-all duration-500 transform active:translate-x-0.5 active:translate-y-0.5 z-10;
+    @apply absolute top-3 right-1.5 border p-1 uppercase select-none text-xs tracking-wide rounded-sm text-gray-700 bg-white opacity-0 focus:opacity-100 transition-all duration-500 transform active:translate-x-0.5 active:translate-y-0.5 z-10;
   }
 
   &:hover .copy {
@@ -33,16 +33,15 @@ pre {
   }
 }
 
-.admonition pre,
-.admonition .highlight {
-  @apply shadow-none;
-}
-
 /* the outer wrapper for a code block */
 .code-wrapper {
   @apply my-6;
   & .caption-text {
     @apply text-gray-light tracking-wide;
+  }
+  /* code blocks with header */
+  & pre {
+    @apply rounded-t-none;
   }
   /* emphasized lines */
   & mark,
@@ -91,7 +90,7 @@ span.gi {
 
 /* the header of a code block */
 .code-header {
-  @apply flex justify-between items-center text-sm py-2 bg-gray-100 shadow rounded-t-sm;
+  @apply flex justify-between items-center text-sm py-1 bg-gray-50 rounded-t-sm border-l border-t border-r;
 }
 
 .code-lang {

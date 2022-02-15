@@ -63,6 +63,9 @@ def setup(app: "Sphinx") -> Dict[str, Any]:
     app.add_config_value(
         name="html_awesome_headerlinks", default=True, rebuild="html", types=(str)
     )
+    app.add_config_value(
+        name="html_awesome_code_headers", default=True, rebuild="html", types=(str)
+    )
 
     app.setup_extension("sphinxawesome_theme.highlighting")
     app.setup_extension("sphinxawesome_theme.jinja_functions")
@@ -72,12 +75,6 @@ def setup(app: "Sphinx") -> Dict[str, Any]:
     JSONHTMLBuilder.out_suffix = ".json"
     JSONHTMLBuilder.implementation = jsonimpl
     JSONHTMLBuilder.indexer_format = jsonimpl
-
-    if app.config.html_awesome_html_translator:
-        app.setup_extension("sphinxawesome_theme.html_translator")
-
-    if app.config.html_awesome_postprocessing:
-        app.setup_extension("sphinxawesome_theme.postprocess")
 
     return {
         "version": __version__,

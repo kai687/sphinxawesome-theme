@@ -2,6 +2,9 @@ HEAD
 ~~~~
 
 - Use normal font size for sidebar and TOC links
+- Smaller vertical padding for
+- Code blocks without shadow and smaller
+- Add the ability to add icons in extra_header_link
 
 3.2.3
 ~~~~~

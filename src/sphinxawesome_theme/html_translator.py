@@ -179,17 +179,18 @@ class AwesomeHTMLTranslator(HTML5Translator):
                     )
 
             # Code blocks without captions aren't wrapped inside a <container>
-            # node so we add the header here. With captions, see: visit_caption
+            # So we add the header here. With captions, see: visit_caption
             if not (
                 isinstance(node.parent, nodes.container)
                 and node.parent.get("literal_block")
             ):
                 self.body.append('<div class="code-wrapper" data-controller="code">\n')
 
-                code_header = "<div class='code-header'>\n"
-                code_header += f"<span class='code-lang'>{lang}</span>"
-                code_header += "</div>\n"
-                self.body.append(code_header)
+                if self.config.html_awesome_code_headers:
+                    code_header = "<div class='code-header'>\n"
+                    code_header += f"<span class='code-lang'>{lang}</span>"
+                    code_header += "</div>\n"
+                    self.body.append(code_header)
 
             # wrap the highlighted string in a div
             self.body.append(highlighted)
@@ -218,14 +219,17 @@ class AwesomeHTMLTranslator(HTML5Translator):
     def visit_container(self, node: Element) -> None:
         """Overide for code blocks with captions."""
         if node.get("literal_block"):
-            # for docutils >0.17
             node.html5tagname = "div"
             self.body.append('<div class="code-wrapper" data-controller="code">\n')
             lang = node.get("language", "")
+            # in the container, `code-header` also contains the caption
             code_header = "<div class='code-header'>\n"
-            code_header += (
-                f"<span class='code-lang'>{lang.replace('default', 'python')}</span>\n"
-            )
+            if self.config.html_awesome_code_headers:
+                code_header += (
+                    "<span class='code-lang'>"
+                    f"{lang.replace('default', 'python')}"
+                    "</span>\n"
+                )
             self.body.append(code_header)
         else:
             super().visit_container(node)

@@ -113,9 +113,8 @@ Replace {samp}`{CHAR}` with a character or HTML entity of your choice.
 To show links to the previous and next pages, set this option to `True`:
 
 ```{code-block} python
----
-caption: "File: conf.py"
----
+:caption: "File: conf.py"
+
 # This option is `False` by default
 html_theme_options = {"show_prev_next": True}
 ```
@@ -132,9 +131,8 @@ To show a button that scrolls to the top of the page when clicked,
 set this option to `True`:
 
 ```{code-block} python
----
-caption: "File: conf.py"
----
+:caption: "File: conf.py"
+
 # This option is `False` by default
 html_theme_options = {"show_scrolltop": True}
 ```
@@ -146,9 +144,8 @@ html_theme_options = {"show_scrolltop": True}
 To add extra links to the header of your documentation, set the following option:
 
 ```{code-block} python
----
-caption: "File: conf.py"
----
+:caption: "File: conf.py"
+
 # This option is `False` by default
 html_theme_options = {
   extra_header_links = {
@@ -181,9 +178,8 @@ Set this option to `True` to make code references, such as classes, methods, and
 objects, collapsible and expandable. By default, this option is turned off.
 
 ```{code-block} python
----
-caption: "File: conf.py"
----
+:caption: "File: conf.py"
+
 # This option is `False` by default
 html_collapsible_definitions = True
 ```
@@ -200,11 +196,28 @@ In the {{ product }}, clicking a headerlink immediately copies the URL to the cl
 <!-- vale Awesome.SpellCheck = YES -->
 
 ```{code-block} python
----
-caption: "File: conf.py"
----
+:caption: "File: conf.py"
+
 # This option is `True` by default
 html_awesome_headerlinks = False
+```
+
+:::
+
+<!-- vale Awesome.SpellCheck = NO -->
+
+:::{confval} html_awesome_code_headers
+
+<!-- vale Awesome.SpellCheck = YES -->
+
+By default, the {{ product }} shows the programming language above
+code blocks in a header. To disable this behavior, set this option to `False`.
+
+```{code-block} python
+:caption: "File: conf.py"
+
+# This option is `True` by default
+html_awesome_code_headers = False
 ```
 
 :::
