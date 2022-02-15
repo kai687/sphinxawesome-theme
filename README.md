@@ -33,13 +33,11 @@ Sphinx configuration.
 
    See [How to load the theme](https://sphinxawesome.xyz/how-to/load/) for more information.
 
-You can change some parts of this theme.
-See [How to configure the theme](https://sphinxawesome.xyz/how-to/options/) for more
-information.
+For more information about configuring the theme to your use case, see [How to configure the theme](https://sphinxawesome.xyz/how-to/options/).
 
 ## Features
 
-With this awesome theme, you can build readable, functional, and beautiful documentation websites.
+With the Awesome Theme, you can build readable, functional, and beautiful documentation websites.
 Compared to other Sphinx themes, these features enhance the user experience:
 
 ### Awesome code blocks
@@ -50,13 +48,13 @@ This theme enhances Sphinx's `code-block` directive with:
 
 - `emphasize-added`: highlight lines that should be added to code
 - `emphasize-removed`: highlight lines that should be removed from the code
-- `emphasize-placeholder: PLACEHOLDER`: highlight `PLACEHOLDER` in the code block to emphasize placeholder text the user should replace.
+- `emphasize-text: TEXT`: highlight `TEXT` in the code block to emphasize placeholder text the user should replace.
 
 ### Collapsible elements
 
 Nested navigation links allow you to reach all pages from all other pages.
 You can make code object definitions, like methods, classes, or modules,
-collapsible as well, to focus on one block at a time.
+collapsible as well, to focus on one item at a time.
 
 <!-- vale Awesome.SpellCheck = NO -->
 
@@ -66,10 +64,14 @@ Clicking the link icon after a header or caption automatically copies the URL to
 
 <!-- vale Awesome.SpellCheck = YES -->
 
+### DocSearch
+
+If you have an Algolia DocSearch account for your documentation (it's free for open-source projects),
+you can use DocSearch for a search-as-you-type experience with autocomplete. 
+
 ### Better keyboard navigation
 
 <!-- vale 18F.Clarity = NO -->
 
-Use the `/` key to start searching.
 Use the `Tab` key to quickly skip through all sections on the page.
 Use the `Space` key to expand or collapse items in the navigation menu or in code definitions.
