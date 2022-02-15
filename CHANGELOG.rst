@@ -1,4 +1,4 @@
-HEAD
+3.3.0
 ~~~~
 
 - Use normal font size for sidebar and TOC links
