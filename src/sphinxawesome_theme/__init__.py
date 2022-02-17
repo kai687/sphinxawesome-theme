@@ -28,10 +28,9 @@ except PackageNotFoundError:  # pragma: no cover
     __version__ = "unknown"
 
 
-def conditional_setup(app: Sphinx, config: Config) -> None:
+def post_config_setup(app: Sphinx, config: Config) -> None:
     """Set up extensions if configuration is ready."""
-    if config.html_awesome_docsearch:
-        app.setup_extension("sphinxawesome_theme.docsearch")
+    app.setup_extension("sphinxawesome_theme.docsearch")
 
     if config.html_awesome_html_translator:
         app.setup_extension("sphinxawesome_theme.html_translator")
@@ -69,8 +68,7 @@ def setup(app: "Sphinx") -> Dict[str, Any]:
 
     app.setup_extension("sphinxawesome_theme.highlighting")
     app.setup_extension("sphinxawesome_theme.jinja_functions")
-
-    app.connect("config-inited", conditional_setup)
+    app.connect("config-inited", post_config_setup)
 
     JSONHTMLBuilder.out_suffix = ".json"
     JSONHTMLBuilder.implementation = jsonimpl
