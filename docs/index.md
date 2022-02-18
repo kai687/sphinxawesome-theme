@@ -1,6 +1,5 @@
 ---
 html_meta:
-  title: The Awesome Sphinx Theme
   description: Create functional and beautiful websites for your documentation with Sphinx and the Awesome Sphinx Theme.
   keywords: Documentation, Sphinx, Python
 ---

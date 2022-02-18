@@ -1,5 +1,5 @@
 ---
-html_theme:
+html_meta:
   description: |
     Learn how to add the Awesome Theme to your Sphinx documentation.
 ---
