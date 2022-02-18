@@ -1,5 +1,5 @@
 ---
-html_theme:
+html_meta:
   description: |
     Learn how to install the Awesome Theme for your documentation project.
 ---
@@ -40,7 +40,7 @@ pip install git+https://github.com/kai687/sphinxawesome-theme.git
 
 <!-- vale 18F.UnexpandedAcronyms = NO -->
 
-See the {gh}`CHANGELOG <CHANGELOG.rst>` file for extra features and updates in the
+See the {gh}`CHANGELOG <CHANGELOG.md>` file for extra features and updates in the
 development version that aren't released yet.
 
 <!-- vale 18F.UnexpandedAcronyms = YES -->
