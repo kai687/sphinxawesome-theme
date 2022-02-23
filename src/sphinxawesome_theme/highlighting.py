@@ -39,17 +39,24 @@ def container_wrapper(
 ) -> nodes.container:
     """We need the container to have class highlight."""
     container_node = nodes.container(
-        "", literal_block=True, language=literal_node["language"], classes=["highlight"]
+        "",
+        literal_block=True,
+        language=literal_node["language"],  # type: ignore[index]
+        classes=["highlight"],
     )
     parsed = nodes.Element()
     directive.state.nested_parse(
         StringList([caption], source=""), directive.content_offset, parsed
     )
-    if isinstance(parsed[0], nodes.system_message):
-        msg = __("Invalid caption: %s" % parsed[0].astext())
+    if isinstance(parsed[0], nodes.system_message):  # type: ignore[index]
+        msg = __("Invalid caption: %s" % parsed[0].astext())  # type: ignore[index]
         raise ValueError(msg)
-    elif isinstance(parsed[0], nodes.Element):
-        caption_node = nodes.caption(parsed[0].rawsource, "", *parsed[0].children)
+    elif isinstance(parsed[0], nodes.Element):  # type: ignore[index]
+        caption_node = nodes.caption(
+            parsed[0].rawsource,  # type: ignore[index]
+            "",
+            *parsed[0].children,  # type: ignore[index]
+        )
         caption_node.source = literal_node.source
         caption_node.line = literal_node.line
         container_node += caption_node

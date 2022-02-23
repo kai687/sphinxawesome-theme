@@ -82,3 +82,8 @@
     @apply block text-link py-1 hover:text-brand focus:text-brand;
   }
 }
+
+.nav-link {
+  letter-spacing: 0.2px;
+  font-size: 0.95rem;
+}

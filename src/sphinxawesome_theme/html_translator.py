@@ -58,7 +58,7 @@ class AwesomeHTMLTranslator(HTML5Translator):
         For code objects, like functions, classes, methods, etc.
         to distinguish them from regular definition lists.
         """
-        cl = node["objtype"] + " code-definition"
+        cl = node["objtype"] + " code-definition"  # type: ignore[index]
         self.body.append(self.starttag(node, "dl", CLASS=cl))
 
     def visit_desc_signature(self, node: Element) -> None:
@@ -219,7 +219,7 @@ class AwesomeHTMLTranslator(HTML5Translator):
     def visit_container(self, node: Element) -> None:
         """Overide for code blocks with captions."""
         if node.get("literal_block"):
-            node.html5tagname = "div"
+            node.html5tagname = "div"  # type: ignore[attr-defined]
             self.body.append('<div class="code-wrapper" data-controller="code">\n')
             lang = node.get("language", "")
             # in the container, `code-header` also contains the caption
@@ -236,7 +236,7 @@ class AwesomeHTMLTranslator(HTML5Translator):
 
     def depart_reference(self, node: Element) -> None:
         """Add external link icon."""
-        if "refuri" in node and not node.get("internal"):
+        if "refuri" in node and not node.get("internal"):  # type: ignore[attr-defined]
             self.body.append(ICONS["external_link"])
         super().depart_reference(node)
 
