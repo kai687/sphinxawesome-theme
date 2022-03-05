@@ -36,12 +36,14 @@ export default class extends Controller {
   }
 
   showButton() {
-    const target = this.scrollToTopTarget;
+    if (this.hasScrollToTopTarget) {
+      const target = this.scrollToTopTarget;
 
-    if (this.element.scrollTop > 100) {
-      target.classList.add("isShown");
-    } else {
-      target.classList.remove("isShown");
+      if (this.element.scrollTop > 100) {
+        target.classList.add("isShown");
+      } else {
+        target.classList.remove("isShown");
+      }
     }
   }
 }
