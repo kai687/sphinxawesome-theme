@@ -3,6 +3,7 @@
 ## HEAD
 
 - Handle DocSearch inclusion correctly (#781)
+- Handle optional scroll to top better (#798)
 
 ## 3.3.0
 
