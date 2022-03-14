@@ -35,7 +35,7 @@ sphinxcontrib-programoutput = {version = "^0.17", optional = true}
 flake8 = "^3.9.2"
 flake8-annotations = "^2.6.2"
 flake8-black = "^0.3.2"
-flake8-bandit = "^2.1.2"
+flake8-bandit = "^3.0.0"
 flake8-bugbear = "^22.1.11"
 flake8-docstrings = "^1.6.0"
 black = "^22.1"
@@ -47,7 +47,6 @@ coverage = { extras = ["toml"], version = "^6.2" }
 flake8_implicit_str_concat = "^0.2.0"
 pytest-randomly = "^3.10.3"
 isort = "^5.10.0"
-bandit = "1.7.2"
 
 [tool.poetry.extras]
 docs = ["myst-parser", "sphinx-autobuild", "sphinx-sitemap", "sphinxcontrib-programoutput"]
