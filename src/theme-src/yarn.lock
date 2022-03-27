@@ -1125,10 +1125,10 @@
   resolved "https://registry.yarnpkg.com/@fontsource/jetbrains-mono/-/jetbrains-mono-4.5.5.tgz#ebf7a66bab9d2eab000848081d4a62903f42ca32"
   integrity sha512-i17hJLwH3EaTVxujrZ/Dm4EHugCweHgu9mgyQlnyRpJXQdrK+oQVJqq8xMwQiw5Gck7+0SyuMWIqRiPPP7Vw6w==
 
-"@fontsource/roboto@^4.5.3":
-  version "4.5.3"
-  resolved "https://registry.yarnpkg.com/@fontsource/roboto/-/roboto-4.5.3.tgz#c729ac22c35ae1c224cde10042ce7ab356bc4dda"
-  integrity sha512-NUvBTj332dFRdiVkLlavXbDGoD2zyyeGYmMyrXOnctg/3e4pq95+rJgNfUP+k4v8UBk2L1aomGw9dDjbRdAmTg==
+"@fontsource/roboto@^4.5.5":
+  version "4.5.5"
+  resolved "https://registry.yarnpkg.com/@fontsource/roboto/-/roboto-4.5.5.tgz#4ecc38e690469378e2ec2a97f9c12282c654cc93"
+  integrity sha512-Pe1p+gAO6K0aLxBXlLoJRHVx352tVc/v/7DOnvM3t+FYXb+KUga9aCD1NpnDfd0kKnWXqrZyAXguyyFWDDuphw==
 
 "@hotwired/stimulus-webpack-helpers@^1.0.0":
   version "1.0.1"
