@@ -201,7 +201,7 @@ pyflakes = ">=2.3.0,<2.4.0"
 
 [[package]]
 name = "flake8-annotations"
-version = "2.8.0"
+version = "2.9.0"
 description = "Flake8 Type Annotation Checks"
 category = "dev"
 optional = false
@@ -1030,7 +1030,7 @@ docs = ["myst-parser", "sphinx-autobuild", "sphinx-sitemap", "sphinxcontrib-prog
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "e443dbe4c61df26bfdb0727cf2351860a74f0d38d187407bc1875f814d1989e9"
+content-hash = "22b4421353187b04b7de237887793b2f93b90758a84f1f4a36745ed523218bb3"
 
 [metadata.files]
 alabaster = [
@@ -1162,8 +1162,8 @@ flake8 = [
     {file = "flake8-3.9.2.tar.gz", hash = "sha256:07528381786f2a6237b061f6e96610a4167b226cb926e2aa2b6b1d78057c576b"},
 ]
 flake8-annotations = [
-    {file = "flake8-annotations-2.8.0.tar.gz", hash = "sha256:a2765c6043098aab0a3f519b871b33586c7fba7037686404b920cf8100cc1cdc"},
-    {file = "flake8_annotations-2.8.0-py3-none-any.whl", hash = "sha256:880f9bb0677b82655f9021112d64513e03caefd2e0d786ab4a59ddb5b262caa9"},
+    {file = "flake8-annotations-2.9.0.tar.gz", hash = "sha256:63fb3f538970b6a8dfd84125cf5af16f7b22e52d5032acb3b7eb23645ecbda9b"},
+    {file = "flake8_annotations-2.9.0-py3-none-any.whl", hash = "sha256:84f46de2964cb18fccea968d9eafce7cf857e34d913d515120795b9af6498d56"},
 ]
 flake8-bandit = [
     {file = "flake8_bandit-3.0.0-py2.py3-none-any.whl", hash = "sha256:61b617f4f7cdaa0e2b1e6bf7b68afb2b619a227bb3e3ae00dd36c213bd17900a"},
