@@ -64,7 +64,7 @@ requests==2.27.1; python_version >= "3.7" and python_full_version < "3.0.0" or p
 six==1.16.0; python_full_version >= "3.6.1" and python_version >= "3.6"
 smmap==5.0.0; python_version >= "3.7"
 snowballstemmer==2.2.0; python_version >= "3.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0" and python_version >= "3.7"
-soupsieve==2.3.1; python_version >= "3.6" and python_full_version > "3.0.0"
+soupsieve==2.3.2.post1; python_version >= "3.6" and python_full_version > "3.0.0"
 sphinx-autobuild==2021.3.14; python_version >= "3.6"
 sphinx-sitemap==2.2.0
 sphinx==4.4.0; python_version >= "3.6"
