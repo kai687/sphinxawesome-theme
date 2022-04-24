@@ -33,7 +33,7 @@ isort==5.10.1; python_full_version >= "3.6.1" and python_version < "4.0"
 jinja2==3.0.3; python_version >= "3.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0" and python_version >= "3.7"
 livereload==2.6.3; python_version >= "3.6"
 markdown-it-py==2.0.1; python_version >= "3.7" and python_version < "4.0"
-markupsafe==2.1.0; python_version >= "3.7"
+markupsafe==2.1.1; python_version >= "3.7"
 mccabe==0.6.1; python_full_version >= "3.6.2" and python_full_version < "4.0.0" and (python_version >= "3.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0" and python_version >= "3.7") and (python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.5.0" and python_version >= "3.6") and (python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0")
 mdit-py-plugins==0.3.0; python_version >= "3.7" and python_version < "4.0"
 mdurl==0.1.0; python_version >= "3.7" and python_version < "4.0"
