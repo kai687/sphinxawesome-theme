@@ -39,7 +39,7 @@
     "postcss": "^8.4.13",
     "postcss-import": "^14.1.0",
     "postcss-loader": "^6.2.1",
-    "postcss-preset-env": "^7.4.4",
+    "postcss-preset-env": "^7.5.0",
     "prettier": "^2.6.2",
     "stylelint": "^14",
     "stylelint-config-prettier": "^9.0.3",
