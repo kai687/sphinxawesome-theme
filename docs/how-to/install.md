@@ -201,7 +201,7 @@ Follow these steps to install the Python dependencies:
    To install and manage multiple versions of Node.js,
    see the [Node Version Manager](https://github.com/nvm-sh/nvm) project.
 
-1. Optional: install [`yarn`](https://classic.yarnpkg.com/lang/en/):
+1. Optional: install [`yarn`](https://yarnpkg.com/):
 
    ```terminal
    npm install --global yarn
