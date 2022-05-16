@@ -1030,7 +1030,7 @@ docs = ["myst-parser", "sphinx-autobuild", "sphinx-sitemap", "sphinxcontrib-prog
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "e80d2a077a4331891213196bc720207ecdd3f21d2bfcbc5ebf2f84207ac5d4ff"
+content-hash = "7cd9ca3154281d438a07d76b1185ea4276dcacbf1f36bc6433fd6e2aa9f9ceff"
 
 [metadata.files]
 alabaster = [
