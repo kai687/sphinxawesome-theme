@@ -21,7 +21,7 @@
     "stimulus": "^3.0.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.10",
+    "@babel/core": "^7.18.0",
     "@babel/preset-env": "^7.17.10",
     "@fontsource/jetbrains-mono": "^4.5.8",
     "@fontsource/roboto": "^4.5.7",
