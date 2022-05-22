@@ -1,40 +1,28 @@
 version: 2
 updates:
-- package-ecosystem: npm
-  directory: "/src/theme-src"
-  schedule:
-    interval: weekly
-    day: sunday
-    timezone: Europe/Berlin
-  open-pull-requests-limit: 10
-  assignees:
-  - kai687
-  ignore:
-  - dependency-name: postcss
-    versions:
-    - 8.2.6
-    - 8.2.8
-  - dependency-name: postcss-loader
-    versions:
-    - 5.0.0
-    - 5.1.0
-- package-ecosystem: pip
-  directory: "/"
-  schedule:
-    interval: weekly
-    day: sunday
-    timezone: Europe/Berlin
-  open-pull-requests-limit: 10
-  assignees:
-  - kai687
-  ignore:
-  - dependency-name: docutils
-    versions:
-    - 0.17.1
-  - dependency-name: mypy
-    versions:
-    - "0.800"
-    - "0.812"
-  - dependency-name: sphinx
-    versions:
-    - 3.5.1
+  - package-ecosystem: npm
+    directory: "/src/theme-src"
+    schedule:
+      interval: weekly
+      day: sunday
+      timezone: Europe/Berlin
+    assignees:
+      - kai687
+
+  - package-ecosystem: pip
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: sunday
+      timezone: Europe/Berlin
+    assignees:
+      - kai687
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: sunday
+      timezone: Europe/Berlin
+    assignees:
+      - kai687
