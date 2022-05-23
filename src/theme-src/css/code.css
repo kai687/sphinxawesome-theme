@@ -10,7 +10,7 @@
   }
 }
 
-kbd:not(.compound) {
+main kbd:not(.compound) {
   @apply inline-block font-medium text-xs p-1 border border-gray-dark rounded-sm;
 }
 

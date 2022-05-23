@@ -14,7 +14,7 @@
 }
 
 .DocSearch-Button-Key {
-  @apply h-5 p-4 text-sm shadow-none border;
+  @apply h-5 p-4 text-sm font-sans;
 }
 
 .DocSearch-Button:hover .DocSearch-Button-Key {
