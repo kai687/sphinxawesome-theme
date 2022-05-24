@@ -46,15 +46,15 @@
   }
 
   h1 {
-    @apply mt-20 text-gray-dark tracking-tight text-4xl sm:text-5xl lg:text-6xl;
+    @apply mt-20 text-gray-dark tracking-tight text-3xl;
   }
 
   h2 {
-    @apply mb-8 text-gray-dark tracking-tight leading-6 text-xl sm:text-2xl lg:text-3xl;
+    @apply mb-8 text-gray-dark tracking-tight leading-6 text-xl sm:text-2xl;
   }
 
   h3 {
-    @apply text-gray-dark text-lg lg:text-xl;
+    @apply text-gray-dark text-lg;
   }
 
   h4 {
