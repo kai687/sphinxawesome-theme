@@ -3,9 +3,9 @@
  */
 :root {
   --docsearch-searchbox-background: transparent;
+  --docsearch-searchbox-shadow: inset 0 0 0 2px var(--color-brand);
   --docsearch-key-gradient: transparent;
-  --docsearch-primary-color: var(--color-brand);
-  --docsearch-text-color: "rgba(209,213,219,1)";
+  --docsearch-primary-color: hsl(204deg 73% 40%);
   --docsearch-modal-width: 960px;
 }
 
