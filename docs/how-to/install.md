@@ -48,11 +48,11 @@ development version that aren't released yet.
 If you want to add styles or extra templates,
 see {ref}`customize the theme <sec:customize>`.
 
-## Install the theme from a fork
+## Install the theme from a local folder
 
 If you want to modify the theme,
 you can clone the repository and install the cloned version
-as a local Python package.
+as [local Python package](https://packaging.python.org/en/latest/tutorials/installing-packages/#installing-from-a-local-src-tree).
 
 1. {ref}`sec:fork-and-clone`.
 1. To install the local version of the theme in your project:
@@ -61,11 +61,12 @@ as a local Python package.
    ---
    emphasize-text: "/path/to/sphinxawesome_theme"
    ---
-   pip install /path/to/sphinxawesome_theme
+   pip install --editable /path/to/sphinxawesome_theme
    ```
 
    Replace {samp}`{/path/to/sphinxawesome_theme}` with the path to your local directory
    with the theme (the directory with the `pyproject.toml` file).
+   The `--editable` option installs the package in editable, or development, mode.
 
 (sec:dev-env)=
 
