@@ -210,8 +210,9 @@ html_awesome_headerlinks = False
 
 <!-- vale Awesome.SpellCheck = YES -->
 
-By default, the {{ product }} shows the programming language above
-code blocks in a header. To disable this behavior, set this option to `False`.
+By default, the {{ product }} shows the programming language
+of a code block in its header.
+If you don't want to show the programming language, set this option to `False`.
 
 ```{code-block} python
 :caption: "File: conf.py"

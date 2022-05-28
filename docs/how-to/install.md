@@ -48,10 +48,11 @@ development version that aren't released yet.
 If you want to add styles or extra templates,
 see {ref}`customize the theme <sec:customize>`.
 
-## Install the theme as a local Python package
+## Install the theme from a local folder
 
-If you want to modify the theme and test your modifications first,
-you can install the theme as a local Python package.
+If you want to modify the theme,
+you can clone the repository and install the cloned version
+as [local Python package](https://packaging.python.org/en/latest/tutorials/installing-packages/#installing-from-a-local-src-tree).
 
 1. {ref}`sec:fork-and-clone`.
 1. To install the local version of the theme in your project:
@@ -60,22 +61,23 @@ you can install the theme as a local Python package.
    ---
    emphasize-text: "/path/to/sphinxawesome_theme"
    ---
-   pip install /path/to/sphinxawesome_theme
+   pip install --editable /path/to/sphinxawesome_theme
    ```
 
    Replace {samp}`{/path/to/sphinxawesome_theme}` with the path to your local directory
    with the theme (the directory with the `pyproject.toml` file).
+   The `--editable` option installs the package in editable, or development, mode.
 
 (sec:dev-env)=
 
 ## Set up a development environment
 
-The project has two different sets of dependencies---for Python and JavaScript. If you
-want to write documentation or modify the Python extensions,
+The project has both Python and JavaScript dependencies.
+If you want to write documentation or modify the Python extensions,
 {ref}`install the Python dependencies <sec:install-python-deps>`.
 
-If you want to modify the Jinja2 templates, the CSS, or the JavaScript files, you also
-need to {ref}`install the JavaScript dependencies <sec:install-js-deps>`.
+If you want to modify the Jinja2 templates, the CSS, or the JavaScript files,
+you also need to {ref}`install the JavaScript dependencies <sec:install-js-deps>`.
 
 ```{note}
 Because this theme uses [Tailwind CSS](https://tailwindcss.com) to apply styles,
@@ -159,7 +161,7 @@ Follow these steps to install the Python dependencies:
    ```
 
    If you don't plan on committing any changes to the repository, you can skip
-   this step. The active pre-commit hooks are defined in the file {gh}`.pre-commit-config.yaml`.
+   this step. You can see the active pre-commit hooks in the file {gh}`.pre-commit-config.yaml`.
 
    To test pre-commit with Poetry, run:
 
@@ -198,8 +200,12 @@ Follow these steps to install the Python dependencies:
    If you installed Node.js, make sure that the path to the `node`
    executable is in your `PATH` environment variable.
 
-   To install and manage multiple versions of Node.js,
-   see the [Node Version Manager](https://github.com/nvm-sh/nvm) project.
+   ```{note}
+   For installing and managing Node.js versions, see these projects:
+
+   - [nvm](https://github.com/nvm-sh/nvm)
+   - [Volta](https://volta.sh/)
+   ```
 
 1. Optional: install [`yarn`](https://yarnpkg.com/):
 
