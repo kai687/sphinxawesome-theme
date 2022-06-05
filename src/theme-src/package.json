@@ -29,7 +29,7 @@
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.1",
-    "cssnano": "^5.1.9",
+    "cssnano": "^5.1.11",
     "cssnano-preset-advanced": "^5.3.5",
     "eslint": "^8.16.0",
     "eslint-config-prettier": "^8.5.0",
