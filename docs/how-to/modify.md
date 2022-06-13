@@ -1,8 +1,9 @@
 ---
-html_meta:
-  description: |
-    Make your own theme by building on top of this theme.
-    Fully customize the styles, JavaScript, and templates.
+myst:
+  html_meta:
+    description: |
+      Make your own theme by building on top of this theme.
+      Fully customize the styles, JavaScript, and templates.
 ---
 
 (sec:modify)=

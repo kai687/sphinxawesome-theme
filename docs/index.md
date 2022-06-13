@@ -1,7 +1,8 @@
 ---
-html_meta:
-  description: Create functional and beautiful websites for your documentation with Sphinx and the Awesome Sphinx Theme.
-  keywords: Documentation, Sphinx, Python
+myst:
+  html_meta:
+    description: Create functional and beautiful websites for your documentation with Sphinx and the Awesome Sphinx Theme.
+    keywords: Documentation, Sphinx, Python
 ---
 
 <!-- vale Google.Headings = NO -->

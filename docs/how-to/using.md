@@ -1,8 +1,9 @@
 ---
-html_meta:
-  description: |
-    Find out how to make your Sphinx documentation awesome by using the features of the
-    Awesome Theme.
+myst:
+  html_meta:
+    description: |
+      Find out how to make your Sphinx documentation awesome by using the features of the
+      Awesome Theme.
 ---
 
 # Make your documentation awesome
