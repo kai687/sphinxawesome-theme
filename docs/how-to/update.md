@@ -1,8 +1,9 @@
 ---
-html_meta:
-  description: |
-    Updating the Awesome Theme is straightforward for most users.
-    Find out what you should consider when updating between major versions.
+myst:
+  html_meta:
+    description: |
+      Updating the Awesome Theme is straightforward for most users.
+      Find out what you should consider when updating between major versions.
 ---
 
 # Update the theme

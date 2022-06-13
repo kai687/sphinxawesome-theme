@@ -1,8 +1,9 @@
 ---
-html_meta:
-  description: |
-    Learn how to add the Awesome Theme to your Sphinx documentation,
-    how to configure the theme, and how to use its features.
+myst:
+  html_meta:
+    description: |
+      Learn how to add the Awesome Theme to your Sphinx documentation,
+      how to configure the theme, and how to use its features.
 ---
 
 # Use the theme

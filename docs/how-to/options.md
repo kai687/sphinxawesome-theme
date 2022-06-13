@@ -1,7 +1,8 @@
 ---
-html_meta:
-  description: |
-    Configure the Awesome Theme by changing an option in your Sphinx configuration file.
+myst:
+  html_meta:
+    description: |
+      Configure the Awesome Theme by changing an option in your Sphinx configuration file.
 ---
 
 (sec:configure)=
