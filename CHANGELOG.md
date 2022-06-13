@@ -1,10 +1,12 @@
 # Changelog
 
-## HEAD
+## 3.3.1
 
 - Handle DocSearch inclusion correctly (#781)
 - Handle optional scroll to top better (#798)
 - Smaller horizontal `li` spacing
+- Better heading styles on large screens (#926)
+- Sphinx 5.0 support
 
 ## 3.3.0
 
