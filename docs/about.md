@@ -41,3 +41,7 @@ To see the full list of dependencies, see these files:
 
 [creative commons attribution-sharealike 4.0]: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 [apache license, version 2.0]: https://www.apache.org/licenses/LICENSE-2.0.html
+
+## Test
+
+This should trigger a Vale run.
