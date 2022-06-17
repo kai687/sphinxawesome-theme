@@ -41,6 +41,6 @@ Require Sphinx 4 or newer
 This allows to reduce the amount of custom transformations.
 
 Restructure a few templates
-: the layout use
+: The layout use
 [CSS grid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout).
 This leads to fewer container elements in the templates.
