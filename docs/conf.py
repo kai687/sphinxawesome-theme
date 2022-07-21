@@ -138,6 +138,8 @@ html_theme_options = {
     },
 }
 
+sitemap_url_scheme = "{link}"
+
 
 # -- Register a :confval: interpreted text role ----------------------------------
 def setup(app: Sphinx) -> None:
