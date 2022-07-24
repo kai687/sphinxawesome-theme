@@ -13,7 +13,7 @@
     "@docsearch/js": "^3.1.1",
     "@tailwindcss/nesting": "^0.0.0-insiders.565cd3e",
     "clipboard": "^2.0.11",
-    "stimulus": "3.0.1"
+    "stimulus": "3.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.18.6",
