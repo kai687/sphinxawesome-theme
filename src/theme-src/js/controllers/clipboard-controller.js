@@ -2,7 +2,7 @@
  * Copy headerlinks to clipboard
  *
  */
-import { Controller } from "stimulus";
+import { Controller } from "@hotwired/stimulus";
 import ClipboardJS from "clipboard";
 
 export default class extends Controller {

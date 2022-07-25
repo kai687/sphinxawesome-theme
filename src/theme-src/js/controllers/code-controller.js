@@ -1,7 +1,7 @@
 /*
  * Copy code blocks to clipboard
  */
-import { Controller } from "stimulus";
+import { Controller } from "@hotwired/stimulus";
 import Clipboard from "clipboard";
 
 export default class extends Controller {
