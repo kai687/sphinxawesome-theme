@@ -6,14 +6,19 @@
     "dev": "NODE_ENV=development webpack --watch --progress",
     "format": "prettier --write js/**/*.js"
   },
-  "browserslist": ["last 2 versions", "not dead", "> 1%"],
+  "browserslist": [
+    "last 2 versions",
+    "not dead",
+    "> 1%"
+  ],
   "author": "Kai Welke",
   "license": "MIT",
   "dependencies": {
     "@docsearch/js": "^3.1.1",
+    "@hotwired/stimulus": "^3.1.0",
+    "@hotwired/stimulus-webpack-helpers": "^1.0.1",
     "@tailwindcss/nesting": "^0.0.0-insiders.565cd3e",
-    "clipboard": "^2.0.11",
-    "stimulus": "3.0.1"
+    "clipboard": "^2.0.11"
   },
   "devDependencies": {
     "@babel/core": "^7.18.6",
