@@ -65,7 +65,7 @@ def setup_docsearch(
     # update local context for rendering the `layout.html` templates for every page
     context["docsearch_config"] = docsearch_config
     # update the global context for writing the `docsearch_config.js` file
-    app.builder.globalcontext["docsearch_config"] = docsearch_config  # type: ignore [union-attr] # noqa: B950,E501
+    app.builder.globalcontext["docsearch_config"] = docsearch_config  # type: ignore [attr-defined] # noqa: B950,E501
 
 
 def setup(app: Sphinx) -> Dict[str, Any]:
