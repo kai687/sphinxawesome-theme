@@ -49,11 +49,17 @@ Create functional and beautiful websites for your documentation with Sphinx.
    {sphinxdocs}`Getting started with Sphinx <usage/quickstart.html>`
    ```
 
-In the _how-to_ section, you can learn more about the different
-{ref}`Theme <sec:theme-options>` and
-{ref}`sec:extension-options` or
-{ref}`sec:customize`.
-You can get an overview over all available styles in the _demo_ section.
+## Learn more
+
+In the _how-to_ section, you can learn more about using and customizing the theme.
+
+```{seealso}
+{ref}`Theme <sec:theme-options>`
+{ref}`sec:extension-options`
+{ref}`sec:customize`
+```
+
+See the _demo_ section for all available styles.
 
 ## Give feedback
 
