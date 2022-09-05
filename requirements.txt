@@ -43,7 +43,7 @@ mypy==0.961; python_version >= "3.6"
 myst-parser==0.18.0; python_version >= "3.7"
 nodeenv==1.7.0; python_version >= "3.7" and python_full_version < "3.0.0" or python_full_version >= "3.7.0" and python_version >= "3.7"
 packaging==21.3; python_version >= "3.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0" and python_version >= "3.7"
-pathspec==0.9.0; python_full_version >= "3.6.2" and python_version >= "3.7"
+pathspec==0.10.1; python_full_version >= "3.6.2" and python_version >= "3.7"
 pbr==5.10.0; python_version >= "3.7"
 platformdirs==2.5.2; python_full_version >= "3.6.2" and python_version >= "3.7" and (python_version >= "3.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0" and python_version >= "3.7")
 pluggy==1.0.0; python_version >= "3.7"
