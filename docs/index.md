@@ -29,13 +29,14 @@ Create functional and beautiful websites for your documentation with Sphinx.
    {ref}`sec:install`
    ```
 
-2. Add the theme to your Sphinx configuration:
+1. Add the theme to your Sphinx configuration:
 
    ```{code-block} python
    ---
    caption: "File: conf.py"
    ---
-   html_theme = ["sphinxawesome_theme"]
+   html_theme = "sphinxawesome_theme"
+   extensions = ["sphinxawesome_theme"]
    ```
 
    ```{seealso}
@@ -43,7 +44,7 @@ Create functional and beautiful websites for your documentation with Sphinx.
    {confval}`sphinx:html_theme`
    ```
 
-3. Build your documentation with Sphinx.
+1. Build your documentation with Sphinx.
 
    ```{seealso}
    {sphinxdocs}`Getting started with Sphinx <usage/quickstart.html>`
