@@ -175,7 +175,8 @@ class AwesomeHtmlFormatter(HtmlFormatter):  # type: ignore
             source = self._highlight_lines(source)
 
         # wrap the thing in <code> and <pre>
-        source = self.wrap(source, outfile)
+        if not self.nowrap:
+            source = self.wrap(source, outfile)
 
         for _, piece in source:
             outfile.write(piece)
