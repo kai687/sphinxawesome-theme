@@ -31,14 +31,21 @@ Sphinx configuration.
    html_theme = "sphinxawesome_theme"
    ```
 
+1. Add the theme as an extension in the Sphinx configuration file `conf.py`:
+
+   ```python
+   extensions = ["sphinxawesome_theme"]
+   ```
+
    See [How to load the theme](https://sphinxawesome.xyz/how-to/load/) for more information.
 
-For more information about configuring the theme to your use case, see [How to configure the theme](https://sphinxawesome.xyz/how-to/options/).
+For more information about configuring the theme for your use case,
+see [How to configure the theme](https://sphinxawesome.xyz/how-to/options/).
 
 ## Features
 
 With the Awesome Theme, you can build readable, functional, and beautiful documentation websites.
-Compared to other Sphinx themes, these features enhance the user experience:
+These features enhance the user experience:
 
 ### Awesome code blocks
 
@@ -67,7 +74,7 @@ Clicking the link icon after a header or caption automatically copies the URL to
 ### DocSearch
 
 If you have an Algolia DocSearch account for your documentation (it's free for open-source projects),
-you can use DocSearch for a search-as-you-type experience with autocomplete. 
+you can use DocSearch for a search-as-you-type experience with autocomplete.
 
 ### Better keyboard navigation
 

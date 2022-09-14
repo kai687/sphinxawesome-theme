@@ -22,15 +22,26 @@ backlinks: none
 
 ## Load the theme from a Python package
 
-If you installed the {{ product }} {ref}`as a Python package <sec:install-python-package>`,
-add the `html_theme` configuration option to your Sphinx configuration file `conf.py`:
+To use the {{ product }} in your documentation:
 
-```{code-block} python
----
-caption: "File: conf.py"
----
-html_theme = "sphinxawesome_theme"
-```
+1. {ref}`sec:install-python-package`
+1. Add the `html_theme` configuration option to your Sphinx configuration file `conf.py`:
+
+    ```{code-block} python
+    ---
+    caption: "File: conf.py"
+    ---
+    html_theme = "sphinxawesome_theme"
+    ```
+
+1. Add the `sphinxawesome_theme` as an extension to your Sphinx configuration:
+
+   ```{code-block} python
+   ---
+   caption: "File: conf.py"
+   ---
+   extensions = ["sphinxawesome_theme"]
+   ```
 
 ## Load the theme from a local directory
 
