@@ -1,5 +1,9 @@
 # Changelog
 
+## HEAD
+
+- Theme no longer breaks when not setting it as extension (#1042)
+
 ## 3.3.1
 
 - Handle DocSearch inclusion correctly (#781)
