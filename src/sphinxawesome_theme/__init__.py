@@ -32,6 +32,9 @@ def post_config_setup(app: Sphinx, config: Config) -> None:
     """Set up extensions if configuration is ready."""
     app.setup_extension("sphinxawesome_theme.docsearch")
 
+    if config.html_awesome_highlighting:
+        app.setup_extension("sphinxawesome_theme.highlighting")
+
     if config.html_awesome_html_translator:
         app.setup_extension("sphinxawesome_theme.html_translator")
 
@@ -46,6 +49,9 @@ def setup(app: "Sphinx") -> Dict[str, Any]:
     )
     app.add_config_value(
         name="html_awesome_postprocessing", default=True, rebuild="html", types=(bool)
+    )
+    app.add_config_value(
+        name="html_awesome_highlighting", default=True, rebuild="html", types=(bool)
     )
     app.add_config_value(
         name="html_awesome_html_translator", default=True, rebuild="html", types=(bool)
@@ -66,7 +72,6 @@ def setup(app: "Sphinx") -> Dict[str, Any]:
         name="html_awesome_code_headers", default=True, rebuild="html", types=(str)
     )
 
-    app.setup_extension("sphinxawesome_theme.highlighting")
     app.setup_extension("sphinxawesome_theme.jinja_functions")
     app.connect("config-inited", post_config_setup)
 

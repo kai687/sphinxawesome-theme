@@ -165,8 +165,15 @@ The values are absolute URLs.
 
 ## Extension options
 
-This theme also enables a few internal extensions that enhance the user experience. The
-following configuration values are set at the top level in the Sphinx
+```{note}
+Extension options are only available
+if you add the theme to the list of extensions
+in your Sphinx configuration file `conf.py`:
+`extensions = ["sphinxawesome_theme"]`
+```
+
+The {{ product }} also enables a few internal extensions that enhance the user experience.
+The following configuration values are set at the top level in the Sphinx
 configuration file `conf.py`:
 
 <!-- vale Awesome.SpellCheck = NO -->

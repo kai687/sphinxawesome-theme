@@ -3,6 +3,7 @@
 ## HEAD
 
 - Theme no longer breaks when not setting it as extension (#1042)
+- Inline code is highlighted correctly (#1045)
 
 ## 3.3.1
 
