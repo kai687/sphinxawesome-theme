@@ -1,8 +1,8 @@
-{% if docsearch %}
+{%- if docsearch_config %}
 docsearch({
   container: "{{ docsearch_config.container|default('#docsearch') }}",
   appId: "{{ docsearch_config.app_id }}",
   apiKey: "{{ docsearch_config.api_key }}",
   indexName: "{{ docsearch_config.index_name }}",
 });
-{% endif %}
+{%- endif %}
