@@ -1,6 +1,6 @@
 # Changelog
 
-## HEAD
+## 3.3.2
 
 - Theme no longer breaks when not setting it as extension (#1042)
 - Inline code is highlighted correctly (#1045)
