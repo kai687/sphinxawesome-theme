@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.3.3
+
+- Re-apply #1045 (overwrote changes by accident)
+
 ## 3.3.2
 
 - Theme no longer breaks when not setting it as extension (#1042)
