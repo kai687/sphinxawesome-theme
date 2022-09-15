@@ -1,5 +1,5 @@
 ---
-name: Publish a new version on PyPI
+name: Release a new version
 
 on:
   push:
@@ -8,6 +8,7 @@ on:
 
 jobs:
   release:
+    name: Publish to PyPI
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -31,3 +32,13 @@ jobs:
           POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_TOKEN }}
         run: |
           poetry publish
+
+  tag-release:
+    name: Tag release
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: Tag release on GitHub
+        uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          prerelease: false
