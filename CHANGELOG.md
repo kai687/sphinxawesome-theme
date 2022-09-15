@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.3.4
+
+- Fix bug introduced #1048 with DocSearch
+
 ## 3.3.3
 
 - Re-apply #1045 (overwrote changes by accident)
