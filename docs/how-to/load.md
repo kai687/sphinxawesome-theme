@@ -43,6 +43,13 @@ To use the {{ product }} in your documentation:
    extensions = ["sphinxawesome_theme"]
    ```
 
+   Loading the {{ product }} as an extension activates a few Sphinx extensions,
+   that enhance the user experience.
+
+   ```{seealso}
+   {ref}`sec:extension-options`
+   ```
+
 ## Load the theme from a local directory
 
 If you want to keep your documentation and theme as a single project,
