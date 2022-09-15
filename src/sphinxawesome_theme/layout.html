@@ -1,11 +1,11 @@
 {%- macro script() %}
 {%- for js in script_files %}
-  {{ js_tag(js) }}
+{{ js_tag(js) }}
 {%- endfor %}
 <script src="{{ pathto(asset('_static/theme.js'), 1) }}"></script>
 {%- if docsearch %}
-  <script src="{{ pathto(asset('_static/docsearch.js'), 1) }}"></script>
-  <script src="{{ pathto('_static/docsearch_config.js', 1) }}"></script>
+<script src="{{ pathto(asset('_static/docsearch.js'), 1) }}"></script>
+<script src="{{ pathto('_static/docsearch_config.js', 1) }}"></script>
 {%- endif %}
 {%- endmacro -%}
 
@@ -19,7 +19,7 @@
   {%- endif -%}
 {%- else -%}
   {%- set titlesuffix = "" -%}
-{%- endif %}
+{%- endif -%}
 
 <!DOCTYPE html>
 <html lang="{{ lang_attr }}">
@@ -28,31 +28,34 @@
     <meta charset="utf-8" />
     {{ metatags }}
     {%- block htmltitle %}
-      <title>{{ title|striptags|e if title else docstitle }}{{ titlesuffix }}</title>
+    <title>{{ title|striptags|e if title else docstitle }}{{ titlesuffix }}</title>
     {%- endblock %}
     {#- Extra CSS files for overriding stuff #}
     {%- for css in css_files %}
-      <link rel="stylesheet" href="{{ pathto(asset(css), 1) }}" />
+    <link rel="stylesheet" href="{{ pathto(asset(css), 1) }}" />
     {%- endfor %}
+    {%- if docsearch %}
+    <link rel="preconnect" href="https://{{ docsearch_config.app_id }}-dsn.algolia.net" crossorigin />
+    {% endif %}
     {%- if pageurl %}
-      <link rel="canonical" href="{{ pageurl }}" />
+    <link rel="canonical" href="{{ pageurl }}" />
     {%- endif %}
     {%- if favicon %}
-      <link rel="shortcut icon" href="{{ pathto('_static/' + favicon, 1) }}" />
+    <link rel="shortcut icon" href="{{ pathto('_static/' + favicon, 1) }}" />
     {%- endif %}
     {%- block linktags %}
-      {%- if hasdoc('search') and not docsearch %}
-        <link rel="search" title="{{ _('Search') }}" href="{{ pathto('search') }}" />
-      {%- endif %}
-      {%- if hasdoc('genindex') %}
-        <link rel="index" title="{{ _('Index') }}" href="{{ pathto('genindex') }}" />
-      {%- endif %}
-      {%- if next %}
-        <link rel="next" title="{{ next.title|striptags|e }}" href="{{ next.link|e }}" />
-      {%- endif %}
-      {%- if prev %}
-        <link rel="prev" title="{{ prev.title|striptags|e }}" href="{{ prev.link|e }}" />
-      {%- endif %}
+    {%- if hasdoc('search') and not docsearch %}
+    <link rel="search" title="{{ _('Search') }}" href="{{ pathto('search') }}" />
+    {%- endif %}
+    {%- if hasdoc('genindex') %}
+    <link rel="index" title="{{ _('Index') }}" href="{{ pathto('genindex') }}" />
+    {%- endif %}
+    {%- if next %}
+    <link rel="next" title="{{ next.title|striptags|e }}" href="{{ next.link|e }}" />
+    {%- endif %}
+    {%- if prev %}
+    <link rel="prev" title="{{ prev.title|striptags|e }}" href="{{ prev.link|e }}" />
+    {%- endif %}
     {%- endblock %}
   </head>
 
