@@ -10,7 +10,7 @@ myst:
 
 ```{rst-class} lead
 Learn how to add the {{ product }} to your Sphinx documentation,
-how to change the theme's options, and how to use its features.
+how to configure the theme, and how to use its features.
 ```
 
 ```{toctree}
