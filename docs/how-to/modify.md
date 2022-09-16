@@ -11,7 +11,7 @@ myst:
 # Modify the theme
 
 ```{rst-class} lead
-Learn how to build your own theme by changing the templates or CSS.
+Build your own theme by changing the templates or CSS.
 ```
 
 ```{contents} On this page
@@ -23,7 +23,7 @@ backlinks: none
 
 ## Modify the templates
 
-You can apply styles in the templates with Tailwind's utility classes.
+You can style the templates with Tailwind's utility classes.
 
 ```{code-block} terminal
 ---
@@ -36,9 +36,11 @@ emphasize-lines: 1
 
 To modify these styles, follow these steps:
 
-1. Install the Python and JavaScript dependencies:
+1. Install the Python and JavaScript dependencies.
 
-   See {ref}`sec:dev-env` for more information.
+   ```{seealso}
+   {ref}`sec:dev-env`
+   ```
 
 1. Make your change.
 
@@ -79,8 +81,10 @@ To modify these styles, follow these steps:
 
 1. Install the Python and JavaScript dependencies.
 
-   See {ref}`sec:dev-env` for more information.
-
+  ```{seealso}
+   {ref}`sec:dev-env`
+   ```
+   
 1. Make your change.
 
    The CSS files are arranged according to the elements they apply to.
