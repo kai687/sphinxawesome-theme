@@ -53,10 +53,6 @@ Create functional and beautiful websites for your documentation with Sphinx.
 ## Learn more
 
 In the _How-to_ section, you can learn more about using and customizing the theme.
-In the _Demo_ section, you can see all available styles.
-
-<!-- vale Google.Headings = NO -->
-<!-- vale 18F.Headings = NO -->
 
 ```{toctree}
 ---
@@ -83,5 +79,5 @@ demo/*
 
 ## Give feedback
 
-Is something broken or missing?
+Is something not working or do you miss a feature?
 Create a [GitHub issue](https://github.com/kai687/sphinxawesome-theme/issues/new).
