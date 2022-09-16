@@ -11,7 +11,7 @@ myst:
 # Customize the theme
 
 ```{rst-class} lead
-You can customize the {{ product }} by adding custom CSS, using custom layouts, or modify
+Customize the {{ product }} by adding custom CSS, using custom layouts, or modify
 existing templates.
 ```
 
@@ -22,18 +22,18 @@ backlinks: none
 ---
 ```
 
-For the methods listed on this page, it's better to use traditional methods to style
+For the methods listed on this page, it's better to use traditional classes to style
 your templates. Extra files aren't processed by webpack, so you can't use Tailwind's
 `@apply` directive. See {ref}`sec:modify`, if you want to modify the
-existing templates and use (almost) the full power of Tailwind.
+existing templates and use Tailwind CSS.
 
 (sec:override-styles)=
 
 ## Add or override styles
 
-To add extra CSS files, use the {confval}`sphinx:html_css_files` configuration value.
+To add extra CSS files, use the {confval}`sphinx:html_css_files` configuration option.
 To add extra JavaScript files, use the {confval}`sphinx:html_js_files` configuration
-value.
+option.
 
 For example, place additional styles in a file `_static/custom.css` and add the
 following options to your Sphinx configuration in `conf.py`:
@@ -165,7 +165,7 @@ HEADER
 
 This shows the word _HEADER_ on every page of your documentation.
 
-The main templates you may want to override include:
+The main templates you can override are:
 
 <!-- vale Google.Colons = NO -->
 
