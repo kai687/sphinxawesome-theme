@@ -56,7 +56,7 @@ you can clone the repository and install the cloned version
 as [local Python package](https://packaging.python.org/en/latest/tutorials/installing-packages/#installing-from-a-local-src-tree).
 
 1. {ref}`sec:fork-and-clone`.
-1. To install the local version of the theme in your project:
+1. Install the local version of the theme in your project:
 
    ```{code-block} terminal
    ---
