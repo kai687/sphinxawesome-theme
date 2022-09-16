@@ -43,7 +43,7 @@ To use the {{ product }} in your documentation:
    extensions = ["sphinxawesome_theme"]
    ```
 
-   Loading the {{ product }} as an extension activates a few Sphinx extensions,
+   Loading the {{ product }} as an extension activates a few Sphinx extensions
    that enhance the user experience.
 
    ```{seealso}
