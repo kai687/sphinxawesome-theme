@@ -23,9 +23,9 @@ backlinks: none
 ```{admonition} What's the difference between theme and extension options?
 It's a technical distinction due to the way Sphinx builds a project.
 
-- **Theme options** are defined in the HTML templates. They only control layout/styling aspects.
+- **Theme options** are defined in the HTML templates. They control layout and styling aspects.
 - **Extension options** are defined in the Python code of the extensions.
-  They can control more aspects when building the documentation.
+  They can control more aspects, for example, running extra code.
 ```
 
 (sec:theme-options)=
@@ -168,11 +168,11 @@ The values are absolute URLs.
 ```{note}
 Extension options are only available
 if you add the theme to the list of extensions
-in your Sphinx configuration file `conf.py`:
+in your Sphinx configuration:
 `extensions = ["sphinxawesome_theme"]`
 ```
 
-The {{ product }} also enables a few internal extensions that enhance the user experience.
+The {{ product }} enables a few internal extensions that enhance the user experience.
 The following configuration values are set at the top level in the Sphinx
 configuration file `conf.py`:
 
@@ -183,7 +183,7 @@ configuration file `conf.py`:
 <!-- vale Awesome.SpellCheck = YES -->
 
 Set this option to `True` to make code references, such as classes, methods, and other
-objects, collapsible and expandable. By default, this option is turned off.
+objects, collapsible and expandable.
 
 ```{code-block} python
 :caption: "File: conf.py"
