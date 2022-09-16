@@ -26,7 +26,6 @@ extensions = [
     "sphinxawesome_theme",
     "myst_parser",
     "sphinx_sitemap",
-    "sphinxcontrib.programoutput",
 ]
 
 myst_enable_extensions = ["colon_fence", "deflist", "replacements", "substitution"]
