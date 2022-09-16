@@ -44,35 +44,23 @@ Create functional and beautiful websites for your documentation with Sphinx.
    {confval}`sphinx:html_theme`
    ```
 
-1. Build your documentation with Sphinx.
+1. Build your documentation.
 
    ```{seealso}
-   {sphinxdocs}`Getting started with Sphinx <usage/quickstart.html>`
+   {sphinxdocs}`Get started with Sphinx <usage/quickstart.html>`
    ```
 
 ## Learn more
 
-In the _how-to_ section, you can learn more about using and customizing the theme.
-
-```{seealso}
-{ref}`Theme <sec:theme-options>`
-{ref}`sec:extension-options`
-{ref}`sec:customize`
-```
-
-See the _demo_ section for all available styles.
-
-## Give feedback
-
-Is something broken or missing?
-Create a [GitHub issue](https://github.com/kai687/sphinxawesome-theme/issues/new).
+In the _How-to_ section, you can learn more about using and customizing the theme.
+In the _Demo_ section, you can see all available styles.
 
 <!-- vale Google.Headings = NO -->
 <!-- vale 18F.Headings = NO -->
 
 ```{toctree}
 ---
-hidden: true
+maxdepth: 1
 caption: How-To
 ---
 
@@ -85,10 +73,15 @@ how-to/update
 
 ```{toctree}
 ---
-hidden: true
+maxdepth: 1
 caption: Demo
 glob: true
 ---
 
 demo/*
 ```
+
+## Give feedback
+
+Is something broken or missing?
+Create a [GitHub issue](https://github.com/kai687/sphinxawesome-theme/issues/new).
