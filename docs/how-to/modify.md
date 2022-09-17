@@ -64,8 +64,9 @@ To modify these styles, follow these steps:
 
 ## Modify CSS files
 
-Everything that's part of the main content, including everything that's converted from
-reStructuredText to HTML is styled using Tailwind's `@apply` directive.
+Everything that's part of the main content,
+including everything that's converted from
+reStructuredText or Markdown to HTML is styled using Tailwind's `@apply` directive.
 
 ```{code-block} terminal
 ---
@@ -81,10 +82,10 @@ To modify these styles, follow these steps:
 
 1. Install the Python and JavaScript dependencies.
 
-  ```{seealso}
+   ```{seealso}
    {ref}`sec:dev-env`
    ```
-   
+
 1. Make your change.
 
    The CSS files are arranged according to the elements they apply to.
