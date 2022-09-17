@@ -6,16 +6,15 @@ Notes, warnings, and quotations
 
 .. rst-class:: lead
 
-   You can use one of the following directives to mark up **additional information**.
-   These elements are often called *admonitions* or *call-outs*.
+   Use *admonitions* or *callouts* to mark up **additional information**.
 
 ----
 
 Tips
 ----
 
-You can use the ``tip`` directive to highlight information that has a positive effect
-for the user. For example, a tip can be a shortcut or a confirmation.
+Use the ``tip`` directive to highlight information that has a positive effect for users.
+For example, a tip can be a shortcut or a confirmation.
 
 .. tip::
 
@@ -30,7 +29,7 @@ You can also use the ``hint`` element, which appears in the same style.
 Notes
 -----
 
-You can use the ``note`` directive to provide extra information.
+Use the ``note`` directive to provide extra information.
 
 .. note::
 
@@ -44,7 +43,7 @@ To include a list of references, you can use the ``seealso`` directive.
    `Docutils directives <https://docutils.sourceforge.io/docs/ref/rst/directives.html>`_
 
 
-You can also create notes with custom titles. Use the ``admonition`` directive:
+To create notes with custom titles, use the ``admonition`` directive:
 
 .. code-block:: rst
 
@@ -52,7 +51,7 @@ You can also create notes with custom titles. Use the ``admonition`` directive:
 
       Enter the custom title after after the ``admonition`` directive.
 
-This gets rendered as:
+This renders as:
 
 .. admonition:: How to give a note a custom title?
 
@@ -61,7 +60,7 @@ This gets rendered as:
 Cautions
 --------
 
-You can use a ``caution`` directive to alert the user about important issues.
+Use a ``caution`` directive to alert users about important issues.
 
 .. caution::
 
@@ -71,13 +70,13 @@ You can also use the ``important`` directive, which appears in the same style.
 
 .. important::
 
-   Important and caution call-outs appear in the same style.
+   Important and caution callouts appear in the same style.
 
 Warnings
 --------
 
-You can use the ``warning`` directive to warn the user about negative consequences.
-For example, anything involving security should be emphasized with a warning.
+You can use the ``warning`` directive to warn users about negative consequences.
+For example, you should use a warning to call out anything involving security.
 
 .. warning::
 
