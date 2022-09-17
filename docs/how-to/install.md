@@ -151,13 +151,13 @@ Follow these steps to install the Python dependencies:
    pipx install poetry
    ```
 
-1. [Install Nox](https://github.com/wntrblm/nox#installation):
+1. [Install Nox](https://github.com/wntrblm/nox/#installation):
 
    ```terminal
    pipx install nox
    ```
 
-1. [Install nox-poetry](https://github.com/cjolowicz/nox-poetry#installation):
+1. [Install nox-poetry](https://github.com/cjolowicz/nox-poetry/#installation):
 
    ```terminal
    pipx inject nox nox-poetry
