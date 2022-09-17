@@ -18,10 +18,24 @@ jobs:
         with:
           python-version: '3.10'
 
+      - name: Update Pip
+        run: |
+          pip install --constraint=constraints.txt pip
+          pip --version
+
+      - name: Update Pip in virtual environments
+        shell: python
+        run: |
+          import os
+          import pip
+
+          with open(os.environ["GITHUB_ENV"], mode="a") as io:
+            print(f"VIRTUALENV_PIP={pip.__version__}", file=io)
+
       - name: Install Poetry
         run: |
-          pip install --constraint=constraints.txt poetry
-          poetry install -v --no-dev
+          pipx install --pip-args=--constraint=constraints.txt poetry
+          poetry --version
 
       - name: Build Packages
         run: |
