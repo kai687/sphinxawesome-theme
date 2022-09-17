@@ -29,7 +29,7 @@ To mark up code in inline text, you can:
 Syntax highlighting in inline code
 ----------------------------------
 
-By default, Sphinx doesn't highlight inline code. 
+By default, Sphinx doesn't highlight inline code.
 To highlight inline code with Sphinx:
 
 #. Create a docutils configuration file :file:`docutils.conf` in the same directory as
@@ -45,15 +45,14 @@ To highlight inline code with Sphinx:
 
    .. note::
 
-      This option makes Pygments use short class names for the highlighted code. 
+      This option makes Pygments use short class names for the highlighted code.
       This lets you re-use the same Pygments style sheet
       :file:`pygments.css` that Sphinx already uses for code blocks.
 
 #. For each language you want to highlight, create a custom interpreted text role using
    docutils' :rst:`role` directive.
 
-   For example, to highlight inline Python code, add the following code to the beginning
-   of the |rst| file, in which you want to use the highlighting:
+   For example, add this code to the beginning of an |rst| file:
 
    .. code-block:: rst
 
@@ -61,9 +60,8 @@ To highlight inline code with Sphinx:
         :language: python
         :class: highlight
 
-
-   This renders a ``code`` element with a class of ``highlight``, which uses the
-   highlighting styles from Pygments---the same as for code blocks.
+   This lets you highlight inline Python code.
+   Adding the ``highlight`` class lets you re-use the Pygments CSS styles that Sphinx already uses for code blocks.
 
 #. Use the new role to highlight inline code. For example:
 
@@ -77,9 +75,9 @@ To highlight inline code with Sphinx:
 More interpreted text roles
 ---------------------------
 
-Docutils and Sphinx come with many interpreted text roles to mark up specific elements.
-While this can be useful to convey semantic intentions in the |rst| source files,
-it's a good idea to use only a few different roles:
+Docutils and Sphinx have many interpreted text roles.
+They can be useful to convey precise semantic intentions in the |rst| source files.
+On the other hand, it might be better to only use a few different roles:
 
 - The difference between the many roles are lost in the rendered output.
   Most of these roles are rendered like code (or bold).
