@@ -26,7 +26,7 @@ jobs:
 
       - name: Update Pip
         run: |
-          pip install --constraint=.github/workflows/constraints.txt pip
+          pip install --constraint=constraints.txt pip
           pip --version
 
       - name: Update Pip in virtual environments
@@ -40,17 +40,17 @@ jobs:
 
       - name: Install Poetry
         run: |
-          pipx install --pip-args=--constraint=.github/workflows/constraints.txt poetry
+          pipx install --pip-args=--constraint=constraints.txt poetry
           poetry --version
 
       - name: Install nox
         run: |
-          pipx install --pip-args=--constraint=.github/workflows/constraints.txt nox
+          pipx install --pip-args=--constraint=constraints.txt nox
           nox --version
 
       - name: Install nox-poetry
         run: |
-          pipx inject --pip-args=--constraint=.github/workflows/constraints.txt nox nox-poetry
+          pipx inject --pip-args=--constraint=constraints.txt nox nox-poetry
 
       - name: Run nox workflow
         run: |

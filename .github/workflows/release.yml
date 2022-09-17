@@ -20,7 +20,7 @@ jobs:
 
       - name: Install Poetry
         run: |
-          pip install --constraint=.github/workflows/constraints.txt poetry
+          pip install --constraint=constraints.txt poetry
           poetry install -v --no-dev
 
       - name: Build Packages

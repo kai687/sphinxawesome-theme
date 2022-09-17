@@ -35,7 +35,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install --constraint=.github/workflows/constraints.txt poetry nox nox-poetry
+          pip install --constraint=constraints.txt poetry nox nox-poetry
 
       - name: Run nox workflow
         run: |
