@@ -75,6 +75,7 @@ def live_docs(session: Session) -> None:
         "*woff*",
         "--ignore",
         "docsearch*",
+        "--open-browser",
     ]
     session.install(".", "sphinx-autobuild", *docs_dependencies)
     session.run("sphinx-autobuild", *args)
