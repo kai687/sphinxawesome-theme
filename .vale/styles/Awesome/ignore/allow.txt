@@ -1,5 +1,6 @@
 Algolia
 bugfixes
+callouts
 deps
 docsearch
 docutils
