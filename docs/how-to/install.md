@@ -12,7 +12,7 @@ myst:
 ```{rst-class} lead
 Install the {{ product }} as a Python package,
 copy it into a local directory,
-or install the development dependencies to create your own theme.
+or install a full development environment.
 ```
 
 ```{contents} On this page
@@ -33,7 +33,7 @@ Install the latest **released version** from the Python Package Index
 pip install sphinxawesome-theme
 ```
 
-You can also install the latest **development version**:
+To install the latest **development version**, run:
 
 ```terminal
 pip install git+https://github.com/kai687/sphinxawesome-theme.git
@@ -49,14 +49,14 @@ development version that aren't released yet.
 If you want to add styles or extra templates,
 see {ref}`customize the theme <sec:customize>`.
 
-## Install the theme from a local folder
+## Install the theme from a local directory
 
 If you want to modify the theme,
 you can clone the repository and install the cloned version
 as [local Python package](https://packaging.python.org/en/latest/tutorials/installing-packages/#installing-from-a-local-src-tree).
 
 1. {ref}`sec:fork-and-clone`.
-1. Install the local version of the theme in your project:
+1. Install the local copy of the theme in your project:
 
    ```{code-block} terminal
    ---
@@ -65,8 +65,8 @@ as [local Python package](https://packaging.python.org/en/latest/tutorials/insta
    pip install --editable /path/to/sphinxawesome_theme
    ```
 
-   Replace {samp}`{/path/to/sphinxawesome_theme}` with the path to your local directory
-   with the theme (the directory with the `pyproject.toml` file).
+   Replace {samp}`{/path/to/sphinxawesome_theme}` with the path to your local copy
+   of the theme (the directory with the `pyproject.toml` file).
    The `--editable` option installs the package in editable, or development, mode.
 
 (sec:dev-env)=
@@ -89,7 +89,7 @@ even if you just want to edit the HTML templates.
 
 (sec:fork-and-clone)=
 
-## Create a local copy of the theme
+## Create a local copy of the repository
 
 To modify the theme, create a local copy:
 
@@ -100,7 +100,7 @@ To modify the theme, create a local copy:
 
 1. Clone the repository:
 
-   - If you forked the repository, enter:
+   - If you forked the repository, run:
 
      ```{code-block} terminal
      ---
@@ -129,10 +129,9 @@ The {{ product }} uses [Poetry](https://python-poetry.org/) to manage the Python
 dependencies and [Nox](https://nox.thea.codes/en/stable/) to test and lint the code.
 
 ```{note}
-The commands below install the latest versions of Nox and Poetry.
-In case of a version conflict,
-see the file {gh}`constraints.txt <.github/workflows/constraints.txt>`
-for the version numbers used when building the {{ product }} Python package.
+The commands shown in this section install the latest versions of Nox and Poetry.
+See the file {gh}`constraints.txt <.github/workflows/constraints.txt>`
+for the version numbers of Nox and Poetry used for building the {{ product }} Python package.
 ```
 
 Follow these steps to install the Python dependencies:
@@ -193,8 +192,9 @@ Follow these steps to install the Python dependencies:
 
 1. Confirm that [Node.js](https://nodejs.org/en/) is installed:
 
-   ```{command-output} node --version
-
+   ```terminal
+   $ node --version
+   v16.16.0
    ```
 
    If the preceding command fails, make sure that you installed Node.js.

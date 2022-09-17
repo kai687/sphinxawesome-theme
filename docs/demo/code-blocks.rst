@@ -10,7 +10,7 @@ Code blocks
 
 .. rst-class:: lead
 
-   See, how code blocks look like in the |product|.
+   See how code blocks look like with the |product|.
 
 .. contents:: On this page
    :local:
@@ -22,20 +22,8 @@ Sphinx code-block directive
 
 To document code blocks with syntax highlighting,
 use Sphinx's :rst:`code-block` directive.
-If you don't provide an explicit language to the directive, a fallback is used:
 
-#. You used the :rst:`highlight` directive to set a default on a per-document basis.
-   Any code block *after* this directive is highlighted with the language you specified.
-
-#. You set the global fallback language for highlighting in the Sphinx configuration
-   file with the ``highlight_language`` option.
-
-.. seealso::
-
-   :sphinxdocs:`highlight directive <usage/restructuredtext/directives.html#directive-highlight>`
-   :confval:`sphinx:highlight_language`
-
-You can provide the language for syntax highlighting to the :rst:`code-block` directive:
+You can provide the language used for syntax highlighting to the :rst:`code-block` directive:
 
 .. code-block:: rst
 
@@ -52,10 +40,23 @@ This renders as:
 All code blocks have a :guilabel:`Copy` button.
 Clicking the button copies the code to the clipboard.
 
+If you don't provide an explicit language to the directive, a fallback is used:
+
+#. If you used the :rst:`highlight` directive to set a default language on a per-document basis, 
+   any code block *after* this directive is highlighted with the language you specified.
+
+#. If you set the global fallback language for highlighting in the Sphinx configuration
+   file with the ``highlight_language`` option, this language is used as default.
+
+.. seealso::
+
+   :sphinxdocs:`highlight directive <usage/restructuredtext/directives.html#directive-highlight>`
+   :confval:`sphinx:highlight_language`
+
 Add captions to code blocks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can provide captions to code blocks with the :samp:`:caption: {CAPTION_TEXT}` option:
+Add captions to code blocks with the :samp:`:caption: {CAPTION_TEXT}` option:
 
 .. code-block:: javascript
    :caption: Example code
@@ -66,7 +67,7 @@ You can provide captions to code blocks with the :samp:`:caption: {CAPTION_TEXT}
 Show line numbers in code blocks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can show line numbers in code blocks with the ``:linenos:`` option:
+Show line numbers in code blocks with the ``:linenos:`` option:
 
 .. vale off
 

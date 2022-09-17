@@ -6,12 +6,12 @@ Lists
 
 .. rst-class:: lead
 
-   See how lists appear in the |product|
+   See how lists appear in the |product|.
 
 Unordered lists
 ---------------
 
-Choose an unordered, or bulleted, list, when the order of items don't matter.
+Choose an unordered, or bulleted, list, when the order of items doesn't matter.
 
 .. vale Awesome.SpellCheck = NO
 
@@ -28,8 +28,8 @@ Ordered lists
 -------------
 
 Choose an ordered list,
-when the order of the items matter.
-For example, in step-by-step instructions.
+when the order of the items matters.
+For example, use ordered lists in step-by-step instructions.
 
 #. Step 1
 #. Step 2
@@ -45,7 +45,7 @@ For example, in step-by-step instructions.
 Definition lists
 ----------------
 
-A nice way of describing categories is via definition lists.
+Use definition lists for describing terms and their definitions.
 
 Term a
    Definition for term a

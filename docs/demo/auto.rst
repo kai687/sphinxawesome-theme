@@ -1,19 +1,16 @@
 .. meta::
-   :description: See an example how module documentation looks like with this theme. Sphinx generates module documentation from docstrings in the source code.
+   :description: See an example for module documentation with the Awesome theme. Sphinx generates module documentation from docstrings in the source code.
 
-
-====================
 Module documentation
 ====================
 
 .. rst-class:: lead
 
-   See, how automatically generated documentation from Python source code
+   See how automatically generated documentation from Python source code
    looks like with the |product|.
 
 .. vale Awesome.SpellCheck = NO
 
-------------------
 Automodule example
 ------------------
 
@@ -24,7 +21,6 @@ Automodule example
 
 .. vale Awesome.SpellCheck = NO
 
------------------
 Autoclass example
 -----------------
 
@@ -35,7 +31,6 @@ Autoclass example
 
 .. vale Awesome.SpellCheck = NO
 
---------------------
 Autofunction example
 --------------------
 
@@ -43,12 +38,17 @@ Autofunction example
 
 .. autofunction:: docutils.nodes.serial_escape
 
-
---------------------
 Command line options
 --------------------
 
-If you want to document command-line options, you have two choices.
+If you want to document command-line options, you have two choices: 
+
+- The ``option`` directive (Sphinx)
+- An option list (docutils)
+
+Option directive
+~~~~~~~~~~~~~~~~
+
 Sphinx comes with the ``option`` directive. This renders every option
 into its own element, including permalinks:
 
@@ -64,12 +64,10 @@ into its own element, including permalinks:
 
    Increase the verbosity.
 
-
-------------
 Option lists
-------------
+~~~~~~~~~~~~
 
-A more compact way is built into the ``docutils`` module and works in Sphinx too:
+A compact way to display command-line options is built into the ``docutils`` module and works in Sphinx too:
 
 -h, --help              Display a helpful message.
 -i FILE, --input FILE   Specify an input file.

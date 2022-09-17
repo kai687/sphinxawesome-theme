@@ -23,9 +23,9 @@ backlinks: none
 ```{admonition} What's the difference between theme and extension options?
 It's a technical distinction due to the way Sphinx builds a project.
 
-- **Theme options** are defined in the HTML templates. They only control layout/styling aspects.
+- **Theme options** are defined in the HTML templates. They control layout and styling aspects.
 - **Extension options** are defined in the Python code of the extensions.
-  They can control more aspects when building the documentation.
+  They can control more aspects, for example, running extra code.
 ```
 
 (sec:theme-options)=
@@ -35,9 +35,11 @@ It's a technical distinction due to the way Sphinx builds a project.
 You can configure the theme by modifying the `html_theme_options` dictionary in the
 Sphinx configuration file `conf.py`.
 
+<!-- vale Awesome.SpellCheck = NO -->
+
 :::{confval} nav_include_hidden
 
-<!-- vale Awesome.SpellCheck = NO -->
+<!-- vale Awesome.SpellCheck = YES -->
 
 If you don't want to include entries from a _hidden_
 {sphinxdocs}`toctree <usage/restructuredtext/directives.html#directive-toctree>`
@@ -55,11 +57,13 @@ By default, the `toctree` directive includes your content _and_ generates a list
 area of the page. With the `hidden` option, the content is still included,
 but no links are printed in the main content area.
 
-<!-- vale Awesome.SpellCheck = YES -->
-
 :::
 
+<!-- vale Awesome.SpellCheck = NO -->
+
 :::{confval} show_nav
+
+<!-- vale Awesome.SpellCheck = YES -->
 
 The {{ product }} shows links to all your documentation pages in sidebar on the left
 side.
@@ -75,7 +79,11 @@ html_theme_options = {"show_nav": False}
 
 :::
 
+<!-- vale Awesome.SpellCheck = NO -->
+
 :::{confval} show_breadcrumbs
+
+<!-- vale Awesome.SpellCheck = YES -->
 
 The {{ product }} shows
 [breadcrumbs](https://en.wikipedia.org/wiki/Breadcrumb_navigation)
@@ -92,7 +100,11 @@ html_theme_options = {"show_breadcrumbs": False}
 
 :::
 
+<!-- vale Awesome.SpellCheck = NO -->
+
 :::{confval} breadcrumbs_separator
+
+<!-- vale Awesome.SpellCheck = YES -->
 
 To select a different separator for the breadcrumbs navigation links,
 set:
@@ -109,7 +121,11 @@ html_theme_options = {"breadcrumbs_separator": "CHAR"}
 Replace {samp}`{CHAR}` with a character or HTML entity of your choice.
 :::
 
+<!-- vale Awesome.SpellCheck = NO -->
+
 :::{confval} show_prev_next
+
+<!-- vale Awesome.SpellCheck = YES -->
 
 To show links to the previous and next pages, set this option to `True`:
 
@@ -140,7 +156,11 @@ html_theme_options = {"show_scrolltop": True}
 
 :::
 
+<!-- vale Awesome.SpellCheck = NO -->
+
 :::{confval} extra_header_links
+
+<!-- vale Awesome.SpellCheck = YES -->
 
 To add extra links to the header of your documentation, set the following option:
 
@@ -168,11 +188,11 @@ The values are absolute URLs.
 ```{note}
 Extension options are only available
 if you add the theme to the list of extensions
-in your Sphinx configuration file `conf.py`:
+in your Sphinx configuration:
 `extensions = ["sphinxawesome_theme"]`
 ```
 
-The {{ product }} also enables a few internal extensions that enhance the user experience.
+The {{ product }} enables a few internal extensions that enhance the user experience.
 The following configuration values are set at the top level in the Sphinx
 configuration file `conf.py`:
 
@@ -183,7 +203,7 @@ configuration file `conf.py`:
 <!-- vale Awesome.SpellCheck = YES -->
 
 Set this option to `True` to make code references, such as classes, methods, and other
-objects, collapsible and expandable. By default, this option is turned off.
+objects, collapsible and expandable.
 
 ```{code-block} python
 :caption: "File: conf.py"
@@ -198,10 +218,10 @@ html_collapsible_definitions = True
 
 :::{confval} html_awesome_headerlinks
 
+<!-- vale Awesome.SpellCheck = YES -->
+
 Set this option to `False` to restore Sphinx's default behavior for headerlinks.
 In the {{ product }}, clicking a headerlink immediately copies the URL to the clipboard.
-
-<!-- vale Awesome.SpellCheck = YES -->
 
 ```{code-block} python
 :caption: "File: conf.py"

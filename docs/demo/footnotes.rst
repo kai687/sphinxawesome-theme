@@ -8,7 +8,7 @@ Footnotes
 
    Footnotes are a way in printed documents to add more information outside of the main
    flow of text.
-   They don't apply well to the online experience, especially on mobile devices.
+   They don't apply well to online experiences, especially on mobile devices.
 
 ----
 
@@ -16,7 +16,7 @@ Footnotes
 
    .. code-block:: rst
 
-      .. [1] To use a footnote...
+      .. [1] To create a footnote, create a label and indent it by three spaces.
 
 .. [#label] As footnote labels, you can use numbers [1]_, labels [#label]_,
    or you can use automatic labeling [#]_

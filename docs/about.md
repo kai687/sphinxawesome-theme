@@ -11,7 +11,7 @@ myst:
 # About
 
 ```{rst-class} lead
-This pages lists assets that this theme uses to be awesome.
+This pages lists assets that the {{ product }} uses to be awesome.
 ```
 
 ---

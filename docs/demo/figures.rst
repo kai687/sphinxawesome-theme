@@ -1,12 +1,12 @@
 .. meta::
-   :description: Discover how the theme styles figures, images and their supporting elements, such as captions.
+   :description: Discover how the theme styles figures, images, and their supporting elements, such as captions.
 
 Figures and tables
 ==================
 
 .. rst-class:: lead
 
-   On this page, you can see how images, figures and tables look like.
+   See how images, figures, and tables look like with the |product|.
    Sphinx distinguishes between *images* and *figures*.
 
 ----
@@ -14,7 +14,7 @@ Figures and tables
 Images
 ------
 
-For straightforward images without captions, use the ``image`` directive.
+For images without captions or legends, use the ``image`` directive.
 
 .. image:: image.svg
    :alt: A placeholder image
