@@ -50,7 +50,7 @@ jobs:
 
       - name: Install nox-poetry
         run: |
-          pipx inject --pip-args=--constraints=.github/workflows/constraints.txt nox nox-poetry
+          pipx inject --pip-args=--constraint=.github/workflows/constraints.txt nox nox-poetry
 
       - name: Run nox workflow
         run: |
