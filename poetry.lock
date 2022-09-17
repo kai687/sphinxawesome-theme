@@ -695,18 +695,6 @@ pytest = ">=4.6"
 testing = ["fields", "hunter", "process-tests", "pytest-xdist", "six", "virtualenv"]
 
 [[package]]
-name = "pytest-randomly"
-version = "3.12.0"
-description = "Pytest plugin to randomly order tests and control random.seed."
-category = "dev"
-optional = false
-python-versions = ">=3.7"
-
-[package.dependencies]
-importlib-metadata = {version = ">=3.6.0", markers = "python_version < \"3.10\""}
-pytest = "*"
-
-[[package]]
 name = "python-dotenv"
 version = "0.21.0"
 description = "Read key-value pairs from a .env file and set them as environment variables"
@@ -1028,7 +1016,7 @@ docs = ["myst-parser", "sphinx-autobuild", "sphinx-sitemap"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "1e32e45e06fd9220136be71517f934deb32f03166c9dda942356f8e4a5c8cc3f"
+content-hash = "a389762107fe65773848b2d699e47a0dd9a0e99fe477b515b844b2348a002f6d"
 
 [metadata.files]
 alabaster = [
@@ -1385,10 +1373,6 @@ pytest = [
 pytest-cov = [
     {file = "pytest-cov-3.0.0.tar.gz", hash = "sha256:e7f0f5b1617d2210a2cabc266dfe2f4c75a8d32fb89eafb7ad9d06f6d076d470"},
     {file = "pytest_cov-3.0.0-py3-none-any.whl", hash = "sha256:578d5d15ac4a25e5f961c938b85a05b09fdaae9deef3bb6de9a6e766622ca7a6"},
-]
-pytest-randomly = [
-    {file = "pytest-randomly-3.12.0.tar.gz", hash = "sha256:d60c2db71ac319aee0fc6c4110a7597d611a8b94a5590918bfa8583f00caccb2"},
-    {file = "pytest_randomly-3.12.0-py3-none-any.whl", hash = "sha256:f4f2e803daf5d1ba036cc22bf4fe9dbbf99389ec56b00e5cba732fb5c1d07fdd"},
 ]
 python-dotenv = [
     {file = "python-dotenv-0.21.0.tar.gz", hash = "sha256:b77d08274639e3d34145dfa6c7008e66df0f04b7be7a75fd0d5292c191d79045"},
