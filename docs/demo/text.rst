@@ -6,7 +6,7 @@ Headings and text
 
 .. rst-class:: lead
 
-   See on this page, how basic text elements appear in the |product|.
+   See how basic text elements appear in the |product|.
 
 The |product| includes styles for heading levels ``h1``, ``h2``, ``h3``, ``h4``,
 as well as the special rubric heading.
@@ -15,7 +15,7 @@ Only heading levels ``h1``, ``h2``, and ``h3`` show up in the navigation sidebar
 Inline markup
 -------------
 
-For emphasizing inline text, you can either *emphasize* it or make it a **strong**
+To emphasize inline text, you can either *emphasize* it or make it a **strong**
 statement.
 
 .. centered:: For even more emphasis, you *could* use a ``centered`` directive.
