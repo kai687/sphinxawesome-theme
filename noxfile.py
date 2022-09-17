@@ -17,7 +17,6 @@ docs_dependencies = [
     "bs4",
     "myst-parser",
     "sphinx-sitemap",
-    "sphinxcontrib-programoutput",
 ]
 
 VersionType = TypeVar("VersionType", bound="Versions")
