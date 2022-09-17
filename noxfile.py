@@ -8,7 +8,7 @@ import nox
 from nox_poetry import Session, session
 
 nox.options.stop_on_first_error = True
-nox.options.sessions = ["docs", "lint", "black", "mypy"]
+nox.options.sessions = ["docs", "lint", "black", "mypy", "tests"]
 
 python_files = ["src/sphinxawesome_theme", "noxfile.py", "docs/conf.py", "tests/"]
 
@@ -25,7 +25,6 @@ VersionType = TypeVar("VersionType", bound="Versions")
 class Versions(Enum):
     """Python versions as `Enum`."""
 
-    THREE_SIX = "3.6"
     THREE_SEVEN = "3.7"
     THREE_EIGHT = "3.8"
     THREE_NINE = "3.9"
