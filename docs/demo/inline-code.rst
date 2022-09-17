@@ -29,8 +29,8 @@ To mark up code in inline text, you can:
 Syntax highlighting in inline code
 ----------------------------------
 
-By default, Sphinx doesn't highlight inline code. With the following extra steps,
-you can enable it.
+By default, Sphinx doesn't highlight inline code. 
+To highlight inline code with Sphinx:
 
 #. Create a docutils configuration file :file:`docutils.conf` in the same directory as
    the Sphinx configuration file :file:`conf.py`.
@@ -43,12 +43,10 @@ you can enable it.
       [restructuredtext parser]
       syntax_highlight = short
 
-   This makes ``docutils`` use short class names for syntax highlighting, the same
-   setting as Sphinx uses to highlight code blocks.
-
    .. note::
 
-      This is necessary so that you can re-use the Pygments style sheet
+      This option makes Pygments use short class names for the highlighted code. 
+      This lets you re-use the same Pygments style sheet
       :file:`pygments.css` that Sphinx already uses for code blocks.
 
 #. For each language you want to highlight, create a custom interpreted text role using
@@ -83,15 +81,13 @@ Docutils and Sphinx come with many interpreted text roles to mark up specific el
 While this can be useful to convey semantic intentions in the |rst| source files,
 it's a good idea to use only a few different roles:
 
-- The difference between the many roles are lost in the rendered output. Most of these
-  roles are rendered like code (or bold).
+- The difference between the many roles are lost in the rendered output.
+  Most of these roles are rendered like code (or bold).
 
-- Using too many directives puts a burden on documentation writers, who may be more
-  familiar with the Markdown format. They have to agree and remember when to use which
-  role.
+- Using too many directives puts a burden on documentation writers,
+  who have to agree and remember when to use which role.
 
-The awesome theme only provides styles for the following interpreted text roles.
-
+The |product| provides styles for the following interpreted text roles.
 
 Files and directories
 ~~~~~~~~~~~~~~~~~~~~~
@@ -109,9 +105,11 @@ directory names using the following syntax:
 
    :file:`/home/{USERNAME}/`
 
-This renders as :file:`/home/{USERNAME}/`. If you want to distinguish directories from
-file names, you can append a Slash (``/``) character to directory names.
+This renders as :file:`/home/{USERNAME}/`.
 
+.. tip::
+
+   To distinguish directories from files, you can append a Slash (``/``) character to directory names.
 
 Inline code with placeholder text
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -125,11 +123,10 @@ role:
 
 This renders as :samp:`Replace {PLACEHOLDER}`.
 
-
 Keyboard input
 ~~~~~~~~~~~~~~
 
-You can highlight keyboard combinations using the :rst:`kbd` interpreted text role:
+You can highlight key combinations using the :rst:`kbd` interpreted text role:
 
 .. code-block:: rst
 
@@ -140,7 +137,7 @@ This renders as :kbd:`Ctrl+F`.
 User interface elements
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-Graphical user interface elements are often rendered in a bold font.
+Graphical user interface elements are rendered in a bold font.
 
 Use the :rst:`guilabel` role to highlight user interface elements, such as buttons:
 
