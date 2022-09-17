@@ -48,7 +48,7 @@ class Versions(Enum):
 def tests(session: Session) -> None:
     """Run unit tests."""
     args = session.posargs or ["--cov"]
-    deps = ["coverage[toml]", "pytest", "pytest-cov", "pytest-randomly"]
+    deps = ["coverage[toml]", "pytest", "pytest-cov"]
     session.install(".", *deps)
     session.run("pytest", *args)
 
