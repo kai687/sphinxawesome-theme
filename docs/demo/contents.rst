@@ -6,15 +6,20 @@ On-page navigation
 
 .. rst-class:: lead
 
-   When you have many sections on a page, it's good to provide
+   When you have many sections on a page, you can provide
    a table of contents for a better overview.
 
 To show a table of contents for the current page,
 use the ``contents`` directive with the ``:local:`` option.
-You must provide a title for the directive to render.
-By default, headings included after this directive are links back to the contents section
-(as you can see on this page).
+You must provide a title to the directive, or it won't show.
+By default, headings included after this directive are links back to the contents section.
 If you want to turn off this behavior, use ``:backlinks: none``.
+
+.. code-block:: rst
+
+   .. contents:: On this page
+      :local:
+      :backlinks: none
 
 .. contents:: On this page
    :local:
