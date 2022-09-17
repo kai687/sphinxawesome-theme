@@ -37,6 +37,6 @@ jobs:
         run: |
           pip install --constraint=constraints.txt poetry nox nox-poetry
 
-      - name: Run nox workflow
+      - name: Run Nox linkcheck session
         run: |
           nox -s linkcheck

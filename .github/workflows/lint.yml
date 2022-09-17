@@ -43,7 +43,7 @@ jobs:
           pipx install --pip-args=--constraint=constraints.txt poetry
           poetry --version
 
-      - name: Install nox
+      - name: Install Nox
         run: |
           pipx install --pip-args=--constraint=constraints.txt nox
           nox --version
