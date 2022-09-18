@@ -7,7 +7,7 @@
  *       that's why we set `block` here explicitly.
  */
 .contents.local {
-  @apply mt-12 pb-12 border-b block;
+  @apply mt-12 pb-12 border-b block print:hidden;
   & .topic-title {
     @apply uppercase text-sm font-medium text-gray-light mt-0 mb-2 font-mono;
   }

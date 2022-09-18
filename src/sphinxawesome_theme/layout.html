@@ -64,11 +64,11 @@
       id="page"
       data-controller="sidebar search {{ 'scroll' if theme_show_scrolltop|tobool }}"
       data-action="keydown@window->search#focus {{ 'scroll@window->scroll#showButton' if theme_show_scrolltop|tobool }}"
-      class="min-h-screen xl:h-screen flex flex-col xl:grid xl:grid-layout"
+      class="min-h-screen xl:h-screen flex flex-col xl:grid xl:grid-layout print:block print:h-auto"
     >
       {% include "skip.html" %}
 
-      <header class="grid-area-header z-10 h-14 sticky top-0">
+      <header class="grid-area-header z-10 h-14 sticky top-0 print:hidden">
         {% include "header.html" %}
       </header>
 

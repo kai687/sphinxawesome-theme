@@ -26,7 +26,7 @@
   }
 
   section > section {
-    @apply py-12;
+    @apply py-12 print:py-0;
   }
 
   section > p {
@@ -46,7 +46,7 @@
   }
 
   h1 {
-    @apply mt-20 text-gray-dark tracking-tight text-3xl;
+    @apply mt-20 print:mt-0 text-gray-dark tracking-tight text-3xl;
   }
 
   h2 {
