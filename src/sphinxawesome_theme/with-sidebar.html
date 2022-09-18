@@ -16,7 +16,7 @@
     {%- if theme_show_scrolltop|tobool %}
     data-action="scroll->scroll#showButton"
     {%- endif %}
-    class="px-4 xl:ml-fluid grid-area-main overflow-y-auto flex flex-col h-full mx-0 md:mx-auto xl:mr-0"
+    class="px-4 xl:ml-fluid grid-area-main overflow-y-auto flex flex-col flex-1 h-full mx-0 md:mx-auto xl:mr-0"
   >
     {%- if pagename != master_doc and theme_show_breadcrumbs|tobool %}
       {%- include "breadcrumbs.html" %}
