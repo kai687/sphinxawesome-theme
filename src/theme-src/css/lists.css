@@ -22,7 +22,7 @@
     & ul {
       @apply list-disc my-4 pl-5;
       & li {
-        @apply pl-1 my-4;
+        @apply pl-1 my-4 print:my-0;
         &::marker {
           @apply text-gray-light;
         }
