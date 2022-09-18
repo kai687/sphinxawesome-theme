@@ -1,5 +1,12 @@
 # Changelog
 
+## HEAD
+
+- better print styles (#1066)
+- DocSearch on mobile (#1058)
+- z-index/icon issue (#1057)
+- documentation updates (#1053,#1054,#1055)
+
 ## 3.3.4
 
 - Fix bug introduced #1048 with DocSearch

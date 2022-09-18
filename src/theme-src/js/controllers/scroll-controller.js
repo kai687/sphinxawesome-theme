@@ -2,7 +2,7 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ["scrollToTop"];
+  static targets = ["scrollToTop", "main"];
 
   initialize() {
     const sections = document.querySelectorAll("article section");
@@ -31,7 +31,8 @@ export default class extends Controller {
   }
 
   scrollToTop() {
-    this.element.scrollTop = 0;
+    this.mainTarget.scrollTop = 0;
+    window.scrollTo(0, 0);
     this.scrollToTopTarget.blur();
   }
 
@@ -39,7 +40,7 @@ export default class extends Controller {
     if (this.hasScrollToTopTarget) {
       const target = this.scrollToTopTarget;
 
-      if (this.element.scrollTop > 100) {
+      if (this.mainTarget.scrollTop > 100 || window.scrollY > 100) {
         target.classList.add("isShown");
       } else {
         target.classList.remove("isShown");
