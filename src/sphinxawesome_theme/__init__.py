@@ -30,8 +30,6 @@ except PackageNotFoundError:  # pragma: no cover
 
 def post_config_setup(app: Sphinx, config: Config) -> None:
     """Set up extensions if configuration is ready."""
-    app.setup_extension("sphinxawesome_theme.docsearch")
-
     if config.html_awesome_highlighting:
         app.setup_extension("sphinxawesome_theme.highlighting")
 
@@ -40,6 +38,9 @@ def post_config_setup(app: Sphinx, config: Config) -> None:
 
     if config.html_awesome_postprocessing:
         app.setup_extension("sphinxawesome_theme.postprocess")
+
+    if config.html_awesome_docsearch:
+        app.setup_extension("sphinxawesome_theme.docsearch")
 
 
 def setup(app: "Sphinx") -> Dict[str, Any]:
