@@ -9,7 +9,7 @@ const { WebpackManifestPlugin } = require("webpack-manifest-plugin");
 
 const THEME_STATIC_DIR = path.resolve(
   __dirname,
-  "../sphinxawesome_theme/static/"
+  "../sphinxawesome_theme/static/",
 );
 
 const mode = process.env.NODE_ENV || "development";

@@ -73,7 +73,7 @@ Clicking the link icon after a header or caption automatically copies the URL to
 
 ### DocSearch
 
-If you have an Algolia DocSearch account for your documentation (it's free for open-source projects),
+If you have an Algolia DocSearch account for your documentation (it's free for open source projects),
 you can use DocSearch for a search-as-you-type experience with autocomplete.
 
 ### Better keyboard navigation

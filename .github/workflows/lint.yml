@@ -24,10 +24,34 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Install dependencies
+      - name: Update Pip
         run: |
-          pip install --constraint=.github/workflows/constraints.txt poetry nox nox-poetry
+          pip install --constraint=constraints.txt pip
+          pip --version
 
-      - name: Run nox workflow
+      - name: Update Pip in virtual environments
+        shell: python
+        run: |
+          import os
+          import pip
+
+          with open(os.environ["GITHUB_ENV"], mode="a") as io:
+            print(f"VIRTUALENV_PIP={pip.__version__}", file=io)
+
+      - name: Install Poetry
+        run: |
+          pipx install --pip-args=--constraint=constraints.txt poetry
+          poetry --version
+
+      - name: Install Nox
+        run: |
+          pipx install --pip-args=--constraint=constraints.txt nox
+          nox --version
+
+      - name: Install nox-poetry
+        run: |
+          pipx inject --pip-args=--constraint=constraints.txt nox nox-poetry
+
+      - name: Run Nox workflow
         run: |
           nox -p ${{ matrix.python-version }}

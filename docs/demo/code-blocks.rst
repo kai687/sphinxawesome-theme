@@ -42,7 +42,7 @@ Clicking the button copies the code to the clipboard.
 
 If you don't provide an explicit language to the directive, a fallback is used:
 
-#. If you used the :rst:`highlight` directive to set a default language on a per-document basis, 
+#. If you used the :rst:`highlight` directive to set a default language on a per-document basis,
    any code block *after* this directive is highlighted with the language you specified.
 
 #. If you set the global fallback language for highlighting in the Sphinx configuration

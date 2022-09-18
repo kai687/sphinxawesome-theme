@@ -59,8 +59,14 @@ extlinks = {
     "sphinxdocs": ("https://www.sphinx-doc.org/en/master/%s", "%s"),
 }
 
-# doesn't seem to be reachable at the moment (2021-11-28)
-linkcheck_ignore = ["http://www.entypo.com/"]
+linkcheck_ignore = [
+    # GitHub anchors are dynamically created and difficult to check
+    # See https://github.com/sphinx-doc/sphinx/issues/9016
+    "https://github.com/cjolowicz/nox-poetry/#installation",
+    "https://github.com/wntrblm/nox/#installation",
+    # Not yet in master
+    "https://github.com/kai687/sphinxawesome-theme/blob/master/constraints.txt",
+]
 
 # -- Options for HTML output -------------------------------------------------
 

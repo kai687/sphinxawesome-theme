@@ -11,6 +11,7 @@ monospace
 netlify
 nox
 npm
+pipx
 postprocessing
 pygments
 toolchain

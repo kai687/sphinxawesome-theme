@@ -8,16 +8,15 @@ import nox
 from nox_poetry import Session, session
 
 nox.options.stop_on_first_error = True
-nox.options.sessions = ["docs", "lint", "black", "mypy"]
+nox.options.sessions = ["docs", "lint", "black", "mypy", "tests"]
 
-python_files = ["src/sphinxawesome_theme", "noxfile.py", "docs/conf.py"]
+python_files = ["src/sphinxawesome_theme", "noxfile.py", "docs/conf.py", "tests/"]
 
 docs_dependencies = [
     "sphinx",
     "bs4",
     "myst-parser",
     "sphinx-sitemap",
-    "sphinxcontrib-programoutput",
 ]
 
 VersionType = TypeVar("VersionType", bound="Versions")
@@ -26,7 +25,6 @@ VersionType = TypeVar("VersionType", bound="Versions")
 class Versions(Enum):
     """Python versions as `Enum`."""
 
-    THREE_SIX = "3.6"
     THREE_SEVEN = "3.7"
     THREE_EIGHT = "3.8"
     THREE_NINE = "3.9"
@@ -48,7 +46,7 @@ class Versions(Enum):
 def tests(session: Session) -> None:
     """Run unit tests."""
     args = session.posargs or ["--cov"]
-    deps = ["coverage[toml]", "pytest", "pytest-cov", "pytest-randomly"]
+    deps = ["coverage[toml]", "pytest", "pytest-cov"]
     session.install(".", *deps)
     session.run("pytest", *args)
 
@@ -77,6 +75,7 @@ def live_docs(session: Session) -> None:
         "*woff*",
         "--ignore",
         "docsearch*",
+        "--open-browser",
     ]
     session.install(".", "sphinx-autobuild", *docs_dependencies)
     session.run("sphinx-autobuild", *args)

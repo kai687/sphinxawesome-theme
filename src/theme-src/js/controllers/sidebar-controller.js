@@ -84,7 +84,7 @@ export default class extends Controller {
 
   getNotExpandedLinks() {
     return this.sidebarTarget.querySelectorAll(
-      ":not(.expanded) > ul > li > .nav-link > a"
+      ":not(.expanded) > ul > li > .nav-link > a",
     );
   }
 

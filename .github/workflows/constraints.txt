@@ -1,3 +1,0 @@
-nox==2022.8.7
-poetry==1.2.0
-nox-poetry==1.0.1

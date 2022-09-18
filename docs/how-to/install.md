@@ -53,7 +53,7 @@ see {ref}`customize the theme <sec:customize>`.
 
 If you want to modify the theme,
 you can clone the repository and install the cloned version
-as [local Python package](https://packaging.python.org/en/latest/tutorials/installing-packages/#installing-from-a-local-src-tree).
+as a [local Python package](https://packaging.python.org/en/latest/tutorials/installing-packages/#installing-from-a-local-src-tree).
 
 1. {ref}`sec:fork-and-clone`.
 1. Install the local copy of the theme in your project:
@@ -89,9 +89,7 @@ even if you just want to edit the HTML templates.
 
 (sec:fork-and-clone)=
 
-## Create a local copy of the repository
-
-To modify the theme, create a local copy:
+### Create a local copy of the repository
 
 1. Optional: [fork the repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo).
 
@@ -123,10 +121,13 @@ To modify the theme, create a local copy:
 
 (sec:install-python-deps)=
 
-## Install Python dependencies
+### Install Python dependencies
 
-The {{ product }} uses [Poetry](https://python-poetry.org/) to manage the Python
-dependencies and [Nox](https://nox.thea.codes/en/stable/) to test and lint the code.
+The {{ product }} uses these Python tools:
+
+- [Poetry](https://python-poetry.org/) to manage the Python dependencies and building the package
+- [Nox](https://nox.thea.codes/en/stable/) to test and lint the Python code, as well as to build the docs
+- [Pipx](https://pypa.github.io/pipx/) to install Python applications in isolated environments and making them available globally
 
 ```{note}
 The commands shown in this section install the latest versions of Nox and Poetry.
@@ -136,15 +137,34 @@ for the version numbers of Nox and Poetry used for building the {{ product }} Py
 
 Follow these steps to install the Python dependencies:
 
-1. {ref}`sec:fork-and-clone`.
+1. {ref}`sec:fork-and-clone`
 
-1. [Install Poetry](https://python-poetry.org/docs/master/#installing-with-the-official-installer).
-
-1. Install Nox:
+1. [Install pipx](https://pypa.github.io/pipx/#install-pipx):
 
    ```terminal
-   pip install --user --upgrade nox
+   pip install --user pipx
    ```
+
+1. [Install Poetry](https://python-poetry.org/docs/master/#installing-with-pipx):
+
+   ```terminal
+   pipx install poetry
+   ```
+
+1. [Install Nox](https://github.com/wntrblm/nox/#installation):
+
+   ```terminal
+   pipx install nox
+   ```
+
+1. [Install nox-poetry](https://github.com/cjolowicz/nox-poetry/#installation):
+
+   ```terminal
+   pipx inject nox nox-poetry
+   ```
+
+   Nox-poetry is a package for using Poetry and Nox together.
+   The `nox-poetry` package must be installed in the same environment as Nox.
 
 1. Install the Python dependencies:
 
@@ -174,21 +194,46 @@ Follow these steps to install the Python dependencies:
 1. Test your Nox environment.
 
    You can run any Nox session to confirm that the environment is working.
-   To list the available sessions, enter:
+   To list the available sessions, run:
 
    ```terminal
-   nox -ls
+   nox --list-sessions
    ```
 
-   For example, to build the documentation with Python 3.10, enter:
+   For example, run all default sessions:
 
    ```terminal
-   nox -s docs -p 3.10
+   nox
    ```
+
+#### Using the same versions of the Python packages
+
+The commands in the preceding section install the latest versions of Poetry, Nox, and pipx.
+If you want to _constrain_ the versions to install, you can use pip's [constraint file](https://pip.pypa.io/en/stable/user_guide/#constraints-files).
+
+For example, to install a specific version of pipx, run:
+
+```terminal
+pip install --user --constraint=constraints.txt pipx
+```
+
+For example, to install a specific version of Nox with pipx, run:
+
+```terminal
+pipx --pip-args=--constraint=constraints.txt nox
+```
+
+See the file {gh}`constraints.txt` for the version constraints used in the {{ product }} repository.
+
+```{tip}
+In development environments, you might use the latest versions of packages,
+while for reproducible results in continuous integration (CI) pipelines,
+it's often better to install specific versions of packages.
+```
 
 (sec:install-js-deps)=
 
-## Install JavaScript dependencies
+### Install JavaScript dependencies
 
 1. Confirm that [Node.js](https://nodejs.org/en/) is installed:
 
@@ -206,6 +251,7 @@ Follow these steps to install the Python dependencies:
 
    - [nvm](https://github.com/nvm-sh/nvm)
    - [Volta](https://volta.sh/)
+   - [asdf](https://asdf-vm.com/)
    ```
 
 1. Optional: install [`yarn`](https://yarnpkg.com/):
@@ -217,7 +263,7 @@ Follow these steps to install the Python dependencies:
    If you want to use the same versions of JavaScript packages as in the {{ product }}
    repository, use the Yarn package manager.
 
-1. {ref}`sec:fork-and-clone`.
+1. {ref}`sec:fork-and-clone`
 
 1. Go to the `theme-src/` directory:
 

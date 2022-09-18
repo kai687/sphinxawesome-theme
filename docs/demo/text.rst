@@ -53,6 +53,8 @@ faucibus nulla cursus, dictum dolor.
 
 .. rubric:: Rubric heading
 
+.. vale 18F.UnexpandedAcronyms = NO
+
 A :sphinxdocs:`rubric <usage/restructuredtext/directives.html#directive-rubric>`
 is a special type of paragraph heading that doesn't appear in the table of contents.
 You can generate it using the :samp:`.. rubric:: {TITLE}` directive.
