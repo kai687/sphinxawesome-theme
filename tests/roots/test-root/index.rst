@@ -1,2 +1,4 @@
-Empy file
-=========
+Empty file
+==========
+
+This file is deliberately left empty.
