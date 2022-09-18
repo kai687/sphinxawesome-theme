@@ -2,6 +2,7 @@
 
 ## HEAD
 
+- better print styles (#1066)
 - DocSearch on mobile (#1058)
 - z-index/icon issue (#1057)
 - documentation updates (#1053,#1054,#1055)
