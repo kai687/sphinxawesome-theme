@@ -1,6 +1,7 @@
 """Test if a simple test compiles."""
 
 import os
+from pathlib import Path
 
 import pytest
 from sphinx.application import Sphinx
@@ -25,4 +26,4 @@ def test_can_access_and_compile_test(app: Sphinx) -> None:
 def test_compiles_html(app: Sphinx) -> None:
     """It compiles HTML with default settings."""
     app.build()
-    assert os.path.exists(app.outdir / "index.html")
+    assert os.path.exists(Path(app.outdir) / "index.html")
