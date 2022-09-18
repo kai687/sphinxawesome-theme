@@ -21,10 +21,15 @@
   @apply text-gray-dark border-gray-dark;
 }
 
-.DocSearch-Search-Icon {
+.DocSearch-Button .DocSearch-Search-Icon {
+  @apply text-gray-100;
   stroke-width: 2.5;
 }
 
+.DocSearch-Button:hover .DocSearch-Search-Icon {
+  color: var(--docsearch-text-color);
+}
+
 .DocSearch-Button-Placeholder {
-  padding-left: 12px;
+  @apply pl-3;
 }
