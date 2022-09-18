@@ -14,7 +14,7 @@ export default class extends Controller {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         const matchingLink = document.querySelector(
-          `.nav-toc a[href*=${entry.target.id}]`
+          `.nav-toc a[href*=${entry.target.id}]`,
         );
 
         if (entry.isIntersecting && matchingLink) {

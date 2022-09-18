@@ -1,9 +1,12 @@
 """Test the loading of the awesome extensions."""
 
 import os
+import re
 
 import pytest
 from sphinx.application import Sphinx
+
+from .util import parse_html
 
 
 @pytest.mark.sphinx("html", confoverrides={"html_theme": "sphinxawesome_theme"})
@@ -49,7 +52,6 @@ def test_internal_extensions(app: Sphinx) -> None:
 @pytest.mark.sphinx(
     "html",
     confoverrides={
-        "html_theme": "sphinxawesome_theme",
         "extensions": ["sphinxawesome_theme"],
         "html_awesome_html_translator": False,
     },
@@ -58,16 +60,78 @@ def test_no_awesome_html_translator(app: Sphinx) -> None:
     """It doesn't load the awesome HTML translator."""
     app.build()
     assert os.path.exists(app.outdir / "index.html")
-    assert app.config.html_theme == "sphinxawesome_theme"
     assert "sphinxawesome_theme.html_translator" not in app.extensions
     assert app.config.html_awesome_html_translator is False
-    assert "sphinxawesome_theme.highlighting" in app.extensions
-    assert app.config.html_awesome_highlighting is True
-    assert "sphinxawesome_theme.jinja_functions" in app.extensions
-    assert "sphinxawesome_theme.docsearch" not in app.extensions
-    assert app.config.html_awesome_docsearch is False
-    assert "sphinxawesome_theme.postprocess" in app.extensions
-    assert app.config.html_awesome_postprocessing is True
-    assert app.config.html_awesome_code_headers is True
-    assert app.config.html_awesome_headerlinks is True
-    assert app.config.html_collapsible_definitions is False
+
+
+@pytest.mark.sphinx(
+    "html",
+    confoverrides={
+        "extensions": ["sphinxawesome_theme"],
+        "html_awesome_highlighting": False,
+    },
+)
+def test_no_awesome_highlighting(app: Sphinx) -> None:
+    """It doesn't load the awesome highlighting extension."""
+    app.build()
+    assert os.path.exists(app.outdir / "index.html")
+    assert "sphinxawesome_theme.highlighting" not in app.extensions
+    assert app.config.html_awesome_highlighting is False
+
+
+@pytest.mark.sphinx(
+    "html",
+    confoverrides={
+        "extensions": ["sphinxawesome_theme"],
+        "html_awesome_postprocessing": False,
+    },
+)
+def test_no_awesome_postprocessing(app: Sphinx) -> None:
+    """It doesn't load the awesome postprocessing extension."""
+    app.build()
+    assert os.path.exists(app.outdir / "index.html")
+    assert "sphinxawesome_theme.postprocessing" not in app.extensions
+    assert app.config.html_awesome_postprocessing is False
+
+
+@pytest.mark.sphinx(
+    "html",
+    confoverrides={
+        "extensions": ["sphinxawesome_theme"],
+        "html_awesome_docsearch": True,
+    },
+)
+def test_awesome_docsearch(app: Sphinx) -> None:
+    """It loads the awesome DocSearch extension."""
+    app.build()
+    assert os.path.exists(app.outdir / "index.html")
+    assert "sphinxawesome_theme.docsearch" in app.extensions
+    assert app.config.html_awesome_docsearch is True
+
+
+@pytest.mark.sphinx(
+    "html",
+    confoverrides={
+        "html_theme": "sphinxawesome_theme",
+        "extensions": ["sphinxawesome_theme"],
+        "html_awesome_docsearch": True,
+    },
+)
+def test_docsearch_files_elements(app: Sphinx) -> None:
+    """It adds the correct DocSearch files and removes extra Sphinx files."""
+    app.build()
+    assert os.path.exists(app.outdir / "index.html")
+
+    tree = parse_html(app.outdir / "index.html")
+
+    css = tree.select('link[rel="stylesheet"]')
+    assert len(css) == 3
+    hrefs = [item["href"] for item in css]
+
+    pattern = re.compile(r"docsearch\.[0-9a-z]+\.(css|js)")
+    assert any(filter(pattern.search, hrefs))
+
+    scripts = tree.select("script")
+    assert len(scripts) == 3
+    script_src = [item["src"] for item in scripts]
+    assert any(filter(pattern.search, script_src))

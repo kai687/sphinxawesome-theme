@@ -40,7 +40,7 @@ wrap them in a `<span>` element.
 This shows the headerlinks only when hovering over the heading,
 or when changing the focus with your keyboard.
 
-The {{ product }} makes sharing links to specific sections in your documentation easier. 
+The {{ product }} makes sharing links to specific sections in your documentation easier.
 Clicking a permalink of a heading, table, or code block copies the URL to the clipboard.
 To deactivate this behavior, set the option {confval}`html_awesome_headerlinks` to `False`.
 

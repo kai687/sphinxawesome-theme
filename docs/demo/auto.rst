@@ -41,7 +41,7 @@ Autofunction example
 Command line options
 --------------------
 
-If you want to document command-line options, you have two choices: 
+If you want to document command-line options, you have two choices:
 
 - The ``option`` directive (Sphinx)
 - An option list (docutils)
