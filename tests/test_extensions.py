@@ -69,21 +69,6 @@ def test_no_awesome_html_translator(app: Sphinx) -> None:
     "html",
     confoverrides={
         "extensions": ["sphinxawesome_theme"],
-        "html_awesome_highlighting": False,
-    },
-)
-def test_no_awesome_highlighting(app: Sphinx) -> None:
-    """It doesn't load the awesome highlighting extension."""
-    app.build()
-    assert os.path.exists(Path(app.outdir) / "index.html")
-    assert "sphinxawesome_theme.highlighting" not in app.extensions
-    assert app.config.html_awesome_highlighting is False
-
-
-@pytest.mark.sphinx(
-    "html",
-    confoverrides={
-        "extensions": ["sphinxawesome_theme"],
         "html_awesome_postprocessing": False,
     },
 )
@@ -98,6 +83,7 @@ def test_no_awesome_postprocessing(app: Sphinx) -> None:
 @pytest.mark.sphinx(
     "html",
     confoverrides={
+        "html_theme": "sphinxawesome_theme",
         "extensions": ["sphinxawesome_theme"],
         "html_awesome_docsearch": True,
     },
@@ -109,29 +95,16 @@ def test_awesome_docsearch(app: Sphinx) -> None:
     assert "sphinxawesome_theme.docsearch" in app.extensions
     assert app.config.html_awesome_docsearch is True
 
-
-@pytest.mark.sphinx(
-    "html",
-    confoverrides={
-        "html_theme": "sphinxawesome_theme",
-        "extensions": ["sphinxawesome_theme"],
-        "html_awesome_docsearch": True,
-    },
-)
-def test_docsearch_files_elements(app: Sphinx) -> None:
-    """It adds the correct DocSearch files and removes extra Sphinx files."""
-    app.build()
-    assert os.path.exists(Path(app.outdir) / "index.html")
-
     tree = parse_html(Path(app.outdir) / "index.html")
+    pattern = re.compile(r"docsearch\.[0-9a-z]+\.(css|js)")
 
+    # It adds the `docsearch.css` file
     css = tree.select('link[rel="stylesheet"]')
     assert len(css) == 3
     hrefs = [item["href"] for item in css]
-
-    pattern = re.compile(r"docsearch\.[0-9a-z]+\.(css|js)")
     assert any(filter(pattern.search, hrefs))  # type: ignore[arg-type]
 
+    # It adds the `docsearch.js` file
     scripts = tree.select("script")
     assert len(scripts) == 3
     script_src = [item["src"] for item in scripts]
