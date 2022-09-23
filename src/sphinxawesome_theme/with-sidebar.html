@@ -7,7 +7,7 @@
 
 
 {% block document %}
-<aside data-sidebar-target="sidebar" class="grid-area-sidebar h-full fixed xl:relative inset-y-0 left-0 z-20 xl:z-0 print:hidden overflow-y-auto transition-all transform transform-gpu -translate-x-full opacity-0 duration-300 xl:translate-x-0 xl:opacity-100">
+<aside data-sidebar-target="sidebar" class="grid-area-sidebar h-full fixed pt-14 xl:relative inset-y-0 left-0 z-20 xl:z-0 print:hidden overflow-y-auto transition-all transform transform-gpu -translate-x-full opacity-0 duration-300 xl:translate-x-0 xl:opacity-100">
   {% include "sidebar.html" %}
 </aside>
 
@@ -16,7 +16,7 @@
   data-action="scroll->scroll#showButton"
   data-scroll-target="main"
   {%- endif %}
-  class="px-4 xl:ml-fluid grid-area-main overflow-y-auto flex flex-col flex-1 h-full mx-0 md:mx-auto xl:mr-0"
+  class="px-4 pt-14 xl:ml-fluid grid-area-main overflow-y-auto flex flex-col flex-1 h-full mx-0 md:mx-auto xl:mr-0"
 >
   {%- if pagename != master_doc and theme_show_breadcrumbs|tobool %}
     {%- include "breadcrumbs.html" %}

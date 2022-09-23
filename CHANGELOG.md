@@ -1,5 +1,9 @@
 # Changelog
 
+## HEAD
+
+- fix visual bug when overscrolling (#1069)
+
 ## 3.3.5
 
 - better print styles (#1066)
