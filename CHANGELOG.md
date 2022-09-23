@@ -1,6 +1,6 @@
 # Changelog
 
-## HEAD
+## 3.3.6
 
 - fix visual bug when overscrolling (#1069)
 
