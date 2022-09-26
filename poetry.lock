@@ -1016,7 +1016,7 @@ docs = ["myst-parser", "sphinx-autobuild", "sphinx-sitemap"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "a389762107fe65773848b2d699e47a0dd9a0e99fe477b515b844b2348a002f6d"
+content-hash = "48741d5df8a4cf27a70bad613dd9470a3f164614b0ce869ec5c31002a4451999"
 
 [metadata.files]
 alabaster = [
