@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.3.7
+
+- fix: skip to content visual bug (#1075)
+
 ## 3.3.6
 
 - fix visual bug when overscrolling (#1069)

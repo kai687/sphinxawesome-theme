@@ -1195,7 +1195,7 @@
   resolved "https://registry.yarnpkg.com/@hotwired/stimulus/-/stimulus-3.1.0.tgz#20215251e5afe6e0a3787285181ba1bfc9097df0"
   integrity sha512-iDMHUhiEJ1xFeicyHcZQQgBzhtk5mPR0QZO3L6wtqzMsJEk2TKECuCQTGKjm+KJTHVY0dKq1dOOAWvODjpd2Mg==
 
-"@humanwhocodes/config-array@^0.10.4":
+"@humanwhocodes/config-array@^0.10.5":
   version "0.10.5"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.10.5.tgz#bb679745224745fff1e9a41961c1d45a49f81c04"
   integrity sha512-XVVDtp+dVvRxMoxSiSfasYaG02VEe1qH5cKgMQJWhol6HwzbcqoCMJi8dAGoYAO57jhUyhI6cWuRiTcRaDaYug==
@@ -1350,9 +1350,9 @@
   integrity sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==
 
 "@types/node@*":
-  version "18.7.18"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.7.18.tgz#633184f55c322e4fb08612307c274ee6d5ed3154"
-  integrity sha512-m+6nTEOadJZuTPkKR/SYK3A2d7FZrgElol9UP1Kae90VVU4a6mxnPuLiIW1m4Cq4gZ/nWb9GrdVXJCoCazDAbg==
+  version "18.7.21"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.7.21.tgz#63ee6688070e456325b6748dc492a7b948593871"
+  integrity sha512-rLFzK5bhM0YPyCoTC8bolBjMk7bwnZ8qeZUBslBfjZQou2ssJdWslx9CZ8DGM+Dx7QXQiiTVZ/6QO6kwtHkZCA==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.1"
@@ -1820,9 +1820,9 @@ caniuse-api@^3.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001400, caniuse-lite@^1.0.30001407:
-  version "1.0.30001410"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001410.tgz#b5a86366fbbf439d75dd3db1d21137a73e829f44"
-  integrity sha512-QoblBnuE+rG0lc3Ur9ltP5q47lbguipa/ncNMyyGuqPk44FxbScWAeEO+k5fSQ8WekdAK4mWqNs1rADDAiN5xQ==
+  version "1.0.30001412"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001412.tgz#30f67d55a865da43e0aeec003f073ea8764d5d7c"
+  integrity sha512-+TeEIee1gS5bYOiuf+PS/kp2mrXic37Hl66VY6EAfxasIk5fELTktK2oOezYed12H8w7jt3s512PpulQidPjwA==
 
 chalk@^2.0.0:
   version "2.4.2"
@@ -1960,9 +1960,9 @@ copy-webpack-plugin@^11.0.0:
     serialize-javascript "^6.0.0"
 
 core-js-compat@^3.25.1:
-  version "3.25.2"
-  resolved "https://registry.yarnpkg.com/core-js-compat/-/core-js-compat-3.25.2.tgz#7875573586809909c69e03ef310810c1969ee138"
-  integrity sha512-TxfyECD4smdn3/CjWxczVtJqVLEEC2up7/82t7vC0AzNogr+4nQ8vyF7abxAuTXWvjTClSbvGhU0RgqA4ToQaQ==
+  version "3.25.3"
+  resolved "https://registry.yarnpkg.com/core-js-compat/-/core-js-compat-3.25.3.tgz#d6a442a03f4eade4555d4e640e6a06151dd95d38"
+  integrity sha512-xVtYpJQ5grszDHEUU9O7XbjjcZ0ccX3LgQsyqSvTnjX97ZqEgn9F5srmrwwwMtbKzDllyFPL+O+2OFMl1lU4TQ==
   dependencies:
     browserslist "^4.21.4"
 
@@ -2251,9 +2251,9 @@ domutils@^2.8.0:
     domhandler "^4.2.0"
 
 electron-to-chromium@^1.4.251:
-  version "1.4.258"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.258.tgz#44c5456f487be082f038282fbcfd7b06ae99720d"
-  integrity sha512-vutF4q0dTUXoAFI7Vbtdwen/BJVwPgj8GRg/SElOodfH7VTX+svUe62A5BG41QRQGk5HsZPB0M++KH1lAlOt0A==
+  version "1.4.262"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.262.tgz#25715dfbae4c2e0640517cba184715241ecd8e63"
+  integrity sha512-Ckn5haqmGh/xS8IbcgK3dnwAVnhDyo/WQnklWn6yaMucYTq7NNxwlGE8ElzEOnonzRLzUCo2Ot3vUb2GYUF2Hw==
 
 emoji-regex@^8.0.0:
   version "8.0.0"
@@ -2367,12 +2367,12 @@ eslint-webpack-plugin@^3.2.0:
     schema-utils "^4.0.0"
 
 eslint@^8.23.0:
-  version "8.23.1"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-8.23.1.tgz#cfd7b3f7fdd07db8d16b4ac0516a29c8d8dca5dc"
-  integrity sha512-w7C1IXCc6fNqjpuYd0yPlcTKKmHlHHktRkzmBPZ+7cvNBQuiNjx0xaMTjAJGCafJhQkrFJooREv0CtrVzmHwqg==
+  version "8.24.0"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-8.24.0.tgz#489516c927a5da11b3979dbfb2679394523383c8"
+  integrity sha512-dWFaPhGhTAiPcCgm3f6LI2MBWbogMnTJzFBbhXVRQDJPkr9pGZvVjlVfXd+vyDcWPA2Ic9L2AXPIQM0+vk/cSQ==
   dependencies:
     "@eslint/eslintrc" "^1.3.2"
-    "@humanwhocodes/config-array" "^0.10.4"
+    "@humanwhocodes/config-array" "^0.10.5"
     "@humanwhocodes/gitignore-to-minimatch" "^1.0.2"
     "@humanwhocodes/module-importer" "^1.0.1"
     ajv "^6.10.0"
