@@ -21,7 +21,7 @@
     "clipboard": "^2.0.11"
   },
   "devDependencies": {
-    "@babel/core": "^7.19.0",
+    "@babel/core": "^7.19.6",
     "@babel/preset-env": "^7.19.4",
     "@fontsource/jetbrains-mono": "^4.5.10",
     "@fontsource/roboto": "^4.5.8",
