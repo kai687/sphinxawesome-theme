@@ -1,0 +1,13 @@
+name: Lint
+
+on:
+  push:
+    paths:
+      - 'src/theme-src/**'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: echo 'No lint required'

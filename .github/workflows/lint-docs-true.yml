@@ -1,0 +1,15 @@
+name: Check documentation quality
+
+on:
+  pull_request:
+    paths-ignore:
+      - 'docs/**'
+      - 'README.md'
+
+jobs:
+  vale:
+    runs-on: ubuntu-latest
+    name: Check style
+
+    steps:
+      - run: echo 'No content linting required'
