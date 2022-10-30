@@ -1,4 +1,3 @@
----
 extends: existence
 message: "'%s' is airlinese."
 ignorecase: true

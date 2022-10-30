@@ -1,4 +1,3 @@
----
 extends: existence
 message: "Avoid first-person pronouns such as '%s'."
 link: 'https://developers.google.com/style/pronouns#personal-pronouns'

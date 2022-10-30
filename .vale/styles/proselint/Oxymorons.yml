@@ -1,4 +1,3 @@
----
 extends: existence
 message: "'%s' is an oxymoron."
 ignorecase: true

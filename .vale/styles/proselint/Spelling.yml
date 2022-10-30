@@ -1,4 +1,3 @@
----
 extends: consistency
 message: "Inconsistent spelling of '%s'."
 level: error

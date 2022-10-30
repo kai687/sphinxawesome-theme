@@ -1,4 +1,3 @@
----
 extends: existence
 message: "Spell out all ordinal numbers ('%s') in text."
 link: 'https://developers.google.com/style/numbers'

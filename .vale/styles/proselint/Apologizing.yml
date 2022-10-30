@@ -1,4 +1,3 @@
----
 extends: existence
 message: "Excessive apologizing: '%s'"
 ignorecase: true

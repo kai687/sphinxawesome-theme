@@ -1,4 +1,3 @@
----
 extends: existence
 message: "You should use more decimal places, unless '%s' is really true."
 ignorecase: true

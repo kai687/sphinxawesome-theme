@@ -1,4 +1,3 @@
----
 extends: existence
 message: "'%s' is offensive. Remove it or consider the context."
 ignorecase: true

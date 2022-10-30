@@ -1,4 +1,3 @@
----
 extends: existence
 message: "Consider replacing '%s'."
 level: error
