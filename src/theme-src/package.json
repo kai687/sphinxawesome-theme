@@ -30,7 +30,7 @@
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.1",
     "cssnano": "^5.1.13",
-    "cssnano-preset-advanced": "^5.3.8",
+    "cssnano-preset-advanced": "^5.3.9",
     "eslint": "^8.26.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
