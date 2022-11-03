@@ -54,13 +54,9 @@ This theme enhances Sphinx's `code-block` directive with these options:
 Nested navigation links allow you to reach all pages from all other pages.
 You can make code object definitions like methods, classes, or modules collapsible as well.
 
-<!-- vale Awesome.SpellCheck = NO -->
-
 ### Better headerlinks
 
 Clicking the link icon after headers or captions automatically copies the URL to the clipboard.
-
-<!-- vale Awesome.SpellCheck = YES -->
 
 ### DocSearch
 
@@ -69,8 +65,6 @@ you can use DocSearch for a search-as-you-type experience with autocomplete.
 Algolia DocSearch is free for open source documentation projects.
 
 ### Better keyboard navigation
-
-<!-- vale 18F.Clarity = NO -->
 
 Use the `Tab` key to skip through all sections on the page.
 Use the `Space` key to expand or collapse items in the navigation menu or in code definitions.

@@ -9,32 +9,32 @@ Module documentation
    See how automatically generated documentation from Python source code
    looks like with the |product|.
 
-.. vale Awesome.SpellCheck = NO
+.. vale Vale.Spelling = NO
 
 Automodule example
 ------------------
 
-.. vale Awesome.SpellCheck = YES
+.. vale Vale.Spelling = YES
 
 .. automodule:: docutils
    :members:
 
-.. vale Awesome.SpellCheck = NO
+.. vale Vale.Spelling = NO
 
 Autoclass example
 -----------------
 
-.. vale Awesome.SpellCheck = YES
+.. vale Vale.Spelling = YES
 
 .. autoclass:: docutils.nodes.Node
    :members: walk
 
-.. vale Awesome.SpellCheck = NO
+.. vale Vale.Spelling = NO
 
 Autofunction example
 --------------------
 
-.. vale Awesome.SpellCheck = YES
+.. vale Vale.Spelling = YES
 
 .. autofunction:: docutils.nodes.serial_escape
 

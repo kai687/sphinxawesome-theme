@@ -35,11 +35,11 @@ It's a technical distinction due to the way Sphinx builds a project.
 You can configure the theme by modifying the `html_theme_options` dictionary in the
 Sphinx configuration file `conf.py`.
 
-<!-- vale Awesome.SpellCheck = NO -->
+<!-- vale Vale.Spelling = NO -->
 
 :::{confval} nav_include_hidden
 
-<!-- vale Awesome.SpellCheck = YES -->
+<!-- vale Vale.Spelling = YES -->
 
 If you don't want to include entries from a _hidden_
 {sphinxdocs}`toctree <usage/restructuredtext/directives.html#directive-toctree>`
@@ -59,11 +59,11 @@ but no links are printed in the main content area.
 
 :::
 
-<!-- vale Awesome.SpellCheck = NO -->
+<!-- vale Vale.Spelling = NO -->
 
 :::{confval} show_nav
 
-<!-- vale Awesome.SpellCheck = YES -->
+<!-- vale Vale.Spelling = YES -->
 
 The {{ product }} shows links to all your documentation pages in sidebar on the left
 side.
@@ -79,11 +79,11 @@ html_theme_options = {"show_nav": False}
 
 :::
 
-<!-- vale Awesome.SpellCheck = NO -->
+<!-- vale Vale.Spelling = NO -->
 
 :::{confval} show_breadcrumbs
 
-<!-- vale Awesome.SpellCheck = YES -->
+<!-- vale Vale.Spelling = YES -->
 
 The {{ product }} shows
 [breadcrumbs](https://en.wikipedia.org/wiki/Breadcrumb_navigation)
@@ -100,11 +100,11 @@ html_theme_options = {"show_breadcrumbs": False}
 
 :::
 
-<!-- vale Awesome.SpellCheck = NO -->
+<!-- vale Vale.Spelling = NO -->
 
 :::{confval} breadcrumbs_separator
 
-<!-- vale Awesome.SpellCheck = YES -->
+<!-- vale Vale.Spelling = YES -->
 
 To select a different separator for the breadcrumbs navigation links,
 set:
@@ -121,11 +121,11 @@ html_theme_options = {"breadcrumbs_separator": "CHAR"}
 Replace {samp}`{CHAR}` with a character or HTML entity of your choice.
 :::
 
-<!-- vale Awesome.SpellCheck = NO -->
+<!-- vale Vale.Spelling = NO -->
 
 :::{confval} show_prev_next
 
-<!-- vale Awesome.SpellCheck = YES -->
+<!-- vale Vale.Spelling = YES -->
 
 To show links to the previous and next pages, set this option to `True`:
 
@@ -138,11 +138,11 @@ html_theme_options = {"show_prev_next": True}
 
 :::
 
-<!-- vale Awesome.SpellCheck = NO -->
+<!-- vale Vale.Spelling = NO -->
 
 :::{confval} show_scrolltop
 
-<!-- vale Awesome.SpellCheck = YES -->
+<!-- vale Vale.Spelling = YES -->
 
 To show a button that scrolls to the top of the page when clicked,
 set this option to `True`:
@@ -156,11 +156,11 @@ html_theme_options = {"show_scrolltop": True}
 
 :::
 
-<!-- vale Awesome.SpellCheck = NO -->
+<!-- vale Vale.Spelling = NO -->
 
 :::{confval} extra_header_links
 
-<!-- vale Awesome.SpellCheck = YES -->
+<!-- vale Vale.Spelling = YES -->
 
 To add extra links to the header of your documentation, set the following option:
 
@@ -192,15 +192,15 @@ in your Sphinx configuration:
 `extensions = ["sphinxawesome_theme"]`
 ```
 
-The {{ product }} enables a few internal extensions that enhance the user experience.
+The {{ product }} enables several internal extensions that enhance the user experience.
 The following configuration values are set at the top level in the Sphinx
 configuration file `conf.py`:
 
-<!-- vale Awesome.SpellCheck = NO -->
+<!-- vale Vale.Spelling = NO -->
 
 :::{confval} html_collapsible_definitions
 
-<!-- vale Awesome.SpellCheck = YES -->
+<!-- vale Vale.Spelling = YES -->
 
 Set this option to `True` to make code references, such as classes, methods, and other
 objects, collapsible and expandable.
@@ -214,14 +214,14 @@ html_collapsible_definitions = True
 
 :::
 
-<!-- vale Awesome.SpellCheck = NO -->
+<!-- vale Vale.Spelling = NO -->
 
 :::{confval} html_awesome_headerlinks
 
-<!-- vale Awesome.SpellCheck = YES -->
+<!-- vale Vale.Spelling = YES -->
 
 Set this option to `False` to restore Sphinx's default behavior for headerlinks.
-In the {{ product }}, clicking a headerlink immediately copies the URL to the clipboard.
+In the {{ product }}, clicking a headerlink copies the URL to the clipboard.
 
 ```{code-block} python
 :caption: "File: conf.py"
@@ -232,11 +232,11 @@ html_awesome_headerlinks = False
 
 :::
 
-<!-- vale Awesome.SpellCheck = NO -->
+<!-- vale Vale.Spelling = NO -->
 
 :::{confval} html_awesome_code_headers
 
-<!-- vale Awesome.SpellCheck = YES -->
+<!-- vale Vale.Spelling = YES -->
 
 By default, the {{ product }} shows the programming language
 of a code block in its header.
@@ -251,11 +251,11 @@ html_awesome_code_headers = False
 
 :::
 
-<!-- vale Awesome.SpellCheck = NO -->
+<!-- vale Vale.Spelling = NO -->
 
 :::{confval} html_awesome_docsearch
 
-<!-- vale Awesome.SpellCheck = YES -->
+<!-- vale Vale.Spelling = YES -->
 
 Set this option to `True` to use [Algolia DocSearch](https://docsearch.algolia.com/)
 instead of the built-in search.
@@ -283,11 +283,11 @@ To configure DocSearch, add these environment variables:
 
 <!-- vale Google.Colons = YES -->
 
-You can write them in a `.env` file in your Sphinx project directory
-or provide them on the command line.
+You can add environment variables with one of these options:
 
-Alternatively, you can also configure DocSearch via a `docsearch_config` dictionary in
-your Sphinx configuration file `conf.py`:
+- Add them to a `.env` file in your Sphinx project directory
+- Add them on the command line before building your documentation
+- Add them to the `docsearch_config` dictionary in your Sphinx configuration file `conf.py`:
 
 ```{code-block} python
 ---
@@ -302,8 +302,8 @@ docsearch_config = {
 ```
 
 ```{note}
-Algolia DocSearch is an external web service. You need to apply and receive your
-credentials before you can use it.
+Algolia DocSearch is an external web service.
+You need to apply and receive your credentials before you can use it.
 ```
 
 :::

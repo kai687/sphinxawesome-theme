@@ -40,7 +40,7 @@ Require Sphinx 4 or newer
 : Sphinx 4 depends on docutils 0.17, which creates more semantic HTML by default.
 This allows to reduce the amount of custom transformations.
 
-Restructure a few templates
+Restructure several templates
 : The layout use
 [CSS grid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout).
 This leads to fewer container elements in the templates.

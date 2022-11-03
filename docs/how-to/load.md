@@ -27,12 +27,12 @@ To use the {{ product }} in your documentation:
 1. {ref}`sec:install-python-package`
 1. Add the `html_theme` configuration option to your Sphinx configuration file `conf.py`:
 
-    ```{code-block} python
-    ---
-    caption: "File: conf.py"
-    ---
-    html_theme = "sphinxawesome_theme"
-    ```
+   ```{code-block} python
+   ---
+   caption: "File: conf.py"
+   ---
+   html_theme = "sphinxawesome_theme"
+   ```
 
 1. Add the `sphinxawesome_theme` as an extension to your Sphinx configuration:
 
@@ -43,7 +43,7 @@ To use the {{ product }} in your documentation:
    extensions = ["sphinxawesome_theme"]
    ```
 
-   Loading the {{ product }} as an extension activates a few Sphinx extensions
+   Loading the {{ product }} as an extension activates the internal Sphinx extensions
    that enhance the user experience.
 
    ```{seealso}
@@ -54,7 +54,7 @@ To use the {{ product }} in your documentation:
 
 If you want to keep your documentation and theme as a single project,
 you can load the {{ product }} from a local directory.
-This can be useful, if you want to modify the theme.
+This can be useful if you want to customize the theme.
 
 :::{note}
 When loading the theme from a local directory, you need to manage the dependencies
