@@ -3,7 +3,7 @@ name: Lint
 on:
   push:
     paths:
-      - 'src/theme-src/**'
+      - "src/theme-src/**"
 
 jobs:
   lint:
