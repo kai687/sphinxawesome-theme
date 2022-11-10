@@ -67,7 +67,7 @@ how-to/modify
 how-to/update
 ```
 
-The **Demo** section shows, how various elements will look like.
+The **Demo** section shows how various elements will look like.
 
 ```{toctree}
 ---
