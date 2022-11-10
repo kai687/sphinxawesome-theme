@@ -52,7 +52,7 @@ Create functional and beautiful websites for your documentation with Sphinx.
 
 ## Learn more
 
-In the _How-to_ section, you can learn more about using and customizing the theme.
+In the **How-to** section, you can learn more about using and customizing the theme.
 
 ```{toctree}
 ---
@@ -66,6 +66,8 @@ how-to/customize
 how-to/modify
 how-to/update
 ```
+
+The **Demo** section shows, how various elements will look like.
 
 ```{toctree}
 ---
