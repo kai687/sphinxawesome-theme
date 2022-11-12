@@ -837,7 +837,7 @@ test = ["pytest", "pytest-cov"]
 
 [[package]]
 name = "sphinx-sitemap"
-version = "2.2.0"
+version = "2.2.1"
 description = "Sitemap generator for Sphinx"
 category = "main"
 optional = true
@@ -1450,7 +1450,7 @@ sphinx-autobuild = [
     {file = "sphinx_autobuild-2021.3.14-py3-none-any.whl", hash = "sha256:8fe8cbfdb75db04475232f05187c776f46f6e9e04cacf1e49ce81bdac649ccac"},
 ]
 sphinx-sitemap = [
-    {file = "sphinx-sitemap-2.2.0.tar.gz", hash = "sha256:65adda39233cb17c0da10ba1cebaa2df73e271cdb6f8efd5cec8eef3b3cf7737"},
+    {file = "sphinx-sitemap-2.2.1.tar.gz", hash = "sha256:f1f2149c8013b6d68cc48e6b5bd90f088658cd4584c0220224e72ca85d07b92b"},
 ]
 sphinxcontrib-applehelp = [
     {file = "sphinxcontrib-applehelp-1.0.2.tar.gz", hash = "sha256:a072735ec80e7675e3f432fcae8610ecf509c5f1869d17e2eecff44389cdbc58"},
