@@ -183,11 +183,15 @@ The main templates you can override are:
 This page **must** contain the `{{ body }}` expression to render the contents of your documentation.
 The `page` template extends the layout `with-sidebar` or `without-sidebar` depending on the context.
 
+<!-- vale Vale.Spelling = NO -->
+
 `without-sidebar.html`
 : Template for a page without navigation sidebar.
 This template is used when the option {confval}`show_nav` is set to `False`,
 or when you set `layout: "without-sidebar"` in the front matter of your Markdown document.
 This template extends the main template `layout`.
+
+<!-- vale Vale.Spelling = YES -->
 
 `with-sidebar.html`
 : Template with navigation sidebar on the left.

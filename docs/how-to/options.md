@@ -39,11 +39,11 @@ Sphinx configuration file `conf.py`.
 
 :::{confval} nav_include_hidden
 
-<!-- vale Vale.Spelling = YES -->
-
 If you don't want to include entries from a _hidden_
 {sphinxdocs}`toctree <usage/restructuredtext/directives.html#directive-toctree>`
 directive in the sidebar, set `nav_include_hidden` to `False`.
+
+<!-- vale Vale.Spelling = YES -->
 
 ```{code-block} python
 ---
