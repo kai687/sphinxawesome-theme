@@ -1,4 +1,3 @@
----
 extends: existence
 message: "Commas and periods go inside quotation marks."
 link: 'https://developers.google.com/style/quotation-marks'

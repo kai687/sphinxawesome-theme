@@ -1,9 +1,6 @@
----
 extends: existence
 message: "Don't put a period at the end of a heading."
-link: >
-  "https://developers.google.com/style/
-  capitalization#capitalization-in-titles-and-headings"
+link: 'https://developers.google.com/style/capitalization#capitalization-in-titles-and-headings'
 nonword: true
 level: warning
 scope: heading
@@ -13,4 +10,4 @@ action:
     - remove
     - '.'
 tokens:
-  - '[a-z0-9][.](?:\s|$)'
+  - '[a-z0-9][.]\s*$'

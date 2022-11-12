@@ -1,4 +1,3 @@
----
 extends: existence
 message: "Use parentheses judiciously."
 link: 'https://developers.google.com/style/parentheses'

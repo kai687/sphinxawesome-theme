@@ -22,21 +22,24 @@ backlinks: none
 ---
 ```
 
-For the methods listed on this page, it's better to use traditional classes to style
-your templates. Extra files aren't processed by webpack, so you can't use Tailwind's
-`@apply` directive. See {ref}`sec:modify`, if you want to modify the
-existing templates and use Tailwind CSS.
+For the methods listed on this page,
+it's better to use traditional classes to style your templates.
+Extra files aren't processed by webpack,
+so you can't use Tailwind's `@apply` directive.
+See {ref}`sec:modify`,
+if you want to modify the existing templates and use Tailwind CSS.
 
 (sec:override-styles)=
 
 ## Add or override styles
 
-To add extra CSS files, use the {confval}`sphinx:html_css_files` configuration option.
-To add extra JavaScript files, use the {confval}`sphinx:html_js_files` configuration
-option.
+To add extra CSS files,
+use the {confval}`sphinx:html_css_files` configuration option.
+To add extra JavaScript files,
+use the {confval}`sphinx:html_js_files` configuration option.
 
-For example, place additional styles in a file `_static/custom.css` and add the
-following options to your Sphinx configuration in `conf.py`:
+For example, place custom styles in a file `_static/custom.css` and
+add the following options to your Sphinx configuration in `conf.py`:
 
 ```{code-block} python
 ---
@@ -77,14 +80,14 @@ new values. For example, change the link color to green:
 
 (sec:additional-layouts)=
 
-## Add additional page layouts
+## Add page layouts
 
 Sometimes, you want to add a custom page to your documentation, for example, a custom
 homepage for the documentation project. These pages often have a different layout than the documentation pages themselves.
 An example is the
 [homepage of the Sphinx documentation](https://www.sphinx-doc.org/en/master/).
 
-To add additional page layouts to your Sphinx documentation:
+To add page layouts to your Sphinx documentation:
 
 1. Create a directory in your Sphinx project, for example, `_templates/` and add it to
    your Sphinx configuration:
@@ -127,7 +130,7 @@ To add additional page layouts to your Sphinx documentation:
      you can {ref}`sec:override-layouts-globally`.
 
      For example, you can override the `page` template and use the `extra-layout`
-     template defined previously:
+     template:
 
      ```{code-block} html+jinja
      ---
@@ -180,11 +183,15 @@ The main templates you can override are:
 This page **must** contain the `{{ body }}` expression to render the contents of your documentation.
 The `page` template extends the layout `with-sidebar` or `without-sidebar` depending on the context.
 
+<!-- vale Vale.Spelling = NO -->
+
 `without-sidebar.html`
 : Template for a page without navigation sidebar.
 This template is used when the option {confval}`show_nav` is set to `False`,
 or when you set `layout: "without-sidebar"` in the front matter of your Markdown document.
 This template extends the main template `layout`.
+
+<!-- vale Vale.Spelling = YES -->
 
 `with-sidebar.html`
 : Template with navigation sidebar on the left.
@@ -192,7 +199,7 @@ This is the default template for all documentation pages.
 It extends from the main template `layout`.
 
 `layout.html`
-: Main template defining the overall structure of the page, including the HTML `<head>` with all imported CSS and JavaScript files.
+: Main template defining the structure of the page, including the HTML `<head>` with all imported CSS and JavaScript files.
 
 <!-- vale Google.Colons = YES -->
 
@@ -211,12 +218,8 @@ using the [`myst-parser`](https://myst-parser.readthedocs.io/en/latest/index.htm
 The {{ product }} has two page layouts. The default layout shows a sidebar with all navigation
 links on the left side.
 
-<!-- vale 18F.UnexpandedAcronyms = NO -->
-
 If you want to override the layout _on one page_, you can use the `layout` option in the
 YAML front matter.
-
-<!-- vale 18F.UnexpandedAcronyms = YES -->
 
 For example, the {ref}`sec:about` page uses a layout without a sidebar:
 

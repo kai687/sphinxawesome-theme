@@ -1,4 +1,3 @@
----
 extends: existence
 message: "'%s' is a malapropism."
 ignorecase: true

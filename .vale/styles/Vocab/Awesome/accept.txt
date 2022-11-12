@@ -1,0 +1,15 @@
+Algolia
+DocSearch
+[Dd]ocutils
+headerlinks?
+Entypo
+JavaScript
+Netlify
+[Nn]ox
+[Pp]ipx
+[Pp]ygments
+Roboto
+Schoger
+[Tt]ooltips
+webpack
+Zondicons

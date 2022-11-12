@@ -1,9 +1,0 @@
----
-extends: spelling
-message: Did you really mean '%s'
-level: error
-ignorecase: true
-filters:
-  - 'confval|Samp|samp|toctree|linenos'
-ignore:
-  - Awesome/ignore/allow.txt

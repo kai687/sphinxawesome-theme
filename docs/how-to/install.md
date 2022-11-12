@@ -51,7 +51,7 @@ see {ref}`customize the theme <sec:customize>`.
 
 ## Install the theme from a local directory
 
-If you want to modify the theme,
+If you want to customize the theme,
 you can clone the repository and install the cloned version
 as a [local Python package](https://packaging.python.org/en/latest/tutorials/installing-packages/#installing-from-a-local-src-tree).
 
@@ -77,7 +77,7 @@ The project has both Python and JavaScript dependencies.
 If you want to write documentation or modify the Python extensions,
 {ref}`install the Python dependencies <sec:install-python-deps>`.
 
-If you want to modify the Jinja2 templates, the CSS, or the JavaScript files,
+If you want to edit the Jinja2 templates, the CSS, or the JavaScript files,
 you also need to {ref}`install the JavaScript dependencies <sec:install-js-deps>`.
 
 ```{note}
@@ -121,12 +121,16 @@ even if you just want to edit the HTML templates.
 
 (sec:install-python-deps)=
 
+<!-- vale Google.Headings = NO -->
+
 ### Install Python dependencies
+
+<!-- vale Google.Headings = YES -->
 
 The {{ product }} uses these Python tools:
 
 - [Poetry](https://python-poetry.org/) to manage the Python dependencies and building the package
-- [Nox](https://nox.thea.codes/en/stable/) to test and lint the Python code, as well as to build the docs
+- [Nox](https://nox.thea.codes/en/stable/) to test and lint the Python code, and to build the docs
 - [Pipx](https://pypa.github.io/pipx/) to install Python applications in isolated environments and making them available globally
 
 ```{note}

@@ -13,7 +13,7 @@ Unordered lists
 
 Choose an unordered, or bulleted, list, when the order of items doesn't matter.
 
-.. vale Awesome.SpellCheck = NO
+.. vale Vale.Spelling = NO
 
 - item a
 - item b
@@ -40,7 +40,7 @@ For example, use ordered lists in step-by-step instructions.
 
 #. Step 3
 
-.. vale Awesome.SpellCheck = YES
+.. vale Vale.Spelling = YES
 
 Definition lists
 ----------------

@@ -1,4 +1,3 @@
----
 extends: existence
 message: "Use 'midnight' or 'noon'."
 ignorecase: true
