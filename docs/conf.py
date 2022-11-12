@@ -64,8 +64,6 @@ linkcheck_ignore = [
     # See https://github.com/sphinx-doc/sphinx/issues/9016
     "https://github.com/cjolowicz/nox-poetry/#installation",
     "https://github.com/wntrblm/nox/#installation",
-    # Not yet in master
-    "https://github.com/kai687/sphinxawesome-theme/blob/master/constraints.txt",
 ]
 
 # -- Options for HTML output -------------------------------------------------

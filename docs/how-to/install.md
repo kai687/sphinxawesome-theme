@@ -135,7 +135,7 @@ The {{ product }} uses these Python tools:
 
 ```{note}
 The commands shown in this section install the latest versions of Nox and Poetry.
-See the file {gh}`constraints.txt <.github/workflows/constraints.txt>`
+See the file {gh}`constraints.txt <constraints.txt>`
 for the version numbers of Nox and Poetry used for building the {{ product }} Python package.
 ```
 

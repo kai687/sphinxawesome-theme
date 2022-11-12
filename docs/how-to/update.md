@@ -24,7 +24,7 @@ customizations manually.
 
 Redesign
 : Create a better visual hierarchy which makes the document easier to scan. Heavily
-inspired by the [Material Design](https://material.io/) website.
+inspired by the [Material Design](https://m2.material.io/) website.
 
 Restructure
 : All JavaScript is now using the
