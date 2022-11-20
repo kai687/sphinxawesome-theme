@@ -41,7 +41,7 @@ black = "^22.6"
 pre-commit = "^2.20.0"
 pytest = "^7.1"
 pytest-cov = "^4.0"
-mypy = "^0.990"
+mypy = "^0.991"
 coverage = { extras = ["toml"], version = "^6.4" }
 flake8_implicit_str_concat = "^0.3.0"
 isort = "^5.10.0"
