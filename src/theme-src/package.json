@@ -15,7 +15,7 @@
   "license": "MIT",
   "dependencies": {
     "@docsearch/js": "^3.2.2",
-    "@hotwired/stimulus": "^3.1.1",
+    "@hotwired/stimulus": "^3.2.1",
     "clipboard": "^2.0.11"
   },
   "devDependencies": {
