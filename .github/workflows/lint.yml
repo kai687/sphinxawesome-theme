@@ -1,9 +1,7 @@
 name: Lint
 
 on:
-  push:
-    paths-ignore:
-      - "src/theme-src/**"
+  push
 
 jobs:
   lint:
