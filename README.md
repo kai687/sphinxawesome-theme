@@ -4,7 +4,7 @@
    <img src="https://img.shields.io/github/license/kai687/sphinxawesome-theme?color=blue&style=for-the-badge" alt="MIT license">
    <img src="https://img.shields.io/pypi/v/sphinxawesome-theme?color=eb5&style=for-the-badge&logo=pypi" alt="PyPI version">
    <img src="https://img.shields.io/netlify/e6d20a5c-b49e-4ebc-80f6-59fde8f24e22?logo=netlify&style=for-the-badge" alt="Netlify Deploy">
-   <img src="https://img.shields.io/github/workflow/status/kai687/sphinxawesome-theme/Lint?label=Lint&logo=Github&style=for-the-badge" alt="Lint">
+   <img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/kai687/sphinxawesome-theme/lint.yml?label=Linted&style=for-the-badge">
 </p>
 
 <p align="center">
