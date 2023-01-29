@@ -1260,14 +1260,14 @@ test = ["pytest", "pytest-cov"]
 
 [[package]]
 name = "sphinx-sitemap"
-version = "2.4.0"
+version = "2.5.0"
 description = "Sitemap generator for Sphinx"
 category = "main"
 optional = true
 python-versions = "*"
 files = [
-    {file = "sphinx-sitemap-2.4.0.tar.gz", hash = "sha256:3e19cff281974c00dfdc72d2d6ac71b737805dbd5666019997a4ac062a6406c0"},
-    {file = "sphinx_sitemap-2.4.0-py3-none-any.whl", hash = "sha256:94a1dab73789558e28e5ccfbc2a758194765707f9eeb06b59725a3bb244f323b"},
+    {file = "sphinx-sitemap-2.5.0.tar.gz", hash = "sha256:95101f622d0d594161720cbe92a39d353efae9382f7f3563f06d150b1146fef6"},
+    {file = "sphinx_sitemap-2.5.0-py3-none-any.whl", hash = "sha256:98a7e3bb25acb467037b56f3585fc38d53d5a274542b1497393a66f71b79b125"},
 ]
 
 [package.dependencies]
