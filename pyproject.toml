@@ -44,7 +44,7 @@ pytest-cov = "^4.0"
 mypy = "^0.991"
 coverage = { extras = ["toml"], version = "^7.1" }
 flake8_implicit_str_concat = "^0.3.0"
-isort = "^5.11.3"
+isort = "^5.11.5"
 
 [tool.poetry.extras]
 docs = ["myst-parser", "sphinx-autobuild", "sphinx-sitemap"]
