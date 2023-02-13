@@ -43,7 +43,7 @@ pytest = "^7.2"
 pytest-cov = "^4.0"
 mypy = "^1.0"
 coverage = { extras = ["toml"], version = "^7.1" }
-flake8_implicit_str_concat = "^0.3.0"
+flake8_implicit_str_concat = "^0.4.0"
 isort = "^5.11.5"
 
 [tool.poetry.extras]

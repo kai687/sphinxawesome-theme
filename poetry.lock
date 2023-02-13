@@ -438,19 +438,18 @@ pydocstyle = ">=2.1"
 
 [[package]]
 name = "flake8-implicit-str-concat"
-version = "0.3.0"
+version = "0.4.0"
 description = "Flake8 plugin to encourage correct string literal concatenation."
 category = "dev"
 optional = false
 python-versions = "~=3.7"
 files = [
-    {file = "flake8_implicit_str_concat-0.3.0-py2.py3-none-any.whl", hash = "sha256:a89ebc50567790fb7b83e032ed4014ae0db70e35d89e269c3323967135023600"},
-    {file = "flake8_implicit_str_concat-0.3.0.tar.gz", hash = "sha256:c0e6ae227e46238e4c87844091f8072892caeccd3bb266576a7d449eadbf53a0"},
+    {file = "flake8_implicit_str_concat-0.4.0-py3-none-any.whl", hash = "sha256:b91805a3e0ff30ae2890830548478af25c79a4a579ec402a6ba3538043dff60c"},
+    {file = "flake8_implicit_str_concat-0.4.0.tar.gz", hash = "sha256:b6acf233afee943dc1802ef4bc242a19f0419fac9943739e235d3f2aaf616361"},
 ]
 
 [package.dependencies]
-attrs = ">=19.3"
-more-itertools = ">=8.0.2,<9"
+more-itertools = {version = ">=8.0.2", markers = "python_version <= \"3.9\""}
 
 [[package]]
 name = "flake8-polyfill"
@@ -1534,4 +1533,4 @@ docs = ["myst-parser", "sphinx-autobuild", "sphinx-sitemap"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.7"
-content-hash = "834ab5b299cbbcb2a6ac3d9fa16ccd91b2a0631ce3eb52f369a5afb60a054fae"
+content-hash = "1263b061f98b84a434000f0c0d9e841af438dc8dd1cd50f2b75f30089b0fe9ee"
