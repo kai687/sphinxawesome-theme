@@ -16,11 +16,21 @@ customizations manually.
 
 ---
 
+<!-- vale Google.Colons = NO -->
+
+## Version 4.0
+
+Version 4.0 of the {{ product }} includes these **breaking changes**:
+
+Add support for Sphinx 6
+: Since Sphinx 6 is only supported with the latest version of the `myst-parser` package
+and Sphinx 6 drops support for Python 3.7, this release is a major version update.
+
+Apart from that, this version is identical with version 3 of the {{ product }}.
+
 <!-- vale Google.WordList = NO -->
 
 ## Version 3.0
-
-<!-- vale Google.Colons = NO -->
 
 Redesign
 : Create a better visual hierarchy which makes the document easier to scan. Heavily
@@ -34,7 +44,7 @@ Restructure
 
 <!-- vale Google.WordList = YES -->
 
-Version 2.0 of the {{ product }} includes these **major breaking changes**:
+Version 2.0 of the {{ product }} includes these **breaking changes**:
 
 Require Sphinx 4 or newer
 : Sphinx 4 depends on docutils 0.17, which creates more semantic HTML by default.
