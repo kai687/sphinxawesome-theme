@@ -1,5 +1,10 @@
 # Changelog
 
+## 4.0.0
+
+- Add support for Sphinx version 6 and later
+- Drop support for Python 3.7 (needed for Sphinx 6 support)
+
 ## 3.3.7
 
 - fix: skip to content visual bug (#1075)

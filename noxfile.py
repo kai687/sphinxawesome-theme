@@ -25,7 +25,6 @@ VersionType = TypeVar("VersionType", bound="Versions")
 class Versions(Enum):
     """Python versions as `Enum`."""
 
-    THREE_SEVEN = "3.7"
     THREE_EIGHT = "3.8"
     THREE_NINE = "3.9"
     THREE_TEN = "3.10"
