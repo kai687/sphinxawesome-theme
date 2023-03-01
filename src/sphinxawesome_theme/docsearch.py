@@ -12,7 +12,7 @@ from typing import Any, Dict
 from docutils.nodes import Node
 from dotenv import load_dotenv
 from sphinx.application import Sphinx
-from sphinx.util import progress_message
+from sphinx.util.display import progress_message
 
 from . import __version__
 
