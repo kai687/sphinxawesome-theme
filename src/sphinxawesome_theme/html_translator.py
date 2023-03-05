@@ -58,7 +58,7 @@ class AwesomeHTMLTranslator(HTML5Translator):
         For code objects, like functions, classes, methods, etc.
         to distinguish them from regular definition lists.
         """
-        cl = node["objtype"] + " code-definition"  # type: ignore[index]
+        cl = node["objtype"] + " code-definition"
         self.body.append(self.starttag(node, "dl", CLASS=cl))
 
     def visit_desc_signature(self: "AwesomeHTMLTranslator", node: Element) -> None:
@@ -238,7 +238,7 @@ class AwesomeHTMLTranslator(HTML5Translator):
 
     def depart_reference(self: "AwesomeHTMLTranslator", node: Element) -> None:
         """Add external link icon."""
-        if "refuri" in node and not node.get("internal"):  # type: ignore[attr-defined]
+        if "refuri" in node and not node.get("internal"):
             self.body.append(ICONS["external_link"])
         super().depart_reference(node)
 

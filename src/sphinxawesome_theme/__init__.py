@@ -6,12 +6,7 @@
 .. _LICENSE: https://github.com/kai687/sphinxawesome-theme/blob/master/LICENSE
 """
 
-try:
-    from importlib.metadata import PackageNotFoundError, version  # type: ignore
-except ImportError:  # pragma: no cover
-    # ignore mypy error about incompatible imports
-    from importlib_metadata import PackageNotFoundError, version  # type: ignore
-
+from importlib.metadata import PackageNotFoundError, version
 from os import path
 from typing import Any, Dict
 
