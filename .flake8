@@ -1,8 +1,0 @@
-[flake8]
-select = ANN,BLK,B,B89,B9,C,D,E,F,S,W,ISC
-ignore = E203, ANN101, ANN401
-extend-ignore = W203, W503
-max-complexity = 10
-max-line-length = 88
-docstring-convention = google
-per-file-ignores = tests/*:S101

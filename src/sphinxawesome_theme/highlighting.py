@@ -10,6 +10,7 @@ extends the default Sphinx ``code-block`` directive.
 :copyright: Copyright Kai Welke.
 :license: MIT, see LICENSE for details.
 """
+import contextlib
 from typing import Any, Dict, Generator, List, Tuple
 
 from docutils import nodes
@@ -79,26 +80,24 @@ class AwesomeHtmlFormatter(HtmlFormatter):  # type: ignore
       styling that way.
     """
 
-    def __init__(self, **options: Any) -> None:
+    def __init__(self: "AwesomeHtmlFormatter", **options: Any) -> None:
         """Implement `hl_added` and `hl_removed` options."""
         self.added_lines = set()
         self.removed_lines = set()
 
         for lineno in get_list_opt(options, "hl_added", []):
-            try:
+            with contextlib.suppress(ValueError):
                 self.added_lines.add(int(lineno))
-            except ValueError:
-                pass
 
         for lineno in get_list_opt(options, "hl_removed", []):
-            try:
+            with contextlib.suppress(ValueError):
                 self.removed_lines.add(int(lineno))
-            except ValueError:
-                pass
 
         super().__init__(**options)
 
-    def _highlight_lines(self, tokensource: TokenStream) -> TokenStream:
+    def _highlight_lines(
+        self: "AwesomeHtmlFormatter", tokensource: TokenStream
+    ) -> TokenStream:
         """Add classes to `hl_added` and `hl_removed` lines.
 
         Simplification, because we only need to care about class-based styles
@@ -116,7 +115,9 @@ class AwesomeHtmlFormatter(HtmlFormatter):  # type: ignore
             else:
                 yield 1, value
 
-    def wrap(self, source: TokenStream, outfile: Any) -> TokenStream:
+    def wrap(
+        self: "AwesomeHtmlFormatter", source: TokenStream, outfile: Any
+    ) -> TokenStream:
         """Return a <pre><code> wrapped element.
 
         Pygments returns the highlighted block wrapped inside a ``div.highlight``.
@@ -128,13 +129,13 @@ class AwesomeHtmlFormatter(HtmlFormatter):  # type: ignore
         """
         return self._wrap_div(self._wrap_pre(self._wrap_code(source)))
 
-    def _wrap_div(self, inner: TokenStream) -> TokenStream:
+    def _wrap_div(self: "AwesomeHtmlFormatter", inner: TokenStream) -> TokenStream:
         """Wrap the highlighted code in a div for easier styling."""
         yield 0, ('<div class="highlight">')
         yield from inner
         yield 0, ("</div>")
 
-    def _wrap_pre(self, inner: TokenStream) -> TokenStream:
+    def _wrap_pre(self: "AwesomeHtmlFormatter", inner: TokenStream) -> TokenStream:
         """Overwrite this method.
 
         I don't want an empty span in front of every code block.
@@ -147,7 +148,9 @@ class AwesomeHtmlFormatter(HtmlFormatter):  # type: ignore
         yield from inner
         yield 0, ("</pre>")
 
-    def _wrap_linespans(self, inner: TokenStream) -> TokenStream:
+    def _wrap_linespans(
+        self: "AwesomeHtmlFormatter", inner: TokenStream
+    ) -> TokenStream:
         """Overwrite as I want a class applied to the linespan."""
         i = self.linenostart - 1
         for t, line in inner:
@@ -157,7 +160,9 @@ class AwesomeHtmlFormatter(HtmlFormatter):  # type: ignore
             else:
                 yield 0, line
 
-    def format_unencoded(self, tokensource: Tuple[Any, Any], outfile: Any) -> None:
+    def format_unencoded(
+        self: "AwesomeHtmlFormatter", tokensource: Tuple[Any, Any], outfile: Any
+    ) -> None:
         """Produce the highlighted code block for Sphinx.
 
         First, we add the line numbers, then line spans, then add the emphasized lines.
@@ -194,7 +199,7 @@ class AwesomeCodeBlock(CodeBlock):
     option_spec = CodeBlock.option_spec
     option_spec.update(new_options)
 
-    def run(self) -> List[Node]:  # noqa: C901
+    def run(self: "AwesomeCodeBlock") -> List[Node]:  # noqa: C901
         """Implement option method."""
         document = self.state.document
         code = "\n".join(self.content)

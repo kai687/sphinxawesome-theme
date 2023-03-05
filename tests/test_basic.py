@@ -4,9 +4,8 @@ import os
 from pathlib import Path
 
 import pytest
-from sphinx.application import Sphinx
-
 import sphinxawesome_theme
+from sphinx.application import Sphinx
 
 
 def test_returns_version() -> None:

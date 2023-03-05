@@ -17,7 +17,7 @@ from typing import IO, Any
 class AwesomeJSONEncoder(json.JSONEncoder):
     """Custom JSON encoder for everything in the `context`."""
 
-    def default(self, obj: Any) -> str:
+    def default(self: "AwesomeJSONEncoder", obj: Any) -> str:
         """Return an empty string for anything that's not serializable by default."""
         return ""
 

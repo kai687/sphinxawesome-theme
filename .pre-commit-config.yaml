@@ -1,4 +1,3 @@
----
 repos:
   - repo: meta
     hooks:
@@ -10,26 +9,11 @@ repos:
       - id: check-yaml
       - id: trailing-whitespace
       - id: no-commit-to-branch
-  - repo: https://github.com/asottile/pyupgrade
-    rev: v3.3.1
-    hooks:
-      - id: pyupgrade
-        args: [--py36-plus]
   - repo: local
     hooks:
       - id: black
         name: black
         entry: poetry run black
-        language: system
-        types: [python]
-      - id: flake8
-        name: flake8
-        entry: poetry run flake8
-        language: system
-        types: [python]
-      - id: isort
-        name: isort
-        entry: poetry run isort
         language: system
         types: [python]
       - id: sync
@@ -39,8 +23,12 @@ repos:
         language: system
         files: 'pyproject\.toml'
   - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: 'v3.0.0-alpha.4'
+    rev: "v3.0.0-alpha.6"
     hooks:
       - id: prettier
         types: [javascript]
         files: "src/theme-src/"
+  - repo: https://github.com/charliermarsh/ruff-pre-commit
+    rev: "v0.0.254"
+    hooks:
+      - id: ruff

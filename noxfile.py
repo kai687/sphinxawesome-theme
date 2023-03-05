@@ -113,20 +113,17 @@ def export(session: Session) -> None:
 @session(python=Versions.all())
 def lint(session: Session) -> None:
     """Lint python files with flake8."""
-    args = session.posargs or python_files
+    if "--fix" in session.posargs:
+        args = ["--fix", *python_files]
+    else:
+        args = session.posargs or python_files
 
     deps = [
-        "flake8",
-        "flake8-annotations",
-        "flake8-bandit",
-        "flake8-black",
-        "flake8-bugbear",
-        "flake8-docstrings",
-        "flake8-implicit-str-concat",
+        "ruff",
     ]
 
     session.install(".", *deps)
-    session.run("flake8", *args)
+    session.run("ruff", *args)
 
 
 @session(python=Versions.latest())
@@ -136,15 +133,6 @@ def black(session: Session) -> None:
 
     session.install(".", "black")
     session.run("black", *args)
-
-
-@session(python=Versions.latest())
-def isort(session: Session) -> None:
-    """Rearrange imports on all Python files."""
-    args = session.posargs or python_files
-
-    session.install(".", "isort")
-    session.run("isort", *args)
 
 
 @session(python=Versions.all())
