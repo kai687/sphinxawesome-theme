@@ -266,6 +266,17 @@ def setup(app: "Sphinx") -> Dict[str, Any]:
 
     This function makes this available as extension.
     """
+    # Undo `myst-parser` 0.19 override
+    from docutils.writers.html5_polyglot import HTMLTranslator as DUTranslator
+
+    app.add_node(
+        nodes.container,
+        override=True,
+        html=(
+            AwesomeHTMLTranslator.visit_container,
+            DUTranslator.depart_container,
+        ),
+    )
     app.set_translator("html", AwesomeHTMLTranslator)
     app.set_translator("dirhtml", AwesomeHTMLTranslator)
 
