@@ -1560,4 +1560,4 @@ docs = ["myst-parser", "sphinx-autobuild", "sphinx-sitemap"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "263e66c2f6631018364fac54be859f48d3c883ae40fc2b4ca5185429be432f89"
+content-hash = "38d257315fbe0664e9b66535ba362ed3e8295119091251000a5a78e352e61c50"
