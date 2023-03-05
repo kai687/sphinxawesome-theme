@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.0.1
+
+- Fix a layout issue introduced by MyST parser 0.19.1 (#1212)
+
 ## 4.0.0
 
 - Add support for Sphinx version 6 and later
