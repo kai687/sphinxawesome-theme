@@ -39,7 +39,7 @@ EXPAND_MORE_BUTTON = (
 class AwesomeHTMLTranslator(HTML5Translator):
     """Override a few methods to improve the usability."""
 
-    def visit_caption(self, node: Element) -> None:
+    def visit_caption(self: "AwesomeHTMLTranslator", node: Element) -> None:
         """Use semantic elements."""
         if isinstance(node.parent, nodes.figure):
             self.body.append("<figcaption>")
@@ -52,16 +52,16 @@ class AwesomeHTMLTranslator(HTML5Translator):
         else:
             self.body.append(self.starttag(node, "p", "", CLASS="caption"))
 
-    def visit_desc(self, node: Element) -> None:
+    def visit_desc(self: "AwesomeHTMLTranslator", node: Element) -> None:
         """Add a class ``code-definition`` to definition lists.
 
         For code objects, like functions, classes, methods, etc.
         to distinguish them from regular definition lists.
         """
-        cl = node["objtype"] + " code-definition"  # type: ignore[index]
+        cl = node["objtype"] + " code-definition"
         self.body.append(self.starttag(node, "dl", CLASS=cl))
 
-    def visit_desc_signature(self, node: Element) -> None:
+    def visit_desc_signature(self: "AwesomeHTMLTranslator", node: Element) -> None:
         """Add the accordion class to the <dt> element.
 
         This will make the definition list collapsible,
@@ -81,7 +81,7 @@ class AwesomeHTMLTranslator(HTML5Translator):
 
         self.protect_literal_text += 1
 
-    def depart_desc_signature(self, node: Element) -> None:
+    def depart_desc_signature(self: "AwesomeHTMLTranslator", node: Element) -> None:
         """Change permalinks for code definitions.
 
         Functions, methods, command line options, etc.
@@ -93,7 +93,9 @@ class AwesomeHTMLTranslator(HTML5Translator):
 
         super().depart_desc_signature(node)
 
-    def depart_desc_signature_line(self, node: Element) -> None:
+    def depart_desc_signature_line(
+        self: "AwesomeHTMLTranslator", node: Element
+    ) -> None:
         """Change permalinks for code definitions.
 
         This method is only relevant for mulitline definitions,
@@ -103,38 +105,38 @@ class AwesomeHTMLTranslator(HTML5Translator):
             self.body.append(EXPAND_MORE_BUTTON)
         super().depart_desc_signature_line(node)
 
-    def visit_desc_content(self, node: Element) -> None:
+    def visit_desc_content(self: "AwesomeHTMLTranslator", node: Element) -> None:
         """Add panel class to definitions."""
         if self.config.html_collapsible_definitions and len(node.astext()) > 0:
             self.body.append(self.starttag(node, "dd", CLASS="panel"))
         else:
             self.body.append(self.starttag(node, "dd"))
 
-    def visit_desc_inline(self, node: Element) -> None:
+    def visit_desc_inline(self: "AwesomeHTMLTranslator", node: Element) -> None:
         """Change `span` to `code`."""
         self.body.append(self.starttag(node, "code", ""))
 
-    def depart_desc_inline(self, node: Element) -> None:
+    def depart_desc_inline(self: "AwesomeHTMLTranslator", node: Element) -> None:
         """Change `span` to `code`."""
         self.body.append("</code>")
 
-    def visit_desc_name(self, node: Element) -> None:
+    def visit_desc_name(self: "AwesomeHTMLTranslator", node: Element) -> None:
         """Change `span` to `code`."""
         self.body.append(self.starttag(node, "code", ""))
 
-    def depart_desc_name(self, node: Element) -> None:
+    def depart_desc_name(self: "AwesomeHTMLTranslator", node: Element) -> None:
         """Change `span` to `code`."""
         self.body.append("</code>")
 
-    def visit_desc_addname(self, node: Element) -> None:
+    def visit_desc_addname(self: "AwesomeHTMLTranslator", node: Element) -> None:
         """Change `span` to `code`."""
         self.body.append(self.starttag(node, "code", ""))
 
-    def depart_desc_addname(self, node: Element) -> None:
+    def depart_desc_addname(self: "AwesomeHTMLTranslator", node: Element) -> None:
         """Change `span` to `code`."""
         self.body.append("</code>")
 
-    def visit_literal_block(self, node: Element) -> None:
+    def visit_literal_block(self: "AwesomeHTMLTranslator", node: Element) -> None:
         """Overwrite code blocks.
 
         All code blocks have a header showing the highlighting language
@@ -207,7 +209,7 @@ class AwesomeHTMLTranslator(HTML5Translator):
             # node has markup, it's a samp directive or parsed-literal
             self.body.append("<pre><code>")
 
-    def depart_literal_block(self, node: Element) -> None:
+    def depart_literal_block(self: "AwesomeHTMLTranslator", node: Element) -> None:
         """Close literal blocks.
 
         Provide the closing tag for non-highlighted code blocks.
@@ -216,7 +218,7 @@ class AwesomeHTMLTranslator(HTML5Translator):
         """
         self.body.append("</code></pre>\n")
 
-    def visit_container(self, node: Element) -> None:
+    def visit_container(self: "AwesomeHTMLTranslator", node: Element) -> None:
         """Overide for code blocks with captions."""
         if node.get("literal_block"):
             node.html5tagname = "div"  # type: ignore[attr-defined]
@@ -234,13 +236,13 @@ class AwesomeHTMLTranslator(HTML5Translator):
         else:
             super().visit_container(node)
 
-    def depart_reference(self, node: Element) -> None:
+    def depart_reference(self: "AwesomeHTMLTranslator", node: Element) -> None:
         """Add external link icon."""
-        if "refuri" in node and not node.get("internal"):  # type: ignore[attr-defined]
+        if "refuri" in node and not node.get("internal"):
             self.body.append(ICONS["external_link"])
         super().depart_reference(node)
 
-    def visit_emphasis(self, node: Element) -> None:
+    def visit_emphasis(self: "AwesomeHTMLTranslator", node: Element) -> None:
         """Change tags for emphasized literals.
 
         Google recommends using ``<var>`` tags inside ``<code>`` tags
@@ -253,7 +255,7 @@ class AwesomeHTMLTranslator(HTML5Translator):
         else:
             super().visit_emphasis(node)
 
-    def depart_emphasis(self, node: Element) -> None:
+    def depart_emphasis(self: "AwesomeHTMLTranslator", node: Element) -> None:
         """Change closing tag for emphasized literals."""
         if isinstance(node.parent, nodes.literal):
             self.body.append("</var>")
