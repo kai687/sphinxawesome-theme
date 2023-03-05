@@ -16,8 +16,10 @@
 <a class="hover:bg-gray-700 focus:bg-gray-700 focus:outline-none"
    href="{{ pathto(master_doc) }}"
    title="{{ _('Back to homepage') }}">
-  {%- if logo -%}
-    <img class="h-14 w-14 p-3 inline-block" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo" />
+
+  {%- set _logo_url = logo_url|default(pathto('_static/' + (logo or ""), 1)) %}
+  {%- if logo or logo_url %}
+    <img class="h-14 w-14 p-3 inline-block" src="{{ _logo_url }}" alt="Logo" />
   {%- endif -%}
   <span class="hidden lg:inline-block shrink-0 font-medium text-gray-100 mx-5 leading-14 tracking-wider">{{ docstitle }}</span>
 </a>

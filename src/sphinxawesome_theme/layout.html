@@ -42,7 +42,7 @@
     {%- endif %}
     {%- set _favicon_url = favicon_url | default(pathto('_static/' + (favicon or ""), 1)) %}
     {%- if favicon_url or favicon %}
-    <link rel="shortcut icon" href="{{ _favicon_url }}"/>
+    <link rel="icon" href="{{ _favicon_url }}"/>
     {%- endif %}
     {%- block linktags %}
     {%- if hasdoc('search') and not docsearch %}
