@@ -30,7 +30,7 @@ sphinx-autobuild = {version = "^2021.3.14", optional = true}
 sphinx-sitemap = { version = "^2.2.0", optional = true}
 
 [tool.poetry.dev-dependencies]
-flake8 = "^3.9.2"
+flake8 = "^5.0.4"
 flake8-annotations = "^2.9.1"
 flake8-black = "^0.3.5"
 flake8-bandit = "^3.0.0"
