@@ -36,8 +36,8 @@ pytest = "^7.2"
 pytest-cov = "^4.0"
 mypy = "^1.0"
 coverage = { extras = ["toml"], version = "^7.2" }
-isort = "^5.11.5"
 ruff = "^0.0.254"
+types-docutils = "^0.19.1.6"
 
 [tool.poetry.extras]
 docs = ["myst-parser", "sphinx-autobuild", "sphinx-sitemap"]
@@ -71,7 +71,7 @@ warn_unreachable = true
 warn_unused_ignores = true
 
 [[tool.mypy.overrides]]
-module = ["pygments.*", "bs4", "dotenv", "sphinxcontrib.serializinghtml"]
+module = ["pygments.*", "bs4", "dotenv", "sphinxcontrib.serializinghtml", "nox_poetry"]
 ignore_missing_imports = true
 
 [tool.poetry.plugins."sphinx.html_themes"]
