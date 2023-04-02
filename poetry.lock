@@ -1209,14 +1209,14 @@ files = [
 
 [[package]]
 name = "types-docutils"
-version = "0.19.1.6"
+version = "0.19.1.7"
 description = "Typing stubs for docutils"
 category = "dev"
 optional = false
 python-versions = "*"
 files = [
-    {file = "types-docutils-0.19.1.6.tar.gz", hash = "sha256:a334a703a8688910d0869464f1f6f8bd330d75843bdab4f893547bfb29417a01"},
-    {file = "types_docutils-0.19.1.6-py3-none-any.whl", hash = "sha256:b7e182f371cbe20828a8750ffb150219968452445946f66f33778b08e81c7d89"},
+    {file = "types-docutils-0.19.1.7.tar.gz", hash = "sha256:cb6e0dd1c895c723002ec4dc8334bf9df04726ef0cf13f5597501578b47eef30"},
+    {file = "types_docutils-0.19.1.7-py3-none-any.whl", hash = "sha256:bbf89cf3b9460ce780434f8cc52ce846b0f14505ff3496fc6a17acd9967aee9e"},
 ]
 
 [[package]]
