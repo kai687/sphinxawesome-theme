@@ -37,8 +37,10 @@
     {%- if docsearch %}
     <link rel="preconnect" href="https://{{ docsearch_config.app_id }}-dsn.algolia.net" crossorigin />
     {% endif %}
-    {%- if pageurl %}
-    <link rel="canonical" href="{{ pageurl }}" />
+    {%- if pageurl and pageurl.endswith("index/") %}
+    <link rel="canonical" href="{{ pageurl.replace('index/', '')|e }}" />
+    {%- elif pageurl %}
+    <link rel="canonical" href="{{ pageurl|e }}" />
     {%- endif %}
     {%- set _favicon_url = favicon_url | default(pathto('_static/' + (favicon or ""), 1)) %}
     {%- if favicon_url or favicon %}
