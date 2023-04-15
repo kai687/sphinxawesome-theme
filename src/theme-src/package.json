@@ -42,7 +42,7 @@
     "postcss-loader": "^7.2.4",
     "postcss-preset-env": "^8.1.0",
     "prettier": "^2.8.7",
-    "stylelint": "^14.16.1",
+    "stylelint": "^15.4.0",
     "stylelint-config-prettier": "^9.0.5",
     "stylelint-prettier": "^3.0.0",
     "stylelint-webpack-plugin": "^4.1.0",
