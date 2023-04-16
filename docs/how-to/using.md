@@ -129,3 +129,7 @@ If you copy the code, the `+` and `-` characters are copied as well.
 To get a fast and relevant _search-as-you-type_ experience,
 you can use Algolia DocSearch as a replacement for Sphinx' built-in search.
 It's free for open source documentation projects and blogs with technical content.
+
+```{seealso}
+{confval}`html_awesome_docsearch`
+```
