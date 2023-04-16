@@ -96,16 +96,13 @@ html_extra_path = ["robots.txt"]
 
 # extra options from the sphinxawesome_theme
 html_collapsible_definitions = True
-html_awesome_docsearch = True
+# html_awesome_docsearch = True
 
-# DocSearch is configured via an `.env` key here.
-# You can also use the following dictionary
-#
-# docsearch_config = {
-# "api_key": "",
-# "container": "",
-# "index_name": "",
-# }
+# The Algolia credentials are added from an `.env` file
+docsearch_config = {
+    "placeholder": "Search these docs",
+    "missing_results_url": "https://github.com/kai687/sphinxawesome-theme/issues/new?title=${query}",
+}
 
 html_theme_options = {
     "show_scrolltop": True,
