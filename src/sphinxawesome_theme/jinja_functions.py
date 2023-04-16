@@ -44,8 +44,6 @@ def _get_manifest_json(app: Sphinx) -> Any:
             if path.isfile(manifest):
                 with open(manifest) as m:
                     return json.load(m)
-        else:
-            return {}
     else:
         return {}
 
