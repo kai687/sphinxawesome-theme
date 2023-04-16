@@ -3,6 +3,7 @@
 ## 4.1.0
 
 - More DocSearch configuration options
+- Better DocSearch styles matching the theme
 
 ## 4.0.3
 

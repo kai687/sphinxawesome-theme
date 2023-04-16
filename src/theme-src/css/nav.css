@@ -24,7 +24,7 @@
     }
   }
   & a {
-    @apply block text-gray-light hover:text-gray-dark focus:text-gray-dark;
+    @apply block text-link hover:text-brand focus:text-brand;
   }
 }
 
@@ -74,12 +74,18 @@
   & .caption {
     @apply uppercase text-sm font-medium font-mono text-gray-light pb-6;
   }
+  & ul {
+    @apply pl-0 list-none;
+    & > li {
+      @apply pl-0;
+    }
+  }
   @apply my-12 border-t pt-12;
   & li li {
     @apply pl-4;
   }
   & a {
-    @apply block text-link py-1 hover:text-brand focus:text-brand;
+    @apply block py-1 text-link hover:text-brand hover:underline focus:text-brand focus:underline;
   }
 }
 
