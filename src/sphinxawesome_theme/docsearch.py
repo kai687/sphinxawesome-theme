@@ -48,6 +48,18 @@ def setup_docsearch(
             os.getenv("DOCSEARCH_INDEX_NAME")
             or app.config.docsearch_config.get("index_name")
         ),
+        "initial_query": (
+            os.getenv("DOCSEARCH_INITIAL_QUERY")
+            or app.config.docsearch_config.get("initial_query", "")
+        ),
+        "placeholder": (
+            os.getenv("DOCSEARCH_PLACEHOLDER")
+            or app.config.docsearch_config.get("placeholder", "")
+        ),
+        "missing_results_url": (
+            os.getenv("DOCSEARCH_MISSING_RESULTS_URL")
+            or app.config.docsearch_config.get("missing_results_url", "")
+        ),
     }
     # If we want to use `docsearch` we don't need any other JS file from Sphinx
     context["script_files"] = []

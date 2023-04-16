@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.1.0
+
+- More DocSearch configuration options
+
 ## 4.0.3
 
 - Fix canonical links
