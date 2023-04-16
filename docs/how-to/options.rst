@@ -218,7 +218,7 @@ You can change these **optional** settings:
    If you want to show initial results when the DocSearch modal opens
 
 `DOCSEARCH_PLACEHOLDER`
-   If you want to show a different placholder (default: "Search docs")
+   If you want to show a different placeholder (default: "Search docs")
 
 `DOCSEARCH_SEARCH_PARAMETERS`
    If you want to add `search parameter <https://www.algolia.com/doc/api-reference/search-api-parameters/>`_
