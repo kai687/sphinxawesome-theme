@@ -181,33 +181,81 @@ The following options are set at the top level in your Sphinx configuration:
       # This option is `False` by default
       html_awesome_docsearch = True
 
-   .. rubric:: Configure DocSearch via environment variables
+Configure Algolia DocSearch
+---------------------------
 
-   Add the following environment variables, either on the command line, or in a :file:`.env` file:
+Algolia DocSearch is a third-party service.
+You need to `apply <https://docsearch.algolia.com/apply/>`_ and receive your credentials before you can use it.
 
-   `DOCSEARCH_APP_ID`
-      The id of your Algolia app
+To make DocSearch work with Sphinx,
+you need to add your credentials to the Sphinx configuration,
+or via environment variables.
 
-   `DOCSEARCH_API_KEY`
-      The API key for searching your index on Algolia
+Configure DocSearch via environment variables
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-   `DOCSEARCH_INDEX_NAME`
-      The name of your Algolia index for your documentation project.
+Add the following environment variables, either in your shell or continuous integration environment, or add them to a :file:`.env` file:
 
-   .. rubric:: Configure DocSearch in the Sphinx configuration file
+`DOCSEARCH_APP_ID`
+   The id of your Algolia DocSearch application
 
-   Add the following to the ``docsearch_config`` dictionary in your Sphinx configuration:
+`DOCSEARCH_API_KEY`
+   The API key for searching your index on Algolia
 
-   .. code-block:: python
-      :caption: File: conf.py
+`DOCSEARCH_INDEX_NAME`
+   The name of your Algolia index for your documentation project
 
-      docsearch_config = {
-        app_id: "",
-        api_key: "",
-        index_name: ""
-      }
+.. note::
+
+   If you don't provide the app id, API key, or index name,
+   your Sphinx project will still build.
+   The DocSearch modal won't show any results and you might see errors in your browser's console.
+
+
+You can change these **optional** settings:
+
+`DOCSEARCH_INITIAL_QUERY`
+   If you want to show initial results when the DocSearch modal opens
+
+`DOCSEARCH_PLACEHOLDER`
+   If you want to show a different placholder (default: "Search docs")
+
+`DOCSEARCH_SEARCH_PARAMETERS`
+   If you want to add `search parameter <https://www.algolia.com/doc/api-reference/search-api-parameters/>`_
+
+`DOCSEARCH_MISSING_RESULTS_URL`
+   If you want to let users send you a message, or file a GitHub issue,
+   when they can't find what they're looking for.
+   You can use the current query in the URL. For example:
+
+   .. code-block:: sh
+
+      DOCSEARCH_MISSING_RESULTS_URL=https://github.com/example/docs/issues/new?title=${query}
 
    .. note::
 
-      Algolia DocSearch is an external service.
-      You need to `apply <https://docsearch.algolia.com/apply/>`_ and receive your credentials before you can use it.
+      In the |product|, you have to provide the URL as a string.
+      This deviates from the original DocSearch implementation,
+      which accepts a function.
+
+.. seealso::
+
+   `DocSearch API reference <https://docsearch.algolia.com/docs/api/>`_.
+
+Configure DocSearch in the Sphinx configuration file
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can configure DocSearch with the ``docsearch_config`` dictionary in your Sphinx configuration:
+
+.. code-block:: python
+   :caption: File: conf.py
+
+   docsearch_config = {
+       app_id: "",
+       api_key: "",
+       index_name: ""
+       initial_query: "",
+       placeholder: "",
+       search_parameters: "",
+       missing_results_url: ""
+   }

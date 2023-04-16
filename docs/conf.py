@@ -96,7 +96,7 @@ html_extra_path = ["robots.txt"]
 
 # extra options from the sphinxawesome_theme
 html_collapsible_definitions = True
-# html_awesome_docsearch = True
+html_awesome_docsearch = True
 
 # The Algolia credentials are added from an `.env` file
 docsearch_config = {
