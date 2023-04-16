@@ -1,5 +1,5 @@
 .. meta::
-   :description: Configure the |product| by changing options in your Sphinx configuration file.
+   :description: Configure the Awesome Theme by changing options in your Sphinx configuration file.
 
 .. _sec:configure:
 
@@ -8,7 +8,7 @@ Configure the theme
 
 .. rst-class:: lead
 
-   Configure the |product| by changing one of its options.
+   Configure the |product| by changing one of the theme or extension options.
 
 .. contents:: On this page
    :local:
@@ -16,19 +16,17 @@ Configure the theme
 
 .. admonition:: What's the difference between theme and extension options?
 
-   It's a technical distinction due to the way Sphinx builds a project.
-
    - **Theme options** are defined in the HTML templates.
-     They control layout and styling aspects.
+     They control layout and styling.
    - **Extension options** are defined in the Python code of the extensions.
-     They can control more aspects, for example, running extra code.
+     They can control more aspects, such as, running extra code.
 
 .. _sec:theme_options:
 
 Theme options
 -------------
 
-You can configure the theme by modifying the ``html_theme_options`` dictionary in the Sphinx configuration file :file:`conf.py`.
+To configure the theme, modify the ``html_theme_options`` dictionary in your Sphinx configuration.
 
 .. confval:: nav_include_hidden
 
@@ -50,8 +48,8 @@ You can configure the theme by modifying the ``html_theme_options`` dictionary i
 
 .. confval:: show_nav
 
-   The |product| shows links to all your documentation pages in sidebar on the left side.
-   If you want to hide the sidebar on all pages, set this option to `False`:
+   The |product| shows links to all your documentation pages in the left sidebar.
+   To hide the sidebar on all pages, set this option to `False`:
 
    .. code-block:: python
       :caption: "File: conf.py"
@@ -73,8 +71,7 @@ You can configure the theme by modifying the ``html_theme_options`` dictionary i
 
 .. confval:: breadcrumbs_separator
 
-   To select a different separator for the breadcrumbs navigation links,
-   set:
+   To select a different separator for the breadcrumbs links, set:
 
    .. code-block:: python
       :caption: "File: conf.py"
@@ -132,20 +129,18 @@ Extension options
 
 .. note::
 
-   Extension options are only available
-   if you add the theme to the list of extensions
-   in your Sphinx configuration:
+   To configure extension options,
+   you need to add the theme to the list of extensions in your Sphinx configuration:
+
    ``extensions = ["sphinxawesome_theme"]``
 
-The |product| enables several internal extensions that enhance the user experience.
-The following configuration values are set at the top level in the Sphinx
-configuration file ``conf.py``:
+The |product| enables several internal extensions.
+The following options are set at the top level in your Sphinx configuration:
 
 .. confval:: html_collapsible_definitions
 
    Set this option to ``True`` to make code references,
-   such as classes, methods, and other objects,
-   collapsible and expandable.
+   such as classes or methods, collapsible.
 
    .. code-block:: python
       :caption: "File: conf.py"
@@ -156,8 +151,8 @@ configuration file ``conf.py``:
 
 .. confval:: html_awesome_headerlinks
 
-   Set this option to ``False`` to restore Sphinx's default behavior for headerlinks.
-   In the |product|, clicking a headerlink copies the URL to the clipboard.
+   By default, clicking a headerlink copies the URL to the clipboard.
+   To restore Sphinx's default behavior, set this option to ``False``.
 
    .. code-block:: python
       :caption: "File: conf.py"
@@ -168,7 +163,7 @@ configuration file ``conf.py``:
 .. confval:: html_awesome_code_headers
 
    By default, the |product| shows the programming language of a code block in its header.
-   If you don't want to show the programming language, set this option to ``False``.
+   To restore Sphinx's default, set this option to ``False``.
 
    .. code-block:: python
       :caption: "File: conf.py"
@@ -178,16 +173,13 @@ configuration file ``conf.py``:
 
 .. confval:: html_awesome_docsearch
 
-   Set this option to ``True`` to use [Algolia DocSearch](https://docsearch.algolia.com/) instead of the built-in search.
+   Set this option to ``True`` to use `Algolia DocSearch <https://docsearch.algolia.com/>`_ instead of the built-in search.
 
    .. code-block:: python
       :caption: "File: conf.py"
 
       # This option is `False` by default
       html_awesome_docsearch = True
-
-   To configure DocSearch, you can the configuration options as environment variables,
-   or you can add them to the ``docsearch_config`` dictionary in your Sphinx configuration file :file:`conf.py`.
 
    .. rubric:: Configure DocSearch via environment variables
 
@@ -204,7 +196,7 @@ configuration file ``conf.py``:
 
    .. rubric:: Configure DocSearch in the Sphinx configuration file
 
-   Add the following to the ``docsearch_config`` dictionary in your Sphinx configuration file :file:`conf.py`.
+   Add the following to the ``docsearch_config`` dictionary in your Sphinx configuration:
 
    .. code-block:: python
       :caption: "File: conf.py"
@@ -217,5 +209,5 @@ configuration file ``conf.py``:
 
    .. note::
 
-      Algolia DocSearch is an external web service.
+      Algolia DocSearch is an external service.
       You need to apply and receive your credentials before you can use it.
