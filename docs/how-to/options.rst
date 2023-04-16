@@ -36,7 +36,7 @@ To configure the theme, modify the ``html_theme_options`` dictionary in your Sph
    set ``nav_include_hidden`` to ``False``.
 
    .. code-block:: python
-      :caption: "File: conf.py"
+      :caption: File: conf.py
 
       # This option is `True` by default
       html_theme_options = {"nav_include_hidden": False}
@@ -52,7 +52,7 @@ To configure the theme, modify the ``html_theme_options`` dictionary in your Sph
    To hide the sidebar on all pages, set this option to `False`:
 
    .. code-block:: python
-      :caption: "File: conf.py"
+      :caption: File: conf.py
 
       # This option is `True` by default
       html_theme_options = {"show_nav": False}
@@ -64,7 +64,7 @@ To configure the theme, modify the ``html_theme_options`` dictionary in your Sph
    To hide the breadcrumbs, set this option to ``False``:
 
    .. code-block:: python
-      :caption: "File: conf.py"
+      :caption: File: conf.py
 
       # This option is `True` by default
       html_theme_options = {"show_breadcrumbs": False}
@@ -74,7 +74,7 @@ To configure the theme, modify the ``html_theme_options`` dictionary in your Sph
    To select a different separator for the breadcrumbs links, set:
 
    .. code-block:: python
-      :caption: "File: conf.py"
+      :caption: File: conf.py
       :emphasize-text: CHAR
 
       # The default separator is `/`
@@ -87,7 +87,7 @@ To configure the theme, modify the ``html_theme_options`` dictionary in your Sph
    To show links to the previous and next pages, set this option to ``True``:
 
    .. code-block:: python
-      :caption: "File: conf.py"
+      :caption: File: conf.py
 
       # This option is `False` by default
       html_theme_options = {"show_prev_next": True}
@@ -98,7 +98,7 @@ To configure the theme, modify the ``html_theme_options`` dictionary in your Sph
    set this option to ``True``:
 
    .. code-block:: python
-      :caption: "File: conf.py"
+      :caption: File: conf.py
 
       # This option is `False` by default
       html_theme_options = {"show_scrolltop": True}
@@ -108,7 +108,7 @@ To configure the theme, modify the ``html_theme_options`` dictionary in your Sph
    To add extra links to the header of your documentation, set the following option:
 
    .. code-block:: python
-      :caption: "File: conf.py"
+      :caption: File: conf.py
 
       # This option is `False` by default
       html_theme_options = {
@@ -143,7 +143,7 @@ The following options are set at the top level in your Sphinx configuration:
    such as classes or methods, collapsible.
 
    .. code-block:: python
-      :caption: "File: conf.py"
+      :caption: File: conf.py
 
       # This option is `False` by default
       html_collapsible_definitions = True
@@ -155,7 +155,7 @@ The following options are set at the top level in your Sphinx configuration:
    To restore Sphinx's default behavior, set this option to ``False``.
 
    .. code-block:: python
-      :caption: "File: conf.py"
+      :caption: File: conf.py
 
       # This option is `True` by default
       html_awesome_headerlinks = False
@@ -166,7 +166,7 @@ The following options are set at the top level in your Sphinx configuration:
    To restore Sphinx's default, set this option to ``False``.
 
    .. code-block:: python
-      :caption: "File: conf.py"
+      :caption: File: conf.py
 
       # This option is `True` by default
       html_awesome_code_headers = False
@@ -176,14 +176,14 @@ The following options are set at the top level in your Sphinx configuration:
    Set this option to ``True`` to use `Algolia DocSearch <https://docsearch.algolia.com/>`_ instead of the built-in search.
 
    .. code-block:: python
-      :caption: "File: conf.py"
+      :caption: File: conf.py
 
       # This option is `False` by default
       html_awesome_docsearch = True
 
    .. rubric:: Configure DocSearch via environment variables
 
-   Add the following environment variables, either on the command line, or as a :file:`.env` file:
+   Add the following environment variables, either on the command line, or in a :file:`.env` file:
 
    `DOCSEARCH_APP_ID`
       The id of your Algolia app
@@ -199,7 +199,7 @@ The following options are set at the top level in your Sphinx configuration:
    Add the following to the ``docsearch_config`` dictionary in your Sphinx configuration:
 
    .. code-block:: python
-      :caption: "File: conf.py"
+      :caption: File: conf.py
 
       docsearch_config = {
         app_id: "",
@@ -210,4 +210,4 @@ The following options are set at the top level in your Sphinx configuration:
    .. note::
 
       Algolia DocSearch is an external service.
-      You need to apply and receive your credentials before you can use it.
+      You need to `apply <https://docsearch.algolia.com/apply/>`_ and receive your credentials before you can use it.
