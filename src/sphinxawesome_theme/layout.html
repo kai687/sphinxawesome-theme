@@ -12,76 +12,73 @@
 {%- set lang_attr = "en" if language == None else (language|replace('_','-')) -%}
 
 {%- if not embedded and docstitle -%}
-  {%- if title == docstitle -%}
-    {%- set titlesuffix = "" -%}
-  {%- else -%}
-    {%- set titlesuffix = " | "|safe + docstitle|e -%}
-  {%- endif -%}
+{%- if title == docstitle -%}
+{%- set titlesuffix = "" -%}
 {%- else -%}
-  {%- set titlesuffix = "" -%}
+{%- set titlesuffix = " | "|safe + docstitle|e -%}
+{%- endif -%}
+{%- else -%}
+{%- set titlesuffix = "" -%}
 {%- endif -%}
 
 <!DOCTYPE html>
 <html lang="{{ lang_attr }}">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta charset="utf-8" />
-    {{ metatags }}
-    {%- block htmltitle %}
-    <title>{{ title|striptags|e if title else docstitle }}{{ titlesuffix }}</title>
-    {%- endblock %}
-    {#- Extra CSS files for overriding stuff #}
-    {%- for css in css_files %}
-    <link rel="stylesheet" href="{{ pathto(asset(css), 1) }}" />
-    {%- endfor %}
-    {%- if docsearch %}
-    <link rel="preconnect" href="https://{{ docsearch_config.app_id }}-dsn.algolia.net" crossorigin />
-    {% endif %}
-    {%- if pageurl and pageurl.endswith("index/") %}
-    <link rel="canonical" href="{{ pageurl.replace('index/', '')|e }}" />
-    {%- elif pageurl %}
-    <link rel="canonical" href="{{ pageurl|e }}" />
-    {%- endif %}
-    {%- set _favicon_url = favicon_url | default(pathto('_static/' + (favicon or ""), 1)) %}
-    {%- if favicon_url or favicon %}
-    <link rel="icon" href="{{ _favicon_url }}"/>
-    {%- endif %}
-    {%- block linktags %}
-    {%- if hasdoc('search') and not docsearch %}
-    <link rel="search" title="{{ _('Search') }}" href="{{ pathto('search') }}" />
-    {%- endif %}
-    {%- if hasdoc('genindex') %}
-    <link rel="index" title="{{ _('Index') }}" href="{{ pathto('genindex') }}" />
-    {%- endif %}
-    {%- if next %}
-    <link rel="next" title="{{ next.title|striptags|e }}" href="{{ next.link|e }}" />
-    {%- endif %}
-    {%- if prev %}
-    <link rel="prev" title="{{ prev.title|striptags|e }}" href="{{ prev.link|e }}" />
-    {%- endif %}
-    {%- endblock %}
-  </head>
 
-  <body class="antialiased text-gray scroll-smooth">
-    <div
-      id="page"
-      data-controller="sidebar search {{ 'scroll' if theme_show_scrolltop|tobool }}"
-      data-action="keydown@window->search#focus {{ 'scroll@window->scroll#showButton' if theme_show_scrolltop|tobool }}"
-      class="min-h-screen xl:h-screen flex flex-col xl:grid xl:grid-layout print:block print:h-auto"
-    >
-      {% include "skip.html" %}
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  {{ metatags }}
+  {%- block htmltitle %}
+  <title>{{ title|striptags|e if title else docstitle }}{{ titlesuffix }}</title>
+  {%- endblock %}
+  {#- Extra CSS files for overriding stuff #}
+  {%- for css in css_files %}
+  <link rel="stylesheet" href="{{ pathto(asset(css), 1) }}" />
+  {%- endfor %}
+  {%- if docsearch %}
+  <link rel="preconnect" href="https://{{ docsearch_config.app_id }}-dsn.algolia.net" crossorigin="anonymous" />
+  {% endif %}
+  {%- if pageurl %}
+  <link rel="canonical" href="{{ pageurl|e }}" />
+  {%- endif %}
+  {%- set _favicon_url = favicon_url | default(pathto('_static/' + (favicon or ""), 1)) %}
+  {%- if favicon_url or favicon %}
+  <link rel="icon" href="{{ _favicon_url }}" />
+  {%- endif %}
+  {%- block linktags %}
+  {%- if hasdoc('search') and not docsearch %}
+  <link rel="search" title="{{ _('Search') }}" href="{{ pathto('search') }}" />
+  {%- endif %}
+  {%- if hasdoc('genindex') %}
+  <link rel="index" title="{{ _('Index') }}" href="{{ pathto('genindex') }}" />
+  {%- endif %}
+  {%- if next %}
+  <link rel="next" title="{{ next.title|striptags|e }}" href="{{ next.link|e }}" />
+  {%- endif %}
+  {%- if prev %}
+  <link rel="prev" title="{{ prev.title|striptags|e }}" href="{{ prev.link|e }}" />
+  {%- endif %}
+  {%- endblock %}
+</head>
 
-      <header class="grid-area-header z-10 h-14 fixed w-full top-0 print:hidden">
-        {% include "header.html" %}
-      </header>
+<body class="antialiased text-gray scroll-smooth">
+  <div id="page" data-controller="sidebar search {{ 'scroll' if theme_show_scrolltop|tobool }}"
+    data-action="keydown@window->search#focus {{ 'scroll@window->scroll#showButton' if theme_show_scrolltop|tobool }}"
+    class="min-h-screen xl:h-screen flex flex-col xl:grid xl:grid-layout print:block print:h-auto">
+    {% include "skip.html" %}
 
-      {% block document %}
-      {% endblock %}
+    <header class="grid-area-header z-10 h-14 fixed w-full top-0 print:hidden">
+      {% include "header.html" %}
+    </header>
 
-      {% include "modals.html" %}
-    </div>
-    {% block scripts %}
-      {{ script() }}
+    {% block document %}
     {% endblock %}
-  </body>
+
+    {% include "modals.html" %}
+  </div>
+  {% block scripts %}
+  {{ script() }}
+  {% endblock %}
+</body>
+
 </html>

@@ -58,6 +58,17 @@ def _make_asset_url(app: Sphinx, asset: str) -> Any:
     return manifest.get(asset, asset)
 
 
+def _make_canonical(app: Sphinx, pagename: str) -> str:
+    """Turn a filepath into the correct canonical link.
+
+    Upstream Sphinx builds the wrong canonical links for the ``dirhtml`` builder.
+    """
+    canonical = posixpath.join(app.config.html_baseurl, pagename.replace("index", ""))
+    if not canonical.endswith("/"):
+        canonical += "/"
+    return canonical
+
+
 def setup_jinja(
     app: Sphinx,
     pagename: str,
@@ -70,8 +81,8 @@ def setup_jinja(
         app.builder.templates.environment.filters["sanitize"] = _make_id_from_title
         context["asset"] = partial(_make_asset_url, app)
         # must override `pageurl` for directory builder
-        if app.builder.name == "dirhtml":
-            context["pageurl"] = posixpath.join(app.config.html_baseurl, pagename + "/")
+        if app.builder.name == "dirhtml" and app.config.html_baseurl:
+            context["pageurl"] = _make_canonical(app, pagename)
 
 
 def setup(app: Sphinx) -> Dict[str, Any]:
