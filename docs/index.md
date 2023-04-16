@@ -57,7 +57,7 @@ In the **How-to** section, you can learn more about using and customizing the th
 ```{toctree}
 ---
 maxdepth: 1
-caption: How-To
+caption: How To
 ---
 
 how-to/install
