@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.0.3
+
+- Fix canonical links
+
 ## 4.0.2
 
 - Restore missing logo (#1214)
