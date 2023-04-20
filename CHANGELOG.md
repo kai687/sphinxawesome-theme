@@ -4,6 +4,7 @@
 
 - More DocSearch configuration options
 - Better DocSearch styles matching the theme
+- Allow extra tags in header
 
 ## 4.0.3
 
