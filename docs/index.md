@@ -26,7 +26,7 @@ Create functional and beautiful websites for your documentation with Sphinx.
    ```
 
    ```{seealso}
-   {ref}`sec:install`
+   {doc}`how-to/install`
    ```
 
 1. Add the theme to your Sphinx configuration:
@@ -40,7 +40,7 @@ Create functional and beautiful websites for your documentation with Sphinx.
    ```
 
    ```{seealso}
-   {ref}`sec:load`
+   {doc}`how-to/load`
    {confval}`sphinx:html_theme`
    ```
 

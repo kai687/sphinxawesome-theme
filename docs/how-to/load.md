@@ -5,8 +5,6 @@ myst:
       Learn how to add the Awesome Theme to your Sphinx documentation.
 ---
 
-(sec:load)=
-
 # Load the theme
 
 ```{rst-class} lead
