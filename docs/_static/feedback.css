@@ -1,0 +1,28 @@
+.feedback-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 760px;
+}
+
+.feedback {
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+  align-items: center;
+}
+
+#upvote > svg {
+  margin-bottom: 5px;
+}
+
+.feedback-send {
+  display: block;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.125rem;
+  border: 1px solid #e5e7eb;
+}
+
+.feedback-send:hover {
+  background: #f3f4f6;
+}

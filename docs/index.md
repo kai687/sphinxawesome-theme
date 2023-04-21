@@ -78,8 +78,3 @@ glob: true
 
 demo/*
 ```
-
-## Give feedback
-
-Is something not working or do you miss a feature?
-Create a [GitHub issue](https://github.com/kai687/sphinxawesome-theme/issues/new).
