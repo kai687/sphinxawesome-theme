@@ -91,7 +91,7 @@ html_baseurl = "https://sphinxawesome.xyz/"
 html_extra_path = ["robots.txt"]
 
 # if you want to include other pages than docs
-# templates_path = ["_templates"]
+templates_path = ["_templates"]
 # html_additional_pages = {"about": "about.html"}
 
 # extra options from the sphinxawesome_theme

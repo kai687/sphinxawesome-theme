@@ -1,0 +1,17 @@
+{% if meta and meta.layout %}
+  {%- extends meta.layout + ".html"|default("with-sidebar.html") -%}
+{% else %}
+  {% if theme_show_nav|tobool %}
+    {%- extends "with-sidebar.html" -%}
+  {% else %}
+    {%- extends "without-sidebar.html" -%}
+  {% endif %}
+{% endif %}
+
+{% block extrahead %}
+<script async src="https://sphinxawesome.up.railway.app/script.js" data-website-id="5e3ad354-ab2b-4914-94f4-e390005d2389"></script>
+{% endblock %}
+
+{% block body %}
+  {{ body }}
+{% endblock %}
