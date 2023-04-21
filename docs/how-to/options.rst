@@ -1,8 +1,6 @@
 .. meta::
    :description: Configure the Awesome Theme by changing options in your Sphinx configuration file.
 
-.. _sec:configure:
-
 Configure the theme
 ===================
 

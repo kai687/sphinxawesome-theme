@@ -5,8 +5,6 @@ myst:
       Learn how to install the Awesome Theme for your documentation project.
 ---
 
-(sec:install)=
-
 # Install the theme
 
 ```{rst-class} lead
@@ -47,7 +45,7 @@ development version that aren't released yet.
 <!-- vale 18F.UnexpandedAcronyms = YES -->
 
 If you want to add styles or extra templates,
-see {ref}`customize the theme <sec:customize>`.
+see {doc}`customize the theme <customize>`.
 
 ## Install the theme from a local directory
 
@@ -243,7 +241,7 @@ it's often better to install specific versions of packages.
 
    ```terminal
    $ node --version
-   v16.16.0
+   v20.00.0
    ```
 
    If the preceding command fails, make sure that you installed Node.js.

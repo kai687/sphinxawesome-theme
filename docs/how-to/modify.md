@@ -6,8 +6,6 @@ myst:
       Fully customize the styles, JavaScript, and templates.
 ---
 
-(sec:modify)=
-
 # Modify the theme
 
 ```{rst-class} lead
