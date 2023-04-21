@@ -89,6 +89,7 @@ html_permalinks_icon = (
 )
 html_baseurl = "https://sphinxawesome.xyz/"
 html_extra_path = ["robots.txt"]
+html_context = {"mode": "production"}
 
 # if you want to include other pages than docs
 templates_path = ["_templates"]

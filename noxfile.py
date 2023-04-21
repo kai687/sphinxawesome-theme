@@ -67,6 +67,8 @@ def live_docs(session: Session) -> None:
         "-b",
         "dirhtml",
         "-aWTE",
+        "-A",
+        "mode=development",
         "docs",
         "docs/public",
         "--watch",
