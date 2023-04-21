@@ -61,8 +61,10 @@ def setup_docsearch(
             or app.config.docsearch_config.get("missing_results_url", "")
         ),
     }
-    # If we want to use `docsearch` we don't need any other JS file from Sphinx
-    context["script_files"] = []
+    # If we want to use `docsearch` we don't need these default files
+    context["script_files"].remove("_static/sphinx_highlight.js")
+    context["script_files"].remove("_static/documentation_options.js")
+    context["script_files"].remove("_static/doctools.js")
     # Even if we're not using DocSearch, these things MUST be in the context
     context["docsearch"] = app.config.html_awesome_docsearch
     # update local context for rendering the `layout.html` templates for every page
