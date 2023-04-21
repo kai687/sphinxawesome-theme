@@ -95,6 +95,10 @@ html_context = {"mode": "production"}
 templates_path = ["_templates"]
 # html_additional_pages = {"about": "about.html"}
 
+html_static_path = ["_static"]
+html_css_files = ["feedback.css"]
+html_js_files = ["feedback.js"]
+
 # extra options from the sphinxawesome_theme
 html_collapsible_definitions = True
 html_awesome_docsearch = True

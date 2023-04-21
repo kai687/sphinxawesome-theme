@@ -1,0 +1,16 @@
+.feedback-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 760px;
+}
+
+.feedback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#upvote > svg {
+  margin-bottom: 5px;
+}
