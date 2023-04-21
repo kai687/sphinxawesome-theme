@@ -1,12 +1,24 @@
-document
-  .getElementById("upvote")
-  .addEventListener("click", () => vote("upvote"))
+window.addEventListener("DOMContentLoaded", () => {
+  document
+    .getElementById("upvote")
+    .addEventListener("click", () => sendEvent("upvote"))
 
-document
-  .getElementById("downvote")
-  .addEventListener("click", () => vote("downvote"))
+  document
+    .getElementById("downvote")
+    .addEventListener("click", () => sendEvent("downvote"))
 
-function vote(eventType) {
+  document
+    .querySelectorAll("button.copy")
+    .forEach((i) => {
+      i.addEventListener("click", () => sendEvent("code copied"))
+    })
+
+  document
+    .querySelector("button.DocSearch-Button")
+    .addEventListener("click", () => sendEvent("search clicked"))
+})
+
+function sendEvent(eventType) {
   if (window.umami) {
     umami.track(eventType)
   } else {
