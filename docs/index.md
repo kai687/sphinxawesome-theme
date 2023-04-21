@@ -63,7 +63,7 @@ caption: How To
 how-to/install
 how-to/use
 how-to/customize
-how-to/modify
+how-to/build-your-own
 how-to/update
 ```
 

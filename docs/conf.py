@@ -88,7 +88,7 @@ html_permalinks_icon = (
     '5-5s-2.24-5-5-5z"/></svg>'
 )
 html_baseurl = "https://sphinxawesome.xyz/"
-html_extra_path = ["robots.txt"]
+html_extra_path = ["robots.txt", "_redirects"]
 html_context = {
     "mode": "production",
     "feedback_url": "https://github.com/kai687/sphinxawesome-theme/issues/new?title=Feedback",

@@ -6,7 +6,7 @@ myst:
       Fully customize the styles, JavaScript, and templates.
 ---
 
-# Modify the theme
+# Build your own theme
 
 ```{rst-class} lead
 Build your own theme by changing the templates or CSS.
