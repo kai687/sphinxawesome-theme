@@ -15,7 +15,6 @@ python_files = ["src/sphinxawesome_theme", "noxfile.py", "docs/conf.py", "tests/
 docs_dependencies = [
     "sphinx",
     "bs4",
-    "myst-parser",
     "sphinx-sitemap",
 ]
 

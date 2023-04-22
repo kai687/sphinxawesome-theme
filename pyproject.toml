@@ -25,7 +25,6 @@ python = "^3.8"
 sphinx = ">4"
 beautifulsoup4 = "^4.9.1"
 python-dotenv = ">=0.19,<1.1"
-myst-parser = {version = ">=0.19,<1.1", optional = true}
 sphinx-autobuild = {version = "^2021.3.14", optional = true}
 sphinx-sitemap = { version = "^2.2.0", optional = true}
 
@@ -36,11 +35,11 @@ pytest = "^7.2"
 pytest-cov = "^4.0"
 mypy = "^1.0"
 coverage = { extras = ["toml"], version = "^7.2" }
-ruff = ">=0.0.254,<0.0.262"
+ruff = ">=0.0.254,<0.0.263"
 types-docutils = "^0.19.1.6"
 
 [tool.poetry.extras]
-docs = ["myst-parser", "sphinx-autobuild", "sphinx-sitemap"]
+docs = ["sphinx-autobuild", "sphinx-sitemap"]
 
 [tool.coverage.paths]
 source = ["src"]
