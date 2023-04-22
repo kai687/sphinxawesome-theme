@@ -28,9 +28,9 @@ extensions = [
     "sphinx_sitemap",
 ]
 
-myst_enable_extensions = ["colon_fence", "deflist", "replacements", "substitution"]
+myst_enable_extensions = ["replacements", "substitution"]
 
-exclude_patterns = ["public"]
+exclude_patterns = ["public", "how-to/customize/includes"]
 
 nitpicky = True
 nitpick_ignore = [
