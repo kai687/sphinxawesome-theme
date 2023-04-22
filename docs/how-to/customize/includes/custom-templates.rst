@@ -33,25 +33,18 @@ To create a custom layout, create a new file :file:`_templates/custom-layout.htm
       <body>{{ body }}</body>
    </html>
 
-Then, in your document, select your layout using the ``layout`` option in the YAML frontmatter:
+Then, select the layout in your document with the ``layout`` option.
 
-.. code-block:: markdown
-   :caption: Your Markdown page
+.. tab-set-code::
 
-   ---
-   layout: "custom-layout"
-   ---
+   .. code-block:: markdown
+      :class: no-header
 
-   # Your Markdown page
+      ---
+      layout: "custom-layout"
+      ---
 
-   It uses the custom layout now.
+   .. code-block:: rst
+      :class: no-header
 
-.. code-block:: rst
-   :caption: Your reStructuredText page
-
-   :layout: custom-layout
-
-   Your reStructuredText page
-   ==========================
-
-   It uses the custom layout now.
+      :layout: custom-layout

@@ -148,14 +148,9 @@ class AwesomeHTMLTranslator(HTML5Translator):
             linenos = node.get("linenos", False)
             highlight_args = node.get("highlight_args", {})
             highlight_args["force"] = node.get("force", False)
+            opts = self.config.highlight_options.get(lang, {})
 
-            if lang is self.builder.config.highlight_language:
-                # only pass highlighter options for original language
-                opts = self.builder.config.highlight_options
-            else:
-                opts = {}
-
-            if linenos and self.builder.config.html_codeblock_linenos_style:
+            if linenos and self.config.html_codeblock_linenos_style:
                 linenos = "inline"
 
             highlighted = self.highlighter.highlight_block(
@@ -186,7 +181,8 @@ class AwesomeHTMLTranslator(HTML5Translator):
                 isinstance(node.parent, nodes.container)
                 and node.parent.get("literal_block")
             ):
-                self.body.append('<div class="code-wrapper" data-controller="code">\n')
+                starttag = self.starttag(node, "div", suffix="", CLASS="code-wrapper")
+                self.body.append(starttag)
 
                 if self.config.html_awesome_code_headers:
                     code_header = "<div class='code-header'>\n"
@@ -221,8 +217,10 @@ class AwesomeHTMLTranslator(HTML5Translator):
     def visit_container(self: "AwesomeHTMLTranslator", node: Element) -> None:
         """Overide for code blocks with captions."""
         if node.get("literal_block"):
-            node.html5tagname = "div"  # type: ignore[attr-defined]
-            self.body.append('<div class="code-wrapper" data-controller="code">\n')
+            node.html5tagname = "div"
+            self.body.append(
+                self.starttag(node, node.html5tagname, CLASS="code-wrapper")
+            )
             lang = node.get("language", "")
             # in the container, `code-header` also contains the caption
             code_header = "<div class='code-header'>\n"

@@ -43,7 +43,7 @@ def container_wrapper(
         "",
         literal_block=True,
         language=literal_node["language"],  # type: ignore
-        classes=["highlight"],
+        classes=literal_node["classes"],
     )
     parsed = nodes.Element()
     directive.state.nested_parse(
@@ -128,12 +128,6 @@ class AwesomeHtmlFormatter(HtmlFormatter):  # type: ignore
         up code blocks.
         """
         return self._wrap_div(self._wrap_pre(self._wrap_code(source)))
-
-    def _wrap_div(self: "AwesomeHtmlFormatter", inner: TokenStream) -> TokenStream:
-        """Wrap the highlighted code in a div for easier styling."""
-        yield 0, ('<div class="highlight">')
-        yield from inner
-        yield 0, ("</div>")
 
     def _wrap_pre(self: "AwesomeHtmlFormatter", inner: TokenStream) -> TokenStream:
         """Overwrite this method.

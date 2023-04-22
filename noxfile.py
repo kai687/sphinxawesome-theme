@@ -16,6 +16,7 @@ docs_dependencies = [
     "sphinx",
     "bs4",
     "sphinx-sitemap",
+    "sphinx-design",
 ]
 
 VersionType = TypeVar("VersionType", bound="Versions")

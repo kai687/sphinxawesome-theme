@@ -93,6 +93,10 @@ span.gi {
   @apply flex justify-between items-center text-sm py-1 bg-gray-50 rounded-t-sm border-l border-t border-r;
 }
 
+.no-header > .code-header {
+  @apply hidden;
+}
+
 .code-lang {
   @apply inline-block text-gray-dark ml-2 mr-auto font-mono uppercase tracking-wider;
 }
