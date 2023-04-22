@@ -7,7 +7,7 @@ Customize the theme
 .. rst-class:: lead
 
    Customize the |product| by adding custom CSS or custom JavaScript.
-   Use custom page layout or modify existing templates.
+   Use custom page layouts or modify existing templates.
 
 .. toctree::
    :caption: In this section
@@ -15,7 +15,3 @@ Customize the theme
    add-custom-css
    add-custom-js
    add-custom-templates
-
-..   css-properties
-   extend-templates
-   override-layouts
