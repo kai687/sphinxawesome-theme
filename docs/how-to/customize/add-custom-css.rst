@@ -1,9 +1,17 @@
+.. meta::
+   :description: Customize your styles by adding CSS files or adding styles inline.
+
 Add custom CSS
 ==============
 
-To add custom CSS,
-you can add CSS files with your custom styles
-or extend templates to add inline CSS.
+.. rst-class:: lead
+
+   Customize your styles by adding CSS files or adding styles inline.
+
+.. contents:: On this page
+   :local:
+   :backlinks: none
+
 
 Add CSS files
 -------------

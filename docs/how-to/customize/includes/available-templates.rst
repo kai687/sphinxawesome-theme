@@ -17,7 +17,7 @@ The main templates you can extend are:
 
 `without-sidebar.html`
    Template for a page without navigation sidebar.
-   This template is used when the option :confval:`show_nav` is set to ``False``,
+   This template is used when the option ``show_nav`` is set to ``False``,
    or when you set ``layout: "without-sidebar"`` in the frontmatter of your Markdown document.
    This template extends the main template ``layout``.
 

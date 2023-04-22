@@ -30,7 +30,7 @@ extensions = [
 
 myst_enable_extensions = ["deflist", "replacements", "substitution"]
 
-exclude_patterns = ["public", "how-to/customize/includes"]
+exclude_patterns = ["public", "how-to/**/includes"]
 
 nitpicky = True
 nitpick_ignore = [

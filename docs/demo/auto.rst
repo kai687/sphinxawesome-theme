@@ -27,7 +27,7 @@ Autoclass example
 .. vale Vale.Spelling = YES
 
 .. autoclass:: docutils.nodes.Node
-   :members: walk
+   :members:
 
 .. vale Vale.Spelling = NO
 
