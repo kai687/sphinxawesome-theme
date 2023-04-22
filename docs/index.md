@@ -40,7 +40,7 @@ Create functional and beautiful websites for your documentation with Sphinx.
    ```
 
    ```{seealso}
-   {doc}`how-to/load`
+   {doc}`how-to/add`
    {confval}`sphinx:html_theme`
    ```
 
@@ -61,10 +61,10 @@ caption: How To
 ---
 
 how-to/install
-how-to/use
-how-to/customize
+how-to/add
+how-to/configure
+how-to/customize/index
 how-to/build-your-own
-how-to/update
 ```
 
 The **Demo** section shows how various elements will look like.
