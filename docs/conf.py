@@ -28,7 +28,7 @@ extensions = [
     "sphinx_sitemap",
 ]
 
-myst_enable_extensions = ["replacements", "substitution"]
+myst_enable_extensions = ["deflist", "replacements", "substitution"]
 
 exclude_patterns = ["public", "how-to/customize/includes"]
 
