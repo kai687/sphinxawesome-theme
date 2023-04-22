@@ -29,4 +29,4 @@ The main templates you can extend are:
 ``layout.html``
    Main template defining the structure of the page, including the HTML ``<head>`` with all imported CSS and JavaScript files.
 
-For more information, see the available templates in the directory :gh:`src/sphinxawesome-theme <tree/master/src/sphinxawesome-theme>`.
+For more information, see the available templates in the directory :gh:`src/sphinxawesome-theme <tree/master/src/sphinxawesome_theme>`.
