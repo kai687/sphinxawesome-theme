@@ -24,13 +24,10 @@ extensions = [
     "sphinx.ext.extlinks",
     "sphinx.ext.viewcode",
     "sphinxawesome_theme",
-    "myst_parser",
     "sphinx_sitemap",
 ]
 
-myst_enable_extensions = ["deflist", "replacements", "substitution"]
-
-exclude_patterns = ["public", "how-to/customize/includes"]
+exclude_patterns = ["public", "how-to/**/includes"]
 
 nitpicky = True
 nitpick_ignore = [
@@ -39,9 +36,6 @@ nitpick_ignore = [
 ]
 
 default_role = "literal"
-
-# Global substitutions for Markdown files
-myst_substitutions = {"product": "Awesome Theme"}
 
 # Global substitutions for reStructuredText files
 rst_prolog = """

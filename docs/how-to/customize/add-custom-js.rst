@@ -1,9 +1,16 @@
+.. meta::
+   :description: Add JavaScript files or add code inline by extending the templates.
+
 Add custom JavaScript
 =====================
 
-To add custom JavaScript,
-you can add JavaScript files
-or extend templates to add your code inline.
+.. rst-class:: lead
+
+   Add JavaScript files or add code inline by extending the templates.
+
+.. contents:: On this page
+   :local:
+   :backlinks: none
 
 Add JavaScript files
 --------------------

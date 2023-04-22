@@ -22,14 +22,7 @@ create a file :file:`_templates/footer.html` with the following content:
 Add custom page layouts
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-
-Instead of overriding the global page layout,
-you can add create custom layouts that are only used on individual pages.
-
-.. important::
-
-   You can only select per-page layouts if you write your documentation in Markdown
-   using the `myst-parser <https://myst-parser.readthedocs.io/en/latest/index.html>`_ extension.
+You can create custom layouts and choose different page layouts for different pages.
 
 To create a custom layout, create a new file :file:`_templates/custom-layout.html`:
 
@@ -40,8 +33,7 @@ To create a custom layout, create a new file :file:`_templates/custom-layout.htm
       <body>{{ body }}</body>
    </html>
 
-Then, in your Markdown document, select your layout using the ``layout`` option in the YAML frontmatter:
-
+Then, in your document, select your layout using the ``layout`` option in the YAML frontmatter:
 
 .. code-block:: markdown
    :caption: Your Markdown page
@@ -51,5 +43,15 @@ Then, in your Markdown document, select your layout using the ``layout`` option 
    ---
 
    # Your Markdown page
+
+   It uses the custom layout now.
+
+.. code-block:: rst
+   :caption: Your reStructuredText page
+
+   :layout: custom-layout
+
+   Your reStructuredText page
+   ==========================
 
    It uses the custom layout now.
