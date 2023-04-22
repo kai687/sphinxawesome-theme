@@ -42,7 +42,7 @@ To see the full list of dependencies, see these files:
 [undraw.co]: https://undraw.co
 [custom]: https://undraw.co/license
 [Primer/CSS]: https://primer.style/css/
-[Entypo]: https://www.entypo.com
+[Entypo]: http://www.entypo.com
 [Zondicons]: http://www.zondicons.com
 [creative commons attribution-sharealike 4.0]: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 [apache license, version 2.0]: https://www.apache.org/licenses/LICENSE-2.0.html
