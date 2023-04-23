@@ -1,61 +1,52 @@
 Load the theme from a local directory
 -------------------------------------
 
-If you want to build your own theme,
-you can load the |product| from a local directory.
+If you want to load the |product| from a local directory
+without installing a Python package,
+follow these steps:
 
 .. note::
 
-   When loading the theme from a local directory,
-   you need to manage the dependencies yourself.
-   This theme needs the ``beautifulsoup`` package.
-   You can install it with ``pip``:
-
-   .. code-block:: terminal
-
-      pip install bs4
-
-.. rubric:: Example
-
-The following example adds a :file:`_themes/` directory to the Sphinx project.
-You can add local themes to this directory without installing Python packages.
-
-.. code-block:: terminal
-   :emphasize-lines: 4
-
-   ./
-   ├── conf.py
-   ├── index.rst
-   ├── _themes/
-   └── ...
-
-To load the theme from a local directory, follow these steps:
+   If you load the theme from a local directory,
+   you need to manage the theme's dependencies.
+   For example, you need to install the ``beautifulsoup`` package.
+   To install it, run: ``pip install bs4``.
 
 #. :ref:`sec:fork-and-clone`.
-#. Copy the directory :file:`sphinxawesome-theme/src/sphinxawesome_theme/` into your Sphinx project:
+#. Create a new directory for themes in your Sphinx project—for example, :file:`_themes/`:
+
+   .. code-block:: terminal
+      :emphasize-lines: 4
+
+      ./
+      ├── conf.py
+      ├── index.rst
+      ├── _themes/
+      └── ...
+
+#. Copy the directory :file:`sphinxawesome-theme/src/sphinxawesome_theme/` into the :file:`_themes/` directory:
 
    .. code-block:: terminal
 
       cp -r sphinxawesome-theme/src/sphinxawesome_theme _themes/
 
-#. Add the :file:`_themes/` directory to the system path in the Sphinx configuration:
+#. Update your Sphinx configuration:
 
    .. code-block:: python
       :caption: File: conf.py
 
-      sys.path.append(os.path.abspath("_themes"))
-
-   Adding this directory makes it discoverable for Sphinx.
-
-#. Exclude the :file:`_themes/` directory from searching for documentation files:
-
-   .. code-block:: python
-      :caption: File: conf.py
-
+      html_theme = "sphinxawesome_theme"
+      html_theme_path = ["_themes"]
       exclude_patterns = ["_themes"]
+      extensions = ["sphinxawesome_theme"]
+
+   This configuration makes the local :file:`_themes` directory available to Sphinx,
+   adds the |product| as HTML theme and extension,
+   and excludes the directory from being searched for documentation files.
 
    .. seealso::
 
       :confval:`sphinx:exclude_patterns`
-
-#. :ref:`sec:add-to-sphinx`.
+      :confval:`sphinx:html_theme_path`
+      :confval:`sphinx:html_theme`
+      :confval:`sphinx:extensions`
