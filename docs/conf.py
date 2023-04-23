@@ -28,7 +28,7 @@ extensions = [
     "sphinx_design",
 ]
 
-exclude_patterns = ["public", "**/includes"]
+exclude_patterns = ["public", "includes", "**/includes"]
 
 nitpicky = True
 nitpick_ignore = [
