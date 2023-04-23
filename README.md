@@ -49,11 +49,6 @@ This theme enhances Sphinx's `code-block` directive with these options:
 - `emphasize-removed`. Highlight lines that should be removed from the code
 - `emphasize-text: TEXT`. Highlight `TEXT` in the code block to emphasize placeholder text the user should replace.
 
-### Collapsible elements
-
-Nested navigation links allow you to reach all pages from all other pages.
-You can make code object definitions like methods, classes, or modules collapsible as well.
-
 ### Better headerlinks
 
 Clicking the link icon after headers or captions automatically copies the URL to the clipboard.
