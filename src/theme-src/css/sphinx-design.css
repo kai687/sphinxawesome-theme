@@ -1,0 +1,22 @@
+/* Overrides for the `sphinx-design` extension */
+:root {
+  --sd-color-tabs-label-active: var(--color-gray-dark);
+  --sd-color-tabs-underline-active: var(--color-brand);
+  --sd-color-tabs-label-hover: var(--color-brand);
+}
+
+.sd-card-title,
+.sd-summary-title {
+  @apply !font-medium tracking-wide;
+}
+.sd-tab-set > label {
+  @apply font-medium tracking-wider;
+}
+
+details.sd-dropdown summary:focus {
+  @apply outline;
+}
+
+.sd-cards-carousel {
+  @apply overflow-x-auto;
+}

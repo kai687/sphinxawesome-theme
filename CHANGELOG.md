@@ -6,6 +6,7 @@
 - Better DocSearch styles matching the theme
 - Allow extrahead and extra body overrides
 - Remove html_collapsible_definitions
+- Auto-detect `sphinx-design` extension and add CSS overrides for it.
 
 ## 4.0.3
 

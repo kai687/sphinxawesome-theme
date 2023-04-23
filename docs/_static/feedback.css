@@ -1,29 +1,3 @@
-/* Sphinx design overrides */
-:root {
-  --sd-color-tabs-label-active: var(--color-gray-dark);
-  --sd-color-tabs-underline-active: var(--color-brand);
-  --sd-color-tabs-label-hover: var(--color-brand);
-  --awesome-letter-spacing: 0.5px;
-}
-
-.sd-card-title,
-.sd-summary-title {
-  font-weight: 500 !important;
-  letter-spacing: var(--awesome-letter-spacing);
-}
-.sd-tab-set > label {
-  font-weight: 500;
-  letter-spacing: 0.8px;
-}
-
-details.sd-dropdown summary:focus {
-  outline: revert;
-}
-
-.sd-cards-carousel {
-  overflow-x: auto;
-}
-
 .feedback-wrapper {
   display: flex;
   justify-content: center;
