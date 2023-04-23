@@ -37,6 +37,10 @@ def post_config_setup(app: Sphinx, config: Config) -> None:
     if config.html_awesome_docsearch:
         app.setup_extension("sphinxawesome_theme.docsearch")
 
+    # Add the CSS overrides if we're using the `sphinx-design` extension
+    if "sphinx_design" in app.extensions:
+        app.add_css_file("awesome-sphinx-design.css", priority=900)
+
 
 def setup(app: "Sphinx") -> Dict[str, Any]:
     """Register the theme and its extensions wih Sphinx."""
