@@ -33,17 +33,13 @@ class AwesomeHTMLTranslator(HTML5Translator):
     """Override a few methods to improve the usability."""
 
     def visit_caption(self: "AwesomeHTMLTranslator", node: Element) -> None:
-        """Use semantic elements."""
-        if isinstance(node.parent, nodes.figure):
-            self.body.append("<figcaption>")
-            self.add_fignumber(node.parent)
-            self.body.append(self.starttag(node, "span", "", CLASS="caption-text"))
-        elif isinstance(node.parent, nodes.container) and node.parent.get(
+        """Code block captions."""
+        if isinstance(node.parent, nodes.container) and node.parent.get(
             "literal_block"
         ):
             self.body.append(self.starttag(node, "span", "", CLASS="caption-text"))
         else:
-            self.body.append(self.starttag(node, "p", "", CLASS="caption"))
+            super().visit_caption(node)
 
     def visit_desc(self: "AwesomeHTMLTranslator", node: Element) -> None:
         """Add a class ``code-definition`` to definition lists.
