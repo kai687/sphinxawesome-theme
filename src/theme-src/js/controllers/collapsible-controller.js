@@ -2,11 +2,6 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  // clicking on the `dt.accordion` expands the section
-  expandAccordion(event) {
-    this.expand(event.target);
-  }
-
   // clicking on the `expand-more` button expands the section
   expandMore(event) {
     this.expand(event.target.parentNode);
