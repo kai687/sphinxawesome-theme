@@ -8,11 +8,7 @@ Build your own theme
 
    Build your own theme by changing the templates or CSS.
 
-.. contents:: On this page
-   :local:
-   :backlinks: none
-
-----
+.. include:: ../../includes/header.rst
 
 The project has both Python and JavaScript dependencies.
 If you want to write documentation or modify the Python extensions,

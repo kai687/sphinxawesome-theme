@@ -4,31 +4,29 @@
 
 @layer base {
   article {
+    & ol,
+    & ul {
+      @apply my-4 pl-5;
+    }
+    & li {
+      @apply pl-1 my-4;
+      & p {
+        @apply my-2;
+      }
+    }
     & ol {
-      @apply list-decimal my-4 pl-5;
+      @apply list-decimal;
       & ol {
-        @apply list-latin my-4 pl-5;
+        @apply list-latin;
       }
       & li {
-        @apply pl-1 my-4;
-        &::marker {
-          @apply font-medium text-gray-dark;
-        }
-        & p {
-          @apply my-2;
-        }
+        @apply marker:font-medium marker:text-gray-dark;
       }
     }
     & ul {
-      @apply list-disc my-4 pl-5;
+      @apply list-disc;
       & li {
-        @apply pl-1 my-4 print:my-0;
-        &::marker {
-          @apply text-gray-light;
-        }
-        & p {
-          @apply my-2;
-        }
+        @apply print:my-0 marker:text-gray-light;
       }
     }
     & dt {
@@ -43,18 +41,13 @@
   }
 }
 
-dl.footnote {
-  @apply text-sm grid;
-  grid-template-columns: max-content auto;
-  & dt {
+.footnote > .label {
+  @apply float-left pr-2;
+  & a {
     @apply text-link;
   }
-  & span.brackets {
-    &:before {
-      content: "[";
-    }
-    &:after {
-      content: "]";
-    }
-  }
+}
+
+.footnote > :not(.label) {
+  @apply ml-8;
 }

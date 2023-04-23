@@ -20,3 +20,7 @@ details.sd-dropdown summary:focus {
 .sd-cards-carousel {
   @apply overflow-x-auto;
 }
+
+.sd-shadow-sm {
+  @apply !shadow;
+}

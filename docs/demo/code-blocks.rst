@@ -12,11 +12,7 @@ Code blocks
 
    See how code blocks look like with the |product|.
 
-.. contents:: On this page
-   :local:
-   :backlinks: none
-
-----
+.. include:: ../includes/header.rst
 
 
 Sphinx code-block directive
