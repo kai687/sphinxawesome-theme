@@ -120,7 +120,7 @@ var {
 
 dl.code-definition,
 dl.option-list {
-  @apply mt-6 pt-6 mb-12 border-t;
+  @apply mt-3 pt-3 mb-6;
   & dt {
     @apply font-normal;
     & > code,
