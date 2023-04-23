@@ -7,7 +7,7 @@
  *       that's why we set `block` here explicitly.
  */
 .contents.local {
-  @apply mt-12 pb-12 border-b block print:hidden;
+  @apply my-6 block print:hidden;
   & .topic-title {
     @apply uppercase text-sm font-medium text-gray-light mt-0 mb-2 font-mono;
   }
@@ -71,6 +71,7 @@
 
 /* The `.. toctree::` (if not used with `:hidden:`) */
 .toctree-wrapper {
+  @apply my-12;
   & .caption {
     @apply uppercase text-sm font-medium font-mono text-gray-light pb-6;
   }
@@ -80,7 +81,6 @@
       @apply pl-0;
     }
   }
-  @apply my-12 border-t pt-12;
   & li li {
     @apply pl-4;
   }
@@ -90,6 +90,5 @@
 }
 
 .nav-link {
-  letter-spacing: 0.2px;
-  font-size: 0.95rem;
+  @apply text-[0.95rem] tracking-[0.2px];
 }

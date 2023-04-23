@@ -8,6 +8,8 @@ Lists
 
    See how lists appear in the |product|.
 
+----
+
 Unordered lists
 ---------------
 
@@ -19,6 +21,11 @@ Choose an unordered, or bulleted, list, when the order of items doesn't matter.
 - item b
 
   - subitem a
+
+    This is an example with multiple paragraphs.
+
+    Although there are only 3.
+
   - subitem b
   - subitem c
 
@@ -35,6 +42,11 @@ For example, use ordered lists in step-by-step instructions.
 #. Step 2
 
    #. Substep 1
+
+      This is an example with multiple paragraphs.
+
+      Although there are only 3.
+
    #. Substep 2
    #. Substep 3
 

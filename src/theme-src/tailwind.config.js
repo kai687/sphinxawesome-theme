@@ -32,16 +32,12 @@ module.exports = {
       },
       screens: {
         print: { raw: "print" },
-        xs: "400px",
       },
       maxWidth: {
         prose: "760px",
       },
       lineHeight: {
         14: "3.5rem",
-      },
-      letterSpacing: {
-        extended: "0.017em",
       },
       margin: {
         fluid: "var(--fluid-margin)",
@@ -58,12 +54,6 @@ module.exports = {
           DEFAULT: "var(--color-gray)",
           dark: "var(--color-gray-dark)",
         },
-      },
-      borderRadius: {
-        xs: "1px",
-      },
-      backgroundOpacity: {
-        2: "0.02",
       },
     },
   },

@@ -24,10 +24,8 @@ module.exports = {
     "no-duplicate-at-import-rules": true,
     "no-duplicate-selectors": true,
     "no-empty-source": true,
-    "no-extra-semicolons": true,
     "no-invalid-double-slash-comments": true,
     "length-zero-no-unit": true,
     "font-weight-notation": "numeric",
-    "string-quotes": "double",
   },
 };

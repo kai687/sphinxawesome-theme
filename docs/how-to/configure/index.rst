@@ -8,9 +8,7 @@ Configure the theme
 
    Configure the |product| by changing one of the theme or extension options.
 
-.. contents:: On this page
-   :local:
-   :backlinks: none
+.. include:: ../../includes/header.rst
 
 .. admonition:: What's the difference between theme and extension options?
 

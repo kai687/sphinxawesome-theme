@@ -17,9 +17,7 @@ Inline code
    See how inline markup looks like in the |product|.
 
 
-.. contents:: On this page
-   :local:
-   :backlinks: none
+.. include:: ../includes/header.rst
 
 To mark up code in inline text, you can:
 

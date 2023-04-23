@@ -28,12 +28,13 @@
     }
   }
 
-  section > section {
-    @apply py-6 print:py-0;
-  }
-
-  section > p {
-    @apply my-6;
+  section {
+    & > section {
+      @apply py-6 print:py-0;
+    }
+    & > p {
+      @apply my-6;
+    }
   }
 
   hr {

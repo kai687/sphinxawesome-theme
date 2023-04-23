@@ -47,23 +47,30 @@ Get started
 Learn more
 ----------
 
-In the **How-to** section, you can learn more about using and customizing the theme.
 
-.. toctree::
-   :maxdepth: 1
-   :caption: How To
+.. tab-set::
 
-   how-to/install/index
-   how-to/add/index
-   how-to/configure/index
-   how-to/customize/index
-   how-to/build-your-own/index
+   .. tab-item:: How To
 
-The **Demo** section shows how various elements will look like.
+      In the **How-to** section, you can learn more about using and customizing the theme.
 
-.. toctree::
-   :maxdepth: 1
-   :caption: Demo
-   :glob:
+      .. toctree::
+         :maxdepth: 1
+         :caption: How To
 
-   demo/*
+         how-to/install/index
+         how-to/add/index
+         how-to/configure/index
+         how-to/customize/index
+         how-to/build-your-own/index
+
+   .. tab-item:: Demo
+
+      The **Demo** section shows how various elements will look like.
+
+      .. toctree::
+         :maxdepth: 1
+         :caption: Demo
+         :glob:
+
+         demo/*

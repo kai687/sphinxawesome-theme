@@ -2,15 +2,23 @@
  * ADMONITIONS
  * **************************/
 
+blockquote,
+.admonition,
+div.versionadded,
+div.versionchanged,
+div.deprecated {
+  @apply text-sm my-6 p-4 border-l-4 rounded-sm shadow;
+}
+
 blockquote {
-  @apply text-sm my-6 p-4 bg-gray-50/30 border-l-4 rounded-sm shadow;
+  @apply bg-gray-50/30;
   & .attribution {
     @apply italic;
   }
 }
 
 .admonition {
-  @apply text-sm my-6 p-4 text-blue-900 border-blue-400 border-l-4 rounded-sm bg-blue-400 bg-opacity-2 shadow;
+  @apply text-blue-900 border-blue-400 bg-blue-400/[0.02];
 
   & p:not(.admonition-title) {
     @apply my-4;
@@ -37,9 +45,7 @@ blockquote {
       @apply ml-2 opacity-0 duration-150;
     }
     &:hover {
-      color: !white;
-      text-decoration: !none;
-      @apply bg-brand;
+      @apply bg-brand !text-white !no-underline;
       &:after {
         @apply opacity-100;
       }
@@ -50,20 +56,32 @@ blockquote {
   }
 }
 
+div.versionadded,
 .tip,
 .hint {
-  @apply text-green-900 border-green-400 bg-green-400 bg-opacity-2;
+  @apply text-green-900 border-green-400 bg-green-400/[0.02];
 }
 
-.warning,
+div.deprecated,
 .danger,
 .error {
-  @apply text-red-900 border-red-400 bg-red-400 bg-opacity-2;
+  @apply text-red-900 border-red-400 bg-red-400/[0.02];
 }
 
+div.versionchanged,
+.attention,
+.warning,
 .caution,
 .important {
-  @apply text-yellow-900 border-yellow-400 bg-yellow-400 bg-opacity-2;
+  @apply text-yellow-900 border-yellow-400 bg-yellow-400/[0.02];
+}
+
+div.versionadded,
+div.versionchanged,
+div.deprecated {
+  & .versionmodified {
+    @apply font-medium italic;
+  }
 }
 
 .admonition-title {
