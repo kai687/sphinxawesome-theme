@@ -27,6 +27,7 @@ beautifulsoup4 = "^4.9.1"
 python-dotenv = ">=0.19,<1.1"
 sphinx-autobuild = {version = "^2021.3.14", optional = true}
 sphinx-sitemap = { version = "^2.2.0", optional = true}
+sphinx-design = {version = "^0.4.1", optional = true}
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.1"
@@ -39,7 +40,7 @@ ruff = ">=0.0.254,<0.0.263"
 types-docutils = "^0.19.1.6"
 
 [tool.poetry.extras]
-docs = ["sphinx-autobuild", "sphinx-sitemap"]
+docs = ["sphinx-autobuild", "sphinx-sitemap", "sphinx-design"]
 
 [tool.coverage.paths]
 source = ["src"]

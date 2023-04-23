@@ -4,7 +4,7 @@
 
 /* inline code */
 :not(pre) > code {
-  @apply font-medium px-1 bg-gray-50 border sm:text-code;
+  @apply font-medium px-1 bg-gray-50 border sm:text-code whitespace-pre;
   &.highlight {
     @apply bg-gray-50;
   }
@@ -91,6 +91,10 @@ span.gi {
 /* the header of a code block */
 .code-header {
   @apply flex justify-between items-center text-sm py-1 bg-gray-50 rounded-t-sm border-l border-t border-r;
+}
+
+.no-header > .code-header {
+  @apply hidden;
 }
 
 .code-lang {

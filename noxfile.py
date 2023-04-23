@@ -16,6 +16,7 @@ docs_dependencies = [
     "sphinx",
     "bs4",
     "sphinx-sitemap",
+    "sphinx-design",
 ]
 
 VersionType = TypeVar("VersionType", bound="Versions")
@@ -65,7 +66,6 @@ def live_docs(session: Session) -> None:
     args = session.posargs or [
         "-b",
         "dirhtml",
-        "-aWTE",
         "-A",
         "mode=development",
         "docs",

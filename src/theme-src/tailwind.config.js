@@ -3,6 +3,7 @@ const colors = require("tailwindcss/colors");
 module.exports = {
   corePlugins: {
     animation: false,
+    container: false,
   },
   content: ["../sphinxawesome_theme/*.html", "./js/**/*.js"],
   safelist: ["lead", "rubric", "centered"],
@@ -53,9 +54,9 @@ module.exports = {
         brand: "var(--color-brand)",
         link: "var(--color-link)",
         gray: {
-          light: "#616161",
-          DEFAULT: "#424242",
-          dark: "#212121",
+          light: "var(--color-gray-light)",
+          DEFAULT: "var(--color-gray)",
+          dark: "var(--color-gray-dark)",
         },
       },
       borderRadius: {

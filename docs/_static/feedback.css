@@ -1,3 +1,16 @@
+/* Sphinx design overrides */
+:root {
+  --sd-color-tabs-label-active: var(--color-gray-dark);
+  --sd-color-tabs-underline-active: var(--color-brand);
+  --sd-color-tabs-label-hover: var(--color-brand);
+}
+
+.sd-tab-set > label {
+  font-weight: 500;
+  letter-spacing: 0.75px;
+}
+
+
 .feedback-wrapper {
   display: flex;
   justify-content: center;
@@ -46,3 +59,4 @@
   background: var(--color-brand);
   color: #fff;
 }
+

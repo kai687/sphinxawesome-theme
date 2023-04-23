@@ -9,6 +9,9 @@
   --color-brand: rgb(14, 165, 233);
   /* sky-700 */
   --color-link: rgb(3, 105, 161);
+  --color-gray: #424242;
+  --color-gray-light: #616161;
+  --color-gray-dark: #212121;
 }
 
 @layer base {

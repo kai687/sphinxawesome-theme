@@ -25,6 +25,7 @@ extensions = [
     "sphinx.ext.viewcode",
     "sphinxawesome_theme",
     "sphinx_sitemap",
+    "sphinx_design",
 ]
 
 exclude_patterns = ["public", "how-to/**/includes"]
