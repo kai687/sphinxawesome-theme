@@ -34,7 +34,7 @@
     }
     & dd {
       @apply pl-5;
-      & p {
+      & > p {
         @apply my-4;
       }
     }

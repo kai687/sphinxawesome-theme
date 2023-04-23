@@ -17,11 +17,9 @@ you can configure these options:
 ``html_collapsible_definitions``
    Controls whether to make code objects, such as classes, collapsible.
 
-   .. warning::
+   .. deprecated:: 4.0.3
 
-      This option is deprecated and will be removed in version 5.0.
-      If you want to have collapsible elements,
-      use the `sphinx-design <https://sphinx-design.readthedocs.io/en/latest/>`_ extension.
+      Use the sphinx-design_ extension instead. (Removed in 5.0.0)
 
 ``html_awesome_headerlinks``
    Controls whether clicking a headerlink should copy the URL to the clipboard.
@@ -31,3 +29,6 @@ you can configure these options:
 
 ``html_awesome_docsearch``
    Controls whether to use `Algolia DocSearch <https://docsearch.algolia.com/>`_ instead of the built-in search.
+
+
+.. _sphinx-design: https://sphinx-design.readthedocs.io/en/latest/

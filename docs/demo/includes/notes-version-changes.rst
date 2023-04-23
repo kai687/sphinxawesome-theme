@@ -1,22 +1,24 @@
 Version changes
 ---------------
 
-To track when a feature was added, use the :dir:`versionadded` directive.
+To track when a feature was added, use the ``versionadded`` directive.
 
 .. versionadded:: 5.0
 
-   The style for the :dir:`versionadded` directive was added.
+   The style for the ``versionadded`` directive was added.
 
-To denote an important change between features, use the :dir:`versionchanged` directive.
+To denote an important change between features, use the ``versionchanged`` directive.
 
 .. versionchanged:: 3.3
 
    Some feature was changed.
 
-To inform users of a deprecated feature, use the :dir:`deprecated` directive.
+To inform users of a deprecated feature, use the ``deprecated`` directive.
 
 .. deprecated:: 4.0.3
 
    Use the other feature instead.
 
+.. seealso::
 
+   :rst:dir:`versionadded`, :rst:dir:`versionchanged`, :rst:dir:`deprecated`
