@@ -21,7 +21,7 @@ you can configure these options:
 
       This option is deprecated and will be removed in version 5.0.
       If you want to have collapsible elements,
-      use the `sphinx-design <https://sphinx-design.readthedocs.io/en/index.html>`_ extension.
+      use the `sphinx-design <https://sphinx-design.readthedocs.io/en/latest/>`_ extension.
 
 ``html_awesome_headerlinks``
    Controls whether clicking a headerlink should copy the URL to the clipboard.
