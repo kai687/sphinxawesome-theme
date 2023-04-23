@@ -43,7 +43,7 @@ def container_wrapper(
         "",
         literal_block=True,
         language=literal_node["language"],  # type: ignore
-        classes=literal_node["classes"],
+        classes=literal_node["classes"],  # type: ignore
     )
     parsed = nodes.Element()
     directive.state.nested_parse(
@@ -127,7 +127,7 @@ class AwesomeHtmlFormatter(HtmlFormatter):  # type: ignore
         Returning a <pre><code> block follows the HTML5 specification for marking
         up code blocks.
         """
-        return self._wrap_div(self._wrap_pre(self._wrap_code(source)))
+        return self._wrap_div(self._wrap_pre(self._wrap_code(source)))  # type: ignore
 
     def _wrap_pre(self: "AwesomeHtmlFormatter", inner: TokenStream) -> TokenStream:
         """Overwrite this method.

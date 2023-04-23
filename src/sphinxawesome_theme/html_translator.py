@@ -181,7 +181,10 @@ class AwesomeHTMLTranslator(HTML5Translator):
                 isinstance(node.parent, nodes.container)
                 and node.parent.get("literal_block")
             ):
-                starttag = self.starttag(node, "div", suffix="", CLASS="code-wrapper")
+                attrs = {"data-controller": "code"}
+                starttag = self.starttag(
+                    node, "div", suffix="", CLASS="code-wrapper", **attrs
+                )
                 self.body.append(starttag)
 
                 if self.config.html_awesome_code_headers:
@@ -217,9 +220,10 @@ class AwesomeHTMLTranslator(HTML5Translator):
     def visit_container(self: "AwesomeHTMLTranslator", node: Element) -> None:
         """Overide for code blocks with captions."""
         if node.get("literal_block"):
-            node.html5tagname = "div"
+            node.html5tagname = "div"  # type: ignore[attr-defined]
+            attrs = {"data-controller": "code"}
             self.body.append(
-                self.starttag(node, node.html5tagname, CLASS="code-wrapper")
+                self.starttag(node, node.html5tagname, CLASS="code-wrapper", **attrs)
             )
             lang = node.get("language", "")
             # in the container, `code-header` also contains the caption
