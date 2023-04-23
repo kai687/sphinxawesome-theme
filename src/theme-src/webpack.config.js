@@ -20,7 +20,7 @@ module.exports = {
   entry: {
     theme: "./js/app.js",
     docsearch: "./js/search.js",
-    "awesome-sphinx-design": "./js/sphinx-design.js",
+    "awesome-sphinx-design": "./css/sphinx-design.css",
   },
   output: {
     path: THEME_STATIC_DIR,
