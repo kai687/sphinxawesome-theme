@@ -21,6 +21,8 @@ Inline code
    :local:
    :backlinks: none
 
+----
+
 To mark up code in inline text, you can:
 
 - Surround the code with two backtick characters.

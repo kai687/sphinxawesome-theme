@@ -37,9 +37,7 @@ blockquote {
       @apply ml-2 opacity-0 duration-150;
     }
     &:hover {
-      color: !white;
-      text-decoration: !none;
-      @apply bg-brand;
+      @apply bg-brand !text-white !no-underline;
       &:after {
         @apply opacity-100;
       }

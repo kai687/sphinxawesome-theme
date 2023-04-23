@@ -12,6 +12,8 @@ Install the theme
    :local:
    :backlinks: none
 
+----
+
 .. include:: includes/install-python-package.rst
 .. include:: includes/install-local-directory.rst
 .. include:: includes/fork-and-clone.rst

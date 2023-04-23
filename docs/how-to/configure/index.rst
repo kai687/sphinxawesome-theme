@@ -12,6 +12,8 @@ Configure the theme
    :local:
    :backlinks: none
 
+----
+
 .. admonition:: What's the difference between theme and extension options?
 
    Theme options

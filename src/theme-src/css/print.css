@@ -34,7 +34,7 @@
 
   pre,
   code {
-    white-space: !pre-wrap;
+    white-space: pre-wrap !important;
   }
 
   .seealso a.internal:after {

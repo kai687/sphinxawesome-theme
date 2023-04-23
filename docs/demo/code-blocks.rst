@@ -16,6 +16,8 @@ Code blocks
    :local:
    :backlinks: none
 
+----
+
 
 Sphinx code-block directive
 ---------------------------

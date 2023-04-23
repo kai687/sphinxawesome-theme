@@ -12,6 +12,8 @@ Build your own theme
    :local:
    :backlinks: none
 
+----
+
 The project has both Python and JavaScript dependencies.
 If you want to write documentation or modify the Python extensions,
 :ref:`install the Python dependencies <sec:install-python-deps>`.

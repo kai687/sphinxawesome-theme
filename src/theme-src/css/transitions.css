@@ -7,8 +7,7 @@
     @apply overflow-hidden;
   }
   [data-sidebar-target="sidebar"].isShown {
-    max-width: 90%;
-    @apply translate-x-0 opacity-100 w-full;
+    @apply translate-x-0 opacity-100 w-full max-w-[90%];
   }
   [data-scroll-target="scrollToTop"].isShown {
     @apply pointer-events-auto opacity-100;

@@ -8,6 +8,8 @@ Headings and text
 
    See how basic text elements appear in the |product|.
 
+----
+
 The |product| includes styles for heading levels ``h1``, ``h2``, ``h3``, ``h4``,
 as well as the special rubric heading.
 Only heading levels ``h1``, ``h2``, and ``h3`` show up in the navigation sidebar.

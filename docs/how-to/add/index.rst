@@ -12,5 +12,8 @@ Add the theme
    :local:
    :backlinks: none
 
+
+----
+
 .. include:: includes/add-to-sphinx.rst
 .. include:: includes/local-directory.rst

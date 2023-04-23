@@ -12,6 +12,8 @@ Sphinx design
    :local:
    :backlinks: none
 
+----
+
 .. _sphinx-design: https://sphinx-design.readthedocs.io/en/latest/index.html
 
 .. include:: includes/design-cards.rst
