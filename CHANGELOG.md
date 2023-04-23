@@ -1,10 +1,11 @@
 # Changelog
 
-## 4.1.0
+## 5.0.0
 
 - More DocSearch configuration options
 - Better DocSearch styles matching the theme
-- Allow extra tags in header
+- Allow extrahead and extra body overrides
+- Remove html_collapsible_definitions
 
 ## 4.0.3
 
