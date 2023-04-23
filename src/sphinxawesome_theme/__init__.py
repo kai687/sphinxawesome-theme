@@ -59,9 +59,6 @@ def setup(app: "Sphinx") -> Dict[str, Any]:
         name="docsearch_config", default={}, rebuild="html", types=(dict)
     )
     app.add_config_value(
-        name="html_collapsible_definitions", default=False, rebuild="html", types=(str)
-    )
-    app.add_config_value(
         name="html_awesome_headerlinks", default=True, rebuild="html", types=(str)
     )
     app.add_config_value(

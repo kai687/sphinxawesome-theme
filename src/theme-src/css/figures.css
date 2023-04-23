@@ -12,15 +12,13 @@ figure {
     }
   }
   & img {
-    @apply inline-block;
+    @apply inline-block my-0;
   }
 }
 
 /* images inserted with the `image` directive */
-main {
-  & :not(figure) > img {
-    @apply my-12;
-  }
+main img {
+  @apply my-12;
 }
 
 figcaption {

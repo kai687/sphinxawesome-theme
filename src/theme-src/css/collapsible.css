@@ -6,20 +6,6 @@ button.expand-more {
   }
 }
 
-.accordion:hover .expand-more {
-  @apply text-brand;
-}
-
 .active .expand-more > svg {
   @apply rotate-180;
-}
-
-.panel {
-  max-height: 0;
-  @apply overflow-y-hidden invisible opacity-0 transition-opacity duration-500 ease-out;
-}
-
-.active + .panel {
-  max-height: fit-content;
-  @apply overflow-y-visible visible opacity-100;
 }

@@ -27,7 +27,6 @@ def test_compiles_html_with_theme(app: Sphinx) -> None:
     assert app.config.html_awesome_postprocessing is True
     assert app.config.html_awesome_code_headers is True
     assert app.config.html_awesome_headerlinks is True
-    assert app.config.html_collapsible_definitions is False
 
 
 @pytest.mark.sphinx("html", confoverrides={"extensions": ["sphinxawesome_theme"]})
@@ -47,7 +46,6 @@ def test_internal_extensions(app: Sphinx) -> None:
     assert app.config.html_awesome_postprocessing is True
     assert app.config.html_awesome_code_headers is True
     assert app.config.html_awesome_headerlinks is True
-    assert app.config.html_collapsible_definitions is False
 
 
 @pytest.mark.sphinx(
