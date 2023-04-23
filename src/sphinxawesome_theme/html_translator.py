@@ -19,7 +19,6 @@ from typing import Any, Dict
 
 from docutils import nodes
 from docutils.nodes import Element
-from sphinx import addnodes
 from sphinx.application import Sphinx
 from sphinx.util import logging
 from sphinx.writers.html5 import HTML5Translator
@@ -28,12 +27,6 @@ from . import __version__
 from .icons import ICONS
 
 logger = logging.getLogger(__name__)
-
-EXPAND_MORE_BUTTON = (
-    "<button class='expand-more tooltipped tooltipped-nw' "
-    "aria-label='Expand this section' aria-expanded='false' "
-    f"data-action='collapsible#expandMore'>{ICONS['expand_more']}</button>"
-)
 
 
 class AwesomeHTMLTranslator(HTML5Translator):
@@ -60,57 +53,6 @@ class AwesomeHTMLTranslator(HTML5Translator):
         """
         cl = node["objtype"] + " code-definition"
         self.body.append(self.starttag(node, "dl", CLASS=cl))
-
-    def visit_desc_signature(self: "AwesomeHTMLTranslator", node: Element) -> None:
-        """Add the accordion class to the <dt> element.
-
-        This will make the definition list collapsible,
-        if the configuration option ``html_collapsible_definitions``
-        is set.
-        """
-        attrs = {
-            "data-controller": "collapsible",
-            "data-action": "click->collapsible#expandAccordion",
-        }
-        # only add this, if the following dd is not empty.
-        dd = node.next_node(addnodes.desc_content, siblings=True)
-        if self.config.html_collapsible_definitions and len(dd.astext()) > 0:
-            self.body.append(self.starttag(node, "dt", CLASS="accordion", **attrs))
-        else:
-            self.body.append(self.starttag(node, "dt"))
-
-        self.protect_literal_text += 1
-
-    def depart_desc_signature(self: "AwesomeHTMLTranslator", node: Element) -> None:
-        """Change permalinks for code definitions.
-
-        Functions, methods, command line options, etc.
-        "Copy link to this definition"
-        """
-        dd = node.next_node(addnodes.desc_content, siblings=True)
-        if self.config.html_collapsible_definitions and len(dd.astext()) > 0:
-            self.body.append(EXPAND_MORE_BUTTON)
-
-        super().depart_desc_signature(node)
-
-    def depart_desc_signature_line(
-        self: "AwesomeHTMLTranslator", node: Element
-    ) -> None:
-        """Change permalinks for code definitions.
-
-        This method is only relevant for mulitline definitions,
-        which I think only happen in C and C++ domains.
-        """
-        if self.config.html_collapsible_definitions:
-            self.body.append(EXPAND_MORE_BUTTON)
-        super().depart_desc_signature_line(node)
-
-    def visit_desc_content(self: "AwesomeHTMLTranslator", node: Element) -> None:
-        """Add panel class to definitions."""
-        if self.config.html_collapsible_definitions and len(node.astext()) > 0:
-            self.body.append(self.starttag(node, "dd", CLASS="panel"))
-        else:
-            self.body.append(self.starttag(node, "dd"))
 
     def visit_desc_inline(self: "AwesomeHTMLTranslator", node: Element) -> None:
         """Change `span` to `code`."""
