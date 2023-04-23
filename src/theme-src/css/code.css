@@ -4,7 +4,7 @@
 
 /* inline code */
 :not(pre) > code {
-  @apply font-medium px-1 bg-gray-50 border sm:text-code;
+  @apply font-medium px-1 bg-gray-50 border sm:text-code whitespace-pre;
   &.highlight {
     @apply bg-gray-50;
   }
