@@ -2,57 +2,22 @@
  * ADMONITIONS
  * **************************/
 
-blockquote,
 .admonition,
 div.versionadded,
 div.versionchanged,
 div.deprecated {
   @apply text-sm my-6 p-4 border-l-4 rounded-sm shadow;
-}
-
-blockquote {
-  @apply bg-gray-50/30;
-  & .attribution {
-    @apply italic;
+  & > :last-child {
+    @apply my-0;
   }
 }
 
-.admonition {
+.note,
+[class^="admonition-"]:not(.admonition-title) {
   @apply text-blue-900 border-blue-400 bg-blue-400/[0.02];
 
-  & p:not(.admonition-title) {
-    @apply my-4;
-  }
-  & p:last-child {
-    @apply mb-0;
-  }
   & .headerlink {
     @apply text-current;
-  }
-}
-
-.seealso {
-  @apply p-2 border-none text-gray-light bg-transparent;
-
-  & .admonition-title {
-    @apply px-2;
-  }
-
-  & a {
-    @apply bg-gray-50/40 inline-block p-2 transition-all;
-    &.internal:after {
-      content: "\2192";
-      @apply ml-2 opacity-0 duration-150;
-    }
-    &:hover {
-      @apply bg-brand !text-white !no-underline;
-      &:after {
-        @apply opacity-100;
-      }
-    }
-    & code {
-      @apply bg-transparent border-none;
-    }
   }
 }
 

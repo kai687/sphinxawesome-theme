@@ -2,55 +2,6 @@
  * Styles for links
  * ****************/
 
-@custom-selector :--headerlinkable
-  h1,
-  h2,
-  h3,
-  h4,
-  table,
-  .admonition-title,
-  figure,
-  dt,
-  .code-header;
-
-.headerlink {
-  @apply ml-1 hover:text-brand focus:text-brand text-[1em] leading-[1.2em] align-middle;
-  & > * {
-    @apply invisible fill-current h-[1em];
-  }
-  &:focus > * {
-    @apply visible;
-  }
-}
-
-h1,
-h2,
-h3 {
-  & .headerlink {
-    @apply text-gray-400 hover:text-brand focus:text-brand;
-  }
-}
-
-h1 .headerlink {
-  @apply text-[0.54em] leading-[1.2];
-}
-
-h2 .headerlink {
-  @apply text-[0.75em] leading-[1.2];
-}
-
-/* tweak style in code headers */
-.code-header .headerlink {
-  @apply mr-2;
-}
-
-:--headerlinkable:hover .headerlink {
-  @apply visible;
-  & > * {
-    @apply visible;
-  }
-}
-
 p:not(.admonition-title),
 .search {
   & a {

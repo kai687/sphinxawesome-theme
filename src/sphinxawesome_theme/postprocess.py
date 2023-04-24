@@ -64,7 +64,9 @@ def _collapsible_nav(tree: BeautifulSoup) -> None:
                 # create the icon
                 svg = BeautifulSoup(ICONS["chevron_right"], "html.parser").svg
                 svg["tabindex"] = "0"
+                svg["height"] = "1.2rem"
                 svg["class"] = ["expand"]
+                svg["style"] = ["display: inline;"]
                 svg[
                     "data-action"
                 ] = "click->sidebar#expand keydown->sidebar#expandKeyPressed"
@@ -76,16 +78,6 @@ def _expand_current(tree: BeautifulSoup) -> None:
     for li in tree("li", class_="current"):
         if "expanded" not in li.get("class", []):
             li["class"] += ["expanded"]
-
-
-def _remove_span_pre(tree: BeautifulSoup) -> None:
-    """Unwrap unnecessary spans.
-
-    This gets added by visit_Text(). If I overwrite it there,
-    it's 20 lines of code for only 1 line of change.
-    """
-    for span in tree("span", class_="pre"):
-        span.unwrap()
 
 
 def _remove_empty_toctree(tree: BeautifulSoup) -> None:
@@ -137,7 +129,6 @@ def _modify_html(html_filename: str, app: Sphinx) -> None:
 
     _expand_current(tree)
     _collapsible_nav(tree)
-    _remove_span_pre(tree)
     _remove_empty_toctree(tree)
     _external_links(tree)
     if app.config.html_awesome_headerlinks:

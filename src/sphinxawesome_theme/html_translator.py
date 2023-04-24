@@ -24,7 +24,8 @@ from sphinx.util import logging
 from sphinx.writers.html5 import HTML5Translator
 
 from . import __version__
-from .icons import ICONS
+
+# from .icons import ICONS
 
 logger = logging.getLogger(__name__)
 
@@ -178,8 +179,8 @@ class AwesomeHTMLTranslator(HTML5Translator):
 
     def depart_reference(self: "AwesomeHTMLTranslator", node: Element) -> None:
         """Add external link icon."""
-        if "refuri" in node and not node.get("internal"):
-            self.body.append(ICONS["external_link"])
+        # if "refuri" in node and not node.get("internal"):
+        #     self.body.append(ICONS["external_link"])
         super().depart_reference(node)
 
     def visit_emphasis(self: "AwesomeHTMLTranslator", node: Element) -> None:

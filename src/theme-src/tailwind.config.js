@@ -5,9 +5,9 @@ module.exports = {
     animation: false,
     container: false,
   },
-  plugins: [require("@tailwindcss/typography")],
   content: ["../sphinxawesome_theme/*.html", "./js/**/*.js"],
-  safelist: ["lead", "rubric", "centered"],
+  safelist: ["headerlink"],
+  plugins: [require("@tailwindcss/typography")],
   theme: {
     fontFamily: {
       sans: ["Roboto", "sans-serif"],
@@ -28,9 +28,6 @@ module.exports = {
       "6xl": ["3.75rem", "1.2"],
     },
     extend: {
-      listStyleType: {
-        latin: "lower-latin",
-      },
       screens: {
         print: { raw: "print" },
       },
@@ -56,6 +53,162 @@ module.exports = {
           dark: "var(--color-gray-dark)",
         },
       },
+      typography: ({ theme }) => ({
+        DEFAULT: {
+          css: [
+            {
+              color: "inherit",
+              lineHeight: "inherit",
+              maxWidth: theme("maxWidth.prose"),
+              svg: {
+                display: "inline",
+              },
+              strong: {
+                fontWeight: theme("fontWeight.medium"),
+              },
+              h1: {
+                marginTop: theme("spacing.20"),
+                color: theme("colors.gray.dark"),
+                fontSize: theme("fontSize.3xl"),
+                letterSpacing: theme("letterSpacing.tight"),
+                fontWeight: theme("fontWeight.normal"),
+              },
+              h2: {
+                fontSize: theme("fontSize.2xl"),
+                letterSpacing: theme("letterSpacing.tight"),
+                color: theme("colors.gray.dark"),
+                fontWeight: theme("fontWeight.normal"),
+              },
+              h3: {
+                fontSize: theme("fontSize.lg"),
+                fontWeight: theme("fontWeight.normal"),
+                color: theme("colors.gray.dark"),
+              },
+              h4: {
+                fontWeight: theme("fontWeight.medium"),
+                color: theme("colors.gray.dark"),
+              },
+              ".rubric": {
+                fontWeight: theme("fontWeight.medium"),
+                color: theme("colors.gray.dark"),
+                marginBottom: "0.5em",
+              },
+              ".centered": {
+                textAlign: "center",
+              },
+              ".lead": {
+                color: theme("colors.gray.dark"),
+              },
+              a: {
+                color: theme("colors.link"),
+                fontWeight: theme("fontWeight.normal"),
+                textDecoration: "none",
+              },
+              "a:hover": {
+                color: theme("colors.brand"),
+                textDecoration: "underline",
+              },
+              "a:focus": {
+                color: theme("colors.brand"),
+                textDecoration: "underline",
+              },
+              "ol > li::marker": {
+                fontWeight: theme("fontWeight.medium"),
+                color: theme("colors.gray.dark"),
+              },
+              "ol ol": {
+                listStyle: "lower-latin",
+              },
+              "ul > li::marker": {
+                color: theme("colors.gray.light"),
+              },
+              var: {
+                color: theme("colors.purple.800"),
+              },
+              blockquote: {
+                color: "inherit",
+                fontWeight: theme("fontWeight.normal"),
+                fontStyle: "normal",
+                fontSize: theme("fontSize.sm"),
+                marginTop: theme("spacing.6"),
+                marginBottom: theme("spacing.6"),
+                paddingLeft: theme("spacing.4"),
+                padding: theme("spacing.4"),
+                borderLeftWidth: "4px",
+                boxShadow: theme("boxShadow.DEFAULT"),
+                // bg-gray-50/30
+                backGroundColor: "rgba(249,250,251,.3)",
+              },
+              "blockquote .attribution": {
+                fontStyle: "italic",
+              },
+              "blockquote p:last-child": {
+                marginBottom: "0",
+              },
+              "blockquote p:first-child": {
+                marginTop: "0",
+              },
+              "blockquote p:first-of-type::before": {
+                content: "",
+              },
+              "blockquote p:last-of-type::after": {
+                content: "",
+              },
+              dt: {
+                fontWeight: theme("fontWeight.medium"),
+              },
+              dd: {
+                paddingLeft: theme("spacing.5"),
+              },
+              "kbd:not(.compound)": {
+                display: "inline-block",
+                fontSize: theme("fontSize.xs"),
+                fontWeight: theme("fontWeight.medium"),
+                padding: theme("spacing.1"),
+                borderWidth: "1px",
+                borderColor: theme("colors.gray.dark"),
+                borderRadius: theme("borderRadius.sm"),
+              },
+              ".guilabel": {
+                fontWeight: theme("fontWeight.medium"),
+                color: theme("colors.gray.dark"),
+                letterSpacing: theme("letterSpacing.wide"),
+              },
+              ".menuselection": {
+                fontWeight: theme("fontWeight.medium"),
+                color: theme("colors.gray.dark"),
+                letterSpacing: theme("letterSpacing.wide"),
+              },
+              "figure img": {
+                display: "inline-block",
+              },
+              ".align-center": {
+                marginLeft: "auto",
+                marginRight: "auto",
+                textAlign: "center",
+              },
+              ".align-right": {
+                marginLeft: "auto",
+                textAlign: "right",
+              },
+              caption: {
+                color: theme("colors.gray.light"),
+                textAlign: "left",
+                marginBottom: theme("spacing.6"),
+              },
+              "thead th": {
+                fontWeight: theme("fontWeight.medium"),
+              },
+              "table p:first-child": {
+                marginTop: "0",
+              },
+              "table p:last-child": {
+                marginBottom: "0",
+              },
+            },
+          ],
+        },
+      }),
     },
   },
 };
