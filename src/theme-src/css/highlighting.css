@@ -1,0 +1,8 @@
+/* Test */
+pre del::before {
+  @apply absolute text-red-900 left-[2px] content-['\2212'];
+}
+
+pre ins::before {
+  @apply absolute text-green-900 left-[2px] content-['\002b'];
+}

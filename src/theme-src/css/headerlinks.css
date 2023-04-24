@@ -9,7 +9,7 @@
   .admonition-title,
   figure,
   dt,
-  .code-header;
+  .code-block-caption;
 
 @layer utilities {
   .headerlink {

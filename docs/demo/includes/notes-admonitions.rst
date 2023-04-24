@@ -15,6 +15,12 @@ which appears in the same style.
 
    Hints and tips appear in the same style.
 
+Topic
+-----
+
+The |product| doesn't include styles for the ``topic`` directive.
+Use a block quotation or another callout instead.
+
 Notes
 -----
 
@@ -46,28 +52,24 @@ This renders as:
 
    Enter the custom title after the ``admonition`` directive.
 
-Cautions
+Warnings
 --------
 
-Use a ``caution`` directive to alert users about important issues.
-
-.. caution::
-
-   This is how a caution appears.
-
-You can also use the ``important`` directive, which appears in the same style.
-
-.. important::
-
-   Important and caution callouts appear in the same style.
-
-As does the ``warning`` directive.
+Use a ``warning`` directive to alert users about important issues.
 
 .. warning::
 
    This is a warning.
 
-And the ``attention`` directive.
+You can also use the ``important``, ``attention``, or ``caution`` directives, which appear in the same style.
+
+.. caution::
+
+   This is how a caution appears.
+
+.. important::
+
+   Important and caution callouts appear in the same style.
 
 .. attention::
 
@@ -80,7 +82,7 @@ You can use the ``error`` directive to inform users about errors..
 
 .. error::
 
-   This is how a warning appears.
+   This is how an error appears.
 
 You can also use the ``danger`` directive, which appears in the same style.
 

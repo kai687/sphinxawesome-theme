@@ -1,5 +1,4 @@
-"""Nox sessions."""
-
+"""Run commands for this repository."""
 import shutil
 from enum import Enum
 from typing import List, Type, TypeVar
@@ -76,7 +75,6 @@ def live_docs(session: Session) -> None:
         "*woff*",
         "--ignore",
         "docsearch*",
-        "--open-browser",
     ]
     session.install(".", "sphinx-autobuild", *docs_dependencies)
     session.run("sphinx-autobuild", *args)

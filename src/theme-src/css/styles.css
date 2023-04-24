@@ -6,14 +6,14 @@
 @import "layout.css";
 @import "headerlinks.css";
 @import "admonitions.css";
-/* @import "nav.css"; */
+@import "contents.css";
+@import "sidebar.css";
+@import "transitions.css";
+@import "tooltips.css";
+@import "highlighting.css";
+@import "tailwindcss/utilities";
+
 /* @import "links.css"; */
 /* @import "code.css"; */
 /* @import "lists.css"; */
-/* @import "tables.css"; */
-/* @import "figures.css"; */
-/* @import "transitions.css"; */
-/* @import "print.css"; */
-@import "tooltips.css";
 /* @import "collapsible.css"; */
-@import "tailwindcss/utilities";

@@ -25,7 +25,10 @@ Get started
 
    .. seealso::
 
-      :doc:`how-to/install/index`
+      .. button-ref:: how-to/install/index
+         :ref-type: doc
+         :color: primary
+         :class: font-size-inherit
 
 #. Add the theme to your Sphinx configuration:
 
@@ -35,14 +38,20 @@ Get started
 
    .. seealso::
 
-      :doc:`how-to/add/index`
-      :confval:`sphinx:html_theme`
+      .. button-ref:: how-to/add/index
+         :ref-type: doc
+         :color: primary
+         :class: font-size-inherit
 
 #. Build your documentation.
 
    .. seealso::
 
-      :sphinxdocs:`Get started with Sphinx <usage/quickstart.html>`
+      .. button-link:: https://docs.readthedocs.io/en/stable/intro/getting-started-with-sphinx.html
+         :color: primary
+         :class: font-size-inherit
+
+         Get started with Sphinx
 
 Learn more
 ----------

@@ -11,22 +11,23 @@ extends the default Sphinx ``code-block`` directive.
 :license: MIT, see LICENSE for details.
 """
 import contextlib
-from typing import Any, Dict, Generator, List, Tuple
+from typing import Any, Dict, Generator, Tuple
 
 from docutils import nodes
-from docutils.nodes import Node
+from docutils.nodes import Element, Node
 from docutils.parsers.rst import directives
-from docutils.statemachine import StringList
+
+# from docutils.statemachine import StringList
 from pygments.formatters import HtmlFormatter
 from pygments.lexers.shell import BashSessionLexer
 from pygments.util import get_list_opt
 from sphinx.application import Sphinx
-from sphinx.directives.code import CodeBlock, dedent_lines
+from sphinx.directives.code import CodeBlock, container_wrapper, dedent_lines
 from sphinx.highlighting import PygmentsBridge
 from sphinx.locale import __
 from sphinx.util import logging, parselinenos
-from sphinx.util.docutils import SphinxDirective
 
+# from sphinx.util.docutils import SphinxDirective
 from . import __version__
 
 logger = logging.getLogger(__name__)
@@ -35,49 +36,14 @@ logger = logging.getLogger(__name__)
 TokenStream = Generator[Tuple[int, str], None, None]
 
 
-def container_wrapper(
-    directive: SphinxDirective, literal_node: Node, caption: str
-) -> nodes.container:
-    """We need the container to have class highlight."""
-    container_node = nodes.container(
-        "",
-        literal_block=True,
-        language=literal_node["language"],  # type: ignore
-        classes=literal_node["classes"],  # type: ignore
-    )
-    parsed = nodes.Element()
-    directive.state.nested_parse(
-        StringList([caption], source=""), directive.content_offset, parsed
-    )
-    if isinstance(parsed[0], nodes.system_message):
-        msg = __("Invalid caption: %s" % parsed[0].astext())
-        raise ValueError(msg)
-    elif isinstance(parsed[0], nodes.Element):
-        caption_node = nodes.caption(
-            parsed[0].rawsource,
-            "",
-            *parsed[0].children,
-        )
-        caption_node.source = literal_node.source
-        caption_node.line = literal_node.line
-        container_node += caption_node
-        container_node += literal_node
-        return container_node
-    else:
-        raise RuntimeError  # never reached
-
-
 class AwesomeHtmlFormatter(HtmlFormatter):  # type: ignore
     """Custom HTML formatter for Pygments.
 
-    This produces quite different HTML compared to Sphinx.
-    - the code block is wrapped in ``<pre><code>``
-      as recommended by the HTML living standard.
-    - allow highlighting added/removed lines: this is different from
-      using the ``diff`` syntax, as it can be combined with any syntax.
-    - it only uses the inline line number mechanism
-      that's going to be the future. It's much easier to have consistent
-      styling that way.
+    Allow highlighting added or removed lines.
+    Similar to emphasizing lines.
+
+    In contrast to Pygments,
+    this formatter returns `<mark>` for higlighted lines.
     """
 
     def __init__(self: "AwesomeHtmlFormatter", **options: Any) -> None:
@@ -93,20 +59,23 @@ class AwesomeHtmlFormatter(HtmlFormatter):  # type: ignore
             with contextlib.suppress(ValueError):
                 self.removed_lines.add(int(lineno))
 
+        options["lineanchors"] = "code"
+        options["linespans"] = "code-line"
+        options["wrapcode"] = True
+
         super().__init__(**options)
 
     def _highlight_lines(
         self: "AwesomeHtmlFormatter", tokensource: TokenStream
     ) -> TokenStream:
-        """Add classes to `hl_added` and `hl_removed` lines.
+        """Highlight added, removed, and emphasized lines.
 
-        Simplification, because we only need to care about class-based styles
-        for this theme.
+        In contrast to Pygments, use `<mark>`, `<ins>`, and `<del>` elements.
         """
         for i, (t, value) in enumerate(tokensource):
             if t != 1:
                 yield t, value
-            if i + 1 in self.hl_lines:  # i + 1 because Python indexes start at 0
+            if i + 1 in self.hl_lines:
                 yield 1, "<mark>%s</mark>" % value
             elif i + 1 in self.added_lines:
                 yield 1, "<ins>%s</ins>" % value
@@ -115,67 +84,36 @@ class AwesomeHtmlFormatter(HtmlFormatter):  # type: ignore
             else:
                 yield 1, value
 
-    def wrap(
-        self: "AwesomeHtmlFormatter", source: TokenStream, outfile: Any
-    ) -> TokenStream:
-        """Return a <pre><code> wrapped element.
-
-        Pygments returns the highlighted block wrapped inside a ``div.highlight``.
-        We want to get the <pre> only, and we'll wrap it in a div later, so that
-        we can add the code button, and an optional caption.
-
-        Returning a <pre><code> block follows the HTML5 specification for marking
-        up code blocks.
-        """
-        return self._wrap_div(self._wrap_pre(self._wrap_code(source)))  # type: ignore
-
-    def _wrap_pre(self: "AwesomeHtmlFormatter", inner: TokenStream) -> TokenStream:
-        """Overwrite this method.
-
-        I don't want an empty span in front of every code block.
-        This is a simplification as the theme doesn't use inline styles.
-        """
-        if self.filename:
-            yield 0, ('<span class="filename">' + self.filename + "</span>")
-
-        yield 0, ("<pre>")
-        yield from inner
-        yield 0, ("</pre>")
-
-    def _wrap_linespans(
-        self: "AwesomeHtmlFormatter", inner: TokenStream
-    ) -> TokenStream:
-        """Overwrite as I want a class applied to the linespan."""
-        i = self.linenostart - 1
-        for t, line in inner:
-            if t:
-                i += 1
-                yield 1, f"<span id='line-{i}' class='code-line'>{line}</span>"
-            else:
-                yield 0, line
-
     def format_unencoded(
-        self: "AwesomeHtmlFormatter", tokensource: Tuple[Any, Any], outfile: Any
+        self: "AwesomeHtmlFormatter",
+        tokensource: TokenStream,
+        outfile: Any,
     ) -> None:
-        """Produce the highlighted code block for Sphinx.
+        """Overwrite method to handle emphasized, added, and removed lines.
 
-        First, we add the line numbers, then line spans, then add the emphasized lines.
-        This is to have consistent spacing with and without line numbers.
+        Unfortunately, the method doesn't extend easily, so I copy it from Pygments.
         """
         source = self._format_lines(tokensource)
 
-        # add the line numbers first
-        if self.linenos == 2:
+        # As a special case, we wrap line numbers before line highlighting
+        # so the line numbers get wrapped in the highlighting tag.
+        if not self.nowrap and self.linenos == 2:
             source = self._wrap_inlinelinenos(source)
-            source = self._wrap_linespans(source)
 
-        # then add the highlighted lines
         if self.hl_lines or self.added_lines or self.removed_lines:
             source = self._highlight_lines(source)
 
-        # wrap the thing in <code> and <pre>
         if not self.nowrap:
-            source = self.wrap(source, outfile)
+            if self.lineanchors:
+                source = self._wrap_lineanchors(source)
+            if self.linespans:
+                source = self._wrap_linespans(source)
+            source = self.wrap(source)
+            if self.linenos == 1:
+                source = self._wrap_tablelinenos(source)
+            source = self._wrap_div(source)
+            if self.full:
+                source = self._wrap_full(source, outfile)
 
         for _, piece in source:
             outfile.write(piece)
@@ -193,12 +131,21 @@ class AwesomeCodeBlock(CodeBlock):
     option_spec = CodeBlock.option_spec
     option_spec.update(new_options)
 
-    def run(self: "AwesomeCodeBlock") -> List[Node]:  # noqa: C901
-        """Implement option method."""
+    def run(self: "AwesomeCodeBlock") -> list[Node]:  # noqa
+        """Overwrite method from Sphinx.
+
+        Add ability to highlight added and removed lines.
+        This passes the options to the highlighter.
+        You need a custom pygments formatter.
+
+        Unfortunately, the original method doesn't lend itself to being extended,
+        so I had to copy it.
+        """
         document = self.state.document
         code = "\n".join(self.content)
         location = self.state_machine.get_source_and_line(self.lineno)
 
+        hl_lines = None
         linespec = self.options.get("emphasize-lines")
         if linespec:
             try:
@@ -214,10 +161,8 @@ class AwesomeCodeBlock(CodeBlock):
                 hl_lines = [x + 1 for x in hl_lines if x < nlines]
             except ValueError as err:
                 return [document.reporter.warning(err, line=self.lineno)]
-        else:
-            hl_lines = []
 
-        # add parsing for hl_added and hl_removed
+        hl_added = None
         linespec = self.options.get("emphasize-added")
         if linespec:
             try:
@@ -229,13 +174,12 @@ class AwesomeCodeBlock(CodeBlock):
                         % (nlines, self.options["emphasize-added"]),
                         location=location,
                     )
+
                 hl_added = [x + 1 for x in hl_added if x < nlines]
             except ValueError as err:
                 return [document.reporter.warning(err, line=self.lineno)]
-        else:
-            hl_added = []
 
-        # add parsing for hl_added and hl_removed
+        hl_removed = None
         linespec = self.options.get("emphasize-removed")
         if linespec:
             try:
@@ -247,19 +191,18 @@ class AwesomeCodeBlock(CodeBlock):
                         % (nlines, self.options["emphasize-removed"]),
                         location=location,
                     )
+
                 hl_removed = [x + 1 for x in hl_removed if x < nlines]
             except ValueError as err:
                 return [document.reporter.warning(err, line=self.lineno)]
-        else:
-            hl_removed = []
 
         if "dedent" in self.options:
             location = self.state_machine.get_source_and_line(self.lineno)
-            lines = code.split("\n")
+            lines = code.splitlines(True)
             lines = dedent_lines(lines, self.options["dedent"], location=location)
-            code = "\n".join(lines)
+            code = "".join(lines)
 
-        literal = nodes.literal_block(code, code)
+        literal: Element = nodes.literal_block(code, code)
         if "linenos" in self.options or "lineno-start" in self.options:
             literal["linenos"] = True
         literal["classes"] += self.options.get("class", [])
@@ -275,19 +218,16 @@ class AwesomeCodeBlock(CodeBlock):
                 "highlight_language", self.config.highlight_language
             )
         extra_args = literal["highlight_args"] = {}
-        if hl_lines:
+        if hl_lines is not None:
             extra_args["hl_lines"] = hl_lines
-        if hl_added:
+        if hl_added is not None:
             extra_args["hl_added"] = hl_added
-        if hl_removed:
+        if hl_removed is not None:
             extra_args["hl_removed"] = hl_removed
         if "lineno-start" in self.options:
             extra_args["linenostart"] = self.options["lineno-start"]
-        if "emphasize-text" in self.options:
-            extra_args["hl_text"] = self.options["emphasize-text"]
         self.set_source_info(literal)
 
-        # if there is a caption, we need to wrap this node in a container
         caption = self.options.get("caption")
         if caption:
             try:
@@ -295,6 +235,8 @@ class AwesomeCodeBlock(CodeBlock):
             except ValueError as exc:
                 return [document.reporter.warning(exc, line=self.lineno)]
 
+        # literal will be note_implicit_target that is linked from caption and numref.
+        # when options['name'] is provided, it should be primary ID.
         self.add_name(literal)
 
         return [literal]

@@ -14,18 +14,18 @@ module.exports = {
       mono: ["JetBrains\\ Mono", "monospace"],
     },
     fontSize: {
-      xs: [".75rem", "1.5"],
-      sm: [".875rem", "1.5"],
-      code: [".9375em", "1.5"],
-      base: ["16px", "1.5"],
-      m: ["1.125rem", "1.5"],
-      lg: ["1.375rem", "1.2"],
-      xl: ["1.5rem", "1.2"],
-      "2xl": ["1.75rem", "1.2"],
-      "3xl": ["2.5rem", "1.2"],
-      "4xl": ["3rem", "1.2"],
-      "5xl": ["3.125rem", "1.2"],
-      "6xl": ["3.75rem", "1.2"],
+      xs: ".75rem", // lineHeight: 1.5
+      sm: ".875rem", // lineHeight: 1.5
+      code: ".9375em", // lineHeight: 1.5
+      base: "16px", // lineHeight: 1.5
+      m: "1.125rem", // lineHeight: 1.5
+      lg: "1.375rem", //lineHeight: "1.2"
+      xl: "1.5rem", // lineHeight: "1.2"
+      "2xl": "1.75rem", // lineHeight: "1.2"
+      "3xl": "2.5rem", // lineHeight: "1.2"
+      "4xl": "3rem", // lineHeight: "1.2"
+      "5xl": "3.125rem", // lineHeight: "1.2"
+      "6xl": "3.75rem", // lineHeight: "1.2"
     },
     extend: {
       screens: {
@@ -44,7 +44,6 @@ module.exports = {
         sidebar: "max(var(--sidebar-width), 17%)",
       },
       colors: {
-        blue: colors.sky,
         brand: "var(--color-brand)",
         link: "var(--color-link)",
         gray: {
@@ -99,6 +98,9 @@ module.exports = {
               ".lead": {
                 color: theme("colors.gray.dark"),
               },
+              ".lead + *": {
+                marginTop: theme("spacing.12"),
+              },
               a: {
                 color: theme("colors.link"),
                 fontWeight: theme("fontWeight.normal"),
@@ -122,7 +124,10 @@ module.exports = {
               "ul > li::marker": {
                 color: theme("colors.gray.light"),
               },
-              var: {
+              ".samp em": {
+                color: theme("colors.purple.800"),
+              },
+              ".file em": {
                 color: theme("colors.purple.800"),
               },
               blockquote: {
@@ -204,6 +209,67 @@ module.exports = {
               },
               "table p:last-child": {
                 marginBottom: "0",
+              },
+              ".highlight": {
+                position: "relative",
+              },
+              pre: {
+                color: "inherit",
+                backgroundColor: "inherit",
+                borderWidth: "1px",
+                borderRadius: theme("borderRadius.sm"),
+                marginTop: 0,
+                marginBottom: 0,
+              },
+              "pre mark": {
+                display: "block",
+                backgroundColor: theme("colors.sky.50"),
+              },
+              "pre ins": {
+                display: "block",
+                backgroundColor: theme("colors.green.50"),
+                textDecoration: "none",
+              },
+              ".highlight-diff .gi": {
+                backgroundColor: theme("colors.green.50"),
+                display: "inline-block",
+                width: "100%",
+              },
+              "pre del": {
+                display: "block",
+                backgroundColor: theme("colors.red.50"),
+                textDecoration: "none",
+              },
+              ".highlight-diff .gd": {
+                backgroundColor: theme("colors.red.50"),
+                display: "inline-block",
+                width: "100%",
+              },
+              ".literal-block-wrapper": {
+                borderWidth: "1px",
+                borderRadius: theme("borderRadius.sm"),
+              },
+              ".literal-block-wrapper pre": {
+                border: "none",
+              },
+              ".pre": {
+                whiteSpace: "nowrap",
+                hyphens: "none",
+              },
+              ".code-block-caption": {
+                color: theme("colors.gray.light"),
+                fontSize: theme("fontSize.sm"),
+                letterSpacing: theme("letterSpacing.wide"),
+                borderBottomWidth: "1px",
+                backgroundColor: theme("colors.gray.50"),
+                borderTopLeftRadius: theme("borderRadius.sm"),
+                borderTopRightRadius: theme("borderRadius.sm"),
+                padding: theme("spacing.1"),
+                display: "flex",
+                justifyContent: "flex-end",
+              },
+              ".font-size-inherit": {
+                fontSize: "inherit !important",
               },
             },
           ],

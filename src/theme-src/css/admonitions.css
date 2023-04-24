@@ -14,7 +14,7 @@ div.deprecated {
 
 .note,
 [class^="admonition-"]:not(.admonition-title) {
-  @apply text-blue-900 border-blue-400 bg-blue-400/[0.02];
+  @apply text-sky-900 border-sky-400 bg-sky-400/[0.02];
 
   & .headerlink {
     @apply text-current;
