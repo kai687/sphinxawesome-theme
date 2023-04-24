@@ -5,6 +5,7 @@ module.exports = {
     animation: false,
     container: false,
   },
+  plugins: [require("@tailwindcss/typography")],
   content: ["../sphinxawesome_theme/*.html", "./js/**/*.js"],
   safelist: ["lead", "rubric", "centered"],
   theme: {
