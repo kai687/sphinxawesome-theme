@@ -106,6 +106,9 @@ module.exports = {
                 fontWeight: theme("fontWeight.normal"),
                 textDecoration: "none",
               },
+              "a.toc-backref": {
+                color: "inherit",
+              },
               "a:hover": {
                 color: theme("colors.brand"),
                 textDecoration: "underline",
@@ -123,6 +126,9 @@ module.exports = {
               },
               "ul > li::marker": {
                 color: theme("colors.gray.light"),
+              },
+              var: {
+                color: theme("colors.purple.800"),
               },
               ".samp em": {
                 color: theme("colors.purple.800"),
@@ -159,6 +165,10 @@ module.exports = {
               "blockquote p:last-of-type::after": {
                 content: "",
               },
+              dl: {
+                marginBottom: theme("spacing.5"),
+                marginTop: theme("spacing.5"),
+              },
               dt: {
                 fontWeight: theme("fontWeight.medium"),
               },
@@ -169,10 +179,16 @@ module.exports = {
                 display: "inline-block",
                 fontSize: theme("fontSize.xs"),
                 fontWeight: theme("fontWeight.medium"),
-                padding: theme("spacing.1"),
+                padding: "1px 4px",
                 borderWidth: "1px",
                 borderColor: theme("colors.gray.dark"),
                 borderRadius: theme("borderRadius.sm"),
+                boxShadow: "1px 1px",
+              },
+              ".option-list kbd": {
+                borderWidth: 0,
+                fontSize: "inherit",
+                fontWeight: theme("fontWeight.bold"),
               },
               ".guilabel": {
                 fontWeight: theme("fontWeight.medium"),
@@ -213,8 +229,22 @@ module.exports = {
               ".highlight": {
                 position: "relative",
               },
+              code: {
+                fontSize: theme("fontSize.code"),
+                fontWeight: theme("fontWeight.medium"),
+                backgroundColor: theme("colors.gray.100"),
+                borderRadius: theme("borderRadius.sm"),
+                padding: "1px 4px",
+              },
+              "code::before": {
+                content: "",
+              },
+              "code::after": {
+                content: "",
+              },
               pre: {
                 color: "inherit",
+                fontSize: theme("fontSize.code"),
                 backgroundColor: "inherit",
                 borderWidth: "1px",
                 borderRadius: theme("borderRadius.sm"),
@@ -267,6 +297,26 @@ module.exports = {
                 padding: theme("spacing.1"),
                 display: "flex",
                 justifyContent: "flex-end",
+              },
+              ".sig": {
+                fontWeight: theme("fontWeight.bold"),
+                fontFamily: "JetBrains\\ Mono",
+              },
+              ".sig-name": {
+                color: "black",
+              },
+              ".default_value": {
+                color: theme("colors.purple.800"),
+              },
+              "em.property": {
+                color: theme("colors.gray.light"),
+              },
+              ".option .sig-prename": {
+                fontStyle: "italic",
+                color: theme("colors.purple.800"),
+              },
+              ".viewcode-link": {
+                float: "right",
               },
               ".font-size-inherit": {
                 fontSize: "inherit !important",

@@ -58,8 +58,9 @@ class AwesomeHtmlFormatter(HtmlFormatter):  # type: ignore
             except ValueError:
                 pass
 
-        options["lineanchors"] = "code"
-        options["linespans"] = "code-line"
+        # These options aren't compatible with `sphinx.ext.autodoc`
+        # options["lineanchors"] = "code"
+        # options["linespans"] = "code-line"
         options["wrapcode"] = True
 
         super().__init__(**options)

@@ -21,7 +21,7 @@ class AwesomeHTMLTranslator(HTML5Translator):
 
     def depart_reference(self: "AwesomeHTMLTranslator", node: Element) -> None:
         """Add external link icon."""
-        if not (node.get("internal") and "refuri" in node):
+        if not (node.get("internal") or "refuri" not in node):
             self.body.append(ICONS["external_link"])
         super().depart_reference(node)
 
