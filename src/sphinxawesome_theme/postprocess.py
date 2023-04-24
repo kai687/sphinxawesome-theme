@@ -103,6 +103,16 @@ def _headerlinks(tree: BeautifulSoup) -> None:
         link["class"].extend(["tooltipped", "tooltipped-ne"])
 
 
+def _external_links(tree: BeautifulSoup) -> None:
+    """Add `rel="nofollow noopener"` to external links.
+
+    The alternative was to copy `visit_reference` in the HTMLTranslator
+    and change literally one line.
+    """
+    for link in tree("a", class_="reference external"):
+        link["rel"] = "nofollow noopener"
+
+
 def _strip_comments(tree: BeautifulSoup) -> None:
     """Remove HTML comments from documents."""
     comments = tree.find_all(string=lambda text: isinstance(text, Comment))
@@ -123,6 +133,7 @@ def _modify_html(html_filename: str, app: Sphinx) -> None:
 
     _expand_current(tree)
     _collapsible_nav(tree)
+    _external_links(tree)
     _remove_empty_toctree(tree)
     if app.config.html_awesome_headerlinks:
         _headerlinks(tree)
