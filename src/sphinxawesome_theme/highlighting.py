@@ -10,14 +10,11 @@ extends the default Sphinx ``code-block`` directive.
 :copyright: Copyright Kai Welke.
 :license: MIT, see LICENSE for details.
 """
-import contextlib
-from typing import Any, Dict, Generator, Tuple
+from typing import Any, Dict, Generator, List, Tuple
 
 from docutils import nodes
 from docutils.nodes import Element, Node
 from docutils.parsers.rst import directives
-
-# from docutils.statemachine import StringList
 from pygments.formatters import HtmlFormatter
 from pygments.lexers.shell import BashSessionLexer
 from pygments.util import get_list_opt
@@ -27,7 +24,6 @@ from sphinx.highlighting import PygmentsBridge
 from sphinx.locale import __
 from sphinx.util import logging, parselinenos
 
-# from sphinx.util.docutils import SphinxDirective
 from . import __version__
 
 logger = logging.getLogger(__name__)
@@ -42,8 +38,7 @@ class AwesomeHtmlFormatter(HtmlFormatter):  # type: ignore
     Allow highlighting added or removed lines.
     Similar to emphasizing lines.
 
-    In contrast to Pygments,
-    this formatter returns `<mark>` for higlighted lines.
+    In contrast to Pygments, this formatter returns `<mark>` for higlighted lines.
     """
 
     def __init__(self: "AwesomeHtmlFormatter", **options: Any) -> None:
@@ -52,12 +47,16 @@ class AwesomeHtmlFormatter(HtmlFormatter):  # type: ignore
         self.removed_lines = set()
 
         for lineno in get_list_opt(options, "hl_added", []):
-            with contextlib.suppress(ValueError):
+            try:
                 self.added_lines.add(int(lineno))
+            except ValueError:
+                pass
 
         for lineno in get_list_opt(options, "hl_removed", []):
-            with contextlib.suppress(ValueError):
+            try:
                 self.removed_lines.add(int(lineno))
+            except ValueError:
+                pass
 
         options["lineanchors"] = "code"
         options["linespans"] = "code-line"
@@ -100,6 +99,7 @@ class AwesomeHtmlFormatter(HtmlFormatter):  # type: ignore
         if not self.nowrap and self.linenos == 2:
             source = self._wrap_inlinelinenos(source)
 
+        # This is the only change I made from the original
         if self.hl_lines or self.added_lines or self.removed_lines:
             source = self._highlight_lines(source)
 
@@ -117,6 +117,17 @@ class AwesomeHtmlFormatter(HtmlFormatter):  # type: ignore
 
         for _, piece in source:
             outfile.write(piece)
+
+
+def _get_parsed_line_numbers(linespec: str, nlines: int, location: str) -> List[int]:
+    """Get the parsed line numbers for the `emphasize-*` options."""
+    line_numbers = parselinenos(linespec, nlines)
+    if any(i >= nlines for i in line_numbers):
+        logger.warning(
+            __("line number spec is out of range(1-%d): %r") % (nlines, linespec),
+            location=location,
+        )
+    return [x + 1 for x in line_numbers if x < nlines]
 
 
 class AwesomeCodeBlock(CodeBlock):
@@ -144,60 +155,31 @@ class AwesomeCodeBlock(CodeBlock):
         document = self.state.document
         code = "\n".join(self.content)
         location = self.state_machine.get_source_and_line(self.lineno)
+        nlines = len(self.content)
 
-        hl_lines = None
+        hl_lines = hl_added = hl_removed = None
         linespec = self.options.get("emphasize-lines")
         if linespec:
             try:
-                nlines = len(self.content)
-                hl_lines = parselinenos(linespec, nlines)
-                if any(i >= nlines for i in hl_lines):
-                    logger.warning(
-                        __("line number spec is out of range(1-%d): %r")
-                        % (nlines, self.options["emphasize-lines"]),
-                        location=location,
-                    )
-
-                hl_lines = [x + 1 for x in hl_lines if x < nlines]
+                hl_lines = _get_parsed_line_numbers(linespec, nlines, location)
             except ValueError as err:
                 return [document.reporter.warning(err, line=self.lineno)]
 
-        hl_added = None
         linespec = self.options.get("emphasize-added")
         if linespec:
             try:
-                nlines = len(self.content)
-                hl_added = parselinenos(linespec, nlines)
-                if any(i >= nlines for i in hl_added):
-                    logger.warning(
-                        __("line number spec is out of range(1-%d): %r")
-                        % (nlines, self.options["emphasize-added"]),
-                        location=location,
-                    )
-
-                hl_added = [x + 1 for x in hl_added if x < nlines]
+                hl_added = _get_parsed_line_numbers(linespec, nlines, location)
             except ValueError as err:
                 return [document.reporter.warning(err, line=self.lineno)]
 
-        hl_removed = None
         linespec = self.options.get("emphasize-removed")
         if linespec:
             try:
-                nlines = len(self.content)
-                hl_removed = parselinenos(linespec, nlines)
-                if any(i >= nlines for i in hl_removed):
-                    logger.warning(
-                        __("line number spec is out of range(1-%d): %r")
-                        % (nlines, self.options["emphasize-removed"]),
-                        location=location,
-                    )
-
-                hl_removed = [x + 1 for x in hl_removed if x < nlines]
+                hl_removed = _get_parsed_line_numbers(linespec, nlines, location)
             except ValueError as err:
                 return [document.reporter.warning(err, line=self.lineno)]
 
         if "dedent" in self.options:
-            location = self.state_machine.get_source_and_line(self.lineno)
             lines = code.splitlines(True)
             lines = dedent_lines(lines, self.options["dedent"], location=location)
             code = "".join(lines)
@@ -226,6 +208,9 @@ class AwesomeCodeBlock(CodeBlock):
             extra_args["hl_removed"] = hl_removed
         if "lineno-start" in self.options:
             extra_args["linenostart"] = self.options["lineno-start"]
+        if "emphasize-text" in self.options:
+            extra_args["hl_text"] = self.options["emphasize-text"]
+
         self.set_source_info(literal)
 
         caption = self.options.get("caption")
