@@ -271,6 +271,13 @@ module.exports = {
               ".font-size-inherit": {
                 fontSize: "inherit !important",
               },
+              ".footnote > .label": {
+                float: "left",
+                paddingRight: theme("spacing.2"),
+              },
+              ".footnote > :not(.label)": {
+                marginLeft: theme("spacing.8"),
+              },
             },
           ],
         },

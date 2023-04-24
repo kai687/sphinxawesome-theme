@@ -8,9 +8,11 @@ Footnotes
 
    Footnotes are a way in printed documents to add more information outside of the main
    flow of text.
-   They don't apply well to online experiences, especially on mobile devices.
 
 ----
+
+Footnotes don't apply well to online experiences,
+especially to mobile screens.
 
 .. [1] To create a footnote, create a label and indent it by three spaces.
 
