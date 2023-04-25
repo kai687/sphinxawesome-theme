@@ -5,7 +5,7 @@
   @apply print:hidden;
   & .topic-title,
   & .caption {
-    @apply uppercase text-sm font-medium text-gray-light font-mono;
+    @apply uppercase text-sm font-medium tracking-wide text-gray-light font-mono;
   }
   & ul {
     @apply list-none pl-0;
