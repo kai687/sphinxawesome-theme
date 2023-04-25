@@ -17,7 +17,7 @@ def test_compiles_html_with_theme(app: Sphinx) -> None:
     assert os.path.exists(Path(app.outdir) / "index.html")
     assert app.config.html_theme == "sphinxawesome_theme"
     assert "sphinxawesome_theme.html_translator" not in app.extensions
-    assert app.config.html_awesome_html_translator is True
+    assert app.config.html_awesome_external_links is False
     assert "sphinxawesome_theme.highlighting" not in app.extensions
     assert app.config.html_awesome_highlighting is True
     assert "sphinxawesome_theme.jinja_functions" in app.extensions
@@ -35,8 +35,8 @@ def test_internal_extensions(app: Sphinx) -> None:
     app.build()
     assert os.path.exists(Path(app.outdir) / "index.html")
     assert app.config.html_theme == "alabaster"
-    assert "sphinxawesome_theme.html_translator" in app.extensions
-    assert app.config.html_awesome_html_translator is True
+    assert "sphinxawesome_theme.html_translator" not in app.extensions
+    assert app.config.html_awesome_external_links is False
     assert "sphinxawesome_theme.highlighting" in app.extensions
     assert app.config.html_awesome_highlighting is True
     assert "sphinxawesome_theme.jinja_functions" in app.extensions
@@ -52,15 +52,15 @@ def test_internal_extensions(app: Sphinx) -> None:
     "html",
     confoverrides={
         "extensions": ["sphinxawesome_theme"],
-        "html_awesome_html_translator": False,
+        "html_awesome_external_links": True,
     },
 )
 def test_no_awesome_html_translator(app: Sphinx) -> None:
     """It doesn't load the awesome HTML translator."""
     app.build()
     assert os.path.exists(Path(app.outdir) / "index.html")
-    assert "sphinxawesome_theme.html_translator" not in app.extensions
-    assert app.config.html_awesome_html_translator is False
+    assert "sphinxawesome_theme.html_translator" in app.extensions
+    assert app.config.html_awesome_external_links is True
 
 
 @pytest.mark.sphinx(
@@ -107,3 +107,24 @@ def test_awesome_docsearch(app: Sphinx) -> None:
     assert len(scripts) == 3
     script_src = [item["src"] for item in scripts]
     assert any(filter(pattern.search, script_src))  # type: ignore[arg-type]
+
+
+@pytest.mark.sphinx(
+    "html",
+    confoverrides={
+        "html_theme": "sphinxawesome_theme",
+        "extensions": ["sphinxawesome_theme", "sphinx_design"],
+    },
+)
+def test_awesome_sphinx_design(app: Sphinx) -> None:
+    """It loads CSS for the `sphinx-design` extension."""
+    app.build()
+    assert os.path.exists(Path(app.outdir) / "index.html")
+    tree = parse_html(Path(app.outdir) / "index.html")
+    pattern = re.compile(r"awesome-sphinx-design\.[0-9a-z]+\.(css|js)")
+
+    # It adds the `awesome-sphinx-design.css` file
+    css = tree.select('link[rel="stylesheet"]')
+    assert len(css) == 4
+    hrefs = [item["href"] for item in css]
+    assert any(filter(pattern.search, hrefs))  # type: ignore[arg-type]

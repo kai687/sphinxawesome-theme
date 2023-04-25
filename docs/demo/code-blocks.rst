@@ -197,6 +197,7 @@ If you add markup, such as bold text or hyperlinks, syntax highlighting is turne
 .. parsed-literal::
 
    This *can* contain markup, but **not** syntax highlighting.
+   How about a `link <https://example.org>`_?
 
 
 If you don't include any markup, the content is rendered with syntax highlighting.
