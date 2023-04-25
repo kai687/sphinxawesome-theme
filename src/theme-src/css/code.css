@@ -17,3 +17,7 @@ pre ins::before {
 .highlight:hover .copy {
   @apply opacity-100;
 }
+
+.code-lang {
+  @apply inline-block text-gray-dark ml-2 mr-auto font-mono uppercase tracking-wider;
+}
