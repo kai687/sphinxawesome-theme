@@ -64,7 +64,7 @@ customizations manually.
 Version 5.0
 ~~~~~~~~~~~
 
-Version 5.0 of the |product| indludes these **breaking changes**:
+Version 5.0 of the |product| includes these **breaking changes**:
 
 Remove support for ``html_collapsible_definitions``
    The user experience was bad for reference documentation,
