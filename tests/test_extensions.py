@@ -55,8 +55,8 @@ def test_internal_extensions(app: Sphinx) -> None:
         "html_awesome_external_links": True,
     },
 )
-def test_no_awesome_html_translator(app: Sphinx) -> None:
-    """It doesn't load the awesome HTML translator."""
+def test_awesome_external_links(app: Sphinx) -> None:
+    """It loads the awesome HTML translator."""
     app.build()
     assert os.path.exists(Path(app.outdir) / "index.html")
     assert "sphinxawesome_theme.html_translator" in app.extensions
@@ -68,6 +68,7 @@ def test_no_awesome_html_translator(app: Sphinx) -> None:
     confoverrides={
         "extensions": ["sphinxawesome_theme"],
         "html_awesome_postprocessing": False,
+        "html_awesome_code_headers": False,
     },
 )
 def test_no_awesome_postprocessing(app: Sphinx) -> None:
