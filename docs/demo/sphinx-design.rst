@@ -7,6 +7,8 @@ Sphinx design
 .. rst-class:: lead
 
    The sphinx-design_ extension comes with many visual components.
+   The |product| detects if you're using the ``sphinx-design`` extension
+   and adds extra styles to make it look nicer in this theme.
 
 .. _sphinx-design: https://sphinx-design.readthedocs.io/en/latest/index.html
 

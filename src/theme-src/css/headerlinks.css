@@ -1,0 +1,31 @@
+/* Style the headerlinks */
+
+@custom-selector :--headerlinkable
+  h1,
+  h2,
+  h3,
+  h4,
+  table,
+  .admonition-title,
+  figure,
+  dt,
+  .code-block-caption;
+
+@layer utilities {
+  .headerlink {
+    @apply ml-1 inline-flex items-center text-gray-400 hover:text-brand focus:text-brand align-middle font-sans;
+    & > * {
+      @apply invisible fill-current;
+    }
+    &:focus > * {
+      @apply visible;
+    }
+  }
+
+  :--headerlinkable:hover .headerlink {
+    @apply visible;
+    & > * {
+      @apply visible;
+    }
+  }
+}

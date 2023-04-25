@@ -1,5 +1,4 @@
-"""Nox sessions."""
-
+"""Run commands for this repository."""
 import shutil
 from enum import Enum
 from typing import List, Type, TypeVar
@@ -46,7 +45,7 @@ class Versions(Enum):
 def tests(session: Session) -> None:
     """Run unit tests."""
     args = session.posargs or ["--cov"]
-    deps = ["coverage[toml]", "pytest", "pytest-cov"]
+    deps = ["coverage[toml]", "pytest", "pytest-cov", "sphinx-design"]
     session.install(".", *deps)
     session.run("pytest", *args)
 
@@ -76,7 +75,6 @@ def live_docs(session: Session) -> None:
         "*woff*",
         "--ignore",
         "docsearch*",
-        "--open-browser",
     ]
     session.install(".", "sphinx-autobuild", *docs_dependencies)
     session.run("sphinx-autobuild", *args)

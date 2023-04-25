@@ -74,6 +74,7 @@ html_logo = "assets/auto_awesome.svg"
 html_favicon = "assets/favicon-128x128.png"
 html_permalinks_icon = (
     '<svg xmlns="http://www.w3.org/2000/svg" '
+    'height="1em" width="1em" '
     'viewBox="0 0 24 24">'
     '<path d="M3.9 12c0-1.71 1.39-3.1 '
     "3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 "
@@ -98,8 +99,8 @@ html_css_files = ["feedback.css"]
 html_js_files = ["feedback.js"]
 
 # extra options from the sphinxawesome_theme
-html_collapsible_definitions = True
 html_awesome_docsearch = True
+html_awesome_external_links = True
 
 # The Algolia credentials are added from an `.env` file
 docsearch_config = {
@@ -115,7 +116,8 @@ html_theme_options = {
         "repository on GitHub": {
             "link": "https://github.com/kai687/sphinxawesome-theme",
             "icon": (
-                '<svg style="height: 26px; margin-top: -2px;" viewBox="0 0 45 44" '
+                '<svg height="26px" style="margin-top:-2px;display:inline" '
+                'viewBox="0 0 45 44" '
                 'fill="currentColor" xmlns="http://www.w3.org/2000/svg">'
                 '<path fill-rule="evenodd" clip-rule="evenodd" '
                 'd="M22.477.927C10.485.927.76 10.65.76 22.647c0 9.596 6.223 17.736 '

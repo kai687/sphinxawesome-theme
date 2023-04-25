@@ -1,10 +1,6 @@
 .. meta::
    :description: Learn how you can mark up inline code in Sphinx and see how it would look like on your website.
 
-.. role:: rst(code)
-   :language: rst
-   :class: highlight
-
 .. role:: python(code)
    :language: python
    :class: highlight
@@ -22,16 +18,15 @@ Inline code
 To mark up code in inline text, you can:
 
 - Surround the code with two backtick characters.
-- Use the :rst:`code` interpreted text role.
+- Use the ``code`` interpreted text role.
 
 Syntax highlighting in inline code
 ----------------------------------
 
 By default, Sphinx doesn't highlight inline code.
-To highlight inline code with Sphinx:
+To highlight inline code with Sphinx, follow these steps:
 
-#. Create a docutils configuration file :file:`docutils.conf` in the same directory as
-   the Sphinx configuration file :file:`conf.py`.
+#. Create a docutils configuration file :file:`docutils.conf` in the same directory as the Sphinx configuration file :file:`conf.py`.
 
 #. Add to the docutils configuration file :file:`docutils.conf`:
 
@@ -47,8 +42,8 @@ To highlight inline code with Sphinx:
       This lets you re-use the same Pygments style sheet
       :file:`pygments.css` that Sphinx already uses for code blocks.
 
-#. For each language you want to highlight, create a custom interpreted text role using
-   docutils' :rst:`role` directive.
+#. For each language you want to highlight,
+   create a custom interpreted text role using docutils' ``role`` directive.
 
    For example, add this code to the beginning of an |rst| file:
 
@@ -88,14 +83,14 @@ The |product| provides styles for the following interpreted text roles.
 Files and directories
 ~~~~~~~~~~~~~~~~~~~~~
 
-You can designate files with the :rst:`file` role.
+You can designate files with the ``file`` role.
 
 .. code-block:: rst
 
    :file:`Some file name`
 
-This renders as :file:`Some filename`. You can highlight placeholder text in file and
-directory names using the following syntax:
+This renders as :file:`Some filename`.
+You can highlight placeholder text in file and directory names using the following syntax:
 
 .. code-block:: rst
 
@@ -110,8 +105,8 @@ This renders as :file:`/home/{USERNAME}/`.
 Inline code with placeholder text
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To highlight inline code with placeholder text, use the :rst:`samp` interpreted text
-role:
+To highlight inline code with placeholder text,
+use the ``samp`` interpreted text role:
 
 .. code-block:: rst
 
@@ -122,7 +117,7 @@ This renders as :samp:`Replace {PLACEHOLDER}`.
 Keyboard input
 ~~~~~~~~~~~~~~
 
-You can highlight key combinations using the :rst:`kbd` interpreted text role:
+Highlight keyboard shortcuts with the ``kbd`` interpreted text role:
 
 .. code-block:: rst
 
@@ -133,9 +128,7 @@ This renders as :kbd:`Ctrl+F`.
 User interface elements
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-Graphical user interface elements are rendered in a bold font.
-
-Use the :rst:`guilabel` role to highlight user interface elements, such as buttons:
+Use the ``guilabel`` role to highlight user interface elements, such as buttons:
 
 .. code-block:: rst
 
@@ -143,7 +136,7 @@ Use the :rst:`guilabel` role to highlight user interface elements, such as butto
 
 This renders as :guilabel:`Help`.
 
-Use the :rst:`menuselection` role to document items in menus.
+Use the ``menuselection`` role to document items in menus.
 
 .. code-block:: rst
 

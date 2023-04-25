@@ -36,17 +36,15 @@ Get started
    .. seealso::
 
       :doc:`how-to/add/index`
-      :confval:`sphinx:html_theme`
 
 #. Build your documentation.
 
    .. seealso::
 
-      :sphinxdocs:`Get started with Sphinx <usage/quickstart.html>`
+      `Get started with Sphinx <https://docs.readthedocs.io/en/stable/intro/getting-started-with-sphinx.html>`_
 
 Learn more
 ----------
-
 
 .. tab-set::
 

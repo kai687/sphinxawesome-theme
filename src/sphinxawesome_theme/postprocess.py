@@ -19,6 +19,7 @@ They might not show up in the final CSS.
 """
 
 import os
+import re
 from typing import Any, Dict, List, Optional
 
 from bs4 import BeautifulSoup, Comment
@@ -64,7 +65,9 @@ def _collapsible_nav(tree: BeautifulSoup) -> None:
                 # create the icon
                 svg = BeautifulSoup(ICONS["chevron_right"], "html.parser").svg
                 svg["tabindex"] = "0"
+                svg["height"] = "1.2rem"
                 svg["class"] = ["expand"]
+                svg["style"] = ["display: inline;"]
                 svg[
                     "data-action"
                 ] = "click->sidebar#expand keydown->sidebar#expandKeyPressed"
@@ -76,16 +79,6 @@ def _expand_current(tree: BeautifulSoup) -> None:
     for li in tree("li", class_="current"):
         if "expanded" not in li.get("class", []):
             li["class"] += ["expanded"]
-
-
-def _remove_span_pre(tree: BeautifulSoup) -> None:
-    """Unwrap unnecessary spans.
-
-    This gets added by visit_Text(). If I overwrite it there,
-    it's 20 lines of code for only 1 line of change.
-    """
-    for span in tree("span", class_="pre"):
-        span.unwrap()
 
 
 def _remove_empty_toctree(tree: BeautifulSoup) -> None:
@@ -111,8 +104,18 @@ def _headerlinks(tree: BeautifulSoup) -> None:
         link["class"].extend(["tooltipped", "tooltipped-ne"])
 
 
+def _code_controller(tree: BeautifulSoup) -> None:
+    """Add the controller attribute to code blocks."""
+    for block in tree("div", class_="highlight"):
+        block["data-controller"] = "code"
+
+
 def _external_links(tree: BeautifulSoup) -> None:
-    """Add `rel="nofollow noopener"` to external links."""
+    """Add `rel="nofollow noopener"` to external links.
+
+    The alternative was to copy `visit_reference` in the HTMLTranslator
+    and change literally one line.
+    """
     for link in tree("a", class_="reference external"):
         link["rel"] = "nofollow noopener"
 
@@ -122,6 +125,38 @@ def _strip_comments(tree: BeautifulSoup) -> None:
     comments = tree.find_all(string=lambda text: isinstance(text, Comment))
     for c in comments:
         c.extract()
+
+
+def _code_headers(tree: BeautifulSoup) -> None:
+    """Add the programming language to a code block."""
+    # Find all "<div class="highlight-<LANG> notranslate>" blocks
+    pattern = re.compile("highlight-(.*) ")
+    for code_block in tree.find_all("div", class_=pattern):
+        hl_lang = None
+        # Get the highlight language
+        classes_string = " ".join(code_block.get("class", []))
+        match = pattern.search(classes_string)
+        if match:
+            hl_lang = match.group(1).replace("default", "python")
+
+        parent = code_block.parent
+
+        # Deal with code blocks with captions
+        if "literal-block-wrapper" in parent.get("class", []):
+            caption = parent.select(".code-block-caption")[0]
+            if caption:
+                span = tree.new_tag("span", attrs={"class": "code-lang"})
+                span.append(tree.new_string(hl_lang))
+                caption.insert(0, span)
+        else:
+            # Code block without captions, we need to wrap them first
+            wrapper = tree.new_tag("div", attrs={"class": "literal-block-wrapper"})
+            caption = tree.new_tag("div", attrs={"class": "code-block-caption"})
+            span = tree.new_tag("span", attrs={"class": "code-lang"})
+            span.append(tree.new_string(hl_lang))
+            caption.append(span)
+            code_block.wrap(wrapper)
+            wrapper.insert(0, caption)
 
 
 def _modify_html(html_filename: str, app: Sphinx) -> None:
@@ -137,11 +172,13 @@ def _modify_html(html_filename: str, app: Sphinx) -> None:
 
     _expand_current(tree)
     _collapsible_nav(tree)
-    _remove_span_pre(tree)
-    _remove_empty_toctree(tree)
     _external_links(tree)
+    _remove_empty_toctree(tree)
     if app.config.html_awesome_headerlinks:
         _headerlinks(tree)
+    _code_controller(tree)
+    if app.config.html_awesome_code_headers:
+        _code_headers(tree)
     _strip_comments(tree)
 
     with open(html_filename, "w", encoding="utf-8") as out_file:
