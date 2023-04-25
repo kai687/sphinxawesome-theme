@@ -3,8 +3,6 @@
 Add the theme to your Sphinx configuration
 ------------------------------------------
 
-To use the |product| in your documentation:
-
 #. :ref:`sec:install-python-package`.
 #. Add the |product| as an HTML theme and extension:
 

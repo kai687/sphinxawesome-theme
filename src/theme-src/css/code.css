@@ -1,140 +1,19 @@
 /*
- * Styles for code elements
- */
-
-/* inline code */
-:not(pre) > code {
-  @apply font-medium px-1 bg-gray-50 border sm:text-code whitespace-pre;
-  &.highlight {
-    @apply bg-gray-50;
-  }
+* I'm assuming it's because of the format of the `content`,
+* but I can't add this to `tailwind.config.js`
+*/
+pre del::before {
+  @apply absolute text-red-900 left-[2px] content-['\2212'];
 }
 
-main kbd:not(.compound) {
-  @apply inline-block font-medium text-xs p-1 border border-gray-dark rounded-sm;
+pre ins::before {
+  @apply absolute text-green-900 left-[2px] content-['\002b'];
 }
 
-/* code blocks */
-pre {
-  @apply relative border overflow-x-hidden rounded-sm leading-normal mb-6;
-  /* give some extra padding to parsed-literals */
-  &.literal-block {
-    @apply py-4 pl-4 overflow-x-auto;
-  }
-  & code {
-    @apply block pl-4 py-4 overflow-x-auto;
-  }
-  & .copy {
-    @apply absolute top-3 right-1.5 border p-1 uppercase select-none text-xs tracking-wide rounded-sm text-gray-700 bg-white opacity-0 focus:opacity-100 transition-all duration-500 transform active:translate-x-0.5 active:translate-y-0.5;
-  }
-
-  &:hover .copy {
-    @apply opacity-100;
-  }
+.highlight .copy {
+  @apply absolute top-3 right-1.5 border p-1 uppercase select-none text-xs tracking-wide rounded-sm text-gray-700 bg-white opacity-0 focus:opacity-100 transition-all duration-500 transform active:translate-x-0.5 active:translate-y-0.5;
 }
 
-/* the outer wrapper for a code block */
-.code-wrapper {
-  @apply my-6;
-  & .caption-text {
-    @apply text-gray-light tracking-wide;
-  }
-  /* code blocks with header */
-  & pre {
-    @apply rounded-t-none;
-  }
-  /* emphasized lines */
-  & mark,
-  & ins,
-  & del {
-    @apply block relative -ml-4 pl-4 py-px;
-  }
-  & mark {
-    @apply bg-blue-200/70;
-  }
-  & ins {
-    @apply bg-green-200/70 no-underline;
-    &:before {
-      content: "\002b";
-      left: 2px;
-      @apply absolute text-green-900;
-    }
-  }
-  & del {
-    @apply bg-red-200/70 no-underline;
-    &:before {
-      content: "\2212";
-      left: 2px;
-      @apply absolute text-red-900;
-    }
-  }
-  /* line numbers */
-  & .linenos {
-    @apply bg-transparent text-gray-700 p-0 pr-6 select-none;
-  }
-  /* code lines (wrapped around lines with line numbers) */
-  & .code-line {
-    @apply block;
-  }
-}
-
-/* Diff highlighting inserted/deleted elements
-   some pygments themes do not have styles for it */
-span.gd {
-  @apply inline-block bg-red-200 py-px w-full;
-}
-
-span.gi {
-  @apply inline-block bg-green-200 py-px w-full;
-}
-
-/* the header of a code block */
-.code-header {
-  @apply flex justify-between items-center text-sm py-1 bg-gray-50 rounded-t-sm border-l border-t border-r;
-}
-
-.no-header > .code-header {
-  @apply hidden;
-}
-
-.code-lang {
-  @apply inline-block text-gray-dark ml-2 mr-auto font-mono uppercase tracking-wider;
-}
-
-/* make prompts unselectable */
-.gp {
-  @apply select-none pointer-events-none font-medium;
-}
-
-/* Placeholder text, this assumes that ``var`` isn't used elsewhere in docutils/Sphinx
- */
-var {
-  @apply italic text-purple-800;
-}
-
-/* autodocs */
-.guilabel,
-.menuselection {
-  @apply font-medium text-gray-dark tracking-wide;
-}
-
-dl.code-definition,
-dl.option-list {
-  @apply mt-3 pt-3 mb-6;
-  & dt {
-    @apply font-normal;
-    & > code,
-    & > kbd {
-      @apply border-none bg-transparent text-base font-semibold text-gray-dark px-0;
-    }
-  }
-  & .property {
-    @apply text-gray-light font-mono font-medium;
-  }
-  & .sig-param {
-    @apply font-mono text-blue-900;
-  }
-  & .sig-paren {
-    @apply mx-1;
-  }
+.highlight:hover .copy {
+  @apply opacity-100;
 }

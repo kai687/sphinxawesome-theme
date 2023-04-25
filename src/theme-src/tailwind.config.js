@@ -136,6 +136,11 @@ module.exports = {
               ".file em": {
                 color: theme("colors.purple.800"),
               },
+              ".highlight .ge": {
+                color: theme("colors.purple.800"),
+                fontStyle: "italic",
+                fontWeight: theme("fontWeight.medium"),
+              },
               blockquote: {
                 color: "inherit",
                 fontWeight: theme("fontWeight.normal"),
@@ -188,6 +193,7 @@ module.exports = {
               ".option-list kbd": {
                 borderWidth: 0,
                 fontSize: "inherit",
+                boxShadow: "none",
                 fontWeight: theme("fontWeight.bold"),
               },
               ".guilabel": {
@@ -274,6 +280,14 @@ module.exports = {
                 backgroundColor: theme("colors.red.50"),
                 display: "inline-block",
                 width: "100%",
+              },
+              ".highlight .gp": {
+                pointerEvents: "none",
+                userSelect: "none",
+                fontWeight: theme("fontWeight.medium"),
+              },
+              ".highlight .linenos": {
+                userSelect: "none",
               },
               ".literal-block-wrapper": {
                 borderWidth: "1px",

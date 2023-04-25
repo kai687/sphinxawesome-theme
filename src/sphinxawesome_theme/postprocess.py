@@ -103,6 +103,12 @@ def _headerlinks(tree: BeautifulSoup) -> None:
         link["class"].extend(["tooltipped", "tooltipped-ne"])
 
 
+def _code_controller(tree: BeautifulSoup) -> None:
+    """Add the controller attribute to code blocks."""
+    for block in tree("div", class_="highlight"):
+        block["data-controller"] = "code"
+
+
 def _external_links(tree: BeautifulSoup) -> None:
     """Add `rel="nofollow noopener"` to external links.
 
@@ -137,6 +143,7 @@ def _modify_html(html_filename: str, app: Sphinx) -> None:
     _remove_empty_toctree(tree)
     if app.config.html_awesome_headerlinks:
         _headerlinks(tree)
+    _code_controller(tree)
     _strip_comments(tree)
 
     with open(html_filename, "w", encoding="utf-8") as out_file:

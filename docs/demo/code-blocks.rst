@@ -153,6 +153,27 @@ There is currently one visual bug with emphasizing lines `#171
 
 You can't include |rst| markup in code blocks, such as bold text or hyperlinks.
 
+Highlight placeholders in code blocks
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you want to highlight placeholder text in code blocks,
+use the ``:emphasize-text:`` option.
+
+.. code-block:: rst
+
+   .. code-block:: python
+      :emphasize-text: WORLD
+
+      print("Hello WORLD")
+
+This renders as:
+
+.. code-block:: python
+   :emphasize-text: WORLD
+
+   print("Hello WORLD")
+
+
 Docutils code directive
 -----------------------
 
@@ -170,11 +191,16 @@ blocks.
 Parsed literal blocks
 ---------------------
 
-If you want to write blocks of literal text containing any markup, such as bold text or
-hyperlinks, use a :rst:`parsed-literal` directive.
+Parsed literal blocks can contain **either** markup **or** syntax.
+If you add markup, such as bold text or hyperlinks, syntax highlighting is turned off.
 
 .. parsed-literal::
 
    This *can* contain markup, but **not** syntax highlighting.
 
-You can't use syntax highlighting with :rst:`parsed-literal` blocks.
+
+If you don't include any markup, the content is rendered with syntax highlighting.
+
+.. parsed-literal::
+
+   print("Hello world")

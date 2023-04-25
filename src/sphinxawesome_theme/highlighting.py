@@ -10,26 +10,64 @@ extends the default Sphinx ``code-block`` directive.
 :copyright: Copyright Kai Welke.
 :license: MIT, see LICENSE for details.
 """
+import re
 from typing import Any, Dict, Generator, List, Tuple
 
 from docutils import nodes
 from docutils.nodes import Element, Node
 from docutils.parsers.rst import directives
+from pygments import highlight
+from pygments.filter import Filter
+from pygments.filters import ErrorToken
 from pygments.formatters import HtmlFormatter
 from pygments.lexers.shell import BashSessionLexer
+from pygments.token import Generic, _TokenType
 from pygments.util import get_list_opt
 from sphinx.application import Sphinx
 from sphinx.directives.code import CodeBlock, container_wrapper, dedent_lines
 from sphinx.highlighting import PygmentsBridge
 from sphinx.locale import __
-from sphinx.util import logging, parselinenos
+from sphinx.util import logging, parselinenos, texescape
 
 from . import __version__
 
 logger = logging.getLogger(__name__)
 
 # type alias
-TokenStream = Generator[Tuple[int, str], None, None]
+TokenStream = Generator[Tuple[_TokenType | int, str], None, None]
+
+
+def _replace_placeholders(
+    ttype: _TokenType, value: str, regex: re.Pattern
+) -> TokenStream:
+    """Replace every occurence of `regex` with `Generic.Emph` token."""
+    last = 0
+    for match in regex.finditer(value):
+        start, end = match.start(), match.end()
+        if start != last:
+            yield ttype, value[last:start]
+        yield Generic.Emph, value[start:end]
+        last = end
+    if last != len(value):
+        yield ttype, value[last:]
+
+
+class AwesomePlaceholders(Filter):
+    """A Pygments filter for marking up placeholder text."""
+
+    def __init__(self: "AwesomePlaceholders", **options: Any) -> None:
+        """Create an instance of the `AwesomePlaceholders` filter."""
+        Filter.__init__(self, **options)
+        placeholders = get_list_opt(options, "hl_text", [])
+        self.placeholders_re = re.compile(
+            r"|".join([re.escape(x) for x in placeholders if x])
+        )
+
+    def filter(self: "AwesomePlaceholders", stream: TokenStream) -> TokenStream:
+        """Filter on all tokens."""
+        regex = self.placeholders_re
+        for ttype, value in stream:
+            yield from _replace_placeholders(ttype, value, regex)
 
 
 class AwesomeHtmlFormatter(HtmlFormatter):  # type: ignore
@@ -228,9 +266,61 @@ class AwesomeCodeBlock(CodeBlock):
         return [literal]
 
 
+class AwesomePygmentsBridge(PygmentsBridge):
+    """Class for monkeypatching."""
+
+    def highlight_block(
+        self: PygmentsBridge,
+        source: str,
+        lang: str,
+        opts: dict | None = None,
+        force: bool = False,
+        location: Any = None,
+        **kwargs: Any
+    ) -> str:
+        """Repeat this method."""
+        if not isinstance(source, str):
+            source = source.decode()
+
+        print("LANG: ", lang)
+        print("KWARGS: ", kwargs)
+
+        lexer = self.get_lexer(source, lang, opts, force, location)
+        hl_text = get_list_opt(kwargs, "hl_text", [])
+        if hl_text:
+            lexer.add_filter(AwesomePlaceholders(hl_text=hl_text))
+
+        # highlight via Pygments
+        formatter = self.get_formatter(**kwargs)
+        try:
+            hlsource = highlight(source, lexer, formatter)
+        except ErrorToken:
+            # this is most probably not the selected language,
+            # so let it pass unhighlighted
+            if lang == "default":
+                pass  # automatic highlighting failed.
+            else:
+                logger.warning(
+                    __('Could not lex literal_block as "%s". ' "Highlighting skipped."),
+                    lang,
+                    type="misc",
+                    subtype="highlighting_failure",
+                    location=location,
+                )
+            lexer = self.get_lexer(source, "none", opts, force, location)
+            hlsource = highlight(source, lexer, formatter)
+
+        if self.dest == "html":
+            return hlsource
+        else:
+            # MEMO: this is done to escape Unicode chars with non-Unicode engines
+            return texescape.hlescape(hlsource, self.latex_engine)
+
+
 def setup(app: "Sphinx") -> Dict[str, Any]:
     """Set up this internal extension."""
     PygmentsBridge.html_formatter = AwesomeHtmlFormatter
+    PygmentsBridge.highlight_block = AwesomePygmentsBridge.highlight_block
     directives.register_directive("code-block", AwesomeCodeBlock)
 
     # Allow using `terminal` in addition to `shell-session` and `console`
