@@ -11,7 +11,7 @@ extends the default Sphinx ``code-block`` directive.
 :license: MIT, see LICENSE for details.
 """
 import re
-from typing import Any, Dict, Generator, List, Tuple
+from typing import Any, Dict, Generator, List, Pattern, Tuple
 
 from docutils import nodes
 from docutils.nodes import Element, Node
@@ -38,7 +38,7 @@ TokenStream = Generator[Tuple[_TokenType | int, str], None, None]
 
 
 def _replace_placeholders(
-    ttype: _TokenType, value: str, regex: re.Pattern
+    ttype: _TokenType, value: str, regex: Pattern[str]
 ) -> TokenStream:
     """Replace every occurence of `regex` with `Generic.Emph` token."""
     last = 0
@@ -52,7 +52,7 @@ def _replace_placeholders(
         yield ttype, value[last:]
 
 
-class AwesomePlaceholders(Filter):
+class AwesomePlaceholders(Filter):  # type: ignore[misc]
     """A Pygments filter for marking up placeholder text."""
 
     def __init__(self: "AwesomePlaceholders", **options: Any) -> None:
@@ -63,8 +63,13 @@ class AwesomePlaceholders(Filter):
             r"|".join([re.escape(x) for x in placeholders if x])
         )
 
-    def filter(self: "AwesomePlaceholders", stream: TokenStream) -> TokenStream:
-        """Filter on all tokens."""
+    def filter(
+        self: "AwesomePlaceholders", _lexer: Any, stream: TokenStream
+    ) -> TokenStream:
+        """Filter on all tokens.
+
+        The `lexer` is required by the parent class.
+        """
         regex = self.placeholders_re
         for ttype, value in stream:
             yield from _replace_placeholders(ttype, value, regex)
@@ -273,17 +278,14 @@ class AwesomePygmentsBridge(PygmentsBridge):
         self: PygmentsBridge,
         source: str,
         lang: str,
-        opts: dict | None = None,
+        opts: Dict[str, Any] | None = None,
         force: bool = False,
         location: Any = None,
         **kwargs: Any
     ) -> str:
         """Repeat this method."""
         if not isinstance(source, str):
-            source = source.decode()
-
-        print("LANG: ", lang)
-        print("KWARGS: ", kwargs)
+            source = source.decode()  # type: ignore[unreachable]
 
         lexer = self.get_lexer(source, lang, opts, force, location)
         hl_text = get_list_opt(kwargs, "hl_text", [])
@@ -293,7 +295,7 @@ class AwesomePygmentsBridge(PygmentsBridge):
         # highlight via Pygments
         formatter = self.get_formatter(**kwargs)
         try:
-            hlsource = highlight(source, lexer, formatter)
+            hlsource: str = highlight(source, lexer, formatter)
         except ErrorToken:
             # this is most probably not the selected language,
             # so let it pass unhighlighted
@@ -320,7 +322,7 @@ class AwesomePygmentsBridge(PygmentsBridge):
 def setup(app: "Sphinx") -> Dict[str, Any]:
     """Set up this internal extension."""
     PygmentsBridge.html_formatter = AwesomeHtmlFormatter
-    PygmentsBridge.highlight_block = AwesomePygmentsBridge.highlight_block
+    PygmentsBridge.highlight_block = AwesomePygmentsBridge.highlight_block  # type: ignore[method-assign]  # noqa
     directives.register_directive("code-block", AwesomeCodeBlock)
 
     # Allow using `terminal` in addition to `shell-session` and `console`
