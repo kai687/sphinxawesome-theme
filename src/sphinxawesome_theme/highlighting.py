@@ -11,7 +11,7 @@ extends the default Sphinx ``code-block`` directive.
 :license: MIT, see LICENSE for details.
 """
 import re
-from typing import Any, Dict, Generator, List, Pattern, Tuple
+from typing import Any, Dict, Generator, List, Optional, Pattern, Tuple, Union
 
 from docutils import nodes
 from docutils.nodes import Element, Node
@@ -34,7 +34,8 @@ from . import __version__
 logger = logging.getLogger(__name__)
 
 # type alias
-TokenStream = Generator[Tuple[_TokenType | int, str], None, None]
+TokenType = Union[_TokenType, int]
+TokenStream = Generator[Tuple[TokenType, str], None, None]
 
 
 def _replace_placeholders(
@@ -186,7 +187,7 @@ class AwesomeCodeBlock(CodeBlock):
     option_spec = CodeBlock.option_spec
     option_spec.update(new_options)
 
-    def run(self: "AwesomeCodeBlock") -> list[Node]:  # noqa
+    def run(self: "AwesomeCodeBlock") -> List[Node]:  # noqa
         """Overwrite method from Sphinx.
 
         Add ability to highlight added and removed lines.
@@ -278,7 +279,7 @@ class AwesomePygmentsBridge(PygmentsBridge):
         self: PygmentsBridge,
         source: str,
         lang: str,
-        opts: Dict[str, Any] | None = None,
+        opts: Optional[Dict[str, Any]] = None,
         force: bool = False,
         location: Any = None,
         **kwargs: Any
