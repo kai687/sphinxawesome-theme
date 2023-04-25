@@ -11,8 +11,6 @@ from os import path
 from typing import Any, Dict
 
 from sphinx.application import Sphinx
-from sphinx.builders.dirhtml import DirectoryHTMLBuilder
-from sphinx.builders.html import StandaloneHTMLBuilder
 from sphinx.config import Config
 from sphinxcontrib.serializinghtml import JSONHTMLBuilder
 
@@ -39,9 +37,6 @@ def post_config_setup(app: Sphinx, config: Config) -> None:
 
     if config.html_awesome_docsearch:
         app.setup_extension("sphinxawesome_theme.docsearch")
-        # Disable built-in search when using DocSearch
-        StandaloneHTMLBuilder.search = False
-        DirectoryHTMLBuilder.search = False
 
     # Add the CSS overrides if we're using the `sphinx-design` extension
     if "sphinx_design" in app.extensions:

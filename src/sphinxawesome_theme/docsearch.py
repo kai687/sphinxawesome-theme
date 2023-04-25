@@ -12,6 +12,8 @@ from typing import Any, Dict
 from docutils.nodes import Node
 from dotenv import load_dotenv
 from sphinx.application import Sphinx
+from sphinx.builders.dirhtml import DirectoryHTMLBuilder
+from sphinx.builders.html import StandaloneHTMLBuilder
 from sphinx.util.display import progress_message
 
 from . import __version__
@@ -77,6 +79,10 @@ def setup(app: Sphinx) -> Dict[str, Any]:
     """Register the extension."""
     app.add_css_file("docsearch.css", priority=150)
     app.connect("html-page-context", setup_docsearch)
+
+    # Disable built-in search when using DocSearch
+    StandaloneHTMLBuilder.search = False
+    DirectoryHTMLBuilder.search = False
 
     return {
         "version": __version__,
