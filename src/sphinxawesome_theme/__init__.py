@@ -28,7 +28,7 @@ def post_config_setup(app: Sphinx, config: Config) -> None:
     if config.html_awesome_highlighting:
         app.setup_extension("sphinxawesome_theme.highlighting")
 
-    if config.html_awesome_html_translator:
+    if config.html_awesome_external_links:
         app.setup_extension("sphinxawesome_theme.html_translator")
 
     if config.html_awesome_postprocessing:
@@ -54,7 +54,7 @@ def setup(app: "Sphinx") -> Dict[str, Any]:
         name="html_awesome_highlighting", default=True, rebuild="html", types=(bool)
     )
     app.add_config_value(
-        name="html_awesome_html_translator", default=True, rebuild="html", types=(bool)
+        name="html_awesome_external_links", default=False, rebuild="html", types=(bool)
     )
     app.add_config_value(
         name="html_awesome_docsearch", default=False, rebuild="html", types=(bool)

@@ -99,9 +99,8 @@ html_css_files = ["feedback.css"]
 html_js_files = ["feedback.js"]
 
 # extra options from the sphinxawesome_theme
-html_collapsible_definitions = True
 html_awesome_docsearch = True
-# html_awesome_html_translator = False
+html_awesome_external_links = True
 
 # The Algolia credentials are added from an `.env` file
 docsearch_config = {
