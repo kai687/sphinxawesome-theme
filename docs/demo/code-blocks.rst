@@ -1,16 +1,12 @@
 .. meta::
-   :description: See how code blocks look like with the Awesome Theme and discover the awesome enhancements.
-
-.. role:: rst(code)
-   :language: rst
-   :class: highlight
+   :description: See how code blocks look like in your Sphinx project with the Awesome Theme and learn about the supported options.
 
 Code blocks
 ===========
 
 .. rst-class:: lead
 
-   See how code blocks look like with the |product|.
+   See how code blocks look like in your Sphinx project with the |product| and learn about the supported options.
 
 .. include:: ../includes/header.rst
 
@@ -19,9 +15,9 @@ Sphinx code-block directive
 ---------------------------
 
 To document code blocks with syntax highlighting,
-use Sphinx's :rst:`code-block` directive.
+use Sphinx's ``code-block`` directive.
 
-You can provide the language used for syntax highlighting to the :rst:`code-block` directive:
+You can provide the language used for syntax highlighting as an argument to the ``code-block`` directive:
 
 .. code-block:: rst
 
@@ -35,12 +31,10 @@ This renders as:
 
    print("Hello World")
 
-All code blocks have a :guilabel:`Copy` button.
-Clicking the button copies the code to the clipboard.
+If you don't provide a language to the directive,
+Sphinx uses a fallback:
 
-If you don't provide an explicit language to the directive, a fallback is used:
-
-#. If you used the :rst:`highlight` directive to set a default language on a per-document basis,
+#. If you used the ``highlight`` directive to set a default language for the **current document**,
    any code block *after* this directive is highlighted with the language you specified.
 
 #. If you set the global fallback language for highlighting in the Sphinx configuration
@@ -50,6 +44,17 @@ If you don't provide an explicit language to the directive, a fallback is used:
 
    :sphinxdocs:`highlight directive <usage/restructuredtext/directives.html#directive-highlight>`
    :confval:`sphinx:highlight_language`
+
+.. tip::
+
+   It's usually better to be explicit.
+   It makes your documentation more portable if you want to copy or re-use your documentation files elsewhere.
+   It's also easier to follow for contributors who may not be as familiar with Sphinx and restructuredtext.
+
+
+:bdg-primary:`feature`
+The |product| adds a :guilabel:`Copy` button to every code block,
+so that your users can easily copy your code.
 
 Add captions to code blocks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -61,13 +66,21 @@ Add captions to code blocks with the :samp:`:caption: {CAPTION_TEXT}` option:
 
    console.log("Hello World")
 
+Adding a caption also adds a link target to the code block.
+Hover over a caption to see the headerlink icon.
+
+Show or hide the highlighting language
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+:bdg-primary:`feature`
+The |product| shows the language used for syntax highlighting in a code block header.
+If you want to turn this off, set the option :ref:`opt:html_awesome_code_headers` to ``False``.
+
 
 Show line numbers in code blocks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Show line numbers in code blocks with the ``:linenos:`` option:
-
-.. vale off
 
 .. code-block:: python
    :linenos:
@@ -75,14 +88,11 @@ Show line numbers in code blocks with the ``:linenos:`` option:
    for i in range(3):
       print(f"{i} line of code")
 
-.. vale on
-
-
 Highlight lines in code blocks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To emphasize specific lines in code blocks, use the
-:samp:`:emphasize-lines: {LINE_NUMBERS}` option:
+To highlight specific lines in code blocks,
+use the :samp:`:emphasize-lines: {LINE_NUMBERS}` option:
 
 .. code-block:: bash
    :emphasize-lines: 2
@@ -94,15 +104,28 @@ To emphasize specific lines in code blocks, use the
 Highlight changes in code blocks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Often, you want to highlight what code need to be changed.
-With the |product|, you can use the following options for the :rst:`code-block`
-directive:
+:bdg-primary:`feature`
+The |product| adds two new options to the ``code-block`` directive,
+that lets you highlight added or removed lines.
 
-- To highlight lines, that need to be added,
-  use :samp:`:emphasize-added: {LINE_NUMBERS}`.
+``:emphasize-added:``
+   Highlight added lines with :samp:`:emphasize-added: {LINE_NUMBERS}`.
 
-- To highlight lines that need to be removed,
-  use :samp:`:emphasize-removed: {LINE_NUMBERS}`.
+``:emphasize-removed:``
+   Highlight removed lines with :samp:`:emphasize-added: {LINE_NUMBERS}`.
+
+.. code-block:: rst
+
+   .. code-block:: python
+      :emphasize-removed: 1
+      :emphasize-added: 2
+
+      print("red")
+      print("green")
+      print("regular highlighting is applied")
+
+This example highlights the first line in red,
+and the second line in green:
 
 .. code-block:: python
    :emphasize-removed: 1
@@ -112,10 +135,11 @@ directive:
    print("green")
    print("regular highlighting is applied")
 
-The ``:emphasize-added:`` and ``:emphasize-removed:`` options preserve the highlighting
-of the code. If you copy the code, the ``+`` and ``-`` characters aren't copied.
+The ``:emphasize-added:`` and ``:emphasize-removed:`` options preserve the syntax highlighting.
+If you copy the code, the ``+`` and ``-`` characters aren't copied.
 
-If you don't want to use these options, you can use Pygments built-in ``diff`` language:
+If you don't want to use these options,
+you can use Pygments' built-in ``diff`` language:
 
 .. code-block:: diff
 
@@ -141,8 +165,7 @@ The following example is for testing the previous options with line numbers:
    print("Emphasized line of code")
    print("Normal line of code")
 
-There is currently one visual bug with emphasizing lines `#171
-<https://github.com/kai687/sphinxawesome-theme/issues/171>`_:
+Highlighting short lines doesn't work well if you also have long, overflowing lines:
 
 .. code-block::
    :caption: A really long line
@@ -151,13 +174,14 @@ There is currently one visual bug with emphasizing lines `#171
    print("A shorter line of code.")
    print("And a really long line of code that should overflow the container on most screen sizes which illustrates the issue.")
 
-You can't include |rst| markup in code blocks, such as bold text or hyperlinks.
+You can't include markup in code blocks, such as bold text or hyperlinks.
 
 Highlight placeholders in code blocks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you want to highlight placeholder text in code blocks,
-use the ``:emphasize-text:`` option.
+:bdg-primary:`feature`
+The |product| adds an ``:emphasize-text:`` option to the ``code-block`` directive,
+that lets you highlight placeholders in code blocks:
 
 .. code-block:: rst
 
@@ -177,9 +201,18 @@ This renders as:
 Docutils code directive
 -----------------------
 
-The :rst:`code-block` directive only works with Sphinx.
+The ``code-block`` directive only works with Sphinx.
 If you want to re-use your |rst| documentation outside Sphinx,
 you can also use the ``code`` directive:
+
+
+.. code-block:: rst
+
+   .. code:: shell
+
+      echo "This is rendered with the docutils' code directive"
+
+This renders:
 
 .. code:: shell
 
@@ -193,6 +226,17 @@ Parsed literal blocks
 
 Parsed literal blocks can contain **either** markup **or** syntax.
 If you add markup, such as bold text or hyperlinks, syntax highlighting is turned off.
+
+For example:
+
+.. code-block:: rst
+
+   .. parsed-literal::
+
+      This *can* contain markup, but **not** syntax highlighting.
+      How about a `link <https://example.org>`_?
+
+This renders as:
 
 .. parsed-literal::
 

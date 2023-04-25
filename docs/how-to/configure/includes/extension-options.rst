@@ -25,6 +25,8 @@ you can configure these options:
 ``html_awesome_headerlinks``
    Controls whether clicking a headerlink should copy the URL to the clipboard.
 
+.. _opt:html_awesome_code_headers:
+
 ``html_awesome_code_headers``
    Controls whether to show the highlighted programming language in the headers of code blocks.
 

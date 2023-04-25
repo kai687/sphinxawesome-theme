@@ -288,6 +288,7 @@ module.exports = {
               },
               ".highlight .linenos": {
                 userSelect: "none",
+                paddingRight: "1rem",
               },
               ".literal-block-wrapper": {
                 borderWidth: "1px",
