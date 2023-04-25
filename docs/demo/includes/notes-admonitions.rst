@@ -19,7 +19,7 @@ Topic
 -----
 
 The |product| doesn't include styles for the ``topic`` directive.
-Use a block quotation or another callout instead.
+Use a block quotation or another alert type instead.
 
 Notes
 -----
