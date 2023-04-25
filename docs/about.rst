@@ -69,7 +69,7 @@ Version 5.0 of the |product| indludes these **breaking changes**:
 Remove support for ``html_collapsible_definitions``
    The user experience was bad for reference documentation,
    with users having to expand every object, only to see one comment line.
-   Use the :doc:`sphinx-design` extension instead.
+   Use the `sphinx-design <https://sphinx-design.readthedocs.io/en/latest/>`_ extension instead.
    The ``collapsible`` directive gives you more control.
 
 No external link icons by default
