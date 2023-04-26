@@ -2,8 +2,6 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ["main"];
-
   connect() {
     const sections = document.querySelectorAll("article section");
     const options = {

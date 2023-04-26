@@ -63,8 +63,7 @@
 </head>
 
 <body class="antialiased text-gray">
-  <div id="page" data-controller="sidebar search scroll {{ 'scroll-to-top' if theme_show_scrolltop|tobool }}"
-    data-action="keydown@window->search#focus"
+  <div id="page" data-controller="sidebar search scroll" data-action="keydown@window->search#focus"
     class="min-h-screen xl:h-screen flex flex-col xl:grid xl:grid-layout print:block print:h-auto">
     {% include "skip.html" %}
 
