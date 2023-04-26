@@ -9,8 +9,8 @@
   [data-sidebar-target="sidebar"].isShown {
     @apply translate-x-0 opacity-100 w-full max-w-[90%];
   }
-  [data-scroll-target="scrollToTop"].isShown {
-    @apply pointer-events-auto opacity-100;
+  [data-scroll-to-top-target="scrollToTop"].isShown {
+    @apply visible opacity-100;
   }
   [data-sidebar-target="screen"].isShown {
     @apply block;

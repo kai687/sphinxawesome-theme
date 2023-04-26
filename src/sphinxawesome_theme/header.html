@@ -1,40 +1,44 @@
 {#-
-  Template file for the header.
+Template file for the header.
 -#}
 
 {%- set hamburger -%}
-<button
-    data-action="sidebar#open"
-    data-sidebar-target="hamburger"
-    class="xl:hidden h-14 w-14 leading-14 text-gray-100 hover:bg-gray-700 hover:text-brand focus:outline-none focus:bg-gray-700 focus:text-brand">
+<button data-action="sidebar#open" data-sidebar-target="hamburger"
+  class="xl:hidden h-14 w-14 leading-14 text-gray-100 hover:bg-gray-700 hover:text-brand focus:outline-none focus:bg-gray-700 focus:text-brand">
   <span class="sr-only">Open navigation menu</span>
-  <svg aria-hidden="true" class="inline fill-current h-8 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+  <svg aria-hidden="true" class="inline fill-current h-8 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+  </svg>
 </button>
 {%- endset -%}
 
 {%- macro home_link(logo=false) -%}
-<a class="hover:bg-gray-700 focus:bg-gray-700 focus:outline-none"
-   href="{{ pathto(master_doc) }}"
-   title="{{ _('Back to homepage') }}">
+<a class="hover:bg-gray-700 focus:bg-gray-700 focus:outline-none" href="{{ pathto(master_doc) }}"
+  title="{{ _('Back to homepage') }}">
 
   {%- set _logo_url = logo_url|default(pathto('_static/' + (logo or ""), 1)) %}
   {%- if logo or logo_url %}
-    <img class="h-14 w-14 p-3 inline-block" src="{{ _logo_url }}" alt="Logo" />
+  <img class="h-14 w-14 p-3 inline-block" src="{{ _logo_url }}" alt="Logo" />
   {%- endif -%}
-  <span class="hidden lg:inline-block shrink-0 font-medium text-gray-100 mx-5 leading-14 tracking-wider">{{ docstitle }}</span>
+  <span class="hidden lg:inline-block shrink-0 font-medium text-gray-100 mx-5 leading-14 tracking-wider">{{ docstitle
+    }}</span>
 </a>
 {%- endmacro -%}
 
 {%- macro extra_link(text, url) -%}
-  {% if url is string %}
-    {% set url = url if url.startswith("http") else pathto(url) %}
-    {%- set active = "bg-gray-700 border-b-4 border-brand" if pagename in url else "bg-transparent" -%}
-    <a href="{{ url }}" class="h-14 inline-block leading-14 text-gray-100 {{ active }} tracking-wide font-medium hover:text-brand focus:bg-gray-700 focus:outline-none hover:no-underline focus:text-brand px-2 sm:px-4">{{ text }}</a>
-  {% endif %}
-  {% if url is mapping %}
-    {% set link = url.link if url.link.startswith("http") else pathto(url.link) %}
-    <a href="{{ link }}" aria-label="Visit {{ text }}" class="tooltipped tooltipped-sw h-14 inline-block text-gray-100 leading-14 hover:text-brand focus:bg-gray-700 focus:outline-none hover:no-underline focus:text-brand pl-2 pr-4 sm:px-4">{{ url.icon }}</a>
-  {% endif %}
+{% if url is string %}
+{% set url = url if url.startswith("http") else pathto(url) %}
+{%- set active = "bg-gray-700 border-b-4 border-brand" if pagename in url else "bg-transparent" -%}
+<a href="{{ url }}"
+  class="h-14 inline-block leading-14 text-gray-100 {{ active }} tracking-wide font-medium hover:text-brand focus:bg-gray-700 focus:outline-none hover:no-underline focus:text-brand px-2 sm:px-4">{{
+  text }}</a>
+{% endif %}
+{% if url is mapping %}
+{% set link = url.link if url.link.startswith("http") else pathto(url.link) %}
+<a href="{{ link }}" title="Visit {{ text }}"
+  class="h-14 inline-block text-gray-100 leading-14 hover:text-brand focus:bg-gray-700 focus:outline-none hover:no-underline focus:text-brand pl-2 pr-4 sm:px-4">{{
+  url.icon }}</a>
+{% endif %}
 {%- endmacro -%}
 
 
@@ -42,10 +46,10 @@
   {#- show logo on the left side of the header -#}
   <div class="flex items-center">
     {%- if theme_show_nav|tobool %}
-      {{ hamburger }}
+    {{ hamburger }}
     {%- endif %}
     {%- block logo -%}
-      {{ home_link(logo) }}
+    {{ home_link(logo) }}
     {%- endblock -%}
   </div>
 
@@ -54,13 +58,13 @@
     {%- include "searchbox.html" %}
 
     {%- if theme_extra_header_links|tobool -%}
-      {%- block extra_header_links -%}
-      <div class="shrink-0">
-        {%- for text, url in theme_extra_header_links.items() -%}
-          {{ extra_link(text, url) }}
-        {%- endfor -%}
-      </div>
-      {%- endblock -%}
+    {%- block extra_header_links -%}
+    <div class="shrink-0">
+      {%- for text, url in theme_extra_header_links.items() -%}
+      {{ extra_link(text, url) }}
+      {%- endfor -%}
+    </div>
+    {%- endblock -%}
     {%- endif -%}
   </div>
 </div>

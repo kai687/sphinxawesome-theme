@@ -3,12 +3,12 @@
   & .caption {
     @apply text-m font-medium tracking-wide text-gray pt-10 pb-3;
   }
-  /* & p:first-of-type { */
-  /*   @apply pt-4; */
-  /* } */
-  /* & > ul:first-child { */
-  /*   @apply pt-4; */
-  /* } */
+  & p:first-of-type {
+    @apply pt-4;
+  }
+  & > ul:first-child {
+    @apply pt-4;
+  }
   & .expand {
     @apply inline h-[1.2rem] ml-[-0.4rem] fill-current cursor-pointer select-none hover:text-brand focus:text-brand transition-transform transform duration-150 ease-out;
   }
