@@ -109,7 +109,7 @@ docsearch_config = {
 }
 
 html_theme_options = {
-    "show_scrolltop": True,
+    "show_scrolltop": False,
     "extra_header_links": {
         "Docs": "/index",
         "About": "/about",

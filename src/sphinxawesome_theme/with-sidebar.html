@@ -21,7 +21,7 @@
 >
   {%- if pagename != master_doc and theme_show_breadcrumbs|tobool %}
     {%- include "breadcrumbs.html" %}
-  {% endif -%}
+  {%- endif %}
 
   <article role="main" class="flex-1 prose">
     {% block body %}{% endblock %}
