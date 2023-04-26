@@ -29,7 +29,7 @@ export default class extends Controller {
       },
     });
 
-    clipboard.on("success", (e) => {
+    clipboard.on("success", () => {
       if (this.hasButtonTarget) {
         this.buttonTarget.textContent = "copied!";
         setTimeout(() => (this.buttonTarget.textContent = this.label), 1500);

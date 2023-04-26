@@ -13,10 +13,9 @@
 
 <main
   {%- if theme_show_scrolltop|tobool %}
-  data-scroll-to-top-target="main"
+  data-controller="scroll-to-top"
   data-action="scroll->scroll-to-top#showButton"
   {%- endif %}
-  data-scroll-target="main"
   class="px-4 pt-14 xl:ml-fluid grid-area-main overflow-y-auto flex flex-col flex-1 h-full mx-0 md:mx-auto xl:mr-0"
 >
   {%- if pagename != master_doc and theme_show_breadcrumbs|tobool %}

@@ -10,7 +10,7 @@
 {% block document %}
 <main
   {%- if theme_show_scrolltop|tobool %}
-  data-scroll-to-top-target="main"
+  data-controller="scroll-to-top"
   data-action="scroll->scroll-to-top#showButton"
   {%- endif %}
   data-scroll-target="main"

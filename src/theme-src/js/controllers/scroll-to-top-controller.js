@@ -2,29 +2,30 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ["main", "scrollToTop"];
+  static targets = ["scrollToTop"];
 
-  initialize() {
+  connect() {
+    this.scrollWindow = this.element;
     this.lastPosition = 0;
     this.offset = 200;
   }
 
   scroll() {
-    this.mainTarget.scrollTop = 0;
+    this.scrollWindow.scrollTop = 0;
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     this.scrollToTopTarget.blur();
   }
 
   showButton() {
     if (this.hasScrollToTopTarget) {
-      const offsetCondition = this.mainTarget.scrollTop > this.offset;
-      const scrollingUp = this.mainTarget.scrollTop < this.lastPosition;
+      const offsetCondition = this.scrollWindow.scrollTop > this.offset;
+      const scrollingUp = this.scrollWindow.scrollTop < this.lastPosition;
       if (offsetCondition && scrollingUp) {
         this.scrollToTopTarget.classList.add("isShown");
       } else {
         this.scrollToTopTarget.classList.remove("isShown");
       }
     }
-    this.lastPosition = this.mainTarget.scrollTop;
+    this.lastPosition = this.scrollWindow.scrollTop;
   }
 }
