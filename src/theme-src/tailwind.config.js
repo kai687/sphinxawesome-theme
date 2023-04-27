@@ -62,6 +62,8 @@ module.exports = {
               "--tw-prose-bullets": "var(--color-gray-light)",
               "--tw-prose-pre-code": "inherit",
               "--tw-prose-pre-bg": "inherit",
+              // from Pygmentes 'github dark' theme
+              "--tw-prose-invert-code": "#79c0ff",
               "--tw-prose-captions": "var(--color-gray-light)",
               "--awsm-prose-placeholders": theme("colors.purple[800]"),
               lineHeight: "inherit",
@@ -122,20 +124,6 @@ module.exports = {
               "ol ol": {
                 listStyle: "lower-latin",
               },
-              var: {
-                color: "var(--awsm-prose-placeholders)",
-              },
-              ".samp em": {
-                color: "var(--awsm-prose-placeholders)",
-              },
-              ".file em": {
-                color: "var(--awsm-prose-placeholders)",
-              },
-              ".highlight .ge": {
-                color: "var(--awsm-prose-placeholders)",
-                fontStyle: "italic",
-                fontWeight: theme("fontWeight.medium"),
-              },
               blockquote: {
                 color: "inherit",
                 fontWeight: theme("fontWeight.normal"),
@@ -191,16 +179,6 @@ module.exports = {
                 boxShadow: "none",
                 fontWeight: theme("fontWeight.bold"),
               },
-              ".guilabel": {
-                fontWeight: theme("fontWeight.medium"),
-                color: theme("colors.gray.dark"),
-                letterSpacing: theme("letterSpacing.wide"),
-              },
-              ".menuselection": {
-                fontWeight: theme("fontWeight.medium"),
-                color: theme("colors.gray.dark"),
-                letterSpacing: theme("letterSpacing.wide"),
-              },
               "figure img": {
                 display: "inline-block",
               },
@@ -229,13 +207,6 @@ module.exports = {
               ".highlight": {
                 position: "relative",
               },
-              code: {
-                fontSize: theme("fontSize.code"),
-                fontWeight: theme("fontWeight.medium"),
-                backgroundColor: theme("colors.gray.100"),
-                borderRadius: theme("borderRadius.sm"),
-                padding: "1px 4px",
-              },
               "code::before": {
                 content: "",
               },
@@ -252,25 +223,25 @@ module.exports = {
               },
               "pre mark": {
                 display: "block",
-                backgroundColor: theme("colors.sky.50"),
+                backgroundColor: theme("colors.sky[50]"),
               },
               "pre ins": {
                 display: "block",
-                backgroundColor: theme("colors.green.50"),
+                backgroundColor: theme("colors.green[50]"),
                 textDecoration: "none",
-              },
-              ".highlight-diff .gi": {
-                backgroundColor: theme("colors.green.50"),
-                display: "inline-block",
-                width: "100%",
               },
               "pre del": {
                 display: "block",
-                backgroundColor: theme("colors.red.50"),
+                backgroundColor: theme("colors.red[50]"),
                 textDecoration: "none",
               },
+              ".highlight-diff .gi": {
+                backgroundColor: theme("colors.green[50]"),
+                display: "inline-block",
+                width: "100%",
+              },
               ".highlight-diff .gd": {
-                backgroundColor: theme("colors.red.50"),
+                backgroundColor: theme("colors.red[50]"),
                 display: "inline-block",
                 width: "100%",
               },
@@ -283,28 +254,9 @@ module.exports = {
                 userSelect: "none",
                 paddingRight: "1rem",
               },
-              ".literal-block-wrapper": {
-                borderWidth: "1px",
-                borderRadius: theme("borderRadius.sm"),
-              },
-              ".literal-block-wrapper pre": {
-                border: "none",
-              },
               ".pre": {
                 whiteSpace: "nowrap",
                 hyphens: "none",
-              },
-              ".code-block-caption": {
-                color: "var(--tw-prose-captions)",
-                fontSize: theme("fontSize.sm"),
-                letterSpacing: theme("letterSpacing.wide"),
-                borderBottomWidth: "1px",
-                backgroundColor: theme("colors.gray.50"),
-                borderTopLeftRadius: theme("borderRadius.sm"),
-                borderTopRightRadius: theme("borderRadius.sm"),
-                padding: theme("spacing.1"),
-                display: "flex",
-                justifyContent: "flex-end",
               },
               ".sig": {
                 fontWeight: theme("fontWeight.bold"),
@@ -335,6 +287,39 @@ module.exports = {
               },
               ".footnote > :not(.label)": {
                 marginLeft: theme("spacing.8"),
+              },
+            },
+          ],
+        },
+        invert: {
+          css: [
+            {
+              a: {
+                textDecoration: "underline",
+                textDecorationColor: "var(--color-brand)",
+                textUnderlineOffset: "3px",
+              },
+              "a code": {
+                color: "initial",
+              },
+              pre: {
+                borderColor: theme("colors.gray[700]"),
+                // from Pygments 'github dark' style
+                backgroundColor: "#0d1117",
+              },
+              "pre mark": {
+                backgroundColor: "#223",
+              },
+              "pre ins": {
+                // from Pygments 'github dark' style
+                backgroundColor: "#0f5323",
+              },
+              "pre del": {
+                // from Pygments 'github dark' style
+                backgroundColor: "#490202",
+              },
+              "kbd:not(.compound)": {
+                borderColor: "#fff",
               },
             },
           ],

@@ -22,7 +22,7 @@
 {%- endif -%}
 
 <!DOCTYPE html>
-<html lang="{{ lang_attr }}" class="scroll-smooth">
+<html lang="{{ lang_attr }}" class="scroll-smooth dark">
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -62,12 +62,11 @@
   {%- block extrahead %}{%- endblock %}
 </head>
 
-<body class="antialiased text-gray">
-    <div id="page" data-controller="sidebar search scroll {{ 'scroll-to-top' if theme_show_scrolltop|tobool }}"
-      data-action="keydown@window->search#focus {{ 'scroll@window->scroll-to-top#showButton' if theme_show_scrolltop|tobool }}"
-      class="min-h-screen xl:h-screen flex flex-col xl:grid xl:grid-layout print:block print:h-auto"
-    >
-      {% include "skip.html" %}
+<body class="antialiased text-gray dark:bg-gray-900 dark:text-gray-300">
+  <div id="page" data-controller="sidebar search scroll {{ 'scroll-to-top' if theme_show_scrolltop|tobool }}"
+    data-action="keydown@window->search#focus {{ 'scroll@window->scroll-to-top#showButton' if theme_show_scrolltop|tobool }}"
+    class="min-h-screen xl:h-screen flex flex-col xl:grid xl:grid-layout print:block print:h-auto">
+    {% include "skip.html" %}
 
     <header class="grid-area-header z-10 h-14 fixed w-full top-0 print:hidden">
       {% include "header.html" %}
