@@ -77,7 +77,8 @@ def setup_docsearch(
 
 def setup(app: Sphinx) -> Dict[str, Any]:
     """Register the extension."""
-    app.add_css_file("docsearch.css", priority=150)
+    # Add the CSS after the default CSS, but before any user overrides
+    app.add_css_file("docsearch.css", priority=600)
     app.connect("html-page-context", setup_docsearch)
 
     # Disable built-in search when using DocSearch

@@ -82,6 +82,11 @@ def setup_jinja(
         if app.builder.name == "dirhtml" and app.config.html_baseurl:
             context["pageurl"] = _make_canonical(app, pagename)
 
+        # Add the filenames with asset URLs
+        # so that I can use the `css_tag()` helper in the templates
+        for css_file in context.get("css_files", []):
+            css_file.filename = _make_asset_url(app, css_file.filename)
+
 
 def setup(app: Sphinx) -> Dict[str, Any]:
     """Register this jinja filter as extension."""

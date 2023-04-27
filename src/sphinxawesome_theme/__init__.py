@@ -40,10 +40,10 @@ def post_config_setup(app: Sphinx, config: Config) -> None:
 
     # Add the CSS overrides if we're using the `sphinx-design` extension
     if "sphinx_design" in app.extensions:
-        app.add_css_file("awesome-sphinx-design.css", priority=900)
+        app.add_css_file("awesome-sphinx-design.css", priority=600)
 
 
-def setup(app: "Sphinx") -> Dict[str, Any]:
+def setup(app: Sphinx) -> Dict[str, Any]:
     """Register the theme and its extensions wih Sphinx."""
     app.add_html_theme(
         name="sphinxawesome_theme", theme_path=path.abspath(path.dirname(__file__))

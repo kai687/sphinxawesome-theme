@@ -9,6 +9,12 @@
 {%- endif %}
 {%- endmacro -%}
 
+{%- macro style() %}
+{%- for css in css_files %}
+{{ css_tag(css) }}
+{%- endfor %}
+{%- endmacro %}
+
 {%- set lang_attr = "en" if language == None else (language|replace('_','-')) -%}
 
 {%- if not embedded and docstitle -%}
@@ -31,10 +37,9 @@
   {%- block htmltitle %}
   <title>{{ title|striptags|e if title else docstitle }}{{ titlesuffix }}</title>
   {%- endblock %}
-  {#- Extra CSS files for overriding stuff #}
-  {%- for css in css_files %}
-  <link rel="stylesheet" href="{{ pathto(asset(css), 1) }}" />
-  {%- endfor %}
+  {%- block styles %}
+  {{ style() }}
+  {%- endblock %}
   {%- if docsearch %}
   <link rel="preconnect" href="https://{{ docsearch_config.app_id }}-dsn.algolia.net" crossorigin="anonymous" />
   {% endif %}
@@ -66,20 +71,20 @@
   <div id="page" data-controller="sidebar search scroll {{ 'scroll-to-top' if theme_show_scrolltop|tobool }}"
     data-action="keydown@window->search#focus {{ 'scroll@window->scroll-to-top#showButton' if theme_show_scrolltop|tobool }}"
     class="min-h-screen xl:h-screen flex flex-col xl:grid xl:grid-layout print:block print:h-auto">
-    {% include "skip.html" %}
+    {%- include "skip.html" %}
 
     <header class="grid-area-header z-10 h-14 fixed w-full top-0 print:hidden">
-      {% include "header.html" %}
+      {%- include "header.html" %}
     </header>
 
-    {% block document %}
+    {%- block document %}
     {% endblock %}
 
-    {% include "modals.html" %}
+    {%- include "modals.html" %}
   </div>
-  {% block scripts %}
+  {%- block scripts %}
   {{ script() }}
-  {% endblock %}
+  {%- endblock %}
 </body>
 
 </html>
