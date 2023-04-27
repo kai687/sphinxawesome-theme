@@ -1,5 +1,3 @@
-const colors = require("tailwindcss/colors");
-
 module.exports = {
   corePlugins: {
     animation: false,
@@ -56,7 +54,16 @@ module.exports = {
         DEFAULT: {
           css: [
             {
-              color: "inherit",
+              "--tw-prose-body": "var(--color-gray)",
+              "--tw-prose-headings": "var(--color-gray-dark)",
+              "--tw-prose-lead": "var(--color-gray-dark)",
+              "--tw-prose-links": "var(--color-link)",
+              "--tw-prose-counters": "var(--color-gray-dark)",
+              "--tw-prose-bullets": "var(--color-gray-light)",
+              "--tw-prose-pre-code": "inherit",
+              "--tw-prose-pre-bg": "inherit",
+              "--tw-prose-captions": "var(--color-gray-light)",
+              "--awsm-prose-placeholders": theme("colors.purple[800]"),
               lineHeight: "inherit",
               maxWidth: theme("maxWidth.prose"),
               svg: {
@@ -67,7 +74,6 @@ module.exports = {
               },
               h1: {
                 marginTop: theme("spacing.20"),
-                color: theme("colors.gray.dark"),
                 fontSize: theme("fontSize.3xl"),
                 letterSpacing: theme("letterSpacing.tight"),
                 fontWeight: theme("fontWeight.normal"),
@@ -75,34 +81,27 @@ module.exports = {
               h2: {
                 fontSize: theme("fontSize.2xl"),
                 letterSpacing: theme("letterSpacing.tight"),
-                color: theme("colors.gray.dark"),
                 fontWeight: theme("fontWeight.normal"),
               },
               h3: {
                 fontSize: theme("fontSize.lg"),
                 fontWeight: theme("fontWeight.normal"),
-                color: theme("colors.gray.dark"),
               },
               h4: {
                 fontWeight: theme("fontWeight.medium"),
-                color: theme("colors.gray.dark"),
               },
               ".rubric": {
                 fontWeight: theme("fontWeight.medium"),
-                color: theme("colors.gray.dark"),
+                color: "var(--tw-prose-headings)",
                 marginBottom: "0.5em",
               },
               ".centered": {
                 textAlign: "center",
               },
-              ".lead": {
-                color: theme("colors.gray.dark"),
-              },
               ".lead + *": {
                 marginTop: theme("spacing.12"),
               },
               a: {
-                color: theme("colors.link"),
                 fontWeight: theme("fontWeight.normal"),
                 textDecoration: "none",
               },
@@ -119,25 +118,21 @@ module.exports = {
               },
               "ol > li::marker": {
                 fontWeight: theme("fontWeight.medium"),
-                color: theme("colors.gray.dark"),
               },
               "ol ol": {
                 listStyle: "lower-latin",
               },
-              "ul > li::marker": {
-                color: theme("colors.gray.light"),
-              },
               var: {
-                color: theme("colors.purple.800"),
+                color: "var(--awsm-prose-placeholders)",
               },
               ".samp em": {
-                color: theme("colors.purple.800"),
+                color: "var(--awsm-prose-placeholders)",
               },
               ".file em": {
-                color: theme("colors.purple.800"),
+                color: "var(--awsm-prose-placeholders)",
               },
               ".highlight .ge": {
-                color: theme("colors.purple.800"),
+                color: "var(--awsm-prose-placeholders)",
                 fontStyle: "italic",
                 fontWeight: theme("fontWeight.medium"),
               },
@@ -153,7 +148,7 @@ module.exports = {
                 borderLeftWidth: "4px",
                 boxShadow: theme("boxShadow.DEFAULT"),
                 // bg-gray-50/30
-                backGroundColor: "rgba(249,250,251,.3)",
+                // backGroundColor: "rgba(249,250,251,.3)",
               },
               "blockquote .attribution": {
                 fontStyle: "italic",
@@ -219,7 +214,6 @@ module.exports = {
                 textAlign: "right",
               },
               caption: {
-                color: theme("colors.gray.light"),
                 textAlign: "left",
                 marginBottom: theme("spacing.6"),
               },
@@ -249,7 +243,6 @@ module.exports = {
                 content: "",
               },
               pre: {
-                color: "inherit",
                 fontSize: theme("fontSize.code"),
                 backgroundColor: "inherit",
                 borderWidth: "1px",
@@ -302,7 +295,7 @@ module.exports = {
                 hyphens: "none",
               },
               ".code-block-caption": {
-                color: theme("colors.gray.light"),
+                color: "var(--tw-prose-captions)",
                 fontSize: theme("fontSize.sm"),
                 letterSpacing: theme("letterSpacing.wide"),
                 borderBottomWidth: "1px",
@@ -321,14 +314,14 @@ module.exports = {
                 color: "black",
               },
               ".default_value": {
-                color: theme("colors.purple.800"),
+                color: "var(--awsm-prose-placeholders)",
               },
               "em.property": {
-                color: theme("colors.gray.light"),
+                color: "var(--awsm-prose-placeholders)",
               },
               ".option .sig-prename": {
                 fontStyle: "italic",
-                color: theme("colors.purple.800"),
+                color: "var(--awsm-prose-placeholders)",
               },
               ".viewcode-link": {
                 float: "right",
