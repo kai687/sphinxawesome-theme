@@ -37,13 +37,19 @@ pre ins::before {
   @apply text-code font-medium rounded-sm px-1 py-px dark:p-0 dark:mb-1;
 }
 
+.sig {
+  @apply font-mono font-bold dark:font-medium;
+}
+
 var,
 .samp em,
 .file em,
+.option .sig-prename,
 .highlight .ge {
   @apply text-purple-800 dark:text-white;
 }
 
+.option .sig-prename,
 .highlight .ge {
   @apply italic font-medium;
 }
@@ -51,4 +57,20 @@ var,
 .menuselection,
 .guilabel {
   @apply font-medium text-gray-dark dark:text-white tracking-wide;
+}
+
+.sig-name {
+  @apply text-black dark:text-[--tw-prose-invert-code];
+}
+
+em.property {
+  @apply text-gray-light dark:text-gray-300;
+}
+
+.option .sig-prename {
+  @apply text-purple-800 dark:text-white;
+}
+
+.default_value {
+  @apply text-purple-800 dark:text-white;
 }

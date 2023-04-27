@@ -55,9 +55,11 @@ module.exports = {
           css: [
             {
               "--tw-prose-body": "var(--color-gray)",
+              "--tw-prose-invert-body": theme("colors.gray[300]"),
               "--tw-prose-headings": "var(--color-gray-dark)",
               "--tw-prose-lead": "var(--color-gray-dark)",
               "--tw-prose-links": "var(--color-link)",
+              "--tw-prose-invert-links": theme("colors.gray[50]"),
               "--tw-prose-counters": "var(--color-gray-dark)",
               "--tw-prose-bullets": "var(--color-gray-light)",
               "--tw-prose-pre-code": "inherit",
@@ -65,7 +67,6 @@ module.exports = {
               // from Pygmentes 'github dark' theme
               "--tw-prose-invert-code": "#79c0ff",
               "--tw-prose-captions": "var(--color-gray-light)",
-              "--awsm-prose-placeholders": theme("colors.purple[800]"),
               lineHeight: "inherit",
               maxWidth: theme("maxWidth.prose"),
               svg: {
@@ -136,7 +137,7 @@ module.exports = {
                 borderLeftWidth: "4px",
                 boxShadow: theme("boxShadow.DEFAULT"),
                 // bg-gray-50/30
-                // backGroundColor: "rgba(249,250,251,.3)",
+                backGroundColor: "rgba(249,250,251,.3)",
               },
               "blockquote .attribution": {
                 fontStyle: "italic",
@@ -258,23 +259,6 @@ module.exports = {
                 whiteSpace: "nowrap",
                 hyphens: "none",
               },
-              ".sig": {
-                fontWeight: theme("fontWeight.bold"),
-                fontFamily: "JetBrains\\ Mono",
-              },
-              ".sig-name": {
-                color: "black",
-              },
-              ".default_value": {
-                color: "var(--awsm-prose-placeholders)",
-              },
-              "em.property": {
-                color: "theme(colors.gray.light)",
-              },
-              ".option .sig-prename": {
-                fontStyle: "italic",
-                color: "var(--awsm-prose-placeholders)",
-              },
               ".viewcode-link": {
                 float: "right",
               },
@@ -294,10 +278,22 @@ module.exports = {
         invert: {
           css: [
             {
+              h1: {
+                letterSpacing: "normal",
+              },
+              h2: {
+                letterSpacing: "normal",
+              },
               a: {
                 textDecoration: "underline",
                 textDecorationColor: "var(--color-brand)",
                 textUnderlineOffset: "3px",
+              },
+              // blockquote: {
+              //   backGroundColor: "rgba(249,250,251,.3)",
+              // },
+              "a.toc-backref": {
+                textDecoration: "none",
               },
               pre: {
                 borderColor: theme("colors.gray[700]"),

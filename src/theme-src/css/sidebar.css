@@ -1,7 +1,7 @@
 /* Style for the sidebar */
 .nav-toc {
   & .caption {
-    @apply text-m font-medium tracking-wide text-gray pt-10 pb-3;
+    @apply text-m font-medium tracking-wide text-gray dark:text-gray-400 pt-10 pb-3;
   }
   & p:first-of-type {
     @apply pt-4;
@@ -27,9 +27,9 @@
     }
   }
   & a {
-    @apply text-gray-light inline-block py-1 hover:text-brand focus:text-brand;
+    @apply text-gray-light dark:text-gray-300 inline-block py-1 hover:text-brand focus:text-brand;
     &.current {
-      @apply text-gray-dark font-medium;
+      @apply text-gray-dark dark:text-white font-medium;
     }
   }
   & ul + ul {

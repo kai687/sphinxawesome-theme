@@ -5,9 +5,13 @@
   --sd-color-tabs-label-hover: var(--color-brand);
 }
 
+.dark {
+  --sd-color-tabs-label-active: "white";
+}
+
 .sd-card-title,
 .sd-summary-title {
-  @apply !font-medium tracking-wide;
+  @apply !font-medium tracking-wide dark:text-white;
 }
 .sd-tab-set > label {
   @apply font-medium tracking-wider;
@@ -23,4 +27,8 @@ details.sd-dropdown summary:focus {
 
 .sd-shadow-sm {
   @apply !shadow;
+}
+
+.sd-card {
+  @apply dark:shadow-none dark:border dark:border-gray-700;
 }
