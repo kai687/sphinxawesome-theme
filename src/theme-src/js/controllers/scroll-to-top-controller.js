@@ -10,7 +10,7 @@ export default class extends Controller {
   }
 
   scroll() {
-    this.mainTarget.scrollTop = 0;
+    this.scrollWindow.scrollTop = 0;
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     this.scrollToTopTarget.blur();
   }
