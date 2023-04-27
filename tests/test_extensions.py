@@ -29,12 +29,17 @@ def test_compiles_html_with_theme(app: Sphinx) -> None:
     assert app.config.html_awesome_headerlinks is True
 
 
-@pytest.mark.sphinx("html", confoverrides={"extensions": ["sphinxawesome_theme"]})
+@pytest.mark.sphinx(
+    "html",
+    confoverrides={
+        "extensions": ["sphinxawesome_theme"],
+        "html_theme": "sphinxawesome_theme",
+    },
+)
 def test_internal_extensions(app: Sphinx) -> None:
     """It sets up all internal Sphinx extensions when loaded as an extension."""
     app.build()
     assert os.path.exists(Path(app.outdir) / "index.html")
-    assert app.config.html_theme == "alabaster"
     assert "sphinxawesome_theme.html_translator" not in app.extensions
     assert app.config.html_awesome_external_links is False
     assert "sphinxawesome_theme.highlighting" in app.extensions
@@ -51,6 +56,7 @@ def test_internal_extensions(app: Sphinx) -> None:
 @pytest.mark.sphinx(
     "html",
     confoverrides={
+        "html_theme": "sphinxawesome_theme",
         "extensions": ["sphinxawesome_theme"],
         "html_awesome_external_links": True,
     },
@@ -66,6 +72,7 @@ def test_awesome_external_links(app: Sphinx) -> None:
 @pytest.mark.sphinx(
     "html",
     confoverrides={
+        "html_theme": "sphinxawesome_theme",
         "extensions": ["sphinxawesome_theme"],
         "html_awesome_postprocessing": False,
         "html_awesome_code_headers": False,
@@ -99,7 +106,7 @@ def test_awesome_docsearch(app: Sphinx) -> None:
 
     # It adds the `docsearch.css` file
     css = tree.select('link[rel="stylesheet"]')
-    assert len(css) == 3
+    assert len(css) == 4
     hrefs = [item["href"] for item in css]
     assert any(filter(pattern.search, hrefs))  # type: ignore[arg-type]
 
@@ -126,6 +133,6 @@ def test_awesome_sphinx_design(app: Sphinx) -> None:
 
     # It adds the `awesome-sphinx-design.css` file
     css = tree.select('link[rel="stylesheet"]')
-    assert len(css) == 4
+    assert len(css) == 5
     hrefs = [item["href"] for item in css]
     assert any(filter(pattern.search, hrefs))  # type: ignore[arg-type]

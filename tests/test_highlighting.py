@@ -15,6 +15,7 @@ from sphinx.application import Sphinx
     confoverrides={
         "extensions": ["sphinxawesome_theme"],
         "html_awesome_highlighting": False,
+        "html_theme": "sphinxawesome_theme",
     },
 )
 def test_no_awesome_highlighting(app: Sphinx) -> None:
