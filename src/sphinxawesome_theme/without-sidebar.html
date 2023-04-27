@@ -10,10 +10,9 @@
 {% block document %}
 <main
   {%- if theme_show_scrolltop|tobool %}
-  data-controller="scroll-to-top"
   data-action="scroll->scroll-to-top#showButton"
+  data-scroll-to-top-target="main"
   {%- endif %}
-  data-scroll-target="main"
   class="px-4 pt-14 grid-area-main overflow-y-auto flex flex-col flex-1 h-full w-full"
   >
   <div class="flex flex-col h-full max-w-prose">

@@ -2,10 +2,9 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ["scrollToTop"];
+  static targets = ["scrollToTop", "main"];
 
   connect() {
-    this.scrollWindow = this.element;
     this.lastPosition = 0;
     this.offset = 200;
   }
@@ -17,15 +16,29 @@ export default class extends Controller {
   }
 
   showButton() {
-    if (this.hasScrollToTopTarget) {
-      const offsetCondition = this.scrollWindow.scrollTop > this.offset;
-      const scrollingUp = this.scrollWindow.scrollTop < this.lastPosition;
-      if (offsetCondition && scrollingUp) {
-        this.scrollToTopTarget.classList.add("isShown");
-      } else {
-        this.scrollToTopTarget.classList.remove("isShown");
+    if (this.hasScrollToTopTarget && this.hasMainTarget) {
+      const offsetCondition =
+        this.mainTarget.scrollTop > this.offset || window.scrollY > this.offset;
+
+      if (this.mainTarget.scrollTop > 0 && window.scrollY === 0) {
+        // We're on Desktop, scroll window is `main`
+        const scrollingUp = this.mainTarget.scrollTop < this.lastPosition;
+        this.toggleClass(offsetCondition && scrollingUp);
+        this.lastPosition = this.mainTarget.scrollTop;
+      } else if (window.scrollY > 0 && this.mainTarget.scrollTop === 0) {
+        // We're on mobile, scroll window is `window`
+        const scrollingUp = window.scrollY < this.lastPosition;
+        this.toggleClass(offsetCondition && scrollingUp);
+        this.lastPosition = window.scrollY;
       }
     }
-    this.lastPosition = this.scrollWindow.scrollTop;
+  }
+
+  toggleClass(condition) {
+    if (condition) {
+      this.scrollToTopTarget.classList.add("isShown");
+    } else {
+      this.scrollToTopTarget.classList.remove("isShown");
+    }
   }
 }

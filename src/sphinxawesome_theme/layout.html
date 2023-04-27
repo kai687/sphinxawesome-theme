@@ -63,9 +63,11 @@
 </head>
 
 <body class="antialiased text-gray">
-  <div id="page" data-controller="sidebar search scroll" data-action="keydown@window->search#focus"
-    class="min-h-screen xl:h-screen flex flex-col xl:grid xl:grid-layout print:block print:h-auto">
-    {% include "skip.html" %}
+    <div id="page" data-controller="sidebar search scroll {{ 'scroll-to-top' if theme_show_scrolltop|tobool }}"
+      data-action="keydown@window->search#focus {{ 'scroll@window->scroll-to-top#showButton' if theme_show_scrolltop|tobool }}"
+      class="min-h-screen xl:h-screen flex flex-col xl:grid xl:grid-layout print:block print:h-auto"
+    >
+      {% include "skip.html" %}
 
     <header class="grid-area-header z-10 h-14 fixed w-full top-0 print:hidden">
       {% include "header.html" %}
