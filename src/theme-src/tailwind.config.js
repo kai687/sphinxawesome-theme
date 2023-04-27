@@ -269,7 +269,7 @@ module.exports = {
                 color: "var(--awsm-prose-placeholders)",
               },
               "em.property": {
-                color: "var(--awsm-prose-placeholders)",
+                color: "theme(colors.gray.light)",
               },
               ".option .sig-prename": {
                 fontStyle: "italic",
