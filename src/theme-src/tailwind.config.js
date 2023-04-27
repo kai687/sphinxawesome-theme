@@ -299,9 +299,6 @@ module.exports = {
                 textDecorationColor: "var(--color-brand)",
                 textUnderlineOffset: "3px",
               },
-              "a code": {
-                color: "initial",
-              },
               pre: {
                 borderColor: theme("colors.gray[700]"),
                 // from Pygments 'github dark' style
