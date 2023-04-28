@@ -34,7 +34,7 @@ pre ins::before {
 }
 
 :not(pre) code {
-  @apply text-code font-medium rounded-sm px-1 py-px dark:p-0 dark:mb-1;
+  @apply text-code font-medium bg-gray-100 dark:bg-transparent rounded-sm px-1 py-px dark:p-0 dark:mb-1;
 }
 
 .sig {
