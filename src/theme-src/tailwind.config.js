@@ -129,30 +129,6 @@ module.exports = {
                 color: "inherit",
                 fontWeight: theme("fontWeight.normal"),
                 fontStyle: "normal",
-                fontSize: theme("fontSize.sm"),
-                marginTop: theme("spacing.6"),
-                marginBottom: theme("spacing.6"),
-                paddingLeft: theme("spacing.4"),
-                padding: theme("spacing.4"),
-                borderLeftWidth: "4px",
-                boxShadow: theme("boxShadow.DEFAULT"),
-                // bg-gray-50/30
-                backGroundColor: "rgba(249,250,251,.3)",
-              },
-              "blockquote .attribution": {
-                fontStyle: "italic",
-              },
-              "blockquote p:last-child": {
-                marginBottom: "0",
-              },
-              "blockquote p:first-child": {
-                marginTop: "0",
-              },
-              "blockquote p:first-of-type::before": {
-                content: "",
-              },
-              "blockquote p:last-of-type::after": {
-                content: "",
               },
               dl: {
                 marginBottom: theme("spacing.5"),
@@ -289,9 +265,6 @@ module.exports = {
                 textDecorationColor: "var(--color-brand)",
                 textUnderlineOffset: "3px",
               },
-              // blockquote: {
-              //   backGroundColor: "rgba(249,250,251,.3)",
-              // },
               "a.toc-backref": {
                 textDecoration: "none",
               },

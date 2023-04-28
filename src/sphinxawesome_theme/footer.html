@@ -3,7 +3,7 @@
     Contains copyright information.
 -#}
 
-<div class="mt-20 mb-4 text-sm text-gray-700 print:mt-4">
+<div class="mt-20 mb-4 text-sm text-gray-700 dark:text-gray-500 print:mt-4">
 {%- if show_copyright and copyright|length -%}
   {%- if hasdoc('copyright') -%}
     {%- trans path=pathto('copyright'), copyright=copyright|e -%}
@@ -22,7 +22,7 @@
 {%- endif -%}
 {%- if show_sphinx -%}
   {%- trans sphinx_version=sphinx_version|e -%}
-    Made with <a class="text-link hover:text-brand focus:text-brand hover:underline focus:underline" href="https://www.sphinx-doc.org">Sphinx {{ sphinx_version }}</a>
+    Made with <a class="text-link dark:text-white dark:underline dark:underline-offse-2 dark:decoration-brand hover:text-brand focus:text-brand hover:underline focus:underline" href="https://www.sphinx-doc.org">Sphinx {{ sphinx_version }}</a>
   {%- endtrans -%}
 {%- endif -%}
 </div>

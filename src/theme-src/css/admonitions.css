@@ -52,3 +52,23 @@ div.deprecated {
 .admonition-title {
   @apply font-medium tracking-wide mb-4 mt-0;
 }
+
+blockquote {
+  @apply my-6 p-4 border-l-4 dark:border-l-[5px];
+  & .attribution {
+    @apply italic;
+  }
+
+  & p {
+    &:first-child {
+      @apply mt-0;
+    }
+    &:last-child {
+      @apply mb-0;
+    }
+    &:first-of-type::before,
+    &:last-of-type::after {
+      content: "";
+    }
+  }
+}
