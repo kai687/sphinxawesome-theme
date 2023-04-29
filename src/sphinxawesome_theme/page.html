@@ -1,13 +1,123 @@
-{% if meta and meta.layout %}
-  {%- extends meta.layout + ".html"|default("with-sidebar.html") -%}
-{% else %}
-  {% if theme_show_nav|tobool %}
-    {%- extends "with-sidebar.html" -%}
-  {% else %}
-    {%- extends "without-sidebar.html" -%}
-  {% endif %}
-{% endif %}
+{%- macro script() %}
+{%- for js in script_files %}
+{{ js_tag(js) }}
+{%- endfor %}
+<script src="{{ pathto(asset('_static/theme.js'), 1) }}"></script>
+{%- if docsearch %}
+<script src="{{ pathto(asset('_static/docsearch.js'), 1) }}"></script>
+<script src="{{ pathto('_static/docsearch_config.js', 1) }}"></script>
+{%- endif %}
+{%- endmacro -%}
 
-{% block body %}
-  {{ body }}
-{% endblock %}
+{%- set lang_attr = "en" if language == None else (language|replace('_','-')) -%}
+
+{%- if not embedded and docstitle -%}
+{%- if title == docstitle -%}
+{%- set titlesuffix = "" -%}
+{%- else -%}
+{%- set titlesuffix = " | "|safe + docstitle|e -%}
+{%- endif -%}
+{%- else -%}
+{%- set titlesuffix = "" -%}
+{%- endif -%}
+
+<!DOCTYPE html>
+<html lang="{{ lang_attr }}" class="scroll-smooth">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  {{ metatags }}
+  {%- block htmltitle %}
+  <title>{{ title|striptags|e if title else docstitle }}{{ titlesuffix }}</title>
+  {%- endblock %}
+  {#- Extra CSS files for overriding stuff #}
+  {%- for css in css_files %}
+  <link rel="stylesheet" href="{{ pathto(asset(css), 1) }}" />
+  {%- endfor %}
+  {%- if docsearch %}
+  <link rel="preconnect" href="https://{{ docsearch_config.app_id }}-dsn.algolia.net" crossorigin="anonymous" />
+  {% endif %}
+  {%- if pageurl %}
+  <link rel="canonical" href="{{ pageurl|e }}" />
+  {%- endif %}
+  {%- set _favicon_url = favicon_url | default(pathto('_static/' + (favicon or ""), 1)) %}
+  {%- if favicon_url or favicon %}
+  <link rel="icon" href="{{ _favicon_url }}" />
+  {%- endif %}
+  {%- block linktags %}
+  {%- if hasdoc('search') and not docsearch %}
+  <link rel="search" title="{{ _('Search') }}" href="{{ pathto('search') }}" />
+  {%- endif %}
+  {%- if hasdoc('genindex') %}
+  <link rel="index" title="{{ _('Index') }}" href="{{ pathto('genindex') }}" />
+  {%- endif %}
+  {%- if next %}
+  <link rel="next" title="{{ next.title|striptags|e }}" href="{{ next.link|e }}" />
+  {%- endif %}
+  {%- if prev %}
+  <link rel="prev" title="{{ prev.title|striptags|e }}" href="{{ prev.link|e }}" />
+  {%- endif %}
+  {%- endblock %}
+  {%- block extrahead %}{%- endblock %}
+</head>
+
+<body class="antialiased text-gray">
+    <div id="page" data-controller="sidebar search scroll {{ 'scroll-to-top' if theme_show_scrolltop|tobool }}"
+      data-action="keydown@window->search#focus {{ 'scroll@window->scroll-to-top#showButton' if theme_show_scrolltop|tobool }}"
+      class="flex flex-col min-h-screen xl:h-screen xl:grid xl:grid-layout print:block print:h-auto"
+    >
+      {% include "skip.html" %}
+
+    <header class="fixed top-0 z-10 w-full grid-area-header h-14 print:hidden">
+      {% include "header.html" %}
+    </header>
+
+    {% block document %}
+    <aside data-sidebar-target="sidebar" class="fixed inset-y-0 left-0 z-20 h-full overflow-y-auto transition-all duration-300 transform -translate-x-full opacity-0 grid-area-sidebar pt-14 xl:relative xl:z-0 print:hidden transform-gpu xl:translate-x-0 xl:opacity-100">
+      {% include "sidebar.html" %}
+    </aside>
+
+    <main
+      {%- if theme_show_scrolltop|tobool %}
+      data-action="scroll->scroll-to-top#showButton"
+      data-scroll-to-top-target="main"
+      {%- endif %}
+      class="flex flex-col flex-1 h-full px-4 mx-0 overflow-y-auto pt-14 xl:ml-fluid grid-area-main md:mx-auto xl:mr-0"
+    >
+      {%- if pagename != master_doc and theme_show_breadcrumbs|tobool %}
+        {%- include "breadcrumbs.html" %}
+      {%- endif %}
+
+      <article role="main" class="flex-1 prose">
+        {% block body %}
+        {{ body }}
+        {% endblock %}
+      </article>
+
+      {%- if theme_show_prev_next|tobool %}
+        {%- include "prev_next.html" %}
+      {%- endif %}
+
+      {%- block extrabody %}{%- endblock %}
+
+      <footer>
+        {%- block footer %}
+          {%- include "footer.html" %}
+        {%- endblock %}
+      </footer>
+
+      {#- scroll to top button -#}
+      {%- if theme_show_scrolltop|tobool -%}
+        {%- include "scrolltop.html" %}
+      {%- endif -%}
+    </main>
+    {% endblock %}
+
+    {% include "modals.html" %}
+  </div>
+  {% block scripts %}
+  {{ script() }}
+  {% endblock %}
+</body>
+</html>

@@ -1,4 +1,3 @@
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
@@ -27,9 +26,9 @@ module.exports = {
     path: THEME_STATIC_DIR,
     publicPath: '',
     filename: production ? '[name].[contenthash].js' : '[name].js',
+    clean: production ? true : false,
   },
   plugins: [
-    new CleanWebpackPlugin(),
     new ESLintPlugin({
       failOnWarning: true,
       failOnError: true,

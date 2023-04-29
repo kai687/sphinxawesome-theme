@@ -63,18 +63,13 @@ def docs(session: Session) -> None:
 def live_docs(session: Session) -> None:
     """Build the docs and live-reload."""
     args = session.posargs or [
+        "-a",
         "-b",
         "dirhtml",
         "-A",
         "mode=development",
         "docs",
         "docs/public",
-        "--watch",
-        "src/sphinxawesome_theme",
-        "--ignore",
-        "*woff*",
-        "--ignore",
-        "docsearch*",
     ]
     session.install(".", "sphinx-autobuild", *docs_dependencies)
     session.run("sphinx-autobuild", *args)
