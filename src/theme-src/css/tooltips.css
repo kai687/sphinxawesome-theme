@@ -17,7 +17,7 @@
   letter-spacing: normal;
   word-wrap: break-word;
   content: attr(aria-label);
-  @apply opacity-0 px-2 py-1 rounded-sm bg-gray-800 pointer-events-none whitespace-pre font-normal text-center text-xs text-white tracking-wide hidden absolute no-underline bg-opacity-75;
+  @apply pointer-events-none absolute hidden whitespace-pre rounded-sm bg-gray-800 bg-opacity-75 px-2 py-1 text-center text-xs font-normal tracking-wide text-white no-underline opacity-0;
 }
 
 /* delay animation for tooltip */
@@ -162,95 +162,5 @@
     bottom: 50%;
     margin-top: -6px;
     border-right-color: #1a202c;
-  }
-}
-
-/* Tooltip align right and left */
-.tooltipped-align-right-1,
-.tooltipped-align-right-2 {
-  &:after {
-    right: 0;
-    margin-right: 0;
-  }
-}
-
-.tooltipped-align-right-1 {
-  &:before {
-    right: 10px;
-  }
-}
-
-.tooltipped-align-right-2 {
-  &:before {
-    right: 15px;
-  }
-}
-
-.tooltipped-align-left-1,
-.tooltipped-align-left-2 {
-  &:after {
-    left: 0;
-    margin-left: 0;
-  }
-}
-
-.tooltipped-align-left-1 {
-  &:before {
-    left: 5px;
-  }
-}
-
-.tooltipped-align-left-2 {
-  &:before {
-    left: 10px;
-  }
-}
-
-/* Multiline tooltips
- *
- * `.tooltipped-multiline` Add this class when you have long content.
- * The downside is you cannot preformat the text with newlines and `[w,e]`
- * are always `$tooltip-max-width` wide. */
-.tooltipped-multiline {
-  &:after {
-    width: max-content;
-    max-width: 250px;
-    word-wrap: break-word;
-    white-space: pre-line;
-    border-collapse: separate;
-  }
-
-  &.tooltipped-s:after,
-  &.tooltipped-n:after {
-    right: auto;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  &.tooltipped-w:after,
-  &.tooltipped-e:after {
-    right: 100%;
-  }
-}
-
-@media screen and (min-width: 0\0) {
-  /* IE11 */
-  .tooltipped-multiline::after {
-    width: 250px;
-  }
-}
-
-/* Sticky tooltips
- * Always show the tooltip. */
-.tooltipped-sticky {
-  &:before,
-  &:after {
-    display: inline-block;
-  }
-
-  &.tooltipped-multiline {
-    &:after {
-      display: table-cell;
-    }
   }
 }

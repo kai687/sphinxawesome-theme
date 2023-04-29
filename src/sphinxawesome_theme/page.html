@@ -1,28 +1,28 @@
 {%- macro script() %}
-{%- for js in script_files %}
-{{ js_tag(js) }}
-{%- endfor %}
-<script src="{{ pathto(asset('_static/theme.js'), 1) }}"></script>
-{%- if docsearch %}
-<script src="{{ pathto(asset('_static/docsearch.js'), 1) }}"></script>
-<script src="{{ pathto('_static/docsearch_config.js', 1) }}"></script>
-{%- endif %}
+  {%- for js in script_files %}
+    {{ js_tag(js) }}
+  {%- endfor %}
+  <script src="{{ pathto(asset('_static/theme.js'), 1) }}"></script>
+  {%- if docsearch %}
+    <script src="{{ pathto(asset('_static/docsearch.js'), 1) }}"></script>
+    <script src="{{ pathto('_static/docsearch_config.js', 1) }}"></script>
+  {%- endif %}
 {%- endmacro -%}
 
 {%- set lang_attr = "en" if language == None else (language|replace('_','-')) -%}
 
 {%- if not embedded and docstitle -%}
-{%- if title == docstitle -%}
-{%- set titlesuffix = "" -%}
+  {%- if title == docstitle -%}
+    {%- set titlesuffix = "" -%}
+  {%- else -%}
+    {%- set titlesuffix = " | "|safe + docstitle|e -%}
+  {%- endif -%}
 {%- else -%}
-{%- set titlesuffix = " | "|safe + docstitle|e -%}
-{%- endif -%}
-{%- else -%}
-{%- set titlesuffix = "" -%}
+  {%- set titlesuffix = "" -%}
 {%- endif -%}
 
 <!DOCTYPE html>
-<html lang="{{ lang_attr }}" class="scroll-smooth">
+<html lang="{{ lang_attr }}">
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -62,59 +62,53 @@
   {%- block extrahead %}{%- endblock %}
 </head>
 
-<body class="antialiased text-gray">
-    <div id="page" data-controller="sidebar search scroll {{ 'scroll-to-top' if theme_show_scrolltop|tobool }}"
-      data-action="keydown@window->search#focus {{ 'scroll@window->scroll-to-top#showButton' if theme_show_scrolltop|tobool }}"
-      class="flex flex-col min-h-screen xl:h-screen xl:grid xl:grid-layout print:block print:h-auto"
-    >
-      {% include "skip.html" %}
+<body class="min-h-screen font-sans antialiased bg-background">
+  <div id="page" class="relative flex flex-col min-h-screen">
+    {#
+      <a class="absolute top-0 left-0 z-20 block p-4 text-xl transition -translate-x-full opacity-0 focus:translate-x-0 focus:opacity-100" href="#{{ title|sanitize }}" title="Skip navigation links">Skip to content</a>
+    #}
 
-    <header class="fixed top-0 z-10 w-full grid-area-header h-14 print:hidden">
-      {% include "header.html" %}
-    </header>
+    {%- block header %}
+    {% include "header.html" %}
+    {%- endblock %}
 
-    {% block document %}
-    <aside data-sidebar-target="sidebar" class="fixed inset-y-0 left-0 z-20 h-full overflow-y-auto transition-all duration-300 transform -translate-x-full opacity-0 grid-area-sidebar pt-14 xl:relative xl:z-0 print:hidden transform-gpu xl:translate-x-0 xl:opacity-100">
-      {% include "sidebar.html" %}
-    </aside>
-
-    <main
-      {%- if theme_show_scrolltop|tobool %}
-      data-action="scroll->scroll-to-top#showButton"
-      data-scroll-to-top-target="main"
-      {%- endif %}
-      class="flex flex-col flex-1 h-full px-4 mx-0 overflow-y-auto pt-14 xl:ml-fluid grid-area-main md:mx-auto xl:mr-0"
-    >
-      {%- if pagename != master_doc and theme_show_breadcrumbs|tobool %}
-        {%- include "breadcrumbs.html" %}
-      {%- endif %}
-
-      <article role="main" class="flex-1 prose">
-        {% block body %}
-        {{ body }}
-        {% endblock %}
-      </article>
-
-      {%- if theme_show_prev_next|tobool %}
-        {%- include "prev_next.html" %}
-      {%- endif %}
-
-      {%- block extrabody %}{%- endblock %}
-
-      <footer>
-        {%- block footer %}
-          {%- include "footer.html" %}
+    <div class="flex-1">
+      <div class="container flex-1 items-start md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10">
+        {%- block sidebar %}
+        {% include "sidebar.html" %}
         {%- endblock %}
-      </footer>
 
-      {#- scroll to top button -#}
-      {%- if theme_show_scrolltop|tobool -%}
-        {%- include "scrolltop.html" %}
-      {%- endif -%}
-    </main>
-    {% endblock %}
+        {# role="main" is needed for Sphinx search #}
+        {%- block main %}
+        <main role="main">
+          {% block body %}
+          {{ body }}
+          {% endblock %}
+        </main>
+        {%- endblock main %}
+      </div>
 
-    {% include "modals.html" %}
+    </div>
+
+    {%- if pagename != master_doc and theme_show_breadcrumbs|tobool %}
+      {%- include "breadcrumbs.html" %}
+    {%- endif %}
+    {%- if theme_show_prev_next|tobool %}
+      {%- include "prev_next.html" %}
+    {%- endif %}
+
+    {%- block extrabody %}{%- endblock %}
+
+    <footer>
+      {%- block footer %}
+        {%- include "footer.html" %}
+      {%- endblock %}
+    </footer>
+
+    {#- scroll to top button -#}
+    {%- if theme_show_scrolltop|tobool -%}
+      {%- include "scrolltop.html" %}
+    {%- endif -%}
   </div>
   {% block scripts %}
   {{ script() }}

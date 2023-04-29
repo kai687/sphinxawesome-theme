@@ -1,42 +1,17 @@
-/* Style for the sidebar */
-.nav-toc {
+/* Styles for the sidebar */
+/* These classes are used inside Sphinx */
+
+#left-sidebar {
   & .caption {
-    @apply text-m font-medium tracking-wide text-gray pt-10 pb-3;
+    @apply mb-1 rounded-md px-2 py-1 text-sm font-semibold;
   }
-  & p:first-of-type {
-    @apply pt-4;
-  }
-  & > ul:first-child {
-    @apply pt-4;
-  }
-  & .expand {
-    @apply inline h-[1.2rem] ml-[-0.4rem] fill-current cursor-pointer select-none hover:text-brand focus:text-brand transition-transform transform duration-150 ease-out;
-  }
-  & li > ul {
-    @apply pl-4 overflow-y-hidden max-h-0;
-  }
-  & .expanded {
-    & > div > .expand {
-      @apply rotate-90;
-    }
-    & > ul {
-      @apply max-h-full;
-      & a.current {
-        @apply text-brand;
-      }
-    }
+  & ul {
+    @apply grid grid-flow-row auto-rows-max pb-6 text-sm;
   }
   & a {
-    @apply text-gray-light inline-block py-1 hover:text-brand focus:text-brand;
-    &.current {
-      @apply text-gray-dark font-medium;
-    }
+    @apply flex w-full items-center rounded-md border border-transparent px-2 py-1.5 hover:underline;
   }
-  & ul + ul {
-    @apply mt-8;
+  & a.current {
+    @apply border border-border bg-accent font-medium text-accent-foreground;
   }
-}
-
-.nav-link {
-  @apply text-[0.95rem] tracking-[0.2px];
 }

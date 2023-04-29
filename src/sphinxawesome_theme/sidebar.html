@@ -1,26 +1,17 @@
-{#-
-  Template for the sidebar which contains the main navigation
-  menu. Up to medoim screens, the sidebar is "off-canvas"
-  to the left and slides in when clicking the "menu" button.
--#}
+{# Template for the sidebar. #}
 
-<nav
-  role="navigation"
-  class="h-full overflow-y-auto bg-white text-gray-600 pt-8 flex flex-col"
->
-  <div class="nav-toc flex-1 pl-6">
-    {%- if theme_nav_include_hidden|tobool -%}
-      {{ toctree(maxdepth=3, collapse=False, includehidden=true) }}
-    {%- else -%}
-      {{ toctree(maxdepth=3, collapse=False) }}
-    {%- endif -%}
+<aside id="left-sidebar" class="fixed top-14 z-30 -ml-2 hidden h-[calc(100vh-3.5rem)] w-full shrink-0 overflow-y-auto border-r md:sticky md:block">
+  <div dir="ltr" class="relative py-6 pr-6 overflow-hidden lg:py-8">
+    <div class="w-full h-full rounded-[inherit]">
+      <nav class="table w-full min-w-full">
+        <div class="w-full">
+          {%- if theme_nav_include_hidden|tobool %}
+            {{ toctree(maxdepth=2, includehidden=true) }}
+          {%- else %}
+            {{ toctree(maxdepth=2, collapse=False) }}
+          {%- endif %}
+        </div>
+      </nav>
+    </div>
   </div>
-
-  <button
-      data-action="sidebar#close"
-      title="{{ _('Close navigation menu') }}"
-      class="text-4xl text-gray-800 p-4 bottom-0 hover:text-brand xl:hidden focus:text-brand self-center">
-    <span class="sr-only">Close navigation menu</span>
-    <svg aria-hidden="true" class="fill-current stroke-current h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-  </button>
-</nav>
+</aside>

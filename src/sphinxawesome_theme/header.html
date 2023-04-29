@@ -1,70 +1,74 @@
-{#-
-Template file for the header.
--#}
+{#- Template file for the header -#}
 
-{%- set hamburger -%}
-<button data-action="sidebar#open" data-sidebar-target="hamburger"
-  class="xl:hidden h-14 w-14 leading-14 text-gray-100 hover:bg-gray-700 hover:text-brand focus:outline-none focus:bg-gray-700 focus:text-brand">
-  <span class="sr-only">Open navigation menu</span>
-  <svg aria-hidden="true" class="inline fill-current h-8 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
-  </svg>
-</button>
-{%- endset -%}
-
-{%- macro home_link(logo=false) -%}
-<a class="hover:bg-gray-700 focus:bg-gray-700 focus:outline-none" href="{{ pathto(master_doc) }}"
-  title="{{ _('Back to homepage') }}">
-
-  {%- set _logo_url = logo_url|default(pathto('_static/' + (logo or ""), 1)) %}
-  {%- if logo or logo_url %}
-  <img class="h-14 w-14 p-3 inline-block" src="{{ _logo_url }}" alt="Logo" />
-  {%- endif -%}
-  <span class="hidden lg:inline-block shrink-0 font-medium text-gray-100 mx-5 leading-14 tracking-wider">{{ docstitle
-    }}</span>
-</a>
-{%- endmacro -%}
-
-{%- macro extra_link(text, url) -%}
-{% if url is string %}
-{% set url = url if url.startswith("http") else pathto(url) %}
-{%- set active = "bg-gray-700 border-b-4 border-brand" if pagename in url else "bg-transparent" -%}
-<a href="{{ url }}"
-  class="h-14 inline-block leading-14 text-gray-100 {{ active }} tracking-wide font-medium hover:text-brand focus:bg-gray-700 focus:outline-none hover:no-underline focus:text-brand px-2 sm:px-4">{{
-  text }}</a>
-{% endif %}
-{% if url is mapping %}
-{% set link = url.link if url.link.startswith("http") else pathto(url.link) %}
-<a href="{{ link }}" title="Visit {{ text }}"
-  class="h-14 inline-block text-gray-100 leading-14 hover:text-brand focus:bg-gray-700 focus:outline-none hover:no-underline focus:text-brand pl-2 pr-4 sm:px-4">{{
-  url.icon }}</a>
-{% endif %}
-{%- endmacro -%}
-
-
-<div class="bg-gray-dark shadow-md flex items-center h-full xl:px-2 relative">
-  {#- show logo on the left side of the header -#}
-  <div class="flex items-center">
-    {%- if theme_show_nav|tobool %}
-    {{ hamburger }}
-    {%- endif %}
-    {%- block logo -%}
-    {{ home_link(logo) }}
-    {%- endblock -%}
-  </div>
-
-  {#- show a search input field on the right side -#}
-  <div class="flex justify-end items-center flex-1">
-    {%- include "searchbox.html" %}
-
-    {%- if theme_extra_header_links|tobool -%}
-    {%- block extra_header_links -%}
-    <div class="shrink-0">
-      {%- for text, url in theme_extra_header_links.items() -%}
-      {{ extra_link(text, url) }}
-      {%- endfor -%}
+<header class="sticky top-0 z-40 w-full border-b shadow-sm supports-backdrop-blur:bg-background/60 bg-background/95 backdrop-blur">
+  {#- Extra block at the top of the header #}
+  {%- block header_before %}{% endblock %}
+  <div class="container flex items-center h-14">
+    {#- show logo and extra header links on the left side of the header -#}
+    {% block header_left %}
+    <div class="hidden mr-4 md:flex">
+      {% block header_logo %}
+      <a href="{{ pathto(master_doc) }}" class="flex items-center mr-6 space-x-2">
+        {%- set _logo_url = logo_url|default(pathto('_static/' + (logo or ""), 1)) %}
+        {%- if logo or logo_url %}
+          <img class="inline-block w-6 h-6 bg-black invert" src="{{ _logo_url }}" alt="Logo" />
+        {%- endif -%}
+        <span class="hidden font-bold sm:inline-block">{{ docstitle }}</span>
+      </a>
+      {%- endblock %}
+      {%- block header_main_nav %}
+      {%- if theme_main_nav_links|tobool -%}
+      <nav class="flex items-center space-x-6 text-sm font-medium">
+        {%- for text,url in theme_main_nav_links.items() %}
+          {%- set _active = "text-foreground" if pagename in url else "text-foreground/60" -%}
+          {%- if url.startswith("http") %}
+            <a href="{{ url }}" class="transition-colors hover:text-foreground/80 {{ _active }}" rel="noreferrer">{{ text }}</a>
+          {%- else %}
+            <a href="{{ pathto(url) }}" class="transition-colors hover:text-foreground/80 {{ _active }}">{{ text }}</a>
+          {%- endif %}
+        {%- endfor %}
+      </nav>
+      {%- endif %}
+      {%- endblock -%}
     </div>
-    {%- endblock -%}
-    {%- endif -%}
+    {%- endblock %}
+
+    {%- block mobile_menu %}
+    <button class="inline-flex items-center justify-center h-10 px-0 py-2 mr-2 text-base font-medium transition-colors rounded-md focus-visible:outline-none focus-visible:ring-ring disabled:opacity-50 disabled:pointer-events-none ring-offset-background hover:text-accent-foreground hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden" type="button" aria-expanded="false" aria-haspopup="dialog" data-state="closed" aria-controls="sidebar">
+      <svg aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24">
+        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+      </svg>
+      <span class="sr-only">Toggle navigation menu</span>
+    </button>
+    {%- endblock %}
+
+    {%- block header_right %}
+    <div class="flex items-center justify-between flex-1 space-x-2 sm:space-x-4 md:justify-end">
+      {%- if docsearch or hasdoc('search') %}
+        <div class="flex-1 w-full md:w-auto md:flex-none">
+          {%- include "searchbox.html" %}
+        </div>
+      {%- endif %}
+      {%- block extra_header_link_icons %}
+      <nav class="flex items-center space-x-1">
+      {%- if theme_extra_header_link_icons %}
+        {%- for text,url in theme_extra_header_link_icons.items() %}
+          {%- if url is mapping %}
+            <a href="{{ url.link }}" title="Visit {{ text }}" rel="noreferrer">
+              <div class="inline-flex items-center justify-center px-0 text-sm font-medium transition-colors rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background hover:bg-accent hover:text-accent-foreground h-9 w-9">{{ url.icon }}</div>
+            </a>
+          {% endif %}
+        {%- endfor %}
+      {%- endif %}
+      {%- block theme_switcher %}
+      <button class="inline-flex items-center justify-center px-0 text-sm font-medium transition-colors rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background hover:bg-accent hover:text-accent-foreground h-9 w-9" type="button" aria-haspopup="menu" aria-expanded="false" data-state="closed">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 96 960 960" fill="currentColor" class="transition-all scale-100 rotate-0 dark:-rotate-90 dark:scale-0"><path d="M480 685q45.456 0 77.228-31.772Q589 621.456 589 576q0-45.456-31.772-77.228Q525.456 467 480 467q-45.456 0-77.228 31.772Q371 530.544 371 576q0 45.456 31.772 77.228Q434.544 685 480 685Zm0 91q-83 0-141.5-58.5T280 576q0-83 58.5-141.5T480 376q83 0 141.5 58.5T680 576q0 83-58.5 141.5T480 776ZM80 621.5q-19.152 0-32.326-13.174T34.5 576q0-19.152 13.174-32.326T80 530.5h80q19.152 0 32.326 13.174T205.5 576q0 19.152-13.174 32.326T160 621.5H80Zm720 0q-19.152 0-32.326-13.174T754.5 576q0-19.152 13.174-32.326T800 530.5h80q19.152 0 32.326 13.174T925.5 576q0 19.152-13.174 32.326T880 621.5h-80Zm-320-320q-19.152 0-32.326-13.174T434.5 256v-80q0-19.152 13.174-32.326T480 130.5q19.152 0 32.326 13.174T525.5 176v80q0 19.152-13.174 32.326T480 301.5Zm0 720q-19.152 0-32.326-13.17Q434.5 995.152 434.5 976v-80q0-19.152 13.174-32.326T480 850.5q19.152 0 32.326 13.174T525.5 896v80q0 19.152-13.174 32.33-13.174 13.17-32.326 13.17ZM222.174 382.065l-43-42Q165.5 327.391 166 308.239t13.174-33.065q13.435-13.674 32.587-13.674t32.065 13.674l42.239 43q12.674 13.435 12.555 31.706-.12 18.272-12.555 31.946-12.674 13.674-31.445 13.413-18.772-.261-32.446-13.174Zm494 494.761-42.239-43q-12.674-13.435-12.674-32.087t12.674-31.565Q686.609 756.5 705.38 757q18.772.5 32.446 13.174l43 41.761Q794.5 824.609 794 843.761t-13.174 33.065Q767.391 890.5 748.239 890.5t-32.065-13.674Zm-42-494.761Q660.5 369.391 661 350.62q.5-18.772 13.174-32.446l41.761-43Q728.609 261.5 747.761 262t33.065 13.174q13.674 13.435 13.674 32.587t-13.674 32.065l-43 42.239q-13.435 12.674-31.706 12.555-18.272-.12-31.946-12.555Zm-495 494.761Q165.5 863.391 165.5 844.239t13.674-32.065l43-42.239q13.435-12.674 32.087-12.674t31.565 12.674Q299.5 782.609 299 801.38q-.5 18.772-13.174 32.446l-41.761 43Q231.391 890.5 212.239 890t-33.065-13.174ZM480 576Z"/></svg>
+      </button>
+      {%- endblock %}
+      </nav>
+      {%- endblock %}
+    </div>
+    {%- endblock %}
   </div>
-</div>
+  {%- block header_after %}{%- end %}
+</header>
