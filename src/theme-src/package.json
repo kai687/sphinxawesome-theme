@@ -33,6 +33,8 @@
     "cssnano": "^6.0.0",
     "cssnano-preset-advanced": "^6.0.0",
     "eslint": "^8.38.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-tailwindcss": "^3.11.0",
     "eslint-webpack-plugin": "^4.0.0",
     "mini-css-extract-plugin": "^2.7.5",
     "postcss": "^8.4.21",
