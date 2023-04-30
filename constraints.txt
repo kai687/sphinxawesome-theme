@@ -1,5 +1,5 @@
 nox==2022.11.21
 nox-poetry==1.0.2
-pip==23.1.1
+pip==23.1.2
 pipx==1.2.0
 poetry==1.4.2
