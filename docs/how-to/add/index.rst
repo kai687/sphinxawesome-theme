@@ -8,6 +8,5 @@ Add the theme
 
    Learn how to add the |product| to your Sphinx documentation.
 
-.. include:: ../../includes/header.rst
 .. include:: includes/add-to-sphinx.rst
 .. include:: includes/local-directory.rst

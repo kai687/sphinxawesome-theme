@@ -8,8 +8,6 @@ Notes, warnings, and quotations
 
    Use *admonitions*, *callouts*, or *alerts* to mark up **additional information**.
 
-----
-
 .. include:: includes/notes-admonitions.rst
 .. include:: includes/notes-version-changes.rst
 

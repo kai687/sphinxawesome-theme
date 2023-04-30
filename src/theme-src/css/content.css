@@ -1,0 +1,141 @@
+/* Styles for reStructuredText content */
+
+#content {
+  & svg {
+    @apply inline;
+  }
+  & hr {
+    @apply my-4 md:my-6;
+  }
+
+  & h1 {
+    @apply mb-2 scroll-m-20 text-4xl font-bold tracking-tight;
+  }
+
+  & h2 {
+    @apply mt-12 scroll-m-20 border-b pb-2 text-2xl font-semibold;
+  }
+
+  & h3 {
+    @apply mt-8 scroll-m-20 text-2xl font-semibold;
+  }
+
+  & h4,
+  & .rubric {
+    @apply mt-8 scroll-m-20 text-xl font-semibold;
+  }
+
+  & section > p {
+    @apply mt-6 leading-7 first:mt-0;
+    &.rubric {
+      @apply mt-0;
+    }
+    &.lead {
+      @apply text-lg text-muted-foreground;
+    }
+  }
+
+  & .centered {
+    @apply text-center;
+  }
+
+  & a:not(.toc-backref) {
+    @apply font-medium text-primary underline decoration-from-font underline-offset-4;
+  }
+
+  & ul {
+    @apply ml-6 mt-6 list-disc;
+    & > li,
+    & p {
+      @apply mt-2;
+    }
+    & ul {
+      @apply mt-0;
+    }
+  }
+
+  & ol {
+    @apply ml-6 mt-6 list-decimal marker:font-medium;
+    & li,
+    & p {
+      @apply mt-2;
+    }
+    & ol {
+      @apply mt-0;
+    }
+  }
+
+  & dl {
+    @apply mt-6;
+    & dt {
+      @apply mt-6 font-medium first:my-0;
+    }
+    & dd {
+      @apply ml-6;
+    }
+    & p {
+      @apply my-2;
+    }
+  }
+
+  & .align-center {
+    @apply mx-auto text-center;
+  }
+  & .align-right {
+    @apply ml-auto text-right;
+  }
+
+  & img {
+    @apply mt-6;
+  }
+
+  & figure img {
+    @apply inline-block;
+  }
+
+  & figcaption {
+    @apply mb-12 text-sm text-muted-foreground;
+    & > * {
+      @apply mt-4;
+    }
+  }
+}
+
+blockquote {
+  @apply my-6 border-l-2 pl-6 italic;
+  & .attribution {
+    @apply mt-2 not-italic;
+  }
+}
+
+table {
+  @apply my-6 w-full text-sm;
+  & caption {
+    @apply mb-6 text-left text-muted-foreground;
+  }
+  & thead {
+    @apply border-b;
+  }
+  & th {
+    @apply pb-2 pl-2 text-left font-medium first:pl-0;
+  }
+  & tbody tr {
+    @apply border-b;
+  }
+  & tbody td {
+    @apply p-2 first:pl-0;
+  }
+}
+
+.footnote {
+  & > .label {
+    @apply float-left pr-2;
+  }
+  & > :not(.label) {
+    @apply my-6 ml-8;
+  }
+  & .footnote-reference,
+  & [role='doc-backlink'] {
+    @apply !no-underline;
+  }
+}

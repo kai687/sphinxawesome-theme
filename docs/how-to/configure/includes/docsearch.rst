@@ -64,7 +64,7 @@ Optional DocSearch settings
    A URL for letting users send you feedback about your search.
    You can use the current query in the URL.
 
-   .. code-block:: terminal
+   .. code-block:: bash
       :caption: Example for using *missing_results_url*
 
       DOCSEARCH_MISSING_RESULTS_URL=https://github.com/example/docs/issues/new?title=${query}

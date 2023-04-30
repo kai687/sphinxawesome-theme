@@ -99,8 +99,10 @@ html_css_files = ["feedback.css"]
 html_js_files = ["feedback.js"]
 
 # extra options from the sphinxawesome_theme
-html_awesome_docsearch = True
-html_awesome_external_links = True
+html_awesome_docsearch = False
+html_awesome_external_links = False
+html_awesome_postprocessing = False
+html_awesome_code_headers = False
 
 # The Algolia credentials are added from an `.env` file
 docsearch_config = {
@@ -110,9 +112,12 @@ docsearch_config = {
 
 html_theme_options = {
     "show_scrolltop": True,
-    "extra_header_links": {
+    "main_nav_links": {
         "Docs": "/index",
         "About": "/about",
+        "Changelog": "/changelog",
+    },
+    "extra_header_link_icons": {
         "repository on GitHub": {
             "link": "https://github.com/kai687/sphinxawesome-theme",
             "icon": (

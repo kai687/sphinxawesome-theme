@@ -9,6 +9,8 @@ Customize the theme
    Customize the |product| by adding custom CSS or custom JavaScript.
    Use custom page layouts or modify existing templates.
 
+----
+
 .. toctree::
    :caption: In this section
 

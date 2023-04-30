@@ -8,8 +8,6 @@ Lists
 
    See how lists appear in the |product|.
 
-----
-
 Unordered lists
 ---------------
 

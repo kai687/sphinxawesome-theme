@@ -8,11 +8,6 @@ Add custom CSS
 
    Customize your styles by adding CSS files or adding styles inline.
 
-.. contents:: On this page
-   :local:
-   :backlinks: none
-
-
 Add CSS files
 -------------
 

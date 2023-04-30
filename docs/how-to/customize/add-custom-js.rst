@@ -8,10 +8,6 @@ Add custom JavaScript
 
    Add JavaScript files or add code inline by extending the templates.
 
-.. contents:: On this page
-   :local:
-   :backlinks: none
-
 Add JavaScript files
 --------------------
 

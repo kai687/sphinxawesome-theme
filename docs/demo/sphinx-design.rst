@@ -12,7 +12,6 @@ Sphinx design
 
 .. _sphinx-design: https://sphinx-design.readthedocs.io/en/latest/index.html
 
-.. include:: ../includes/header.rst
 .. include:: includes/design-cards.rst
 .. include:: includes/design-grid.rst
 .. include:: includes/design-dropdown.rst

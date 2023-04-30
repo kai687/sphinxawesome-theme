@@ -8,8 +8,6 @@ Configure the theme
 
    Configure the |product| by changing one of the theme or extension options.
 
-.. include:: ../../includes/header.rst
-
 .. admonition:: What's the difference between theme and extension options?
 
    Theme options

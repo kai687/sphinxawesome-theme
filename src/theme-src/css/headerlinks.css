@@ -1,0 +1,28 @@
+/* Style the headerlink icons */
+@custom-selector :--headerlinkable
+  h1,
+  h2,
+  h3,
+  h4,
+  table,
+  .admonition-title,
+  figure,
+  dt,
+  .code-block-caption;
+
+.headerlink {
+  @apply ml-1 inline-flex items-center align-middle;
+  & > * {
+    @apply invisible fill-current text-muted-foreground;
+  }
+  &:focus > * {
+    @apply visible;
+  }
+}
+
+:--headerlinkable:hover .headerlink {
+  @apply visible;
+  & > * {
+    @apply visible;
+  }
+}

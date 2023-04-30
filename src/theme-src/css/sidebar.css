@@ -3,10 +3,13 @@
 
 #left-sidebar {
   & .caption {
-    @apply mb-1 rounded-md px-2 py-1 text-sm font-semibold;
+    @apply mb-1 rounded-md px-2 py-1 pt-6 text-sm font-semibold first:pt-0;
   }
   & ul {
-    @apply grid grid-flow-row auto-rows-max pb-6 text-sm;
+    @apply grid transform-gpu grid-flow-row auto-rows-max overflow-hidden text-sm transition-all duration-300 ease-in-out motion-reduce:transition-none;
+    & ul {
+      @apply relative ml-3 py-2 pl-3 pr-0 opacity-100 transition-opacity duration-500 before:absolute before:inset-y-1 before:left-0 before:w-px before:bg-gray-200 before:content-[""] dark:before:bg-neutral-800;
+    }
   }
   & a {
     @apply flex w-full items-center rounded-md border border-transparent px-2 py-1.5 hover:underline;

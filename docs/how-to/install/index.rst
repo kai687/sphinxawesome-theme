@@ -8,7 +8,6 @@ Install the theme
 
    Install the |product| as a Python package or copy it into a local directory.
 
-.. include:: ../../includes/header.rst
 .. include:: includes/install-python-package.rst
 .. include:: includes/install-local-directory.rst
 .. include:: includes/fork-and-clone.rst

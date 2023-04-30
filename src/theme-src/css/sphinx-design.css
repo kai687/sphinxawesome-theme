@@ -1,14 +1,43 @@
 /* Overrides for the `sphinx-design` extension */
 :root {
-  --sd-color-tabs-label-active: var(--color-gray-dark);
-  --sd-color-tabs-underline-active: var(--color-brand);
-  --sd-color-tabs-label-hover: var(--color-brand);
+  --sd-color-tabs-label-active: var(--color-foreground);
+  --sd-color-tabs-underline-active: var(--color-primary-foreground);
+  --sd-color-tabs-label-hover: var(--color-primary-foreground);
 }
 
-.sd-card-title,
-.sd-summary-title {
-  @apply !font-medium tracking-wide;
+.sd-card {
+  @apply mt-6 rounded-lg bg-card text-card-foreground;
 }
+
+.sd-container-fluid {
+  @apply my-6;
+}
+
+.sd-card-title {
+  @apply !font-semibold;
+}
+
+.sd-summary-title {
+  @apply !font-medium text-muted-foreground;
+}
+
+.sd-card-header,
+.sd-card-footer {
+  @apply text-sm;
+}
+
+.sd-tab-set {
+  @apply mt-6;
+}
+
+.sd-tab-content > p {
+  @apply mb-6;
+}
+
+.sd-tab-content pre:first-of-type {
+  @apply mt-0;
+}
+
 .sd-tab-set > label {
   @apply font-medium tracking-wider;
 }
@@ -22,5 +51,5 @@ details.sd-dropdown summary:focus {
 }
 
 .sd-shadow-sm {
-  @apply !shadow;
+  @apply !shadow-none;
 }

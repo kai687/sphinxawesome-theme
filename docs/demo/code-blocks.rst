@@ -8,9 +8,6 @@ Code blocks
 
    See how code blocks look like in your Sphinx project with the |product| and learn about the supported options.
 
-.. include:: ../includes/header.rst
-
-
 Sphinx code-block directive
 ---------------------------
 

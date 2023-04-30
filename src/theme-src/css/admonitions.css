@@ -1,0 +1,63 @@
+/* Styles for notes, warnings, etc. */
+
+.admonition {
+  @apply my-6 rounded-lg border bg-background p-4 text-sm text-foreground;
+  & p:not(.admonition-title) {
+    @apply mt-2;
+  }
+}
+
+.admonition-title {
+  @apply font-medium;
+}
+
+.note {
+  @apply border-sky-600 bg-sky-50 text-sky-900;
+}
+
+.tip,
+.hint {
+  @apply border-green-600 bg-green-50 text-green-900;
+}
+
+.danger,
+.error {
+  @apply border-red-600 bg-red-50 text-red-900;
+}
+
+.attention,
+.warning,
+.caution,
+.important {
+  @apply border-yellow-600 bg-yellow-50 text-yellow-900;
+}
+
+div.versionadded {
+  @apply mt-4 border-l-[3px] border-green-600 px-4 py-1;
+  & p {
+    @apply !mt-0;
+  }
+  & .versionmodified {
+    @apply font-medium text-green-900;
+  }
+}
+
+div.versionchanged {
+  @apply mt-4 border-l-[3px] border-yellow-600 px-4 py-1;
+  & p {
+    @apply !mt-0;
+  }
+  & .versionmodified {
+    @apply font-medium text-yellow-900;
+  }
+}
+
+div.deprecated {
+  @apply mt-4 border-l-[3px] border-red-600 px-4 py-1;
+  & p {
+    @apply !mt-0;
+  }
+  & .versionmodified {
+    @apply font-medium text-red-900;
+  }
+}

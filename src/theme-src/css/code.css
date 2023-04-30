@@ -1,0 +1,80 @@
+/* Code-related styles */
+
+.highlight {
+  @apply relative bg-transparent;
+}
+
+.literal-block-wrapper {
+  @apply mx-0 mt-6 max-w-none rounded-lg border px-0;
+  & pre {
+    @apply rounded-none border-none pt-0;
+  }
+  & .code-block-caption {
+    @apply rounded-t-lg border-b px-4 py-2 text-sm tracking-wide text-muted-foreground;
+  }
+}
+
+code {
+  @apply relative whitespace-nowrap rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm;
+  & em,
+  & .ge {
+    @apply font-semibold tracking-wide text-accent-foreground;
+  }
+}
+
+pre {
+  @apply mt-6 overflow-x-auto rounded-lg border py-4 text-sm data-[theme=dark]:bg-background data-[theme=light]:bg-white;
+  &.literal-block {
+    @apply px-4;
+  }
+  & code {
+    @apply whitespace-pre bg-transparent p-0;
+    & > [id^='line-'] {
+      @apply block px-4;
+    }
+    [id^='line-'] {
+      &:has(mark),
+      &:has(ins),
+      &:has(del),
+      &:has(.gd),
+      &:has(.gi) {
+        @apply px-0;
+      }
+      & mark,
+      & ins,
+      & del {
+        @apply relative block px-4;
+      }
+      & mark {
+        @apply bg-muted text-inherit shadow-[2px_0_currentColor_inset] dark:bg-slate-700 dark:shadow-[3px_0_currentColor_inset];
+      }
+      & ins {
+        @apply bg-green-500/30 text-green-900 no-underline before:absolute before:left-[2px] before:content-['\002b'] dark:bg-opacity-100 dark:text-green-200;
+      }
+      & del {
+        @apply bg-red-500/30 text-red-900 no-underline before:absolute before:left-[2px] before:content-['\2212'] dark:bg-opacity-100 dark:text-red-200;
+      }
+    }
+  }
+  & .linenos {
+    @apply select-none pl-0 pr-4;
+  }
+}
+
+.highlight-diff {
+  & .gi {
+    @apply inline-block w-full bg-green-500/30 px-4 text-green-900 dark:bg-opacity-100 dark:text-green-200;
+  }
+  & .gd {
+    @apply inline-block w-full bg-red-500/30 px-4 text-red-900 dark:bg-opacity-100 dark:text-green-200;
+  }
+}
+
+.guilabel,
+.menuselection {
+  @apply rounded-sm border px-2 py-px font-medium text-accent-foreground;
+}
+
+#content kbd:not(.compound) {
+  @apply rounded border bg-muted px-1 py-px text-sm font-medium tracking-wide;
+}

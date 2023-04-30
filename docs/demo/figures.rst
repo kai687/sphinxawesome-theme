@@ -9,8 +9,6 @@ Figures and tables
    See how images, figures, and tables look like with the |product|.
    Sphinx distinguishes between *images* and *figures*.
 
-----
-
 Images
 ------
 
