@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.21.3",
-    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-env": "^7.21.5",
     "@fontsource/jetbrains-mono": "^4.5.12",
     "@fontsource/roboto": "^4.5.8",
     "@hotwired/stimulus-webpack-helpers": "^1.0.1",
