@@ -91,12 +91,12 @@ html_context = {
 }
 
 # if you want to include other pages than docs
-templates_path = ["_templates"]
+# templates_path = ["_templates"]
 # html_additional_pages = {"about": "about.html"}
 
 html_static_path = ["_static"]
-html_css_files = ["feedback.css"]
-html_js_files = ["feedback.js"]
+# html_css_files = ["feedback.css"]
+# html_js_files = ["feedback.js"]
 
 # extra options from the sphinxawesome_theme
 html_awesome_docsearch = False

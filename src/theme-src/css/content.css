@@ -9,7 +9,7 @@
   }
 
   & h1 {
-    @apply mb-2 scroll-m-20 text-4xl font-bold tracking-tight;
+    @apply mb-2 scroll-m-20 text-4xl font-bold;
   }
 
   & h2 {
@@ -67,7 +67,7 @@
 
   & dl {
     @apply mt-6;
-    & dt {
+    & dt:not(.sig) {
       @apply mt-6 font-medium first:my-0;
     }
     & dd {

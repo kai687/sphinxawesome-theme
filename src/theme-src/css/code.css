@@ -18,7 +18,7 @@ code {
   @apply relative whitespace-nowrap rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm;
   & em,
   & .ge {
-    @apply font-semibold tracking-wide text-accent-foreground;
+    @apply font-bold tracking-wide text-accent-foreground;
   }
 }
 
@@ -77,4 +77,28 @@ pre {
 
 #content kbd:not(.compound) {
   @apply rounded border bg-muted px-1 py-px text-sm font-medium tracking-wide;
+}
+
+.sig {
+  @apply font-mono font-bold;
+}
+
+.sig-name {
+  @apply text-accent-foreground;
+}
+
+em.property {
+  @apply text-muted-foreground;
+}
+
+.option .sig-prename {
+  @apply italic;
+}
+
+.viewcode-link {
+  @apply float-right text-muted-foreground;
+}
+
+.option-list kbd {
+  @apply !border-none !bg-transparent !text-[1em] !font-bold;
 }

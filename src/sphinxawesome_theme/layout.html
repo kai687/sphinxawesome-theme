@@ -22,8 +22,13 @@
 {%- endif -%}
 
 <!DOCTYPE html>
-<html lang="{{ lang_attr }}">
-
+<html lang="{{ lang_attr }}"
+      x-data="{
+        darkMode: localStorage.getItem('darkMode')
+        || localStorage.setItem('darkMode', 'system')}"
+      x-init="$watch('darkMode', val => localStorage.setItem('darkMode', val))"
+      x-bind:class="{'dark': darkMode === 'dark' || (darkMode === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)}"
+>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta charset="utf-8" />
@@ -61,7 +66,6 @@
   {%- endblock %}
   {%- block extrahead %}{%- endblock %}
 </head>
-
 <body class="min-h-screen font-sans antialiased bg-background text-foreground">
   <div id="page" class="relative flex flex-col min-h-screen">
     {#
@@ -90,12 +94,6 @@
     {%- block footer %}
     {%- include "footer.html" %}
     {%- endblock %}
-
-
-    {%- if theme_show_prev_next|tobool %}
-    {%- include "prev_next.html" %}
-    {%- endif %}
-
     {#- block extrabody %}{%- endblock #}
 
 
@@ -104,5 +102,4 @@
   {{ script() }}
   {% endblock %}
 </body>
-
 </html>

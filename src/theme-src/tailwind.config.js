@@ -6,6 +6,7 @@ module.exports = {
     animation: false,
   },
   content: ['../sphinxawesome_theme/*.html', './js/**/*.js'],
+  darkMode: 'class',
   theme: {
     // Note: `container` is also a docutils class which you need to override then
     container: {
