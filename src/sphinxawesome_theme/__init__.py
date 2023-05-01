@@ -7,7 +7,7 @@
 """
 
 from importlib.metadata import PackageNotFoundError, version
-from os import path
+from pathlib import Path
 from typing import Any, Dict
 
 from sphinx.application import Sphinx
@@ -45,27 +45,34 @@ def post_config_setup(app: Sphinx, config: Config) -> None:
 
 def setup(app: "Sphinx") -> Dict[str, Any]:
     """Register the theme and its extensions wih Sphinx."""
-    app.add_html_theme(
-        name="sphinxawesome_theme", theme_path=path.abspath(path.dirname(__file__))
-    )
+    here = Path(__file__).parent.resolve()
+
+    app.add_html_theme(name="sphinxawesome_theme", theme_path=str(here))
+
     app.add_config_value(
         name="html_awesome_postprocessing", default=True, rebuild="html", types=(bool)
     )
+
     app.add_config_value(
         name="html_awesome_highlighting", default=True, rebuild="html", types=(bool)
     )
+
     app.add_config_value(
         name="html_awesome_external_links", default=False, rebuild="html", types=(bool)
     )
+
     app.add_config_value(
         name="html_awesome_docsearch", default=False, rebuild="html", types=(bool)
     )
+
     app.add_config_value(
         name="docsearch_config", default={}, rebuild="html", types=(dict)
     )
+
     app.add_config_value(
         name="html_awesome_headerlinks", default=True, rebuild="html", types=(str)
     )
+
     app.add_config_value(
         name="html_awesome_code_headers", default=True, rebuild="html", types=(str)
     )
