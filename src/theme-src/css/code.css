@@ -5,12 +5,12 @@
 }
 
 .literal-block-wrapper {
-  @apply mx-0 mt-6 max-w-none rounded-lg border px-0;
+  @apply mx-0 mt-6 max-w-none rounded-lg border border-border px-0;
   & pre {
     @apply rounded-none border-none pt-0;
   }
   & .code-block-caption {
-    @apply rounded-t-lg border-b px-4 py-2 text-sm tracking-wide text-muted-foreground;
+    @apply rounded-t-lg border-b border-border px-4 py-2 text-sm tracking-wide text-muted-foreground;
   }
 }
 
@@ -23,7 +23,7 @@ code {
 }
 
 pre {
-  @apply mt-6 overflow-x-auto rounded-lg border py-4 text-sm data-[theme=dark]:bg-background data-[theme=light]:bg-white;
+  @apply mt-6 overflow-x-auto rounded-lg border border-border py-4 text-sm data-[theme=dark]:bg-background data-[theme=light]:bg-white;
   &.literal-block {
     @apply px-4;
   }
@@ -72,7 +72,7 @@ pre {
 
 .guilabel,
 .menuselection {
-  @apply rounded-sm border px-2 py-px font-medium text-accent-foreground;
+  @apply rounded-sm border border-border px-2 py-px font-medium text-accent-foreground;
 }
 
 #content kbd:not(.compound) {

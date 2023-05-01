@@ -5,7 +5,7 @@
     @apply inline;
   }
   & hr {
-    @apply my-4 md:my-6;
+    @apply my-4 border-border md:my-6;
   }
 
   & h1 {
@@ -13,7 +13,7 @@
   }
 
   & h2 {
-    @apply mt-12 scroll-m-20 border-b pb-2 text-2xl font-semibold;
+    @apply mt-12 scroll-m-20 border-b border-border pb-2 text-2xl font-semibold;
   }
 
   & h3 {
@@ -47,7 +47,7 @@
     @apply ml-6 mt-6 list-disc;
     & > li,
     & p {
-      @apply mt-2;
+      @apply mt-6;
     }
     & ul {
       @apply mt-0;
@@ -56,9 +56,9 @@
 
   & ol {
     @apply ml-6 mt-6 list-decimal marker:font-medium;
-    & li,
+    & > li,
     & p {
-      @apply mt-2;
+      @apply mt-6;
     }
     & ol {
       @apply mt-0;
@@ -114,13 +114,13 @@ table {
     @apply mb-6 text-left text-muted-foreground;
   }
   & thead {
-    @apply border-b;
+    @apply border-b border-border;
   }
   & th {
-    @apply pb-2 pl-2 text-left font-medium first:pl-0;
+    @apply pb-2 pl-2 text-left font-medium first:pl-0 dark:font-semibold;
   }
   & tbody tr {
-    @apply border-b;
+    @apply border-b border-border;
   }
   & tbody td {
     @apply p-2 first:pl-0;

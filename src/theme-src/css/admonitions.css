@@ -1,63 +1,66 @@
 /* Styles for notes, warnings, etc. */
 
 .admonition {
-  @apply my-6 rounded-lg border bg-background p-4 text-sm text-foreground;
+  @apply my-6 rounded-lg border border-border bg-background p-4 text-sm text-foreground;
   & p:not(.admonition-title) {
     @apply mt-2;
+  }
+  & .admonition-title {
+    @apply !mt-0;
   }
 }
 
 .admonition-title {
-  @apply font-medium;
+  @apply font-medium dark:font-semibold dark:tracking-wide;
 }
 
 .note {
-  @apply border-sky-600 bg-sky-50 text-sky-900;
+  @apply border-sky-600 bg-sky-50 text-sky-900 dark:bg-blue-400/[0.15] dark:text-sky-100;
 }
 
 .tip,
 .hint {
-  @apply border-green-600 bg-green-50 text-green-900;
+  @apply border-green-600 bg-green-50 text-green-900 dark:bg-green-400/[0.15] dark:text-green-100;
 }
 
 .danger,
 .error {
-  @apply border-red-600 bg-red-50 text-red-900;
+  @apply border-red-600 bg-red-50 text-red-900 dark:bg-red-400/[0.15] dark:text-red-100;
 }
 
 .attention,
 .warning,
 .caution,
 .important {
-  @apply border-yellow-600 bg-yellow-50 text-yellow-900;
+  @apply border-yellow-600 bg-yellow-50 text-yellow-900 dark:bg-yellow-400/[0.15] dark:text-yellow-100;
 }
 
 div.versionadded {
-  @apply mt-4 border-l-[3px] border-green-600 px-4 py-1;
+  @apply mt-4 border-l-[3px] border-green-600 px-4 py-1 text-sm;
   & p {
     @apply !mt-0;
   }
   & .versionmodified {
-    @apply font-medium text-green-900;
+    @apply font-medium text-green-900 dark:tracking-wide dark:text-green-500;
   }
 }
 
 div.versionchanged {
-  @apply mt-4 border-l-[3px] border-yellow-600 px-4 py-1;
+  @apply mt-4 border-l-[3px] border-yellow-600 px-4 py-1 text-sm;
   & p {
     @apply !mt-0;
   }
   & .versionmodified {
-    @apply font-medium text-yellow-900;
+    @apply font-medium text-yellow-900 dark:tracking-wide dark:text-yellow-500;
   }
 }
 
 div.deprecated {
-  @apply mt-4 border-l-[3px] border-red-600 px-4 py-1;
+  @apply mt-4 border-l-[3px] border-red-600 px-4 py-1 text-sm;
   & p {
     @apply !mt-0;
   }
   & .versionmodified {
-    @apply font-medium text-red-900;
+    @apply font-medium text-red-900 dark:tracking-wide dark:text-red-400;
   }
 }

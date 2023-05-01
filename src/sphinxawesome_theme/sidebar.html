@@ -1,14 +1,15 @@
 {#- Template for the sidebar. -#}
 
-<aside id="left-sidebar" class="fixed top-14 z-30 -ml-2 hidden h-[calc(100vh-3.5rem)] w-full shrink-0 overflow-y-auto border-r md:sticky md:block">
+<aside id="left-sidebar"
+  class="fixed top-14 z-30 -ml-2 hidden h-[calc(100vh-3.5rem)] w-full shrink-0 overflow-y-auto border-r border-border md:sticky md:block">
   <div class="relative py-6 pr-6 overflow-hidden lg:py-8">
     <div class="w-full h-full rounded-[inherit]">
       <nav class="table w-full min-w-full">
         <div class="w-full">
           {%- if theme_nav_include_hidden|tobool %}
-            {{ toctree(maxdepth=2, titles_only=true, includehidden=true) }}
+          {{ toctree(maxdepth=2, titles_only=true, includehidden=true) }}
           {%- else %}
-            {{ toctree(maxdepth=2, titles_only=true) }}
+          {{ toctree(maxdepth=2, titles_only=true) }}
           {%- endif %}
         </div>
       </nav>

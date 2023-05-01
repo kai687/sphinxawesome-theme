@@ -7,11 +7,14 @@
 <div class="w-full min-w-0 mx-auto">
   {%- block body_before %}{%- endblock %}
   {%- if pagename != master_doc and theme_show_breadcrumbs|tobool %}
-    {%- include "breadcrumbs.html" %}
+  {%- include "breadcrumbs.html" %}
   {%- endif %}
   <div id="content">
     {{ body }}
   </div>
+  {%- if theme_show_prev_next|tobool %}
+  {%- include "prev_next.html" %}
+  {%- endif %}
   {%- block body_after %}{%- endblock %}
 </div>
 {%- block on_page_toc %}

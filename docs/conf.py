@@ -112,6 +112,7 @@ docsearch_config = {
 
 html_theme_options = {
     "show_scrolltop": True,
+    "show_prev_next": True,
     "main_nav_links": {
         "Docs": "/index",
         "About": "/about",
