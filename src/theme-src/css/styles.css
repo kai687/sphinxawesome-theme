@@ -8,6 +8,7 @@
 @import 'headerlinks.css';
 @import 'sidebar.css';
 @import 'toc.css';
+@import 'search.css';
 @import 'tailwindcss/utilities';
 
 @layer base {

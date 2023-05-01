@@ -7,6 +7,12 @@ import '@fontsource/jetbrains-mono/latin-700.css'
 import '@fontsource/jetbrains-mono/latin-700-italic.css'
 
 import Alpine from 'alpinejs'
+import { addCodeButtons } from './code'
 
 window.Alpine = Alpine
 Alpine.start()
+
+window.addEventListener('DOMContentLoaded', () => {
+  // Add copy buttons to code blocks
+  addCodeButtons()
+})

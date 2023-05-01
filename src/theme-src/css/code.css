@@ -7,7 +7,7 @@
 .literal-block-wrapper {
   @apply mx-0 mt-6 max-w-none rounded-lg border border-border px-0;
   & pre {
-    @apply rounded-none border-none pt-0;
+    @apply mt-0 rounded-none border-none;
   }
   & .code-block-caption {
     @apply rounded-t-lg border-b border-border px-4 py-2 text-sm tracking-wide text-muted-foreground;

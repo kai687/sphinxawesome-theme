@@ -1,6 +1,4 @@
-{#-
-  Template for the search results page.
--#}
+{#- Template for the search results page. -#}
 
 {% extends "page.html" %}
 
@@ -13,11 +11,16 @@
 {% endblock %}
 
 {% block body %}
-<div id="fallback" class="my-8 text-sm text-red-700">
-  <script>document.querySelector("#fallback").style.display = "none"</script>
-  {% trans %}
-    Please activate Javascript to enable searching the documentation.
-  {% endtrans %}
+<div class="w-full min-w-0 mx-auto">
+  {%- if pagename != master_doc and theme_show_breadcrumbs|tobool %}
+  {%- include "breadcrumbs.html" %}
+  {%- endif %}
+  <div id="content">
+    <div id="fallback" class="my-8 text-sm text-red-700">
+      <script>document.querySelector("#fallback").style.display = "none"</script>
+      {%- trans %}Please activate Javascript to enable searching the documentation.{% endtrans -%}
+    </div>
+    <div id="search-results" class=""></div>
+  </div>
 </div>
-<div id="search-results" class="mt-16 max-w-prose"></div>
 {% endblock body %}

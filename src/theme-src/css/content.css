@@ -43,7 +43,7 @@
     @apply font-medium text-primary underline decoration-from-font underline-offset-4;
   }
 
-  & ul {
+  & ul:not(.search) {
     @apply ml-6 mt-6 list-disc;
     & > li,
     & p {

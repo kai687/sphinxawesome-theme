@@ -1,3 +1,24 @@
 /*
  * Custom styles for Docsearch
  */
+
+:root {
+  --docsearch-key-gradient: 'transparent';
+  --docsearch-key-shadow: 'transparent';
+}
+
+.DocSearch-Button {
+  @apply rounded-[0.5em] border border-solid border-input text-sm ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground hover:shadow-none focus:bg-accent focus:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+}
+
+.DocSearch-Button-Placeholder {
+  @apply text-sm font-medium;
+}
+
+.DocSearch-Button-Key {
+  @apply rounded border border-solid border-border bg-muted text-[12px] text-muted-foreground;
+}
+
+.DocSearch-Search-Icon {
+  @apply sm:hidden;
+}

@@ -64,6 +64,13 @@
   <link rel="prev" title="{{ prev.title|striptags|e }}" href="{{ prev.link|e }}" />
   {%- endif %}
   {%- endblock %}
+  <script>
+    <!-- Prevent Flash of wrong theme -->
+    const darkMode = localStorage.getItem('darkMode') === 'dark' || window.matchMedia('(prefers-color-scheme: dark)').matches
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
   {%- block extrahead %}{%- endblock %}
 </head>
 <body class="min-h-screen font-sans antialiased bg-background text-foreground">
