@@ -5,10 +5,12 @@
 :root {
   --docsearch-key-gradient: transparent;
   --docsearch-key-shadow: transparent;
-  --docsearch-text-color: hsl(var(--foreground));
-  --docsearch-modal-background: hsl(var(--background));
-  --docsearch-footer-background: hsl(var(--background));
-  --docsearch-searchbox-focus-background: hsl(var(--background));
+  --docsearch-text-color: hsl(var(--popover-foreground));
+  --docsearch-modal-width: 760px;
+  --docsearch-modal-background: hsl(var(--popover));
+  --docsearch-footer-background: hsl(var(--popover));
+  --docsearch-searchbox-focus-background: hsl(var(--popover));
+  --docsearch-highlight-color: hsl(var(--accent));
 }
 
 .DocSearch-Button {
@@ -21,20 +23,4 @@
 
 .DocSearch-Button-Key {
   @apply rounded border border-solid border-border bg-muted text-[12px] text-muted-foreground;
-}
-
-.DocSearch-Search-Icon {
-  @apply sm:hidden;
-}
-
-.DocSearch-Form {
-  @apply !border !border-border !shadow-none focus:bg-accent focus:text-accent-foreground;
-}
-
-.DocSearch-Modal {
-  @apply rounded-lg !border !border-border !shadow-none;
-}
-
-.DocSearch-Footer {
-  @apply !border-t !border-border !shadow-none;
 }
