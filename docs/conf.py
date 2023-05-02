@@ -100,7 +100,7 @@ html_js_files = ["feedback.js"]
 
 # extra options from the sphinxawesome_theme
 html_awesome_docsearch = True
-html_awesome_external_links = False
+html_awesome_external_links = True
 html_awesome_postprocessing = True
 html_awesome_code_headers = False
 

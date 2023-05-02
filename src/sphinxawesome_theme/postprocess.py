@@ -162,7 +162,7 @@ def _modify_html(html_filename: str, app: Sphinx) -> None:
         tree = BeautifulSoup(html, "html.parser")
 
     # _expand_current(tree)
-    _collapsible_nav(tree)
+    # _collapsible_nav(tree)
     _external_links(tree)
     _remove_empty_toctree(tree)
     if app.config.html_awesome_headerlinks:
