@@ -5,7 +5,7 @@
     & li {
       @apply mt-0 pt-2;
       & a {
-        @apply inline-block text-muted-foreground no-underline transition-colors hover:text-foreground;
+        @apply inline-block text-muted-foreground no-underline transition-colors hover:text-foreground focus-visible:outline-offset-[-1px];
       }
       & ul {
         @apply pl-4;

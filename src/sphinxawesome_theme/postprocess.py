@@ -95,19 +95,10 @@ def _remove_empty_toctree(tree: BeautifulSoup) -> None:
 
 
 def _headerlinks(tree: BeautifulSoup) -> None:
-    """Enhance the headerlink experience."""
+    """Make headerlinks copy their URL on click."""
     for link in tree("a", class_="headerlink"):
-        link["data-controller"] = "clipboard"
-        link["data-action"] = "click->clipboard#copyHeaderLink"
-        link["aria-label"] = "Click to copy this link"
-        del link["title"]
-        link["class"].extend(["tooltipped", "tooltipped-ne"])
-
-
-def _code_controller(tree: BeautifulSoup) -> None:
-    """Add the controller attribute to code blocks."""
-    for block in tree("div", class_="highlight"):
-        block["data-controller"] = "code"
+        link["x-data"] = "{ href: $el.href }"
+        link["@click.prevent"] = "window.navigator.clipboard.writeText(href)"
 
 
 def _external_links(tree: BeautifulSoup) -> None:
@@ -176,7 +167,6 @@ def _modify_html(html_filename: str, app: Sphinx) -> None:
     _remove_empty_toctree(tree)
     if app.config.html_awesome_headerlinks:
         _headerlinks(tree)
-    _code_controller(tree)
     if app.config.html_awesome_code_headers:
         _code_headers(tree)
     _strip_comments(tree)

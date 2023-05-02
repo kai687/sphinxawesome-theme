@@ -28,16 +28,17 @@ export function addCodeButtons() {
   clipboard.on('success', ({ trigger }) => {
     const copyIcon = trigger.querySelector('.copy-icon')
     const successIcon = trigger.querySelector('.copy-success-icon')
-    copyIcon.classList.remove('scale-100')
-    successIcon.classList.add('scale-100')
-    copyIcon.classList.add('scale-0')
-    successIcon.classList.remove('scale-0')
+    swapIcons(copyIcon, successIcon)
 
     setTimeout(() => {
-      successIcon.classList.remove('scale-100')
-      copyIcon.classList.add('scale-100')
-      copyIcon.classList.remove('scale-0')
-      successIcon.classList.add('scale-0')
+      swapIcons(successIcon, copyIcon)
     }, 2000)
   })
+}
+
+function swapIcons(first, second) {
+  first.classList.remove('scale-100')
+  second.classList.add('scale-100')
+  first.classList.add('scale-0')
+  second.classList.remove('scale-0')
 }

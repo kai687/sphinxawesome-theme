@@ -13,6 +13,5 @@ window.Alpine = Alpine
 Alpine.start()
 
 window.addEventListener('DOMContentLoaded', () => {
-  // Add copy buttons to code blocks
   addCodeButtons()
 })

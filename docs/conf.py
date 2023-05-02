@@ -99,9 +99,9 @@ html_css_files = ["feedback.css"]
 html_js_files = ["feedback.js"]
 
 # extra options from the sphinxawesome_theme
-html_awesome_docsearch = False
+html_awesome_docsearch = True
 html_awesome_external_links = False
-html_awesome_postprocessing = False
+html_awesome_postprocessing = True
 html_awesome_code_headers = False
 
 # The Algolia credentials are added from an `.env` file

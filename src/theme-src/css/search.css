@@ -16,7 +16,7 @@
 }
 
 .highlighted {
-  @apply mx-1 bg-muted underline;
+  @apply bg-accent-foreground px-1 underline;
 }
 
 .highlight-link {
