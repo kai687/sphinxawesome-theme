@@ -22,13 +22,12 @@
 {%- endif -%}
 
 <!DOCTYPE html>
-<html lang="{{ lang_attr }}"
-      x-data="{
+<html lang="{{ lang_attr }}" x-data="{
         darkMode: localStorage.getItem('darkMode')
         || localStorage.setItem('darkMode', 'system')}"
-      x-init="$watch('darkMode', val => localStorage.setItem('darkMode', val))"
-      x-bind:class="{'dark': darkMode === 'dark' || (darkMode === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)}"
->
+  x-init="$watch('darkMode', val => localStorage.setItem('darkMode', val))"
+  x-bind:class="{'dark': darkMode === 'dark' || (darkMode === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)}">
+
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta charset="utf-8" />
@@ -73,12 +72,23 @@
   </script>
   {%- block extrahead %}{%- endblock %}
 </head>
-<body class="min-h-screen font-sans antialiased bg-background text-foreground">
+
+<body
+  x-data="{ showSidebar: false }"
+  class="min-h-screen font-sans antialiased bg-background text-foreground"
+  :class="{ 'overflow-hidden': showSidebar }"
+>
+  {#- A blurry background screen for the mobile sidebar -#}
+  <div
+    x-show="showSidebar"
+    class="fixed inset-0 z-50 overflow-hidden bg-background/80 backdrop-blur-sm"
+    @click.self="showSidebar = false">
+  </div>
+
+  {#- The main page wrapper -#}
   <div id="page" class="relative flex flex-col min-h-screen">
-    {#
     <a class="absolute top-0 left-0 z-20 block p-4 text-xl transition -translate-x-full opacity-0 focus:translate-x-0 focus:opacity-100"
-      href="#{{ title|sanitize }}" title="Skip navigation links">Skip to content</a>
-    #}
+      href="#" title="Skip navigation links">Skip to content</a>
 
     {%- block header %}
     {% include "header.html" %}
@@ -109,4 +119,5 @@
   {{ script() }}
   {% endblock %}
 </body>
+
 </html>
