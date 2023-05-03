@@ -8,9 +8,9 @@
       <nav class="table w-full min-w-full">
         <div class="w-full">
           {%- if theme_nav_include_hidden|tobool %}
-          {{ toctree(maxdepth=2, titles_only=true, includehidden=true) }}
+          {{ toctree(titles_only=true, collapse=False, includehidden=true) }}
           {%- else %}
-          {{ toctree(maxdepth=2, titles_only=true) }}
+          {{ toctree(titles_only=true, collapse=False) }}
           {%- endif %}
         </div>
       </nav>

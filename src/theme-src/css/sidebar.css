@@ -12,9 +12,15 @@
     }
   }
   & a {
-    @apply flex w-full items-center rounded-md border border-transparent px-2 py-1.5 hover:underline focus-visible:outline-offset-[-1px];
-  }
-  & a.current {
-    @apply border border-border bg-accent font-medium text-accent-foreground;
+    @apply flex w-full items-center justify-between rounded-md border border-transparent px-2 py-1.5 hover:underline focus-visible:outline-offset-[-1px];
+    & > svg {
+      @apply text-muted-foreground;
+    }
+    &.current {
+      @apply border border-border bg-accent font-medium text-accent-foreground;
+    }
+    &.expanded > svg {
+      @apply rotate-90 transition-all;
+    }
   }
 }

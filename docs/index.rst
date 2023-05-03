@@ -43,8 +43,8 @@ Get started
 
       `Get started with Sphinx <https://docs.readthedocs.io/en/stable/intro/getting-started-with-sphinx.html>`_
 
-Learn more
-----------
+Explore
+-------
 
 .. tab-set::
 
@@ -53,8 +53,8 @@ Learn more
       In the **How-to** section, you can learn more about using and customizing the theme.
 
       .. toctree::
-         :maxdepth: 1
          :caption: How To
+         :titlesonly:
 
          how-to/install/index
          how-to/add/index
@@ -67,8 +67,8 @@ Learn more
       The **Demo** section shows how various elements will look like.
 
       .. toctree::
-         :maxdepth: 1
          :caption: Demo
          :glob:
+         :titlesonly:
 
          demo/*

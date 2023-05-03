@@ -43,42 +43,22 @@ def _get_html_files(outdir: str) -> List[str]:
 
 
 def _collapsible_nav(tree: BeautifulSoup) -> None:
-    """Restructure the navigation links to make them collapsible.
-
-    First, all links in the navigation sidebar are wrapped in a ``div``.
-    This allows them to be 'block' and 'position relative' for the
-    'expand' icon to be positioned against.
-
-    Second, an icon is inserted right before the link.
-    Adding the icon as separate DOM element allows click events to be
-    captured separately between the icon and the link.
-    """
-    for link in tree.select(".nav-toc a"):
-        link["data-action"] = "click->sidebar#close"
-        # Don't add the nav-link class twice (#166)
-        if "nav-link" not in link.parent.get("class", []):
-            # First, all links should be wrapped in a div.nav-link
-            link.wrap(tree.new_tag("div", attrs={"class": "nav-link"}))
-            # Next, insert a span.expand before the link, if the #nav-link
-            # has any sibling elements (a ``ul`` in the navigation menu)
-            if link.parent.next_sibling:
-                # create the icon
-                svg = BeautifulSoup(ICONS["chevron_right"], "html.parser").svg
-                svg["tabindex"] = "0"
-                svg["height"] = "1.2rem"
-                svg["class"] = ["expand"]
-                svg["style"] = ["display: inline;"]
-                svg[
-                    "data-action"
-                ] = "click->sidebar#expand keydown->sidebar#expandKeyPressed"
-                link.insert_before(svg)
-
-
-def _expand_current(tree: BeautifulSoup) -> None:
-    """Add the ``.expanded`` class to li.current elements."""
-    for li in tree("li", class_="current"):
-        if "expanded" not in li.get("class", []):
-            li["class"] += ["expanded"]
+    """Make navigation links with children collapsible."""
+    for link in tree.select("#left-sidebar a"):
+        # Check if the link has "children"
+        children = link.next_sibling
+        if children and children.name == "ul":
+            # State must be available in the link and the list
+            li = link.parent
+            li[
+                "x-data"
+            ] = "{ expanded: $el.classList.contains('current') ? true : false }"
+            link["@click"] = "expanded = !expanded"
+            link[":class"] = "{ 'expanded' : expanded }"
+            children["x-show"] = "expanded"
+            # create the icon
+            svg = BeautifulSoup(ICONS["chevron_right"], "html.parser").svg
+            link.append(svg)
 
 
 def _remove_empty_toctree(tree: BeautifulSoup) -> None:
@@ -161,8 +141,7 @@ def _modify_html(html_filename: str, app: Sphinx) -> None:
     with open(html_filename, encoding="utf-8") as html:
         tree = BeautifulSoup(html, "html.parser")
 
-    # _expand_current(tree)
-    # _collapsible_nav(tree)
+    _collapsible_nav(tree)
     _external_links(tree)
     _remove_empty_toctree(tree)
     if app.config.html_awesome_headerlinks:
