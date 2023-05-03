@@ -6,6 +6,9 @@
       @apply mt-0 pt-2;
       & a {
         @apply inline-block text-muted-foreground no-underline transition-colors hover:text-foreground focus-visible:outline-offset-[-1px];
+        &[data-current='true'] {
+          @apply font-medium text-foreground;
+        }
       }
       & ul {
         @apply pl-4;

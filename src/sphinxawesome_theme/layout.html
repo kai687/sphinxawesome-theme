@@ -23,10 +23,10 @@
 
 <!DOCTYPE html>
 <html lang="{{ lang_attr }}" x-data="{
-        darkMode: localStorage.getItem('darkMode')
-        || localStorage.setItem('darkMode', 'system')}"
-  x-init="$watch('darkMode', val => localStorage.setItem('darkMode', val))"
-  x-bind:class="{'dark': darkMode === 'dark' || (darkMode === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)}">
+                darkMode: localStorage.getItem('darkMode')
+                          || localStorage.setItem('darkMode', 'system'),
+              }" x-init="$watch('darkMode', val => localStorage.setItem('darkMode', val))" class="scroll-smooth"
+  :class="{'dark': darkMode === 'dark' || (darkMode === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)}">
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -73,15 +73,10 @@
   {%- block extrahead %}{%- endblock %}
 </head>
 
-<body
-  x-data="{ showSidebar: false }"
-  class="min-h-screen font-sans antialiased bg-background text-foreground"
-  :class="{ 'overflow-hidden': showSidebar }"
->
+<body x-data="{ showSidebar: false }" class="min-h-screen font-sans antialiased bg-background text-foreground"
+  :class="{ 'overflow-hidden': showSidebar }">
   {#- A blurry background screen for the mobile sidebar -#}
-  <div
-    x-show="showSidebar"
-    class="fixed inset-0 z-50 overflow-hidden bg-background/80 backdrop-blur-sm"
+  <div x-show="showSidebar" class="fixed inset-0 z-50 overflow-hidden bg-background/80 backdrop-blur-sm"
     @click.self="showSidebar = false">
   </div>
 
