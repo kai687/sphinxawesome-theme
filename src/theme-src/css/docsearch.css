@@ -3,6 +3,7 @@
  */
 
 :root {
+  --docsearch-primary-color: hsl(var(--primary));
   --docsearch-key-gradient: transparent;
   --docsearch-key-shadow: transparent;
   --docsearch-text-color: hsl(var(--popover-foreground));
@@ -10,7 +11,14 @@
   --docsearch-modal-background: hsl(var(--popover));
   --docsearch-footer-background: hsl(var(--popover));
   --docsearch-searchbox-focus-background: hsl(var(--popover));
-  --docsearch-highlight-color: hsl(var(--accent));
+  --docsearch-container-background: hsl(var(--background) / 0.8);
+  --docsearch-spacing: theme(spacing.2);
+  --docsearch-hit-active-color: hsl(var(--accent-foreground));
+  --docsearch-hit-background: transparent;
+  --docsearch-searchbox-shadow: none;
+  --docsearch-hit-shadow: none;
+  --docsearch-modal-shadow: none;
+  --docsearch-footer-shadow: none;
 }
 
 .DocSearch-Button {
@@ -23,4 +31,49 @@
 
 .DocSearch-Button-Key {
   @apply rounded border border-solid border-border bg-muted text-[12px] text-muted-foreground;
+}
+
+.DocSearch-Container {
+  @apply backdrop-blur-sm;
+}
+
+.DocSearch-Modal {
+  @apply mt-[20%] rounded-lg border border-border;
+}
+
+.DocSearch-SearchBar {
+  @apply p-0;
+}
+
+.DocSearch-MagnifierLabel {
+  @apply opacity-50;
+}
+
+.DocSearch-Form {
+  @apply rounded-b-none rounded-t-lg border-b border-border;
+}
+
+.DocSearch-Hit-source {
+  @apply text-muted-foreground;
+}
+
+.DocSearch-Hit {
+  @apply rounded-sm;
+  & a {
+    @apply rounded-sm focus-visible:outline-offset-[-2px];
+  }
+}
+
+.DocSearch-Hit[aria-selected='true'] {
+  & a {
+    @apply bg-accent text-accent-foreground;
+  }
+}
+
+.DocSearch-Commands {
+  @apply hidden;
+}
+
+.DocSearch-Footer {
+  @apply border-t border-border;
 }
