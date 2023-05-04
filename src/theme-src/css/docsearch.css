@@ -22,11 +22,11 @@
 }
 
 .DocSearch-Button {
-  @apply rounded-[0.5em] border border-solid border-input text-sm ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground hover:shadow-none focus:bg-accent focus:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+  @apply flex w-[90%] rounded-[0.5em] border border-solid border-input text-sm ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground hover:shadow-none focus:bg-accent focus:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
 }
 
 .DocSearch-Button-Placeholder {
-  @apply text-sm font-medium;
+  @apply block text-sm font-medium;
 }
 
 .DocSearch-Button-Key {
@@ -34,23 +34,28 @@
 }
 
 .DocSearch-Container {
-  @apply backdrop-blur-sm;
+  @apply fixed backdrop-blur-sm;
 }
 
 .DocSearch-Modal {
-  @apply mt-[20%] rounded-lg border border-border;
+  @apply rounded-lg border border-border;
 }
 
 .DocSearch-SearchBar {
-  @apply p-0;
-}
-
-.DocSearch-MagnifierLabel {
-  @apply opacity-50;
+  @apply rounded-b-none rounded-t-lg border-b border-input p-0;
 }
 
 .DocSearch-Form {
-  @apply rounded-b-none rounded-t-lg border-b border-border;
+  @apply rounded-b-none rounded-t-lg;
+}
+
+.DocSearch-Cancel {
+  @apply px-2 text-sm text-muted-foreground;
+}
+
+.DocSearch-MagnifierLabel,
+.DocSearch-Search-Icon {
+  @apply stroke-2 opacity-50;
 }
 
 .DocSearch-Hit-source {

@@ -7,7 +7,7 @@ import nox
 from nox_poetry import Session, session
 
 nox.options.stop_on_first_error = True
-nox.options.sessions = ["docs", "lint", "black", "mypy", "tests"]
+nox.options.sessions = ["docs", "lint", "fmt", "mypy", "tests"]
 
 python_files = ["src/sphinxawesome_theme", "noxfile.py", "docs/conf.py", "tests/"]
 
@@ -59,9 +59,9 @@ def docs(session: Session) -> None:
     session.run("sphinx-build", *args)
 
 
-@session(python=Versions.latest())
+@session
 def live_docs(session: Session) -> None:
-    """Build the docs and live-reload."""
+    """Build the docs and live reload."""
     args = session.posargs or [
         "-a",
         "-b",
@@ -74,8 +74,6 @@ def live_docs(session: Session) -> None:
         "src/sphinxawesome_theme",
         "--ignore",
         "*woff*",
-        "--ignore",
-        "docsearch*",
     ]
     session.install(".", "sphinx-autobuild", *docs_dependencies)
     session.run("sphinx-autobuild", *args)
@@ -112,27 +110,17 @@ def export(session: Session) -> None:
 
 @session(python=Versions.all())
 def lint(session: Session) -> None:
-    """Lint python files with flake8."""
-    if "--fix" in session.posargs:
-        args = ["--fix", *python_files]
-    else:
-        args = session.posargs or python_files
-
-    deps = [
-        "ruff",
-    ]
-
-    session.install(".", *deps)
-    session.run("ruff", *args)
+    """Lint python files with ruff."""
+    session.install(".", "ruff")
+    session.run("ruff", ".")
 
 
-@session(python=Versions.latest())
-def black(session: Session) -> None:
-    """Format python files with black."""
-    args = session.posargs or python_files
-
-    session.install(".", "black")
-    session.run("black", *args)
+@session
+def fmt(session: Session) -> None:
+    """Format python files."""
+    session.install(".", "black", "ruff")
+    session.run("ruff", "check", ".", "--select", "I", "--fix")
+    session.run("black", ".")
 
 
 @session(python=Versions.all())

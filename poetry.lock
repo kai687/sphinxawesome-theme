@@ -356,14 +356,14 @@ testing = ["covdefaults (>=2.3)", "coverage (>=7.2.3)", "diff-cover (>=7.5)", "p
 
 [[package]]
 name = "identify"
-version = "2.5.23"
+version = "2.5.24"
 description = "File identification library for Python"
 category = "dev"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "identify-2.5.23-py2.py3-none-any.whl", hash = "sha256:17d9351c028a781456965e781ed2a435755cac655df1ebd930f7186b54399312"},
-    {file = "identify-2.5.23.tar.gz", hash = "sha256:50b01b9d5f73c6b53e5fa2caf9f543d3e657a9d0bbdeb203ebb8d45960ba7433"},
+    {file = "identify-2.5.24-py2.py3-none-any.whl", hash = "sha256:986dbfb38b1140e763e413e6feb44cd731faf72d1909543178aa79b0e258265d"},
+    {file = "identify-2.5.24.tar.gz", hash = "sha256:0aac67d5b4812498056d28a9a512a483f5085cc28640b02b258a59dac34301d4"},
 ]
 
 [package.extras]
@@ -1129,14 +1129,14 @@ files = [
 
 [[package]]
 name = "types-docutils"
-version = "0.19.1.8"
+version = "0.19.1.9"
 description = "Typing stubs for docutils"
 category = "dev"
 optional = false
 python-versions = "*"
 files = [
-    {file = "types-docutils-0.19.1.8.tar.gz", hash = "sha256:975f8a78a2f422d8c6e776a09988e25565f54f7971a9384bbe8b004a1e3b0f90"},
-    {file = "types_docutils-0.19.1.8-py3-none-any.whl", hash = "sha256:008094d649bb728ff3736ff69b09cf62c04d651c577109ea4ae0f381621a7509"},
+    {file = "types-docutils-0.19.1.9.tar.gz", hash = "sha256:1d029567e67c52992fd42aa968778bc10a5e445c8450fc751d672d6f50330a4a"},
+    {file = "types_docutils-0.19.1.9-py3-none-any.whl", hash = "sha256:556fb7ee19248aa482caa142a830c940b776b0f8c7577a98abe0977574546a1d"},
 ]
 
 [[package]]

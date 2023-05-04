@@ -1,8 +1,27 @@
 {#- Template for the sidebar. -#}
 
 <aside id="left-sidebar"
-  class="absolute inset-y-0 left-0 md:top-14 z-50 md:z-30 bg-background md:bg-transparent transition-all duration-100 -translate-x-full md:translate-x-0 ml-0 p-6 md:p-0 md:-ml-2 md:h-[calc(100vh-3.5rem)] w-5/6 md:w-full shrink-0 overflow-y-auto border-r border-border md:sticky md:block"
+  class="fixed inset-y-0 left-0 md:top-14 z-50 md:z-30 bg-background md:bg-transparent transition-all duration-100 -translate-x-full md:translate-x-0 ml-0 p-6 md:p-0 md:-ml-2 md:h-[calc(100vh-3.5rem)] w-5/6 md:w-full shrink-0 overflow-y-auto border-r border-border md:sticky md:block"
   :aria-hidden="!showSidebar" :class="{ 'translate-x-0': showSidebar }">
+  <a href="{{ pathto(master_doc) }}" class="!justify-start text-sm md:!hidden">
+    {%- set _logo_url = logo_url|default(pathto('_static/' + (logo or ""), 1)) %}
+    {%- if logo or logo_url %}
+    <img class="mr-2 w-4 h-4 bg-black invert dark:invert-0" src="{{ _logo_url }}" alt="Logo" />
+    {%- endif -%}
+    <span class="font-bold text-clip whitespace-nowrap">{{ docstitle }}</span>
+  </a>
+  {%- if theme_main_nav_links|tobool %}
+  <nav class="flex md:hidden flex-col font-medium mt-4">
+    {%- for text,url in theme_main_nav_links.items() %}
+    {%- if url.startswith("http") %}
+    <a href="{{ url }}" rel="noreferrer">{{ text }}</a>
+    {%- else %}
+    <a href="{{ pathto(url) }}">{{ text }}</a>
+    {%- endif %}
+    {%- endfor %}
+  </nav>
+  {%- endif %}
+
   <div class="relative py-6 pr-6 overflow-hidden lg:py-8">
     <div class="w-full h-full rounded-[inherit]">
       <nav class="table w-full min-w-full">

@@ -2,7 +2,7 @@
 export function scrollSpy() {
   const sections = document.querySelectorAll('#content section')
   const options = {
-    rootMargin: '-60px 0% -80% 0%',
+    rootMargin: '-70px 0% -80% 0%',
   }
 
   const observer = new IntersectionObserver(highlightCurrentSection, options)
