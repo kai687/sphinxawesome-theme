@@ -78,6 +78,7 @@ def setup(app: "Sphinx") -> Dict[str, Any]:
     )
 
     app.setup_extension("sphinxawesome_theme.jinja_functions")
+    app.setup_extension("sphinxawesome_theme.toc")
     app.connect("config-inited", post_config_setup)
 
     JSONHTMLBuilder.out_suffix = ".json"

@@ -43,6 +43,9 @@ div.versionadded {
   & .versionmodified {
     @apply font-medium text-green-900 dark:tracking-wide dark:text-green-500;
   }
+  &:last-child {
+    @apply !mb-0;
+  }
 }
 
 div.versionchanged {
@@ -53,6 +56,9 @@ div.versionchanged {
   & .versionmodified {
     @apply font-medium text-yellow-900 dark:tracking-wide dark:text-yellow-500;
   }
+  &:last-child {
+    @apply !mb-0;
+  }
 }
 
 div.deprecated {
@@ -62,5 +68,8 @@ div.deprecated {
   }
   & .versionmodified {
     @apply font-medium text-red-900 dark:tracking-wide dark:text-red-400;
+  }
+  &:last-child {
+    @apply !mb-0;
   }
 }

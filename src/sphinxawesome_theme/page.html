@@ -18,6 +18,8 @@
   {%- block body_after %}{%- endblock %}
 </div>
 {%- block on_page_toc %}
+{%- if display_toc %}
 {%- include "toc.html" %}
+{%- endif %}
 {%- endblock %}
 {%- endblock %}
