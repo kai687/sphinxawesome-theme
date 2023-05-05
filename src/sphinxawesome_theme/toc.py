@@ -68,10 +68,10 @@ def change_toc(
         ):
             doc.replace(node, node.next_node().next_node())
 
-    app.builder._publisher.set_source(doc)
-    app.builder._publisher.publish()
-
-    context["toc"] = app.builder._publisher.writer.parts["fragment"]
+    if hasattr(app.builder, "_publisher"):
+        app.builder._publisher.set_source(doc)
+        app.builder._publisher.publish()
+        context["toc"] = app.builder._publisher.writer.parts["fragment"]
 
 
 def setup(app: Sphinx) -> Dict[str, Any]:

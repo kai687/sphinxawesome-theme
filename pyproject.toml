@@ -71,7 +71,7 @@ warn_unreachable = true
 warn_unused_ignores = true
 
 [[tool.mypy.overrides]]
-module = ["pygments.*", "bs4", "dotenv", "sphinxcontrib.serializinghtml", "nox_poetry"]
+module = ["pygments.*", "dotenv", "sphinxcontrib.serializinghtml", "nox_poetry", "bs4"]
 ignore_missing_imports = true
 
 [tool.poetry.plugins."sphinx.html_themes"]
