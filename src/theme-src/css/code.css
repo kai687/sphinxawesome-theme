@@ -2,6 +2,9 @@
 
 .highlight {
   @apply relative bg-transparent;
+  &:hover .copy {
+    @apply opacity-100;
+  }
 }
 
 .literal-block-wrapper {

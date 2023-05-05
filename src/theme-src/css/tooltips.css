@@ -16,8 +16,8 @@
   text-transform: none;
   letter-spacing: normal;
   word-wrap: break-word;
-  content: attr(aria-label);
-  @apply pointer-events-none absolute hidden whitespace-pre rounded-sm bg-gray-800 bg-opacity-75 px-2 py-1 text-center text-xs font-normal tracking-wide text-white no-underline opacity-0;
+  content: attr(data-tooltip);
+  @apply pointer-events-none absolute hidden whitespace-pre rounded-sm bg-muted bg-opacity-75 p-1 text-center text-xs font-normal text-muted-foreground no-underline opacity-0;
 }
 
 /* delay animation for tooltip */

@@ -14,7 +14,7 @@ export function addCodeButtons() {
     const successIcon =
       '<svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 96 960 960" fill="currentColor" stroke="none" class="copy-success-icon h-[14px] w-[14px] transition-all transform scale-0 absolute"><path d="M382 799q-8 0-15-2.5t-13-8.5L182 616q-11-11-10.5-28.5T183 559q11-11 28-11t28 11l143 143 339-339q11-11 28.5-11t28.5 11q11 11 11 28.5T778 420L410 788q-6 6-13 8.5t-15 2.5Z"/></svg>'
     if (pre) {
-      const btn = `<button class="copy z-20 inline-flex h-6 w-6 items-center justify-center rounded-md border border-border bg-background text-sm font-medium transition-all hover:bg-muted absolute right-4 top-4" type="button"><span class="sr-only">Copy code</span>${copyIcon}${successIcon}</button>`
+      const btn = `<button class="copy z-20 inline-flex h-6 w-6 items-center justify-center rounded-md border border-border bg-background opacity-0 focus:opacity-100 text-sm font-medium transition-all hover:bg-muted absolute right-4 top-4 tooltipped tooltipped-n" data-tooltip="Copy code" type="button"><span class="sr-only">Copy code</span>${copyIcon}${successIcon}</button>`
       pre.insertAdjacentHTML('beforeend', btn)
     }
   })

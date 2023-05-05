@@ -25,6 +25,7 @@
 <html lang="{{ lang_attr }}" x-data="{
                 darkMode: localStorage.getItem('darkMode')
                           || localStorage.setItem('darkMode', 'system'),
+                activeSection: '',
               }" x-init="$watch('darkMode', val => localStorage.setItem('darkMode', val))" class="scroll-smooth"
   :class="{'dark': darkMode === 'dark' || (darkMode === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)}">
 
@@ -65,8 +66,8 @@
   {%- endblock %}
   <script>
     <!-- Prevent Flash of wrong theme -->
-    const darkMode = localStorage.getItem('darkMode') === 'dark' || window.matchMedia('(prefers-color-scheme: dark)').matches
-    if (darkMode) {
+    const userPreference = localStorage.getItem('darkMode')
+    if (userPreference === 'dark' || (userPreference === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark');
     }
   </script>

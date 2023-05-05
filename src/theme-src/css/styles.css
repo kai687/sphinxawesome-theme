@@ -9,6 +9,7 @@
 @import 'sidebar.css';
 @import 'toc.css';
 @import 'search.css';
+@import 'tooltips.css';
 @import 'tailwindcss/utilities';
 
 @layer base {

@@ -40,6 +40,8 @@ default_role = "literal"
 
 # Global substitutions for reStructuredText files
 rst_prolog = """
+:tocdepth: 3
+
 .. |rst| replace:: reStructuredText
 .. |product| replace:: Awesome Theme
 """

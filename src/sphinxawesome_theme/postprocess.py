@@ -77,8 +77,21 @@ def _remove_empty_toctree(tree: BeautifulSoup) -> None:
 def _headerlinks(tree: BeautifulSoup) -> None:
     """Make headerlinks copy their URL on click."""
     for link in tree("a", class_="headerlink"):
-        link["x-data"] = "{ href: $el.href }"
-        link["@click.prevent"] = "window.navigator.clipboard.writeText(href)"
+        link["@click.prevent"] = "window.navigator.clipboard.writeText($el.href)"
+
+
+def _scrollspy(tree: BeautifulSoup) -> None:
+    """Add an active class to current TOC links in the right sidebar."""
+    for link in tree("a", class_="headerlink"):
+        if link.parent.name in ["h2", "h3"]:
+            active_link = link["href"]
+            link[
+                "x-intersect.margin.0%.0%.-70%.0%"
+            ] = f"activeSection = '{active_link}'"
+
+    for link in tree.select("#right-sidebar a"):
+        active_link = link["href"]
+        link[":data-current"] = f"activeSection === '{active_link}'"
 
 
 def _external_links(tree: BeautifulSoup) -> None:
@@ -144,6 +157,7 @@ def _modify_html(html_filename: str, app: Sphinx) -> None:
     _collapsible_nav(tree)
     _external_links(tree)
     _remove_empty_toctree(tree)
+    _scrollspy(tree)
     if app.config.html_awesome_headerlinks:
         _headerlinks(tree)
     if app.config.html_awesome_code_headers:
