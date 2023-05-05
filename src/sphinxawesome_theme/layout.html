@@ -23,8 +23,7 @@
 
 <!DOCTYPE html>
 <html lang="{{ lang_attr }}" x-data="{
-                darkMode: localStorage.getItem('darkMode')
-                          || localStorage.setItem('darkMode', 'system'),
+                darkMode: localStorage.getItem('darkMode') || localStorage.setItem('darkMode', 'system'),
                 activeSection: '',
               }" x-init="$watch('darkMode', val => localStorage.setItem('darkMode', val))" class="scroll-smooth"
   :class="{'dark': darkMode === 'dark' || (darkMode === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)}">
@@ -67,7 +66,7 @@
   <script>
     <!-- Prevent Flash of wrong theme -->
     const userPreference = localStorage.getItem('darkMode')
-    if (userPreference === 'dark' || (userPreference === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    if (userPreference === 'dark' || window.matchMedia('(prefers-color-scheme: dark)').matches) {
       document.documentElement.classList.add('dark');
     }
   </script>
