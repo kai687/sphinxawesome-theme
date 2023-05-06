@@ -75,7 +75,7 @@ module = ["pygments.*", "dotenv", "sphinxcontrib.serializinghtml", "nox_poetry",
 ignore_missing_imports = true
 
 [tool.poetry.plugins."sphinx.html_themes"]
-"sphinxawesome_theme" = "sphinxawesome_theme"
+sphinxawesome_theme = "sphinxawesome_theme"
 
 [build-system]
 requires = ["poetry_core"]
