@@ -11,7 +11,7 @@
   .code-block-caption;
 
 .headerlink {
-  @apply ml-1 inline-flex items-center align-middle;
+  @apply tooltipped tooltipped-sw ml-1 inline-flex items-center align-middle;
   & > * {
     @apply invisible fill-current text-muted-foreground;
   }

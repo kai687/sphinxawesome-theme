@@ -78,3 +78,8 @@
     --radius: 0.5rem;
   }
 }
+
+/** For Alpine.js */
+[x-cloak] {
+  display: none !important;
+}

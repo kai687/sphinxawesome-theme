@@ -17,7 +17,7 @@
   letter-spacing: normal;
   word-wrap: break-word;
   content: attr(data-tooltip);
-  @apply pointer-events-none absolute hidden whitespace-pre rounded-sm bg-muted bg-opacity-75 p-1 text-center text-xs font-normal text-muted-foreground no-underline opacity-0;
+  @apply pointer-events-none absolute hidden whitespace-pre rounded-sm bg-muted bg-opacity-75 p-1 text-center font-sans text-xs font-normal text-muted-foreground no-underline opacity-0;
 }
 
 /* delay animation for tooltip */

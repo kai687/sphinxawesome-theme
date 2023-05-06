@@ -78,12 +78,17 @@ def _headerlinks(tree: BeautifulSoup) -> None:
     """Make headerlinks copy their URL on click."""
     for link in tree("a", class_="headerlink"):
         link["@click.prevent"] = "window.navigator.clipboard.writeText($el.href)"
+        del link["title"]
+        link["aria-label"] = "Copy link to this element"
+        link["data-tooltip"] = "Copy link to this element"
 
 
 def _scrollspy(tree: BeautifulSoup) -> None:
     """Add an active class to current TOC links in the right sidebar."""
     for link in tree("a", class_="headerlink"):
-        if link.parent.name in ["h2", "h3"]:
+        if link.parent.name in ["h2", "h3"] or (
+            link.parent.name == "dt" and "sig" in link.parent["class"]
+        ):
             active_link = link["href"]
             link[
                 "x-intersect.margin.0%.0%.-70%.0%"

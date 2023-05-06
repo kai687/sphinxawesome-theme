@@ -65,10 +65,15 @@
   {%- endblock %}
   <script>
     <!-- Prevent Flash of wrong theme -->
-    const userPreference = localStorage.getItem('darkMode')
+    const userPreference = localStorage.getItem('darkMode');
+    let mode;
     if (userPreference === 'dark' || window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      mode = 'dark';
       document.documentElement.classList.add('dark');
+    } else {
+      mode = 'light';
     }
+    if (!userPreference) {localStorage.setItem('darkMode', mode)}
   </script>
   {%- block extrahead %}{%- endblock %}
 </head>
@@ -76,7 +81,7 @@
 <body x-data="{ showSidebar: false }" class="min-h-screen font-sans antialiased bg-background text-foreground"
   :class="{ 'overflow-hidden': showSidebar }">
   {#- A blurry background screen for the mobile sidebar -#}
-  <div x-show="showSidebar" class="fixed inset-0 z-50 overflow-hidden bg-background/80 backdrop-blur-sm"
+  <div x-cloak x-show="showSidebar" class="fixed inset-0 z-50 overflow-hidden bg-background/80 backdrop-blur-sm"
     @click.self="showSidebar = false">
   </div>
 

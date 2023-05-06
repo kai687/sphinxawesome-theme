@@ -26,12 +26,15 @@ export function addCodeButtons() {
   })
 
   clipboard.on('success', ({ trigger }) => {
+    const tooltip = trigger.getAttribute('data-tooltip')
     const copyIcon = trigger.querySelector('.copy-icon')
     const successIcon = trigger.querySelector('.copy-success-icon')
     swapIcons(copyIcon, successIcon)
+    trigger.setAttribute('data-tooltip', 'Copied!')
 
     setTimeout(() => {
       swapIcons(successIcon, copyIcon)
+      trigger.setAttribute('data-tooltip', tooltip)
     }, 2000)
   })
 }
