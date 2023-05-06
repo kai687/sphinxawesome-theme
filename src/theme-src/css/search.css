@@ -16,9 +16,9 @@
 }
 
 .highlighted {
-  @apply bg-accent-foreground px-1 underline;
+  @apply bg-accent underline decoration-2;
 }
 
 .highlight-link {
-  @apply absolute top-16 rounded-lg border border-border px-4 py-2 text-sm hover:bg-accent;
+  @apply fixed right-2 top-16 rounded-lg border border-border px-4 py-2 text-sm hover:bg-accent lg:right-16;
 }

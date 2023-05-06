@@ -54,6 +54,9 @@ def _collapsible_nav(tree: BeautifulSoup) -> None:
                 "x-data"
             ] = "{ expanded: $el.classList.contains('current') ? true : false }"
             link["@click"] = "expanded = !expanded"
+            # The expandable class is a hack because we can't use Tailwind
+            # I want to have _only_ expandable links with `justify-between`
+            link["class"].append("expandable")
             link[":class"] = "{ 'expanded' : expanded }"
             children["x-show"] = "expanded"
             # create the icon

@@ -98,10 +98,10 @@ templates_path = ["_templates"]
 
 html_static_path = ["_static"]
 html_css_files = ["feedback.css"]
-html_js_files = ["feedback.js"]
+html_js_files = [("feedback.js", {"defer": "defer"})]
 
 # extra options from the sphinxawesome_theme
-html_awesome_docsearch = True
+html_awesome_docsearch = False
 html_awesome_external_links = True
 html_awesome_postprocessing = True
 html_awesome_code_headers = False
