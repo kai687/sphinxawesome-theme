@@ -107,12 +107,18 @@ def xml(session: Session) -> None:
 
 @session(venv_backend=None)
 def export(session: Session) -> None:
-    """Export a requirements.txt file Netlify (Python 3.8)."""
+    """Export a ``requirements.txt`` file for Netlify (Python 3.8).
+
+    Netlify installs dependencies from a ``requirements.txt`` file
+    before running the build command.
+    We need to install ``nox`` and ``poetry`` first.
+    """
     with tempfile.NamedTemporaryFile() as requirements:
         session.run(
             "poetry",
             "export",
-            "--with=docs,dev,lint,netlify",
+            "--only",
+            "netlify",
             "--without-hashes",
             "--output",
             requirements.name,
