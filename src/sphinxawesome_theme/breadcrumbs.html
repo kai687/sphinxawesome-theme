@@ -1,11 +1,8 @@
 {#- Template file for the breadcrumbs. -#}
-
 {%- set separator %}
 <div class="mr-1">{{ theme_breadcrumbs_separator|default('/') }}</div>
 {%- endset %}
-
-<nav role="navigation" aria-label="{{ _('breadcrumbs') }}"
-  class="flex items-center mb-4 space-x-1 text-sm text-muted-foreground">
+<nav aria-label="{{ _('breadcrumbs') }}" class="flex items-center mb-4 space-x-1 text-sm text-muted-foreground">
   <a class="overflow-hidden text-ellipsis whitespace-nowrap hover:text-foreground" href="{{ pathto(master_doc) }}">
     <span class="hidden md:inline">{{ docstitle }}</span>
     <svg xmlns="http://www.w3.org/2000/svg" height="18" width="18" viewBox="0 96 960 960" aria-label="Home"
