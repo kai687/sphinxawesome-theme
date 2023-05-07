@@ -17,10 +17,11 @@ They might not show up in the final CSS.
 :copyright: Copyright Kai Welke.
 :license: MIT, see LICENSE.
 """
+from __future__ import annotations
 
 import os
 import re
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 from bs4 import BeautifulSoup, Comment
 from sphinx.application import Sphinx
@@ -32,7 +33,7 @@ from .icons import ICONS
 logger = logging.getLogger(__name__)
 
 
-def _get_html_files(outdir: str) -> List[str]:
+def _get_html_files(outdir: str) -> list[str]:
     """Get a list of HTML files."""
     html_list = []
     for root, _, files in os.walk(outdir):
@@ -176,7 +177,7 @@ def _modify_html(html_filename: str, app: Sphinx) -> None:
         out_file.write(str(tree))
 
 
-def post_process_html(app: Sphinx, exc: Optional[Exception]) -> None:
+def post_process_html(app: Sphinx, exc: Exception | None) -> None:
     """Perform modifications on the HTML after building.
 
     This is an extra function, that gets a list from all HTML
@@ -193,7 +194,7 @@ def post_process_html(app: Sphinx, exc: Optional[Exception]) -> None:
             _modify_html(doc, app)
 
 
-def setup(app: "Sphinx") -> Dict[str, Any]:
+def setup(app: Sphinx) -> dict[str, Any]:
     """Set this up as internal extension."""
     app.connect("build-finished", post_process_html)
 

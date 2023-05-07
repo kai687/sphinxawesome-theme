@@ -6,9 +6,11 @@
 .. _LICENSE: https://github.com/kai687/sphinxawesome-theme/blob/master/LICENSE
 """
 
+from __future__ import annotations
+
 from importlib.metadata import PackageNotFoundError, version
 from pathlib import Path
-from typing import Any, Dict
+from typing import Any
 
 from sphinx.application import Sphinx
 from sphinx.config import Config
@@ -43,7 +45,7 @@ def post_config_setup(app: Sphinx, config: Config) -> None:
         app.add_css_file("awesome-sphinx-design.css", priority=900)
 
 
-def setup(app: "Sphinx") -> Dict[str, Any]:
+def setup(app: Sphinx) -> dict[str, Any]:
     """Register the theme and its extensions wih Sphinx."""
     here = Path(__file__).parent.resolve()
 

@@ -3,12 +3,13 @@
 :copyright: Copyright, Kai Welke.
 :license: MIT, see LICENSE for details.
 """
+from __future__ import annotations
 
 import json
 import posixpath
 from functools import partial
 from os import path
-from typing import Any, Dict
+from typing import Any
 
 from docutils.nodes import Node
 from sphinx.application import Sphinx
@@ -57,7 +58,7 @@ def setup_jinja(
     app: Sphinx,
     pagename: str,
     templatename: str,
-    context: Dict[str, Any],
+    context: dict[str, Any],
     doctree: Node,
 ) -> None:
     """Register a function as a Jinja2 filter."""
@@ -68,7 +69,7 @@ def setup_jinja(
             context["pageurl"] = _make_canonical(app, pagename)
 
 
-def setup(app: Sphinx) -> Dict[str, Any]:
+def setup(app: Sphinx) -> dict[str, Any]:
     """Register this jinja filter as extension."""
     app.connect("html-page-context", setup_jinja)
 

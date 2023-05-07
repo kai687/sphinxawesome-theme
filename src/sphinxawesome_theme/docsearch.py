@@ -5,9 +5,11 @@ This Sphinx extension adds DocSearch to your Sphinx project.
 :copyright: Kai Welke.
 :license: MIT
 """
+from __future__ import annotations
+
 import os
 from pathlib import Path
-from typing import Any, Dict
+from typing import Any
 
 from docutils.nodes import Node
 from dotenv import load_dotenv
@@ -24,7 +26,7 @@ def setup_docsearch(
     app: Sphinx,
     pagename: str,
     templatename: str,
-    context: Dict[str, Any],
+    context: dict[str, Any],
     doctree: Node,
 ) -> None:
     """Set up DocSearch.
@@ -75,7 +77,7 @@ def setup_docsearch(
     app.builder.globalcontext["docsearch_config"] = docsearch_config  # type: ignore [attr-defined] # noqa: B950,E501
 
 
-def setup(app: Sphinx) -> Dict[str, Any]:
+def setup(app: Sphinx) -> dict[str, Any]:
     """Register the extension."""
     app.add_css_file("docsearch.css", priority=150)
     app.connect("html-page-context", setup_docsearch)

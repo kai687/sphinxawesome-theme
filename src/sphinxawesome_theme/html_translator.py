@@ -3,7 +3,9 @@
 :copyright: Copyright Kai Welke.
 :license: MIT, see LICENSE for details.
 """
-from typing import Any, Dict
+from __future__ import annotations
+
+from typing import Any
 
 from docutils.nodes import Element
 from sphinx.application import Sphinx
@@ -19,14 +21,14 @@ logger = logging.getLogger(__name__)
 class AwesomeHTMLTranslator(HTML5Translator):
     """Override methods to improve the usability."""
 
-    def depart_reference(self: "AwesomeHTMLTranslator", node: Element) -> None:
+    def depart_reference(self: AwesomeHTMLTranslator, node: Element) -> None:
         """Add external link icon."""
         if not (node.get("internal") or "refuri" not in node):
             self.body.append(ICONS["external_link"])
         super().depart_reference(node)
 
 
-def setup(app: "Sphinx") -> Dict[str, Any]:
+def setup(app: Sphinx) -> dict[str, Any]:
     """Use the AwesomeHTMLTranslator for the html and dirhtml builders.
 
     This function makes this available as extension.
