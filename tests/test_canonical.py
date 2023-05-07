@@ -9,7 +9,6 @@ from sphinx.application import Sphinx
 from .util import parse_html
 
 
-@pytest.mark.xfail(reason="Test not yet updated")
 @pytest.mark.sphinx(
     "html",
     confoverrides={
@@ -26,7 +25,6 @@ def test_no_canonical_links_in_html(app: Sphinx) -> None:
     assert len(link) == 0
 
 
-@pytest.mark.xfail(reason="Test not yet updated")
 @pytest.mark.sphinx(
     "dirhtml",
     confoverrides={
@@ -43,7 +41,6 @@ def test_no_canonical_links_in_dirhtml(app: Sphinx) -> None:
     assert len(link) == 0
 
 
-@pytest.mark.xfail(reason="Test not yet updated")
 @pytest.mark.sphinx(
     "html",
     confoverrides={
@@ -62,7 +59,6 @@ def test_canonical_links_in_html(app: Sphinx) -> None:
     assert link[0]["href"] == "https://test.org/index.html"
 
 
-@pytest.mark.xfail(reason="Test not yet updated")
 @pytest.mark.sphinx(
     "dirhtml",
     confoverrides={

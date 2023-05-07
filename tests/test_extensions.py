@@ -10,10 +10,9 @@ from sphinx.application import Sphinx
 from .util import parse_html
 
 
-@pytest.mark.xfail(reason="Test not yet updated")
 @pytest.mark.sphinx("html", confoverrides={"html_theme": "sphinxawesome_theme"})
 def test_compiles_html_with_theme(app: Sphinx) -> None:
-    """It compiles HTML with the theme without having to load it as extension."""
+    """It compiles HTML with the theme but doesn't load the extra extensions."""
     app.build()
     assert os.path.exists(Path(app.outdir) / "index.html")
     assert app.config.html_theme == "sphinxawesome_theme"
@@ -80,7 +79,6 @@ def test_no_awesome_postprocessing(app: Sphinx) -> None:
     assert app.config.html_awesome_postprocessing is False
 
 
-@pytest.mark.xfail(reason="Test not yet updated")
 @pytest.mark.sphinx(
     "html",
     confoverrides={
@@ -107,12 +105,12 @@ def test_awesome_docsearch(app: Sphinx) -> None:
 
     # It adds the `docsearch.js` file
     scripts = tree.select("script")
-    assert len(scripts) == 3
-    script_src = [item["src"] for item in scripts]
+    assert len(scripts) == 4
+    print("SCRIPTS: ", scripts)
+    script_src = [item["src"] for item in scripts if "src" in item.attrs]
     assert any(filter(pattern.search, script_src))  # type: ignore[arg-type]
 
 
-@pytest.mark.xfail(reason="Test not yet updated")
 @pytest.mark.sphinx(
     "html",
     confoverrides={

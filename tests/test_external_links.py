@@ -9,7 +9,6 @@ from sphinx.application import Sphinx
 from .util import parse_html
 
 
-@pytest.mark.xfail(reason="Test not yet updated")
 @pytest.mark.sphinx(
     "html",
     testroot="external",
@@ -24,14 +23,13 @@ def test_no_external_link_icons(app: Sphinx) -> None:
     assert os.path.exists(Path(app.outdir) / "index.html")
     tree = parse_html(Path(app.outdir) / "index.html")
     links = tree.select(".reference")
-    assert len(links) == 2
+    assert len(links) == 3
 
     for a in links:
         icon = a("svg")
         assert len(icon) == 0
 
 
-@pytest.mark.xfail(reason="Test not yet updated")
 @pytest.mark.sphinx(
     "html",
     testroot="external",
