@@ -62,7 +62,7 @@
         {%- endif %}
         {%- block extra_header_link_icons %}
           <nav class="flex items-center space-x-1">
-            {%- if theme_extra_header_link_icons %}
+            {%- if theme_extra_header_link_icons|tobool %}
               {%- for text,url in theme_extra_header_link_icons.items() %}
                 {%- if url is mapping %}
                   <a href="{{ url.link }}" title="Visit {{ text }}" rel="noreferrer">
