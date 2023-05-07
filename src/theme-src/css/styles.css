@@ -83,3 +83,9 @@
 [x-cloak] {
   display: none !important;
 }
+
+@media (max-width: 640px) {
+  .container {
+    @apply px-4;
+  }
+}
