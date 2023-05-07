@@ -13,7 +13,7 @@ extends the default Sphinx ``code-block`` directive.
 from __future__ import annotations
 
 import re
-from typing import Any, Generator, Pattern
+from typing import Any, Generator, Pattern, Tuple, Union
 
 from docutils import nodes
 from docutils.nodes import Element, Node
@@ -36,7 +36,8 @@ from . import __version__
 logger = logging.getLogger(__name__)
 
 # type alias
-TokenStream = Generator[tuple[_TokenType | int, str], None, None]
+TokenType = Union[_TokenType, int]  # For Python 3.8
+TokenStream = Generator[Tuple[TokenType, str], None, None]
 
 
 def _replace_placeholders(

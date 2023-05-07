@@ -53,20 +53,19 @@ def tests(session: Session) -> None:
 
 
 @session(python=python_versions)
-def docs(session: Session) -> None:
-    """Build the docs.
-
-    Run ``nox -p <python> -s docs`` to build the docs the standard way.
-    Run ``nox -p <python> -s docs -- --live`` to use ``sphinx-autobuild``.
-    """
+def docs(session: Session, live: bool = False) -> None:
+    """Build the docs."""
     args = ["-b", "dirhtml", "-aWTE", "docs", "docs/public"]
     deps = ["sphinx", "bs4", "sphinx-sitemap", "sphinx-design"]
     sphinx_build = "sphinx-build"
 
     if "--live" in session.posargs:
+        live = True
+        session.posargs.remove("--live")
+
+    if live:
         deps.append("sphinx-autobuild")
         sphinx_build = "sphinx-autobuild"
-        session.posargs.remove("--live")
         args += ["-A", "mode=development", "--watch", "src/sphinxawesome_theme"]
 
     if session.posargs:
@@ -74,6 +73,12 @@ def docs(session: Session) -> None:
 
     install_with_requirements(session, "docs", ".", *deps)
     session.run(sphinx_build, *args)
+
+
+@session
+def live_docs(session: Session) -> None:
+    """Build the docs with `sphinx-autobuild`."""
+    docs(session, True)
 
 
 @session
