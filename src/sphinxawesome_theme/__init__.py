@@ -8,9 +8,10 @@
 
 from __future__ import annotations
 
+from dataclasses import dataclass, field
 from importlib.metadata import PackageNotFoundError, version
 from pathlib import Path
-from typing import Any
+from typing import Any, TypedDict
 
 from sphinx.application import Sphinx
 from sphinx.config import Config
@@ -23,6 +24,42 @@ try:
     __version__ = version(__name__)
 except PackageNotFoundError:  # pragma: no cover
     __version__ = "unknown"
+
+
+class LinkIcon(TypedDict):
+    """A link to an external resource, represented by an icon."""
+
+    link: str
+    """The absolute URL to an external resource."""
+    icon: str
+    """An SVG icon as a string."""
+
+
+@dataclass
+class ThemeOptions:
+    """Configuration options for the HTML theme."""
+
+    show_scrolltop: bool = False
+    """Show a scroll to top button (Not implemented yet)."""
+
+    show_prev_next: bool = True
+    """Show links to previous/next pages."""
+
+    main_nav_links: dict[str, str] = field(default_factory=dict)
+    """Navigation links to include in the site header."""
+
+    extra_header_link_icons: dict[str, LinkIcon] = field(default_factory=dict)
+    """Extra icons to include on the right side of the header.
+
+    Example:
+
+    extra_header_link_icons: {
+        "label": {
+            "link": <url>,
+            "icon": <svg>,
+        }
+    }
+    """
 
 
 def post_config_setup(app: Sphinx, config: Config) -> None:
@@ -51,6 +88,8 @@ def setup(app: Sphinx) -> dict[str, Any]:
 
     app.add_html_theme(name="sphinxawesome_theme", theme_path=str(here))
 
+    # TODO: Adding these options require the theme being loaded as an extension
+    #       Try converting this into `theme_options`
     app.add_config_value(
         name="html_awesome_postprocessing", default=True, rebuild="html", types=(bool)
     )
@@ -75,6 +114,7 @@ def setup(app: Sphinx) -> dict[str, Any]:
         name="html_awesome_headerlinks", default=True, rebuild="html", types=(str)
     )
 
+    # TODO: Not implemented yet in the new version
     app.add_config_value(
         name="html_awesome_code_headers", default=True, rebuild="html", types=(str)
     )

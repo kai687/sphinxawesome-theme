@@ -1,14 +1,11 @@
 """Sphinx configuration file."""
-import sys
-from pathlib import Path
+
+
+from dataclasses import asdict
 
 from sphinx.application import Sphinx
 from sphinx.util.docfields import Field
-
-# Add path to local extension
-this_dir = Path(__file__).parent
-ext_dir = (this_dir / ".." / "src").resolve()
-sys.path.append(str(ext_dir.absolute()))
+from sphinxawesome_theme import ThemeOptions
 
 # -- Project information -----------------------------------------------------
 
@@ -94,7 +91,7 @@ html_css_files = ["feedback.css"]
 html_js_files = [("feedback.js", {"defer": "defer"})]
 
 # extra options from the sphinxawesome_theme
-html_awesome_docsearch = False
+html_awesome_docsearch = True
 html_awesome_external_links = True
 html_awesome_postprocessing = True
 html_awesome_code_headers = False
@@ -105,15 +102,11 @@ docsearch_config = {
     "missing_results_url": "https://github.com/kai687/sphinxawesome-theme/issues/new?title=${query}",
 }
 
-html_theme_options = {
-    "show_scrolltop": True,
-    "show_prev_next": True,
-    "main_nav_links": {
-        "Docs": "/index",
-        "About": "/about",
-        "Changelog": "/changelog",
-    },
-    "extra_header_link_icons": {
+theme_options = ThemeOptions(
+    show_scrolltop=True,
+    show_prev_next=True,
+    main_nav_links={"Docs": "/index", "About": "/about", "Changelog": "/changelog"},
+    extra_header_link_icons={
         "repository on GitHub": {
             "link": "https://github.com/kai687/sphinxawesome-theme",
             "icon": (
@@ -142,7 +135,9 @@ html_theme_options = {
             ),
         },
     },
-}
+)
+
+html_theme_options = asdict(theme_options)
 
 sitemap_url_scheme = "{link}"
 
