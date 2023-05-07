@@ -54,7 +54,13 @@ def tests(session: Session) -> None:
 
 @session(python=python_versions)
 def docs(session: Session, live: bool = False) -> None:
-    """Build the docs."""
+    """Build the docs.
+
+    Args:
+        session: The nox session instance.
+        live: If ``True``, use ``sphinx-autobuild`` to build the docs with a live-reloading server.
+              If ``False``, use the regular ``sphinx-build``.
+    """
     args = ["-b", "dirhtml", "-aWTE", "docs", "docs/public"]
     deps = ["sphinx", "bs4", "sphinx-sitemap", "sphinx-design"]
     sphinx_build = "sphinx-build"
@@ -106,7 +112,7 @@ def export(session: Session) -> None:
         session.run(
             "poetry",
             "export",
-            "--with=docs,dev,lint",
+            "--with=docs,dev,lint,netlify",
             "--without-hashes",
             "--output",
             requirements.name,

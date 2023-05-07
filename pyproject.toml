@@ -37,13 +37,16 @@ pytest-cov = "^4.0"
 coverage = { extras = ["toml"], version = "^7.2" }
 types-docutils = "^0.19.1.6"
 mypy = "^1.0"
-nox = "^2023.4.22"
 
 [tool.poetry.group.lint.dependencies]
 black = "^23.1"
 pre-commit = "^3.1.1"
 djlint = "^1.25.0"
 ruff = "^0.0.265"
+
+[tool.poetry.group.netlify.dependencies]
+nox = {version = "^2023.4.22", python = "3.8"}
+poetry = {version = "^1.4.2", python = "3.8"}
 
 [tool.coverage.paths]
 source = ["src"]
