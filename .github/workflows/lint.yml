@@ -45,10 +45,6 @@ jobs:
           pipx install --pip-args=--constraint=constraints.txt nox
           nox --version
 
-      - name: Install nox-poetry
-        run: |
-          pipx inject --pip-args=--constraint=constraints.txt nox nox-poetry
-
       - name: Run Nox workflow
         run: |
           nox -p ${{ matrix.python-version }}
