@@ -60,8 +60,10 @@ def _collapsible_nav(tree: BeautifulSoup) -> None:
             link["class"].append("expandable")
             link[":class"] = "{ 'expanded' : expanded }"
             children["x-show"] = "expanded"
+            children["x-cloak"] = ""
             # create the icon
             svg = BeautifulSoup(ICONS["chevron_right"], "html.parser").svg
+            svg["@click.prevent.stop"] = "expanded = !expanded"
             link.append(svg)
 
 

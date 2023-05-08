@@ -14,16 +14,19 @@
   & a {
     @apply flex w-full items-center rounded-md border border-transparent px-2 py-1.5 hover:underline focus-visible:outline-offset-[-1px];
     & > svg {
-      @apply text-muted-foreground;
+      @apply rounded text-muted-foreground hover:bg-primary/10;
+      & > path {
+        @apply origin-center transform-gpu transition-transform;
+      }
     }
     &.current {
       @apply border border-border bg-accent font-medium text-accent-foreground;
     }
     &.expandable {
       @apply justify-between;
-    }
-    &.expanded > svg {
-      @apply rotate-90 transition-all;
+      &.expanded > svg > path {
+        @apply rotate-90;
+      }
     }
   }
 }
