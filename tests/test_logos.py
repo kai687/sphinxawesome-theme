@@ -1,7 +1,5 @@
 """Test the handling of logos."""
 
-import os
-import re
 from io import StringIO
 from pathlib import Path
 

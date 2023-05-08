@@ -82,7 +82,7 @@ class ThemeOptions:
     """
 
 
-def get_theme_options(app: Sphinx) -> dict[str, Any]:
+def get_theme_options(app: Sphinx) -> Any:
     """Return theme options for the application.
 
     Adapted from the ``pydata_sphinx_theme``.
@@ -112,12 +112,16 @@ def update_config(app: Sphinx) -> None:
         logger.warning(
             "Conflicting theme options: use either `html_logo` or `logo_light` and `logo_dark`."
         )
-    if not (dark_logo and light_logo):
+    if not (dark_logo and light_logo) and not app.config.html_logo:
         logger.warning("You must use `logo_light` and `logo_dark` together.")
 
 
 def setup_logo_path(
-    app: Sphinx, pagename: str, templatename: str, context: dict, doctree: Node
+    app: Sphinx,
+    pagename: str,
+    templatename: str,
+    context: dict[str, Any],
+    doctree: Node,
 ) -> None:
     """Update the logo path for the templates."""
     theme_options = get_theme_options(app)
