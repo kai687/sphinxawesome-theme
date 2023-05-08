@@ -8,14 +8,27 @@
     {% block header_left %}
       <div class="hidden mr-4 md:flex">
         {% block header_logo %}
-          <a href="{{ pathto(master_doc) }}"
-             class="flex items-center mr-6 space-x-2">
+          <a href="{{ pathto(master_doc) }}" class="flex items-center mr-6">
             {%- set _logo_url = logo_url|default(pathto('_static/' + (logo or ""), 1)) %}
-            {%- if logo or logo_url %}
+            {%- if logo or logo_url -%}
               <img width="24"
                    height="24"
-                   class="inline-block w-6 h-6 bg-black invert dark:invert-0"
+                   class="mr-2 dark:invert"
                    src="{{ _logo_url }}"
+                   alt="Logo" />
+            {%- endif -%}
+            {%- if theme_logo_dark and not (logo or logo_url) -%}
+              <img width="24"
+                   height="24"
+                   class="mr-2 hidden dark:block"
+                   src="{{ pathto('_static/' + theme_logo_dark, 1) }}"
+                   alt="Logo" />
+            {%- endif -%}
+            {%- if theme_logo_light and not (logo or logo_url) -%}
+              <img width="24"
+                   height="24"
+                   class="mr-2 dark:hidden"
+                   src="{{ pathto('_static/' + theme_logo_light, 1) }}"
                    alt="Logo" />
             {%- endif -%}
             <span class="hidden font-bold sm:inline-block text-clip whitespace-nowrap">{{ docstitle }}</span>

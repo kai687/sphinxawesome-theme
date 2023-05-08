@@ -10,14 +10,20 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from importlib.metadata import PackageNotFoundError, version
+from os import path
 from pathlib import Path
 from typing import Any, TypedDict
 
+from docutils.nodes import Node
 from sphinx.application import Sphinx
 from sphinx.config import Config
+from sphinx.util import isurl, logging
+from sphinx.util.fileutil import copy_asset_file
 from sphinxcontrib.serializinghtml import JSONHTMLBuilder
 
 from . import jsonimpl
+
+logger = logging.getLogger(__name__)
 
 try:
     # obtain version from `pyproject.toml` via `importlib.metadata.version()`
@@ -60,6 +66,79 @@ class ThemeOptions:
         }
     }
     """
+
+    logo_light: str | None = None
+    """A path to a logo for the light mode.
+
+    If you're using separate logos for light and dark mode,
+    you **must** provide both logos.
+    """
+
+    logo_dark: str | None = None
+    """A path to a logo for the dark mode.
+
+    If you're using separate logos for light and dark mode,
+    you **must** provide both logos.
+    """
+
+
+def get_theme_options(app: Sphinx) -> dict[str, Any]:
+    """Return theme options for the application.
+
+    Adapted from the ``pydata_sphinx_theme``.
+    https://github.com/pydata/pydata-sphinx-theme/blob/f15ecfed59a2a5096c05496a3d817fef4ef9a0af/src/pydata_sphinx_theme/utils.py
+    """
+    if hasattr(app.builder, "theme_options"):
+        return app.builder.theme_options
+    elif hasattr(app.config, "html_theme_options"):
+        return app.config.html_theme_options
+    else:
+        return {}
+
+
+def update_config(app: Sphinx) -> None:
+    """Update the configuration, handling the ``builder-inited`` event.
+
+    Adapted from the ``pydata_sphinx_theme``:
+    https://github.com/pydata/pydata-sphinx-theme/blob/f15ecfed59a2a5096c05496a3d817fef4ef9a0af/src/pydata_sphinx_theme/__init__.py
+    """
+    theme_options = get_theme_options(app)
+
+    # Check logo config
+    dark_logo = theme_options.get("logo_dark")
+    light_logo = theme_options.get("logo_light")
+    if app.config.html_logo and (dark_logo or light_logo):
+        # For the rendering of the logos, see ``header.html`` and ``sidebar.html``
+        logger.warning(
+            "Conflicting theme options: use either `html_logo` or `logo_light` and `logo_dark`)."
+        )
+    if not (dark_logo and light_logo):
+        logger.warning("You must use `logo_light` and `logo_dark` together.")
+
+
+def setup_logo_path(
+    app: Sphinx, pagename: str, templatename: str, context: dict, doctree: Node
+) -> None:
+    """Update the logo path for the templates."""
+    theme_options = get_theme_options(app)
+    for kind in ["dark", "light"]:
+        logo = theme_options.get(f"logo_{kind}")
+        if logo and not isurl(logo):
+            context[f"theme_logo_{kind}"] = path.basename(logo)
+
+
+def copy_logos(app: Sphinx, exc: Exception | None) -> None:
+    """Copy the light and dark logos."""
+    theme_options = get_theme_options(app)
+    static_dir = str(Path(app.builder.outdir) / "_static")
+
+    for kind in ["dark", "light"]:
+        logo = theme_options.get(f"logo_{kind}")
+        if logo and not isurl(logo):
+            logo_path = Path(app.builder.confdir) / logo
+            if not logo_path.exists():
+                logger.warning("Path to logo %s does not exist.", logo)
+            copy_asset_file(str(logo_path), static_dir)
 
 
 def post_config_setup(app: Sphinx, config: Config) -> None:
@@ -122,6 +201,9 @@ def setup(app: Sphinx) -> dict[str, Any]:
     app.setup_extension("sphinxawesome_theme.jinja_functions")
     app.setup_extension("sphinxawesome_theme.toc")
     app.connect("config-inited", post_config_setup)
+    app.connect("builder-inited", update_config)
+    app.connect("html-page-context", setup_logo_path)
+    app.connect("build-finished", copy_logos)
 
     JSONHTMLBuilder.out_suffix = ".json"
     JSONHTMLBuilder.implementation = jsonimpl

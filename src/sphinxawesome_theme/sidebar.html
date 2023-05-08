@@ -6,11 +6,25 @@
   <a href="{{ pathto(master_doc) }}"
      class="!justify-start text-sm md:!hidden bg-background">
     {%- set _logo_url = logo_url|default(pathto('_static/' + (logo or ""), 1)) %}
-    {%- if logo or logo_url %}
+    {%- if logo or logo_url -%}
       <img height="16"
            width="16"
-           class="mr-2 w-4 h-4 bg-black invert dark:invert-0"
+           class="mr-2 dark:invert"
            src="{{ _logo_url }}"
+           alt="Logo" />
+    {%- endif -%}
+    {%- if theme_logo_dark and not (logo or logo_url) -%}
+      <img width="16"
+           height="16"
+           class="mr-2 hidden dark:block"
+           src="{{ pathto('_static/' + theme_logo_dark, 1) }}"
+           alt="Logo" />
+    {%- endif -%}
+    {%- if theme_logo_light and not (logo or logo_url) -%}
+      <img width="16"
+           height="16"
+           class="mr-2 dark:hidden"
+           src="{{ pathto('_static/' + theme_logo_light, 1) }}"
            alt="Logo" />
     {%- endif -%}
     <span class="font-bold text-clip whitespace-nowrap">{{ docstitle }}</span>
