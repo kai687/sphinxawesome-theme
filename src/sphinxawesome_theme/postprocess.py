@@ -60,11 +60,19 @@ def _collapsible_nav(tree: BeautifulSoup) -> None:
             link["class"].append("expandable")
             link[":class"] = "{ 'expanded' : expanded }"
             children["x-show"] = "expanded"
-            children["x-cloak"] = ""
+
+            # Create a button with an icon inside to get focus behavior
+            button = tree.new_tag(
+                "button",
+                attrs={"type": "button", "@click.prevent.stop": "expanded = !expanded"},
+            )
+            label = tree.new_tag("span", attrs={"class": "sr-only"})
+            button.append(label)
+
             # create the icon
             svg = BeautifulSoup(ICONS["chevron_right"], "html.parser").svg
-            svg["@click.prevent.stop"] = "expanded = !expanded"
-            link.append(svg)
+            button.append(svg)
+            link.append(button)
 
 
 def _remove_empty_toctree(tree: BeautifulSoup) -> None:

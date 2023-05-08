@@ -13,9 +13,9 @@
   }
   & a {
     @apply flex w-full items-center rounded-md border border-transparent px-2 py-1.5 hover:underline focus-visible:outline-offset-[-1px];
-    & > svg {
+    & > button {
       @apply rounded text-muted-foreground hover:bg-primary/10;
-      & > path {
+      & > svg {
         @apply origin-center transform-gpu transition-transform;
       }
     }
@@ -24,7 +24,7 @@
     }
     &.expandable {
       @apply justify-between;
-      &.expanded > svg > path {
+      &.expanded > button > svg {
         @apply rotate-90;
       }
     }
