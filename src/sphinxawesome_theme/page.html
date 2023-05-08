@@ -7,7 +7,7 @@
       {%- if pagename != master_doc and theme_show_breadcrumbs|tobool %}
         {%- include "breadcrumbs.html" %}
       {%- endif %}
-      <div id="content">{{ body }}</div>
+      <div id="content" role="main">{{ body }}</div>
       {%- if theme_show_prev_next|tobool %}
         {%- include "prev_next.html" %}
       {%- endif %}

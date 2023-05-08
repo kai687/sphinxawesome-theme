@@ -18,7 +18,7 @@
   {%- endif -%}
   <!DOCTYPE html>
   <html lang="{{ lang_attr }}"
-        x-data="{ darkMode: localStorage.getItem('darkMode') || localStorage.setItem('darkMode', 'system'), activeSection: '', }"
+        x-data="{ darkMode: localStorage.getItem('darkMode') || localStorage.setItem('darkMode', 'system'), activeSection: '' }"
         x-init="$watch('darkMode', val => localStorage.setItem('darkMode', val))"
         class="scroll-smooth"
         :class="{'dark': darkMode === 'dark' || (darkMode === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)}">
@@ -95,8 +95,7 @@
                 {%- include "sidebar.html" %}
               {%- endblock sidebar %}
               {%- block main %}
-                <main role="main"
-                      class="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]">
+                <main class="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]">
                   {%- block body %}{%- endblock %}
                   </main>
                 {%- endblock main %}
