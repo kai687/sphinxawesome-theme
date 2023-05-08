@@ -46,7 +46,7 @@
         <div class="w-full h-full rounded-[inherit]">
           <nav class="table w-full min-w-full">
             <div class="w-full">
-              {%- if theme_nav_include_hidden|tobool %}
+              {%- if theme_globaltoc_includehidden|tobool %}
                 {{ toctree(titles_only=true, collapse=False, includehidden=true) }}
               {%- else %}
                 {{ toctree(titles_only=true, collapse=False) }}
