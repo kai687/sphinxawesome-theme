@@ -1,61 +1,59 @@
 {%- macro script() %}
-  {%- for js in script_files %}{{ js_tag(js) }}{%- endfor %}
-    <script src="{{ pathto(asset('_static/theme.js'), 1) }}" defer></script>
-    {%- if docsearch %}
-      <script src="{{ pathto(asset('_static/docsearch.js'), 1) }}" defer></script>
-      <script src="{{ pathto('_static/docsearch_config.js', 1) }}" defer></script>
-    {%- endif %}
-  {%- endmacro -%}
-  {%- set lang_attr = "en" if language == None else (language|replace('_','-')) -%}
-  {%- if not embedded and docstitle -%}
-    {%- if title == docstitle -%}
-      {%- set titlesuffix = "" -%}
-    {%- else -%}
-      {%- set titlesuffix = " | "|safe + docstitle|e -%}
-    {%- endif -%}
-  {%- else -%}
-    {%- set titlesuffix = "" -%}
-  {%- endif -%}
-  <!DOCTYPE html>
-  <html lang="{{ lang_attr }}"
-        x-data="{ darkMode: localStorage.getItem('darkMode') || localStorage.setItem('darkMode', 'system'), activeSection: '' }"
-        x-init="$watch('darkMode', val => localStorage.setItem('darkMode', val))"
-        class="scroll-smooth"
-        :class="{'dark': darkMode === 'dark' || (darkMode === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)}">
-    <head>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta charset="utf-8" />
-      {{ metatags }}
-      {%- block htmltitle %}
-        <title>{{ title|striptags|e if title else docstitle }}{{ titlesuffix }}</title>
-      {%- endblock htmltitle %}
-      {#- Extra CSS files for overriding stuff #}
-      {%- for css in css_files %}<link rel="stylesheet" href="{{ pathto(asset(css), 1) }}" />{%- endfor %}
-      {%- if docsearch %}
-        <link rel="preconnect"
-              href="https://{{ docsearch_app_id }}-dsn.algolia.net"
-              crossorigin="anonymous" />
-      {% endif %}
-      {%- if pageurl %}<link rel="canonical" href="{{ pageurl|e }}" />{%- endif %}
-      {%- set _favicon_url = favicon_url | default(pathto('_static/' + (favicon or ""), 1)) %}
-      {%- if favicon_url or favicon %}<link rel="icon" href="{{ _favicon_url }}" />{%- endif %}
-      {%- block linktags %}
-        {%- if hasdoc('search') and not docsearch %}
-          <link rel="search" title="{{ _('Search') }}" href="{{ pathto('search') }}" />
-        {%- endif %}
-        {%- if hasdoc('genindex') %}<link rel="index" title="{{ _('Index') }}" href="{{ pathto('genindex') }}" />{%- endif %}
-        {%- if next %}
-          <link rel="next"
-                title="{{ next.title|striptags|e }}"
-                href="{{ next.link|e }}" />
-        {%- endif %}
-        {%- if prev %}
-          <link rel="prev"
-                title="{{ prev.title|striptags|e }}"
-                href="{{ prev.link|e }}" />
-        {%- endif %}
-      {%- endblock linktags %}
-      <script>
+{%- for js in script_files %}{{ js_tag(js) }}{%- endfor %}
+<script src="{{ pathto(asset('_static/theme.js'), 1) }}" defer></script>
+{%- if docsearch %}
+<script src="{{ pathto(asset('_static/docsearch.js'), 1) }}" defer></script>
+<script src="{{ pathto('_static/docsearch_config.js', 1) }}" defer></script>
+{%- endif %}
+{%- endmacro -%}
+{%- set lang_attr = "en" if language == None else (language|replace('_','-')) -%}
+{%- if not embedded and docstitle -%}
+{%- if title == docstitle -%}
+{%- set titlesuffix = "" -%}
+{%- else -%}
+{%- set titlesuffix = " | "|safe + docstitle|e -%}
+{%- endif -%}
+{%- else -%}
+{%- set titlesuffix = "" -%}
+{%- endif -%}
+<!DOCTYPE html>
+<html lang="{{ lang_attr }}"
+  x-data="{ darkMode: localStorage.getItem('darkMode') || localStorage.setItem('darkMode', 'system'), activeSection: '' }"
+  x-init="$watch('darkMode', val => localStorage.setItem('darkMode', val))" class="scroll-smooth"
+  :class="{'dark': darkMode === 'dark' || (darkMode === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)}">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  {{ metatags }}
+  {%- block htmltitle %}
+  <title>{{ title|striptags|e if title else docstitle }}{{ titlesuffix }}</title>
+  {%- endblock htmltitle %}
+  {#- Extra CSS files for overriding stuff #}
+  {%- for css in css_files %}
+  <link rel="stylesheet" href="{{ pathto(asset(css), 1) }}" />{%- endfor %}
+  {%- if docsearch %}
+  <link rel="preconnect" href="https://{{ docsearch_app_id }}-dsn.algolia.net" crossorigin="anonymous" />
+  {% endif %}
+  {%- if pageurl %}
+  <link rel="canonical" href="{{ pageurl|e }}" />{%- endif %}
+  {%- set _favicon_url = favicon_url | default(pathto('_static/' + (favicon or ""), 1)) %}
+  {%- if favicon_url or favicon %}
+  <link rel="icon" href="{{ _favicon_url }}" />{%- endif %}
+  {%- block linktags %}
+  {%- if hasdoc('search') and not docsearch %}
+  <link rel="search" title="{{ _('Search') }}" href="{{ pathto('search') }}" />
+  {%- endif %}
+  {%- if hasdoc('genindex') %}
+  <link rel="index" title="{{ _('Index') }}" href="{{ pathto('genindex') }}" />{%- endif %}
+  {%- if next %}
+  <link rel="next" title="{{ next.title|striptags|e }}" href="{{ next.link|e }}" />
+  {%- endif %}
+  {%- if prev %}
+  <link rel="prev" title="{{ prev.title|striptags|e }}" href="{{ prev.link|e }}" />
+  {%- endif %}
+  {%- endblock linktags %}
+  <script>
     <!-- Prevent Flash of wrong theme -->
     const userPreference = localStorage.getItem('darkMode');
     let mode;
@@ -66,43 +64,44 @@
       mode = 'light';
     }
     if (!userPreference) {localStorage.setItem('darkMode', mode)}
-      </script>
-      {% block scripts %}
-        {{ script() }}
-      {% endblock scripts %}
-      {%- block extrahead %}{%- endblock extrahead %}
-      </head>
-      <body x-data="{ showSidebar: false }"
-            class="min-h-screen font-sans antialiased bg-background text-foreground"
-            :class="{ 'overflow-hidden': showSidebar }">
-        {#- A blurry background screen for the mobile sidebar -#}
-        <div x-cloak
-             x-show="showSidebar"
-             class="fixed inset-0 z-50 overflow-hidden bg-background/80 backdrop-blur-sm"
-             @click.self="showSidebar = false"></div>
-        {#- The main page wrapper -#}
-        <div id="page" class="relative flex flex-col min-h-screen">
-          <a class="absolute top-0 left-0 z-[100] block bg-background p-4 text-xl transition -translate-x-full opacity-0 focus:translate-x-0 focus:opacity-100"
-             href="#">Skip to content</a>
-          {%- block header %}
-            {% include "header.html" %}
-          {%- endblock header %}
-          <div class="flex-1">
-            <div class="container flex-1 items-start md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10">
-              {%- block sidebar %}
-                {%- include "sidebar.html" %}
-              {%- endblock sidebar %}
-              {%- block main %}
-                <main class="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]">
-                  {%- block body %}{%- endblock %}
-                  </main>
-                {%- endblock main %}
-              </div>
-            </div>
-            {%- block footer %}
-              {%- include "footer.html" %}
-            {%- endblock footer %}
-            {#- block extrabody %}{%- endblock extrabody #}
-          </div>
-        </body>
-      </html>
+  </script>
+  {% block scripts %}
+  {{ script() }}
+  {% endblock scripts %}
+  {%- block extrahead %}{%- endblock extrahead %}
+</head>
+
+<body x-data="{ showSidebar: false }" class="min-h-screen font-sans antialiased bg-background text-foreground"
+  :class="{ 'overflow-hidden': showSidebar }">
+  {#- A blurry background screen for the mobile sidebar -#}
+  <div x-cloak x-show="showSidebar" class="fixed inset-0 z-50 overflow-hidden bg-background/80 backdrop-blur-sm"
+    @click.self="showSidebar = false"></div>
+  {#- The main page wrapper -#}
+  <div id="page" class="relative flex flex-col min-h-screen">
+    <a href="#content"
+      class="absolute top-0 left-0 z-[100] block bg-background p-4 text-xl transition -translate-x-full opacity-0 focus:translate-x-0 focus:opacity-100">Skip
+      to content</a>
+    {%- block header %}
+    {% include "header.html" %}
+    {%- endblock header %}
+    <div class="flex-1">
+      <div
+        class="container flex-1 items-start md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10">
+        {%- block sidebar %}
+        {%- include "sidebar.html" %}
+        {%- endblock sidebar %}
+        {%- block main %}
+        <main class="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]">
+          {%- block body %}{%- endblock %}
+        </main>
+        {%- endblock main %}
+      </div>
+    </div>
+    {%- block footer %}
+    {%- include "footer.html" %}
+    {%- endblock footer %}
+    {#- block extrabody %}{%- endblock extrabody #}
+  </div>
+</body>
+
+</html>
