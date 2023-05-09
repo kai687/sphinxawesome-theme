@@ -1,6 +1,6 @@
 {#- Template for the search box in the header. -#}
 {%- if docsearch %}
-  <div id="{{ docsearch_config.container[1:] }}"></div>
+  <div id="{{ docsearch_container[1:]|default('docsearch') }}"></div>
 {%- else %}
   <form id="searchbox"
         action="{{ pathto('search') }}"

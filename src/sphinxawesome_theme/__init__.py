@@ -94,9 +94,6 @@ def post_config_setup(app: Sphinx, config: Config) -> None:
     if config.html_awesome_postprocessing or config.html_awesome_code_headers:
         app.setup_extension("sphinxawesome_theme.postprocess")
 
-    if config.html_awesome_docsearch:
-        app.setup_extension("sphinxawesome_theme.docsearch")
-
     # Add the CSS overrides if we're using the `sphinx-design` extension
     if "sphinx_design" in app.extensions:
         app.add_css_file("awesome-sphinx-design.css", priority=900)
@@ -116,14 +113,6 @@ def setup(app: Sphinx) -> dict[str, Any]:
 
     app.add_config_value(
         name="html_awesome_highlighting", default=True, rebuild="html", types=(bool)
-    )
-
-    app.add_config_value(
-        name="html_awesome_docsearch", default=False, rebuild="html", types=(bool)
-    )
-
-    app.add_config_value(
-        name="docsearch_config", default={}, rebuild="html", types=(dict)
     )
 
     # TODO: Not implemented yet in the new version

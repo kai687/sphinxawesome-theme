@@ -1,11 +1,13 @@
 """Sphinx configuration file."""
-
-
+import os
 from dataclasses import asdict
 
+from dotenv import load_dotenv
 from sphinx.application import Sphinx
 from sphinx.util.docfields import Field
 from sphinxawesome_theme import ThemeOptions
+
+load_dotenv()
 
 # -- Project information -----------------------------------------------------
 
@@ -20,9 +22,10 @@ extensions = [
     "sphinx.ext.intersphinx",
     "sphinx.ext.extlinks",
     "sphinx.ext.viewcode",
-    "sphinxawesome_theme",
     "sphinx_sitemap",
     "sphinx_design",
+    "sphinxawesome_theme",
+    "sphinxawesome_theme.docsearch",
 ]
 
 exclude_patterns = ["public", "includes", "**/includes"]
@@ -91,16 +94,17 @@ html_css_files = ["feedback.css"]
 html_js_files = [("feedback.js", {"defer": "defer"})]
 
 # extra options from the sphinxawesome_theme
-html_awesome_docsearch = True
-html_awesome_external_links = True
 html_awesome_postprocessing = True
 html_awesome_code_headers = False
 
-# The Algolia credentials are added from an `.env` file
-docsearch_config = {
-    "placeholder": "Search these docs",
-    "missing_results_url": "https://github.com/kai687/sphinxawesome-theme/issues/new?title=${query}",
-}
+# DocSearch (sphinxawesome_theme extension)
+docsearch_app_id = os.getenv("DOCSEARCH_APP_ID")
+docsearch_api_key = os.getenv("DOCSEARCH_API_KEY")
+docsearch_index_name = os.getenv("DOCSEARCH_INDEX_NAME")
+docsearch_placeholder = "Search these docs"
+docsearch_missing_results_url = (
+    "https://github.com/kai687/sphinxawesome-theme/issues/new?title=${query}"
+)
 
 theme_options = ThemeOptions(
     show_scrolltop=True,

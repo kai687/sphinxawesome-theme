@@ -2,6 +2,7 @@
 
 import os
 import re
+from io import StringIO
 from pathlib import Path
 
 import pytest
@@ -21,7 +22,6 @@ def test_compiles_html_with_theme(app: Sphinx) -> None:
     assert app.config.html_awesome_highlighting is True
     assert "sphinxawesome_theme.jinja_functions" in app.extensions
     assert "sphinxawesome_theme.docsearch" not in app.extensions
-    assert app.config.html_awesome_docsearch is False
     assert "sphinxawesome_theme.postprocess" not in app.extensions
     assert app.config.html_awesome_postprocessing is True
     assert app.config.html_awesome_code_headers is True
@@ -34,11 +34,9 @@ def test_internal_extensions(app: Sphinx) -> None:
     assert os.path.exists(Path(app.outdir) / "index.html")
     assert app.config.html_theme == "alabaster"
     assert "sphinxawesome_theme.highlighting" in app.extensions
-    assert app.config.html_awesome_highlighting is True
     assert "sphinxawesome_theme.jinja_functions" in app.extensions
-    assert "sphinxawesome_theme.docsearch" not in app.extensions
-    assert app.config.html_awesome_docsearch is False
     assert "sphinxawesome_theme.postprocess" in app.extensions
+    assert app.config.html_awesome_highlighting is True
     assert app.config.html_awesome_postprocessing is True
     assert app.config.html_awesome_code_headers is True
 
@@ -63,16 +61,14 @@ def test_no_awesome_postprocessing(app: Sphinx) -> None:
     "html",
     confoverrides={
         "html_theme": "sphinxawesome_theme",
-        "extensions": ["sphinxawesome_theme"],
-        "html_awesome_docsearch": True,
+        "extensions": ["sphinxawesome_theme.docsearch"],
     },
 )
-def test_awesome_docsearch(app: Sphinx) -> None:
+def test_awesome_docsearch(app: Sphinx, warning: StringIO) -> None:
     """It loads the awesome DocSearch extension."""
     app.build()
     assert os.path.exists(Path(app.outdir) / "index.html")
     assert "sphinxawesome_theme.docsearch" in app.extensions
-    assert app.config.html_awesome_docsearch is True
 
     tree = parse_html(Path(app.outdir) / "index.html")
     pattern = re.compile(r"docsearch\.[0-9a-z]+\.(css|js)")
@@ -89,6 +85,34 @@ def test_awesome_docsearch(app: Sphinx) -> None:
     print("SCRIPTS: ", scripts)
     script_src = [item["src"] for item in scripts if "src" in item.attrs]
     assert any(filter(pattern.search, script_src))  # type: ignore[arg-type]
+
+    warnings = warning.getvalue()
+    assert (
+        "You must provide your Algolia application ID for DocSearch to work."
+        in warnings
+    )
+    assert (
+        "You must provide your Algolia search API key for DocSearch to work."
+        in warnings
+    )
+    assert "You must provide your Algolia index name for DocSearch to work." in warnings
+
+
+@pytest.mark.sphinx(
+    "html",
+    confoverrides={
+        "html_theme": "sphinxawesome_theme",
+        "extensions": ["sphinxawesome_theme.docsearch"],
+        "docsearch_app_id": "test",
+        "docsearch_api_key": "test",
+        "docsearch_index_name": "test",
+    },
+)
+def test_docsearch_no_warnings(app: Sphinx, warning: StringIO) -> None:
+    """It compiles without warnings."""
+    app.build()
+    warnings = warning.getvalue()
+    assert len(warnings) == 0
 
 
 @pytest.mark.sphinx(

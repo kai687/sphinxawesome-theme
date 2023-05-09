@@ -24,12 +24,12 @@ packages = [
 python = "^3.8"
 sphinx = ">4"
 beautifulsoup4 = "^4.9.1"
-python-dotenv = ">=0.19,<1.1"
 
 [tool.poetry.group.docs.dependencies]
 sphinx-autobuild = "^2021.3.14"
 sphinx-sitemap = "^2.2.0"
 sphinx-design = "^0.4.1"
+python-dotenv = ">=0.19,<1.1"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.2"

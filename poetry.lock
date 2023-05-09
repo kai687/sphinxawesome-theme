@@ -1597,7 +1597,7 @@ testing = ["fields", "hunter", "process-tests", "pytest-xdist", "six", "virtuale
 name = "python-dotenv"
 version = "1.0.0"
 description = "Read key-value pairs from a .env file and set them as environment variables"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.8"
 files = [
@@ -2476,4 +2476,4 @@ testing = ["big-O", "flake8 (<5)", "jaraco.functools", "jaraco.itertools", "more
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "c0d8552101c9497097e5958e29efdc0a7722a511c6c8b9aeec09beda8bee62dc"
+content-hash = "cf962856f0d5f0fa2245577fce9f1c178a22a2ac3f54f361edc7bae2cd3a6e4c"

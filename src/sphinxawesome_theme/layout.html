@@ -33,7 +33,7 @@
       {%- for css in css_files %}<link rel="stylesheet" href="{{ pathto(asset(css), 1) }}" />{%- endfor %}
       {%- if docsearch %}
         <link rel="preconnect"
-              href="https://{{ docsearch_config.app_id }}-dsn.algolia.net"
+              href="https://{{ docsearch_app_id }}-dsn.algolia.net"
               crossorigin="anonymous" />
       {% endif %}
       {%- if pageurl %}<link rel="canonical" href="{{ pageurl|e }}" />{%- endif %}
