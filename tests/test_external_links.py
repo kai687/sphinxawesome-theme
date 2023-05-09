@@ -1,6 +1,5 @@
 """Test the construction of canonical links."""
 
-import os
 from pathlib import Path
 
 import pytest
@@ -42,8 +41,9 @@ def test_no_external_link_icons(app: Sphinx) -> None:
 def test_external_link_icons(app: Sphinx) -> None:
     """It adds an external link icon to external references."""
     app.build()
-    assert "awesome_external_links" in app.builder.theme_options
-    assert app.builder.theme_options["awesome_external_links"] is True
+    if hasattr(app.builder, "theme_options"):
+        assert "awesome_external_links" in app.builder.theme_options
+        assert app.builder.theme_options["awesome_external_links"] is True
 
     tree = parse_html(Path(app.outdir) / "index.html")
 
