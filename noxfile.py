@@ -53,13 +53,14 @@ def tests(session: Session) -> None:
 
 
 @session(python=python_versions)
-def docs(session: Session, live: bool = False) -> None:
+def docs(session: Session, live: bool = False, verbose: bool = False) -> None:
     """Build the docs.
 
     Args:
         session: The nox session instance.
         live: If ``True``, use ``sphinx-autobuild`` to build the docs with a live-reloading server.
               If ``False``, use the regular ``sphinx-build``.
+        verbose: IF ``True``, run sphinx in verbose mode (``-vvv``).
     """
     args = ["-b", "dirhtml", "-aWTE", "docs", "docs/public"]
     deps = ["sphinx", "bs4", "sphinx-sitemap", "sphinx-design"]
@@ -69,10 +70,17 @@ def docs(session: Session, live: bool = False) -> None:
         live = True
         session.posargs.remove("--live")
 
+    if "--verbose" in session.posargs:
+        verbose = True
+        session.posargs.remove("--verbose")
+
     if live:
         deps.append("sphinx-autobuild")
         sphinx_build = "sphinx-autobuild"
         args += ["-A", "mode=development", "--watch", "src/sphinxawesome_theme"]
+
+    if verbose:
+        args += ["-vvv"]
 
     if session.posargs:
         args += session.posargs
@@ -84,7 +92,12 @@ def docs(session: Session, live: bool = False) -> None:
 @session
 def live_docs(session: Session) -> None:
     """Build the docs with `sphinx-autobuild`."""
-    docs(session, True)
+    verbose = False
+
+    if "--verbose" in session.posargs:
+        verbose = True
+
+    docs(session, True, verbose)
 
 
 @session

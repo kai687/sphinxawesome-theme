@@ -29,9 +29,7 @@ The environment variables have precedence.
 Algolia DocSearch reference
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. py:module:: sphinxawesome_theme.docsearch
-
-.. autoclass: DocSearchConfig
+.. autoclass:: sphinxawesome_theme.docsearch.DocSearchConfig
    :members:
 
 Algolia DocSearch credentials
