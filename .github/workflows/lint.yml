@@ -24,7 +24,7 @@ jobs:
 
       - name: Update Pip
         run: |
-          pip install --constraint=constraints.txt pip
+          pip install --requirement=requirements.txt pip
           pip --version
 
       - name: Update Pip in virtual environments
@@ -38,17 +38,17 @@ jobs:
 
       - name: Install Pipx
         run: |
-          pip install --constraint=constraints.txt pipx
+          pip install --requirement=requirements.txt pipx
           pipx --version
 
       - name: Install Poetry
         run: |
-          pipx install --pip-args=--constraint=constraints.txt poetry
+          pipx install --pip-args=--requirement=requirements.txt poetry
           poetry --version
 
       - name: Install Nox
         run: |
-          pipx install --pip-args=--constraint=constraints.txt nox
+          pipx install --pip-args=--requirement=requirements.txt nox
           nox --version
 
       - name: Run Nox workflow

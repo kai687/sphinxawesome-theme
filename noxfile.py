@@ -107,13 +107,15 @@ def xml(session: Session) -> None:
 
 @session(venv_backend=None)
 def export(session: Session) -> None:
-    """Export a ``constraints.txt`` file for Netlify (Python 3.8).
+    """Export a requirements.txt file for Netlify (Python 3.8).
 
     On Netlify, we install Poetry, Pip, and Pipx with the same versions
-    as specified in the ``constraints.txt`` file. Then, we use poetry
+    as specified in the ``requirements.txt`` file. Then, we use poetry
     to install the regular dependencies, just like on a local machine.
+
+    On GitHub actions, we use the same file, although it runs on Python 3.11.
     """
-    with tempfile.NamedTemporaryFile() as constraints:
+    with tempfile.NamedTemporaryFile() as requirements:
         session.run(
             "poetry",
             "export",
@@ -121,12 +123,12 @@ def export(session: Session) -> None:
             "netlify",
             "--without-hashes",
             "--format",
-            "constraints.txt",
+            "requirements.txt",
             "--output",
-            constraints.name,
+            requirements.name,
             external=True,
         )
-        shutil.copy(constraints.name, "constraints.txt")
+        shutil.copy(requirements.name, "requirements.txt")
 
 
 @session(python=python_versions)

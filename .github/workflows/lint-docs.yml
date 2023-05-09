@@ -35,7 +35,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install --constraint=constraints.txt poetry nox
+          pip install --requirement=requirements.txt poetry nox
 
       - name: Run Nox linkcheck session
         run: |
