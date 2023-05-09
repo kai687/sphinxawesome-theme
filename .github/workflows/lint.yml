@@ -6,7 +6,6 @@ on:
 jobs:
   lint:
     runs-on: ubuntu-latest
-    environment: DocSearch for building
 
     strategy:
       matrix:
