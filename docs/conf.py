@@ -26,6 +26,7 @@ extensions = [
     "sphinx_design",
     "sphinxawesome_theme",
     "sphinxawesome_theme.docsearch",
+    "sphinxawesome_theme.highlighting",
 ]
 
 exclude_patterns = ["public", "includes", "**/includes"]

@@ -18,9 +18,9 @@ def test_compiles_html_with_theme(app: Sphinx) -> None:
     assert os.path.exists(Path(app.outdir) / "index.html")
     assert app.config.html_theme == "sphinxawesome_theme"
 
-    assert "sphinxawesome_theme.highlighting" not in app.extensions
-    assert app.config.html_awesome_highlighting is True
     assert "sphinxawesome_theme.jinja_functions" in app.extensions
+    assert "sphinxawesome_theme.toc" in app.extensions
+    assert "sphinxawesome_theme.highlighting" not in app.extensions
     assert "sphinxawesome_theme.docsearch" not in app.extensions
     assert "sphinxawesome_theme.postprocess" not in app.extensions
     assert app.config.html_awesome_postprocessing is True
@@ -33,10 +33,8 @@ def test_internal_extensions(app: Sphinx) -> None:
     app.build()
     assert os.path.exists(Path(app.outdir) / "index.html")
     assert app.config.html_theme == "alabaster"
-    assert "sphinxawesome_theme.highlighting" in app.extensions
     assert "sphinxawesome_theme.jinja_functions" in app.extensions
     assert "sphinxawesome_theme.postprocess" in app.extensions
-    assert app.config.html_awesome_highlighting is True
     assert app.config.html_awesome_postprocessing is True
     assert app.config.html_awesome_code_headers is True
 
@@ -55,6 +53,19 @@ def test_no_awesome_postprocessing(app: Sphinx) -> None:
     assert os.path.exists(Path(app.outdir) / "index.html")
     assert "sphinxawesome_theme.postprocessing" not in app.extensions
     assert app.config.html_awesome_postprocessing is False
+
+
+@pytest.mark.sphinx(
+    "html",
+    confoverrides={
+        "html_theme": "sphinxawesome_theme",
+        "extensions": ["sphinxawesome_theme.highlighting"],
+    },
+)
+def test_awesome_highlighting(app: Sphinx) -> None:
+    """It loads the highlighting extension."""
+    app.build()
+    assert "sphinxawesome_theme.highlighting" in app.extensions
 
 
 @pytest.mark.sphinx(

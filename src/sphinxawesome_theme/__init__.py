@@ -87,9 +87,6 @@ class ThemeOptions:
 
 def post_config_setup(app: Sphinx, config: Config) -> None:
     """Set up extensions if configuration is ready."""
-    if config.html_awesome_highlighting:
-        app.setup_extension("sphinxawesome_theme.highlighting")
-
     # The awesome code headers are handled in `postprocessing`
     if config.html_awesome_postprocessing or config.html_awesome_code_headers:
         app.setup_extension("sphinxawesome_theme.postprocess")
@@ -109,10 +106,6 @@ def setup(app: Sphinx) -> dict[str, Any]:
     #       Try converting this into `theme_options`
     app.add_config_value(
         name="html_awesome_postprocessing", default=True, rebuild="html", types=(bool)
-    )
-
-    app.add_config_value(
-        name="html_awesome_highlighting", default=True, rebuild="html", types=(bool)
     )
 
     # TODO: Not implemented yet in the new version

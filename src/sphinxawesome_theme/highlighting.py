@@ -1,11 +1,20 @@
-"""Add more line highlighting options to Pygments.
+"""Add more highlighting options to Pygments.
 
-The theme uses a custom pygments HTML formatter,
-that adds the ability to highlight added/removed
-lines in code.
+This extension extends the Sphinx ``code-block``
+directive with new options:
 
-To make use of this new function, this theme also
-extends the default Sphinx ``code-block`` directive.
+- ``:emphasize-added:``: highlight added lines
+- ``:emphasize-removed:``: highlight removed lines
+- ``:emphasize-text:``: highlight a single word, such as, a placeholder
+
+To achieve this, this extension must make a few larger changes:
+
+1. Provide a custom Sphinx translator to parse the new code block options.
+2. Provide a new Sphinx directive to pass along these new options to Pygments.
+3. Write a new Pygments HTML formatter and a custom filter to handle these options.
+
+It's entirely possible that there's a simpler way of doing this,
+but I haven't found it.
 
 :copyright: Copyright Kai Welke.
 :license: MIT, see LICENSE for details.
