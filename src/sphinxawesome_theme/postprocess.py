@@ -27,8 +27,7 @@ from bs4 import BeautifulSoup, Comment
 from sphinx.application import Sphinx
 from sphinx.util import logging
 
-from . import __version__
-from .icons import ICONS
+from . import __version__, icons, logos
 
 logger = logging.getLogger(__name__)
 
@@ -70,7 +69,7 @@ def _collapsible_nav(tree: BeautifulSoup) -> None:
             button.append(label)
 
             # create the icon
-            svg = BeautifulSoup(ICONS["chevron_right"], "html.parser").svg
+            svg = BeautifulSoup(icons.ICONS["chevron_right"], "html.parser").svg
             button.append(svg)
             link.append(button)
 
@@ -121,6 +120,8 @@ def _external_links(tree: BeautifulSoup) -> None:
     """
     for link in tree("a", class_="reference external"):
         link["rel"] = "nofollow noopener"
+        # append icon
+        link.append(BeautifulSoup(icons.ICONS["external_link"], "html.parser").svg)
 
 
 def _strip_comments(tree: BeautifulSoup) -> None:
@@ -173,11 +174,14 @@ def _modify_html(html_filename: str, app: Sphinx) -> None:
     with open(html_filename, encoding="utf-8") as html:
         tree = BeautifulSoup(html, "html.parser")
 
+    theme_options = logos.get_theme_options(app)
+
     _collapsible_nav(tree)
-    _external_links(tree)
+    if theme_options.get("awesome_external_links"):
+        _external_links(tree)
     _remove_empty_toctree(tree)
     _scrollspy(tree)
-    if app.config.html_awesome_headerlinks:
+    if theme_options.get("awesome_header_links"):
         _headerlinks(tree)
     if app.config.html_awesome_code_headers:
         _code_headers(tree)

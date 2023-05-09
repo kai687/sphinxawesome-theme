@@ -62,7 +62,9 @@ def update_config(app: Sphinx) -> None:
         logger.warning(
             "Conflicting theme options: use either `html_logo` or `logo_light` and `logo_dark`."
         )
-    if not (dark_logo and light_logo) and not app.config.html_logo:
+    if (
+        (dark_logo and not light_logo) or (light_logo and not dark_logo)
+    ) and not app.config.html_logo:
         logger.warning("You must use `logo_light` and `logo_dark` together.")
 
 

@@ -15,6 +15,25 @@ from .util import parse_html
     confoverrides={
         "html_theme": "sphinxawesome_theme",
         "extensions": "sphinxawesome_theme",
+    },
+)
+def test_no_logo(app: Sphinx, warning: StringIO) -> None:
+    """It compiles without defining a logo."""
+    app.build()
+    tree = parse_html(Path(app.outdir) / "index.html")
+    logos = tree.select("header img", attrs={"alt": "Logo"})
+    assert len(logos) == 0
+
+    warnings = warning.getvalue()
+    assert len(warnings) == 0
+
+
+@pytest.mark.sphinx(
+    "html",
+    testroot="logos",
+    confoverrides={
+        "html_theme": "sphinxawesome_theme",
+        "extensions": "sphinxawesome_theme",
         "html_logo": "assets/logo.svg",
     },
 )

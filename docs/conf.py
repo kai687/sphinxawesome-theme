@@ -105,6 +105,7 @@ docsearch_config = {
 theme_options = ThemeOptions(
     show_scrolltop=True,
     show_prev_next=True,
+    awesome_external_links=True,
     main_nav_links={"Docs": "/index", "About": "/about", "Changelog": "/changelog"},
     extra_header_link_icons={
         "repository on GitHub": {

@@ -43,9 +43,7 @@
         {%- if hasdoc('search') and not docsearch %}
           <link rel="search" title="{{ _('Search') }}" href="{{ pathto('search') }}" />
         {%- endif %}
-        {%- if hasdoc('genindex') %}
-          <link rel="index" title="{{ _('Index') }}" href="{{ pathto('genindex') }}" />
-        {%- endif %}
+        {%- if hasdoc('genindex') %}<link rel="index" title="{{ _('Index') }}" href="{{ pathto('genindex') }}" />{%- endif %}
         {%- if next %}
           <link rel="next"
                 title="{{ next.title|striptags|e }}"

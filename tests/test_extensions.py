@@ -16,8 +16,7 @@ def test_compiles_html_with_theme(app: Sphinx) -> None:
     app.build()
     assert os.path.exists(Path(app.outdir) / "index.html")
     assert app.config.html_theme == "sphinxawesome_theme"
-    assert "sphinxawesome_theme.html_translator" not in app.extensions
-    assert app.config.html_awesome_external_links is False
+
     assert "sphinxawesome_theme.highlighting" not in app.extensions
     assert app.config.html_awesome_highlighting is True
     assert "sphinxawesome_theme.jinja_functions" in app.extensions
@@ -26,7 +25,6 @@ def test_compiles_html_with_theme(app: Sphinx) -> None:
     assert "sphinxawesome_theme.postprocess" not in app.extensions
     assert app.config.html_awesome_postprocessing is True
     assert app.config.html_awesome_code_headers is True
-    assert app.config.html_awesome_headerlinks is True
 
 
 @pytest.mark.sphinx("html", confoverrides={"extensions": ["sphinxawesome_theme"]})
@@ -35,8 +33,6 @@ def test_internal_extensions(app: Sphinx) -> None:
     app.build()
     assert os.path.exists(Path(app.outdir) / "index.html")
     assert app.config.html_theme == "alabaster"
-    assert "sphinxawesome_theme.html_translator" not in app.extensions
-    assert app.config.html_awesome_external_links is False
     assert "sphinxawesome_theme.highlighting" in app.extensions
     assert app.config.html_awesome_highlighting is True
     assert "sphinxawesome_theme.jinja_functions" in app.extensions
@@ -45,22 +41,6 @@ def test_internal_extensions(app: Sphinx) -> None:
     assert "sphinxawesome_theme.postprocess" in app.extensions
     assert app.config.html_awesome_postprocessing is True
     assert app.config.html_awesome_code_headers is True
-    assert app.config.html_awesome_headerlinks is True
-
-
-@pytest.mark.sphinx(
-    "html",
-    confoverrides={
-        "extensions": ["sphinxawesome_theme"],
-        "html_awesome_external_links": True,
-    },
-)
-def test_awesome_external_links(app: Sphinx) -> None:
-    """It loads the awesome HTML translator."""
-    app.build()
-    assert os.path.exists(Path(app.outdir) / "index.html")
-    assert "sphinxawesome_theme.html_translator" in app.extensions
-    assert app.config.html_awesome_external_links is True
 
 
 @pytest.mark.sphinx(

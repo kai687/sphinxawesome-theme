@@ -48,6 +48,12 @@ class ThemeOptions:
     show_prev_next: bool = True
     """Show links to previous/next pages."""
 
+    awesome_header_links: bool = True
+    """Clicking a headerlink copies the URL to the clipboard."""
+
+    awesome_external_links: bool = False
+    """Show an icon after external links."""
+
     main_nav_links: dict[str, str] = field(default_factory=dict)
     """Navigation links to include in the site header."""
 
@@ -84,9 +90,6 @@ def post_config_setup(app: Sphinx, config: Config) -> None:
     if config.html_awesome_highlighting:
         app.setup_extension("sphinxawesome_theme.highlighting")
 
-    if config.html_awesome_external_links:
-        app.setup_extension("sphinxawesome_theme.html_translator")
-
     # The awesome code headers are handled in `postprocessing`
     if config.html_awesome_postprocessing or config.html_awesome_code_headers:
         app.setup_extension("sphinxawesome_theme.postprocess")
@@ -116,19 +119,11 @@ def setup(app: Sphinx) -> dict[str, Any]:
     )
 
     app.add_config_value(
-        name="html_awesome_external_links", default=False, rebuild="html", types=(bool)
-    )
-
-    app.add_config_value(
         name="html_awesome_docsearch", default=False, rebuild="html", types=(bool)
     )
 
     app.add_config_value(
         name="docsearch_config", default={}, rebuild="html", types=(dict)
-    )
-
-    app.add_config_value(
-        name="html_awesome_headerlinks", default=True, rebuild="html", types=(str)
     )
 
     # TODO: Not implemented yet in the new version
@@ -138,6 +133,7 @@ def setup(app: Sphinx) -> dict[str, Any]:
 
     app.setup_extension("sphinxawesome_theme.jinja_functions")
     app.setup_extension("sphinxawesome_theme.toc")
+
     app.connect("config-inited", post_config_setup)
     app.connect("builder-inited", logos.update_config)
     app.connect("html-page-context", logos.setup_logo_path)
