@@ -23,7 +23,7 @@ jobs:
 
       - name: Update Pip
         run: |
-          pip install --constraint=constraints.txt pip
+          pip install --constraint=requirements.txt pip
           pip --version
 
       - name: Update Pip in virtual environments
@@ -35,16 +35,25 @@ jobs:
           with open(os.environ["GITHUB_ENV"], mode="a") as io:
             print(f"VIRTUALENV_PIP={pip.__version__}", file=io)
 
+      - name: Install Pipx
+        run: |
+          pip install --constraint=requirements.txt pipx
+          pipx --version
+
       - name: Install Poetry
         run: |
-          pipx install --pip-args=--constraint=constraints.txt poetry
+          pipx install --pip-args=--constraint=requirements.txt poetry
           poetry --version
 
       - name: Install Nox
         run: |
-          pipx install --pip-args=--constraint=constraints.txt nox
+          pipx install --pip-args=--constraint=requirements.txt nox
           nox --version
 
       - name: Run Nox workflow
         run: |
           nox -p ${{ matrix.python-version }}
+        env:
+          DOCSEARCH_APP_ID: ${{ secrets.DOCSEARCH_APP_ID }}
+          DOCSEARCH_API_KEY: ${{ secrets.DOCSEARCH_API_KEY }}
+          DOCSEARCH_INDEX_NAME: ${{ secrets.DOCSEARCH_INDEX_NAME }}

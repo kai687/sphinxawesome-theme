@@ -1313,6 +1313,24 @@ files = [
 ptyprocess = ">=0.5"
 
 [[package]]
+name = "pipx"
+version = "1.2.0"
+description = "Install and Run Python Applications in Isolated Environments"
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "pipx-1.2.0-py3-none-any.whl", hash = "sha256:a94c4bca865cd6e85b37cd6717a22481744890fe36b70db081a78d1feb923ce0"},
+    {file = "pipx-1.2.0.tar.gz", hash = "sha256:d1908041d24d525cafebeb177efb686133d719499cb55c54f596c95add579286"},
+]
+
+[package.dependencies]
+argcomplete = ">=1.9.4"
+colorama = {version = ">=0.4.4", markers = "sys_platform == \"win32\""}
+packaging = ">=20.0"
+userpath = ">=1.6.0"
+
+[[package]]
 name = "pkginfo"
 version = "1.9.6"
 description = "Query metadata from sdists / bdists / installed packages."
@@ -2340,6 +2358,21 @@ secure = ["certifi", "cryptography (>=1.3.4)", "idna (>=2.0.0)", "ipaddress", "p
 socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 
 [[package]]
+name = "userpath"
+version = "1.8.0"
+description = "Cross-platform tool for adding locations to the user PATH"
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "userpath-1.8.0-py3-none-any.whl", hash = "sha256:f133b534a8c0b73511fc6fa40be68f070d9474de1b5aada9cded58cdf23fb557"},
+    {file = "userpath-1.8.0.tar.gz", hash = "sha256:04233d2fcfe5cff911c1e4fb7189755640e1524ff87a4b82ab9d6b875fee5787"},
+]
+
+[package.dependencies]
+click = "*"
+
+[[package]]
 name = "virtualenv"
 version = "20.21.1"
 description = "Virtual Python Environment builder"
@@ -2476,4 +2509,4 @@ testing = ["big-O", "flake8 (<5)", "jaraco.functools", "jaraco.itertools", "more
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "cf962856f0d5f0fa2245577fce9f1c178a22a2ac3f54f361edc7bae2cd3a6e4c"
+content-hash = "bb2f57f43e0844bcea9e5cd779661dfe06182bc9136de7c625c56c381723d42c"

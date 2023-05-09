@@ -20,7 +20,7 @@ jobs:
 
       - name: Update Pip
         run: |
-          pip install --constraint=constraints.txt pip
+          pip install --constraint=requirements.txt pip
           pip --version
 
       - name: Update Pip in virtual environments
@@ -32,9 +32,14 @@ jobs:
           with open(os.environ["GITHUB_ENV"], mode="a") as io:
             print(f"VIRTUALENV_PIP={pip.__version__}", file=io)
 
+      - name: Install Pipx
+        run: |
+          pip install --constraint=requirements.txt pipx
+          poetry --version
+
       - name: Install Poetry
         run: |
-          pipx install --pip-args=--constraint=constraints.txt poetry
+          pipx install --pip-args=--constraint=requirements.txt poetry
           poetry --version
 
       - name: Build Packages
