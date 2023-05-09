@@ -66,13 +66,6 @@ Add captions to code blocks with the :samp:`:caption: {CAPTION_TEXT}` option:
 Adding a caption also adds a link target to the code block.
 Hover over a caption to see the headerlink icon.
 
-Show or hide the highlighting language
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-:bdg-primary:`feature`
-The |product| shows the language used for syntax highlighting in a code block header.
-If you want to turn this off, set the option :ref:`opt:html_awesome_code_headers` to ``False``.
-
 
 Show line numbers in code blocks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

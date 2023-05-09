@@ -13,6 +13,7 @@ To load this extension, add:
 """
 from __future__ import annotations
 
+from dataclasses import dataclass
 from typing import Any
 
 from docutils.nodes import Node
@@ -27,6 +28,35 @@ from sphinx.util.display import progress_message
 from . import __version__
 
 logger = logging.getLogger(__name__)
+
+
+@dataclass
+class DocSearchConfig:
+    """For documenting the DocSearch options."""
+
+    docsearch_app_id: str
+    """Your Algolia DocSearch application ID."""
+
+    docsearch_api_key: str
+    """Your Algolia DocSearch Search API key."""
+
+    docsearch_index_name: str
+    """Your Algolia DocSearch index name."""
+
+    docsearch_container: str = "#docsearch"
+    """A CSS selector where the DocSearch UI should be injected."""
+
+    docsearch_placeholder: str | None = None
+    """A placeholder for the search input."""
+
+    docsearch_initial_query: str | None = None
+    """If you want to perform a search before the user starts typing."""
+
+    docsearch_search_params: str | None = None
+    """If you want to pass Algolia search parameters."""
+
+    docsearch_missing_results_url: str | None = None
+    """If you want to include a URL, where users can communicate with you about missing search results."""
 
 
 @progress_message("DocSearch: check config")

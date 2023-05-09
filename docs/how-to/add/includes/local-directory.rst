@@ -38,10 +38,9 @@ follow these steps:
       html_theme = "sphinxawesome_theme"
       html_theme_path = ["_themes"]
       exclude_patterns = ["_themes"]
-      extensions = ["sphinxawesome_theme"]
 
    This configuration makes the local :file:`_themes` directory available to Sphinx,
-   adds the |product| as HTML theme and extension,
+   adds the |product| as HTML theme,
    and excludes the directory from being searched for documentation files.
 
    .. seealso::

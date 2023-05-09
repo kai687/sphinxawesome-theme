@@ -26,6 +26,14 @@ The environment variables have precedence.
        missing_results_url: ""
    }
 
+Algolia DocSearch reference
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. py:module:: sphinxawesome_theme.docsearch
+
+.. autoclass: DocSearchConfig
+   :members:
+
 Algolia DocSearch credentials
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
