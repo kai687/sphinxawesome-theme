@@ -3,7 +3,9 @@
 :copyright: Kai Welke.
 :license: MIT
 """
-from typing import Any, Dict
+from __future__ import annotations
+
+from typing import Any
 
 from docutils import nodes
 from docutils.nodes import Node
@@ -11,14 +13,12 @@ from sphinx.application import Sphinx
 from sphinx.environment.adapters.toctree import TocTree
 from sphinx.util.docutils import new_document
 
-from . import __version__
-
 
 def change_toc(
     app: Sphinx,
     pagename: str,
     templatename: str,
-    context: Dict[str, Any],
+    context: dict[str, Any],
     doctree: Node,
 ) -> None:
     """Change the way the `{{ toc }}` helper works.
@@ -72,14 +72,3 @@ def change_toc(
         app.builder._publisher.set_source(doc)
         app.builder._publisher.publish()
         context["toc"] = app.builder._publisher.writer.parts["fragment"]
-
-
-def setup(app: Sphinx) -> Dict[str, Any]:
-    """Register the extension."""
-    app.connect("html-page-context", change_toc)
-
-    return {
-        "version": __version__,
-        "parallel_read_safe": True,
-        "parallel_write_safe": True,
-    }

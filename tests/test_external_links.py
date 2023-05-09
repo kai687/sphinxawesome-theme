@@ -13,7 +13,6 @@ from .util import parse_html
     testroot="external",
     confoverrides={
         "html_theme": "sphinxawesome_theme",
-        "extensions": ["sphinxawesome_theme"],
     },
 )
 def test_no_external_link_icons(app: Sphinx) -> None:
@@ -32,7 +31,6 @@ def test_no_external_link_icons(app: Sphinx) -> None:
     testroot="external",
     confoverrides={
         "html_theme": "sphinxawesome_theme",
-        "extensions": ["sphinxawesome_theme"],
         "html_theme_options": {
             "awesome_external_links": True,
         },

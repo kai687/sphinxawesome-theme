@@ -18,41 +18,8 @@ def test_compiles_html_with_theme(app: Sphinx) -> None:
     assert os.path.exists(Path(app.outdir) / "index.html")
     assert app.config.html_theme == "sphinxawesome_theme"
 
-    assert "sphinxawesome_theme.jinja_functions" in app.extensions
-    assert "sphinxawesome_theme.toc" in app.extensions
     assert "sphinxawesome_theme.highlighting" not in app.extensions
     assert "sphinxawesome_theme.docsearch" not in app.extensions
-    assert "sphinxawesome_theme.postprocess" not in app.extensions
-    assert app.config.html_awesome_postprocessing is True
-    assert app.config.html_awesome_code_headers is True
-
-
-@pytest.mark.sphinx("html", confoverrides={"extensions": ["sphinxawesome_theme"]})
-def test_internal_extensions(app: Sphinx) -> None:
-    """It sets up all internal Sphinx extensions when loaded as an extension."""
-    app.build()
-    assert os.path.exists(Path(app.outdir) / "index.html")
-    assert app.config.html_theme == "alabaster"
-    assert "sphinxawesome_theme.jinja_functions" in app.extensions
-    assert "sphinxawesome_theme.postprocess" in app.extensions
-    assert app.config.html_awesome_postprocessing is True
-    assert app.config.html_awesome_code_headers is True
-
-
-@pytest.mark.sphinx(
-    "html",
-    confoverrides={
-        "extensions": ["sphinxawesome_theme"],
-        "html_awesome_postprocessing": False,
-        "html_awesome_code_headers": False,
-    },
-)
-def test_no_awesome_postprocessing(app: Sphinx) -> None:
-    """It doesn't load the awesome postprocessing extension."""
-    app.build()
-    assert os.path.exists(Path(app.outdir) / "index.html")
-    assert "sphinxawesome_theme.postprocessing" not in app.extensions
-    assert app.config.html_awesome_postprocessing is False
 
 
 @pytest.mark.sphinx(
@@ -130,7 +97,7 @@ def test_docsearch_no_warnings(app: Sphinx, warning: StringIO) -> None:
     "html",
     confoverrides={
         "html_theme": "sphinxawesome_theme",
-        "extensions": ["sphinxawesome_theme", "sphinx_design"],
+        "extensions": ["sphinx_design"],
     },
 )
 def test_awesome_sphinx_design(app: Sphinx) -> None:

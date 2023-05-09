@@ -24,7 +24,6 @@ extensions = [
     "sphinx.ext.viewcode",
     "sphinx_sitemap",
     "sphinx_design",
-    "sphinxawesome_theme",
     "sphinxawesome_theme.docsearch",
     "sphinxawesome_theme.highlighting",
 ]
@@ -61,7 +60,6 @@ extlinks = {
 
 html_title = project
 html_theme = "sphinxawesome_theme"
-html_theme_path = ["../src"]
 html_last_updated_fmt = ""
 html_use_index = False  # Don't create index
 html_domain_indices = False  # Don't need module indices
@@ -93,10 +91,6 @@ templates_path = ["_templates"]
 html_static_path = ["_static"]
 html_css_files = ["feedback.css"]
 html_js_files = [("feedback.js", {"defer": "defer"})]
-
-# extra options from the sphinxawesome_theme
-html_awesome_postprocessing = True
-html_awesome_code_headers = False
 
 # DocSearch (sphinxawesome_theme extension)
 docsearch_app_id = os.getenv("DOCSEARCH_APP_ID")

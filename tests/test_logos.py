@@ -14,7 +14,6 @@ from .util import parse_html
     testroot="logos",
     confoverrides={
         "html_theme": "sphinxawesome_theme",
-        "extensions": "sphinxawesome_theme",
     },
 )
 def test_no_logo(app: Sphinx, warning: StringIO) -> None:
@@ -33,7 +32,6 @@ def test_no_logo(app: Sphinx, warning: StringIO) -> None:
     testroot="logos",
     confoverrides={
         "html_theme": "sphinxawesome_theme",
-        "extensions": "sphinxawesome_theme",
         "html_logo": "assets/logo.svg",
     },
 )
@@ -53,7 +51,6 @@ def test_default_logo(app: Sphinx, warning: StringIO) -> None:
     testroot="logos",
     confoverrides={
         "html_theme": "sphinxawesome_theme",
-        "extensions": "sphinxawesome_theme",
         "html_logo": "assets/logo.svg",
         "html_theme_options": {"logo_light": "assets/logo.svg"},
     },
@@ -80,7 +77,6 @@ def test_includes_only_one_html_logo(app: Sphinx, warning: StringIO) -> None:
     testroot="logos",
     confoverrides={
         "html_theme": "sphinxawesome_theme",
-        "extensions": "sphinxawesome_theme",
         "html_theme_options": {"logo_light": "assets/logo.svg"},
     },
 )
@@ -97,7 +93,6 @@ def test_warns_if_only_one_logo(app: Sphinx, warning: StringIO) -> None:
     testroot="logos",
     confoverrides={
         "html_theme": "sphinxawesome_theme",
-        "extensions": "sphinxawesome_theme",
         "html_theme_options": {
             "logo_light": "assets/light_no_exist.svg",
             "logo_dark": "assets/dark_no_exist.svg",
@@ -117,7 +112,6 @@ def test_raises_warnings_for_non_existing(app: Sphinx, warning: StringIO) -> Non
     testroot="logos",
     confoverrides={
         "html_theme": "sphinxawesome_theme",
-        "extensions": "sphinxawesome_theme",
         "html_theme_options": {
             "logo_light": "assets/light.svg",
             "logo_dark": "assets/dark.svg",

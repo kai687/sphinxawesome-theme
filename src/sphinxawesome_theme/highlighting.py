@@ -16,6 +16,13 @@ To achieve this, this extension must make a few larger changes:
 It's entirely possible that there's a simpler way of doing this,
 but I haven't found it.
 
+To load this extension, add:
+
+.. code-block:: python
+   :caption: File: conf.py
+
+   extensions += ["sphinxawesome_theme.highlighting"]
+
 :copyright: Copyright Kai Welke.
 :license: MIT, see LICENSE for details.
 """

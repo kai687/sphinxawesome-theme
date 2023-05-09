@@ -14,8 +14,6 @@ from typing import Any
 from docutils.nodes import Node
 from sphinx.application import Sphinx
 
-from . import __version__
-
 
 def _get_manifest_json(app: Sphinx) -> Any:
     """Read the ``manifest.json`` file.
@@ -62,19 +60,7 @@ def setup_jinja(
     doctree: Node,
 ) -> None:
     """Register a function as a Jinja2 filter."""
-    if app.builder is not None:
-        context["asset"] = partial(_make_asset_url, app)
-        # must override `pageurl` for directory builder
-        if app.builder.name == "dirhtml" and app.config.html_baseurl:
-            context["pageurl"] = _make_canonical(app, pagename)
-
-
-def setup(app: Sphinx) -> dict[str, Any]:
-    """Register this jinja filter as extension."""
-    app.connect("html-page-context", setup_jinja)
-
-    return {
-        "version": __version__,
-        "parallel_read_safe": True,
-        "parallel_write_safe": True,
-    }
+    context["asset"] = partial(_make_asset_url, app)
+    # must override `pageurl` for directory builder
+    if app.builder.name == "dirhtml" and app.config.html_baseurl:
+        context["pageurl"] = _make_canonical(app, pagename)

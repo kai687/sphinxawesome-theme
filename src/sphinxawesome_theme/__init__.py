@@ -1,9 +1,7 @@
 """The Sphinx awesome theme as a Python package.
 
 :copyright: Copyright Kai Welke.
-:license: MIT, see LICENSE_ for details
-
-.. _LICENSE: https://github.com/kai687/sphinxawesome-theme/blob/master/LICENSE
+:license: MIT, see LICENSE for details
 """
 
 from __future__ import annotations
@@ -14,11 +12,10 @@ from pathlib import Path
 from typing import Any, TypedDict
 
 from sphinx.application import Sphinx
-from sphinx.config import Config
 from sphinx.util import logging
 from sphinxcontrib.serializinghtml import JSONHTMLBuilder
 
-from . import jsonimpl, logos
+from . import jinja_functions, jsonimpl, logos, postprocess, toc
 
 logger = logging.getLogger(__name__)
 
@@ -85,41 +82,25 @@ class ThemeOptions:
     """
 
 
-def post_config_setup(app: Sphinx, config: Config) -> None:
-    """Set up extensions if configuration is ready."""
-    # The awesome code headers are handled in `postprocessing`
-    if config.html_awesome_postprocessing or config.html_awesome_code_headers:
-        app.setup_extension("sphinxawesome_theme.postprocess")
-
-    # Add the CSS overrides if we're using the `sphinx-design` extension
-    if "sphinx_design" in app.extensions:
-        app.add_css_file("awesome-sphinx-design.css", priority=900)
-
-
 def setup(app: Sphinx) -> dict[str, Any]:
     """Register the theme and its extensions wih Sphinx."""
     here = Path(__file__).parent.resolve()
 
     app.add_html_theme(name="sphinxawesome_theme", theme_path=str(here))
 
-    # TODO: Adding these options require the theme being loaded as an extension
-    #       Try converting this into `theme_options`
-    app.add_config_value(
-        name="html_awesome_postprocessing", default=True, rebuild="html", types=(bool)
-    )
+    # Add the CSS overrides if we're using the `sphinx-design` extension
+    if "sphinx_design" in app.extensions:
+        app.add_css_file("awesome-sphinx-design.css", priority=900)
 
-    # TODO: Not implemented yet in the new version
-    app.add_config_value(
-        name="html_awesome_code_headers", default=True, rebuild="html", types=(str)
-    )
-
-    app.setup_extension("sphinxawesome_theme.jinja_functions")
-    app.setup_extension("sphinxawesome_theme.toc")
-
-    app.connect("config-inited", post_config_setup)
+    # The theme is set up _after_ extensions are set up,
+    # so I can't use internal extensions.
+    # For the same reason, I also can't call the `config-inited` event
     app.connect("builder-inited", logos.update_config)
     app.connect("html-page-context", logos.setup_logo_path)
+    app.connect("html-page-context", jinja_functions.setup_jinja)
+    app.connect("html-page-context", toc.change_toc)
     app.connect("build-finished", logos.copy_logos)
+    app.connect("build-finished", postprocess.post_process_html)
 
     JSONHTMLBuilder.out_suffix = ".json"
     JSONHTMLBuilder.implementation = jsonimpl

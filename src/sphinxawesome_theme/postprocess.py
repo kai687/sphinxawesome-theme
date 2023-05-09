@@ -21,15 +21,11 @@ from __future__ import annotations
 
 import os
 import re
-from typing import Any
 
 from bs4 import BeautifulSoup, Comment
 from sphinx.application import Sphinx
-from sphinx.util import logging
 
-from . import __version__, icons, logos
-
-logger = logging.getLogger(__name__)
+from . import icons, logos
 
 
 def _get_html_files(outdir: str) -> list[str]:
@@ -183,8 +179,7 @@ def _modify_html(html_filename: str, app: Sphinx) -> None:
     _scrollspy(tree)
     if theme_options.get("awesome_header_links"):
         _headerlinks(tree)
-    if app.config.html_awesome_code_headers:
-        _code_headers(tree)
+    # _code_headers(tree)
     _strip_comments(tree)
 
     with open(html_filename, "w", encoding="utf-8") as out_file:
@@ -206,14 +201,3 @@ def post_process_html(app: Sphinx, exc: Exception | None) -> None:
 
         for doc in html_files:
             _modify_html(doc, app)
-
-
-def setup(app: Sphinx) -> dict[str, Any]:
-    """Set this up as internal extension."""
-    app.connect("build-finished", post_process_html)
-
-    return {
-        "version": __version__,
-        "parallel_read_safe": True,
-        "parallel_write_safe": True,
-    }

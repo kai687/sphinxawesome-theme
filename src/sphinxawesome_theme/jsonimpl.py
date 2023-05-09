@@ -5,9 +5,7 @@ non-serializable by default. Hence, I need to use a custom JSON
 serializer.
 
 :copyright: Copyright Kai Welke.
-:license: MIT, see LICENSE_ for details.
-
-.. _LICENSE: https://github.com/kai687/sphinxawesome-theme/blob/master/LICENSE
+:license: MIT, see LICENSE for details.
 """
 from __future__ import annotations
 

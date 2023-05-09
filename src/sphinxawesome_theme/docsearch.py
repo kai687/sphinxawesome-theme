@@ -9,7 +9,7 @@ To load this extension, add:
    extensions += ["sphinxawesome_theme.docsearch"]
 
 :copyright: Kai Welke.
-:license: MIT
+:license: MIT, see LICENSE for details
 """
 from __future__ import annotations
 
