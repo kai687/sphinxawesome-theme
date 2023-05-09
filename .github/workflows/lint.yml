@@ -6,6 +6,7 @@ on:
 jobs:
   lint:
     runs-on: ubuntu-latest
+    environment: DocSearch for building
 
     strategy:
       matrix:
@@ -23,7 +24,7 @@ jobs:
 
       - name: Update Pip
         run: |
-          pip install --requirement=requirements.txt pip
+          pip install --constraint=constraints.txt pip
           pip --version
 
       - name: Update Pip in virtual environments
@@ -37,17 +38,17 @@ jobs:
 
       - name: Install Pipx
         run: |
-          pip install --requirement=requirements.txt pipx
+          pip install --constraint=constraints.txt pipx
           pipx --version
 
       - name: Install Poetry
         run: |
-          pipx install --pip-args=--requirement=requirements.txt poetry
+          pipx install --pip-args=--constraint=constraints.txt poetry
           poetry --version
 
       - name: Install Nox
         run: |
-          pipx install --pip-args=--requirement=requirements.txt nox
+          pipx install --pip-args=--constraint=constraints.txt nox
           nox --version
 
       - name: Run Nox workflow

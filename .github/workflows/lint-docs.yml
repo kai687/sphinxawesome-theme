@@ -23,6 +23,7 @@ jobs:
   linkcheck:
     runs-on: ubuntu-latest
     name: Check links
+    environment: DocSearch for building
 
     steps:
       - uses: actions/checkout@v3
@@ -34,7 +35,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install --requirement=requirements.txt poetry nox
+          pip install --constraint=constraints.txt poetry nox
 
       - name: Run Nox linkcheck session
         run: |

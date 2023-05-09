@@ -17,7 +17,7 @@ repos:
         language: system
         types: [python]
       - id: sync
-        name: sync requirements.txt
+        name: sync constraints.txt
         entry: nox -s export
         pass_filenames: false
         language: system

@@ -48,6 +48,7 @@ ruff = "^0.0.265"
 nox = {version = "^2023.4.22", python = "3.8"}
 poetry = {version = "^1.4.2", python = "3.8"}
 pipx = {version = "^1.2.0", python = "3.8"}
+pip = {version = "^23.1.2", python = "3.8"}
 
 [tool.coverage.paths]
 source = ["src"]

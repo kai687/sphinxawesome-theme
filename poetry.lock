@@ -1313,6 +1313,18 @@ files = [
 ptyprocess = ">=0.5"
 
 [[package]]
+name = "pip"
+version = "23.1.2"
+description = "The PyPA recommended tool for installing Python packages."
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "pip-23.1.2-py3-none-any.whl", hash = "sha256:3ef6ac33239e4027d9a5598a381b9d30880a1477e50039db2eac6e8a8f6d1b18"},
+    {file = "pip-23.1.2.tar.gz", hash = "sha256:0e7c86f486935893c708287b30bd050a36ac827ec7fe5e43fe7cb198dd835fba"},
+]
+
+[[package]]
 name = "pipx"
 version = "1.2.0"
 description = "Install and Run Python Applications in Isolated Environments"
@@ -2509,4 +2521,4 @@ testing = ["big-O", "flake8 (<5)", "jaraco.functools", "jaraco.itertools", "more
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "bb2f57f43e0844bcea9e5cd779661dfe06182bc9136de7c625c56c381723d42c"
+content-hash = "95a8a8b66380dbf27fc6e9518a50bad20c5f22561c1286ca32a88b08f48f889f"

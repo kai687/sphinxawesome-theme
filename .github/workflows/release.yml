@@ -20,7 +20,7 @@ jobs:
 
       - name: Update Pip
         run: |
-          pip install --requirement=requirements.txt pip
+          pip install --constraint=constraints.txt pip
           pip --version
 
       - name: Update Pip in virtual environments
@@ -34,12 +34,12 @@ jobs:
 
       - name: Install Pipx
         run: |
-          pip install --requirement=requirements.txt pipx
+          pip install --constraint=constraints.txt pipx
           pipx --version
 
       - name: Install Poetry
         run: |
-          pipx install --pip-args=--requirement=requirements.txt poetry
+          pipx install --pip-args=--constraint=constraints.txt poetry
           poetry --version
 
       - name: Build Packages
