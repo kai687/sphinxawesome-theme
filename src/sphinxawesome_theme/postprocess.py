@@ -86,7 +86,9 @@ def _remove_empty_toctree(tree: BeautifulSoup) -> None:
 def _headerlinks(tree: BeautifulSoup) -> None:
     """Make headerlinks copy their URL on click."""
     for link in tree("a", class_="headerlink"):
-        link["@click.prevent"] = "window.navigator.clipboard.writeText($el.href)"
+        link[
+            "@click.prevent"
+        ] = "window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() => $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)"
         del link["title"]
         link["aria-label"] = "Copy link to this element"
         link["data-tooltip"] = "Copy link to this element"
