@@ -13,7 +13,7 @@
   }
 
   & h2 {
-    @apply mt-12 scroll-m-20 border-b border-border pb-2 text-2xl font-semibold;
+    @apply mt-12 scroll-m-20 border-b border-border pb-2 text-3xl font-semibold;
   }
 
   & h3 {

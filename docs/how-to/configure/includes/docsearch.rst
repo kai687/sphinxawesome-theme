@@ -1,88 +1,123 @@
-Configure Algolia DocSearch
----------------------------
+.. _sec:docsearch:
 
-Algolia DocSearch is a third-party service.
+Algolia DocSearch
+-----------------
+
+DocSearch is a program by Algolia to provide search for open source projects and technical blogs for free.
 You need to `apply <https://docsearch.algolia.com/apply/>`_ and receive your credentials before you can use it.
 
-You can configure DocSearch with the ``docsearch_config`` dictionary in your Sphinx configuration,
-by adding environment variables to your environment, or both.
-The environment variables have precedence.
-
-.. note::
-
-   The |product| supports :file:`.env` files for your environment variables.
-
+The |product| bundles DocSearch as an optional extension.
+To replace the built-in search with DocSearch, add the ``sphinxawesome_theme.docsearch`` extension:
 
 .. code-block:: python
    :caption: File: conf.py
 
-   docsearch_config = {
-       app_id: "",
-       api_key: "",
-       index_name: ""
-       initial_query: "",
-       placeholder: "",
-       search_parameters: "",
-       missing_results_url: ""
-   }
+   extensions += ["sphinxawesome_theme.docsearch"]
 
-Algolia DocSearch reference
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. dropdown:: How does DocSearch work?
 
-.. autoclass:: sphinxawesome_theme.docsearch.DocSearchConfig
+   If you're part of the program,
+   Algolia indexes your content with a `crawler <https://en.wikipedia.org/wiki/Web_crawler>`_.
+   You'll add the DocSearch UI component to your layout, which fetches the results from your index on every keystroke.
+
+DocSearch credentials
+~~~~~~~~~~~~~~~~~~~~~
+
+Algolia provides you with three credentials for DocSearch.
+You must add the application ID and search API key to your site to authenticate and authorize search requests.
+Keep the write API key a secret.
+
+Application ID
+   The identifier for your project on Algolia.
+   It's used to route search requests from your site to your Algolia index.
+
+Search API key
+   An API key that allows search requests from your site.
+
+Write API key
+   An API key that allows writing to your index.
+   Since Algolia indexes your content automatically with a crawler,
+   you don't have to use this key.
+   **Don't use the write API key in your site.**
+
+Configure DocSearch
+~~~~~~~~~~~~~~~~~~~
+
+To configure DocSearch, declare the ``docsearch_*`` options as regular Python variables:
+
+.. code-block:: python
+   :caption: File: conf.py
+
+   docsearch_app_id = "YOUR_APP_ID"
+   docsearch_api_key = "YOUR_API_KEY"
+   docsearch_index_name = "YOUR_INDEX_NAME"
+
+Use environment variables
++++++++++++++++++++++++++
+
+Instead of storing this information in your Sphinx configuration and and committing it to your repository,
+it's better to load it from **environment variables**.
+A good way of handling environment variables is to store them in a :file:`.env` file.
+To do this, add the ``python-dotenv`` package to your project and add the following code to your Sphinx configuration:
+
+.. code-block:: python
+   :caption: File: conf.py
+
+   import os
+   from python_dotenv import load_dotenv
+
+   # Load environment variables from a .env file
+   load_dotenv()
+
+   docsearch_app_id = os.getenv("DOCSEARCH_APP_ID")
+   docsearch_api_key = os.getenv("DOCSEARCH_API_KEY")
+   docsearch_index_name = os.getenv("DOCSEARCH_INDEX_NAME")
+
+In the same directory as your :file:`conf.py` file, create a new file :file:`.env` with these variables:
+
+.. code-block::
+   :caption: File: .env
+
+   DOCSEARCH_APP_ID=YOUR_APP_ID
+   DOCSEARCH_API_KEY=YOUR_API_KEY
+   DOCSEARCH_INDEX_NAME=YOUR_INDEX_NAME
+
+To avoid committing this file to your repository, add ``.env`` to your :file:`.gitignore` file.
+
+Use the ``DocSearchConfig`` helper
+++++++++++++++++++++++++++++++++++
+
+Since it's easy to mistype an option, the |product| provides a ``DocSearchConfig`` helper for your configuration.
+If you're okay with (ab)using Python's dynamic character, you can add the following code:
+
+.. code-block:: python
+   :caption: File: conf.py
+
+   import os
+   from python_dotenv import load_dotenv
+   from dataclasses import asdict
+   from sphinxawesome_theme.docsearch import DocSearchConfig
+
+   load_dotenv()
+
+   # This gets you code completion and documentation for your configuration options
+   config = DocSearchConfig(
+      docsearch_app_id=os.getenv("DOCSEARCH_APP_ID")
+      docsearch_api_key=os.getenv("DOCSEARCH_API_KEY")
+      docsearch_index_name=os.getenv("DOCSEARCH_INDEX_NAME")
+   )
+
+   vars = locals()
+   for key, value in asdict(config).items():
+      vars.__setitem__(key, value)
+
+DocSearch configuration options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. py:module:: sphinxawesome_theme.docsearch
+
+.. autoclass:: DocSearchConfig()
    :members:
-
-Algolia DocSearch credentials
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-You must provide these credentials, or DocSearch won't work.
-The Sphinx project will still build, but the search won't show any results.
-
-``app_id``, ``DOCSEARCH_APP_ID``
-   The id of your Algolia DocSearch application.
-
-``api_key``, ``DOCSEARCH_API_KEY``
-   The API key for searching your index on Algolia.
-
-``index_name``, ``DOCSEARCH_INDEX_NAME``
-   The name of your Algolia DocSearch index.
-
-Optional DocSearch settings
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-``initial_query``, ``DOCSEARCH_INITIAL_QUERY``
-   Provide a search query if you want to show search results as soon as the DocSearch modal opens.
-
-   .. versionadded:: 5.0.0
-
-``placeholder``, ``DOCSEARCH_PLACEHOLDER``
-   The placeholder for the search box. The default is: *Search docs*.
-
-   .. versionadded:: 5.0.0
-
-``search_parameters``, ``DOCSEARCH_SEARCH_PARAMETERS``
-   `Search parameter <https://www.algolia.com/doc/api-reference/search-api-parameters/>`_
-   for the Algolia Search.
-
-   .. versionadded:: 5.0.0
-
-``missing_results_url``, ``DOCSEARCH_MISSING_RESULTS_URL``
-   A URL for letting users send you feedback about your search.
-   You can use the current query in the URL.
-
-   .. code-block:: bash
-      :caption: Example for using *missing_results_url*
-
-      DOCSEARCH_MISSING_RESULTS_URL=https://github.com/example/docs/issues/new?title=${query}
-
-   .. caution::
-
-      Provide the URL as a string.
-      DocSearch itself accepts a function.
-      In the templates,
-      the |product| creates the function with the string you entered.
-
-   .. versionadded:: 5.0.0
 
 .. seealso::
 

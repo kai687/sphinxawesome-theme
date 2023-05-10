@@ -6,16 +6,17 @@ from dotenv import load_dotenv
 from sphinx.application import Sphinx
 from sphinx.util.docfields import Field
 from sphinxawesome_theme import ThemeOptions
+from sphinxawesome_theme.docsearch import DocSearchConfig
 
 load_dotenv()
 
-# -- Project information -----------------------------------------------------
+# -- Project information ---
 
 project = "Awesome Sphinx Theme"
 author = "Kai Welke"
 copyright = f"{author}."
 
-# -- General configuration ---------------------------------------------------
+# -- General configuration ---
 
 extensions = [
     "sphinx.ext.autodoc",
@@ -31,10 +32,6 @@ extensions = [
 exclude_patterns = ["public", "includes", "**/includes"]
 
 nitpicky = True
-nitpick_ignore = [
-    ("py:class", "sphinx.application.Sphinx"),
-    ("py:class", "docutils.nodes.Element"),
-]
 
 default_role = "literal"
 
@@ -56,7 +53,9 @@ extlinks = {
     "sphinxdocs": ("https://www.sphinx-doc.org/en/master/%s", "%s"),
 }
 
-# -- Options for HTML output -------------------------------------------------
+add_module_names = False
+
+# -- Options for HTML output ---
 
 html_title = project
 html_theme = "sphinxawesome_theme"
@@ -93,16 +92,21 @@ html_css_files = ["feedback.css"]
 html_js_files = [("feedback.js", {"defer": "defer"})]
 
 # DocSearch (sphinxawesome_theme extension)
-docsearch_app_id = os.getenv("DOCSEARCH_APP_ID")
-docsearch_api_key = os.getenv("DOCSEARCH_API_KEY")
-docsearch_index_name = os.getenv("DOCSEARCH_INDEX_NAME")
-docsearch_placeholder = "Search these docs"
-docsearch_missing_results_url = (
-    "https://github.com/kai687/sphinxawesome-theme/issues/new?title=${query}"
+docsearch = DocSearchConfig(
+    docsearch_api_key=os.getenv("DOCSEARCH_API_KEY"),
+    docsearch_app_id=os.getenv("DOCSEARCH_APP_ID"),
+    docsearch_index_name=os.getenv("DOCSEARCH_INDEX_NAME"),
+    docsearch_placeholder="Search these docs",
+    docsearch_missing_results_url="https://github.com/kai687/sphinxawesome-theme/issues/new?title=${query}",
 )
 
+vars = locals()
+for key, value in asdict(docsearch).items():
+    if value is not None:
+        vars.__setitem__(key, value)
+
+
 theme_options = ThemeOptions(
-    show_scrolltop=True,
     show_prev_next=True,
     awesome_external_links=True,
     main_nav_links={"Docs": "/index", "About": "/about", "Changelog": "/changelog"},

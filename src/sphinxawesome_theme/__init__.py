@@ -37,62 +37,56 @@ class LinkIcon(TypedDict):
 
 @dataclass
 class ThemeOptions:
-    """Configuration options for the Awesome Theme.
+    """Helper class for configuring the Awesome Theme.
 
-    Sphinx :confval:`sphinx:html_theme_options` is a dictionary,
-    which makes it easy to missspell an option or use the wrong type.
-
-    Use the ``ThemeOptions`` class to make sure, you're using the correct options.
-
-    In your Sphinx configuration, add the following import at the top:
-
-    .. code-block:: python
-       :caption: File: conf.py
-
-       from dataclass import asdict
-       from sphinxawesome_theme import ThemeOptions
-
-    Then, use the following code to set up the ``html_theme_options``:
-
-    .. code-block:: python
-       :caption: File: conf.py
-
-       theme_options = ThemeOptions(
-           # Add the options.
-       )
-
-       html_theme_options = asdict(theme_options)
+    Each attribute becomes a key in the :confval:`sphinx:html_theme_options` dictionary.
     """
 
     show_prev_next: bool = True
-    """Controls whether to show links to the previous and next pages in the hierarchy."""
+    """If ``True``, the theme includes links to the previous and next pages in the hierarchy."""
 
     show_breadcrumbs: bool = True
-    """Controls whether to include `breadcrumbs <https://en.wikipedia.org/wiki/Breadcrumb_navigation>`_ links at the top of each page."""
+    """If ``True``, the theme includes `breadcrumbs <https://en.wikipedia.org/wiki/Breadcrumb_navigation>`_ links on every page except the root page."""
 
     breadcrumbs_separator: str = "/"
     """The separator for the breadcrumbs links."""
 
     awesome_header_links: bool = True
-    """Controls whether clicking a headerlink should copy the URL to the clipboard."""
+    """If ``True``, clicking a headerlink copies its URL to the clipboard."""
 
     show_scrolltop: bool = False
-    """Controls whether to show a button that scrolls to the top of the page when clicked."""
+    """If ``True``, the theme shows a button that scrolls to the top of the page when clicked."""
 
     awesome_external_links: bool = False
-    """Show icons after external links."""
+    """If ``True``, the theme includes an icon after external links and adds ``rel="nofollow noopener"`` to the links' attributes."""
 
     main_nav_links: dict[str, str] = field(default_factory=dict)
-    """A dict with links to include in the site header."""
+    """A dictionary with links to include in the site header.
+
+    The keys of this dictionary are the labels for the links.
+    The values are absolute or relative URLs.
+    """
 
     extra_header_link_icons: dict[str, LinkIcon] = field(default_factory=dict)
-    """A dict with extra icons to include on the right of the search bar."""
+    """A dictionary with extra icons to include on the right of the search bar.
+
+    The keys are labels for the link's ``title`` attribute.
+    The values are themselves :class:`LinkIcon`.
+    """
 
     logo_light: str | None = None
     """A path to a logo for the light mode. If you're using separate logos for light and dark mode, you **must** provide both logos."""
 
     logo_dark: str | None = None
     """A path to a logo for the dark mode. If you're using separate logos for light and dark mode, you **must** provide both logos."""
+
+    globaltoc_includehidden: bool = True
+    """If ``True``, the theme includes entries from *hidden*
+    :sphinxdocs:`toctree <usage/restructuredtext/directives.html#directive-toctree>` directives in the sidebar.
+
+    The ``toctree`` directive generates a list of links on the page where you include it,
+    unless you set the ``:hidden:`` option.
+    """
 
 
 def setup(app: Sphinx) -> dict[str, Any]:

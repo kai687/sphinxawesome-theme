@@ -1,42 +1,16 @@
 .. meta::
-   :description: See an example for module documentation with the Awesome theme. Sphinx generates module documentation from docstrings in the source code.
+   :description: See an example for code documentation with the Awesome theme. Sphinx can generate reference documentation from docstrings in your source code.
 
-Module documentation
-====================
+Code documentation
+==================
 
 .. rst-class:: lead
 
-   See how automatically generated documentation from Python source code
-   looks like with the |product|.
+   Sphinx can generate reference documentation from docstrings in your source code.
 
-.. vale Vale.Spelling = NO
 
-Automodule example
-------------------
-
-.. vale Vale.Spelling = YES
-
-.. automodule:: docutils
-   :members:
-
-.. vale Vale.Spelling = NO
-
-Autoclass example
------------------
-
-.. vale Vale.Spelling = YES
-
-.. autoclass:: docutils.nodes.Node
-   :members:
-
-.. vale Vale.Spelling = NO
-
-Autofunction example
---------------------
-
-.. vale Vale.Spelling = YES
-
-.. autofunction:: docutils.nodes.serial_escape
+The |product| documentation makes use of this function on the page `theme_options`.
+This page lists a few additional examples.
 
 Command line options
 --------------------

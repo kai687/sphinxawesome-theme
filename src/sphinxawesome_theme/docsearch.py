@@ -13,7 +13,7 @@ To load this extension, add:
 """
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, fields
 from typing import Any
 
 from docutils.nodes import Node
@@ -32,31 +32,71 @@ logger = logging.getLogger(__name__)
 
 @dataclass
 class DocSearchConfig:
-    """For documenting the DocSearch options."""
+    """Configuration options for DocSearch.
+
+    This class defines and documents the configuration options for the :py:mod:`sphinxawesome_theme.docsearch` extension.
+    The ``DocSearchConfig`` class is  mainly useful for this documentation.
+    To configure DocSearch, you must use regular Python variables. For example:
+
+    .. code-block:: python
+       :caption: File: conf.py
+
+       from sphinxawesome_theme.docsearch import DocSearchConfig
+
+       config = DocSearchConfig(
+           docsearch_app_id="DOCSEARCH_APP_ID"
+           # Other options
+       )
+
+       docsearch_app_id = config.docsearch_app_id
+    """
 
     docsearch_app_id: str
-    """Your Algolia DocSearch application ID."""
+    """Your Algolia DocSearch application ID.
+
+    You **must** provide an application ID or DocSearch won't work.
+    """
 
     docsearch_api_key: str
-    """Your Algolia DocSearch Search API key."""
+    """Your Algolia DocSearch Search API key.
+
+    You **must** provide your search API key or DocSearch won't work.
+
+    .. caution::
+
+       Don't expose your write API key.
+    """
 
     docsearch_index_name: str
-    """Your Algolia DocSearch index name."""
+    """Your Algolia DocSearch index name.
+
+    You **must** provide an index name or DocSearch won't work.
+    """
 
     docsearch_container: str = "#docsearch"
     """A CSS selector where the DocSearch UI should be injected."""
 
     docsearch_placeholder: str | None = None
-    """A placeholder for the search input."""
+    """A placeholder for the search input.
+
+    By default, DocSearch uses *Search docs*.
+    """
 
     docsearch_initial_query: str | None = None
     """If you want to perform a search before the user starts typing."""
 
-    docsearch_search_params: str | None = None
-    """If you want to pass Algolia search parameters."""
+    docsearch_search_parameter: str | None = None
+    """If you want to pass `Algolia search parameter <https://www.algolia.com/doc/api-reference/search-api-parameters/>`_."""
 
     docsearch_missing_results_url: str | None = None
-    """If you want to include a URL, where users can communicate with you about missing search results."""
+    """A URL for letting users send you feedback about your search.
+
+    You can use the current query in the URL. For example:
+
+    .. code-block:: python
+
+       docsearch_missing_results_url = "https://github.com/example/docs/issues/new?title=${query}"
+    """
 
 
 @progress_message("DocSearch: check config")
@@ -131,26 +171,11 @@ def remove_script_files(
 
 def setup(app: Sphinx) -> dict[str, Any]:
     """Register the extension."""
-    app.add_config_value("docsearch_app_id", default="", rebuild="html", types=(str))
-    app.add_config_value("docsearch_api_key", default="", rebuild="html", types=(str))
-    app.add_config_value(
-        "docsearch_index_name", default="", rebuild="html", types=(str)
-    )
-    app.add_config_value(
-        "docsearch_container", default="#docsearch", rebuild="html", types=(str)
-    )
-    app.add_config_value(
-        "docsearch_initial_query", default="", rebuild="html", types=(str)
-    )
-    app.add_config_value(
-        "docsearch_placeholder", default="", rebuild="html", types=(str)
-    )
-    app.add_config_value(
-        "docsearch_search_parameter", default="", rebuild="html", types=(str)
-    )
-    app.add_config_value(
-        "docsearch_missing_results_url", default="", rebuild="html", types=(str)
-    )
+    # Get the configuration from a single-source of truth
+    # This makes it easy to document.
+    for option in fields(DocSearchConfig):
+        default = option.default if isinstance(option.default, str) else ""
+        app.add_config_value(option.name, default=default, rebuild="html", types=(str))
 
     app.connect("config-inited", check_config)
     app.connect("config-inited", add_docsearch_assets)

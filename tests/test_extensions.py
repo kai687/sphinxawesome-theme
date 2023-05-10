@@ -91,6 +91,14 @@ def test_docsearch_no_warnings(app: Sphinx, warning: StringIO) -> None:
     app.build()
     warnings = warning.getvalue()
     assert len(warnings) == 0
+    assert hasattr(app.config, "docsearch_app_id")
+    assert hasattr(app.config, "docsearch_api_key")
+    assert hasattr(app.config, "docsearch_index_name")
+    assert hasattr(app.config, "docsearch_container")
+    assert hasattr(app.config, "docsearch_placeholder")
+    assert hasattr(app.config, "docsearch_search_parameter")
+    assert hasattr(app.config, "docsearch_initial_query")
+    assert hasattr(app.config, "docsearch_missing_results_url")
 
 
 @pytest.mark.sphinx(
