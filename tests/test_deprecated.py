@@ -93,3 +93,139 @@ def test_handles_deprecated_extra_header_links(app: Sphinx, warning: StringIO) -
     assert theme_options["extra_header_link_icons"] == {
         "with_icon": {"link": "link", "icon": "icon"}
     }
+
+
+@pytest.mark.sphinx(
+    "html",
+    confoverrides={
+        "html_theme": "sphinxawesome_theme",
+        "extensions": ["sphinxawesome_theme.deprecated"],
+        "html_awesome_docsearch": True,
+    },
+)
+def test_handles_deprecated_docsearch(app: Sphinx, warning: StringIO) -> None:
+    """It handles the deprecated `html_awesome_docsearch` option."""
+    app.build()
+
+    assert (
+        "`html_awesome_docsearch` is deprecated. Use the bundled `sphinxawesome_theme.docsearch` extension instead."
+        in warning.getvalue()
+    )
+    assert "sphinxawesome_theme.docsearch" in app.extensions
+
+
+@pytest.mark.sphinx(
+    "html",
+    confoverrides={
+        "html_theme": "sphinxawesome_theme",
+        "extensions": ["sphinxawesome_theme.deprecated"],
+        "docsearch_config": {},
+    },
+)
+def test_handles_deprecated_docsearch_config(app: Sphinx, warning: StringIO) -> None:
+    """It handles the deprecated `docsearch_config` dictionary."""
+    app.build()
+
+    assert (
+        "Using the `docsearch_config` dictionary is deprecated. Load the bundled `sphinxawesome_theme.docsearch` extension and configure DocSearch with `docsearch_*` variables."
+        in warning.getvalue()
+    )
+    assert "sphinxawesome_theme.docsearch" not in app.extensions
+    assert "docsearch_app_id" not in app.config
+
+
+@pytest.mark.sphinx(
+    "html",
+    confoverrides={
+        "html_theme": "sphinxawesome_theme",
+        "extensions": ["sphinxawesome_theme.deprecated"],
+        "html_awesome_docsearch": True,
+        "docsearch_config": {
+            "app_id": "test",
+            "api_key": "test",
+            "index_name": "test",
+            "container": "test",
+        },
+    },
+)
+def test_handles_migrating_docsearch_config(app: Sphinx) -> None:
+    """It handles migrating the deprecated `docsearch_config` dictionary."""
+    app.build()
+
+    assert "sphinxawesome_theme.docsearch" in app.extensions
+    assert app.config.docsearch_app_id == "test"
+    assert app.config.docsearch_api_key == "test"
+    assert app.config.docsearch_index_name == "test"
+    assert app.config.docsearch_container == "test"
+
+
+@pytest.mark.sphinx(
+    "html",
+    confoverrides={
+        "html_theme": "sphinxawesome_theme",
+        "extensions": ["sphinxawesome_theme.deprecated"],
+        "html_collapsible_definitions": True,
+    },
+)
+def test_handles_collapsible_definitions(app: Sphinx, warning: StringIO) -> None:
+    """It handles warning about the deprecated `html_collapsible_definitions` option."""
+    app.build()
+
+    assert (
+        "`html_collapsible_definitions` is deprecated. Use the `sphinx-design` extension instead."
+        in warning.getvalue()
+    )
+
+
+@pytest.mark.sphinx(
+    "html",
+    confoverrides={
+        "html_theme": "sphinxawesome_theme",
+        "extensions": ["sphinxawesome_theme.deprecated"],
+        "html_awesome_headerlinks": True,
+    },
+)
+def test_handles_awesome_headerlinks(app: Sphinx, warning: StringIO) -> None:
+    """It handles the deprecated `html_awesome_headerlinks` option."""
+    app.build()
+
+    assert (
+        "`html_awesome_headerlinks` is deprecated. Use `html_theme_options = {'awesome_headerlinks: True '} instead."
+        in warning.getvalue()
+    )
+    assert app.config.html_theme_options["awesome_headerlinks"] is True
+
+
+@pytest.mark.sphinx(
+    "html",
+    confoverrides={
+        "html_theme": "sphinxawesome_theme",
+        "extensions": ["sphinxawesome_theme.deprecated"],
+        "html_awesome_external_links": True,
+    },
+)
+def test_handles_awesome_external_links(app: Sphinx, warning: StringIO) -> None:
+    """It handles the deprecated `html_awesome_external_links` option."""
+    app.build()
+
+    assert (
+        "`html_awesome_external_links` is deprecated. Use `html_theme_options = {'awesome_external_links: True '} instead."
+        in warning.getvalue()
+    )
+    assert app.config.html_theme_options["awesome_external_links"] is True
+
+
+@pytest.mark.sphinx(
+    "html",
+    confoverrides={
+        "html_theme": "sphinxawesome_theme",
+        "extensions": ["sphinxawesome_theme.deprecated"],
+        "html_awesome_code_headers": True,
+    },
+)
+def test_handles_awesome_code_headers(app: Sphinx, warning: StringIO) -> None:
+    """It handles the deprecated `html_awesome_code_headers` option."""
+    app.build()
+
+    # How can I check for the standard output message `logger.info`?
+    assert len(warning.getvalue()) == 0

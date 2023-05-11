@@ -179,7 +179,7 @@ def _modify_html(html_filename: str, app: Sphinx) -> None:
         _external_links(tree)
     _remove_empty_toctree(tree)
     _scrollspy(tree)
-    if theme_options.get("awesome_header_links"):
+    if theme_options.get("awesome_headerlinks"):
         _headerlinks(tree)
     # _code_headers(tree)
     _strip_comments(tree)

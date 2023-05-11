@@ -51,7 +51,7 @@ class ThemeOptions:
     breadcrumbs_separator: str = "/"
     """The separator for the breadcrumbs links."""
 
-    awesome_header_links: bool = True
+    awesome_headerlinks: bool = True
     """If ``True``, clicking a headerlink copies its URL to the clipboard."""
 
     show_scrolltop: bool = False
