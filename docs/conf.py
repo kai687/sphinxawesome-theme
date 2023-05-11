@@ -83,6 +83,11 @@ html_context = {
     "feedback_url": "https://github.com/kai687/sphinxawesome-theme/issues/new?title=Feedback",
 }
 
+html_sidebars = {
+    "about": [],
+    "changelog/*": [],
+}
+
 # if you want to include other pages than docs
 templates_path = ["_templates"]
 # html_additional_pages = {"about": "about.html"}

@@ -9,20 +9,24 @@
   }
 
   & h1 {
-    @apply mb-2 scroll-m-20 text-4xl font-bold;
+    @apply mb-2 text-4xl font-bold;
   }
 
   & h2 {
-    @apply mt-12 scroll-m-20 border-b border-border pb-2 text-3xl font-semibold;
+    @apply mt-12 border-b border-border pb-2 text-3xl font-semibold;
   }
 
   & h3 {
-    @apply mt-8 scroll-m-20 text-2xl font-semibold;
+    @apply mt-8 text-2xl font-semibold;
   }
 
   & h4,
   & .rubric {
-    @apply mt-8 scroll-m-20 text-xl font-semibold;
+    @apply mt-8 text-xl font-semibold;
+  }
+
+  & section {
+    @apply scroll-m-20;
   }
 
   & section > p {

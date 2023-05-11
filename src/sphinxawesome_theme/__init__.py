@@ -86,6 +86,8 @@ class ThemeOptions:
 
     The ``toctree`` directive generates a list of links on the page where you include it,
     unless you set the ``:hidden:`` option.
+
+    This option is inherited from the ``basic`` theme.
     """
 
 
