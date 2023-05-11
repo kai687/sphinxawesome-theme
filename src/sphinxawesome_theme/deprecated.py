@@ -96,16 +96,16 @@ def check_deprecated(app: Sphinx, config: Config) -> None:  # noqa: C901
         ):
             ds_conf = raw["docsearch_config"]
             if "app_id" in ds_conf:
-                config.docsearch_app_id = ds_conf["app_id"]
+                config.docsearch_app_id = ds_conf["app_id"]  # type: ignore[attr-defined]
 
             if "api_key" in ds_conf:
-                config.docsearch_api_key = ds_conf["api_key"]
+                config.docsearch_api_key = ds_conf["api_key"]  # type: ignore[attr-defined]
 
             if "index_name" in ds_conf:
-                config.docsearch_index_name = ds_conf["index_name"]
+                config.docsearch_index_name = ds_conf["index_name"]  # type: ignore[attr-defined]
 
             if "container" in ds_conf:
-                config.docsearch_container = ds_conf["container"]
+                config.docsearch_container = ds_conf["container"]  # type: ignore[attr-defined]
 
     if found_deprecated is False:
         logger.info(
