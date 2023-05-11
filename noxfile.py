@@ -147,22 +147,20 @@ def export(session: Session) -> None:
 @session(python=python_versions)
 def lint(session: Session) -> None:
     """Lint python files."""
-    deps = ["ruff", "djlint"]
+    deps = ["ruff"]
     install_with_requirements(session, "lint", ".", *deps)
 
     session.run("ruff", ".")
-    session.run("djlint", "src")
 
 
 @session
 def fmt(session: Session) -> None:
     """Format python files."""
-    deps = ["ruff", "black", "djlint"]
+    deps = ["ruff", "black"]
     install_with_requirements(session, "lint", ".", *deps)
 
     session.run("ruff", "check", ".", "--select", "I", "--fix")
     session.run("black", ".")
-    session.run("djlint", "src", "--reformat")
 
 
 @session(python=["3.8", "3.11"])

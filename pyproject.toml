@@ -41,7 +41,6 @@ mypy = "^1.0"
 [tool.poetry.group.lint.dependencies]
 black = "^23.1"
 pre-commit = "^3.1.1"
-djlint = "1.25.0"
 ruff = "^0.0.265"
 
 [tool.poetry.group.netlify.dependencies]
@@ -84,15 +83,6 @@ warn_unused_ignores = true
 [[tool.mypy.overrides]]
 module = ["pygments.*", "dotenv", "sphinxcontrib.serializinghtml", "nox_poetry", "bs4"]
 ignore_missing_imports = true
-
-[tool.djlint]
-profile = "jinja"
-extension = "html"
-indent = 2
-use_gitignore = true
-format_js = false
-format_css = false
-ignore="H030,H031" # djlint doesn't know that we add meta tags in Sphinx
 
 [tool.poetry.plugins."sphinx.html_themes"]
 sphinxawesome_theme = "sphinxawesome_theme"
