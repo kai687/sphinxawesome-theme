@@ -90,6 +90,77 @@ class ThemeOptions:
     This option is inherited from the ``basic`` theme.
     """
 
+    nav_include_hidden: None = None
+    """Deprecated. Use `globaltoc_includehidden` instead.
+
+    .. deprecated:: 5.0
+    """
+
+    show_nav: None = None
+    """Deprecated. Use the `html_sidebars` option instead.
+
+    .. deprecated:: 5.0
+    """
+
+    extra_header_links: None = None
+    """Deprecated. Use either `main_nav_links` or `extra_header_link_icons` instead.
+
+    .. deprecated:: 5.0
+    """
+
+
+def deprecated_options(app: Sphinx) -> None:
+    """Checks for deprecated ``html_theme_options``.
+
+    Raises warnings and set the correct options.
+    """
+    theme_options = logos.get_theme_options(app)
+
+    if (
+        "nav_include_hidden" in theme_options
+        and theme_options["nav_include_hidden"] is not None
+    ):
+        logger.warning(
+            "Setting `nav_include_hidden` in `html_theme_options` is deprecated. "
+            "Use `globaltoc_includehidden` in `html_theme_options` instead."
+        )
+        theme_options["globaltoc_includehidden"] = theme_options["nav_include_hidden"]
+        del theme_options["nav_include_hidden"]
+
+    if "show_nav" in theme_options and theme_options["show_nav"] is not None:
+        logger.warning(
+            "Toggling the sidebar with `show_nav` in `html_theme_options` is deprecated. "
+            "Control the sidebar with the `html_sidebars` configuration option instead."
+        )
+        if theme_options["show_nav"] is False:
+            app.builder.config.html_sidebars = {"**": []}  # type: ignore[attr-defined]
+        del theme_options["show_nav"]
+
+    if (
+        "extra_header_links" in theme_options
+        and theme_options["extra_header_links"] is not None
+    ):
+        logger.warning(
+            "`extra_header_links` is deprecated. "
+            "Use `main_nav_links` for text links (left side) and `extra_header_link_icons` for icon links (right side) instead."
+        )
+
+        extra_links = theme_options["extra_header_links"]
+        print("EXTRA: ", extra_links)
+        # Either we have `extra_header_links = { "label": "url" }
+        main_nav_links = {
+            key: value for key, value in extra_links.items() if isinstance(value, str)
+        }
+        theme_options["main_nav_links"] = main_nav_links
+
+        # Or we have `extra_header_links` = { "label": { "link": "link", "icon": "icon" }}
+        extra_link_icons = {
+            key: value for key, value in extra_links.items() if isinstance(value, dict)
+        }
+        theme_options["extra_header_link_icons"] = extra_link_icons
+
+        del theme_options["extra_header_links"]
+
 
 def setup(app: Sphinx) -> dict[str, Any]:
     """Register the theme and its extensions wih Sphinx."""
@@ -98,12 +169,22 @@ def setup(app: Sphinx) -> dict[str, Any]:
     app.add_html_theme(name="sphinxawesome_theme", theme_path=str(here))
 
     # Add the CSS overrides if we're using the `sphinx-design` extension
-    if "sphinx_design" in app.extensions:
+    if "sphinx_design" in app.config.extensions:
         app.add_css_file("awesome-sphinx-design.css", priority=900)
+
+    if "sphinxawesome_theme" in app.config.extensions:
+        logger.warning(
+            "Including `sphinxawesome_theme` in your `extensions` is deprecated. "
+            'Setting `html_theme = "sphinxawesome_theme"` is enough. '
+            "You can load the optional `sphinxawesome_theme.docsearch` and `sphinxawesome_theme.highlighting` extensions."
+        )
+        app.setup_extension("sphinxawesome_theme.highlighting")
+        app.setup_extension("sphinxawesome_theme.docsearch")
 
     # The theme is set up _after_ extensions are set up,
     # so I can't use internal extensions.
     # For the same reason, I also can't call the `config-inited` event
+    app.connect("builder-inited", deprecated_options)
     app.connect("builder-inited", logos.update_config)
     app.connect("html-page-context", logos.setup_logo_path)
     app.connect("html-page-context", jinja_functions.setup_jinja)
