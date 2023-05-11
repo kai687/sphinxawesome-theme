@@ -86,8 +86,8 @@ html_context = {
 }
 
 html_sidebars: dict[str, list[str]] = {
-    "about": [],
-    "changelog/*": [],
+    "about": ["sidebar_main_nav_links.html"],
+    "changelog/*": ["sidebar_main_nav_links.html"],
 }
 
 # if you want to include other pages than docs

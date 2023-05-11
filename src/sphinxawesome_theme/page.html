@@ -3,7 +3,9 @@
 {%- extends "layout.html" -%}
 
 {%- block body %}
-{%- if sidebars|length > 0 %}
+
+{%- set only_main_nav = sidebars == ["sidebar_main_nav_links.html"] %}
+{%- if not only_main_nav and sidebars|length > 0 %}
 <div class="w-full min-w-0 mx-auto">
   {%- else %}
   <div class="w-full min-w-0 mx-auto max-w-prose">
