@@ -1,0 +1,16 @@
+{#- Component for rendering the logos, depending on the theme configuration -#}
+
+{%- macro render_logos(size, pathto) -%}
+{%- set _logo_url = logo_url|default(pathto('_static/' + (logo or ""), 1)) %}
+{%- if logo or logo_url -%}
+<img height="{{ size }}" width="{{ size }}" class="mr-2 dark:invert" src="{{ _logo_url }}" alt="Logo" />
+{%- endif -%}
+{%- if theme_logo_dark and not (logo or logo_url) -%}
+<img width="{{ size }}" height="{{ size}}" class="mr-2 hidden dark:block"
+  src="{{ pathto('_static/' + theme_logo_dark, 1) }}" alt="Logo" />
+{%- endif -%}
+{%- if theme_logo_light and not (logo or logo_url) -%}
+<img width="{{ size }}" height="{{ size }}" class="mr-2 dark:hidden"
+  src="{{ pathto('_static/' + theme_logo_light, 1) }}" alt="Logo" />
+{%- endif -%}
+{%- endmacro %}
