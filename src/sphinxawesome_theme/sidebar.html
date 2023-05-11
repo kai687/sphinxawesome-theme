@@ -1,7 +1,5 @@
 {#- Template for the sidebar. -#}
 
-{%- import "logo.html" as logo -%}
-
 {%- set only_main_nav = sidebars == ["sidebar_main_nav_links.html"] -%}
 
 {%- if not only_main_nav and sidebars|length > 0 -%}
@@ -15,7 +13,15 @@
     {%- endif %}
 
     <a href="{{ pathto(master_doc) }}" class="!justify-start text-sm md:!hidden bg-background">
-      {{ logo.render_logos(size=16, pathto=pathto) }}
+      {%- if logo_url %}
+        <img height="16" width="16" class="mr-2 dark:invert" src="{{ logo_url }}" alt="Logo" />
+      {%- endif -%}
+      {%- if theme_logo_dark and not logo_url %}
+        <img width="16" height="16" class="mr-2 hidden dark:block" src="{{ pathto('_static/' + theme_logo_dark, 1) }}" alt="Logo" />
+      {%- endif -%}
+      {%- if theme_logo_light and not logo_url %}
+        <img width="16" height="16" class="mr-2 dark:hidden" src="{{ pathto('_static/' + theme_logo_light, 1) }}" alt="Logo" />
+      {%- endif -%}
       <span class="font-bold text-clip whitespace-nowrap">{{ docstitle }}</span>
     </a>
 

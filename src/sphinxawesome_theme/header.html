@@ -1,7 +1,5 @@
 {#- Template file for the header -#}
 
-{%- import "logo.html" as logo -%}
-
 <header
   class="sticky top-0 z-40 w-full border-b shadow-sm border-border supports-backdrop-blur:bg-background/60 bg-background/95 backdrop-blur">
 
@@ -10,11 +8,19 @@
 
   <div class="container flex items-center h-14">
     {#- show logo and extra header links on the left side of the header -#}
-    {% block header_left %}
+    {%- block header_left %}
     <div class="hidden mr-4 md:flex">
-      {% block header_logo %}
+      {%- block header_logo %}
       <a href="{{ pathto(master_doc) }}" class="flex items-center mr-6">
-        {{ logo.render_logos(size=24, pathto=pathto) }}
+        {%- if logo_url %}
+          <img height="24" width="24" class="mr-2 dark:invert" src="{{ logo_url }}" alt="Logo" />
+        {%- endif -%}
+        {%- if theme_logo_dark and not logo_url %}
+          <img width="24" height="24" class="mr-2 hidden dark:block" src="{{ pathto('_static/' + theme_logo_dark, 1) }}" alt="Logo" />
+        {%- endif -%}
+        {%- if theme_logo_light and not logo_url %}
+        <img width="24" height="24" class="mr-2 dark:hidden" src="{{ pathto('_static/' + theme_logo_light, 1) }}" alt="Logo" />
+        {%- endif -%}
         <span class="hidden font-bold sm:inline-block text-clip whitespace-nowrap">{{ docstitle }}</span>
       </a>
       {%- endblock header_logo %}
