@@ -1,4 +1,5 @@
 """Sphinx configuration file."""
+from __future__ import annotations
 import os
 from dataclasses import asdict
 
@@ -83,7 +84,7 @@ html_context = {
     "feedback_url": "https://github.com/kai687/sphinxawesome-theme/issues/new?title=Feedback",
 }
 
-html_sidebars = {
+html_sidebars: dict[str, list[str]] = {
     "about": [],
     "changelog/*": [],
 }
