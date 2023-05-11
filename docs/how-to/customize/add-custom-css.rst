@@ -15,7 +15,7 @@ To add extra CSS files, add your custom styles to a file—for example,
 :file:`_static/custom.css` and add the following options to your Sphinx configuration:
 
 .. code-block:: python
-   :caption: File: conf.py
+   :caption: |conf|
 
    html_static_path = ["_static"]
    html_css_files = ["custom.css"]

@@ -6,7 +6,9 @@ Configure the theme
 
 .. rst-class:: lead
 
-   Configure the |product| by changing one of its options.
+   Configure the |product|.
 
+.. include:: includes/logos.rst
+.. include:: includes/sidebars.rst
 .. include:: includes/theme-options.rst
 .. include:: includes/docsearch.rst

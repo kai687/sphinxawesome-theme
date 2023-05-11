@@ -15,7 +15,7 @@ To add extra JavaScript files, add your code to a file—for example,
 :file:`_static/custom.js` and add the following options to your Sphinx configuration:
 
 .. code-block:: python
-   :caption: File: conf.py
+   :caption: |conf|
 
    html_static_path = ["_static"]
    html_js_files = ["custom.js"]

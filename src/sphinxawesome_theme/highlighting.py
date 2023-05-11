@@ -19,7 +19,7 @@ but I haven't found it.
 To load this extension, add:
 
 .. code-block:: python
-   :caption: File: conf.py
+   :caption: |conf|
 
    extensions += ["sphinxawesome_theme.highlighting"]
 

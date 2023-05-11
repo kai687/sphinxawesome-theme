@@ -16,12 +16,8 @@ Get started
 
 #. Install the theme:
 
-   .. .. code-block:: terminal
-
-   ..    pip install sphinxawesome-theme
-
    .. literalinclude:: how-to/install/includes/install.sh
-      :language: terminal
+      :language: sh
 
    .. seealso::
 
@@ -31,7 +27,7 @@ Get started
 
    .. literalinclude:: how-to/add/includes/configure.inc
       :language: python
-      :caption: File: conf.py
+      :caption: |conf|
 
    .. seealso::
 

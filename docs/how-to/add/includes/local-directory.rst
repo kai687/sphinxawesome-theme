@@ -33,7 +33,7 @@ follow these steps:
 #. Update your Sphinx configuration:
 
    .. code-block:: python
-      :caption: File: conf.py
+      :caption: |conf|
 
       html_theme = "sphinxawesome_theme"
       html_theme_path = ["_themes"]

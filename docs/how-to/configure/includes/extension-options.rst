@@ -7,7 +7,7 @@ If you added the |product| as an extension,
 you can configure these options:
 
 .. code-block:: python
-   :caption: File: conf.py
+   :caption: |conf|
 
    html_collapsible_definitions = False  # Deprecated
    html_awesome_headerlinks = True

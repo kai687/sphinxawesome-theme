@@ -43,6 +43,7 @@ rst_prolog = """
 
 .. |rst| replace:: reStructuredText
 .. |product| replace:: Awesome Theme
+.. |conf| replace:: File: conf.py
 """
 
 intersphinx_mapping = {

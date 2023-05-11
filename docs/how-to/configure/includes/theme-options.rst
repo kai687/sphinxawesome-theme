@@ -6,14 +6,13 @@ Theme options
 -------------
 
 To configure the theme, modify the :confval:`sphinx:html_theme_options` dictionary in your Sphinx configuration.
-Because it's easy to missspell a string option,
-the |product| provides a helper class :class:`ThemeOptions` to help with the set up.
-Using the helper class lets you benefit from code completion and documentation in your editor.
+To benefit from code completion and documentation when editing the configuration,
+the |product| provides a helper class :py:class:`ThemeOptions` to help with the set up.
 
 To use the ``ThemeOptions`` helper to configure the theme, add the following code:
 
 .. code-block:: python
-   :caption: File: conf.py
+   :caption: |conf|
 
    from dataclasses import asdict
    from sphinxawesome_theme import ThemeOptions
@@ -29,7 +28,7 @@ To use the ``ThemeOptions`` helper to configure the theme, add the following cod
 You can still configure the theme using a regular dictionary:
 
 .. code-block:: python
-   :caption: File: conf.py
+   :caption: |conf|
 
    html_theme_options = {
       # Add your theme options. For example:
@@ -43,6 +42,7 @@ You can still configure the theme using a regular dictionary:
 
 .. autoclass:: ThemeOptions()
    :members:
+   :exclude-members: extra_header_links, nav_include_hidden, show_nav
 
 .. dropdown:: ``LinkIcon`` reference
 

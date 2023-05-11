@@ -10,7 +10,7 @@ as a `local Python package <https://packaging.python.org/en/latest/tutorials/ins
 #. :ref:`sec:fork-and-clone`.
 #. Install the local copy of the theme in your project:
 
-   .. code-block:: terminal
+   .. code-block:: sh
       :emphasize-text: /path/to/sphinxawesome_theme
 
       pip install --editable /path/to/sphinxawesome_theme

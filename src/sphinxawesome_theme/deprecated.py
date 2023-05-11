@@ -11,7 +11,7 @@ and extensions are already processed.
 To load this extension, add:
 
 .. code-block:: python
-   :caption: File: conf.py
+   :caption: |conf|
 
    extensions += ["sphinxawesome_theme.deprecated"]
 

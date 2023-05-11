@@ -1,0 +1,10 @@
+Version 4.0
+-----------
+
+Version 4.0 of the |product| includes these **breaking changes**:
+
+Add support for Sphinx 6
+   Since Sphinx 6 is only supported with the latest version of the `myst-parser` package
+   and Sphinx 6 drops support for Python 3.7, this release is a major version update.
+
+Apart from that, this version is identical with version 3 of the |product|.

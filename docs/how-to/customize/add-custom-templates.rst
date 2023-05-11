@@ -13,7 +13,7 @@ Add custom templates
 Create a directory in your Sphinx project and add it to your Sphinx configuration:
 
 .. code-block:: python
-  :caption: File: conf.py
+  :caption: |conf|
 
   templates_path = ["_templates"]
 

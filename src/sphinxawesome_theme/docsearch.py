@@ -4,7 +4,7 @@ This extension replaces the built-in search in Sphinx with Algolia DocSearch.
 To load this extension, add:
 
 .. code-block:: python
-   :caption: File: conf.py
+   :caption: |conf|
 
    extensions += ["sphinxawesome_theme.docsearch"]
 
@@ -35,11 +35,10 @@ class DocSearchConfig:
     """Configuration options for DocSearch.
 
     This class defines and documents the configuration options for the :py:mod:`sphinxawesome_theme.docsearch` extension.
-    The ``DocSearchConfig`` class is  mainly useful for this documentation.
     To configure DocSearch, you must use regular Python variables. For example:
 
     .. code-block:: python
-       :caption: File: conf.py
+       :caption: |conf|
 
        from sphinxawesome_theme.docsearch import DocSearchConfig
 
@@ -91,7 +90,7 @@ class DocSearchConfig:
     docsearch_missing_results_url: str | None = None
     """A URL for letting users send you feedback about your search.
 
-    You can use the current query in the URL. For example:
+    You can use the current query in the URL as ``${query}``. For example:
 
     .. code-block:: python
 

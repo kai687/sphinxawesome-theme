@@ -1,11 +1,11 @@
 Add bundled extensions
 ----------------------
 
-Two enhance your documentation,
+To enhance your documentation,
 you can add these optional extensions:
 
 .. code-block:: python
-   :caption: File: conf.py
+   :caption: |conf|
 
    extensions += [
       "sphinxawesome_theme.docsearch",
@@ -16,6 +16,7 @@ Both extensions are independent from each other.
 
 ``sphinxawesome_theme.docsearch``
    Replaces the built-in search with Algolia DocSearch for showing instant search results as you type.
+   See :ref:`sec:docsearch` for the available configuration options.
 
 ``sphinxawesome_theme.highlighting``
    Adds the following highlighting options to Sphinx's ``code-block`` directive:
@@ -26,6 +27,5 @@ Both extensions are independent from each other.
 
 .. seealso::
 
-   :ref:`sec:docsearch`,
    :doc:`/demo/code-blocks`,
    :confval:`sphinx:extensions`

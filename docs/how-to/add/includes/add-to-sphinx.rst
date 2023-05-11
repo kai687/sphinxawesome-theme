@@ -8,7 +8,7 @@ Add the theme to your Sphinx configuration
 
    .. literalinclude:: includes/configure.inc
       :language: python
-      :caption: File: conf.py
+      :caption: |conf|
 
    .. seealso::
 

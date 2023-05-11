@@ -1,0 +1,9 @@
+Version 3.0
+-----------
+
+Redesign
+   Create a better visual hierarchy which makes the document easier to scan.
+   Heavily inspired by the `Material Design <https://m2.material.io/>`_ website.
+
+Restructure
+   All JavaScript is now using the `Stimulus <https://stimulus.hotwired.dev/>`_ framework.
