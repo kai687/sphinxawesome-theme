@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "sphinxawesome-theme"
-version = "4.0.3"
+version = "4.1.0"
 description = "An awesome theme for the Sphinx documentation generator"
 readme = "README.md"
 authors = ["Kai Welke <kai687@pm.me>"]
