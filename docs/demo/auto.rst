@@ -1,5 +1,6 @@
 .. meta::
    :description: See an example for code documentation with the Awesome theme. Sphinx can generate reference documentation from docstrings in your source code.
+   :twitter:description: See an example for code documentation with the Awesome theme. Sphinx can generate reference documentation from docstrings in your source code.
 
 Code documentation
 ==================

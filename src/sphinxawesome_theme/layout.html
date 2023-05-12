@@ -32,10 +32,14 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta charset="utf-8" />
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="white" />
+  <meta name="theme-color" metia="(prefers-color-scheme: dark)" content="black" />
   {{ metatags }}
 
   {%- block htmltitle %}
     <title>{{ title|striptags|e if title else docstitle }}{{ titlesuffix }}</title>
+    <meta property="og:title" content="{{ title|striptags|e if title else docstitle }}{{ titlesuffix }}" />
+    <meta name="twitter:title" content="{{ title|striptags|e if title else docstitle }}{{ titlesuffix }}" />
   {%- endblock htmltitle %}
 
   {#- Extra CSS files for overriding stuff #}
@@ -117,7 +121,7 @@
       {%- if not only_main_nav and sidebars|length > 0 -%}
         <div class="container flex-1 items-start md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10">
       {%- else -%}
-        <div class="container flex-1 items-start">
+        <div class="container items-start flex-1">
       {%- endif -%}
 
         {%- block sidebar %}

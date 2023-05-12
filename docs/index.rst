@@ -1,6 +1,6 @@
 .. meta::
    :description: Create functional and beautiful websites for your documentation with Sphinx and the Awesome Sphinx Theme.
-   :keywords: Documentation, Sphinx, Python
+   :twitter:description: Create functional and beautiful websites for your documentation with Sphinx and the Awesome Sphinx Theme.
 
 Awesome Sphinx Theme
 ====================

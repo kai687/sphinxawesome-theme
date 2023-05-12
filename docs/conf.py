@@ -41,6 +41,9 @@ default_role = "literal"
 substitutions = [
     ":tocdepth: 3",
     " ",
+    ".. meta::",
+    "   :author: kai687",
+    "   :keywords: Documentation,Sphinx,Python,Tailwind",
     ".. |rst| replace:: reStructuredText",
     ".. |product| replace:: Awesome Theme",
     ".. |conf| replace:: File: conf.py",

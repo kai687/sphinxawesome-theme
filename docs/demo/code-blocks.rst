@@ -1,5 +1,6 @@
 .. meta::
    :description: See how code blocks look like in your Sphinx project with the Awesome Theme and learn about the supported options.
+   :twitter:description: See how code blocks look like in your Sphinx project with the Awesome Theme and learn about the supported options.
 
 Code blocks
 ===========

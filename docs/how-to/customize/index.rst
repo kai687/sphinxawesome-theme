@@ -1,5 +1,6 @@
 .. meta::
    :description: Adapt the Awesome Theme to your needs by adding custom styles, using custom layouts, or changing the default templates.
+   :twitter:description: Adapt the Awesome Theme to your needs by adding custom styles, using custom layouts, or changing the default templates.
 
 Customize the theme
 ===================

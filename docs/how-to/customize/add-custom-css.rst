@@ -1,5 +1,6 @@
 .. meta::
    :description: Customize your styles by adding CSS files or adding styles inline.
+   :twitter:description: Customize your styles by adding CSS files or adding styles inline.
 
 Add custom CSS
 ==============

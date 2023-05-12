@@ -1,5 +1,6 @@
 .. meta::
    :description: Add, extend, or override Jinja2 templates.
+   :twitter:description: Add, extend, or override Jinja2 templates.
 
 .. _sec:add-custom-templates:
 

@@ -1,5 +1,6 @@
 .. meta::
    :description: See how on-page navigation looks like in this theme.
+   :twitter:description: See how on-page navigation looks like in this theme.
 
 On-page navigation
 ==================

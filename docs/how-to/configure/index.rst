@@ -1,5 +1,6 @@
 .. meta::
    :description: Configure the Awesome Theme by changing options in your Sphinx configuration file.
+   :twitter:description: Configure the Awesome Theme by changing options in your Sphinx configuration file.
 
 Configure the theme
 ===================

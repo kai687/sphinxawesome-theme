@@ -1,9 +1,10 @@
 :orphan: true
 
-.. vale off
-
 .. meta::
    :description: Miscellaneous information about the Awesome Theme
+   :twitter:description: Miscellaneous information about the Awesome Theme
+
+.. vale off
 
 About
 =====

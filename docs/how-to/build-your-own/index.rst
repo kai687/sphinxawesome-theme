@@ -1,5 +1,6 @@
 .. meta::
    :description: Make your own theme by building on top of this theme. Fully customize the styles, JavaScript, and templates.
+   :twitter:description: Make your own theme by building on top of this theme. Fully customize the styles, JavaScript, and templates.
 
 Build your own theme
 ====================

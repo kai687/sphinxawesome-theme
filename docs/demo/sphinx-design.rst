@@ -1,5 +1,6 @@
 .. meta::
    :description: The Awesome Theme supports the sphinx-design extension.
+   :twitter:description: The Awesome Theme supports the sphinx-design extension.
 
 Sphinx design
 =============

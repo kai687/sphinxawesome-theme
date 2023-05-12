@@ -1,5 +1,6 @@
 .. meta::
    :description: Add JavaScript files or add code inline by extending the templates.
+   :twitter:description: Add JavaScript files or add code inline by extending the templates.
 
 Add custom JavaScript
 =====================

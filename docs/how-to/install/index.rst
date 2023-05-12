@@ -1,5 +1,6 @@
 .. meta::
    :description: Learn how to install the Awesome Theme for your documentation project.
+   :twitter:description: Learn how to install the Awesome Theme for your documentation project.
 
 Install the theme
 =================
