@@ -51,6 +51,7 @@ intersphinx_mapping = {
 }
 
 extlinks = {
+    "gh": ("https://github.com/kai687/sphinxawesome-theme/blob/main/%s", "%s"),
     "ghdir": ("https://github.com/kai687/sphinxawesome-theme/tree/main/%s", "%s"),
     "sphinxdocs": ("https://www.sphinx-doc.org/en/master/%s", "%s"),
 }
