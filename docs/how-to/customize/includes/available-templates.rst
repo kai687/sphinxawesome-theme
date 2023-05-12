@@ -32,4 +32,4 @@ The main templates you can extend are:
 For more information, see the available templates in the directory `src/sphinxawesome_theme`_.
 
 
-.. _`src/sphinxawesome_theme`: https://github.com/kai687/sphinxawesome-theme/tree/master/src/sphinxawesome_theme
+.. _`src/sphinxawesome_theme`: https://github.com/kai687/sphinxawesome-theme/tree/main/src/sphinxawesome_theme

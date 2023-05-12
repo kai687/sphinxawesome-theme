@@ -1,9 +1,7 @@
 """The Sphinx awesome theme as a Python package.
 
 :copyright: Copyright Kai Welke.
-:license: MIT, see LICENSE_ for details
-
-.. _LICENSE: https://github.com/kai687/sphinxawesome-theme/blob/master/LICENSE
+:license: MIT, see LICENSE for details
 """
 
 from importlib.metadata import PackageNotFoundError, version

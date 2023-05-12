@@ -49,15 +49,14 @@ intersphinx_mapping = {
 }
 
 extlinks = {
-    "gh": ("https://github.com/kai687/sphinxawesome-theme/blob/master/%s", "%s"),
-    "ghdir": ("https://github.com/kai687/sphinxawesome-theme/tree/master/%s", "%s"),
+    "gh": ("https://github.com/kai687/sphinxawesome-theme/blob/main/%s", "%s"),
+    "ghdir": ("https://github.com/kai687/sphinxawesome-theme/tree/main/%s", "%s"),
     "sphinxdocs": ("https://www.sphinx-doc.org/en/master/%s", "%s"),
 }
 
 linkcheck_ignore = [
     # GitHub anchors are dynamically created and difficult to check
     # See https://github.com/sphinx-doc/sphinx/issues/9016
-    "https://github.com/cjolowicz/nox-poetry/#installation",
     "https://github.com/wntrblm/nox/#installation",
 ]
 
