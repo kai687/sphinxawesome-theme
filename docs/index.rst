@@ -14,6 +14,13 @@ Awesome Sphinx Theme
 Get started
 -----------
 
+.. note::
+
+   You're viewing the documentation for version |current| of the |product|,
+   which is a **beta** release.
+   That's why you have to add ``--pre`` to the installation command.
+   To read the documentation for the latest stable release, see :doc:`v4:index` (version 4).
+
 #. Install the theme:
 
    .. literalinclude:: how-to/install/includes/install.sh
