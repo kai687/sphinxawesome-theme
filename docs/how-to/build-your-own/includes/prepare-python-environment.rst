@@ -18,7 +18,7 @@ you can provide a :gh:`requirements.txt <requirements.txt>` to the install comma
 
 To prepare the Python environment, run these commands:
 
-.. code-block:: sh
+.. code-block:: bash
 
    pip install --user pipx [--requirement=requirements.txt]
    pipx install poetry [--pip-args=--requirement=requirements.txt]

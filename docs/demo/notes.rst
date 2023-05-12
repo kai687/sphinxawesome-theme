@@ -6,7 +6,7 @@ Notes, warnings, and quotations
 
 .. rst-class:: lead
 
-   Use *admonitions*, *callouts*, or *alerts* to mark up **additional information**.
+   Use *admonitions*, *callouts*, or *alerts* to mark up additional information.
 
 .. include:: includes/notes-admonitions.rst
 .. include:: includes/notes-version-changes.rst

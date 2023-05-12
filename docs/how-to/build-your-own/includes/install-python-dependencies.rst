@@ -5,13 +5,13 @@ Install the Python dependencies
 
 #. Install the Python dependencies:
 
-   .. code-block:: sh
+   .. code-block:: bash
 
       poetry install
 
 #. Optional: install and test the pre-commit hooks:
 
-   .. code-block:: sh
+   .. code-block:: bash
 
       poetry run pre-commit install
 
@@ -21,7 +21,7 @@ Install the Python dependencies
 
    To test pre-commit with Poetry, run:
 
-   .. code-block:: sh
+   .. code-block:: bash
 
       poetry run pre-commit run --all
 
@@ -30,12 +30,12 @@ Install the Python dependencies
    You can run any Nox session to confirm that the environment is working.
    To list the available sessions, run:
 
-   .. code-block:: sh
+   .. code-block:: bash
 
       nox --list-sessions
 
    For example, run all default sessions:
 
-   .. code-block:: sh
+   .. code-block:: bash
 
       nox

@@ -10,7 +10,7 @@ About
 
 .. rst-class:: lead
 
-   Miscellaneous.
+   Miscellaneous information about the |product|.
 
 ----
 
@@ -73,4 +73,4 @@ The following table lists the assets used by the |product| to be awesome.
 Versioning strategy
 -------------------
 
-With version |version|, the |product| adopts `semantic versioning <https://semver.org/>`_.
+Starting with version 5.0, the |product| adopts `semantic versioning <https://semver.org/>`_.

@@ -1,6 +1,6 @@
-.. _sec:theme_options:
-
 .. py:module:: sphinxawesome_theme
+
+.. _sec:theme-options:
 
 Theme options
 -------------

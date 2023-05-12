@@ -12,7 +12,7 @@ Create a local copy of the repository
 
    - If you forked the repository, run:
 
-     .. code-block:: sh
+     .. code-block:: bash
         :emphasize-text: GITHUB_USERNAME
 
         git clone https://github.com/GITHUB_USERNAME/sphinxawesome-theme.git
@@ -21,7 +21,7 @@ Create a local copy of the repository
 
    - If you didn't fork the repository, clone the original repository:
 
-     .. code-block:: sh
+     .. code-block:: bash
 
         git clone https://github.com/kai687/sphinxawesome-theme.git
 

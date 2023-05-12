@@ -11,7 +11,7 @@ Install the latest **released version** from the Python Package Index
 
 To install the latest **development version**, run:
 
-.. code-block:: sh
+.. code-block:: bash
 
    pip install git+https://github.com/kai687/sphinxawesome-theme.git
 

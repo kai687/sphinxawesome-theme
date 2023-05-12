@@ -17,6 +17,8 @@ To mark up code in inline text, you can:
 - Surround the code with two backtick characters.
 - Use the ``code`` interpreted text role.
 
+If you want to see the styles for code blocks, see :doc:`code-blocks`.
+
 Syntax highlighting in inline code
 ----------------------------------
 

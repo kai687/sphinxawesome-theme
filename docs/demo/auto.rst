@@ -9,8 +9,8 @@ Code documentation
    Sphinx can generate reference documentation from docstrings in your source code.
 
 
-The |product| documentation makes use of this function on the page `theme_options`.
-This page lists a few additional examples.
+The |product| documentation makes use of this function on the page :ref:`sec:theme-options`.
+This page lists a few additional examples for command line options.
 
 Command line options
 --------------------
