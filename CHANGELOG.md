@@ -1,11 +1,9 @@
 # Changelog
 
-## 5.0.0
+## 4.1.0
 
 - More DocSearch configuration options
-- Better DocSearch styles matching the theme
-- Allow extrahead and extra body overrides
-- Remove html_collapsible_definitions
+- Deprecate `html_collapsible_definitions`, `html_awesome_code_headers`
 - Auto-detect `sphinx-design` extension and add CSS overrides for it
 - Documentation overhaul
 - Exposing configuration option for adding external link icons
