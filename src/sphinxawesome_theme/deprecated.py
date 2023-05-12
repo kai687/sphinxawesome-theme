@@ -115,6 +115,15 @@ def check_deprecated(app: Sphinx, config: Config) -> None:  # noqa: C901
 
 def setup(app: Sphinx) -> dict[str, Any]:
     """Register the extension."""
+    if "sphinxawesome_theme" in app.config.extensions:
+        logger.warning(
+            "Including `sphinxawesome_theme` in your `extensions` is deprecated. "
+            'Setting `html_theme = "sphinxawesome_theme"` is enough. '
+            "You can load the optional `sphinxawesome_theme.docsearch` and `sphinxawesome_theme.highlighting` extensions."
+        )
+        app.setup_extension("sphinxawesome_theme.highlighting")
+        app.setup_extension("sphinxawesome_theme.docsearch")
+
     # If we don't register these options, Sphinx ignores them when evaluating the `conf.py` file.
     app.add_config_value(
         name="html_collapsible_definitions", default=False, rebuild="html", types=(bool)

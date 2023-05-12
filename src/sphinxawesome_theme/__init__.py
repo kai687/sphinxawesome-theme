@@ -172,15 +172,6 @@ def setup(app: Sphinx) -> dict[str, Any]:
     if "sphinx_design" in app.config.extensions:
         app.add_css_file("awesome-sphinx-design.css", priority=900)
 
-    if "sphinxawesome_theme" in app.config.extensions:
-        logger.warning(
-            "Including `sphinxawesome_theme` in your `extensions` is deprecated. "
-            'Setting `html_theme = "sphinxawesome_theme"` is enough. '
-            "You can load the optional `sphinxawesome_theme.docsearch` and `sphinxawesome_theme.highlighting` extensions."
-        )
-        app.setup_extension("sphinxawesome_theme.highlighting")
-        app.setup_extension("sphinxawesome_theme.docsearch")
-
     # The theme is set up _after_ extensions are set up,
     # so I can't use internal extensions.
     # For the same reason, I also can't call the `config-inited` event

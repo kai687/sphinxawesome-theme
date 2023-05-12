@@ -7,7 +7,7 @@ from dataclasses import asdict
 from dotenv import load_dotenv
 from sphinx.application import Sphinx
 from sphinx.util.docfields import Field
-from sphinxawesome_theme import ThemeOptions
+from sphinxawesome_theme import ThemeOptions, __version__
 from sphinxawesome_theme.docsearch import DocSearchConfig
 
 load_dotenv()
@@ -38,16 +38,19 @@ nitpicky = True
 default_role = "literal"
 
 # Global substitutions for reStructuredText files
-rst_prolog = """
-:tocdepth: 3
-
-.. |rst| replace:: reStructuredText
-.. |product| replace:: Awesome Theme
-.. |conf| replace:: File: conf.py
-"""
+substitutions = [
+    ":tocdepth: 3",
+    " ",
+    ".. |rst| replace:: reStructuredText",
+    ".. |product| replace:: Awesome Theme",
+    ".. |conf| replace:: File: conf.py",
+    f".. |current| replace:: {__version__}",
+]
+rst_prolog = "\n".join(substitutions)
 
 intersphinx_mapping = {
     "sphinx": ("https://www.sphinx-doc.org/en/master/", None),
+    "v4": ("https://v4--sphinxawesome-theme.netlify.app/", None),
 }
 
 extlinks = {

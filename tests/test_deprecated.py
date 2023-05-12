@@ -11,7 +11,7 @@ from sphinxawesome_theme import logos
     "html",
     confoverrides={
         "html_theme": "sphinxawesome_theme",
-        "extensions": ["sphinxawesome_theme"],
+        "extensions": ["sphinxawesome_theme", "sphinxawesome_theme.deprecated"],
     },
 )
 def test_handles_deprecated_extension(app: Sphinx, warning: StringIO) -> None:
