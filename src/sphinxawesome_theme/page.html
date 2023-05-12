@@ -22,7 +22,7 @@
     </div>
 
     {%- if theme_show_prev_next|tobool %}
-    {%- include "prev_next.html" %}
+      {%- include "prev_next.html" %}
     {%- endif %}
 
     {%- block body_after %}{%- endblock body_after -%}
@@ -30,7 +30,7 @@
 
   {%- block on_page_toc %}
   {%- if display_toc %}
-  {%- include "toc.html" %}
+    {%- include "toc.html" %}
   {%- endif %}
   {%- endblock on_page_toc %}
   {%- endblock body %}

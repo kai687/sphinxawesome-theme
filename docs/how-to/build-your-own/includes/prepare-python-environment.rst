@@ -18,12 +18,8 @@ you can provide a :gh:`constraints.txt <constraints.txt>` to the install command
 
 To prepare the Python environment, run these commands:
 
-.. code-block:: terminal
+.. code-block:: sh
 
    pip install --user pipx [--constraint=constraints.txt]
    pipx install poetry [--pip-args=--constraint=constraints.txt]
    pipx install nox [--pip-args=--constraint=constraints.txt]
-   pipx inject nox nox-poetry [--pip-args=--constraint=constraints.txt]
-
-Nox-poetry is a package for using Poetry and Nox together.
-It must be installed in the same environment as Nox.

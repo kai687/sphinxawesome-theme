@@ -13,3 +13,15 @@ Add the theme to your Sphinx configuration
    .. seealso::
 
       :confval:`sphinx:html_theme`
+
+#. Optional: add the bundled extensions.
+
+   .. code-block:: python
+      :caption: |conf|
+
+      extensions += [
+         "sphinxawesome.highlighting",
+         "sphinxawesome.docsearch",
+         # To help you with the upgrade to version 5:
+         # "sphinxawesome.deprecated",
+      ]

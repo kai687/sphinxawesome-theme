@@ -6,25 +6,21 @@ Version |version|
 Version |version| of the |product| is almost a complete rewrite.
 
 Better navigation
-   The new version has a clear separation between links to other pages (left sidebar),
+   Version |version| has a clear separation between links to other pages (left sidebar),
    and links to sections on the current page (right sidebar).
 
 Dark mode
-   The theme follows a consistent design in light and dark mode and adjusts to your preference.
+   The theme follows a consistent design in light and dark mode.
 
-It's enough to load the theme as a theme
+Simpler setup
    You no longer need to load the theme as an extension.
    Like most other themes for Sphinx, it's enough to load it as ``html_theme``.
-   Additional features are optional.
-   If you want to use them, you can load the bundled extensions:
-
-   - ``sphinxawesome_theme.highlighting``
-   - ``sphinxawesome_theme.docsearch``
+   You can add the :ref:`sec:bundled-extensions` to enable more features.
 
 Redesign
-   Heavily inspired by `shadcn/ui <https://ui.shadcn.com/docs>`_,
-   including the black-and-white look and feel.
+   Using the design from `shadcn/ui <https://ui.shadcn.com/docs>`_.
 
+.. _sec:upgrade-to-5.0:
 
 Upgrade to version |version|
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -40,40 +36,36 @@ you can add the bundled ``sphinxawesome_theme.deprecated`` extension.
    extensions += ["sphinxawesome_theme.deprecated"]
 
 The extension raises warnings if it finds deprecated options
-and changes the deprecated options to their new values if possible.
+and upgrades them to their new values if possible.
 
 Deprecated options
 ++++++++++++++++++
 
-These options don't have any effect in version |version|:
+The following two options don't have any effect in version |version|.
+You can remove them from your Sphinx configuration:
 
 ``html_collapsible_definitions``
-   Deprecated without direct replacement.
-   The UX and implementation wasn't good.
-   After all, references are meant to be scanned.
-
+   This option provided a terrible user experience.
+   After all, references are meant to be scanned, not hidden.
    You can use the `sphinx-design <https://sphinx-design.readthedocs.io/en/latest/>`_
    extension instead and place single references inside a ``dropdown``.
 
 ``html_awesome_code_header``
-   Deprecated without replacement.
-   Mostly, the programming language of a code sample is already clear from its context.
-   While it can be beneficial to make the language of an example explicit,
-   there are alternative ways that already exist within Sphinx,
-   such as, providing a caption.
-   For code blocks in multiple languages,
-   you can use the ``tab-set-code`` directive from the ``sphinx-design`` extension.
+   In most cases, the programming language of a code sample is already clear from its context.
+   If you want to make more annotations, you can use existing mechanisms that are built into Sphinx,
+   such as captions or comments at the top of a code block.
+   For code samples in multiple languages, you can use the ``sphinx-design`` extension with its ``tab-set-code`` directive.
 
 **DocSearch** is now an optional extension.
-This creates a better separation between the *theme* and additional features,
-that are separate from the theme.
+This creates a better separation between the *theme* and additional features.
 The DocSearch-related options are deprecated.
 
 ``html_awesome_docsearch``
    Load the bundled ``sphinxawesome_theme.docsearch`` extension instead.
 
 ``docsearch_config``
-   Provide the configuration options as individual options instead.
+   Instead of using keys in a single dictionary,
+   use top-level configuration options instead.
    For more information, see :ref:`sec:docsearch`.
 
 These options are now keys in the ``html_theme_options`` dictionary

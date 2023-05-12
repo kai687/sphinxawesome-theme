@@ -38,7 +38,6 @@ from pygments import highlight
 from pygments.filter import Filter
 from pygments.filters import ErrorToken
 from pygments.formatters import HtmlFormatter
-from pygments.lexers.shell import BashSessionLexer
 from pygments.token import Generic, _TokenType
 from pygments.util import get_list_opt
 from sphinx.application import Sphinx
@@ -347,10 +346,6 @@ def setup(app: Sphinx) -> dict[str, Any]:
     PygmentsBridge.html_formatter = AwesomeHtmlFormatter
     PygmentsBridge.highlight_block = AwesomePygmentsBridge.highlight_block  # type: ignore[method-assign]  # noqa
     directives.register_directive("code-block", AwesomeCodeBlock)
-
-    # Allow using `terminal` in addition to `shell-session` and `console`
-    # for interactive command-line sessions
-    app.add_lexer("terminal", BashSessionLexer)
 
     return {
         "version": __version__,

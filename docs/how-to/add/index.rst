@@ -9,5 +9,4 @@ Add the theme
    Learn how to add the |product| to your Sphinx documentation.
 
 .. include:: includes/add-to-sphinx.rst
-.. include:: includes/add-extensions.rst
 .. include:: includes/local-directory.rst

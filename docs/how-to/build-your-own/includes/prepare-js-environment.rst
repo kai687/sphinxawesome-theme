@@ -3,7 +3,7 @@ Prepare JavaScript environment
 
 #. Confirm that `Node.js <https://nodejs.org/en/>`_ is installed:
 
-   .. code-block:: terminal
+   .. code-block:: sh
 
       $ node --version
       v20.00.0
@@ -22,7 +22,7 @@ Prepare JavaScript environment
 
 #. Optional: install `yarn <https://yarnpkg.com/>`_:
 
-   .. code-block:: terminal
+   .. code-block:: sh
 
       npm install --global yarn
 

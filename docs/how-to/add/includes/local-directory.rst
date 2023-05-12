@@ -15,7 +15,7 @@ follow these steps:
 #. :ref:`sec:fork-and-clone`.
 #. Create a new directory for themes in your Sphinx project—for example, :file:`_themes/`:
 
-   .. code-block:: terminal
+   .. code-block:: sh
       :emphasize-lines: 4
 
       ./
@@ -26,7 +26,7 @@ follow these steps:
 
 #. Copy the directory :file:`sphinxawesome-theme/src/sphinxawesome_theme/` into the :file:`_themes/` directory:
 
-   .. code-block:: terminal
+   .. code-block:: sh
 
       cp -r sphinxawesome-theme/src/sphinxawesome_theme _themes/
 

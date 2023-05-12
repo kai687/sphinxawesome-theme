@@ -85,7 +85,7 @@ class DocSearchConfig:
     """If you want to perform a search before the user starts typing."""
 
     docsearch_search_parameter: str | None = None
-    """If you want to pass `Algolia search parameter <https://www.algolia.com/doc/api-reference/search-api-parameters/>`_."""
+    """If you want to add `Algolia search parameter <https://www.algolia.com/doc/api-reference/search-api-parameters/>`_."""
 
     docsearch_missing_results_url: str | None = None
     """A URL for letting users send you feedback about your search.

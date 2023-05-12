@@ -5,11 +5,9 @@
 Theme options
 -------------
 
-To configure the theme, modify the :confval:`sphinx:html_theme_options` dictionary in your Sphinx configuration.
-To benefit from code completion and documentation when editing the configuration,
-the |product| provides a helper class :py:class:`ThemeOptions` to help with the set up.
-
-To use the ``ThemeOptions`` helper to configure the theme, add the following code:
+You can configure the |product| with the :confval:`sphinx:html_theme_options` dictionary.
+To benefit from code completion and documentation when editing your Sphinx configuration,
+you can use the :py:class:`ThemeOptions` class:
 
 .. code-block:: python
    :caption: |conf|

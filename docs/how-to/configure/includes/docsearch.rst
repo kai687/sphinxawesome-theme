@@ -4,10 +4,11 @@ Algolia DocSearch
 -----------------
 
 DocSearch provides search for open source projects and technical blogs for free.
-You need to `apply <https://docsearch.algolia.com/apply/>`_ and receive your credentials before you can use it.
+You can `apply <https://docsearch.algolia.com/apply/>`_ and receive your credentials.
 
-The |product| bundles DocSearch as an optional extension.
-To replace the built-in search with DocSearch, add the ``sphinxawesome_theme.docsearch`` extension:
+To replace the built-in search with DocSearch,
+:ref:`sec:add-to-sphinx` and
+add the ``sphinxawesome_theme.docsearch`` extension:
 
 .. code-block:: python
    :caption: |conf|
@@ -16,9 +17,10 @@ To replace the built-in search with DocSearch, add the ``sphinxawesome_theme.doc
 
 .. dropdown:: How does DocSearch work?
 
-   If you're part of the program,
    Algolia indexes your content with a `crawler <https://en.wikipedia.org/wiki/Web_crawler>`_.
-   You'll add the DocSearch UI component to your layout, which fetches the results from your index on every keystroke.
+   You'll add the DocSearch UI component to your layout.
+   Now, on every keystroke, DocSearch looks for matching results on Algolia's servers
+   and updates the view instantly.
 
 DocSearch credentials
 ~~~~~~~~~~~~~~~~~~~~~
@@ -55,9 +57,9 @@ To configure DocSearch, declare the ``docsearch_*`` options as regular Python va
 Use environment variables
 +++++++++++++++++++++++++
 
-Instead of storing your credentials in your Sphinx configuration file and committing it to your repository,
-it's better to load it from **environment variables**.
-A good way of handling environment variables is to store them in a :file:`.env` file.
+Instead of exposing your credentials in your Sphinx configuration file,
+you can load them from **environment variables**.
+For example, you can store them in a in a :file:`.env` file.
 To do this, add the ``python-dotenv`` package to your project and add the following code to your Sphinx configuration:
 
 .. code-block:: python
@@ -82,12 +84,13 @@ In the same directory as your :file:`conf.py` file, create a :file:`.env` file w
    DOCSEARCH_API_KEY=YOUR_API_KEY
    DOCSEARCH_INDEX_NAME=YOUR_INDEX_NAME
 
-To avoid committing this file to your repository, add ``.env`` to your :file:`.gitignore` file.
+To avoid uploading this file to your repository,
+add ``.env`` to your :file:`.gitignore` file.
 
 The ``DocSearchConfig`` helper
 ++++++++++++++++++++++++++++++
 
-To make it easier to configure DocSearch,
+To make it easier to configure DocSearch with code completion and hover help,
 the |product| provides a ``DocSearchConfig`` helper class.
 If you're okay with (ab)using Python's dynamic character,
 you can add the following code:

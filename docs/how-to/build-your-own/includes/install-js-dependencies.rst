@@ -7,7 +7,7 @@ Install JavaScript dependencies
 
 #. Go to the :file:`theme-src/` directory:
 
-   .. code-block:: terminal
+   .. code-block:: sh
       :emphasize-lines: 4
 
       ./sphinxawesome-theme/
@@ -20,12 +20,12 @@ Install JavaScript dependencies
 
 #. Install the JavaScript dependencies:
 
-   .. code-block:: terminal
+   .. code-block:: sh
 
       yarn install
 
 #. Build the theme:
 
-   .. code-block:: terminal
+   .. code-block:: sh
 
       yarn build
