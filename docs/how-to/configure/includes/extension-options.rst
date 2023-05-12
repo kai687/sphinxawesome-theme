@@ -9,7 +9,7 @@ you can configure these options:
 .. code-block:: python
    :caption: File: conf.py
 
-   html_collapsible_definitions = False  # Deprecated
+   html_collapsible_definitions = False
    html_awesome_headerlinks = True
    html_awesome_code_headers = True
    html_awesome_docsearch = False
@@ -17,10 +17,6 @@ you can configure these options:
 
 ``html_collapsible_definitions``
    Controls whether to make code objects, such as classes, collapsible.
-
-   .. deprecated:: 4.0.3
-
-      Use the sphinx-design_ extension instead. (Removed in 5.0.0)
 
 ``html_awesome_headerlinks``
    Controls whether clicking a headerlink should copy the URL to the clipboard.
@@ -35,10 +31,6 @@ you can configure these options:
 
 ``html_awesome_external_links``
    Controls whether to show an icon after external links.
-
-   .. versionadded:: 5.0.0
-
-      In previous versions, this was always enabled.
 
 .. _sphinx-design: https://sphinx-design.readthedocs.io/en/latest/
 .. _Algolia DocSearch: https://docsearch.algolia.com/
