@@ -1,5 +1,6 @@
 .. meta::
    :description: Make your own theme by building on top of this theme. Fully customize the styles, JavaScript, and templates.
+   :twitter:description: Make your own theme by building on top of this theme. Fully customize the styles, JavaScript, and templates.
 
 Build your own theme
 ====================
@@ -8,7 +9,7 @@ Build your own theme
 
    Build your own theme by changing the templates or CSS.
 
-.. include:: ../../includes/header.rst
+----
 
 The project has both Python and JavaScript dependencies.
 If you want to write documentation or modify the Python extensions,

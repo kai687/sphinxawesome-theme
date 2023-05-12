@@ -1,5 +1,6 @@
 .. meta::
    :description: See how code blocks look like in your Sphinx project with the Awesome Theme and learn about the supported options.
+   :twitter:description: See how code blocks look like in your Sphinx project with the Awesome Theme and learn about the supported options.
 
 Code blocks
 ===========
@@ -8,8 +9,7 @@ Code blocks
 
    See how code blocks look like in your Sphinx project with the |product| and learn about the supported options.
 
-.. include:: ../includes/header.rst
-
+To check the styles for inline markup looks like, see :doc:`inline-code`.
 
 Sphinx code-block directive
 ---------------------------
@@ -42,6 +42,7 @@ Sphinx uses a fallback:
 
 .. seealso::
 
+   :sphinxdocs:`Showing code examples <usage/restructuredtext/directives.html#showing-code-examples>`
    :sphinxdocs:`highlight directive <usage/restructuredtext/directives.html#directive-highlight>`
    :confval:`sphinx:highlight_language`
 
@@ -51,8 +52,7 @@ Sphinx uses a fallback:
    It makes your documentation more portable if you want to copy or re-use your documentation files elsewhere.
    It's also easier to follow for contributors who may not be as familiar with Sphinx and restructuredtext.
 
-
-:bdg-primary:`feature`
+**Feature:**
 The |product| adds a :guilabel:`Copy` button to every code block,
 so that your users can easily copy your code.
 
@@ -68,13 +68,6 @@ Add captions to code blocks with the :samp:`:caption: {CAPTION_TEXT}` option:
 
 Adding a caption also adds a link target to the code block.
 Hover over a caption to see the headerlink icon.
-
-Show or hide the highlighting language
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-:bdg-primary:`feature`
-The |product| shows the language used for syntax highlighting in a code block header.
-If you want to turn this off, set the option :ref:`opt:html_awesome_code_headers` to ``False``.
 
 
 Show line numbers in code blocks
@@ -104,9 +97,9 @@ use the :samp:`:emphasize-lines: {LINE_NUMBERS}` option:
 Highlight changes in code blocks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-:bdg-primary:`feature`
-The |product| adds two new options to the ``code-block`` directive,
-that lets you highlight added or removed lines.
+**Feature:**
+The |product| adds two new options to the ``code-block`` directive
+for highlighting added or removed lines of code:
 
 ``:emphasize-added:``
    Highlight added lines with :samp:`:emphasize-added: {LINE_NUMBERS}`.
@@ -179,9 +172,9 @@ You can't include markup in code blocks, such as bold text or hyperlinks.
 Highlight placeholders in code blocks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-:bdg-primary:`feature`
-The |product| adds an ``:emphasize-text:`` option to the ``code-block`` directive,
-that lets you highlight placeholders in code blocks:
+**Feature:**
+The |product| adds an ``:emphasize-text:`` option to the ``code-block`` directive
+for highlighting placeholder text in code blocks:
 
 .. code-block:: rst
 
@@ -208,18 +201,22 @@ you can also use the ``code`` directive:
 
 .. code-block:: rst
 
-   .. code:: shell
+   .. code:: bash
 
       echo "This is rendered with the docutils' code directive"
 
 This renders:
 
-.. code:: shell
+.. code:: bash
 
    echo "This is rendered with the docutils' code directive"
 
 You can't use captions, highlighted lines, or any of the other options for Sphinx code
 blocks.
+
+.. seealso::
+
+   `Code directive (docutils) <https://docutils.sourceforge.io/docs/ref/rst/directives.html#code>`_
 
 Parsed literal blocks
 ---------------------
@@ -249,3 +246,7 @@ If you don't include any markup, the content is rendered with syntax highlightin
 .. parsed-literal::
 
    print("Hello world")
+
+.. seealso::
+
+   `Parsed-literal directive (docutils) <https://docutils.sourceforge.io/docs/ref/rst/directives.html#code>`_

@@ -17,18 +17,14 @@ repos:
         language: system
         types: [python]
       - id: sync
-        name: sync requirements.txt
+        name: sync constraints.txt
         entry: nox -s export
         pass_filenames: false
         language: system
         files: 'pyproject\.toml'
   - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: "v3.0.0-alpha.6"
+    rev: "v3.0.0-alpha.9-for-vscode"
     hooks:
       - id: prettier
         types: [javascript]
         files: "src/theme-src/"
-  - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: "v0.0.260"
-    hooks:
-      - id: ruff

@@ -1,5 +1,6 @@
 .. meta::
    :description: Customize your styles by adding CSS files or adding styles inline.
+   :twitter:description: Customize your styles by adding CSS files or adding styles inline.
 
 Add custom CSS
 ==============
@@ -8,11 +9,6 @@ Add custom CSS
 
    Customize your styles by adding CSS files or adding styles inline.
 
-.. contents:: On this page
-   :local:
-   :backlinks: none
-
-
 Add CSS files
 -------------
 
@@ -20,7 +16,7 @@ To add extra CSS files, add your custom styles to a file—for example,
 :file:`_static/custom.css` and add the following options to your Sphinx configuration:
 
 .. code-block:: python
-   :caption: File: conf.py
+   :caption: |conf|
 
    html_static_path = ["_static"]
    html_css_files = ["custom.css"]

@@ -1,5 +1,6 @@
 .. meta::
    :description: See how lists look like in the Awesome Theme. Discover the styles for ordered, unordered, and description lists.
+   :twitter:description: See how lists look like in the Awesome Theme. Discover the styles for ordered, unordered, and description lists.
 
 Lists
 =====
@@ -7,8 +8,6 @@ Lists
 .. rst-class:: lead
 
    See how lists appear in the |product|.
-
-----
 
 Unordered lists
 ---------------

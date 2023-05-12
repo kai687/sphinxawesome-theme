@@ -1,5 +1,6 @@
 .. meta::
    :description: Add JavaScript files or add code inline by extending the templates.
+   :twitter:description: Add JavaScript files or add code inline by extending the templates.
 
 Add custom JavaScript
 =====================
@@ -8,10 +9,6 @@ Add custom JavaScript
 
    Add JavaScript files or add code inline by extending the templates.
 
-.. contents:: On this page
-   :local:
-   :backlinks: none
-
 Add JavaScript files
 --------------------
 
@@ -19,7 +16,7 @@ To add extra JavaScript files, add your code to a file—for example,
 :file:`_static/custom.js` and add the following options to your Sphinx configuration:
 
 .. code-block:: python
-   :caption: File: conf.py
+   :caption: |conf|
 
    html_static_path = ["_static"]
    html_js_files = ["custom.js"]

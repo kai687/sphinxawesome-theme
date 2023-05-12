@@ -1,23 +1,107 @@
-/*
-* I'm assuming it's because of the format of the `content`,
-* but I can't add this to `tailwind.config.js`
-*/
-pre del::before {
-  @apply absolute text-red-900 left-[2px] content-['\2212'];
+/* Code-related styles */
+
+.highlight {
+  @apply relative bg-transparent;
+  &:hover .copy {
+    @apply opacity-100;
+  }
 }
 
-pre ins::before {
-  @apply absolute text-green-900 left-[2px] content-['\002b'];
+.literal-block-wrapper {
+  @apply mx-0 mt-6 max-w-none rounded-lg border border-border px-0;
+  & pre {
+    @apply mt-0 rounded-none border-none;
+  }
+  & .code-block-caption {
+    @apply rounded-t-lg border-b border-border px-4 py-2 text-sm tracking-wide text-muted-foreground;
+  }
 }
 
-.highlight .copy {
-  @apply absolute top-3 right-1.5 border p-1 uppercase select-none text-xs tracking-wide rounded-sm text-gray-700 bg-white opacity-0 focus:opacity-100 transition-all duration-500 transform active:translate-x-0.5 active:translate-y-0.5;
+code {
+  @apply relative whitespace-nowrap rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm;
+  & em,
+  & .ge {
+    @apply font-bold tracking-wide text-accent-foreground;
+  }
 }
 
-.highlight:hover .copy {
-  @apply opacity-100;
+pre {
+  @apply mt-6 overflow-x-auto rounded-lg border border-border py-4 text-sm data-[theme=dark]:bg-background data-[theme=light]:bg-white;
+  &.literal-block {
+    @apply px-4;
+  }
+  & code {
+    @apply whitespace-pre bg-transparent p-0;
+    & > [id^='line-'] {
+      @apply block px-4;
+    }
+    [id^='line-'] {
+      &:has(mark),
+      &:has(ins),
+      &:has(del),
+      &:has(.gd),
+      &:has(.gi) {
+        @apply px-0;
+      }
+      & mark,
+      & ins,
+      & del {
+        @apply relative block px-4;
+      }
+      & mark {
+        @apply bg-muted text-inherit shadow-[2px_0_currentColor_inset] dark:bg-slate-700 dark:shadow-[3px_0_currentColor_inset];
+      }
+      & ins {
+        @apply bg-green-500/30 text-green-900 no-underline before:absolute before:left-[2px] before:content-['\002b'] dark:bg-opacity-100 dark:text-green-200;
+      }
+      & del {
+        @apply bg-red-500/30 text-red-900 no-underline before:absolute before:left-[2px] before:content-['\2212'] dark:bg-opacity-100 dark:text-red-200;
+      }
+    }
+  }
+  & .linenos {
+    @apply select-none pl-0 pr-4;
+  }
 }
 
-.code-lang {
-  @apply inline-block text-gray-dark ml-2 mr-auto font-mono uppercase tracking-wider;
+.highlight-diff {
+  & .gi {
+    @apply inline-block w-full bg-green-500/30 px-4 text-green-900 dark:bg-opacity-100 dark:text-green-200;
+  }
+  & .gd {
+    @apply inline-block w-full bg-red-500/30 px-4 text-red-900 dark:bg-opacity-100 dark:text-green-200;
+  }
+}
+
+.guilabel,
+.menuselection {
+  @apply rounded-sm border border-border px-2 py-px font-medium text-accent-foreground;
+}
+
+#content kbd:not(.compound) {
+  @apply rounded border bg-muted px-1 py-px text-sm font-medium tracking-wide;
+}
+
+.sig {
+  @apply scroll-m-20 font-mono font-bold;
+}
+
+.sig-name {
+  @apply text-accent-foreground;
+}
+
+em.property {
+  @apply text-muted-foreground;
+}
+
+.option .sig-prename {
+  @apply italic;
+}
+
+.viewcode-link {
+  @apply float-right text-muted-foreground;
+}
+
+.option-list kbd {
+  @apply !border-none !bg-transparent !text-[1em] !font-bold;
 }

@@ -1,17 +1,35 @@
-"""Add more line highlighting options to Pygments.
+"""Add more highlighting options to Pygments.
 
-The theme uses a custom pygments HTML formatter,
-that adds the ability to highlight added/removed
-lines in code.
+This extension extends the Sphinx ``code-block``
+directive with new options:
 
-To make use of this new function, this theme also
-extends the default Sphinx ``code-block`` directive.
+- ``:emphasize-added:``: highlight added lines
+- ``:emphasize-removed:``: highlight removed lines
+- ``:emphasize-text:``: highlight a single word, such as, a placeholder
+
+To achieve this, this extension must make a few larger changes:
+
+1. Provide a custom Sphinx translator to parse the new code block options.
+2. Provide a new Sphinx directive to pass along these new options to Pygments.
+3. Write a new Pygments HTML formatter and a custom filter to handle these options.
+
+It's entirely possible that there's a simpler way of doing this,
+but I haven't found it.
+
+To load this extension, add:
+
+.. code-block:: python
+   :caption: |conf|
+
+   extensions += ["sphinxawesome_theme.highlighting"]
 
 :copyright: Copyright Kai Welke.
 :license: MIT, see LICENSE for details.
 """
+from __future__ import annotations
+
 import re
-from typing import Any, Dict, Generator, List, Optional, Pattern, Tuple, Union
+from typing import Any, Generator, Pattern, Tuple, Union
 
 from docutils import nodes
 from docutils.nodes import Element, Node
@@ -20,7 +38,6 @@ from pygments import highlight
 from pygments.filter import Filter
 from pygments.filters import ErrorToken
 from pygments.formatters import HtmlFormatter
-from pygments.lexers.shell import BashSessionLexer
 from pygments.token import Generic, _TokenType
 from pygments.util import get_list_opt
 from sphinx.application import Sphinx
@@ -34,7 +51,7 @@ from . import __version__
 logger = logging.getLogger(__name__)
 
 # type alias
-TokenType = Union[_TokenType, int]
+TokenType = Union[_TokenType, int]  # For Python 3.8
 TokenStream = Generator[Tuple[TokenType, str], None, None]
 
 
@@ -53,10 +70,14 @@ def _replace_placeholders(
         yield ttype, value[last:]
 
 
+# Without the comment, `mypy` throws a fit:
+# Cannot subclass Filter, is type `Any`
+
+
 class AwesomePlaceholders(Filter):  # type: ignore[misc]
     """A Pygments filter for marking up placeholder text."""
 
-    def __init__(self: "AwesomePlaceholders", **options: Any) -> None:
+    def __init__(self: AwesomePlaceholders, **options: str) -> None:
         """Create an instance of the `AwesomePlaceholders` filter."""
         Filter.__init__(self, **options)
         placeholders = get_list_opt(options, "hl_text", [])
@@ -65,7 +86,7 @@ class AwesomePlaceholders(Filter):  # type: ignore[misc]
         )
 
     def filter(
-        self: "AwesomePlaceholders", _lexer: Any, stream: TokenStream
+        self: AwesomePlaceholders, _lexer: Any, stream: TokenStream
     ) -> TokenStream:
         """Filter on all tokens.
 
@@ -85,7 +106,7 @@ class AwesomeHtmlFormatter(HtmlFormatter):  # type: ignore
     In contrast to Pygments, this formatter returns `<mark>` for higlighted lines.
     """
 
-    def __init__(self: "AwesomeHtmlFormatter", **options: Any) -> None:
+    def __init__(self: AwesomeHtmlFormatter, **options: Any) -> None:
         """Implement `hl_added` and `hl_removed` options."""
         self.added_lines = set()
         self.removed_lines = set()
@@ -104,13 +125,13 @@ class AwesomeHtmlFormatter(HtmlFormatter):  # type: ignore
 
         # These options aren't compatible with `sphinx.ext.autodoc`
         # options["lineanchors"] = "code"
-        # options["linespans"] = "code-line"
+        options["linespans"] = "line"
         options["wrapcode"] = True
 
         super().__init__(**options)
 
     def _highlight_lines(
-        self: "AwesomeHtmlFormatter", tokensource: TokenStream
+        self: AwesomeHtmlFormatter, tokensource: TokenStream
     ) -> TokenStream:
         """Highlight added, removed, and emphasized lines.
 
@@ -129,7 +150,7 @@ class AwesomeHtmlFormatter(HtmlFormatter):  # type: ignore
                 yield 1, value
 
     def format_unencoded(
-        self: "AwesomeHtmlFormatter",
+        self: AwesomeHtmlFormatter,
         tokensource: TokenStream,
         outfile: Any,
     ) -> None:
@@ -164,7 +185,7 @@ class AwesomeHtmlFormatter(HtmlFormatter):  # type: ignore
             outfile.write(piece)
 
 
-def _get_parsed_line_numbers(linespec: str, nlines: int, location: str) -> List[int]:
+def _get_parsed_line_numbers(linespec: str, nlines: int, location: str) -> list[int]:
     """Get the parsed line numbers for the `emphasize-*` options."""
     line_numbers = parselinenos(linespec, nlines)
     if any(i >= nlines for i in line_numbers):
@@ -187,7 +208,7 @@ class AwesomeCodeBlock(CodeBlock):
     option_spec = CodeBlock.option_spec
     option_spec.update(new_options)
 
-    def run(self: "AwesomeCodeBlock") -> List[Node]:  # noqa
+    def run(self: AwesomeCodeBlock) -> list[Node]:  # noqa
         """Overwrite method from Sphinx.
 
         Add ability to highlight added and removed lines.
@@ -279,10 +300,10 @@ class AwesomePygmentsBridge(PygmentsBridge):
         self: PygmentsBridge,
         source: str,
         lang: str,
-        opts: Optional[Dict[str, Any]] = None,
+        opts: dict[str, Any] | None = None,
         force: bool = False,
         location: Any = None,
-        **kwargs: Any
+        **kwargs: Any,
     ) -> str:
         """Repeat this method."""
         if not isinstance(source, str):
@@ -320,15 +341,11 @@ class AwesomePygmentsBridge(PygmentsBridge):
             return texescape.hlescape(hlsource, self.latex_engine)
 
 
-def setup(app: "Sphinx") -> Dict[str, Any]:
+def setup(app: Sphinx) -> dict[str, Any]:
     """Set up this internal extension."""
     PygmentsBridge.html_formatter = AwesomeHtmlFormatter
     PygmentsBridge.highlight_block = AwesomePygmentsBridge.highlight_block  # type: ignore[method-assign]  # noqa
     directives.register_directive("code-block", AwesomeCodeBlock)
-
-    # Allow using `terminal` in addition to `shell-session` and `console`
-    # for interactive command-line sessions
-    app.add_lexer("terminal", BashSessionLexer)
 
     return {
         "version": __version__,

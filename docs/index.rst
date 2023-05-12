@@ -1,6 +1,6 @@
 .. meta::
    :description: Create functional and beautiful websites for your documentation with Sphinx and the Awesome Sphinx Theme.
-   :keywords: Documentation, Sphinx, Python
+   :twitter:description: Create functional and beautiful websites for your documentation with Sphinx and the Awesome Sphinx Theme.
 
 Awesome Sphinx Theme
 ====================
@@ -16,12 +16,8 @@ Get started
 
 #. Install the theme:
 
-   .. .. code-block:: terminal
-
-   ..    pip install sphinxawesome-theme
-
    .. literalinclude:: how-to/install/includes/install.sh
-      :language: terminal
+      :language: sh
 
    .. seealso::
 
@@ -31,7 +27,7 @@ Get started
 
    .. literalinclude:: how-to/add/includes/configure.inc
       :language: python
-      :caption: File: conf.py
+      :caption: |conf|
 
    .. seealso::
 
@@ -43,8 +39,14 @@ Get started
 
       `Get started with Sphinx <https://docs.readthedocs.io/en/stable/intro/getting-started-with-sphinx.html>`_
 
-Learn more
-----------
+Upgrade
+-------
+
+If you want to upgrade to version |current| of the theme, see :ref:`sec:upgrade-to-5.0`.
+If you don't want to upgrade, you can read the `documentation for version 4 <https://v4--sphinxawesome-theme.netlify.app/>`_.
+
+Explore
+-------
 
 .. tab-set::
 
@@ -53,8 +55,8 @@ Learn more
       In the **How-to** section, you can learn more about using and customizing the theme.
 
       .. toctree::
-         :maxdepth: 1
          :caption: How To
+         :titlesonly:
 
          how-to/install/index
          how-to/add/index
@@ -67,8 +69,8 @@ Learn more
       The **Demo** section shows how various elements will look like.
 
       .. toctree::
-         :maxdepth: 1
          :caption: Demo
          :glob:
+         :titlesonly:
 
          demo/*

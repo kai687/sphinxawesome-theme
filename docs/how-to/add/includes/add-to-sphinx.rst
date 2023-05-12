@@ -4,14 +4,24 @@ Add the theme to your Sphinx configuration
 ------------------------------------------
 
 #. :ref:`sec:install-python-package`.
-#. Add the |product| as an HTML theme and extension:
+#. Add the |product| as an HTML theme:
 
    .. literalinclude:: includes/configure.inc
       :language: python
-      :caption: File: conf.py
+      :caption: |conf|
 
    .. seealso::
 
-      :ref:`sec:extension-options`
       :confval:`sphinx:html_theme`
-      :confval:`sphinx:extensions`
+
+#. Optional: add the bundled extensions.
+
+   .. code-block:: python
+      :caption: |conf|
+
+      extensions += [
+         "sphinxawesome.highlighting",
+         "sphinxawesome.docsearch",
+         # To help you with the upgrade to version 5:
+         # "sphinxawesome.deprecated",
+      ]

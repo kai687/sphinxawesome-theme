@@ -1,5 +1,6 @@
 .. meta::
    :description: See how footnotes are styled in the Awesome theme.
+   :twitter:description: See how footnotes are styled in the Awesome theme.
 
 Footnotes
 =========

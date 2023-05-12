@@ -1,51 +1,48 @@
-.. _sec:theme_options:
+.. py:module:: sphinxawesome_theme
+
+.. _sec:theme-options:
 
 Theme options
 -------------
 
-To configure the theme, modify the ``html_theme_options`` dictionary in your Sphinx configuration.
+You can configure the |product| with the :confval:`sphinx:html_theme_options` dictionary.
+To benefit from code completion and documentation when editing your Sphinx configuration,
+you can use the :py:class:`ThemeOptions` class:
 
 .. code-block:: python
-   :caption: File: conf.py
+   :caption: |conf|
 
-   # Default values
+   from dataclasses import asdict
+   from sphinxawesome_theme import ThemeOptions
+
+   theme_options = ThemeOptions(
+      # Add your theme options. For example:
+      show_breadcrumbs=True,
+      main_nav_links={"About", "/about"},
+   )
+
+   html_theme_options = asdict(theme_options)
+
+You can still configure the theme using a regular dictionary:
+
+.. code-block:: python
+   :caption: |conf|
+
    html_theme_options = {
-       "nav_include_hidden": True,
-       "show_nav": True,
-       "show_breadcrumbs": True,
-       "breadcrumbs_separator": "/",
-       "show_prev_next": False,
-       "show_scrolltop": False,
-       "extra_headerlinks": False,
+      # Add your theme options. For example:
+      "show_breadcrumbs": True,
+      "main_nav_links": {
+         "About": "/about",
+      }
    }
 
-``nav_include_hidden``
-   Controls whether to include entries from a *hidden*
-   :sphinxdocs:`toctree <usage/restructuredtext/directives.html#directive-toctree>`
-   directive in the sidebar.
 
-   By default,
-   the ``toctree`` directive includes your content *and* generates a list of links in the content area of the page.
-   With the ``hidden`` option, the content is still included,
-   but no links are printed in the main content area.
 
-``show_nav``
-   Controls whether to render the left sidebar.
+.. autoclass:: ThemeOptions()
+   :members:
+   :exclude-members: extra_header_links, nav_include_hidden, show_nav
 
-``show_breadcrumbs``
-   Controls whether to include `breadcrumbs <https://en.wikipedia.org/wiki/Breadcrumb_navigation>`_ links at the top of each page.
+.. dropdown:: ``LinkIcon`` reference
 
-``breadcrumbs_separator``
-   The separator for the breadcrumbs links.
-
-``show_prev_next``
-   Controls whether to show links to the previous and next pages in the hierarchy.
-
-``show_scrolltop``
-   Controls whether to show a button that scrolls to the top of the page when clicked.
-
-``extra_header_links``
-   Adds extra links to the header of your documentation.
-
-   The keys of the ``extra_header_links`` dictionary are the link texts.
-   The values are absolute URLs.
+   .. autoclass:: LinkIcon
+      :members:

@@ -2,7 +2,7 @@
 
 {{ super() }}
 
-{%- block extrahead %}
+{%- block header_after %}
 {# `mode` is injected via `html_context` in `conf.py` #}
 {# You can override it with `-A` at build time #}
 {%- if mode == "production" %}
@@ -10,6 +10,6 @@
 {%- endif %}
 {%- endblock %}
 
-{%- block extrabody %}
+{%- block body_after %}
   {%- include "feedback.html" %}
 {%- endblock %}

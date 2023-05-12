@@ -1,51 +1,59 @@
 """Sphinx configuration file."""
-import sys
-from pathlib import Path
+from __future__ import annotations
 
+import os
+from dataclasses import asdict
+
+from dotenv import load_dotenv
 from sphinx.application import Sphinx
 from sphinx.util.docfields import Field
+from sphinxawesome_theme import ThemeOptions, __version__
+from sphinxawesome_theme.docsearch import DocSearchConfig
 
-# Add path to local extension
-this_dir = Path(__file__).parent
-ext_dir = (this_dir / ".." / "src").resolve()
-sys.path.append(str(ext_dir.absolute()))
+load_dotenv()
 
-# -- Project information -----------------------------------------------------
+# -- Project information ---
 
 project = "Awesome Sphinx Theme"
 author = "Kai Welke"
 copyright = f"{author}."
 
-# -- General configuration ---------------------------------------------------
+# -- General configuration ---
 
 extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.intersphinx",
     "sphinx.ext.extlinks",
     "sphinx.ext.viewcode",
-    "sphinxawesome_theme",
     "sphinx_sitemap",
     "sphinx_design",
+    "sphinxawesome_theme.docsearch",
+    "sphinxawesome_theme.highlighting",
 ]
 
 exclude_patterns = ["public", "includes", "**/includes"]
 
 nitpicky = True
-nitpick_ignore = [
-    ("py:class", "sphinx.application.Sphinx"),
-    ("py:class", "docutils.nodes.Element"),
-]
 
 default_role = "literal"
 
 # Global substitutions for reStructuredText files
-rst_prolog = """
-.. |rst| replace:: reStructuredText
-.. |product| replace:: Awesome Theme
-"""
+substitutions = [
+    ":tocdepth: 3",
+    " ",
+    ".. meta::",
+    "   :author: kai687",
+    "   :keywords: Documentation,Sphinx,Python,Tailwind",
+    ".. |rst| replace:: reStructuredText",
+    ".. |product| replace:: Awesome Theme",
+    ".. |conf| replace:: File: conf.py",
+    f".. |current| replace:: {__version__}",
+]
+rst_prolog = "\n".join(substitutions)
 
 intersphinx_mapping = {
     "sphinx": ("https://www.sphinx-doc.org/en/master/", None),
+    "v4": ("https://v4--sphinxawesome-theme.netlify.app/", None),
 }
 
 extlinks = {
@@ -54,17 +62,12 @@ extlinks = {
     "sphinxdocs": ("https://www.sphinx-doc.org/en/master/%s", "%s"),
 }
 
-linkcheck_ignore = [
-    # GitHub anchors are dynamically created and difficult to check
-    # See https://github.com/sphinx-doc/sphinx/issues/9016
-    "https://github.com/wntrblm/nox/#installation",
-]
+add_module_names = False
 
-# -- Options for HTML output -------------------------------------------------
+# -- Options for HTML output ---
 
 html_title = project
 html_theme = "sphinxawesome_theme"
-html_theme_path = ["../src"]
 html_last_updated_fmt = ""
 html_use_index = False  # Don't create index
 html_domain_indices = False  # Don't need module indices
@@ -89,29 +92,39 @@ html_context = {
     "feedback_url": "https://github.com/kai687/sphinxawesome-theme/issues/new?title=Feedback",
 }
 
+html_sidebars: dict[str, list[str]] = {
+    "about": ["sidebar_main_nav_links.html"],
+    "changelog/*": ["sidebar_main_nav_links.html"],
+}
+
 # if you want to include other pages than docs
 templates_path = ["_templates"]
 # html_additional_pages = {"about": "about.html"}
 
 html_static_path = ["_static"]
 html_css_files = ["feedback.css"]
-html_js_files = ["feedback.js"]
+html_js_files = [("feedback.js", {"defer": "defer"})]
 
-# extra options from the sphinxawesome_theme
-html_awesome_docsearch = True
-html_awesome_external_links = True
+# DocSearch (sphinxawesome_theme extension)
+docsearch = DocSearchConfig(
+    docsearch_api_key=os.getenv("DOCSEARCH_API_KEY", ""),
+    docsearch_app_id=os.getenv("DOCSEARCH_APP_ID", ""),
+    docsearch_index_name=os.getenv("DOCSEARCH_INDEX_NAME", ""),
+    docsearch_placeholder="Search these docs",
+    docsearch_missing_results_url="https://github.com/kai687/sphinxawesome-theme/issues/new?title=${query}",
+)
 
-# The Algolia credentials are added from an `.env` file
-docsearch_config = {
-    "placeholder": "Search these docs",
-    "missing_results_url": "https://github.com/kai687/sphinxawesome-theme/issues/new?title=${query}",
-}
+vars = locals()
+for key, value in asdict(docsearch).items():
+    if value is not None:
+        vars.__setitem__(key, value)
 
-html_theme_options = {
-    "show_scrolltop": True,
-    "extra_header_links": {
-        "Docs": "/index",
-        "About": "/about",
+
+theme_options = ThemeOptions(
+    show_prev_next=True,
+    awesome_external_links=True,
+    main_nav_links={"Docs": "/index", "About": "/about", "Changelog": "/changelog"},
+    extra_header_link_icons={
         "repository on GitHub": {
             "link": "https://github.com/kai687/sphinxawesome-theme",
             "icon": (
@@ -140,7 +153,9 @@ html_theme_options = {
             ),
         },
     },
-}
+)
+
+html_theme_options = asdict(theme_options)
 
 sitemap_url_scheme = "{link}"
 

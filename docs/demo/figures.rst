@@ -1,5 +1,6 @@
 .. meta::
    :description: Discover how the theme styles figures, images, and their supporting elements, such as captions.
+   :twitter:description: Discover how the theme styles figures, images, and their supporting elements, such as captions.
 
 Figures and tables
 ==================
@@ -8,8 +9,6 @@ Figures and tables
 
    See how images, figures, and tables look like with the |product|.
    Sphinx distinguishes between *images* and *figures*.
-
-----
 
 Images
 ------

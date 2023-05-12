@@ -7,6 +7,7 @@ serializer.
 :copyright: Copyright Kai Welke.
 :license: MIT, see LICENSE for details.
 """
+from __future__ import annotations
 
 import json
 from typing import IO, Any
@@ -15,7 +16,7 @@ from typing import IO, Any
 class AwesomeJSONEncoder(json.JSONEncoder):
     """Custom JSON encoder for everything in the `context`."""
 
-    def default(self: "AwesomeJSONEncoder", obj: Any) -> str:
+    def default(self: AwesomeJSONEncoder, obj: Any) -> str:
         """Return an empty string for anything that's not serializable by default."""
         return ""
 

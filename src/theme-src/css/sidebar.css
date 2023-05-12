@@ -1,42 +1,32 @@
-/* Style for the sidebar */
-.nav-toc {
+/* Styles for the sidebar */
+/* These classes are used inside Sphinx */
+
+#left-sidebar {
   & .caption {
-    @apply text-m font-medium tracking-wide text-gray pt-10 pb-3;
+    @apply mb-1 rounded-md px-2 py-1 pt-6 text-sm font-semibold first:pt-0;
   }
-  & p:first-of-type {
-    @apply pt-4;
-  }
-  & > ul:first-child {
-    @apply pt-4;
-  }
-  & .expand {
-    @apply inline h-[1.2rem] ml-[-0.4rem] fill-current cursor-pointer select-none hover:text-brand focus:text-brand transition-transform transform duration-150 ease-out;
-  }
-  & li > ul {
-    @apply pl-4 overflow-y-hidden max-h-0;
-  }
-  & .expanded {
-    & > div > .expand {
-      @apply rotate-90;
-    }
-    & > ul {
-      @apply max-h-full;
-      & a.current {
-        @apply text-brand;
-      }
+  & ul {
+    @apply grid transform-gpu grid-flow-row auto-rows-max overflow-hidden text-sm transition-all duration-300 ease-in-out motion-reduce:transition-none;
+    & ul {
+      @apply relative ml-3 py-2 pl-3 pr-0 opacity-100 transition-opacity duration-500 before:absolute before:inset-y-1 before:left-0 before:w-px before:bg-gray-200 before:content-[""] dark:before:bg-neutral-800;
     }
   }
   & a {
-    @apply text-gray-light inline-block py-1 hover:text-brand focus:text-brand;
+    @apply flex w-full items-center rounded-md border border-transparent px-2 py-1.5 hover:underline focus-visible:outline-offset-[-1px];
+    & > button {
+      @apply rounded text-muted-foreground hover:bg-primary/10;
+      & > svg {
+        @apply origin-center transform-gpu transition-transform;
+      }
+    }
     &.current {
-      @apply text-gray-dark font-medium;
+      @apply border border-border bg-accent font-medium text-accent-foreground;
+    }
+    &.expandable {
+      @apply justify-between;
+      &.expanded > button > svg {
+        @apply rotate-90;
+      }
     }
   }
-  & ul + ul {
-    @apply mt-8;
-  }
-}
-
-.nav-link {
-  @apply text-[0.95rem] tracking-[0.2px];
 }

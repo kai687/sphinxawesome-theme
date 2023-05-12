@@ -1,45 +1,61 @@
 :orphan: true
-:layout: without-sidebar
 
 .. meta::
-   :description: The Awesome Sphinx Theme is built on top of open source assets.
+   :description: Miscellaneous information about the Awesome Theme
+   :twitter:description: Miscellaneous information about the Awesome Theme
+
+.. vale off
 
 About
 =====
 
 .. rst-class:: lead
 
-   This pages lists assets that the |product| uses to be awesome.
+   Miscellaneous information about the |product|.
 
 ----
 
-To see the full list of dependencies, see these files:
+I wanted to use Sphinx for a documentation project,
+but I found all available themes dated and ugly.
+So I built my own.
+Had I known of the `furo <https://pradyunsg.me/furo/>`_ or
+the `sphinx-books-theme <https://sphinx-book-theme.readthedocs.io/en/stable/>`_,
+I likely would not have started this project.
 
-- :gh:`pyproject.toml` for Python dependencies
-- :gh:`package.json <src/theme-src/package.json>` for JavaScript dependencies
+Assets
+------
+
+The following table lists the assets used by the |product| to be awesome.
 
 +---------------------------------------------------------+-------------------------------+-----------------------------------------------------------------------------------+
 | Feature                                                 | Name/Website                  | License                                                                           |
 +=========================================================+===============================+===================================================================================+
+| UI design                                               | `shadcn/ui`_                  | `MIT License <https://github.com/shadcn/ui/blob/main/LICENSE.md>`__               |
++---------------------------------------------------------+-------------------------------+-----------------------------------------------------------------------------------+
 | CSS framework                                           | Tailwind_                     | `MIT License <https://github.com/tailwindlabs/tailwindcss/blob/master/LICENSE>`__ |
 +---------------------------------------------------------+-------------------------------+-----------------------------------------------------------------------------------+
-| Copy to clipboard                                       | Clipboard.js_                 | `MIT License <https://github.com/zenorocha/clipboard.js/blob/master/LICENSE>`__   |
+| JavaScript framework (Version 5.0 and later)            | Alpine.js_                    | `MIT License <https://github.com/alpinejs/alpine/blob/main/LICENSE.md>`__         |
 +---------------------------------------------------------+-------------------------------+-----------------------------------------------------------------------------------+
-| Fonts                                                   | Roboto_                       | `Apache License, Version 2.0`_                                                    |
+| JavaScript framework (Versions 2 to 4)                  | Stimulus_                     | `MIT License <https://github.com/hotwired/stimulus/blob/main/LICENSE.md>`__       |
++---------------------------------------------------------+-------------------------------+-----------------------------------------------------------------------------------+
+| Fonts                                                   | Roboto_ (until version 5.0)   | `Apache License, Version 2.0`_                                                    |
 +---------------------------------------------------------+-------------------------------+-----------------------------------------------------------------------------------+
 |                                                         | `JetBrains Mono`_             | `SIL Open Font License, 1.1`_                                                     |
 +---------------------------------------------------------+-------------------------------+-----------------------------------------------------------------------------------+
-| Icons                                                   | `Material icons`_             | `Apache License, Version 2.0`_                                                    |
+| Icons  (Version 1.13.1 and later)                       | `Material icons`_             | `Apache License, Version 2.0`_                                                    |
 +---------------------------------------------------------+-------------------------------+-----------------------------------------------------------------------------------+
-| Tooltips                                                | `Primer/CSS`_                 | `MIT License <https://github.com/primer/css/blob/main/LICENSE>`__                 |
-+---------------------------------------------------------+-------------------------------+-----------------------------------------------------------------------------------+
-| **Note:** versions ≤ 1.13.1 used these icons instead:   | Entypo_ by Daniel Bruce       | `Creative Commons Attribution-ShareAlike 4.0`_                                    |
+| Icons (Versions 1.13.0 and earlier)                     | Entypo_ by Daniel Bruce       | `Creative Commons Attribution-ShareAlike 4.0`_                                    |
 +---------------------------------------------------------+-------------------------------+-----------------------------------------------------------------------------------+
 |                                                         | Zondicons_ by Steve Schoger   | ?                                                                                 |
++---------------------------------------------------------+-------------------------------+-----------------------------------------------------------------------------------+
+| Tooltips                                                | `Primer/CSS`_                 | `MIT License <https://github.com/primer/css/blob/main/LICENSE>`__                 |
 +---------------------------------------------------------+-------------------------------+-----------------------------------------------------------------------------------+
 | Illustrations                                           | undraw.co_                    | custom_                                                                           |
 +---------------------------------------------------------+-------------------------------+-----------------------------------------------------------------------------------+
 
+.. _alpine.js: https://alpinejs.dev/
+.. _stimulus: https://stimulus.hotwired.dev/
+.. _shadcn/ui: https://ui.shadcn.com/
 .. _Tailwind: https://tailwindcss.com
 .. _Clipboard.js: https://clipboardjs.com
 .. _Roboto: https://github.com/googlefonts/roboto
@@ -54,60 +70,8 @@ To see the full list of dependencies, see these files:
 .. _Creative Commons Attribution-ShareAlike 4.0: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 .. _Apache License, Version 2.0: https://www.apache.org/licenses/LICENSE-2.0.html
 
-Breaking changes
-----------------
 
-Updating the |product| is straightforward in most cases.
-If you use any customization, you might have to update your
-customizations manually.
+Versioning strategy
+-------------------
 
-Version 5.0
-~~~~~~~~~~~
-
-Version 5.0 of the |product| includes these **breaking changes**:
-
-Remove support for ``html_collapsible_definitions``
-   The user experience was bad for reference documentation,
-   with users having to expand every object, only to see one comment line.
-   Use the `sphinx-design <https://sphinx-design.readthedocs.io/en/latest/>`_ extension instead.
-   The ``collapsible`` directive gives you more control.
-
-No external link icons by default
-   By default, no icons are shown.
-   Set :ref:`opt:html_awesome_code_headers` to ``True`` to show icons for external links.
-   In previous versions, external links always included an icon.
-
-
-Version 4.0
-~~~~~~~~~~~
-
-Version 4.0 of the |product| includes these **breaking changes**:
-
-Add support for Sphinx 6
-   Since Sphinx 6 is only supported with the latest version of the `myst-parser` package
-   and Sphinx 6 drops support for Python 3.7, this release is a major version update.
-
-Apart from that, this version is identical with version 3 of the |product|.
-
-Version 3.0
-~~~~~~~~~~~
-
-Redesign
-   Create a better visual hierarchy which makes the document easier to scan.
-   Heavily inspired by the `Material Design <https://m2.material.io/>`_ website.
-
-Restructure
-   All JavaScript is now using the `Stimulus <https://stimulus.hotwired.dev/>`_ framework.
-
-Version 2.0
-~~~~~~~~~~~
-
-Version 2.0 of the |product| includes these **breaking changes**:
-
-Require Sphinx 4 or newer
-   Sphinx 4 depends on docutils 0.17, which creates more semantic HTML by default.
-   This allows to reduce the amount of custom transformations.
-
-Restructure several templates
-   The layout use `CSS grid <https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout>`_.
-   This leads to fewer container elements in the templates.
+Starting with version 5.0, the |product| adopts `semantic versioning <https://semver.org/>`_.

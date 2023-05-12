@@ -1,5 +1,4 @@
-/* Style the headerlinks */
-
+/* Style the headerlink icons */
 @custom-selector :--headerlinkable
   h1,
   h2,
@@ -11,21 +10,19 @@
   dt,
   .code-block-caption;
 
-@layer utilities {
-  .headerlink {
-    @apply ml-1 inline-flex items-center text-gray-400 hover:text-brand focus:text-brand align-middle font-sans;
-    & > * {
-      @apply invisible fill-current;
-    }
-    &:focus > * {
-      @apply visible;
-    }
+.headerlink {
+  @apply tooltipped tooltipped-sw ml-1 inline-flex items-center align-middle;
+  & > * {
+    @apply invisible fill-current text-muted-foreground;
   }
-
-  :--headerlinkable:hover .headerlink {
+  &:focus > * {
     @apply visible;
-    & > * {
-      @apply visible;
-    }
+  }
+}
+
+:--headerlinkable:hover .headerlink {
+  @apply visible;
+  & > * {
+    @apply visible;
   }
 }

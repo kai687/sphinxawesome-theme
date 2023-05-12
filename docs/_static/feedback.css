@@ -1,15 +1,21 @@
-.feedback-wrapper {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  max-width: 760px;
-}
-
 .feedback {
   display: flex;
   gap: 0.5rem;
   flex-direction: column;
+  padding-top: 1.5rem;
   align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+}
+
+.feedback h5 {
+  font-weight: 500;
+}
+
+#upvote,
+#downvote {
+  border-radius: var(--radius);
 }
 
 #upvote:hover,
@@ -36,13 +42,13 @@
 
 .feedback-send {
   display: block;
-  padding: 0.125rem 0.25rem;
-  border-radius: 0.125rem;
-  border: 1px solid #e5e7eb;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius);
+  border: 1px solid hsl(var(--border));
 }
 
 .feedback-send:hover,
 .feedback-send:focus {
-  background: var(--color-brand);
-  color: #fff;
+  background-color: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
 }

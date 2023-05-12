@@ -1,5 +1,6 @@
 .. meta::
    :description: The Awesome Theme supports the sphinx-design extension.
+   :twitter:description: The Awesome Theme supports the sphinx-design extension.
 
 Sphinx design
 =============
@@ -12,7 +13,6 @@ Sphinx design
 
 .. _sphinx-design: https://sphinx-design.readthedocs.io/en/latest/index.html
 
-.. include:: ../includes/header.rst
 .. include:: includes/design-cards.rst
 .. include:: includes/design-grid.rst
 .. include:: includes/design-dropdown.rst

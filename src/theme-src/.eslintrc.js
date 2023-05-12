@@ -1,15 +1,16 @@
 module.exports = {
-  extends: ["eslint:recommended", "plugin:prettier/recommended"],
+  extends: ['eslint:recommended', 'prettier', 'plugin:tailwindcss/recommended'],
+  plugins: ['tailwindcss'],
   env: {
     browser: true,
     node: true,
   },
   parserOptions: {
     ecmaVersion: 6,
-    sourceType: "module",
+    sourceType: 'module',
   },
   globals: {
-    _: "readable",
-    Documentation: "readable",
+    _: 'readable',
+    Documentation: 'readable',
   },
-};
+}

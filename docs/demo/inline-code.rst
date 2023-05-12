@@ -1,5 +1,6 @@
 .. meta::
    :description: Learn how you can mark up inline code in Sphinx and see how it would look like on your website.
+   :twitter:description: Learn how you can mark up inline code in Sphinx and see how it would look like on your website.
 
 .. role:: python(code)
    :language: python
@@ -12,13 +13,12 @@ Inline code
 
    See how inline markup looks like in the |product|.
 
-
-.. include:: ../includes/header.rst
-
 To mark up code in inline text, you can:
 
 - Surround the code with two backtick characters.
 - Use the ``code`` interpreted text role.
+
+If you want to see the styles for code blocks, see :doc:`code-blocks`.
 
 Syntax highlighting in inline code
 ----------------------------------

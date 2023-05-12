@@ -1,5 +1,6 @@
 .. meta::
    :description: See how on-page navigation looks like in this theme.
+   :twitter:description: See how on-page navigation looks like in this theme.
 
 On-page navigation
 ==================
@@ -8,6 +9,8 @@ On-page navigation
 
    When you have many sections on a page, you can provide
    a table of contents for a better overview.
+
+----
 
 To show a table of contents for the current page,
 use the ``contents`` directive with the ``:local:`` option.

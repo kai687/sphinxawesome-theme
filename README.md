@@ -14,40 +14,53 @@
 
 ## Get started
 
-To use this theme in your project,
-install it via `pip` and add it to your Sphinx configuration.
-
 1. Install the theme as a Python package:
 
    ```console
    pip install sphinxawesome-theme
    ```
 
-   For more information, see [How to install the theme](https://sphinxawesome.xyz/how-to/install/).
+   For more information, see [Install the theme](https://sphinxawesome.xyz/how-to/install/).
 
-1. Add `sphinxawesome_theme` as an extension and HTML theme in your Sphinx configuration file `conf.py`:
+1. Add `sphinxawesome_theme` as an HTML theme in your Sphinx configuration file `conf.py`:
 
    ```python
    html_theme = "sphinxawesome_theme"
-   extensions = ["sphinxawesome_theme"]
    ```
 
-   For more information, see [How to load the theme](https://sphinxawesome.xyz/how-to/load/) for more information.
+   For more information, see [Add your theme](https://sphinxawesome.xyz/how-to/add/).
+
+1. Optional:
+
+   - If you want to use Algolia DocSearch with this theme,
+     load the bundled extension:
+
+     ```python
+     # conf.py
+     extensions += ["sphinxawesome_theme.docsearch"]
+     ```
+
+   - If you want to use awesome features for highlighting code,
+     load the bundled extension:
+
+     ```python
+     # conf.py
+     extensions += ["sphinxawesome_theme.highlighting"]
+     ```
 
 ## Features
 
 With the Awesome Theme, you can build readable, functional, and beautiful documentation websites.
-These features make your documentation awesome:
 
 ### Awesome code blocks
 
-Code blocks show the language of the code in a header.
-Each code block has a **Copy** button for easy copying.
-This theme enhances Sphinx's `code-block` directive with these options:
+- Code block have a **Copy** button for copying the code.
+- If you load the bundled `sphinxawesome_theme.highlighting`,
+  you can use these additional options in your ``code-block`` directives:
 
-- `emphasize-added`. Highlight lines that should be added to code
-- `emphasize-removed`. Highlight lines that should be removed from the code
-- `emphasize-text: TEXT`. Highlight `TEXT` in the code block to emphasize placeholder text the user should replace.
+  - `emphasize-added`. Highlight lines that should be added to code
+  - `emphasize-removed`. Highlight lines that should be removed from the code
+  - `emphasize-text: TEXT`. Highlight _`TEXT`_ in the code block to emphasize placeholder text.
 
 ### Better headerlinks
 
@@ -58,8 +71,3 @@ Clicking the link icon after headers or captions automatically copies the URL to
 If you have an Algolia DocSearch account for your documentation,
 you can use DocSearch for a search-as-you-type experience with autocomplete.
 Algolia DocSearch is free for open source documentation projects.
-
-### Better keyboard navigation
-
-Use the `Tab` key to skip through all sections on the page.
-Use the `Space` key to expand or collapse items in the navigation menu or in code definitions.

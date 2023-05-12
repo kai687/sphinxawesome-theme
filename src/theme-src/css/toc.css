@@ -1,0 +1,44 @@
+/* Styles for the on-page TOC */
+#right-sidebar {
+  & ul {
+    @apply m-0;
+    & li {
+      @apply mt-0 pt-2;
+      & a {
+        @apply inline-block text-muted-foreground no-underline transition-colors hover:text-foreground focus-visible:outline-offset-[-1px];
+        &[data-current='true'] {
+          @apply font-medium text-foreground;
+        }
+      }
+      & ul {
+        @apply pl-4;
+      }
+    }
+    &:not(:last-child) {
+      @apply pb-2;
+    }
+  }
+}
+
+.toctree-wrapper,
+.contents {
+  @apply space-y-2 text-sm;
+  & .topic-title,
+  & .caption {
+    @apply pt-6 font-medium;
+  }
+  & ul {
+    @apply !m-0 !list-none;
+    & li {
+      & a.reference {
+        @apply inline-block !font-normal !text-muted-foreground !no-underline transition-colors hover:text-foreground;
+      }
+      & ul {
+        @apply pl-4;
+      }
+    }
+    &:not(:last-child) {
+      @apply pb-2;
+    }
+  }
+}

@@ -12,7 +12,6 @@ from .util import parse_html
 @pytest.mark.sphinx(
     "html",
     confoverrides={
-        "extensions": ["sphinxawesome_theme"],
         "html_theme": "sphinxawesome_theme",
     },
 )
@@ -28,7 +27,6 @@ def test_no_canonical_links_in_html(app: Sphinx) -> None:
 @pytest.mark.sphinx(
     "dirhtml",
     confoverrides={
-        "extensions": ["sphinxawesome_theme"],
         "html_theme": "sphinxawesome_theme",
     },
 )
@@ -44,7 +42,6 @@ def test_no_canonical_links_in_dirhtml(app: Sphinx) -> None:
 @pytest.mark.sphinx(
     "html",
     confoverrides={
-        "extensions": ["sphinxawesome_theme"],
         "html_theme": "sphinxawesome_theme",
         "html_baseurl": "https://test.org",
     },
@@ -62,7 +59,6 @@ def test_canonical_links_in_html(app: Sphinx) -> None:
 @pytest.mark.sphinx(
     "dirhtml",
     confoverrides={
-        "extensions": ["sphinxawesome_theme"],
         "html_theme": "sphinxawesome_theme",
         "html_baseurl": "https://test.org",
     },

@@ -1,19 +1,19 @@
-import "../css/styles.css";
-import "@fontsource/roboto/latin-400.css";
-import "@fontsource/roboto/latin-400-italic.css";
-import "@fontsource/roboto/latin-500.css";
-import "@fontsource/roboto/latin-500-italic.css";
-import "@fontsource/jetbrains-mono/latin-400.css";
-import "@fontsource/jetbrains-mono/latin-400-italic.css";
-import "@fontsource/jetbrains-mono/latin-500.css";
-import "@fontsource/jetbrains-mono/latin-500-italic.css";
-import "@fontsource/jetbrains-mono/latin-700.css";
-import "@fontsource/jetbrains-mono/latin-700-italic.css";
+import '../css/styles.css'
+import '@fontsource/jetbrains-mono/latin-400.css'
+import '@fontsource/jetbrains-mono/latin-400-italic.css'
+import '@fontsource/jetbrains-mono/latin-500.css'
+import '@fontsource/jetbrains-mono/latin-500-italic.css'
+import '@fontsource/jetbrains-mono/latin-700.css'
+import '@fontsource/jetbrains-mono/latin-700-italic.css'
 
-import { Application } from "@hotwired/stimulus";
-import { definitionsFromContext } from "@hotwired/stimulus-webpack-helpers";
+import Alpine from 'alpinejs'
+import intersect from '@alpinejs/intersect'
+import { addCodeButtons } from './code'
 
-const app = Application.start();
-const ctx = require.context("./controllers", true, /.js$/);
+window.Alpine = Alpine
+Alpine.plugin(intersect)
+Alpine.start()
 
-app.load(definitionsFromContext(ctx));
+window.addEventListener('DOMContentLoaded', () => {
+  addCodeButtons()
+})

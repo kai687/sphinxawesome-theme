@@ -1,21 +1,25 @@
 window.addEventListener("DOMContentLoaded", () => {
-  document
-    .getElementById("upvote")
-    .addEventListener("click", () => sendEvent("upvote"))
+  const upvote = document.getElementById("upvote")
+  if (upvote) {
+    upvote.addEventListener("click", () => sendEvent("upvote"))
+  }
 
-  document
-    .getElementById("downvote")
-    .addEventListener("click", () => sendEvent("downvote"))
+  const downvote = document.getElementById("downvote")
+  if (downvote) {
+    downvote.addEventListener("click", () => sendEvent("downvote"))
+  }
 
-  document
-    .querySelectorAll("button.copy")
-    .forEach((i) => {
+  const copy = document.querySelectorAll("button.copy")
+  if (copy) {
+    copy.forEach((i) => {
       i.addEventListener("click", () => sendEvent("code copied"))
     })
+  }
 
-  document
-    .querySelector("button.DocSearch-Button")
-    .addEventListener("click", () => sendEvent("search clicked"))
+  const docsearch = document.querySelector("button.DocSearch-Button")
+  if (docsearch) {
+    docsearch.addEventListener("click", () => sendEvent("search clicked"))
+  }
 })
 
 function sendEvent(eventType) {

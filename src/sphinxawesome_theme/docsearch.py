@@ -1,86 +1,187 @@
 """Add Algolia DocSearch to Sphinx.
 
-This Sphinx extension adds DocSearch to your Sphinx project.
+This extension replaces the built-in search in Sphinx with Algolia DocSearch.
+To load this extension, add:
+
+.. code-block:: python
+   :caption: |conf|
+
+   extensions += ["sphinxawesome_theme.docsearch"]
 
 :copyright: Kai Welke.
-:license: MIT
+:license: MIT, see LICENSE for details
 """
-import os
-from pathlib import Path
-from typing import Any, Dict
+from __future__ import annotations
+
+from dataclasses import dataclass, fields
+from typing import Any
 
 from docutils.nodes import Node
-from dotenv import load_dotenv
 from sphinx.application import Sphinx
 from sphinx.builders.dirhtml import DirectoryHTMLBuilder
 from sphinx.builders.html import StandaloneHTMLBuilder
+from sphinx.config import Config
+from sphinx.locale import __
+from sphinx.util import logging
 from sphinx.util.display import progress_message
 
 from . import __version__
 
+logger = logging.getLogger(__name__)
 
-@progress_message("Set up DocSearch")
-def setup_docsearch(
+
+@dataclass
+class DocSearchConfig:
+    """Configuration options for DocSearch.
+
+    This class defines and documents the configuration options for the :py:mod:`sphinxawesome_theme.docsearch` extension.
+    To configure DocSearch, you must use regular Python variables. For example:
+
+    .. code-block:: python
+       :caption: |conf|
+
+       from sphinxawesome_theme.docsearch import DocSearchConfig
+
+       config = DocSearchConfig(
+           docsearch_app_id="DOCSEARCH_APP_ID"
+           # Other options
+       )
+
+       docsearch_app_id = config.docsearch_app_id
+    """
+
+    docsearch_app_id: str
+    """Your Algolia DocSearch application ID.
+
+    You **must** provide an application ID or DocSearch won't work.
+    """
+
+    docsearch_api_key: str
+    """Your Algolia DocSearch Search API key.
+
+    You **must** provide your search API key or DocSearch won't work.
+
+    .. caution::
+
+       Don't expose your write API key.
+    """
+
+    docsearch_index_name: str
+    """Your Algolia DocSearch index name.
+
+    You **must** provide an index name or DocSearch won't work.
+    """
+
+    docsearch_container: str = "#docsearch"
+    """A CSS selector where the DocSearch UI should be injected."""
+
+    docsearch_placeholder: str | None = None
+    """A placeholder for the search input.
+
+    By default, DocSearch uses *Search docs*.
+    """
+
+    docsearch_initial_query: str | None = None
+    """If you want to perform a search before the user starts typing."""
+
+    docsearch_search_parameter: str | None = None
+    """If you want to add `Algolia search parameter <https://www.algolia.com/doc/api-reference/search-api-parameters/>`_."""
+
+    docsearch_missing_results_url: str | None = None
+    """A URL for letting users send you feedback about your search.
+
+    You can use the current query in the URL as ``${query}``. For example:
+
+    .. code-block:: python
+
+       docsearch_missing_results_url = "https://github.com/example/docs/issues/new?title=${query}"
+    """
+
+
+@progress_message("DocSearch: check config")
+def check_config(app: Sphinx, config: Config) -> None:
+    """Set up Algolia DocSearch.
+
+    Log warnings if any of these configuration options are missing:
+
+    - ``docsearch_app_id``
+    - ``docsearch_api_key``
+    - ``docsearch_index_name``
+    """
+    if not config.docsearch_app_id:
+        logger.warning(
+            __("You must provide your Algolia application ID for DocSearch to work.")
+        )
+    if not config.docsearch_api_key:
+        logger.warning(
+            __("You must provide your Algolia search API key for DocSearch to work.")
+        )
+    if not config.docsearch_index_name:
+        logger.warning(
+            __("You must provide your Algolia index name for DocSearch to work.")
+        )
+
+
+@progress_message("DocSearch: add assets")
+def add_docsearch_assets(app: Sphinx, config: Config) -> None:
+    """Add the docsearch.css file for DocSearch."""
+    app.add_css_file("docsearch.css", priority=150)
+    # TODO: add_js_file (currently in `layout.html` I think)
+
+
+def update_global_context(app: Sphinx, doctree: Node, docname: str) -> None:
+    """Update global context with DocSearch configuration."""
+    if hasattr(app.builder, "globalcontext"):
+        app.builder.globalcontext["docsearch"] = True
+        app.builder.globalcontext["docsearch_app_id"] = app.config.docsearch_app_id
+        app.builder.globalcontext["docsearch_api_key"] = app.config.docsearch_api_key
+        app.builder.globalcontext[
+            "docsearch_index_name"
+        ] = app.config.docsearch_index_name
+        app.builder.globalcontext[
+            "docsearch_container"
+        ] = app.config.docsearch_container
+        app.builder.globalcontext[
+            "docsearch_initial_query"
+        ] = app.config.docsearch_initial_query
+        app.builder.globalcontext[
+            "docsearch_placeholder"
+        ] = app.config.docsearch_placeholder
+        app.builder.globalcontext[
+            "docsearch_search_parameter"
+        ] = app.config.docsearch_search_parameter
+        app.builder.globalcontext[
+            "docsearch_missing_results_url"
+        ] = app.config.docsearch_missing_results_url
+
+
+def remove_script_files(
     app: Sphinx,
     pagename: str,
     templatename: str,
-    context: Dict[str, Any],
+    context: dict[str, Any],
     doctree: Node,
 ) -> None:
-    """Set up DocSearch.
-
-    Config can be provided via environment variables, a `.env.` file,
-    or the Sphinx configuration file.
-    """
-    # load `.env` file into environment
-    load_dotenv(dotenv_path=(Path(app.confdir) / ".env"))
-
-    docsearch_config = {
-        "container": (
-            os.getenv("DOCSEARCH_CONTAINER")
-            or app.config.docsearch_config.get("container", "#docsearch")
-        ),
-        "app_id": (
-            os.getenv("DOCSEARCH_APP_ID") or app.config.docsearch_config.get("app_id")
-        ),
-        "api_key": (
-            os.getenv("DOCSEARCH_API_KEY") or app.config.docsearch_config.get("api_key")
-        ),
-        "index_name": (
-            os.getenv("DOCSEARCH_INDEX_NAME")
-            or app.config.docsearch_config.get("index_name")
-        ),
-        "initial_query": (
-            os.getenv("DOCSEARCH_INITIAL_QUERY")
-            or app.config.docsearch_config.get("initial_query", "")
-        ),
-        "placeholder": (
-            os.getenv("DOCSEARCH_PLACEHOLDER")
-            or app.config.docsearch_config.get("placeholder", "")
-        ),
-        "missing_results_url": (
-            os.getenv("DOCSEARCH_MISSING_RESULTS_URL")
-            or app.config.docsearch_config.get("missing_results_url", "")
-        ),
-    }
-    # If we want to use `docsearch` we don't need these default files
-    context["script_files"].remove("_static/sphinx_highlight.js")
+    """Remove Sphinx JavaScript files when using DocSearch."""
     context["script_files"].remove("_static/documentation_options.js")
     context["script_files"].remove("_static/doctools.js")
-    # Even if we're not using DocSearch, these things MUST be in the context
-    context["docsearch"] = app.config.html_awesome_docsearch
-    # update local context for rendering the `layout.html` templates for every page
-    context["docsearch_config"] = docsearch_config
-    # update the global context for writing the `docsearch_config.js` file
-    app.builder.globalcontext["docsearch_config"] = docsearch_config  # type: ignore [attr-defined] # noqa: B950,E501
+    context["script_files"].remove("_static/sphinx_highlight.js")
 
 
-def setup(app: Sphinx) -> Dict[str, Any]:
+def setup(app: Sphinx) -> dict[str, Any]:
     """Register the extension."""
-    app.add_css_file("docsearch.css", priority=150)
-    app.connect("html-page-context", setup_docsearch)
+    # Get the configuration from a single-source of truth
+    # This makes it easy to document.
+    for option in fields(DocSearchConfig):
+        default = option.default if isinstance(option.default, str) else ""
+        app.add_config_value(option.name, default=default, rebuild="html", types=(str))
 
-    # Disable built-in search when using DocSearch
+    app.connect("config-inited", check_config)
+    app.connect("config-inited", add_docsearch_assets)
+    app.connect("doctree-resolved", update_global_context)
+    app.connect("html-page-context", remove_script_files)
+
+    # Disable built-in search
     StandaloneHTMLBuilder.search = False
     DirectoryHTMLBuilder.search = False
 

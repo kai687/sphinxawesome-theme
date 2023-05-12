@@ -17,22 +17,18 @@ They might not show up in the final CSS.
 :copyright: Copyright Kai Welke.
 :license: MIT, see LICENSE.
 """
+from __future__ import annotations
 
 import os
 import re
-from typing import Any, Dict, List, Optional
 
 from bs4 import BeautifulSoup, Comment
 from sphinx.application import Sphinx
-from sphinx.util import logging
 
-from . import __version__
-from .icons import ICONS
-
-logger = logging.getLogger(__name__)
+from . import icons, logos
 
 
-def _get_html_files(outdir: str) -> List[str]:
+def _get_html_files(outdir: str) -> list[str]:
     """Get a list of HTML files."""
     html_list = []
     for root, _, files in os.walk(outdir):
@@ -43,42 +39,35 @@ def _get_html_files(outdir: str) -> List[str]:
 
 
 def _collapsible_nav(tree: BeautifulSoup) -> None:
-    """Restructure the navigation links to make them collapsible.
+    """Make navigation links with children collapsible."""
+    for link in tree.select("#left-sidebar a"):
+        # Check if the link has "children"
+        children = link.next_sibling
+        if children and children.name == "ul":
+            # State must be available in the link and the list
+            li = link.parent
+            li[
+                "x-data"
+            ] = "{ expanded: $el.classList.contains('current') ? true : false }"
+            link["@click"] = "expanded = !expanded"
+            # The expandable class is a hack because we can't use Tailwind
+            # I want to have _only_ expandable links with `justify-between`
+            link["class"].append("expandable")
+            link[":class"] = "{ 'expanded' : expanded }"
+            children["x-show"] = "expanded"
 
-    First, all links in the navigation sidebar are wrapped in a ``div``.
-    This allows them to be 'block' and 'position relative' for the
-    'expand' icon to be positioned against.
+            # Create a button with an icon inside to get focus behavior
+            button = tree.new_tag(
+                "button",
+                attrs={"type": "button", "@click.prevent.stop": "expanded = !expanded"},
+            )
+            label = tree.new_tag("span", attrs={"class": "sr-only"})
+            button.append(label)
 
-    Second, an icon is inserted right before the link.
-    Adding the icon as separate DOM element allows click events to be
-    captured separately between the icon and the link.
-    """
-    for link in tree.select(".nav-toc a"):
-        link["data-action"] = "click->sidebar#close"
-        # Don't add the nav-link class twice (#166)
-        if "nav-link" not in link.parent.get("class", []):
-            # First, all links should be wrapped in a div.nav-link
-            link.wrap(tree.new_tag("div", attrs={"class": "nav-link"}))
-            # Next, insert a span.expand before the link, if the #nav-link
-            # has any sibling elements (a ``ul`` in the navigation menu)
-            if link.parent.next_sibling:
-                # create the icon
-                svg = BeautifulSoup(ICONS["chevron_right"], "html.parser").svg
-                svg["tabindex"] = "0"
-                svg["height"] = "1.2rem"
-                svg["class"] = ["expand"]
-                svg["style"] = ["display: inline;"]
-                svg[
-                    "data-action"
-                ] = "click->sidebar#expand keydown->sidebar#expandKeyPressed"
-                link.insert_before(svg)
-
-
-def _expand_current(tree: BeautifulSoup) -> None:
-    """Add the ``.expanded`` class to li.current elements."""
-    for li in tree("li", class_="current"):
-        if "expanded" not in li.get("class", []):
-            li["class"] += ["expanded"]
+            # create the icon
+            svg = BeautifulSoup(icons.ICONS["chevron_right"], "html.parser").svg
+            button.append(svg)
+            link.append(button)
 
 
 def _remove_empty_toctree(tree: BeautifulSoup) -> None:
@@ -95,19 +84,30 @@ def _remove_empty_toctree(tree: BeautifulSoup) -> None:
 
 
 def _headerlinks(tree: BeautifulSoup) -> None:
-    """Enhance the headerlink experience."""
+    """Make headerlinks copy their URL on click."""
     for link in tree("a", class_="headerlink"):
-        link["data-controller"] = "clipboard"
-        link["data-action"] = "click->clipboard#copyHeaderLink"
-        link["aria-label"] = "Click to copy this link"
+        link[
+            "@click.prevent"
+        ] = "window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() => $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)"
         del link["title"]
-        link["class"].extend(["tooltipped", "tooltipped-ne"])
+        link["aria-label"] = "Copy link to this element"
+        link["data-tooltip"] = "Copy link to this element"
 
 
-def _code_controller(tree: BeautifulSoup) -> None:
-    """Add the controller attribute to code blocks."""
-    for block in tree("div", class_="highlight"):
-        block["data-controller"] = "code"
+def _scrollspy(tree: BeautifulSoup) -> None:
+    """Add an active class to current TOC links in the right sidebar."""
+    for link in tree("a", class_="headerlink"):
+        if link.parent.name in ["h2", "h3"] or (
+            link.parent.name == "dt" and "sig" in link.parent["class"]
+        ):
+            active_link = link["href"]
+            link[
+                "x-intersect.margin.0%.0%.-70%.0%"
+            ] = f"activeSection = '{active_link}'"
+
+    for link in tree.select("#right-sidebar a"):
+        active_link = link["href"]
+        link[":data-current"] = f"activeSection === '{active_link}'"
 
 
 def _external_links(tree: BeautifulSoup) -> None:
@@ -118,6 +118,8 @@ def _external_links(tree: BeautifulSoup) -> None:
     """
     for link in tree("a", class_="reference external"):
         link["rel"] = "nofollow noopener"
+        # append icon
+        link.append(BeautifulSoup(icons.ICONS["external_link"], "html.parser").svg)
 
 
 def _strip_comments(tree: BeautifulSoup) -> None:
@@ -170,22 +172,23 @@ def _modify_html(html_filename: str, app: Sphinx) -> None:
     with open(html_filename, encoding="utf-8") as html:
         tree = BeautifulSoup(html, "html.parser")
 
-    _expand_current(tree)
+    theme_options = logos.get_theme_options(app)
+
     _collapsible_nav(tree)
-    _external_links(tree)
+    if theme_options.get("awesome_external_links"):
+        _external_links(tree)
     _remove_empty_toctree(tree)
-    if app.config.html_awesome_headerlinks:
+    _scrollspy(tree)
+    if theme_options.get("awesome_headerlinks"):
         _headerlinks(tree)
-    _code_controller(tree)
-    if app.config.html_awesome_code_headers:
-        _code_headers(tree)
+    # _code_headers(tree)
     _strip_comments(tree)
 
     with open(html_filename, "w", encoding="utf-8") as out_file:
         out_file.write(str(tree))
 
 
-def post_process_html(app: Sphinx, exc: Optional[Exception]) -> None:
+def post_process_html(app: Sphinx, exc: Exception | None) -> None:
     """Perform modifications on the HTML after building.
 
     This is an extra function, that gets a list from all HTML
@@ -200,14 +203,3 @@ def post_process_html(app: Sphinx, exc: Optional[Exception]) -> None:
 
         for doc in html_files:
             _modify_html(doc, app)
-
-
-def setup(app: "Sphinx") -> Dict[str, Any]:
-    """Set this up as internal extension."""
-    app.connect("build-finished", post_process_html)
-
-    return {
-        "version": __version__,
-        "parallel_read_safe": True,
-        "parallel_write_safe": True,
-    }

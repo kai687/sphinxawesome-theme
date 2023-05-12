@@ -1,0 +1,24 @@
+/* Styles for the builtin search */
+
+#search-results {
+  & .search-summary {
+    @apply mt-6 text-xl text-muted-foreground;
+  }
+  & ul.search {
+    @apply mt-6;
+    & li {
+      @apply mt-6;
+    }
+    & .context {
+      @apply mt-2 text-sm text-muted-foreground;
+    }
+  }
+}
+
+.highlighted {
+  @apply bg-accent underline decoration-2;
+}
+
+.highlight-link {
+  @apply fixed right-2 top-16 rounded-lg border border-border px-4 py-2 text-sm hover:bg-accent lg:right-16;
+}

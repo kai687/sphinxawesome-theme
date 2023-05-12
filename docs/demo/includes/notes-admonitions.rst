@@ -18,8 +18,11 @@ which appears in the same style.
 Topic
 -----
 
-The |product| doesn't include styles for the ``topic`` directive.
-Use a block quotation or another alert type instead.
+.. caution::
+
+  :octicon:`alert;1em;sd-text-warning`
+  The |product| doesn't include styles for the ``topic`` directive.
+  Use a block quotation or another alert type instead.
 
 Notes
 -----

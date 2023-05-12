@@ -1,25 +1,21 @@
 .. meta::
    :description: Configure the Awesome Theme by changing options in your Sphinx configuration file.
+   :twitter:description: Configure the Awesome Theme by changing options in your Sphinx configuration file.
 
 Configure the theme
 ===================
 
 .. rst-class:: lead
 
-   Configure the |product| by changing one of the theme or extension options.
+   Configure the |product|.
 
-.. include:: ../../includes/header.rst
+.. note::
 
-.. admonition:: What's the difference between theme and extension options?
+   If you're not using version 5 of the |product|,
+   read :doc:`v4:how-to/configure/index` (version 4).
 
-   Theme options
-      Are available in the HTML templates.
-      They control layout and styling.
-
-   Extension options
-     Are defined in the Python code of the extensions.
-     They can modify most of Sphinx behavior.
-
+.. include:: includes/extensions.rst
+.. include:: includes/logos.rst
+.. include:: includes/sidebars.rst
 .. include:: includes/theme-options.rst
-.. include:: includes/extension-options.rst
 .. include:: includes/docsearch.rst
