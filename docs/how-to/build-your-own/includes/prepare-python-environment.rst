@@ -14,12 +14,12 @@ The |product| uses these Python tools:
 .. _Pipx: https://pypa.github.io/pipx/
 
 If you want to use the same versions of the Python tools,
-you can provide a :gh:`constraints.txt <constraints.txt>` to the install commands.
+you can provide a :gh:`requirements.txt <requirements.txt>` to the install commands.
 
 To prepare the Python environment, run these commands:
 
 .. code-block:: sh
 
-   pip install --user pipx [--constraint=constraints.txt]
-   pipx install poetry [--pip-args=--constraint=constraints.txt]
-   pipx install nox [--pip-args=--constraint=constraints.txt]
+   pip install --user pipx [--requirement=requirements.txt]
+   pipx install poetry [--pip-args=--requirement=requirements.txt]
+   pipx install nox [--pip-args=--requirement=requirements.txt]

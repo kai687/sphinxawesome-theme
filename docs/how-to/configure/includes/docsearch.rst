@@ -103,8 +103,13 @@ you can add the following code:
    from dataclasses import asdict
    from sphinxawesome_theme.docsearch import DocSearchConfig
 
+``missing_results_url``, ``DOCSEARCH_MISSING_RESULTS_URL``
+   A URL for letting users send you feedback about your search.
+   You can use the current query in the URL.
    load_dotenv()
 
+   .. code-block:: terminal
+      :caption: Example for using *missing_results_url*
    # This gets you code completion and documentation for your configuration options
    config = DocSearchConfig(
       docsearch_app_id=os.getenv("DOCSEARCH_APP_ID")
@@ -112,13 +117,19 @@ you can add the following code:
       docsearch_index_name=os.getenv("DOCSEARCH_INDEX_NAME")
    )
 
+      DOCSEARCH_MISSING_RESULTS_URL=https://github.com/example/docs/issues/new?title=${query}
    vars = locals()
    for key, value in asdict(config).items():
       vars.__setitem__(key, value)
 
+   .. caution::
 DocSearch configuration options
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+      Provide the URL as a string.
+      DocSearch itself accepts a function.
+      In the templates,
+      the |product| creates the function with the string you entered.
 .. py:module:: sphinxawesome_theme.docsearch
 
 .. autoclass:: DocSearchConfig()
