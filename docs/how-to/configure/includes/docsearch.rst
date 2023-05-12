@@ -47,18 +47,18 @@ Optional DocSearch settings
 ``initial_query``, ``DOCSEARCH_INITIAL_QUERY``
    Provide a search query if you want to show search results as soon as the DocSearch modal opens.
 
-   .. versionadded:: 5.0.0
+   .. versionadded:: 4.1.0
 
 ``placeholder``, ``DOCSEARCH_PLACEHOLDER``
    The placeholder for the search box. The default is: *Search docs*.
 
-   .. versionadded:: 5.0.0
+   .. versionadded:: 4.1.0
 
 ``search_parameters``, ``DOCSEARCH_SEARCH_PARAMETERS``
    `Search parameter <https://www.algolia.com/doc/api-reference/search-api-parameters/>`_
    for the Algolia Search.
 
-   .. versionadded:: 5.0.0
+   .. versionadded:: 4.1.0
 
 ``missing_results_url``, ``DOCSEARCH_MISSING_RESULTS_URL``
    A URL for letting users send you feedback about your search.
@@ -76,7 +76,7 @@ Optional DocSearch settings
       In the templates,
       the |product| creates the function with the string you entered.
 
-   .. versionadded:: 5.0.0
+   .. versionadded:: 4.1.0
 
 .. seealso::
 

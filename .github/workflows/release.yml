@@ -16,11 +16,11 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: '3.11'
 
       - name: Update Pip
         run: |
-          pip install --constraint=constraints.txt pip
+          pip install --requirement=requirements.txt pip
           pip --version
 
       - name: Update Pip in virtual environments
@@ -32,9 +32,14 @@ jobs:
           with open(os.environ["GITHUB_ENV"], mode="a") as io:
             print(f"VIRTUALENV_PIP={pip.__version__}", file=io)
 
+      - name: Install Pipx
+        run: |
+          pip install --requirement=requirements.txt pipx
+          pipx --version
+
       - name: Install Poetry
         run: |
-          pipx install --pip-args=--constraint=constraints.txt poetry
+          pipx install --pip-args=--requirement=requirements.txt poetry
           poetry --version
 
       - name: Build Packages
