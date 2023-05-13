@@ -30,22 +30,11 @@
 
    For more information, see [Add your theme](https://sphinxawesome.xyz/how-to/add/).
 
-1. Optional:
-
-   - If you want to use Algolia DocSearch with this theme,
-     load the bundled extension:
+1. Optional: add bundled extensions for more awesome features:
 
      ```python
      # conf.py
-     extensions += ["sphinxawesome_theme.docsearch"]
-     ```
-
-   - If you want to use awesome features for highlighting code,
-     load the bundled extension:
-
-     ```python
-     # conf.py
-     extensions += ["sphinxawesome_theme.highlighting"]
+     extensions += ["sphinxawesome_theme.docsearch", "sphinxawesome.highlighting"]
      ```
 
 ## Features
