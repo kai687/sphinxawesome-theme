@@ -28,6 +28,7 @@ DocSearch credentials
 Algolia provides you with three credentials for DocSearch.
 You must add the application ID and search API key to your site to authenticate and authorize search requests.
 Keep the write API key a secret.
+You can find your credentials in the `Algolia dashboard <https://www.algolia.com/dashboard>`_.
 
 Application ID
    The identifier for your project on Algolia.
@@ -118,10 +119,51 @@ you can add the following code:
 DocSearch configuration options
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. py:module:: sphinxawesome_theme.docsearch
+.. confval:: docsearch_app_id
 
-.. autoclass:: DocSearchConfig()
-   :members:
+   Your Algolia DocSearch application ID. **(Required)**
+
+.. confval:: docsearch_api_key
+
+   Your Algolia DocSearch search API key. **(Required)**
+
+   .. caution::
+
+      Don't use your write API key.
+
+.. confval:: docsearch_index_name
+
+   Your Algolia DocSearch index name. **(Required)**
+
+.. confval:: docsearch_container
+
+   A CSS selector where the DocSearch UI component should be added.
+   The default is: ``#docsearch``.
+
+.. confval:: docsearch_placeholder
+
+   The placeholder for the search box.
+
+.. confval:: docsearch_initial_query
+
+   A query for an initial search
+   if you want to show search results as soon as the user opens the
+   search menu.
+
+.. confval:: docsearch_search_parameter
+
+   Any `Algolia search parameter <https://www.algolia.com/doc/api-reference/search-api-parameters/>`_ you want to add.
+
+.. confval:: docsearch_missing_results_url
+
+   If specified, DocSearch adds a message to the "No results found" screen
+   with the link to the URL you specified, for users to report issues with missing search results.
+   You can include the current search query as parameter ``${query}``.
+   For example:
+
+   .. code-block:: python
+
+      docsearch_missing_results_url = "https://github.com/example/docs/issues/new?title=${query}"
 
 .. seealso::
 
