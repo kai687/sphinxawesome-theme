@@ -2,7 +2,7 @@
 
 {{ super() }}
 
-{%- block header_after %}
+{%- block extrahead %}
 {# `mode` is injected via `html_context` in `conf.py` #}
 {# You can override it with `-A` at build time #}
 {%- if mode == "production" %}
