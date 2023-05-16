@@ -245,11 +245,12 @@ class AwesomeCodeBlock(CodeBlock):
         document = self.state.document
         location = self.state_machine.get_source_and_line(self.lineno)
         nlines = len(self.content)
+        linespec = self.options.get(option)
 
-        def _get_parsed_line_numbers(
-            linespec: str, nlines: int, location: str
-        ) -> list[int]:
-            """Get the parsed line numbers."""
+        if not linespec:
+            return None
+
+        try:
             line_numbers = parselinenos(linespec, nlines)
             if any(i >= nlines for i in line_numbers):
                 logger.warning(
@@ -257,14 +258,9 @@ class AwesomeCodeBlock(CodeBlock):
                     % (nlines, linespec),
                     location=location,
                 )
-            return [x + 1 for x in line_numbers if x < nlines]
-
-        linespec = self.options.get(option)
-        if linespec:
-            try:
-                return _get_parsed_line_numbers(linespec, nlines, location)
-            except ValueError as err:
-                return [document.reporter.warning(err, line=self.lineno)]
+            return [i + 1 for i in line_numbers if i < nlines]
+        except ValueError as err:
+            return [document.reporter.warning(err, line=self.lineno)]
 
     def run(self: AwesomeCodeBlock) -> list[Node]:
         """Handle parsing extra options for highlighting."""
