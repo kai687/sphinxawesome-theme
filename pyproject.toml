@@ -91,7 +91,7 @@ sphinxawesome_theme = "sphinxawesome_theme"
 
 [tool.commitizen]
 name = "cz_conventional_commits"
-tag_format = "$version"
+tag_format = "$major.$minor.$patch$prerelease"
 version_type = "semver"
 version_provider = "poetry"
 update_changelog_on_bump = true
