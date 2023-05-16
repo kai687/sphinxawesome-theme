@@ -21,11 +21,23 @@ from __future__ import annotations
 
 import os
 import re
+from dataclasses import dataclass
 
 from bs4 import BeautifulSoup, Comment
 from sphinx.application import Sphinx
 
-from . import icons, logos
+from . import logos
+
+
+@dataclass(frozen=True)
+class Icons:
+    """Icons from Material Design.
+
+    See: https://material.io/resources/icons/
+    """
+
+    external_link: str = '<svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" fill="currentColor" stroke="none" viewBox="0 96 960 960"><path d="M188 868q-11-11-11-28t11-28l436-436H400q-17 0-28.5-11.5T360 336q0-17 11.5-28.5T400 296h320q17 0 28.5 11.5T760 336v320q0 17-11.5 28.5T720 696q-17 0-28.5-11.5T680 656V432L244 868q-11 11-28 11t-28-11Z"/></svg>'
+    chevron_right: str = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18px" height="18px" stroke="none" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>'
 
 
 def _get_html_files(outdir: str) -> list[str]:
@@ -65,7 +77,7 @@ def _collapsible_nav(tree: BeautifulSoup) -> None:
             button.append(label)
 
             # create the icon
-            svg = BeautifulSoup(icons.ICONS["chevron_right"], "html.parser").svg
+            svg = BeautifulSoup(Icons.chevron_right, "html.parser").svg
             button.append(svg)
             link.append(button)
 
@@ -119,7 +131,7 @@ def _external_links(tree: BeautifulSoup) -> None:
     for link in tree("a", class_="reference external"):
         link["rel"] = "nofollow noopener"
         # append icon
-        link.append(BeautifulSoup(icons.ICONS["external_link"], "html.parser").svg)
+        link.append(BeautifulSoup(Icons.external_link, "html.parser").svg)
 
 
 def _strip_comments(tree: BeautifulSoup) -> None:
