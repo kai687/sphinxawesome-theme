@@ -123,34 +123,29 @@ class AwesomeHtmlFormatter(HtmlFormatter):  # type: ignore
     """Custom Pygments HTML formatter for highlighting added or removed lines.
 
     The method is similar to handling the ``hl_lines`` option in the regular HtmlFormatter.
-    The formatter sets these options:
-
-    - ``linespans``
-    - ``wrapcode``
-
-    For more information, see `Pygments HTML formatter <https://pygments.org/docs/formatters/#HtmlFormatter>`__.
-
-    This formatter changes the markup for highlighted lines to a ``<mark>`` element.
-    Added lines are marked up with a ``<ins>`` element.
-    Removed lines are marked up with a ``<del>`` element.
     """
 
+    def _get_line_numbers(
+        self: AwesomeHtmlFormatter,
+        options: dict[str, Any],
+        which: Literal["hl_added", "hl_removed"],
+    ) -> set[int]:
+        """Get the lines to be added or removed."""
+        line_numbers = set()
+        for lineno in get_list_opt(options, which, []):
+            try:
+                line_numbers.add(int(lineno))
+            except ValueError:
+                pass
+        return line_numbers
+
     def __init__(self: AwesomeHtmlFormatter, **options: Any) -> None:
-        """Implement `hl_added` and `hl_removed` options."""
-        self.added_lines = set()
-        self.removed_lines = set()
+        """Implement `hl_added` and `hl_removed` options.
 
-        for lineno in get_list_opt(options, "hl_added", []):
-            try:
-                self.added_lines.add(int(lineno))
-            except ValueError:
-                pass
-
-        for lineno in get_list_opt(options, "hl_removed", []):
-            try:
-                self.removed_lines.add(int(lineno))
-            except ValueError:
-                pass
+        Also set the ``linespans`` and ``wrapcode`` options of the Pygments HTML formatter to ``True``.
+        """
+        self.added_lines = self._get_line_numbers(options, "hl_added")
+        self.removed_lines = self._get_line_numbers(options, "hl_removed")
 
         # These options aren't compatible with `sphinx.ext.autodoc`
         # options["lineanchors"] = "code"
