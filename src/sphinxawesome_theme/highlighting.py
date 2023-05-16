@@ -41,10 +41,10 @@ To achieve this, this extension makes a few larger changes:
 from __future__ import annotations
 
 import re
-from typing import Any, Generator, Pattern, Tuple, Union
+from typing import Any, Generator, Literal, Pattern, Tuple, Union
 
 from docutils import nodes
-from docutils.nodes import Element, Node
+from docutils.nodes import Node
 from docutils.parsers.rst import directives
 from pygments.filter import Filter
 from pygments.formatters import HtmlFormatter
@@ -52,7 +52,7 @@ from pygments.lexer import Lexer
 from pygments.token import Generic, _TokenType
 from pygments.util import get_list_opt
 from sphinx.application import Sphinx
-from sphinx.directives.code import CodeBlock, container_wrapper, dedent_lines
+from sphinx.directives.code import CodeBlock
 from sphinx.highlighting import PygmentsBridge
 from sphinx.locale import __
 from sphinx.util import logging, parselinenos
@@ -214,17 +214,6 @@ class AwesomeHtmlFormatter(HtmlFormatter):  # type: ignore
             outfile.write(piece)
 
 
-def _get_parsed_line_numbers(linespec: str, nlines: int, location: str) -> list[int]:
-    """Get the parsed line numbers for the `emphasize-*` options."""
-    line_numbers = parselinenos(linespec, nlines)
-    if any(i >= nlines for i in line_numbers):
-        logger.warning(
-            __("line number spec is out of range(1-%d): %r") % (nlines, linespec),
-            location=location,
-        )
-    return [x + 1 for x in line_numbers if x < nlines]
-
-
 class AwesomeCodeBlock(CodeBlock):
     """An extension of the Sphinx ``code-block`` directive to handle additional options.
 
@@ -249,85 +238,54 @@ class AwesomeCodeBlock(CodeBlock):
     option_spec = CodeBlock.option_spec
     option_spec.update(new_options)
 
-    def run(self: AwesomeCodeBlock) -> list[Node]:  # noqa
-        """Overwrite method from Sphinx.
-
-        Unfortunately, the original method doesn't lend itself to being extended,
-        so I had to copy it.
-        """
+    def _get_line_numbers(
+        self: AwesomeCodeBlock, option: Literal["emphasize-added", "emphasize-removed"]
+    ) -> list[int] | None:
+        """Parse the line numbers for the ``:emphasize-added:`` and ``:emphasize-removed:`` options."""
         document = self.state.document
-        code = "\n".join(self.content)
         location = self.state_machine.get_source_and_line(self.lineno)
         nlines = len(self.content)
 
-        hl_lines = hl_added = hl_removed = None
-        linespec = self.options.get("emphasize-lines")
+        def _get_parsed_line_numbers(
+            linespec: str, nlines: int, location: str
+        ) -> list[int]:
+            """Get the parsed line numbers."""
+            line_numbers = parselinenos(linespec, nlines)
+            if any(i >= nlines for i in line_numbers):
+                logger.warning(
+                    __("line number spec is out of range(1-%d): %r")
+                    % (nlines, linespec),
+                    location=location,
+                )
+            return [x + 1 for x in line_numbers if x < nlines]
+
+        linespec = self.options.get(option)
         if linespec:
             try:
-                hl_lines = _get_parsed_line_numbers(linespec, nlines, location)
+                return _get_parsed_line_numbers(linespec, nlines, location)
             except ValueError as err:
                 return [document.reporter.warning(err, line=self.lineno)]
 
-        linespec = self.options.get("emphasize-added")
-        if linespec:
-            try:
-                hl_added = _get_parsed_line_numbers(linespec, nlines, location)
-            except ValueError as err:
-                return [document.reporter.warning(err, line=self.lineno)]
+    def run(self: AwesomeCodeBlock) -> list[Node]:
+        """Handle parsing extra options for highlighting."""
+        # either `[code-block]`, or `[caption, code_block]`
+        literal_nodes = super().run()
 
-        linespec = self.options.get("emphasize-removed")
-        if linespec:
-            try:
-                hl_removed = _get_parsed_line_numbers(linespec, nlines, location)
-            except ValueError as err:
-                return [document.reporter.warning(err, line=self.lineno)]
+        hl_added = self._get_line_numbers("emphasize-added")
+        hl_removed = self._get_line_numbers("emphasize-removed")
 
-        if "dedent" in self.options:
-            lines = code.splitlines(True)
-            lines = dedent_lines(lines, self.options["dedent"], location=location)
-            code = "".join(lines)
+        for node in literal_nodes:
+            if isinstance(node, nodes.literal_block):
+                extra_args = node.get("highlight_args", {})
 
-        literal: Element = nodes.literal_block(code, code)
-        if "linenos" in self.options or "lineno-start" in self.options:
-            literal["linenos"] = True
-        literal["classes"] += self.options.get("class", [])
-        literal["force"] = "force" in self.options
-        if self.arguments:
-            # highlight language specified
-            literal["language"] = self.arguments[0]
-        else:
-            # no highlight language specified.  Then this directive refers the current
-            # highlight setting via ``highlight`` directive or ``highlight_language``
-            # configuration.
-            literal["language"] = self.env.temp_data.get(
-                "highlight_language", self.config.highlight_language
-            )
-        extra_args = literal["highlight_args"] = {}
-        if hl_lines is not None:
-            extra_args["hl_lines"] = hl_lines
-        if hl_added is not None:
-            extra_args["hl_added"] = hl_added
-        if hl_removed is not None:
-            extra_args["hl_removed"] = hl_removed
-        if "lineno-start" in self.options:
-            extra_args["linenostart"] = self.options["lineno-start"]
-        if "emphasize-text" in self.options:
-            extra_args["hl_text"] = self.options["emphasize-text"]
+                if hl_added is not None:
+                    extra_args["hl_added"] = hl_added
+                if hl_removed is not None:
+                    extra_args["hl_removed"] = hl_removed
+                if "emphasize-text" in self.options:
+                    extra_args["hl_text"] = self.options["emphasize-text"]
 
-        self.set_source_info(literal)
-
-        caption = self.options.get("caption")
-        if caption:
-            try:
-                literal = container_wrapper(self, literal, caption)
-            except ValueError as exc:
-                return [document.reporter.warning(exc, line=self.lineno)]
-
-        # literal will be note_implicit_target that is linked from caption and numref.
-        # when options['name'] is provided, it should be primary ID.
-        self.add_name(literal)
-
-        return [literal]
+        return literal_nodes
 
 
 # These external references are needed, or you'll get a maximum recursion depth error
