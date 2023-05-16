@@ -7,21 +7,33 @@ directive with new options:
 - ``:emphasize-removed:``: highlight removed lines
 - ``:emphasize-text:``: highlight a single word, such as, a placeholder
 
-To achieve this, this extension must make a few larger changes:
-
-1. Provide a custom Sphinx translator to parse the new code block options.
-2. Provide a new Sphinx directive to pass along these new options to Pygments.
-3. Write a new Pygments HTML formatter and a custom filter to handle these options.
-
-It's entirely possible that there's a simpler way of doing this,
-but I haven't found it.
-
 To load this extension, add:
 
 .. code-block:: python
-   :caption: |conf|
+   :caption: File: conf.py
 
    extensions += ["sphinxawesome_theme.highlighting"]
+
+To achieve this, this extension makes a few larger changes:
+
+1. Provide a new Sphinx directive: ``AwesomeCodeBlock``.
+   This parses the additional options and passes them to the syntax highlighter.
+
+2. Provide a new Pygments HTML formatter ``AwesomeHtmlFormatter``.
+   This handles formatting the lines for added or removed options.
+   This extension changes the output compared to the default Sphinx implementation.
+   For example, each line is wrapped in a ``<span>`` element,
+   and the whole code block is wrapped in a ``<pre><code>..`` element.
+   For highlighted lines, this extension uses ``<mark>``, ``<ins>``, and ``<del>`` elements.
+
+3. Define a new custom Pygments filter ``AwesomePlaceholders``,
+   which wraps each encountered placeholder word in a ``Generic.Emphasized`` token,
+   such that we can style placeholders by CSS.
+
+4. Monkey-patch the ``PygmentsBridge.get_lexer`` method to apply the ``AwesomePlaceholders`` filter,
+   if the option for it is present.
+
+5. Monkey-patch the ``PygmentsBridge.highlight_block`` method to pass the option for highlighting text to the ``get_lexer`` method.
 
 :copyright: Copyright Kai Welke.
 :license: MIT, see LICENSE for details.
@@ -34,17 +46,16 @@ from typing import Any, Generator, Pattern, Tuple, Union
 from docutils import nodes
 from docutils.nodes import Element, Node
 from docutils.parsers.rst import directives
-from pygments import highlight
 from pygments.filter import Filter
-from pygments.filters import ErrorToken
 from pygments.formatters import HtmlFormatter
+from pygments.lexer import Lexer
 from pygments.token import Generic, _TokenType
 from pygments.util import get_list_opt
 from sphinx.application import Sphinx
 from sphinx.directives.code import CodeBlock, container_wrapper, dedent_lines
 from sphinx.highlighting import PygmentsBridge
 from sphinx.locale import __
-from sphinx.util import logging, parselinenos, texescape
+from sphinx.util import logging, parselinenos
 
 from . import __version__
 
@@ -58,7 +69,7 @@ TokenStream = Generator[Tuple[TokenType, str], None, None]
 def _replace_placeholders(
     ttype: _TokenType, value: str, regex: Pattern[str]
 ) -> TokenStream:
-    """Replace every occurence of `regex` with `Generic.Emph` token."""
+    """Replace every occurence of ``regex`` with ``Generic.Emph`` token."""
     last = 0
     for match in regex.finditer(value):
         start, end = match.start(), match.end()
@@ -75,10 +86,21 @@ def _replace_placeholders(
 
 
 class AwesomePlaceholders(Filter):  # type: ignore[misc]
-    """A Pygments filter for marking up placeholder text."""
+    """A Pygments filter for marking up placeholder text.
+
+    You can define the text to highlight with the ``hl_text`` option.
+    To add the filter to a Pygments lexer, use the ``add_filter`` method:
+
+    .. code-block:: python
+
+       f = AwesomePlaceholders(hl_text=TEXT)
+       lexer.add_filter(AwesomePlaceholders(hl_text=TEXT))
+
+    For more information, see the `Pygments documentation <https://pygments.org/docs/quickstart/>`__.
+    """
 
     def __init__(self: AwesomePlaceholders, **options: str) -> None:
-        """Create an instance of the `AwesomePlaceholders` filter."""
+        """Create an instance of the ``AwesomePlaceholders`` filter."""
         Filter.__init__(self, **options)
         placeholders = get_list_opt(options, "hl_text", [])
         self.placeholders_re = re.compile(
@@ -90,7 +112,7 @@ class AwesomePlaceholders(Filter):  # type: ignore[misc]
     ) -> TokenStream:
         """Filter on all tokens.
 
-        The `lexer` is required by the parent class.
+        The ``lexer`` instance is required by the parent class, but isn't used here.
         """
         regex = self.placeholders_re
         for ttype, value in stream:
@@ -98,12 +120,19 @@ class AwesomePlaceholders(Filter):  # type: ignore[misc]
 
 
 class AwesomeHtmlFormatter(HtmlFormatter):  # type: ignore
-    """Custom HTML formatter for Pygments.
+    """Custom Pygments HTML formatter for highlighting added or removed lines.
 
-    Allow highlighting added or removed lines.
-    Similar to emphasizing lines.
+    The method is similar to handling the ``hl_lines`` option in the regular HtmlFormatter.
+    The formatter sets these options:
 
-    In contrast to Pygments, this formatter returns `<mark>` for higlighted lines.
+    - ``linespans``
+    - ``wrapcode``
+
+    For more information, see `Pygments HTML formatter <https://pygments.org/docs/formatters/#HtmlFormatter>`__.
+
+    This formatter changes the markup for highlighted lines to a ``<mark>`` element.
+    Added lines are marked up with a ``<ins>`` element.
+    Removed lines are marked up with a ``<del>`` element.
     """
 
     def __init__(self: AwesomeHtmlFormatter, **options: Any) -> None:
@@ -135,7 +164,7 @@ class AwesomeHtmlFormatter(HtmlFormatter):  # type: ignore
     ) -> TokenStream:
         """Highlight added, removed, and emphasized lines.
 
-        In contrast to Pygments, use `<mark>`, `<ins>`, and `<del>` elements.
+        In contrast to Pygments, use ``<mark>``, ``<ins>``, and ``<del>`` elements.
         """
         for i, (t, value) in enumerate(tokensource):
             if t != 1:
@@ -197,7 +226,19 @@ def _get_parsed_line_numbers(linespec: str, nlines: int, location: str) -> list[
 
 
 class AwesomeCodeBlock(CodeBlock):
-    """Add options to highlight added and removed lines to `code-block` directives."""
+    """An extension of the Sphinx ``code-block`` directive to handle additional options.
+
+    - ``:emphasize-added:`` highlight added lines
+    - ``:emphasize-removed:`` highlight removed lines
+    - ``:emphasize-text:`` highlight placeholder text
+
+    The job of the directive is to set the correct options to the ``literal_block`` node,
+    which represents a code block in the parsed reStructuredText tree.
+    When transforming the abstract tree to HTML,
+    Sphinx passes these options to the ``highlight_block`` method,
+    which is a wrapper around Pygments' ``highlight`` method.
+    Handling these options is then a job of the ``AwesomePygmentsBridge``.
+    """
 
     new_options = {
         "emphasize-added": directives.unchanged_required,
@@ -210,10 +251,6 @@ class AwesomeCodeBlock(CodeBlock):
 
     def run(self: AwesomeCodeBlock) -> list[Node]:  # noqa
         """Overwrite method from Sphinx.
-
-        Add ability to highlight added and removed lines.
-        This passes the options to the highlighter.
-        You need a custom pygments formatter.
 
         Unfortunately, the original method doesn't lend itself to being extended,
         so I had to copy it.
@@ -293,11 +330,34 @@ class AwesomeCodeBlock(CodeBlock):
         return [literal]
 
 
+# These external references are needed, or you'll get a maximum recursion depth error
+pygmentsbridge_get_lexer = PygmentsBridge.get_lexer
+pygmentsbridge_highlight_block = PygmentsBridge.highlight_block
+
+
 class AwesomePygmentsBridge(PygmentsBridge):
-    """Class for monkeypatching."""
+    """Monkey-patch the Pygments methods to handle highlighting placeholder text."""
+
+    def get_lexer(
+        self: AwesomePygmentsBridge,
+        source: str,
+        lang: str,
+        opts: dict[str, Any] | None = None,
+        force: bool = False,
+        location: Any = None,
+    ) -> Lexer:
+        """Monkey-patch the ``PygmentsBridge.get_lexer`` method.
+
+        Adds a filter to lexers if the ``hl_text`` option is present.
+        """
+        lexer = pygmentsbridge_get_lexer(self, source, lang, opts, force, location)
+
+        if opts and "hl_text" in opts:
+            lexer.add_filter(AwesomePlaceholders(hl_text=opts["hl_text"]))
+        return lexer
 
     def highlight_block(
-        self: PygmentsBridge,
+        self: AwesomePygmentsBridge,
         source: str,
         lang: str,
         opts: dict[str, Any] | None = None,
@@ -305,46 +365,33 @@ class AwesomePygmentsBridge(PygmentsBridge):
         location: Any = None,
         **kwargs: Any,
     ) -> str:
-        """Repeat this method."""
-        if not isinstance(source, str):
-            source = source.decode()  # type: ignore[unreachable]
+        """Monkey-patch the ``PygmentsBridge.highlight_block`` method.
 
-        lexer = self.get_lexer(source, lang, opts, force, location)
+        This method is called, when Sphinx transforms the abstract document tree
+        to HTML and encounters code blocks.
+        The ``hl_text`` option is passed in the ``kwargs`` dictionary.
+        For the ``get_lexer`` method, we need to pass it in the ``opts`` dictionary.
+        """
+        if opts is None:
+            opts = {}
+
         hl_text = get_list_opt(kwargs, "hl_text", [])
+
         if hl_text:
-            lexer.add_filter(AwesomePlaceholders(hl_text=hl_text))
+            opts["hl_text"] = hl_text
 
-        # highlight via Pygments
-        formatter = self.get_formatter(**kwargs)
-        try:
-            hlsource: str = highlight(source, lexer, formatter)
-        except ErrorToken:
-            # this is most probably not the selected language,
-            # so let it pass unhighlighted
-            if lang == "default":
-                pass  # automatic highlighting failed.
-            else:
-                logger.warning(
-                    __('Could not lex literal_block as "%s". ' "Highlighting skipped."),
-                    lang,
-                    type="misc",
-                    subtype="highlighting_failure",
-                    location=location,
-                )
-            lexer = self.get_lexer(source, "none", opts, force, location)
-            hlsource = highlight(source, lexer, formatter)
-
-        if self.dest == "html":
-            return hlsource
-        else:
-            # MEMO: this is done to escape Unicode chars with non-Unicode engines
-            return texescape.hlescape(hlsource, self.latex_engine)
+        return pygmentsbridge_highlight_block(
+            self, source, lang, opts, force, location, **kwargs
+        )
 
 
 def setup(app: Sphinx) -> dict[str, Any]:
     """Set up this internal extension."""
     PygmentsBridge.html_formatter = AwesomeHtmlFormatter
-    PygmentsBridge.highlight_block = AwesomePygmentsBridge.highlight_block  # type: ignore[method-assign]  # noqa
+    PygmentsBridge.get_lexer = AwesomePygmentsBridge.get_lexer  # type: ignore
+    PygmentsBridge.highlight_block = (  # type: ignore
+        AwesomePygmentsBridge.highlight_block  # type: ignore
+    )
     directives.register_directive("code-block", AwesomeCodeBlock)
 
     return {
