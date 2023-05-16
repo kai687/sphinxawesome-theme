@@ -264,12 +264,12 @@ class AwesomeCodeBlock(CodeBlock):
 
     def run(self: AwesomeCodeBlock) -> list[Node]:
         """Handle parsing extra options for highlighting."""
-        # either `[code-block]`, or `[caption, code_block]`
         literal_nodes = super().run()
 
         hl_added = self._get_line_numbers("emphasize-added")
         hl_removed = self._get_line_numbers("emphasize-removed")
 
+        # `literal_nodes` is either `[literal_block]`, or `[caption, literal_block]`
         for node in literal_nodes:
             if isinstance(node, nodes.literal_block):
                 extra_args = node.get("highlight_args", {})
