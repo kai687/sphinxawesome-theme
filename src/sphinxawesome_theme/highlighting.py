@@ -388,9 +388,9 @@ def setup(app: Sphinx) -> dict[str, Any]:
     """Set up this internal extension."""
     PygmentsBridge.html_formatter = AwesomeHtmlFormatter
     PygmentsBridge.get_lexer = AwesomePygmentsBridge.get_lexer  # type: ignore
-    PygmentsBridge.highlight_block = (
-        AwesomePygmentsBridge.highlight_block
-    )  # type:ignore
+    PygmentsBridge.highlight_block = (  # type: ignore
+        AwesomePygmentsBridge.highlight_block  # type: ignore
+    )
     directives.register_directive("code-block", AwesomeCodeBlock)
 
     return {
