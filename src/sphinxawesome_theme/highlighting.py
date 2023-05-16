@@ -330,6 +330,7 @@ class AwesomeCodeBlock(CodeBlock):
         return [literal]
 
 
+# These external references are needed, or you'll get a maximum recursion depth error
 pygmentsbridge_get_lexer = PygmentsBridge.get_lexer
 pygmentsbridge_highlight_block = PygmentsBridge.highlight_block
 
