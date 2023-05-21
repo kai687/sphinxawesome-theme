@@ -39,7 +39,3 @@ jobs:
       - name: Run Nox linkcheck session
         run: |
           nox -s linkcheck
-        env:
-          DOCSEARCH_APP_ID: ${{ secrets.DOCSEARCH_APP_ID }}
-          DOCSEARCH_API_KEY: ${{ secrets.DOCSEARCH_API_KEY }}
-          DOCSEARCH_INDEX_NAME: ${{ secrets.DOCSEARCH_INDEX_NAME }}
