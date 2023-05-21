@@ -42,7 +42,7 @@ commitizen = "^3.2.2"
 [tool.poetry.group.lint.dependencies]
 black = "^23.1"
 pre-commit = "^3.1.1"
-ruff = "^0.0.267"
+ruff = ">=0.0.267,<0.0.270"
 
 [tool.poetry.group.netlify.dependencies]
 nox = {version = "^2023.4.22", python = "3.8"}
