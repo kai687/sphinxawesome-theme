@@ -53,3 +53,7 @@ jobs:
       - name: Run Nox workflow
         run: |
           nox -p ${{ matrix.python-version }}
+        env:
+          DOCSEARCH_APP_ID: ${{ vars.DOCSEARCH_APP_ID }}
+          DOCSEARCH_API_KEY: ${{ vars.DOCSEARCH_API_KEY }}
+          DOCSEARCH_INDEX_NAME: ${{ vars.DOCSEARCH_INDEX_NAME }}
