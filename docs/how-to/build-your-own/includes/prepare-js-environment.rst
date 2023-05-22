@@ -20,11 +20,11 @@ Prepare JavaScript environment
       `Volta <https://volta.sh/>`_,
       `asdf <https://asdf-vm.com/>`_.
 
-#. Optional: install `yarn <https://yarnpkg.com/>`_:
+#. Optional: install ``pnpm``:
 
    .. code-block:: bash
 
-      npm install --global yarn
+      npm install --global pnpm
 
    If you want to use the same versions of JavaScript packages as in the |product| repository,
-   use the Yarn package manager.
+   use the pnpm package manager.
