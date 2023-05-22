@@ -22,10 +22,10 @@ Install JavaScript dependencies
 
    .. code-block:: bash
 
-      yarn install
+      pnpm install
 
 #. Build the theme:
 
    .. code-block:: bash
 
-      yarn build
+      pnpm run build
