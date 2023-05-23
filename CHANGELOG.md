@@ -1,359 +1,743 @@
-# Changelog
+## 5.0.0-beta.2 (2023-05-23)
 
-## 4.1.0
+### Feat
 
-- More DocSearch configuration options
-- Deprecate `html_collapsible_definitions`, `html_awesome_code_headers`
-- Auto-detect `sphinx-design` extension and add CSS overrides for it
-- Documentation overhaul
-- Exposing configuration option for adding external link icons
+- export permalinks icon (#1345)
 
-## 4.0.3
+### Docs
 
-- Fix canonical links
+- add back umami analytics (#1328)
 
-## 4.0.2
+### Refactor
 
-- Restore missing logo (#1214)
+- **highlighting**: extract method for getting line numbers (#1331)
+- **highlighting**: Make AwesomeCodeBlock directive shorter (#1330)
+- **highlighting**: simplify (#1329)
 
-## 4.0.1
+## 5.0.0-beta.1 (2023-05-12)
 
-- Fix a layout issue introduced by MyST parser 0.19.1 (#1212)
+### Feat
 
-## 4.0.0
+- complete redesign (#1309)
 
-- Add support for Sphinx version 6 and later
-- Drop support for Python 3.7 (needed for Sphinx 6 support)
+## 4.1.0 (2023-05-12)
 
-## 3.3.7
+### Feat
 
-- fix: skip to content visual bug (#1075)
+- use Tailwind's variables (#1298)
+- restyle everything (#1292)
+- sphinx-design support (#1290)
+- remove html_collapsible_definitions (#1288)
+- add feedback widget (#1272)
+- extrahead  (#1267)
+- docsearch improvements (#1264)
 
-## 3.3.6
+### Fix
 
-- fix visual bug when overscrolling (#1069)
+- scroll to top on mobile (#1297)
+- simplify controllers (#1296)
+- back to top behavior (#1295)
+- disable builtin search when using DocSearch (#1294)
+- **styles**: improvements (#1291)
+- more events (#1274)
+- style issues (#1273)
+- better override for page.html (#1269)
+- styles (#1265)
 
-## 3.3.5
+## 4.0.3 (2023-04-16)
+
+### Fix
+
+- canonical links (#1262)
+- canonical links (#1258)
+- update (#1249)
+- remove isort from dependencies (#1216)
+
+## 4.0.2 (2023-03-05)
+
+### Feat
+
+- add ruff linter (#1213)
+
+### Fix
+
+- restore logo in header (#1215)
+
+## 4.0.1 (2023-03-05)
+
+### Fix
+
+- layout issue (#1212)
+- favicon (#1207)
+
+## 4.0.0 (2023-03-01)
+
+### Fix
+
+- update packages (#1085)
+- update packages (#1084)
+- remove z-index from code copy (#1077)
+
+## 3.3.7 (2022-09-26)
+
+### Fix
+
+- skip to content link (#1076)
+
+## 3.3.6 (2022-09-23)
+
+### Fix
+
+- overscroll bug (#1069)
+
+## 3.3.5 (2022-09-18)
+
+### Feat
+
+- testing (#1056)
+- release action (#1052)
+
+### Fix
 
 - better print styles (#1066)
-- DocSearch on mobile (#1058)
-- z-index/icon issue (#1057)
-- Restarted testing (#1056)
-- documentation updates (#1053,#1054,#1055)
+- layout (#1065)
+- docsearch on mobile (#1064)
+- z-index issue (#1057)
 
-## 3.3.4
+## 3.3.4 (2022-09-15)
 
-- Fix bug introduced #1048 with DocSearch
+### Fix
 
-## 3.3.3
+- docsearch (#1051)
+- docsearch (#1050)
 
-- Re-apply #1045 (overwrote changes by accident)
+## 3.3.3 (2022-09-15)
 
-## 3.3.2
+### Fix
 
-- Theme no longer breaks when not setting it as extension (#1042)
-- Inline code is highlighted correctly (#1045)
+- docsearch preconnect (#1048)
 
-## 3.3.1
+## 3.3.2 (2022-09-15)
 
-- Handle DocSearch inclusion correctly (#781)
-- Handle optional scroll to top better (#798)
-- Smaller horizontal `li` spacing
-- Better heading styles on large screens (#926)
-- Sphinx 5.0 support
+### Fix
 
-## 3.3.0
+- highlighting (#1046)
+- highlighting inline code (#1045)
+- theme works without setting extension (#1042)
+- typo in update (#951)
 
-- Use normal font size for sidebar and TOC links
-- Smaller vertical padding for
-- Code blocks without shadow and smaller
-- Add the ability to add icons in extra_header_link
+## 3.3.1 (2022-06-13)
 
-## 3.2.3
+### Feat
 
-- Fix encoding issues on Windows (#720)
+- readability scores (#929)
 
-## 3.2.2
+### Fix
 
-- Tagged the wrong commit, too lazy to fix.
+- update packages (#946)
+- **styles**: adjust docsearch color (#927)
+- **style**: adjust h1 size (#926)
+- **css**: docsearch keys styling (#922)
+- smaller li spacing (#807)
+- scroll to top bug (#798)
+- bug when not using DocSearch (#782)
+- close sidebar action (#780)
 
-## 3.2.1
+## 3.3.0 (2022-02-15)
 
-- Fix footnote styles (#667)
-- Fix option list styles
+### Feat
 
-## 3.2.0
+- extra headerlinks with icons (#766)
 
-- add styles for view code extension
+### Fix
 
-## 3.1.1
+- code block tweaks (#775)
+- allow terminal session (#772)
+- make header a bit smaller (#770)
+- nox and poetry (#767)
+- make navlinks bigger (#760)
 
-- fix issue in page.html (#662)
+## 3.2.3 (2022-01-13)
 
-## 3.1.0
+## 3.2.2 (2022-01-09)
 
-- add DocSearch
-- bugfix when highlight_language is undefined
-- bugfix for canonical links when using the DirectoryBuilder
+### Feat
 
-## 3.0.0
+- update to Tailwind 3.0 (#685)
 
-- asset hashing
-- feat: almost complete redesign
-- Solid JavaScript foundation based on Stimulus
-- Even better code blocks (support arbitrary emphasizing text inside code blocks; no
-  need for special `samp` directive)
+## 3.2.1 (2021-11-29)
 
-## 2.0.2
+### Fix
 
-- fix: remove duplicate inclusion of style sheets
+- footnote styles (#668)
 
-## 2.0.1
+## 3.2.0 (2021-11-26)
 
-- fix: style issues (PR #500)
-- documentation update
+### Feat
 
-## 2.0.0
+- support viewcode extension (#666)
 
-**This version requires Sphinx >4.0**
+## 3.1.1 (2021-11-22)
 
-- feat: use CSS grid for layout
-- feat: use intersection observer api for "scrollspy"
-- feat: add optional scroll to top button
-- feat: restructuring for easier customization (#245)
-- feat: use Tailwind 2 colors
-- fix: style for guilabel role was missing (#376)
-- fix: update for Sphinx 4.0/docutils 0.17
+### Fix
 
-## 1.19.2
+- meta check (#663)
 
-- fix: permalink behavior for Sphinx 3.5 (#336)
-- chore: mypy configuration update
+## 3.1.0 (2021-11-22)
 
-## 1.19.1
+### Feat
 
-- fix: search for 3.4.3 (#301)
+- add docsearch (#597)
 
-## 1.19.0
+### Fix
 
-- fix: prevent printing empty copyright (#285)
-- feat: add styles for centered images (#283)
+- release workflow (#661)
+- bugfix when language is undefined (#660)
+- **seo**: canonical links (#650)
+- JSON serializer (#610)
+- update netlify build image (#598)
 
-## 1.18.0
+## 3.0.0 (2021-09-02)
 
-- feat: add previous/next links (optional)
-- feat: add styles for 'diff' highlighting language (PR #230)
-- fix: re-enable offline search (#217)
-- fix: search related style fixes
-- fix: add styles for 'kbd' and 'menuselection' roles (PR #231)
-- fix: skip to content link (#182)
-- chore: update Tailwind to 2.0
+### Feat
 
-## 1.17.0
+- keyboard navigation in sidebar (#566)
+- rethink responsive design (#559)
+- additional links in the header (#553)
+- add asset hashing (#550)
+- add sitemaps (#539)
 
-- feat: add copy buttons to all literal blocks (#215)
-- fix: expand-more buttons systematically applied (PR #209)
-- fix: changed tag and filenames of footer and copyright (#202)
-- fix: inconsistent vertical spacing around blockquotes (#212)
+### Fix
 
-## 1.16.1
+- layout issues (#569)
+- style tweaks (#564)
+- inline code font size (#563)
+- focus behavior search (#562)
+- sidebar caption (#558)
+- code block styles (#552)
+- previous_next links style (#549)
+- breadcrumbs and footer margins (#548)
+- add noopener nofollow (#544)
+- forgot closing emphasis tags (#543)
+- remove right padding from code blocks (#542)
+- search styles and revert Sphinx change (#541)
+- add back click to copy (#540)
+- rename (#538)
+- remove headerlink logic (#537)
+- adjust headerlink sizes (#535)
 
-- fix: respect explicitly labeled admonitions (PR# 197)
-- fix: bug in headerlink mechanism (PR #199)
-- chore: increased test coverage (PR #201)
+## 2.0.2 (2021-07-25)
 
-## 1.16.0
+### Fix
 
-- feat: new option to make autodocs definitions collapsible (PR #167)
-- fix: accessibility for collapsible (PR #174)
-- fix: rounded search input on iOS (PR #181)
-- fix: add styles for blockquotes (PR #192)
-- fix: inconsistent padding in header with and without logo (PR #188)
-- fix: implementation for headerlinks (PR #194)
+- remove duplicate stylesheets (#521)
+- actions path (#511)
+- linebreaks in update (#502)
 
-## 1.15.1
+## 2.0.1 (2021-07-18)
 
-- fix: assign nav-link only once (#166)
+### Feat
 
-## 1.15.0
+- add vale action (#498)
 
-- feat: modified autodocs styling
-- feat: redesigned admonitions to not be in your face so much
-- fix: wrongly applied padding to logo on main page
-- feat: unrounded inputs, buttons, and blocks.
+## 2.0.0 (2021-06-13)
 
-## 1.14.0
+### Fix
 
-- feat: switched to Material icons (#144)
-- feat: mark external links (#142)
-- feat: rewrite permalink behavior
-- feat: use clipboard.js
-- feat: HTML simplifications
-- feat: CSS tooltips
-- feat: better code blocks (#153)
-- feat: moved things from postprocess into translator (#154)
-- fix: unwanted rounding of elements (#147)
-- fix: better navigation menu (#130)
+- style for guilabel was missing (fixes #376) (#380)
 
-## 1.13.1
+## 1.19.2 (2021-02-27)
 
-- fix: modified linenumber styling to work with new Sphinx (#123)
+### Fix
 
-## 1.13.0
+- tests for headerlinks mechanism (#337)
 
-- feat: better code-block directive with support for added/removed lines
-- fix: remove outline-none
-- docs: major update
-- chore: made JavaScript and CSS more modular
+## 1.19.1 (2021-01-30)
 
-## 1.12.1
+### Fix
 
-- fix: wrong link title in skip to content link
+- search with Sphinx 3.4 (#302)
 
-## 1.12.0
+## 1.19.0 (2021-01-12)
 
-- fix: better autodoc styling
-- feat: add command line option styles
-- feat: better collapsible navigation (#102)
-- feat: skip to content link (#109)
+### Feat
 
-## 1.11.0
+- add support for different image alignment (#287)
 
-- fix: table caption number style (#96)
-- fix: iOS nav menu close button fix (#65)
-- feat: improve autodoc styling (#39)
-- docs: add autodoc example
+### Fix
 
-## 1.10.5
+- prevent empty copyright (#285) (#286)
 
-- fix: python extensions run only for HTML builders (#95)
-- chore: basic unit testing
+## 1.18.0 (2020-12-07)
 
-## 1.10.4
+### Feat
 
-- fix: admonition ids were still problematic in LaTeX builds
+- add previous/next links (#244)
+- add styles for 'diff' highlighting (#230)
 
-## 1.10.3
+### Fix
 
-- fix: non-existing section titles no longer crash admonition_id
+- skip to content link (#243)
 
-## 1.10.2
+## 1.17.0 (2020-11-14)
 
-- fix: non-existing image captions no longer crash HTML build (#93)
+### Feat
 
-## 1.10.1
+- add copy button to all literal blocks (#216)
 
-- feat: make headerlinks accessible by keyboard (#91)
-- fix: let current navigation elements stay expanded when tabbing
+### Fix
 
-## 1.10.0
+- deduplicate search.html and main.html (#211) (#214)
+- change of tag and filenames (closes #202) (#210)
+- expand-more buttons (#209)
 
-- feat: make navigation elements accessible by keyboard
-- feat: implement scrollspy for navigation (#70)
-- fix: remove background for non-current navigation elements (#72)
-- fix: list markers showing up in the search-results (#71)
+## 1.16.1 (2020-11-08)
 
-## 1.9.0
+### Fix
 
-- more semantic elements (`div.section` -> `section`, `div.figure` -> `figure`, etc.)
-- feat: collapsible navigation links
-- chore: moved static DOM manipulation to new post-processing code in Python (#62)
+- better testing for headerlinks (#201)
+- bug in headerlink mechanism (issue 198) (#199)
+- admonition IDs (#197)
 
-## 1.8.0
+## 1.16.0 (2020-11-03)
 
-- fix: improvements for search pane (#53)
-- feat: add permalinks to admonitions (#58)
-- fix: moved some permalink manipulation from JavaScript to Python
-- fix: migrate menu state transitions to data-attributes (#55)
+### Feat
 
-## 1.7.0
+- add style for blockquotes (#189) (#192)
+- make collapsible accessible
+- skip collapsibles for empty definitions
+- make collapsible optional
+- move collapsible autodocs to html_translator
+- add central icon location
+- collapsible autodocs prototype
 
-- feat: added auto-enabling of sampdirective extension
-- feat: re-design
+### Fix
 
-## 1.6.3
+- missing implementation for headerlinks (#193) (#194)
+- styles for contents directive (#191)
+- inconsistent padding (close issue #187) (#188)
+- search pane appearance (fix #170) (#181)
+- search pane appearance (fix #170)
+- collapsible aria-label (fix #172) (#174)
 
-- fix: added styles for on-page TOC (#38)
-- fix: clicking on current page links closes nav menu (#42)
-- chore: moved to `src` package layout
-- chore: added nox for automation control
-- chore: added Github actions for some linting
-- chore: added stylelint to lint CSS files
-- chore: added eslint for linting JavaScript
-- chore: added vale for simple style checks
+## 1.15.1 (2020-10-29)
 
-## 1.6.2
+### Fix
 
-- fix: title in menu pane also leads back to homepage (#36)
-- fix: improved search input on iOS (#1)
-- fix: improved search input width on wider screens
+- do not postprocess HTML multiple times (#166)
 
-## 1.6.1
+## 1.15.0 (2020-10-29)
 
-- fix(footer): justify-center
-- fix(footer): made sticky (again?) (#32)
-- fix(layout): improve layout on large screens (#31)
-- fix: replace '-' with '|' in `<title>` (#33)
+### Feat
 
-## 1.6.0
+- unrounding inputs and buttons
+- rename console to shell in code block headers (close #164)
+- unrounding code blocks
+- admonition redesign
+- better autodocs (#160)
 
-- fix: snackbar looks different for message vs. action (#30)
-- fix: added 'print:' media-query to tailwind config
-- feat: made permalinks more semantic
-- feat: added directive for highlighting placeholder variables (#15)
+### Fix
 
-## 1.5.0
+- higher opacity in menu screen bg
+- wrong padding with logo
 
-- feat: clicking on permalink copies the link to clipboard (#29)
+## 1.14.0 (2020-10-26)
 
-## 1.4.1
+### Feat
 
-- fix: make bold text medium (#28)
-- fix: improved padding in linenumber display
+- better nav
+- better code blocks
+- better code blocks
+- code-blocks
+- register html_translator as an internal extension
+- basic styling for new code blocks
+- restructuring, mostly code blocks
+- move methods from postprocess to translator
+- CSS tooltip implementation
+- add Materials icon for collapsible
+- new permalink icon
 
-## 1.4.0
+### Fix
 
-- fix: showing linenumbers for code blocks (#18)
-- fix: make copy button for literals stick (#22)
-- feat: add precss for nesting CSS
-- feat: make prompt character unselectable (#20)
-- feat: add 'breadcrumbs_separator' option (#25)
-- feat: enable 'show_breadcrumbs' option (#24)
-- feat: enable 'nav_show_hidden' by default (#23)
-- feat: enable not showing of nav menu (#21)
-- feat: added styling for code block captions (#19)
-- feat: added styling for literal blocks (#17)
-- fix: removed dependency on Roboto semibold (#14)
-- docs: restructuring, adding more install instructions
+- add shadow to nav
+- code block copy behavior
+- update dependencies
+- move tooltips for external links
+- failing tests
+- add # to headerlinks (fix #148)
+- headerlink tooltips hide
+- use text-current for admonition headerlinks
+- better tooltips for headerlinks
+- simplify JS a bit
+- more simplifications
+- more simplifications
+- simplify HTML and CSS
+- failing test
+- hover style for icon
+- failing test
+- simplify font definition
+- increase linewidth
+- unwanted rounding of elements (fixes #147)
+- failing test
+- README
+- tracking in <dt>; closes #124
 
-## 1.3.1
+## 1.13.1 (2020-09-20)
 
-- fix: include only used fonts (#12)
+### Fix
 
-## 1.3.0
+- inline linenumber styles (closes #123)
 
-- feature: focus on search input when pressing '/' key
-- feature: add project title to HTML header
-- feature: support different permalinks (#8)
-- fix: make nav links normal (#4)
-- fix: made footer sticky (#6)
+## 1.13.0 (2020-09-16)
 
-## 1.2.0
+### Feat
 
-- Added styles for more admonitions
-- Added styles for "rubric" heading level and TOC captions
-- Fixed alignment bug for "copyright" info on small screens
-- Refactored docs
+- highlighting tweaks
+- allow highlighting added/removed lines in code blocks
 
-## 1.1.0
+### Fix
 
-- Added translatable strings throughout the theme
-- Added option to override styles
+- minor tweaks for highlighting style
+- restructure highlighting as an (internal) extension
+- minor JS config improvements
+- major simplification for the highlighting code needed
+- minor highlight tweaks
+- pygments-2.7.0 line numbers (closes #120)
+- adjust list item spacing
+- link-ids in skip to content link (close #110)
+- remove outline-none
 
-## 1.0.1
+## 1.12.1 (2020-09-03)
 
-- Added better labels to buttons
+### Fix
 
-## 1.0.0
+- wrong link title in skip to content link
 
-- Initial release
+## 1.12.0 (2020-09-03)
+
+### Feat
+
+- skip to content link (closes #109)
+- better collapsible
+- post-processing - remove nested spans inside cross-references
+- command line option styles
+
+### Fix
+
+- remove useless module documentation
+- better collapsible
+- fold in changes from collapsible branch
+- right spacing nav-toc
+- breadcrumbs spacing
+- breadcrumbs and list style improvements
+- multiple footnotes support
+- add outline to copy button on focus
+- revert missing header in use.rst
+- include code definitions in headerlinks
+- reverse tabbing for navlinks works (fix #92)
+- better autodoc styles
+- type in postprocess
+
+## 1.11.0 (2020-08-17)
+
+### Feat
+
+- basic autodoc styling (#39)
+
+### Fix
+
+- skip desc admonition nodes in admonition_ids
+- attempt to fix #65
+- remove whitespace from buttons
+- style image caption numbers (#96)
+- failing unit test for after version bump
+
+## 1.10.5 (2020-08-14)
+
+### Fix
+
+- python extension should only run for HTML builds (#95)
+
+## 1.10.4 (2020-08-13)
+
+### Fix
+
+- admonition ids were not fixed for all cases
+
+## 1.10.3 (2020-08-13)
+
+### Fix
+
+- bug in admonitions_ids
+
+## 1.10.2 (2020-08-11)
+
+### Fix
+
+- non-existing figure captions do not crash HTML
+- removed buggy assign action.
+
+## 1.10.1 (2020-08-10)
+
+### Feat
+
+- make more links keyboard accessible
+- make headerlinks keyboard focussable (#91)
+
+### Fix
+
+- let current navigation stay expanded when tabbing
+- make headerlink unfocussable
+
+## 1.10.0 (2020-08-09)
+
+### Feat
+
+- basic scrollspy implementation (#70)
+
+### Fix
+
+- indent levels for l2 (#88)
+- added main-wrapper id in search.html
+- copy button tooltip on keyboard focus
+- collapsing other expanded elements when tabbed away
+- make current l1 nav link bolder
+- make nav links keyboard accessible (#84)
+- nav link spacing (#73)
+- breadcrumbs spacing (#74)
+- remove background for non-current navigation links (#72)
+- list markers showing in search results (#71)
+
+## 1.9.0 (2020-07-19)
+
+### Feat
+
+- collapsible navs
+- collapsible navigation links (#52)
+
+### Fix
+
+- made triangles a little lighter again
+- made triangles a little lighter
+- make .highlight bg-color transparent
+- revert change in nav
+- list spacing (#64)
+- nav position absolute up to md screens (#63)
+
+## 1.8.0 (2020-07-05)
+
+### Feat
+
+- more specific links for each admonition type
+- add permalinks to admonitions
+
+### Fix
+
+- minor accessibility tweaks
+- minor accessibility tweaks
+- minor style tweak for dl
+- migrate menu states to data-attributes (#55)
+- mypy fail
+- netlify build (#59)
+- moved permalink manipulation to Python code
+- made "home" link in nav menu untabbable
+- reduced pre font-size a tiny bit
+- better focus styles
+- better focus styles
+- made title in header a bit smaller
+- slide animation for search pane
+- search pane height for better ux
+- improved background color for button
+- removed min-height on header again. It was a mistake
+
+## 1.7.0 (2020-06-28)
+
+### Feat
+
+- re-design
+- auto-enable sampdirective
+
+### Fix
+
+- fine-tuning redesign
+- minor visual tweaks
+- minor visual tweaks
+- added padding consistently in nav link
+
+## 1.6.3 (2020-06-17)
+
+### Fix
+
+- bug in clicking on current page links
+- changed width of nav menu to 1/4
+- clicking on current page links closes nav menu (#42)
+- add feat for .contents module reference block
+- update pre-commit hooks
+- bug for specifying theme in docs
+- regression for TOC styling
+- styles for toctree on pages (#39)
+
+## 1.6.2 (2020-06-09)
+
+### Fix
+
+- rounded form fix attempt on iOS
+- rounded-full search input on iOS attempt
+- rounded-full search input on iOS attempt
+- width of search input in header
+- title in menu on small screen leads to homepage (#36)
+- regularized spelling of directives
+
+## 1.6.1 (2020-06-08)
+
+### Feat
+
+- listed features in docs (#34)
+
+### Fix
+
+- replace - with | in html title (#33)
+- autoformatter being stupid
+- **layout**: forgot to modify some files (#31)
+- **layout**: improve layout on wide screens (#31)
+- sticky footer (issue #32)
+- **footer**: justify-center
+
+## 1.6.0 (2020-06-07)
+
+### Feat
+
+- add styles for samp directive
+- implemented samp directive as prototype
+- **permalinks**: made permalinks more semantic
+
+### Fix
+
+- add print media query to tailwind.config.js
+- **snackbar**: differentiated clear highlight
+
+## 1.5.0 (2020-06-01)
+
+### Feat
+
+- clicking on permalink copies (#29)
+- copy permalink
+
+## 1.4.1 (2020-05-31)
+
+### Fix
+
+- bump version
+- improved padding for linenumbers
+- **text**: make bold text lighter
+
+## 1.4.0 (2020-05-31)
+
+### Feat
+
+- add precss
+- make prompt character unselectable (#20)
+- add 'breadcrumbs_separator' option
+- enable show_breadcrumbs option (#24)
+- **conf**: enable nav_include_hidden by default
+- **nav**: enable hiding (#21)
+- **code**: add style for code block captions
+- **code**: add styles for literal block
+
+### Fix
+
+- **code**: linenumbers look decent
+- **code**: copy button for literals stick
+- **copyright**: fix alignment if show_nav=False
+- removed dependency on semibold (#14)
+
+## 1.3.1 (2020-05-28)
+
+### Fix
+
+- **search**: fix placeholder text
+- **js**: made tooltip disappear on scrolling
+- **search**: better labeling of input
+
+## 1.3.0 (2020-05-27)
+
+### Feat
+
+- **copyright**: support for more Sphinx options
+- support html_add_permalinks
+- **title**: add docstitle to HTML title
+- **search**: focus input on pressing slash
+
+### Fix
+
+- **pyproject.toml**: email change
+- **nav**: overflow bug. Closes issue #6
+- **docs**: get year for copyright automatically
+- **footer**: made footer sticky
+- add max-w-2xl to search results and copyright
+- **search**: changed quotes in placeholder to single
+
+## 1.2.0 (2020-05-24)
+
+### Feat
+
+- refactored docs
+- added further admonition styles
+- **nav**: add styles for caption in toctree
+- **copyright**: support for more Sphinx options
+- support html_add_permalinks
+- **title**: add docstitle to HTML title
+- **search**: focus input on pressing slash
+- refactored docs
+- added further admonition styles
+- **nav**: add styles for caption in toctree
+
+### Fix
+
+- **caption**: fix caption in toctree
+- **copyright**: margins on small devices
+- **__init__**: added return statement to setup
+- **__init__**: added return statement to setup
+- added metadata to index page
+- removed dependency on semibold (#14)
+- **search**: fix placeholder text
+- **fonts**: improved font handling
+- **js**: made tooltip disappear on scrolling
+- **search**: better labeling of input
+- **pyproject.toml**: email change
+- **nav**: overflow bug. Closes issue #6
+- **docs**: get year for copyright automatically
+- **footer**: made footer sticky
+- add max-w-2xl to search results and copyright
+- **search**: changed quotes in placeholder to single
+- removed test directory from git
+- **nav**: toc caption further tweaks
+- **copyright**: margins on small devices
+- **__init__**: added return statement to setup
+- added metadata to index page
+
+## 1.1.0 (2020-05-23)
+
+### Feat
+
+- allow adding additional CSS files
+- added translatable strings
+
+### Fix
+
+- **search-pane**: capitalization
+
+## 1.0.1 (2020-05-23)
+
+### Fix
+
+- added Changelog
+- **input**: removed aria-expanded
+
+## 1.0.0 (2020-05-20)
+
+### Fix
+
+- **search-pane**: capitalization
+- added Changelog
+- **input**: removed aria-expanded
