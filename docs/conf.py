@@ -9,6 +9,7 @@ from sphinx.application import Sphinx
 from sphinx.util.docfields import Field
 from sphinxawesome_theme import ThemeOptions, __version__
 from sphinxawesome_theme.docsearch import DocSearchConfig
+from sphinxawesome_theme.postprocess import Icons
 
 load_dotenv()
 
@@ -74,17 +75,7 @@ html_domain_indices = False  # Don't need module indices
 html_copy_source = False  # Don't need sources
 html_logo = "assets/auto_awesome.svg"
 html_favicon = "assets/favicon-128x128.png"
-html_permalinks_icon = (
-    '<svg xmlns="http://www.w3.org/2000/svg" '
-    'height="1em" width="1em" '
-    'viewBox="0 0 24 24">'
-    '<path d="M3.9 12c0-1.71 1.39-3.1 '
-    "3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 "
-    "5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 "
-    "13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 "
-    "3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 "
-    '5-5s-2.24-5-5-5z"/></svg>'
-)
+html_permalinks_icon = Icons.permalinks_icon
 html_baseurl = "https://sphinxawesome.xyz/"
 html_extra_path = ["robots.txt", "_redirects"]
 html_context = {
