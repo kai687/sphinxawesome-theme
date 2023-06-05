@@ -1,7 +1,7 @@
 argcomplete==3.0.8 ; python_version == "3.8"
 attrs==23.1.0 ; python_version == "3.8"
 build==0.10.0 ; python_version == "3.8"
-cachecontrol[filecache]==0.12.13 ; python_version == "3.8"
+cachecontrol[filecache]==0.13.0 ; python_version == "3.8"
 certifi==2023.5.7 ; python_version == "3.8"
 cffi==1.15.1 ; (sys_platform == "darwin" or sys_platform == "linux") and python_version == "3.8"
 charset-normalizer==3.1.0 ; python_version == "3.8"
