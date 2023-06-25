@@ -5,8 +5,8 @@ dependencies:
     specifier: ^3.12.2
     version: 3.12.2
   '@docsearch/css':
-    specifier: ^3.4.0
-    version: 3.4.0
+    specifier: ^3.5.1
+    version: 3.5.1
   '@docsearch/js':
     specifier: ^3.5.1
     version: 3.5.1(@algolia/client-search@4.17.1)(search-insights@2.6.0)
@@ -1827,10 +1827,6 @@ packages:
     resolution: {integrity: sha512-dBVuXR082gk3jsFp7Rd/JI4kytwGHecnCoTtXFb7DB6CNHp4rg5k1bhg0nWdLGLnOV71lmDzGQaLMy8iPLY0pw==}
     engines: {node: '>=10.0.0'}
     dev: true
-
-  /@docsearch/css@3.4.0:
-    resolution: {integrity: sha512-Hg8Xfma+rFwRi6Y/pfei4FJoQ1hdVURmmNs/XPoMTCPAImU+d5yxj+M+qdLtNjWRpfWziU4dQcqY94xgFBn2dg==}
-    dev: false
 
   /@docsearch/css@3.5.1:
     resolution: {integrity: sha512-2Pu9HDg/uP/IT10rbQ+4OrTQuxIWdKVUEdcw9/w7kZJv9NeHS6skJx1xuRiFyoGKwAzcHXnLp7csE99sj+O1YA==}
