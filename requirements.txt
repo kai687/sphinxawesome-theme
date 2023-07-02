@@ -41,7 +41,7 @@ ptyprocess==0.7.0 ; python_version == "3.8"
 pycparser==2.21 ; python_version == "3.8" and (sys_platform == "darwin" or sys_platform == "linux")
 pyproject-hooks==1.0.0 ; python_version == "3.8"
 pyrsistent==0.19.3 ; python_version == "3.8"
-pywin32-ctypes==0.2.1 ; sys_platform == "win32" and python_version == "3.8"
+pywin32-ctypes==0.2.2 ; sys_platform == "win32" and python_version == "3.8"
 rapidfuzz==2.15.1 ; python_version == "3.8"
 requests-toolbelt==1.0.0 ; python_version == "3.8"
 requests==2.31.0 ; python_version == "3.8"
