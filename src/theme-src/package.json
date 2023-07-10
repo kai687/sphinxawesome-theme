@@ -43,7 +43,7 @@
     "postcss-preset-env": "^9.0.0",
     "prettier": "^3.0.0",
     "prettier-plugin-tailwindcss": "^0.3.0",
-    "stylelint": "^15.9.0",
+    "stylelint": "^15.10.1",
     "stylelint-config-prettier": "^9.0.5",
     "stylelint-prettier": "^3.0.0",
     "stylelint-webpack-plugin": "^4.1.1",
