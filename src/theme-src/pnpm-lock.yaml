@@ -29,8 +29,8 @@ devDependencies:
     specifier: ^7.22.9
     version: 7.22.9(@babel/core@7.22.9)
   '@fontsource/jetbrains-mono':
-    specifier: ^5.0.5
-    version: 5.0.5
+    specifier: ^5.0.8
+    version: 5.0.8
   '@tailwindcss/nesting':
     specifier: 0.0.0-insiders.565cd3e
     version: 0.0.0-insiders.565cd3e(postcss@8.4.27)
@@ -1968,8 +1968,8 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@fontsource/jetbrains-mono@5.0.5:
-    resolution: {integrity: sha512-Smuppiu7QzNCatnccTXdUYbxUmEVywklM/hntWKhig0Q+hm7SYzQpNpxCR1Gm8npE8jpaKslhIsBPGuTBGZgdA==}
+  /@fontsource/jetbrains-mono@5.0.8:
+    resolution: {integrity: sha512-ck4x0rKG9atF1Kvsb8t8c7IXr9UNSQ3BGMWVv0kw/OxF3ldfg11Sg3AxJnOkl/xeXXFwgR+Y9yuMmnK+skTElQ==}
     dev: true
 
   /@humanwhocodes/config-array@0.11.10:
