@@ -22,7 +22,7 @@ packages = [
 
 [tool.poetry.dependencies]
 python = "^3.8"
-sphinx = ">4"
+sphinx = ">4, <7.2"
 beautifulsoup4 = "^4.9.1"
 
 [tool.poetry.group.docs.dependencies]

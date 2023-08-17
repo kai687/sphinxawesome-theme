@@ -21,7 +21,7 @@ export function addCodeButtons() {
 
   const clipboard = new ClipboardJS('button.copy', {
     target: (trigger) => {
-      return trigger.parentNode
+      return trigger.previousElementSibling
     },
   })
 
