@@ -5,6 +5,9 @@
   &:hover .copy {
     @apply opacity-100;
   }
+  .gp {
+    @apply select-none;
+  }
 }
 
 .literal-block-wrapper {

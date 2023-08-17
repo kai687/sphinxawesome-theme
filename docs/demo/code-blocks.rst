@@ -250,3 +250,21 @@ If you don't include any markup, the content is rendered with syntax highlightin
 .. seealso::
 
    `Parsed-literal directive (docutils) <https://docutils.sourceforge.io/docs/ref/rst/directives.html#code>`_
+
+Prompt characters
+-----------------
+
+Prompt characters shouldn't be selected when copying code.
+
+For example, if you copy the code from the following ``console`` code block,
+the ``$`` character should not be copied:
+
+.. code-block:: console
+
+   $ echo "Prompt characters not selected"
+
+The same is true for Python interactive sessions:
+
+.. code-block:: pycon
+
+   >>> print("Prompt characters not selected.")
