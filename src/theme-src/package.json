@@ -15,8 +15,8 @@
   "license": "MIT",
   "dependencies": {
     "@alpinejs/intersect": "^3.12.3",
-    "@docsearch/css": "^3.5.1",
-    "@docsearch/js": "^3.5.1",
+    "@docsearch/css": "^3.5.2",
+    "@docsearch/js": "^3.5.2",
     "alpinejs": "^3.12.3",
     "clipboard": "^2.0.11"
   },
