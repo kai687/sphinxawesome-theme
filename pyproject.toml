@@ -35,7 +35,7 @@ python-dotenv = ">=0.19,<1.1"
 pytest = "^7.2"
 pytest-cov = "^4.0"
 coverage = { extras = ["toml"], version = "^7.2" }
-types-docutils = "^0.19.1.6"
+types-docutils = ">=0.19.1.6,<0.21.0.0"
 mypy = "^1.0"
 commitizen = "^3.2.2"
 
