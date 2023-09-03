@@ -83,11 +83,11 @@ devDependencies:
     specifier: ^9.1.3
     version: 9.1.3(postcss@8.4.29)
   prettier:
-    specifier: ^3.0.2
-    version: 3.0.2
+    specifier: ^3.0.3
+    version: 3.0.3
   prettier-plugin-tailwindcss:
     specifier: ^0.5.4
-    version: 0.5.4(prettier@3.0.2)
+    version: 0.5.4(prettier@3.0.3)
   stylelint:
     specifier: ^15.10.3
     version: 15.10.3
@@ -96,7 +96,7 @@ devDependencies:
     version: 9.0.5(stylelint@15.10.3)
   stylelint-prettier:
     specifier: ^4.0.2
-    version: 4.0.2(prettier@3.0.2)(stylelint@15.10.3)
+    version: 4.0.2(prettier@3.0.3)(stylelint@15.10.3)
   stylelint-webpack-plugin:
     specifier: ^4.1.1
     version: 4.1.1(stylelint@15.10.3)(webpack@5.88.2)
@@ -4845,7 +4845,7 @@ packages:
       fast-diff: 1.3.0
     dev: true
 
-  /prettier-plugin-tailwindcss@0.5.4(prettier@3.0.2):
+  /prettier-plugin-tailwindcss@0.5.4(prettier@3.0.3):
     resolution: {integrity: sha512-QZzzB1bID6qPsKHTeA9qPo1APmmxfFrA5DD3LQ+vbTmAnY40eJI7t9Q1ocqel2EKMWNPLJqdTDWZj1hKYgqSgg==}
     engines: {node: '>=14.21.3'}
     peerDependencies:
@@ -4897,11 +4897,11 @@ packages:
       prettier-plugin-twig-melody:
         optional: true
     dependencies:
-      prettier: 3.0.2
+      prettier: 3.0.3
     dev: true
 
-  /prettier@3.0.2:
-    resolution: {integrity: sha512-o2YR9qtniXvwEZlOKbveKfDQVyqxbEIWn48Z8m3ZJjBjcCmUy3xZGIv+7AkaeuaTr6yPXJjwv07ZWlsWbEy1rQ==}
+  /prettier@3.0.3:
+    resolution: {integrity: sha512-L/4pUDMxcNa8R/EthV08Zt42WBO4h1rarVtK0K+QJG0X187OLo7l699jWw0GKuwzkPQ//jMFA/8Xm6Fh3J/DAg==}
     engines: {node: '>=14'}
     hasBin: true
     dev: true
@@ -5252,14 +5252,14 @@ packages:
       stylelint: 15.10.3
     dev: true
 
-  /stylelint-prettier@4.0.2(prettier@3.0.2)(stylelint@15.10.3):
+  /stylelint-prettier@4.0.2(prettier@3.0.3)(stylelint@15.10.3):
     resolution: {integrity: sha512-EoHnR2PiaWgpGtoI4VW7AzneMfwmwQsNwQ+3/E2k/a+ju5yO6rfPfop4vzPQKcJN4ZM1YbspEOPu88D8538sbg==}
     engines: {node: ^14.17.0 || >=16.0.0}
     peerDependencies:
       prettier: '>=3.0.0'
       stylelint: '>=15.8.0'
     dependencies:
-      prettier: 3.0.2
+      prettier: 3.0.3
       prettier-linter-helpers: 1.0.0
       stylelint: 15.10.3
     dev: true
