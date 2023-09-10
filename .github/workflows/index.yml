@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - name: Check-out repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Algolia Crawler
         uses: algolia/algoliasearch-crawler-github-actions@v1.1.9
