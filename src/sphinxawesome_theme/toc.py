@@ -14,6 +14,17 @@ from sphinx.environment.adapters.toctree import TocTree
 from sphinx.util.docutils import new_document
 
 
+def findall(node: Node, selection: Node) -> Any:
+    """A backwards-compatible method to traverse docutils nodes.
+
+    `findall` isn't available in docutils < 0.18.
+    This can be removed if we pin the minimum version of Sphinx to >5.
+    """
+    findall = "findall" if hasattr(node, "findall") else "traverse"
+
+    return getattr(node, findall)(selection)
+
+
 def change_toc(
     app: Sphinx,
     pagename: str,
@@ -48,9 +59,7 @@ def change_toc(
     toc = TocTree(app.builder.env).get_toc_for(pagename, app.builder)
 
     # Remove `h1` node
-    findall = "findall" if hasattr(toc, "findall") else "traverse"
-    # `findall` is docutils > 0.18
-    for node in getattr(toc, findall)(nodes.reference):
+    for node in findall(toc, nodes.reference):
         if node["refuri"] == "#":
             # Remove the `list_item` wrapping the `reference` node.
             node.parent.parent.remove(node.parent)
@@ -60,7 +69,7 @@ def change_toc(
     doc.append(toc)
 
     # Replace outer bullet lists with inner bullet lists
-    for node in doc.findall(nodes.bullet_list):
+    for node in findall(doc, nodes.bullet_list):
         if (
             len(node.children) == 1
             and isinstance(node.next_node(), nodes.list_item)
