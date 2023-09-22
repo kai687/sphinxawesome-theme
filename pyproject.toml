@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "sphinxawesome-theme"
-version = "5.0.0-beta.3"
+version = "5.0.0-beta.4"
 description = "An awesome theme for the Sphinx documentation generator"
 readme = "README.md"
 authors = ["Kai Welke <kai687@pm.me>"]
@@ -37,7 +37,6 @@ pytest-cov = "^4.0"
 coverage = { extras = ["toml"], version = "^7.2" }
 types-docutils = ">=0.19.1.6,<0.21.0.0"
 mypy = "^1.0"
-commitizen = "^3.2.2"
 
 [tool.poetry.group.lint.dependencies]
 black = "^23.1"
@@ -88,13 +87,6 @@ ignore_missing_imports = true
 [tool.poetry.plugins."sphinx.html_themes"]
 sphinxawesome_theme = "sphinxawesome_theme"
 
-
-[tool.commitizen]
-name = "cz_conventional_commits"
-tag_format = "$major.$minor.$patch$prerelease"
-version_type = "semver"
-version_provider = "poetry"
-update_changelog_on_bump = true
 [build-system]
 requires = ["poetry_core"]
 build-backend = "poetry.core.masonry.api"
