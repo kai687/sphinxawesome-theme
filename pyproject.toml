@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "sphinxawesome-theme"
-version = "5.0.0-beta.4"
+version = "5.0.0-beta.5"
 description = "An awesome theme for the Sphinx documentation generator"
 readme = "README.md"
 authors = ["Kai Welke <kai687@pm.me>"]
@@ -22,7 +22,7 @@ packages = [
 
 [tool.poetry.dependencies]
 python = "^3.8"
-sphinx = ">4, <7.2"
+sphinx = ">4, <7"
 beautifulsoup4 = "^4.9.1"
 
 [tool.poetry.group.docs.dependencies]
