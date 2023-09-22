@@ -268,3 +268,10 @@ The same is true for Python interactive sessions:
 .. code-block:: pycon
 
    >>> print("Prompt characters not selected.")
+
+Output should also not be selected when copying:
+
+.. code-block:: python
+
+   >>> api.execute(circuit=c)
+   [1168]

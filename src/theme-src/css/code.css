@@ -10,6 +10,11 @@
   }
 }
 
+.highlight-python .go,
+.highlight-pycon .go {
+  @apply select-none;
+}
+
 .literal-block-wrapper {
   @apply mx-0 mt-6 max-w-none rounded-lg border border-border px-0;
   & pre {
