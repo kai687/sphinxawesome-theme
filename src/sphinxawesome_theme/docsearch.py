@@ -22,8 +22,7 @@ from sphinx.builders.dirhtml import DirectoryHTMLBuilder
 from sphinx.builders.html import StandaloneHTMLBuilder
 from sphinx.config import Config
 from sphinx.locale import __
-from sphinx.util import logging
-from sphinx.util.display import progress_message
+from sphinx.util import logging, progress_message
 
 from . import __version__
 
