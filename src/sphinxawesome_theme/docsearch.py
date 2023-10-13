@@ -97,7 +97,7 @@ class DocSearchConfig:
     """
 
 
-@progress_message("DocSearch: check config")
+@progress_message("DocSearch: check config")  # type: ignore
 def check_config(app: Sphinx, config: Config) -> None:
     """Set up Algolia DocSearch.
 
@@ -121,7 +121,7 @@ def check_config(app: Sphinx, config: Config) -> None:
         )
 
 
-@progress_message("DocSearch: add assets")
+@progress_message("DocSearch: add assets")  # type: ignore
 def add_docsearch_assets(app: Sphinx, config: Config) -> None:
     """Add the docsearch.css file for DocSearch."""
     app.add_css_file("docsearch.css", priority=150)
