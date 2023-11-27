@@ -15,8 +15,8 @@ dependencies:
     specifier: ^3.5.2
     version: 3.5.2(@algolia/client-search@4.20.0)(search-insights@2.8.2)
   alpinejs:
-    specifier: ^3.13.2
-    version: 3.13.2
+    specifier: ^3.13.3
+    version: 3.13.3
   clipboard:
     specifier: ^2.0.11
     version: 2.0.11
@@ -2347,8 +2347,8 @@ packages:
       '@algolia/transporter': 4.20.0
     dev: false
 
-  /alpinejs@3.13.2:
-    resolution: {integrity: sha512-WzojeeN082kLZznGI1HAuP8yFJSWqJ1fGdz2mUjj45H4y0XwToE7fFqtI3mCPRR+BpcSbxT/NL+FyPnYAWSltw==}
+  /alpinejs@3.13.3:
+    resolution: {integrity: sha512-WZ6WQjkAOl+WdW/jukzNHq9zHFDNKmkk/x6WF7WdyNDD6woinrfXCVsZXm0galjbco+pEpYmJLtwlZwcOfIVdg==}
     dependencies:
       '@vue/reactivity': 3.1.5
     dev: false
