@@ -8,7 +8,6 @@ from dotenv import load_dotenv
 from sphinx.application import Sphinx
 from sphinx.util.docfields import Field
 from sphinxawesome_theme import ThemeOptions, __version__
-from sphinxawesome_theme.docsearch import DocSearchConfig
 from sphinxawesome_theme.postprocess import Icons
 
 load_dotenv()
@@ -28,7 +27,6 @@ extensions = [
     "sphinx.ext.viewcode",
     "sphinx_sitemap",
     "sphinx_design",
-    "sphinxawesome_theme.docsearch",
     "sphinxawesome_theme.highlighting",
 ]
 
@@ -97,19 +95,13 @@ html_css_files = ["feedback.css"]
 html_js_files = [("feedback.js", {"defer": "defer"})]
 
 # DocSearch (sphinxawesome_theme extension)
-docsearch = DocSearchConfig(
-    docsearch_api_key=os.getenv("DOCSEARCH_API_KEY", ""),
-    docsearch_app_id=os.getenv("DOCSEARCH_APP_ID", ""),
-    docsearch_index_name=os.getenv("DOCSEARCH_INDEX_NAME", ""),
-    docsearch_placeholder="Search these docs",
-    docsearch_missing_results_url="https://github.com/kai687/sphinxawesome-theme/issues/new?title=${query}",
-)
-
-vars = locals()
-for key, value in asdict(docsearch).items():
-    if value is not None:
-        vars.__setitem__(key, value)
-
+# docsearch = DocSearchConfig(
+#     docsearch_api_key=os.getenv("DOCSEARCH_API_KEY", ""),
+#     docsearch_app_id=os.getenv("DOCSEARCH_APP_ID", ""),
+#     docsearch_index_name=os.getenv("DOCSEARCH_INDEX_NAME", ""),
+#     docsearch_placeholder="Search these docs",
+#     docsearch_missing_results_url="https://github.com/kai687/sphinxawesome-theme/issues/new?title=${query}",
+# )
 
 theme_options = ThemeOptions(
     show_prev_next=True,

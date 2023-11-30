@@ -167,6 +167,7 @@ def setup(app: Sphinx) -> dict[str, Any]:
     here = Path(__file__).parent.resolve()
 
     app.add_html_theme(name="sphinxawesome_theme", theme_path=str(here))
+    app.add_js_file("theme.js", loading_method="defer")
 
     # Add the CSS overrides if we're using the `sphinx-design` extension
     if "sphinx_design" in app.config.extensions:

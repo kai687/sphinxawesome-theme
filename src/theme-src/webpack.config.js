@@ -3,7 +3,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const path = require('path')
 const StyleLintPlugin = require('stylelint-webpack-plugin')
 const webpack = require('webpack')
-const { WebpackManifestPlugin } = require('webpack-manifest-plugin')
 
 const THEME_STATIC_DIR = path.resolve(
   __dirname,
@@ -23,7 +22,7 @@ module.exports = {
   output: {
     path: THEME_STATIC_DIR,
     publicPath: '',
-    filename: production ? '[name].[contenthash].js' : '[name].js',
+    filename: '[name].js',
     clean: production ? true : false,
   },
   plugins: [
@@ -34,15 +33,11 @@ module.exports = {
       fix: true,
     }),
     new MiniCssExtractPlugin({
-      filename: production ? '[name].[contenthash].css' : '[name].css',
+      filename: '[name].css',
     }),
     new StyleLintPlugin({
       files: 'css/*.css',
       fix: true,
-    }),
-    new WebpackManifestPlugin({
-      basePath: '_static/',
-      publicPath: '_static/',
     }),
     new webpack.DefinePlugin({
       'process.env': {

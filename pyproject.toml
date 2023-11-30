@@ -22,7 +22,10 @@ packages = [
 
 [tool.poetry.dependencies]
 python = "^3.8"
-sphinx = ">4, <7"
+sphinx = [
+  { version = "<7.2", python = ">=3.8,<3.9"},
+  { version = "^7.2,<7.3", python = ">=3.9,<=3.12"},
+]
 beautifulsoup4 = "^4.9.1"
 
 [tool.poetry.group.docs.dependencies]
