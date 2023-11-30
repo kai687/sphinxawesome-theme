@@ -1,4 +1,3 @@
-const CopyPlugin = require('copy-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const path = require('path')
@@ -19,7 +18,6 @@ module.exports = {
   mode: mode,
   entry: {
     theme: './js/app.js',
-    docsearch: './js/search.js',
     'awesome-sphinx-design': './css/sphinx-design.css',
   },
   output: {
@@ -50,9 +48,6 @@ module.exports = {
       'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
       },
-    }),
-    new CopyPlugin({
-      patterns: [{ from: './js/docsearch_config.js_t', to: THEME_STATIC_DIR }],
     }),
   ],
   module: {

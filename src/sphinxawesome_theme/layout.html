@@ -3,11 +3,6 @@
     {{ js_tag(js) }}
   {%- endfor %}
   <script src="{{ pathto(asset('_static/theme.js'), 1) }}" defer></script>
-
-  {%- if docsearch %}
-    <script src="{{ pathto(asset('_static/docsearch.js'), 1) }}" defer></script>
-    <script src="{{ pathto('_static/docsearch_config.js', 1) }}" defer></script>
-  {%- endif %}
 {%- endmacro -%}
 
 {%- set lang_attr = "en" if language == None else (language|replace('_','-')) -%}

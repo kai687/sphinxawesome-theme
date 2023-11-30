@@ -1,6 +1,6 @@
 {
   "name": "sphinxawesome-theme",
-  "version": "5.0.0-beta.5",
+  "version": "5.0.0-beta.6",
   "scripts": {
     "build": "NODE_ENV=production webpack",
     "dev": "NODE_ENV=development webpack --watch --progress",
@@ -15,14 +15,12 @@
   "license": "MIT",
   "dependencies": {
     "@alpinejs/intersect": "^3.13.3",
-    "@docsearch/css": "^3.5.2",
-    "@docsearch/js": "^3.5.2",
     "alpinejs": "^3.13.3",
     "clipboard": "^2.0.11"
   },
   "devDependencies": {
-    "@babel/core": "^7.23.3",
-    "@babel/preset-env": "^7.23.3",
+    "@babel/core": "^7.23.5",
+    "@babel/preset-env": "^7.23.5",
     "@fontsource/jetbrains-mono": "^5.0.17",
     "@tailwindcss/nesting": "0.0.0-insiders.565cd3e",
     "@tailwindcss/typography": "^0.5.10",
