@@ -1,8 +1,7 @@
 ---
 name: Check documentation quality
 
-on:
-  pull_request
+on: pull_request
 
 jobs:
   vale:
@@ -30,11 +29,11 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: "3.12"
 
       - name: Install dependencies
         run: |
-          pip install --requirement=requirements.txt poetry nox
+          pip install --requirement=requirements.txt poetry poetry-plugin-export nox
 
       - name: Run Nox linkcheck session
         run: |

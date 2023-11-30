@@ -16,7 +16,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
       - name: Update Pip
         run: |
@@ -40,6 +40,7 @@ jobs:
       - name: Install Poetry
         run: |
           pipx install --pip-args=--requirement=requirements.txt poetry
+          pipx inject poetry poetry-plugin-export
           poetry --version
 
       - name: Build Packages
