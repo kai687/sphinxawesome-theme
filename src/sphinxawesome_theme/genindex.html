@@ -1,0 +1,102 @@
+{#- Template for all-in-one index -#}
+
+{%- extends "layout.html" -%}
+
+{% set title = _("Index") %}
+
+{% macro indexentries(firstname, links) %}
+  {%- if links -%}
+    <a href="{{ links[0][1] }}">
+    {%- if links[0][0] %}<strong>{% endif -%}
+    {{ firstname|e }}
+    {%- if links[0][0] %}</strong>{% endif -%}
+    </a>
+
+    {%- for ismain, link in links[1:] -%}
+      , <a href="{{ link }}">{% if ismain %}<strong>{% endif -%}
+      [{{ loop.index }}]
+      {%- if ismain %}</strong>{% endif -%}
+      </a>
+    {%- endfor %}
+  {%- else %}
+    {{ firstname|e }}
+  {%- endif %}
+{% endmacro %}
+
+{%- block body %}
+
+{%- set only_main_nav = sidebars == ["sidebar_main_nav_links.html"] %}
+{%- if not only_main_nav and sidebars|length > 0 %}
+<div class="w-full min-w-0 mx-auto">
+{%- else %}
+<div class="w-full min-w-0 mx-auto max-w-prose">
+{%- endif %}
+
+{%- block body_before %}{%- endblock body_before -%}
+
+{%- if theme_show_breadcrumbs|tobool %}
+{%- include "breadcrumbs.html" %}
+{%- endif %}
+
+<div id="content" role="main">
+
+  <h1 id="index">{{ _('Index') }}</h1>
+
+  {%- for key, entries in genindexentries %}
+  <h2 id="{{ key }}">{{ key }}</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+  {%- for column in entries|slice_index(2) if column %}
+  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+    {%- for entryname, (links, subitems, _) in column %}
+      <li>{{ indexentries(entryname, links) }}
+      {%- if subitems %}
+      <ul style="list-style-type:none">
+      {%- for subentryname, subentrylinks in subitems %}
+        <li>{{ indexentries(subentryname, subentrylinks) }}</li>
+      {%- endfor %}
+      </ul>
+      {%- endif -%}</li>
+    {%- endfor %}
+  </ul></td>
+  {%- endfor %}
+  </tr>
+      </table>
+  {% endfor %}
+
+</div>
+
+{%- if theme_show_prev_next|tobool %}
+  {%- include "prev_next.html" %}
+{%- endif %}
+
+{%- block body_after %}{%- endblock body_after -%}
+</div>
+
+{%- block on_page_toc %}
+<aside id="right-sidebar" class="hidden text-sm xl:block">
+<div class="sticky top-16 -mt-10 max-h-[calc(var(--vh)-4rem)] overflow-y-auto pt-6 space-y-2">
+{% for key, dummy in genindexentries -%}
+<a class="pt-2 block text-muted-foreground no-underline transition-colors hover:text-foreground focus-visible:outline-offset-[-1px]" href="#{{ key }}">{{ key }}</a>
+{%- endfor %}
+</div>
+</aside>
+{%- endblock on_page_toc %}
+
+{%- endblock body %}
+
+  {#-
+
+    {%- for i, entry in entries %}
+      {%- for entryname, (links, subitems, _) in entry %}
+        <div>{{ indexentries(entryname, links) }}
+        {%- if subitems %}
+        <div>
+        {%- for subentryname, subentrylinks in subitems %}
+          <div>{{ indexentries(subentryname, subentrylinks) }}</div>
+        {%- endfor %}
+        </div>
+        {%- endif -%}</div>
+      {%- endfor %}
+    {%- endfor %}
+
+  -#}
