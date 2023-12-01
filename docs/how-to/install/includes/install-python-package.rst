@@ -3,13 +3,6 @@
 Install as a Python package
 ---------------------------
 
-.. note::
-
-   You're viewing the documentation for version |current| of the |product|,
-   which is a **beta** release.
-   That's why you have to add ``--pre`` to the installation command.
-   To read the documentation for the latest stable release, see :doc:`v4:how-to/install/index`.
-
 Install the latest **released version** from the Python Package Index
 `PyPI <https://pypi.org/project/sphinxawesome-theme/>`_:
 

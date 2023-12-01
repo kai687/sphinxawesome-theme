@@ -30,7 +30,7 @@
 
    For more information, see [Add your theme](https://sphinxawesome.xyz/how-to/add/).
 
-1. Optional: add the bundled extension for more awesome features for code blocks:
+1. Recommended: add the bundled extension for more awesome code blocks:
 
    ```python
    # conf.py
@@ -47,9 +47,9 @@ With the Awesome Theme, you can build readable, functional, and beautiful docume
 - If you load the bundled `sphinxawesome_theme.highlighting`,
   you can use these additional options in your `code-block` directives:
 
-  - `emphasize-added`. Highlight lines that should be added to code
-  - `emphasize-removed`. Highlight lines that should be removed from the code
-  - `emphasize-text: TEXT`. Highlight _`TEXT`_ in the code block to emphasize placeholder text.
+  - `emphasize-added`. Highlight lines that should be added
+  - `emphasize-removed`. Highlight lines that should be removed
+  - `emphasize-text: TEXT`. Highlight _`TEXT`_ in the code block
 
 ### Better headerlinks
 
@@ -57,6 +57,5 @@ Clicking the link icon after headers or captions automatically copies the URL to
 
 ### DocSearch
 
-If you have an Algolia DocSearch account for your documentation,
-you can use DocSearch for a search-as-you-type experience with autocomplete.
-Algolia DocSearch is free for open source documentation projects.
+This theme supports the [`sphinx-docsearch`](https://sphinx-docsearch.readthedocs.io/en/latest/)
+to replace the built-in search with Algolia DocSearch.
