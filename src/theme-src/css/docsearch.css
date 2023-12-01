@@ -69,7 +69,7 @@
   }
 }
 
-.DocSearch-Hit[aria-selected='true'] {
+.DocSearch-Hit[aria-selected="true"] {
   & a {
     @apply bg-accent text-accent-foreground;
   }

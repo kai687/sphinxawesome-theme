@@ -40,10 +40,10 @@ pre {
   }
   & code {
     @apply whitespace-pre bg-transparent p-0;
-    & > [id^='line-'] {
+    & > [id^="line-"] {
       @apply block px-4;
     }
-    [id^='line-'] {
+    [id^="line-"] {
       &:has(mark),
       &:has(ins),
       &:has(del),
