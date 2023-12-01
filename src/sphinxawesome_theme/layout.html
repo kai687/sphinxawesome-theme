@@ -1,15 +1,3 @@
-{%- macro script() %}
-  {%- for js in script_files %}
-    {{ js_tag(js) }}
-  {%- endfor %}
-  <script src="{{ pathto(asset('_static/theme.js'), 1) }}" defer></script>
-
-  {%- if docsearch %}
-    <script src="{{ pathto(asset('_static/docsearch.js'), 1) }}" defer></script>
-    <script src="{{ pathto('_static/docsearch_config.js', 1) }}" defer></script>
-  {%- endif %}
-{%- endmacro -%}
-
 {%- set lang_attr = "en" if language == None else (language|replace('_','-')) -%}
 
 {%- if not embedded and docstitle -%}
@@ -24,6 +12,7 @@
 
 <!DOCTYPE html>
 <html lang="{{ lang_attr }}"
+      {% if sphinx_version_tuple >= (7, 2) %}data-content_root="{{ content_root }}"{% endif %}
       x-data="{ darkMode: localStorage.getItem('darkMode') || localStorage.setItem('darkMode', 'system'), activeSection: '' }"
       x-init="$watch('darkMode', val => localStorage.setItem('darkMode', val))"
       class="scroll-smooth"
@@ -42,9 +31,13 @@
     <meta name="twitter:title" content="{{ title|striptags|e if title else docstitle }}{{ titlesuffix }}" />
   {%- endblock htmltitle %}
 
-  {#- Extra CSS files for overriding stuff #}
+  {#- CSS files #}
   {%- for css in css_files %}
-    <link rel="stylesheet" href="{{ pathto(asset(css), 1) }}" />
+    {%- if css|attr("filename") %}
+      {{ css_tag(css) }}
+    {%- else -%}
+      <link rel="stylesheet" href="{{ pathto(css, 1)|e }}" />
+    {%- endif %}
   {%- endfor %}
 
   {%- if docsearch %}
@@ -88,10 +81,6 @@
       }
       if (!userPreference) {localStorage.setItem('darkMode', mode)}
     </script>
-
-    {% block scripts %}
-      {{ script() }}
-    {% endblock scripts %}
 
     {%- block extrahead %}{%- endblock extrahead %}
 </head>
@@ -142,5 +131,10 @@
       {%- include "footer.html" %}
     {%- endblock footer %}
   </div>
+  {% block scripts %}
+  {%- for js in script_files %}
+    {{ js_tag(js) }}
+  {%- endfor %}
+  {% endblock scripts %}
 </body>
 </html>

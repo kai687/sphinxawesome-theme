@@ -74,38 +74,9 @@ def check_deprecated(app: Sphinx, config: Config) -> None:  # noqa: C901
     if "html_awesome_docsearch" in raw:
         logger.warning(
             "`html_awesome_docsearch` is deprecated. "
-            "Use the bundled `sphinxawesome_theme.docsearch` extension instead."
+            "Use the `sphinx-docsearch` extension instead."
         )
         found_deprecated = True
-
-        if raw["html_awesome_docsearch"]:
-            app.setup_extension("sphinxawesome_theme.docsearch")
-
-    if "docsearch_config" in raw:
-        logger.warning(
-            "Using the `docsearch_config` dictionary is deprecated. "
-            "Load the bundled `sphinxawesome_theme.docsearch` extension and configure DocSearch with `docsearch_*` variables."
-        )
-        found_deprecated = True
-
-        # Only process the docsearch options if the user actually wants DocSearch
-        if (
-            "sphinxawesome_theme.docsearch" in app.extensions
-            and raw["docsearch_config"]
-            and raw["html_awesome_docsearch"]
-        ):
-            ds_conf = raw["docsearch_config"]
-            if "app_id" in ds_conf:
-                config.docsearch_app_id = ds_conf["app_id"]  # type: ignore[attr-defined]
-
-            if "api_key" in ds_conf:
-                config.docsearch_api_key = ds_conf["api_key"]  # type: ignore[attr-defined]
-
-            if "index_name" in ds_conf:
-                config.docsearch_index_name = ds_conf["index_name"]  # type: ignore[attr-defined]
-
-            if "container" in ds_conf:
-                config.docsearch_container = ds_conf["container"]  # type: ignore[attr-defined]
 
     if found_deprecated is False:
         logger.info(
@@ -119,10 +90,9 @@ def setup(app: Sphinx) -> dict[str, Any]:
         logger.warning(
             "Including `sphinxawesome_theme` in your `extensions` is deprecated. "
             'Setting `html_theme = "sphinxawesome_theme"` is enough. '
-            "You can load the optional `sphinxawesome_theme.docsearch` and `sphinxawesome_theme.highlighting` extensions."
+            "You can load the optional `sphinxawesome_theme.highlighting` extension."
         )
         app.setup_extension("sphinxawesome_theme.highlighting")
-        app.setup_extension("sphinxawesome_theme.docsearch")
 
     # If we don't register these options, Sphinx ignores them when evaluating the `conf.py` file.
     app.add_config_value(

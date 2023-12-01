@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "sphinxawesome-theme"
-version = "5.0.0-beta.5"
+version = "5.0.0-beta.6"
 description = "An awesome theme for the Sphinx documentation generator"
 readme = "README.md"
 authors = ["Kai Welke <kai687@pm.me>"]
@@ -22,13 +22,17 @@ packages = [
 
 [tool.poetry.dependencies]
 python = "^3.8"
-sphinx = ">4, <7"
+sphinx = [
+  { version = "<7.2", python = ">=3.8,<3.9"},
+  { version = "^7.2,<7.3", python = ">=3.9,<=3.12"},
+]
 beautifulsoup4 = "^4.9.1"
 
 [tool.poetry.group.docs.dependencies]
 sphinx-autobuild = "^2021.3.14"
 sphinx-sitemap = "^2.2.0"
 sphinx-design = ">=0.4.1,<0.6.0"
+sphinx-docsearch = "^0.0.4"
 python-dotenv = ">=0.19,<1.1"
 
 [tool.poetry.group.dev.dependencies]
@@ -81,7 +85,7 @@ warn_unreachable = true
 warn_unused_ignores = true
 
 [[tool.mypy.overrides]]
-module = ["pygments.*", "dotenv", "sphinxcontrib.serializinghtml", "nox_poetry", "bs4"]
+module = ["pygments.*", "dotenv", "sphinxcontrib.serializinghtml", "bs4"]
 ignore_missing_imports = true
 
 [tool.poetry.plugins."sphinx.html_themes"]

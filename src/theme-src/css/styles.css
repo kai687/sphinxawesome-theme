@@ -1,16 +1,16 @@
 /* This is the main source file for the Sphinx Awesome Theme */
 
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'content.css';
-@import 'admonitions.css';
-@import 'code.css';
-@import 'headerlinks.css';
-@import 'sidebar.css';
-@import 'toc.css';
-@import 'search.css';
-@import 'tooltips.css';
-@import 'tailwindcss/utilities';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "content.css";
+@import "admonitions.css";
+@import "code.css";
+@import "headerlinks.css";
+@import "sidebar.css";
+@import "toc.css";
+@import "search.css";
+@import "tooltips.css";
+@import "tailwindcss/utilities";
 
 @layer base {
   :root {

@@ -22,7 +22,7 @@
 }
 
 .DocSearch-Button {
-  @apply flex w-[90%] rounded-[0.5em] border border-solid border-input text-sm ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground hover:shadow-none focus:bg-accent focus:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+  @apply flex w-[90%] rounded-[0.5em] border border-solid border-input bg-transparent text-sm ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground hover:shadow-none focus:bg-accent focus:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
 }
 
 .DocSearch-Button-Placeholder {
@@ -69,7 +69,7 @@
   }
 }
 
-.DocSearch-Hit[aria-selected='true'] {
+.DocSearch-Hit[aria-selected="true"] {
   & a {
     @apply bg-accent text-accent-foreground;
   }

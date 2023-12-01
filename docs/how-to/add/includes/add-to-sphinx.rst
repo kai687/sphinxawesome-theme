@@ -21,7 +21,6 @@ Add the theme to your Sphinx configuration
 
       extensions += [
          "sphinxawesome.highlighting",
-         "sphinxawesome.docsearch",
          # To help you with the upgrade to version 5:
          # "sphinxawesome.deprecated",
       ]

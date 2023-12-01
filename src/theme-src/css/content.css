@@ -139,7 +139,7 @@ table {
     @apply my-6 ml-8;
   }
   & .footnote-reference,
-  & [role='doc-backlink'] {
+  & [role="doc-backlink"] {
     @apply !no-underline;
   }
 }

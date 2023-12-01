@@ -1,3 +1,10 @@
+## 5.0.0-beta.6 (2023-12-XX)
+
+### Refactor
+
+- Make compatible with Sphinx 7
+- Remove DocSearch-specific parts (outsource to `sphinx-docsearch` extension)
+
 ## 5.0.0-beta.2 (2023-05-23)
 
 ### Feat
@@ -29,7 +36,7 @@
 - sphinx-design support (#1290)
 - remove html_collapsible_definitions (#1288)
 - add feedback widget (#1272)
-- extrahead  (#1267)
+- extrahead (#1267)
 - docsearch improvements (#1264)
 
 ### Fix
@@ -696,8 +703,8 @@
 
 - **caption**: fix caption in toctree
 - **copyright**: margins on small devices
-- **__init__**: added return statement to setup
-- **__init__**: added return statement to setup
+- \***\*init\*\***: added return statement to setup
+- \***\*init\*\***: added return statement to setup
 - added metadata to index page
 - removed dependency on semibold (#14)
 - **search**: fix placeholder text
@@ -713,7 +720,7 @@
 - removed test directory from git
 - **nav**: toc caption further tweaks
 - **copyright**: margins on small devices
-- **__init__**: added return statement to setup
+- \***\*init\*\***: added return statement to setup
 - added metadata to index page
 
 ## 1.1.0 (2020-05-23)

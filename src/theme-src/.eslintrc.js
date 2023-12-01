@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['eslint:recommended', 'prettier', 'plugin:tailwindcss/recommended'],
+  extends: ['eslint:recommended', 'prettier'],
   plugins: ['tailwindcss'],
   env: {
     browser: true,

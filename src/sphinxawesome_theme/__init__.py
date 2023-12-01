@@ -146,7 +146,6 @@ def deprecated_options(app: Sphinx) -> None:
         )
 
         extra_links = theme_options["extra_header_links"]
-        print("EXTRA: ", extra_links)
         # Either we have `extra_header_links = { "label": "url" }
         main_nav_links = {
             key: value for key, value in extra_links.items() if isinstance(value, str)
@@ -167,10 +166,15 @@ def setup(app: Sphinx) -> dict[str, Any]:
     here = Path(__file__).parent.resolve()
 
     app.add_html_theme(name="sphinxawesome_theme", theme_path=str(here))
+    app.add_js_file("theme.js", loading_method="defer")
 
     # Add the CSS overrides if we're using the `sphinx-design` extension
     if "sphinx_design" in app.config.extensions:
         app.add_css_file("awesome-sphinx-design.css", priority=900)
+
+    if "sphinx_docsearch" in app.config.extensions:
+        app.add_css_file("awesome-docsearch.css", priority=900)
+        app.config.html_context.update({"docsearch": True})
 
     # The theme is set up _after_ extensions are set up,
     # so I can't use internal extensions.

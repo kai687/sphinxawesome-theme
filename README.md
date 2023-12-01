@@ -30,12 +30,12 @@
 
    For more information, see [Add your theme](https://sphinxawesome.xyz/how-to/add/).
 
-1. Optional: add bundled extensions for more awesome features:
+1. Optional: add the bundled extension for more awesome features for code blocks:
 
-     ```python
-     # conf.py
-     extensions += ["sphinxawesome_theme.docsearch", "sphinxawesome.highlighting"]
-     ```
+   ```python
+   # conf.py
+   extensions += ["sphinxawesome.highlighting"]
+   ```
 
 ## Features
 
@@ -45,7 +45,7 @@ With the Awesome Theme, you can build readable, functional, and beautiful docume
 
 - Code block have a **Copy** button for copying the code.
 - If you load the bundled `sphinxawesome_theme.highlighting`,
-  you can use these additional options in your ``code-block`` directives:
+  you can use these additional options in your `code-block` directives:
 
   - `emphasize-added`. Highlight lines that should be added to code
   - `emphasize-removed`. Highlight lines that should be removed from the code
