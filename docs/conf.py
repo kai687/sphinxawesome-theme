@@ -1,6 +1,7 @@
 """Sphinx configuration file."""
 from __future__ import annotations
 
+import os
 from dataclasses import asdict
 
 from dotenv import load_dotenv
@@ -26,6 +27,7 @@ extensions = [
     "sphinx.ext.viewcode",
     "sphinx_sitemap",
     "sphinx_design",
+    "sphinx_docsearch",
     "sphinxawesome_theme.highlighting",
 ]
 
@@ -93,14 +95,14 @@ html_static_path = ["_static"]
 html_css_files = ["feedback.css"]
 html_js_files = [("feedback.js", {"defer": "defer"})]
 
-# DocSearch (sphinxawesome_theme extension)
-# docsearch = DocSearchConfig(
-#     docsearch_api_key=os.getenv("DOCSEARCH_API_KEY", ""),
-#     docsearch_app_id=os.getenv("DOCSEARCH_APP_ID", ""),
-#     docsearch_index_name=os.getenv("DOCSEARCH_INDEX_NAME", ""),
-#     docsearch_placeholder="Search these docs",
-#     docsearch_missing_results_url="https://github.com/kai687/sphinxawesome-theme/issues/new?title=${query}",
-# )
+# DocSearch
+docsearch_app_id = os.getenv("DOCSEARCH_APP_ID", "")
+docsearch_api_key = os.getenv("DOCSEARCH_API_KEY", "")
+docsearch_index_name = os.getenv("DOCSEARCH_INDEX_NAME", "")
+docsearch_placeholder = "Search these docs"
+docsearch_missing_results_url = (
+    "https://github.com/kai687/sphinxawesome-theme/issues/new?title=${query}"
+)
 
 theme_options = ThemeOptions(
     show_prev_next=True,

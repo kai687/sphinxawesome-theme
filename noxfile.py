@@ -74,7 +74,7 @@ def docs(session: nox.Session, live: bool = False, verbose: bool = False) -> Non
         verbose: If ``True``, run sphinx in verbose mode (``-vvv``).
     """
     args = ["-b", "dirhtml", "-aWTE", "docs", "docs/public"]
-    deps = ["sphinx", "bs4", "sphinx-sitemap", "sphinx-design"]
+    deps = ["sphinx", "bs4", "sphinx-sitemap", "sphinx-design", "sphinx-docsearch"]
     sphinx_build = "sphinx-build"
 
     if "--live" in session.posargs:
@@ -111,7 +111,7 @@ def live_docs(session: nox.Session) -> None:
 def linkcheck(session: nox.Session) -> None:
     """Check links."""
     args = session.posargs or ["-b", "linkcheck", "-aWTE", "docs", "docs/public/_links"]
-    deps = ["sphinx", "bs4", "sphinx-sitemap", "sphinx-design"]
+    deps = ["sphinx", "bs4", "sphinx-sitemap", "sphinx-design", "sphinx-docsearch"]
     session.install("docs", ".", *deps)
     session.run("sphinx-build", *args)
 
@@ -120,7 +120,7 @@ def linkcheck(session: nox.Session) -> None:
 def xml(session: nox.Session) -> None:
     """Build XML version of the docs."""
     args = ["-b", "xml", "-aWTE", "docs", "docs/public/xml"]
-    deps = ["sphinx", "bs4", "sphinx-sitemap", "sphinx-design"]
+    deps = ["sphinx", "bs4", "sphinx-sitemap", "sphinx-design", "sphinx-docsearch"]
     session.install("docs", ".", *deps)
     session.run("sphinx-build", *args)
 
