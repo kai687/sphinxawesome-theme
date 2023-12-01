@@ -14,7 +14,7 @@ Add the theme to your Sphinx configuration
 
       :confval:`sphinx:html_theme`
 
-#. Optional: add the bundled extensions.
+#. Recommended: add the bundled extension for better code blocks.
 
    .. code-block:: python
       :caption: |conf|

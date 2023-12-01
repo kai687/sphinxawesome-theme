@@ -2,6 +2,8 @@
    :description: Customize your styles by adding CSS files or adding styles inline.
    :twitter:description: Customize your styles by adding CSS files or adding styles inline.
 
+.. _sec:custom-css:
+
 Add custom CSS
 ==============
 

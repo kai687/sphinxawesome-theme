@@ -3,7 +3,7 @@
 Bundled extensions
 ------------------
 
-The |product| bundles one Sphinx extensions that let you enhance your documentation.
+The |product| bundles one Sphinx extension for better code blocks.
 
 ``sphinxawesome_theme.highlighting``
    Adds the following highlighting options to Sphinx's ``code-block`` directive:
@@ -12,14 +12,12 @@ The |product| bundles one Sphinx extensions that let you enhance your documentat
    - :samp:`:emphasize-removed: {LINES}`: highlight lines to be removed.
    - :samp:`:emphasize-text: {TEXT}`: highlight a placeholder word or phrase.
 
+   .. note::
+
+      If you don't add this extension, the spacing in code blocks might appear off.
+      You can :ref:`sec:custom-css` with extra padding to ``pre`` elements.
+
 .. seealso::
 
    :doc:`/demo/code-blocks`,
    :confval:`sphinx:extensions`
-
-.. note::
-
-   In version 5, many configuration options changed.
-   To help you with finding and upgrading deprecated options,
-   add the ``sphinxawesome.deprecated`` extension.
-   For more information, see :ref:`sec:upgrade-to-5.0`

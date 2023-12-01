@@ -36,8 +36,6 @@ You can still configure the theme using a regular dictionary:
       }
    }
 
-
-
 .. autoclass:: ThemeOptions()
    :members:
    :exclude-members: extra_header_links, nav_include_hidden, show_nav
