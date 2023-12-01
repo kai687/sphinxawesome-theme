@@ -12,6 +12,7 @@
 
 <!DOCTYPE html>
 <html lang="{{ lang_attr }}"
+      {% if sphinx_version_tuple >= (7, 2) %}data-content_root="{{ content_root }}"{% endif %}
       x-data="{ darkMode: localStorage.getItem('darkMode') || localStorage.setItem('darkMode', 'system'), activeSection: '' }"
       x-init="$watch('darkMode', val => localStorage.setItem('darkMode', val))"
       class="scroll-smooth"

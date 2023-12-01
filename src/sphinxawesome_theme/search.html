@@ -12,7 +12,7 @@
     {%- if pagename != master_doc and theme_show_breadcrumbs|tobool %}
       {%- include "breadcrumbs.html" %}
     {%- endif %}
-    <div id="content">
+    <div id="content" role="main">
       <div id="fallback" class="my-8 text-sm text-red-700">
         <script>document.querySelector("#fallback").style.display = "none"</script>
         {%- trans %}Please activate Javascript to enable searching the documentation.{% endtrans -%}
