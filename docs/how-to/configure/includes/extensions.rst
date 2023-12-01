@@ -3,13 +3,7 @@
 Bundled extensions
 ------------------
 
-The |product| bundles two Sphinx extensions that let you enhance your documentation.
-They're independent from each other, so you can load them separately or together.
-
-``sphinxawesome_theme.docsearch``
-   Replaces the built-in search with Algolia DocSearch
-   for showing instant search results as you type.
-   For more information, see :ref:`sec:docsearch`.
+The |product| bundles one Sphinx extensions that let you enhance your documentation.
 
 ``sphinxawesome_theme.highlighting``
    Adds the following highlighting options to Sphinx's ``code-block`` directive:
