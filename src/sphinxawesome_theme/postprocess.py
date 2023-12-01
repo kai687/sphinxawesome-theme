@@ -112,7 +112,7 @@ def _scrollspy(tree: BeautifulSoup) -> None:
     """Add an active class to current TOC links in the right sidebar."""
     for link in tree("a", class_="headerlink"):
         if link.parent.name in ["h2", "h3"] or (
-            link.parent.name == "dt" and "sig" in link.parent["class"]
+            link.parent.name == "dt" and "sig" in link.parent.get("class", "")
         ):
             active_link = link["href"]
             link[
