@@ -19,11 +19,10 @@ def test_handles_deprecated_extension(app: Sphinx, warning: StringIO) -> None:
     app.build()
 
     assert (
-        'Including `sphinxawesome_theme` in your `extensions` is deprecated. Setting `html_theme = "sphinxawesome_theme"` is enough. You can load the optional `sphinxawesome_theme.docsearch` and `sphinxawesome_theme.highlighting` extensions.'
+        'Including `sphinxawesome_theme` in your `extensions` is deprecated. Setting `html_theme = "sphinxawesome_theme"` is enough. You can load the optional `sphinxawesome_theme.highlighting` extension.'
         in warning.getvalue()
     )
     assert "sphinxawesome_theme.highlighting" in app.extensions
-    assert "sphinxawesome_theme.docsearch" in app.extensions
 
 
 @pytest.mark.sphinx(
@@ -108,55 +107,9 @@ def test_handles_deprecated_docsearch(app: Sphinx, warning: StringIO) -> None:
     app.build()
 
     assert (
-        "`html_awesome_docsearch` is deprecated. Use the bundled `sphinxawesome_theme.docsearch` extension instead."
+        "`html_awesome_docsearch` is deprecated. Use the `sphinx-docsearch` extension instead."
         in warning.getvalue()
     )
-    assert "sphinxawesome_theme.docsearch" in app.extensions
-
-
-@pytest.mark.sphinx(
-    "html",
-    confoverrides={
-        "html_theme": "sphinxawesome_theme",
-        "extensions": ["sphinxawesome_theme.deprecated"],
-        "docsearch_config": {},
-    },
-)
-def test_handles_deprecated_docsearch_config(app: Sphinx, warning: StringIO) -> None:
-    """It handles the deprecated `docsearch_config` dictionary."""
-    app.build()
-
-    assert (
-        "Using the `docsearch_config` dictionary is deprecated. Load the bundled `sphinxawesome_theme.docsearch` extension and configure DocSearch with `docsearch_*` variables."
-        in warning.getvalue()
-    )
-    assert "sphinxawesome_theme.docsearch" not in app.extensions
-    assert "docsearch_app_id" not in app.config
-
-
-@pytest.mark.sphinx(
-    "html",
-    confoverrides={
-        "html_theme": "sphinxawesome_theme",
-        "extensions": ["sphinxawesome_theme.deprecated"],
-        "html_awesome_docsearch": True,
-        "docsearch_config": {
-            "app_id": "test",
-            "api_key": "test",
-            "index_name": "test",
-            "container": "test",
-        },
-    },
-)
-def test_handles_migrating_docsearch_config(app: Sphinx) -> None:
-    """It handles migrating the deprecated `docsearch_config` dictionary."""
-    app.build()
-
-    assert "sphinxawesome_theme.docsearch" in app.extensions
-    assert app.config.docsearch_app_id == "test"
-    assert app.config.docsearch_api_key == "test"
-    assert app.config.docsearch_index_name == "test"
-    assert app.config.docsearch_container == "test"
 
 
 @pytest.mark.sphinx(

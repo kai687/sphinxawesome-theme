@@ -2,7 +2,6 @@
 
 import os
 import re
-from io import StringIO
 from pathlib import Path
 
 import pytest
@@ -46,7 +45,7 @@ def test_awesome_sphinx_design(app: Sphinx) -> None:
     app.build()
     assert os.path.exists(Path(app.outdir) / "index.html")
     tree = parse_html(Path(app.outdir) / "index.html")
-    pattern = re.compile(r"awesome-sphinx-design\.[0-9a-z]+\.(css|js)")
+    pattern = re.compile(r"awesome-sphinx-design.(css|js)")
 
     # It adds the `awesome-sphinx-design.css` file
     css = tree.select('link[rel="stylesheet"]')

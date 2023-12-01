@@ -157,7 +157,7 @@ def fmt(session: nox.Session) -> None:
     session.run("black", ".")
 
 
-@nox.session(python=["3.8", "3.11"])
+@nox.session(python=["3.8", "3.12"])
 def mypy(session: nox.Session) -> None:
     """Type-check python files with mypy.
 
