@@ -1,6 +1,6 @@
 {
   "name": "sphinxawesome-theme",
-  "version": "5.0.0-rc.1",
+  "version": "5.0.0",
   "scripts": {
     "build": "NODE_ENV=production webpack",
     "dev": "NODE_ENV=development webpack --watch --progress",
@@ -30,11 +30,11 @@
     "css-loader": "^6.8.1",
     "cssnano": "^6.0.1",
     "cssnano-preset-advanced": "^6.0.1",
-    "eslint": "^8.54.0",
-    "eslint-config-prettier": "^9.0.0",
+    "eslint": "^8.55.0",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-webpack-plugin": "^4.0.1",
     "mini-css-extract-plugin": "^2.7.6",
-    "postcss": "^8.4.31",
+    "postcss": "^8.4.32",
     "postcss-import": "^15.1.0",
     "postcss-loader": "^7.3.3",
     "postcss-preset-env": "^9.3.0",
