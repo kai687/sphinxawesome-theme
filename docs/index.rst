@@ -45,7 +45,6 @@ Upgrade
 -------
 
 If you want to upgrade to version |current| of the theme, see :ref:`sec:upgrade-to-5.0`.
-If you don't want to upgrade, you can read the `documentation for version 4 <https://v4--sphinxawesome-theme.netlify.app/>`_.
 
 Explore
 -------

@@ -26,7 +26,7 @@
 }
 
 code {
-  @apply relative whitespace-nowrap rounded bg-muted px-[0.3em] py-[0.2em] font-mono text-[0.875em];
+  @apply relative whitespace-nowrap rounded bg-muted px-[0.3em] py-[0.2em] font-mono text-sm;
   & em,
   & .ge {
     @apply font-bold tracking-wide text-accent-foreground;
