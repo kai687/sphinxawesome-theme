@@ -91,7 +91,7 @@ pre {
 }
 
 .sig {
-  @apply scroll-m-20 font-mono font-bold;
+  @apply scroll-m-20 border-t border-border pt-6 font-mono font-bold;
 }
 
 .sig-name {
