@@ -1,1 +1,1 @@
-pip install sphinxawesome-theme --pre
+pip install sphinxawesome-theme
