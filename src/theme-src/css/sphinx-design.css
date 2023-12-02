@@ -44,6 +44,7 @@
   @apply font-medium tracking-wider;
 }
 
+details.sd-dropdown:not([open]) > .sd-card-header,
 details.sd-dropdown {
   @apply border-border;
 }

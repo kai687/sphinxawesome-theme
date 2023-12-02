@@ -56,17 +56,10 @@ You can remove them from your Sphinx configuration:
    such as captions or comments at the top of a code block.
    For code samples in multiple languages, you can use the ``sphinx-design`` extension with its ``tab-set-code`` directive.
 
-**DocSearch** is now an optional extension.
-This creates a better separation between the *theme* and additional features.
-The DocSearch-related options are deprecated.
+**DocSearch** is now an external extension, available as `sphinx-docsearch <https://sphinx-docsearch.readthedocs.io/en/latest/>`_.
 
 ``html_awesome_docsearch``
    Load the bundled ``sphinxawesome_theme.docsearch`` extension instead.
-
-``docsearch_config``
-   Instead of using keys in a single dictionary,
-   use top-level configuration options instead.
-   For more information, see :ref:`sec:docsearch`.
 
 These options are now keys in the ``html_theme_options`` dictionary
 instead of top-level configuration options:
