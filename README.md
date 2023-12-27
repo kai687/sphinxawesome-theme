@@ -34,7 +34,7 @@
 
    ```python
    # conf.py
-   extensions += ["sphinxawesome.highlighting"]
+   extensions += ["sphinxawesome_theme.highlighting"]
    ```
 
 ## Features
