@@ -88,7 +88,7 @@
 
   {#- A blurry background screen for the mobile sidebar -#}
   {%- if sidebars|length > 0 %}
-    <div x-cloak x-show="showSidebar" class="fixed inset-0 z-50 overflow-hidden bg-background/80 backdrop-blur-sm" @click.self="showSidebar = false"></div>
+    <div x-cloak x-show="showSidebar" class="fixed inset-0 z-50 overflow-hidden bg-background/80 backdrop-blur-sm md:hidden" @click.self="showSidebar = false"></div>
   {%- endif %}
 
   {#- The main page wrapper -#}
