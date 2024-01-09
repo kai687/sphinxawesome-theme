@@ -53,7 +53,6 @@ rst_prolog = "\n".join(substitutions)
 
 intersphinx_mapping = {
     "sphinx": ("https://www.sphinx-doc.org/en/master/", None),
-    "v4": ("https://v4--sphinxawesome-theme.netlify.app/", None),
 }
 
 extlinks = {
