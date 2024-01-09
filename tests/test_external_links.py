@@ -11,6 +11,7 @@ from .util import parse_html
 @pytest.mark.sphinx(
     "html",
     testroot="external",
+    freshenv=True,
     confoverrides={
         "html_theme": "sphinxawesome_theme",
     },
@@ -29,6 +30,7 @@ def test_no_external_link_icons(app: Sphinx) -> None:
 @pytest.mark.sphinx(
     "html",
     testroot="external",
+    freshenv=True,
     confoverrides={
         "html_theme": "sphinxawesome_theme",
         "html_theme_options": {
