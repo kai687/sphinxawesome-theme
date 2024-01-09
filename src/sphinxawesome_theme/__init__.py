@@ -185,6 +185,7 @@ def setup(app: Sphinx) -> dict[str, Any]:
     app.connect("html-page-context", jinja_functions.setup_jinja)
     app.connect("html-page-context", toc.change_toc)
     app.connect("build-finished", logos.copy_logos)
+    app.connect("env-before-read-docs", postprocess.changed_docs)
     app.connect("build-finished", postprocess.post_process_html)
 
     JSONHTMLBuilder.out_suffix = ".json"

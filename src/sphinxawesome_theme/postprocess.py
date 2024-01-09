@@ -21,11 +21,12 @@ from __future__ import annotations
 
 import os
 import pathlib
-import re
 from dataclasses import dataclass
 
 from bs4 import BeautifulSoup, Comment
 from sphinx.application import Sphinx
+from sphinx.environment import BuildEnvironment
+from sphinx.util.display import status_iterator
 
 from . import logos
 
@@ -42,7 +43,15 @@ class Icons:
     permalinks_icon: str = '<svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>'
 
 
-def _get_html_files(outdir: pathlib.Path | str) -> list[str]:
+def changed_docs(app: Sphinx, env: BuildEnvironment, docnames: list[str]) -> None:
+    """Add a list of changed docs to the environment.
+
+    This is useful to make sure postprocessing only runs on changed files.
+    """
+    app.env.awesome_changed_docs = docnames  # type: ignore[attr-defined]
+
+
+def get_html_files(outdir: pathlib.Path | str) -> list[str]:
     """Get a list of HTML files."""
     html_list = []
     for root, _, files in os.walk(outdir):
@@ -52,7 +61,7 @@ def _get_html_files(outdir: pathlib.Path | str) -> list[str]:
     return html_list
 
 
-def _collapsible_nav(tree: BeautifulSoup) -> None:
+def collapsible_nav(tree: BeautifulSoup) -> None:
     """Make navigation links with children collapsible."""
     for link in tree.select("#left-sidebar a"):
         # Check if the link has "children"
@@ -84,7 +93,7 @@ def _collapsible_nav(tree: BeautifulSoup) -> None:
             link.append(button)
 
 
-def _remove_empty_toctree(tree: BeautifulSoup) -> None:
+def remove_empty_toctree(tree: BeautifulSoup) -> None:
     """Remove empty toctree divs.
 
     If you include a `toctree` with the `hidden` option,
@@ -97,7 +106,7 @@ def _remove_empty_toctree(tree: BeautifulSoup) -> None:
             div.extract()
 
 
-def _headerlinks(tree: BeautifulSoup) -> None:
+def headerlinks(tree: BeautifulSoup) -> None:
     """Make headerlinks copy their URL on click."""
     for link in tree("a", class_="headerlink"):
         link[
@@ -108,7 +117,7 @@ def _headerlinks(tree: BeautifulSoup) -> None:
         link["data-tooltip"] = "Copy link to this element"
 
 
-def _scrollspy(tree: BeautifulSoup) -> None:
+def scrollspy(tree: BeautifulSoup) -> None:
     """Add an active class to current TOC links in the right sidebar."""
     for link in tree("a", class_="headerlink"):
         if link.parent.name in ["h2", "h3"] or (
@@ -124,7 +133,7 @@ def _scrollspy(tree: BeautifulSoup) -> None:
         link[":data-current"] = f"activeSection === '{active_link}'"
 
 
-def _external_links(tree: BeautifulSoup) -> None:
+def external_links(tree: BeautifulSoup) -> None:
     """Add `rel="nofollow noopener"` to external links.
 
     The alternative was to copy `visit_reference` in the HTMLTranslator
@@ -136,46 +145,14 @@ def _external_links(tree: BeautifulSoup) -> None:
         link.append(BeautifulSoup(Icons.external_link, "html.parser").svg)
 
 
-def _strip_comments(tree: BeautifulSoup) -> None:
+def strip_comments(tree: BeautifulSoup) -> None:
     """Remove HTML comments from documents."""
     comments = tree.find_all(string=lambda text: isinstance(text, Comment))
     for c in comments:
         c.extract()
 
 
-def _code_headers(tree: BeautifulSoup) -> None:
-    """Add the programming language to a code block."""
-    # Find all "<div class="highlight-<LANG> notranslate>" blocks
-    pattern = re.compile("highlight-(.*) ")
-    for code_block in tree.find_all("div", class_=pattern):
-        hl_lang = None
-        # Get the highlight language
-        classes_string = " ".join(code_block.get("class", []))
-        match = pattern.search(classes_string)
-        if match:
-            hl_lang = match.group(1).replace("default", "python")
-
-        parent = code_block.parent
-
-        # Deal with code blocks with captions
-        if "literal-block-wrapper" in parent.get("class", []):
-            caption = parent.select(".code-block-caption")[0]
-            if caption:
-                span = tree.new_tag("span", attrs={"class": "code-lang"})
-                span.append(tree.new_string(hl_lang))
-                caption.insert(0, span)
-        else:
-            # Code block without captions, we need to wrap them first
-            wrapper = tree.new_tag("div", attrs={"class": "literal-block-wrapper"})
-            caption = tree.new_tag("div", attrs={"class": "code-block-caption"})
-            span = tree.new_tag("span", attrs={"class": "code-lang"})
-            span.append(tree.new_string(hl_lang))
-            caption.append(span)
-            code_block.wrap(wrapper)
-            wrapper.insert(0, caption)
-
-
-def _modify_html(html_filename: str, app: Sphinx) -> None:
+def modify_html(html_filename: str, app: Sphinx) -> None:
     """Modify a single HTML document.
 
     1. The HTML document is parsed into a BeautifulSoup tree.
@@ -188,32 +165,45 @@ def _modify_html(html_filename: str, app: Sphinx) -> None:
 
     theme_options = logos.get_theme_options(app)
 
-    _collapsible_nav(tree)
+    collapsible_nav(tree)
     if theme_options.get("awesome_external_links"):
-        _external_links(tree)
-    _remove_empty_toctree(tree)
-    _scrollspy(tree)
+        external_links(tree)
+    remove_empty_toctree(tree)
+    scrollspy(tree)
     if theme_options.get("awesome_headerlinks"):
-        _headerlinks(tree)
-    # _code_headers(tree)
-    _strip_comments(tree)
+        headerlinks(tree)
+    strip_comments(tree)
 
     with open(html_filename, "w", encoding="utf-8") as out_file:
         out_file.write(str(tree))
 
 
 def post_process_html(app: Sphinx, exc: Exception | None) -> None:
-    """Perform modifications on the HTML after building.
+    """Modify the HTML after building.
 
-    This is an extra function, that gets a list from all HTML
-    files in the output directory, then runs the ``_modify_html``
-    function on each of them.
+    Make some changes that are easier to do in the final HTML rather than
+    the tree of nodes.
+    This function requires, that the list of files to postprocess is in the
+    environment as ``app.env.awesome_changed_docs``.
     """
+    if exc is not None:
+        return
+
     if app.builder is not None and app.builder.name not in ["html", "dirhtml"]:
         return
 
-    if exc is None:
-        html_files = _get_html_files(app.outdir)
+    files_to_postprocess = [
+        app.builder.get_outfilename(doc) for doc in app.env.awesome_changed_docs  # type: ignore[attr-defined]
+    ]
 
-        for doc in html_files:
-            _modify_html(doc, app)
+    if len(files_to_postprocess) == 0:
+        return
+
+    for doc in status_iterator(
+        files_to_postprocess,
+        "postprocess html... ",
+        "brown",
+        len(files_to_postprocess),
+        app.verbosity,
+    ):
+        modify_html(doc, app)
