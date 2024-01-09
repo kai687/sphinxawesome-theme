@@ -1,7 +1,6 @@
 """Run commands for this repository."""
 from __future__ import annotations
 
-import shutil
 import tempfile
 
 import nox
@@ -135,9 +134,18 @@ def export(session: nox.Session) -> None:
 
     On GitHub actions, we use the same file, although it runs on Python 3.11.
     """
-    with tempfile.NamedTemporaryFile() as requirements:
-        session.export("netlify", requirements.name)  # type: ignore[attr-defined]
-        shutil.copy(requirements.name, "requirements.txt")
+    session.export("netlify", "requirements.txt")  # type: ignore[attr-defined]
+
+    session.run(
+        "poetry",
+        "export",
+        "--without-hashes",
+        "--with",
+        "docs",
+        "--output",
+        "docs/readthedocs.txt",
+        external=True,
+    )
 
 
 @nox.session(python=python_versions)
