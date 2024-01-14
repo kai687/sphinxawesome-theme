@@ -41,8 +41,8 @@ devDependencies:
     specifier: ^12.0.1
     version: 12.0.1(webpack@5.89.0)
   css-loader:
-    specifier: ^6.8.1
-    version: 6.8.1(webpack@5.89.0)
+    specifier: ^6.9.0
+    version: 6.9.0(webpack@5.89.0)
   cssnano:
     specifier: ^6.0.3
     version: 6.0.3(postcss@8.4.33)
@@ -2585,8 +2585,8 @@ packages:
       postcss-value-parser: 4.2.0
     dev: true
 
-  /css-loader@6.8.1(webpack@5.89.0):
-    resolution: {integrity: sha512-xDAXtEVGlD0gJ07iclwWVkLoZOpEvAWaSyf6W18S2pOC//K8+qUDIx8IIT3D+HjnmkJPQeesOPv5aiUaJsCM2g==}
+  /css-loader@6.9.0(webpack@5.89.0):
+    resolution: {integrity: sha512-3I5Nu4ytWlHvOP6zItjiHlefBNtrH+oehq8tnQa2kO305qpVyx9XNIT1CXIj5bgCJs7qICBCkgCYxQLKPANoLA==}
     engines: {node: '>= 12.13.0'}
     peerDependencies:
       webpack: ^5.0.0
