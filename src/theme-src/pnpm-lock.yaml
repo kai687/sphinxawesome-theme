@@ -38,8 +38,8 @@ devDependencies:
     specifier: ^9.1.3
     version: 9.1.3(@babel/core@7.23.7)(webpack@5.89.0)
   copy-webpack-plugin:
-    specifier: ^12.0.1
-    version: 12.0.1(webpack@5.89.0)
+    specifier: ^12.0.2
+    version: 12.0.2(webpack@5.89.0)
   css-loader:
     specifier: ^6.9.0
     version: 6.9.0(webpack@5.89.0)
@@ -2487,8 +2487,8 @@ packages:
     resolution: {integrity: sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==}
     dev: true
 
-  /copy-webpack-plugin@12.0.1(webpack@5.89.0):
-    resolution: {integrity: sha512-dhMfjJMYKDmmbG6Yn2pRSs1g8FgeQRtbE/JM6VAM9Xouk3KO1UVrwlLHLXxaI5F+o9WgnRfhFZzY9eV34O2gZQ==}
+  /copy-webpack-plugin@12.0.2(webpack@5.89.0):
+    resolution: {integrity: sha512-SNwdBeHyII+rWvee/bTnAYyO8vfVdcSTud4EIb6jcZ8inLeWucJE0DnxXQBjlQ5zlteuuvooGQy3LIyGxhvlOA==}
     engines: {node: '>= 18.12.0'}
     peerDependencies:
       webpack: ^5.1.0
