@@ -14,7 +14,7 @@
   "author": "Kai Welke",
   "license": "MIT",
   "dependencies": {
-    "@alpinejs/intersect": "^3.13.3",
+    "@alpinejs/intersect": "^3.13.5",
     "alpinejs": "^3.13.3",
     "clipboard": "^2.0.11"
   },
