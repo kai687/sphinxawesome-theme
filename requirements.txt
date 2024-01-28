@@ -9,7 +9,7 @@ click==8.1.7 ; python_version == "3.8"
 colorama==0.4.6 ; python_version == "3.8" and (sys_platform == "win32" or os_name == "nt" or platform_system == "Windows")
 colorlog==6.8.0 ; python_version == "3.8"
 crashtest==0.4.1 ; python_version == "3.8"
-cryptography==41.0.7 ; sys_platform == "linux" and python_version == "3.8"
+cryptography==42.0.1 ; sys_platform == "linux" and python_version == "3.8"
 distlib==0.3.8 ; python_version == "3.8"
 dulwich==0.21.7 ; python_version == "3.8"
 fastjsonschema==2.19.1 ; python_version == "3.8"
