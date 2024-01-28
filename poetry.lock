@@ -1153,13 +1153,13 @@ files = [
 
 [[package]]
 name = "pipx"
-version = "1.4.1"
+version = "1.4.3"
 description = "Install and Run Python Applications in Isolated Environments"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "pipx-1.4.1-py3-none-any.whl", hash = "sha256:009e7abcafd265ea166e2abdf020042d5da08fe5d186b71464cdeeeca7cbfd70"},
-    {file = "pipx-1.4.1.tar.gz", hash = "sha256:ccb78fa8dc4ae91f1e8d7c6f04d47a29fa045d312cd37c2b0bcc74dd8353b675"},
+    {file = "pipx-1.4.3-py3-none-any.whl", hash = "sha256:aa25c7a7d455daed7597bb88c259389176680e2e7446fbdb6e6696cdd3a5090b"},
+    {file = "pipx-1.4.3.tar.gz", hash = "sha256:d214512bccc601b575de096ee84fde8797323717a20752c48f7a55cc1bf062fe"},
 ]
 
 [package.dependencies]
