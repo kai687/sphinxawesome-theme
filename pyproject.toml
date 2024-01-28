@@ -43,7 +43,7 @@ types-docutils = ">=0.19.1.6,<0.21.0.0"
 mypy = "^1.0"
 
 [tool.poetry.group.lint.dependencies]
-black = "^23.1"
+black = ">=23.1,<25.0"
 pre-commit = "^3.1.1"
 ruff = ">=0.0.269,<0.1.15"
 
