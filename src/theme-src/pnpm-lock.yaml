@@ -9,8 +9,8 @@ dependencies:
     specifier: ^3.13.5
     version: 3.13.5
   alpinejs:
-    specifier: ^3.13.3
-    version: 3.13.3
+    specifier: ^3.13.5
+    version: 3.13.5
   clipboard:
     specifier: ^2.0.11
     version: 2.0.11
@@ -2189,8 +2189,8 @@ packages:
       uri-js: 4.4.1
     dev: true
 
-  /alpinejs@3.13.3:
-    resolution: {integrity: sha512-WZ6WQjkAOl+WdW/jukzNHq9zHFDNKmkk/x6WF7WdyNDD6woinrfXCVsZXm0galjbco+pEpYmJLtwlZwcOfIVdg==}
+  /alpinejs@3.13.5:
+    resolution: {integrity: sha512-1d2XeNGN+Zn7j4mUAKXtAgdc4/rLeadyTMWeJGXF5DzwawPBxwTiBhFFm6w/Ei8eJxUZeyNWWSD9zknfdz1kEw==}
     dependencies:
       '@vue/reactivity': 3.1.5
     dev: false
