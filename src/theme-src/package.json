@@ -44,7 +44,7 @@
     "stylelint": "^16.2.1",
     "stylelint-config-prettier": "^9.0.5",
     "stylelint-prettier": "^5.0.0",
-    "stylelint-webpack-plugin": "^4.1.1",
+    "stylelint-webpack-plugin": "^5.0.0",
     "tailwindcss": "^3.4.1",
     "webpack": "^5.90.1",
     "webpack-cli": "^5.1.4",
