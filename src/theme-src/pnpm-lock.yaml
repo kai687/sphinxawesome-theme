@@ -83,17 +83,17 @@ devDependencies:
     specifier: ^0.5.11
     version: 0.5.11(prettier-plugin-organize-imports@3.2.4)(prettier@3.2.4)
   stylelint:
-    specifier: ^16.2.0
-    version: 16.2.0(typescript@5.3.3)
+    specifier: ^16.2.1
+    version: 16.2.1(typescript@5.3.3)
   stylelint-config-prettier:
     specifier: ^9.0.5
-    version: 9.0.5(stylelint@16.2.0)
+    version: 9.0.5(stylelint@16.2.1)
   stylelint-prettier:
     specifier: ^5.0.0
-    version: 5.0.0(prettier@3.2.4)(stylelint@16.2.0)
+    version: 5.0.0(prettier@3.2.4)(stylelint@16.2.1)
   stylelint-webpack-plugin:
     specifier: ^4.1.1
-    version: 4.1.1(stylelint@16.2.0)(webpack@5.90.1)
+    version: 4.1.1(stylelint@16.2.1)(webpack@5.90.1)
   tailwindcss:
     specifier: ^3.4.1
     version: 3.4.1
@@ -5104,17 +5104,17 @@ packages:
       postcss-selector-parser: 6.0.15
     dev: true
 
-  /stylelint-config-prettier@9.0.5(stylelint@16.2.0):
+  /stylelint-config-prettier@9.0.5(stylelint@16.2.1):
     resolution: {integrity: sha512-U44lELgLZhbAD/xy/vncZ2Pq8sh2TnpiPvo38Ifg9+zeioR+LAkHu0i6YORIOxFafZoVg0xqQwex6e6F25S5XA==}
     engines: {node: '>= 12'}
     hasBin: true
     peerDependencies:
       stylelint: '>= 11.x < 15'
     dependencies:
-      stylelint: 16.2.0(typescript@5.3.3)
+      stylelint: 16.2.1(typescript@5.3.3)
     dev: true
 
-  /stylelint-prettier@5.0.0(prettier@3.2.4)(stylelint@16.2.0):
+  /stylelint-prettier@5.0.0(prettier@3.2.4)(stylelint@16.2.1):
     resolution: {integrity: sha512-RHfSlRJIsaVg5Br94gZVdWlz/rBTyQzZflNE6dXvSxt/GthWMY3gEHsWZEBaVGg7GM+XrtVSp4RznFlB7i0oyw==}
     engines: {node: '>=18.12.0'}
     peerDependencies:
@@ -5123,10 +5123,10 @@ packages:
     dependencies:
       prettier: 3.2.4
       prettier-linter-helpers: 1.0.0
-      stylelint: 16.2.0(typescript@5.3.3)
+      stylelint: 16.2.1(typescript@5.3.3)
     dev: true
 
-  /stylelint-webpack-plugin@4.1.1(stylelint@16.2.0)(webpack@5.90.1):
+  /stylelint-webpack-plugin@4.1.1(stylelint@16.2.1)(webpack@5.90.1):
     resolution: {integrity: sha512-yOyd2AfrxfawxKDememazGVJX2vMq9o11E6HvBu4+SKvgK3ZulkjpYdI1muBTxItwoxH2UmfIZzQM+/M5V3kTQ==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
@@ -5138,12 +5138,12 @@ packages:
       micromatch: 4.0.5
       normalize-path: 3.0.0
       schema-utils: 4.2.0
-      stylelint: 16.2.0(typescript@5.3.3)
+      stylelint: 16.2.1(typescript@5.3.3)
       webpack: 5.90.1(webpack-cli@5.1.4)
     dev: true
 
-  /stylelint@16.2.0(typescript@5.3.3):
-    resolution: {integrity: sha512-gwqU5AkIb52wrAzzn+359S3NIJDMl02TXLUaV2tzA/L6jUdpTwNt+MCxHlc8+Hb2bUHlYVo92YeSIryF2gJthA==}
+  /stylelint@16.2.1(typescript@5.3.3):
+    resolution: {integrity: sha512-SfIMGFK+4n7XVAyv50CpVfcGYWG4v41y6xG7PqOgQSY8M/PgdK0SQbjWFblxjJZlN9jNq879mB4BCZHJRIJ1hA==}
     engines: {node: '>=18.12.0'}
     hasBin: true
     dependencies:
