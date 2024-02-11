@@ -59,8 +59,8 @@ devDependencies:
     specifier: ^4.0.1
     version: 4.0.1(eslint@8.56.0)(webpack@5.90.1)
   mini-css-extract-plugin:
-    specifier: ^2.7.7
-    version: 2.7.7(webpack@5.90.1)
+    specifier: ^2.8.0
+    version: 2.8.0(webpack@5.90.1)
   postcss:
     specifier: ^8.4.35
     version: 8.4.35
@@ -3671,13 +3671,14 @@ packages:
       mime-db: 1.52.0
     dev: true
 
-  /mini-css-extract-plugin@2.7.7(webpack@5.90.1):
-    resolution: {integrity: sha512-+0n11YGyRavUR3IlaOzJ0/4Il1avMvJ1VJfhWfCn24ITQXhRr1gghbhhrda6tgtNcpZaWKdSuwKq20Jb7fnlyw==}
+  /mini-css-extract-plugin@2.8.0(webpack@5.90.1):
+    resolution: {integrity: sha512-CxmUYPFcTgET1zImteG/LZOy/4T5rTojesQXkSNBiquhydn78tfbCE9sjIjnJ/UcjNjOC1bphTCCW5rrS7cXAg==}
     engines: {node: '>= 12.13.0'}
     peerDependencies:
       webpack: ^5.0.0
     dependencies:
       schema-utils: 4.2.0
+      tapable: 2.2.1
       webpack: 5.90.1(webpack-cli@5.1.4)
     dev: true
 
