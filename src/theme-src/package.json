@@ -36,7 +36,7 @@
     "mini-css-extract-plugin": "^2.8.0",
     "postcss": "^8.4.35",
     "postcss-import": "^16.0.0",
-    "postcss-loader": "^8.0.0",
+    "postcss-loader": "^8.1.0",
     "postcss-preset-env": "^9.3.0",
     "prettier": "^3.2.5",
     "prettier-plugin-organize-imports": "^3.2.4",
