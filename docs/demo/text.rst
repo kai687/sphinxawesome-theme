@@ -34,6 +34,11 @@ amet odio non turpis mattis laoreet finibus vitae nisi. Nam vehicula sapien vel 
 facilisis. Duis bibendum tortor sit amet sollicitudin gravida. Donec ut ante mattis,
 faucibus nulla cursus, dictum dolor.
 
+Code in a ``header`` is usually wrong
+-------------------------------------
+
+Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.
+
 Level 3 heading
 ~~~~~~~~~~~~~~~
 
