@@ -33,6 +33,10 @@ code {
   }
 }
 
+:where(h1, h2, h3, h4, h5, h6) code {
+  font-size: inherit;
+}
+
 pre {
   @apply mt-6 overflow-x-auto rounded-lg border border-border py-4 text-sm data-[theme=dark]:bg-background data-[theme=light]:bg-white;
   &.literal-block {

@@ -3,6 +3,7 @@
 :copyright: Kai Welke.
 :license: MIT
 """
+
 from __future__ import annotations
 
 from typing import Any
@@ -59,7 +60,7 @@ def change_toc(
     toc = TocTree(app.builder.env).get_toc_for(pagename, app.builder)
 
     # Remove `h1` node
-    for node in findall(toc, nodes.reference):
+    for node in findall(toc, nodes.reference):  # type: ignore
         if node["refuri"] == "#":
             # Remove the `list_item` wrapping the `reference` node.
             node.parent.parent.remove(node.parent)
@@ -69,7 +70,7 @@ def change_toc(
     doc.append(toc)
 
     # Replace outer bullet lists with inner bullet lists
-    for node in findall(doc, nodes.bullet_list):
+    for node in findall(doc, nodes.bullet_list):  # type: ignore
         if (
             len(node.children) == 1
             and isinstance(node.next_node(), nodes.list_item)

@@ -29,14 +29,17 @@ sphinx = [
 beautifulsoup4 = "^4.9.1"
 
 [tool.poetry.group.docs.dependencies]
-sphinx-autobuild = "^2021.3.14"
+sphinx-autobuild = [
+  { version = "^2021", python = ">=3.8,<3.9"},
+  { version = "^2024.2.4", python = ">=3.9,<=3.12"},
+]
 sphinx-sitemap = "^2.2.0"
 sphinx-design = ">=0.4.1,<0.6.0"
 sphinx-docsearch = "^0.0.4"
 python-dotenv = ">=0.19,<1.1"
 
 [tool.poetry.group.dev.dependencies]
-pytest = "^7.2"
+pytest = "^8"
 pytest-cov = "^4.0"
 coverage = { extras = ["toml"], version = "^7.2" }
 types-docutils = ">=0.19.1.6,<0.21.0.0"
@@ -44,7 +47,10 @@ mypy = "^1.0"
 
 [tool.poetry.group.lint.dependencies]
 black = ">=23.1,<25.0"
-pre-commit = "^3.1.1"
+pre-commit = [
+  { version = "^3.5", python = ">=3.8,<3.9"},
+  { version = "^3.6", python = ">=3.9,<=3.12"},
+]
 ruff = ">=0.0.269,<0.2.3"
 
 [tool.poetry.group.netlify.dependencies]
