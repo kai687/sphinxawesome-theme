@@ -194,7 +194,7 @@ def post_process_html(app: Sphinx, exc: Exception | None) -> None:
         return
 
     files_to_postprocess = [
-        app.builder.get_outfilename(doc)
+        app.builder.get_outfilename(doc)  # type: ignore[attr-defined]
         for doc in app.env.awesome_changed_docs  # type: ignore[attr-defined]
     ]
 
