@@ -17,6 +17,7 @@ They might not show up in the final CSS.
 :copyright: Copyright Kai Welke.
 :license: MIT, see LICENSE.
 """
+
 from __future__ import annotations
 
 import os
@@ -193,7 +194,8 @@ def post_process_html(app: Sphinx, exc: Exception | None) -> None:
         return
 
     files_to_postprocess = [
-        app.builder.get_outfilename(doc) for doc in app.env.awesome_changed_docs  # type: ignore[attr-defined]
+        app.builder.get_outfilename(doc)  # type: ignore[attr-defined]
+        for doc in app.env.awesome_changed_docs  # type: ignore[attr-defined]
     ]
 
     if len(files_to_postprocess) == 0:

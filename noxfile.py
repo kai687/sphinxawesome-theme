@@ -1,4 +1,5 @@
 """Run commands for this repository."""
+
 from __future__ import annotations
 
 import tempfile
@@ -159,10 +160,10 @@ def lint(session: nox.Session) -> None:
 @nox.session
 def fmt(session: nox.Session) -> None:
     """Format python files."""
-    deps = ["ruff", "black"]
+    deps = ["ruff"]
     session.install("lint", ".", *deps)
-    session.run("ruff", "check", ".", "--select", "I", "--fix")
-    session.run("black", ".")
+    session.run("ruff", "check", ".", "--fix")
+    session.run("ruff", "format", ".")
 
 
 @nox.session(python=["3.8", "3.12"])
