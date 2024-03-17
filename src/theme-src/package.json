@@ -21,7 +21,7 @@
   "devDependencies": {
     "@babel/core": "^7.24.0",
     "@babel/preset-env": "^7.24.0",
-    "@fontsource/jetbrains-mono": "^5.0.18",
+    "@fontsource/jetbrains-mono": "^5.0.19",
     "@tailwindcss/nesting": "0.0.0-insiders.565cd3e",
     "@tailwindcss/typography": "^0.5.10",
     "autoprefixer": "^10.4.18",
