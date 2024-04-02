@@ -18,6 +18,7 @@ To load this extension, add:
 :copyright: Kai Welke.
 :license: MIT, see LICENSE for details
 """
+
 from __future__ import annotations
 
 from typing import Any

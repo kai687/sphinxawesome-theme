@@ -154,7 +154,7 @@ def lint(session: nox.Session) -> None:
     """Lint python files."""
     deps = ["ruff"]
     session.install("lint", ".", *deps)
-    session.run("ruff", ".")
+    session.run("ruff", "check", ".")
 
 
 @nox.session

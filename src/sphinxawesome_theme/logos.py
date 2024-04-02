@@ -18,6 +18,7 @@ Provide a path relative to the Sphinx configuration directory (with the :file:`c
 :copyright: Copyright Kai Welke.
 :license: MIT, see LICENSE for details
 """
+
 from __future__ import annotations
 
 import os

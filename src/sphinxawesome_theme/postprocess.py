@@ -70,9 +70,9 @@ def collapsible_nav(tree: BeautifulSoup) -> None:
         if children and children.name == "ul":
             # State must be available in the link and the list
             li = link.parent
-            li[
-                "x-data"
-            ] = "{ expanded: $el.classList.contains('current') ? true : false }"
+            li["x-data"] = (
+                "{ expanded: $el.classList.contains('current') ? true : false }"
+            )
             link["@click"] = "expanded = !expanded"
             # The expandable class is a hack because we can't use Tailwind
             # I want to have _only_ expandable links with `justify-between`
@@ -110,9 +110,9 @@ def remove_empty_toctree(tree: BeautifulSoup) -> None:
 def headerlinks(tree: BeautifulSoup) -> None:
     """Make headerlinks copy their URL on click."""
     for link in tree("a", class_="headerlink"):
-        link[
-            "@click.prevent"
-        ] = "window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() => $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)"
+        link["@click.prevent"] = (
+            "window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() => $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)"
+        )
         del link["title"]
         link["aria-label"] = "Copy link to this element"
         link["data-tooltip"] = "Copy link to this element"
@@ -125,9 +125,9 @@ def scrollspy(tree: BeautifulSoup) -> None:
             link.parent.name == "dt" and "sig" in link.parent.get("class", "")
         ):
             active_link = link["href"]
-            link[
-                "x-intersect.margin.0%.0%.-70%.0%"
-            ] = f"activeSection = '{active_link}'"
+            link["x-intersect.margin.0%.0%.-70%.0%"] = (
+                f"activeSection = '{active_link}'"
+            )
 
     for link in tree.select("#right-sidebar a"):
         active_link = link["href"]

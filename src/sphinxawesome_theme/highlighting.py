@@ -38,6 +38,7 @@ To achieve this, this extension makes a few larger changes:
 :copyright: Copyright Kai Welke.
 :license: MIT, see LICENSE for details.
 """
+
 from __future__ import annotations
 
 import re
@@ -230,7 +231,7 @@ class AwesomeCodeBlock(CodeBlock):
         "emphasize-text": directives.unchanged_required,
     }
 
-    option_spec = CodeBlock.option_spec
+    option_spec = CodeBlock.option_spec  # type: ignore[misc]
     option_spec.update(new_options)
 
     def _get_line_numbers(

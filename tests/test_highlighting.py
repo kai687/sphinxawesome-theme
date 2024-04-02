@@ -1,4 +1,5 @@
 """Test the bundled highlighting extension."""
+
 from io import StringIO
 from pathlib import Path
 

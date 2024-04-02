@@ -19,36 +19,15 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
+          cache: pip
 
-      - name: Update Pip
+      - name: Install dependencies
         run: |
-          pip install --requirement=requirements.txt pip
+          pip install -U pip nox poetry poetry-plugin-export
           pip --version
-
-      - name: Update Pip in virtual environments
-        shell: python
-        run: |
-          import os
-          import pip
-
-          with open(os.environ["GITHUB_ENV"], mode="a") as io:
-            print(f"VIRTUALENV_PIP={pip.__version__}", file=io)
-
-      - name: Install Pipx
-        run: |
-          pip install --requirement=requirements.txt pipx
-          pipx --version
-
-      - name: Install Poetry
-        run: |
-          pipx install --pip-args=--requirement=requirements.txt poetry
-          pipx inject poetry poetry-plugin-export
-          poetry --version
-
-      - name: Install Nox
-        run: |
-          pipx install --pip-args=--requirement=requirements.txt nox
           nox --version
+          poetry --version
+          poetry self show plugins
 
       - name: Run Nox workflow
         run: |
