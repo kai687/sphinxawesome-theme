@@ -1,4 +1,5 @@
 """Common configurations and fixtures for Pytest."""
+
 from typing import Any
 
 import pytest

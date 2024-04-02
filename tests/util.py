@@ -1,4 +1,5 @@
 """Test utility functions."""
+
 from pathlib import Path
 from typing import Union
 

@@ -38,6 +38,7 @@ To achieve this, this extension makes a few larger changes:
 :copyright: Copyright Kai Welke.
 :license: MIT, see LICENSE for details.
 """
+
 from __future__ import annotations
 
 import re
