@@ -23,11 +23,11 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install -U pip pipx nox poetry poetry-plugin-export
+          pip install -U pip nox poetry poetry-plugin-export
           pip --version
-          pipx --version
           nox --version
           poetry --version
+          poetry self show plugins
 
       - name: Run Nox workflow
         run: |

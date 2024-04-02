@@ -30,10 +30,15 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+          cache: pip
 
       - name: Install dependencies
         run: |
-          pip install --requirement=requirements.txt poetry poetry-plugin-export nox
+          pip install -U pip nox poetry poetry-plugin-export
+          pip --version
+          nox --version
+          poetry --version
+          poetry self show plugins
 
       - name: Run Nox linkcheck session
         run: |
