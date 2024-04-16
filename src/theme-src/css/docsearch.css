@@ -4,6 +4,7 @@
 
 :root {
   --docsearch-primary-color: hsl(var(--primary));
+  --docsearch-muted-color: hsl(var(--muted-foreground));
   --docsearch-key-gradient: transparent;
   --docsearch-key-shadow: transparent;
   --docsearch-text-color: hsl(var(--popover-foreground));

@@ -84,7 +84,8 @@
         {%- block theme_switcher %}
         <button @click="darkMode = darkMode === 'light' ? 'dark' : 'light'"
           class="relative inline-flex items-center justify-center px-0 text-sm font-medium transition-colors rounded-md hover:bg-accent hover:text-accent-foreground h-9 w-9"
-          type="button">
+          type="button"
+          aria-label="Color theme switcher">
           <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 96 960 960" fill="currentColor"
             class="absolute transition-all scale-100 rotate-0 dark:-rotate-90 dark:scale-0">
             <path

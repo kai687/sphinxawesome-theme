@@ -9,10 +9,6 @@
   color: hsl(var(--muted-foreground));
 }
 
-.feedback h5 {
-  font-weight: 500;
-}
-
 #upvote,
 #downvote {
   border-radius: var(--radius);
