@@ -10,7 +10,7 @@ from sphinx.application import Sphinx
 
 def test_returns_version() -> None:
     """It has the correct version."""
-    assert sphinxawesome_theme.__version__ == "5.1.1"
+    assert sphinxawesome_theme.__version__ == "5.1.2"
 
 
 @pytest.mark.sphinx("dummy")
