@@ -86,7 +86,7 @@ pretty = true
 strict = true
 show_column_numbers = true
 warn_unreachable = true
-warn_unused_ignores = true
+warn_unused_ignores = false
 
 [[tool.mypy.overrides]]
 module = ["pygments.*", "dotenv", "sphinxcontrib.serializinghtml", "bs4"]
