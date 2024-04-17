@@ -231,7 +231,7 @@ class AwesomeCodeBlock(CodeBlock):
         "emphasize-text": directives.unchanged_required,
     }
 
-    option_spec = CodeBlock.option_spec  # type: ignore[misc]
+    option_spec = CodeBlock.option_spec
     option_spec.update(new_options)
 
     def _get_line_numbers(
