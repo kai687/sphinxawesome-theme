@@ -41,7 +41,7 @@
   }
 
   & a.viewcode-back {
-    @apply absolute right-0;
+    @apply absolute right-0 text-muted-foreground;
   }
 
   & a:not(.toc-backref) {
