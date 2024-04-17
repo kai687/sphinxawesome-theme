@@ -39,6 +39,7 @@ jobs:
           nox --version
           poetry --version
           poetry self show plugins
+          poetry config warnings.export false
 
       - name: Run Nox linkcheck session
         run: |
