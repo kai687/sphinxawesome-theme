@@ -41,13 +41,8 @@ devDependencies:
     specifier: ^12.0.2
     version: 12.0.2(webpack@5.91.0)
   css-loader:
-<<<<<<< HEAD
     specifier: ^7.1.1
     version: 7.1.1(webpack@5.91.0)
-=======
-    specifier: ^6.11.0
-    version: 6.11.0(webpack@5.91.0)
->>>>>>> c2dc436 (chore: update dependencies)
   cssnano:
     specifier: ^6.1.2
     version: 6.1.2(postcss@8.4.38)
@@ -64,8 +59,8 @@ devDependencies:
     specifier: ^4.1.0
     version: 4.1.0(eslint@8.57.0)(webpack@5.91.0)
   mini-css-extract-plugin:
-    specifier: ^2.8.1
-    version: 2.8.1(webpack@5.91.0)
+    specifier: ^2.9.0
+    version: 2.9.0(webpack@5.91.0)
   postcss:
     specifier: ^8.4.38
     version: 8.4.38
@@ -149,14 +144,6 @@ packages:
     engines: {node: '>=6.9.0'}
     dev: true
 
-<<<<<<< HEAD
-  /@babel/compat-data@7.24.4:
-    resolution: {integrity: sha512-vg8Gih2MLK+kOkHJp4gBEIkyaIi00jgWot2D9QOmmfLC8jINSOzmCLta6Bvz/JSBCqnegV0L80jhxkol5GWNfQ==}
-    engines: {node: '>=6.9.0'}
-    dev: true
-
-=======
->>>>>>> c2dc436 (chore: update dependencies)
   /@babel/core@7.24.4:
     resolution: {integrity: sha512-MBVlMXP+kkl5394RBLSxxk/iLTeVGuXTV3cIDXavPpMMqnSnt6apKgan/U8O3USWZCWZT/TbgfEpKa4uMgN4Dg==}
     engines: {node: '>=6.9.0'}
@@ -215,30 +202,6 @@ packages:
       semver: 6.3.1
     dev: true
 
-<<<<<<< HEAD
-  /@babel/helper-create-class-features-plugin@7.24.1(@babel/core@7.24.4):
-    resolution: {integrity: sha512-1yJa9dX9g//V6fDebXoEfEsxkZHk3Hcbm+zLhyu6qVgYFLvmTALTeV+jNU9e5RnYtioBrGEOdoI2joMSNQ/+aA==}
-=======
-  /@babel/helper-create-class-features-plugin@7.24.4(@babel/core@7.24.4):
-    resolution: {integrity: sha512-lG75yeuUSVu0pIcbhiYMXBXANHrpUPaOfu7ryAzskCgKUHuAxRQI5ssrtmF0X9UXldPlvT0XM/A4F44OXRt6iQ==}
->>>>>>> c2dc436 (chore: update dependencies)
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0
-    dependencies:
-      '@babel/core': 7.24.4
-      '@babel/helper-annotate-as-pure': 7.22.5
-      '@babel/helper-environment-visitor': 7.22.20
-      '@babel/helper-function-name': 7.23.0
-      '@babel/helper-member-expression-to-functions': 7.23.0
-      '@babel/helper-optimise-call-expression': 7.22.5
-      '@babel/helper-replace-supers': 7.24.1(@babel/core@7.24.4)
-      '@babel/helper-skip-transparent-expression-wrappers': 7.22.5
-      '@babel/helper-split-export-declaration': 7.22.6
-      semver: 6.3.1
-    dev: true
-
-<<<<<<< HEAD
   /@babel/helper-create-class-features-plugin@7.24.4(@babel/core@7.24.4):
     resolution: {integrity: sha512-lG75yeuUSVu0pIcbhiYMXBXANHrpUPaOfu7ryAzskCgKUHuAxRQI5ssrtmF0X9UXldPlvT0XM/A4F44OXRt6iQ==}
     engines: {node: '>=6.9.0'}
@@ -257,8 +220,6 @@ packages:
       semver: 6.3.1
     dev: true
 
-=======
->>>>>>> c2dc436 (chore: update dependencies)
   /@babel/helper-create-regexp-features-plugin@7.22.15(@babel/core@7.24.4):
     resolution: {integrity: sha512-29FkPLFjn4TPEa3RE7GpW+qbE8tlsu3jntNYNfcGsc49LphF1PQIiD+vMZ1z1xVOKt+93khA9tc2JBs3kBjA7w==}
     engines: {node: '>=6.9.0'}
@@ -728,11 +689,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.24.4
-<<<<<<< HEAD
-      '@babel/helper-create-class-features-plugin': 7.24.1(@babel/core@7.24.4)
-=======
       '@babel/helper-create-class-features-plugin': 7.24.4(@babel/core@7.24.4)
->>>>>>> c2dc436 (chore: update dependencies)
       '@babel/helper-plugin-utils': 7.24.0
     dev: true
 
@@ -1059,11 +1016,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.24.4
-<<<<<<< HEAD
-      '@babel/helper-create-class-features-plugin': 7.24.1(@babel/core@7.24.4)
-=======
       '@babel/helper-create-class-features-plugin': 7.24.4(@babel/core@7.24.4)
->>>>>>> c2dc436 (chore: update dependencies)
       '@babel/helper-plugin-utils': 7.24.0
     dev: true
 
@@ -1075,11 +1028,7 @@ packages:
     dependencies:
       '@babel/core': 7.24.4
       '@babel/helper-annotate-as-pure': 7.22.5
-<<<<<<< HEAD
-      '@babel/helper-create-class-features-plugin': 7.24.1(@babel/core@7.24.4)
-=======
       '@babel/helper-create-class-features-plugin': 7.24.4(@babel/core@7.24.4)
->>>>>>> c2dc436 (chore: update dependencies)
       '@babel/helper-plugin-utils': 7.24.0
       '@babel/plugin-syntax-private-property-in-object': 7.14.5(@babel/core@7.24.4)
     dev: true
@@ -1295,7 +1244,7 @@ packages:
       babel-plugin-polyfill-corejs2: 0.4.10(@babel/core@7.24.4)
       babel-plugin-polyfill-corejs3: 0.10.4(@babel/core@7.24.4)
       babel-plugin-polyfill-regenerator: 0.6.1(@babel/core@7.24.4)
-      core-js-compat: 3.36.1
+      core-js-compat: 3.37.0
       semver: 6.3.1
     transitivePeerDependencies:
       - supports-color
@@ -2386,7 +2335,7 @@ packages:
     dependencies:
       '@babel/core': 7.24.4
       '@babel/helper-define-polyfill-provider': 0.6.1(@babel/core@7.24.4)
-      core-js-compat: 3.36.1
+      core-js-compat: 3.37.0
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -2445,7 +2394,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001610
-      electron-to-chromium: 1.4.737
+      electron-to-chromium: 1.4.738
       node-releases: 2.0.14
       update-browserslist-db: 1.0.13(browserslist@4.23.0)
     dev: true
@@ -2611,8 +2560,8 @@ packages:
       webpack: 5.91.0(webpack-cli@5.1.4)
     dev: true
 
-  /core-js-compat@3.36.1:
-    resolution: {integrity: sha512-Dk997v9ZCt3X/npqzyGdTlq6t7lDBhZwGvV94PKzDArjp7BTRm7WlDAXYd/OWdeFHO8OChQYRJNJvUCqCbrtKA==}
+  /core-js-compat@3.37.0:
+    resolution: {integrity: sha512-vYq4L+T8aS5UuFg4UwDhc7YNRWVeVZwltad9C/jV3R2LgVOpS9BDr7l/WL6BN0dbV3k1XejPTHqqEzJgsa0frA==}
     dependencies:
       browserslist: 4.23.0
     dev: true
@@ -2678,15 +2627,9 @@ packages:
       postcss-value-parser: 4.2.0
     dev: true
 
-<<<<<<< HEAD
   /css-loader@7.1.1(webpack@5.91.0):
     resolution: {integrity: sha512-OxIR5P2mjO1PSXk44bWuQ8XtMK4dpEqpIyERCx3ewOo3I8EmbcxMPUc5ScLtQfgXtOojoMv57So4V/C02HQLsw==}
     engines: {node: '>= 18.12.0'}
-=======
-  /css-loader@6.11.0(webpack@5.91.0):
-    resolution: {integrity: sha512-CTJ+AEQJjq5NzLga5pE39qdiSV56F8ywCIsqNIRF0r7BDgWsN25aazToqAFg7ZrtA/U016xudB3ffgweORxX7g==}
-    engines: {node: '>= 12.13.0'}
->>>>>>> c2dc436 (chore: update dependencies)
     peerDependencies:
       '@rspack/core': 0.x || 1.x
       webpack: ^5.27.0
@@ -2912,8 +2855,8 @@ packages:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
     dev: true
 
-  /electron-to-chromium@1.4.737:
-    resolution: {integrity: sha512-QvLTxaLHKdy5YxvixAw/FfHq2eWLUL9KvsPjp0aHK1gI5d3EDuDgITkvj0nFO2c6zUY3ZqVAJQiBYyQP9tQpfw==}
+  /electron-to-chromium@1.4.738:
+    resolution: {integrity: sha512-lwKft2CLFztD+vEIpesrOtCrko/TFnEJlHFdRhazU7Y/jx5qc4cqsocfVrBg4So4gGe9lvxnbLIoev47WMpg+A==}
     dev: true
 
   /emoji-regex@8.0.0:
@@ -3761,8 +3704,8 @@ packages:
       mime-db: 1.52.0
     dev: true
 
-  /mini-css-extract-plugin@2.8.1(webpack@5.91.0):
-    resolution: {integrity: sha512-/1HDlyFRxWIZPI1ZpgqlZ8jMw/1Dp/dl3P0L1jtZ+zVcHqwPhGwaJwKL00WVgfnBy6PWCde9W65or7IIETImuA==}
+  /mini-css-extract-plugin@2.9.0(webpack@5.91.0):
+    resolution: {integrity: sha512-Zs1YsZVfemekSZG+44vBsYTLQORkPMwnlv+aehcxK/NLKC+EGhDB39/YePYYqx/sTk6NnYpuqikhSn7+JIevTA==}
     engines: {node: '>= 12.13.0'}
     peerDependencies:
       webpack: ^5.0.0

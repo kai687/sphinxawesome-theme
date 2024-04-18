@@ -57,5 +57,5 @@ Clicking the link icon after headers or captions automatically copies the URL to
 
 ### DocSearch
 
-This theme supports the [`sphinx-docsearch`](https://sphinx-docsearch.readthedocs.io/en/latest/)
+This theme supports the [`sphinx-docsearch`](https://sphinx-docsearch.readthedocs.io/en/latest/) extension
 to replace the built-in search with Algolia DocSearch.

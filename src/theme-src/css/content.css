@@ -31,9 +31,6 @@
 
   & section > p {
     @apply mt-6 leading-7 first:mt-0;
-    &.rubric {
-      @apply mt-0;
-    }
     &.lead {
       @apply text-lg text-muted-foreground;
     }
@@ -41,6 +38,10 @@
 
   & .centered {
     @apply text-center;
+  }
+
+  & a.viewcode-back {
+    @apply absolute right-0 !text-muted-foreground;
   }
 
   & a:not(.toc-backref) {
