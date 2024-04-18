@@ -58,7 +58,7 @@ nox.Session.export = PoetryNoxSession.export  # type: ignore
 def tests(session: nox.Session) -> None:
     """Run unit tests."""
     args = session.posargs or ["--cov"]
-    deps = ["coverage[toml]", "pytest", "pytest-cov", "sphinx-design"]
+    deps = ["coverage[toml]", "pytest", "pytest-cov", "sphinx-design", "defusedxml"]
     session.install("dev", ".", *deps)
     session.run("pytest", *args)
 
