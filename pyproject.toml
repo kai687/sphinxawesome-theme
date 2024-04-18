@@ -24,7 +24,7 @@ packages = [
 python = "^3.8"
 sphinx = [
   { version = "<7.2", python = ">=3.8,<3.9"},
-  { version = "^7.2,<7.3", python = ">=3.9,<=3.12"},
+  { version = "^7.2,<7.3", python = ">=3.9,<3.13"},
 ]
 beautifulsoup4 = "^4.9.1"
 
