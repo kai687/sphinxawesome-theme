@@ -8,7 +8,7 @@ charset-normalizer==3.3.2 ; python_version >= "3.8" and python_version < "4.0"
 click==8.1.7 ; python_version >= "3.9" and python_full_version <= "3.12.0"
 colorama==0.4.6 ; python_version >= "3.8" and python_version < "4.0" and (sys_platform == "win32" or python_full_version <= "3.12.0")
 docutils==0.20.1 ; python_version >= "3.8" and python_version < "4.0"
-exceptiongroup==1.2.0 ; python_version >= "3.9" and python_version < "3.11"
+exceptiongroup==1.2.1 ; python_version >= "3.9" and python_version < "3.11"
 h11==0.14.0 ; python_version >= "3.9" and python_full_version <= "3.12.0"
 idna==3.7 ; python_version >= "3.8" and python_version < "4.0"
 imagesize==1.4.1 ; python_version >= "3.8" and python_version < "4.0"
