@@ -15,7 +15,7 @@
   "license": "MIT",
   "dependencies": {
     "@alpinejs/intersect": "^3.13.9",
-    "alpinejs": "^3.13.9",
+    "alpinejs": "^3.13.10",
     "clipboard": "^2.0.11"
   },
   "devDependencies": {
