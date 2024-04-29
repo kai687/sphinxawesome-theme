@@ -166,11 +166,11 @@ class AwesomeHtmlFormatter(HtmlFormatter):  # type: ignore
             if t != 1:
                 yield t, value
             if i + 1 in self.hl_lines:
-                yield 1, "<mark>%s</mark>" % value
+                yield 1, f"<mark>{value}</mark>"
             elif i + 1 in self.added_lines:
-                yield 1, "<ins>%s</ins>" % value
+                yield 1, f"<ins>{value}</ins>"
             elif i + 1 in self.removed_lines:
-                yield 1, "<del>%s</del>" % value
+                yield 1, f"<del>{value}</del>"
             else:
                 yield 1, value
 
