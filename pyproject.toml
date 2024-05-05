@@ -42,7 +42,7 @@ python-dotenv = ">=0.19,<1.1"
 pytest = "^8"
 pytest-cov = ">=4,<6"
 coverage = { extras = ["toml"], version = "^7.2" }
-types-docutils = ">=0.19.1.6,<0.21.0.0"
+types-docutils = ">=0.19.1.6,<0.22.0.0"
 mypy = "^1.0"
 
 [tool.poetry.group.lint.dependencies]
