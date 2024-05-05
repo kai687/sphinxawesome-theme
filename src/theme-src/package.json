@@ -41,7 +41,7 @@
     "prettier": "^3.2.5",
     "prettier-plugin-organize-imports": "^3.2.4",
     "prettier-plugin-tailwindcss": "^0.5.14",
-    "stylelint": "^16.4.0",
+    "stylelint": "^16.5.0",
     "stylelint-config-prettier": "^9.0.5",
     "stylelint-prettier": "^5.0.0",
     "stylelint-webpack-plugin": "^5.0.0",
