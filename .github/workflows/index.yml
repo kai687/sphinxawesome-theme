@@ -1,20 +1,20 @@
-name: Algolia Indexing
+name: Algolia indexing
 
 on:
   push:
     branches:
-      - master
+      - main
     paths:
-      - 'docs/**'
+      - "docs/**"
 
 jobs:
   index:
     runs-on: ubuntu-latest
 
-    name: Index Docs with Algolia
+    name: Index docs with Algolia
 
     steps:
-      - name: Check-out repo
+      - name: Check out repo
         uses: actions/checkout@v4
 
       - name: Algolia Crawler
@@ -25,5 +25,5 @@ jobs:
           crawler-api-key: ${{ secrets.CRAWLER_API_KEY }}
           algolia-app-id: ${{ secrets.ALGOLIA_APP_ID }}
           algolia-api-key: ${{ secrets.ALGOLIA_API_KEY }}
-          site-url: 'https://sphinxawesome.xyz'
-          crawler-name: 'sphinxawesome'
+          site-url: "https://sphinxawesome.xyz"
+          crawler-name: "sphinxawesome"
