@@ -30,7 +30,7 @@ class AwesomeHTMLBuilder(StandaloneHTMLBuilder):
             style = self.config.pygments_style
         elif self.theme:
             # From the ``pygments_style`` theme setting
-            style = self.theme.pygments_style_default or "none"
+            style = self.theme.pygments_style_default or "none"  # type: ignore[attr-defined]
         else:
             style = "sphinx"
 
@@ -39,11 +39,11 @@ class AwesomeHTMLBuilder(StandaloneHTMLBuilder):
         if self.config.pygments_style_dark is not None:
             dark_style = self.config.pygments_style_dark
         elif self.theme:
-            dark_style = self.theme.pygments_style_dark
+            dark_style = self.theme.pygments_style_dark  # type: ignore[attr-defined]
         else:
             dark_style = None
 
-        self.dark_highlighter: PygmentsBridge | None
+        self.dark_highlighter: PygmentsBridge | None  # type: ignore
         if dark_style is not None:
             self.dark_highlighter = PygmentsBridge("html", dark_style)
         else:
