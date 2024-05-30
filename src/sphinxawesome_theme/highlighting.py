@@ -35,6 +35,8 @@ To achieve this, this extension makes a few larger changes:
 
 5. Monkey-patch the ``PygmentsBridge.highlight_block`` method to pass the option for highlighting text to the ``get_lexer`` method.
 
+6. Monkey-patch the ``PygmentsBridge.get_stylesheet`` method to pass arguments to Pygments for prepending all classes with a class name for dark mode.
+
 :copyright: Copyright Kai Welke.
 :license: MIT, see LICENSE for details.
 """
@@ -54,7 +56,7 @@ from pygments.token import Generic, _TokenType
 from pygments.util import get_list_opt
 from sphinx.application import Sphinx
 from sphinx.directives.code import CodeBlock
-from sphinx.highlighting import PygmentsBridge
+from sphinx.highlighting import _LATEX_ADD_STYLES, PygmentsBridge
 from sphinx.locale import __
 from sphinx.util import logging, parselinenos
 
@@ -303,7 +305,7 @@ class AwesomePygmentsBridge(PygmentsBridge):  # type: ignore
         force: bool = False,
         location: Any = None,
     ) -> Lexer:
-        """Monkey-patch the ``PygmentsBridge.get_lexer`` method.
+        """Extend the ``PygmentsBridge.get_lexer`` method.
 
         Adds a filter to lexers if the ``hl_text`` option is present.
         """
@@ -324,7 +326,7 @@ class AwesomePygmentsBridge(PygmentsBridge):  # type: ignore
         location: Any = None,
         **kwargs: Any,
     ) -> str:
-        """Monkey-patch the ``PygmentsBridge.highlight_block`` method.
+        """Extend the ``PygmentsBridge.highlight_block`` method.
 
         This method is called when Sphinx transforms the abstract document tree to HTML and encounters code blocks.
         """
@@ -340,12 +342,26 @@ class AwesomePygmentsBridge(PygmentsBridge):  # type: ignore
             self, source, lang, opts, force, location, **kwargs
         )
 
+    def get_stylesheet(self: AwesomePygmentsBridge, arg: str | None = None) -> str:
+        """Override the ``PygmentsBridge.get_stylesheet`` method.
+
+        This lets you prepend all Pygments classes with a common prefix, such as ``.dark``.
+        """
+        formatter = self.get_formatter()
+        if self.dest == "html":
+            return formatter.get_style_defs(f"{arg} .highlight")  # type: ignore
+        else:
+            return formatter.get_style_defs() + _LATEX_ADD_STYLES  # type: ignore
+
 
 def setup(app: Sphinx) -> dict[str, Any]:
     """Set up this internal extension."""
     PygmentsBridge.html_formatter = AwesomeHtmlFormatter
+    # Monkey-patching galore
     PygmentsBridge.get_lexer = AwesomePygmentsBridge.get_lexer  # type: ignore[assignment]
     PygmentsBridge.highlight_block = AwesomePygmentsBridge.highlight_block  # type: ignore[assignment]
+    PygmentsBridge.get_stylesheet = AwesomePygmentsBridge.get_stylesheet  # type: ignore[assignment]
+
     directives.register_directive("code-block", AwesomeCodeBlock)
 
     return {
