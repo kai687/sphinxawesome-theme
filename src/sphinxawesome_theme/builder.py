@@ -31,12 +31,12 @@ class AwesomeHTMLBuilder(StandaloneHTMLBuilder):
             style = self.config.pygments_style
         elif self.theme:
             # From the ``pygments_style`` theme setting
-            if self.theme.pygments_style_default:  # type: ignore
-                style = self.theme.pygments_style_default  # type: ignore
-            elif self.theme.pygments_style:  # type: ignore
-                style = self.theme.pygments_style  # type: ignore
-            else:
-                style = "none"
+            try:
+                # For Sphinx that runs on Python >3.9
+                style = self.theme.pygments_style_default or "none"  # type: ignore
+            except AttributeError:
+                # For Sphinx that runs only on Python 3.8
+                style = self.theme.pygments_style or "none"  # type: ignore
         else:
             style = "sphinx"
 
