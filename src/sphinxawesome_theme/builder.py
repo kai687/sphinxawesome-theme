@@ -30,7 +30,10 @@ class AwesomeHTMLBuilder(StandaloneHTMLBuilder):
             style = self.config.pygments_style
         elif self.theme:
             # From the ``pygments_style`` theme setting
-            style = self.theme.pygments_style_default or "none"  # type: ignore[attr-defined]
+            if self.theme.hasattr("pygments_style_default"):
+                style = self.theme.pygments_style_default or "none"
+            elif self.theme.hasattr("pygments_style"):
+                style = self.theme.pygments_style or "none"
         else:
             style = "sphinx"
 

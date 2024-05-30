@@ -347,9 +347,13 @@ class AwesomePygmentsBridge(PygmentsBridge):  # type: ignore
 
         This lets you prepend all Pygments classes with a common prefix, such as ``.dark``.
         """
+        prefix = ".highlight"
+        if arg:
+            prefix = f"{arg} .highlight"
+
         formatter = self.get_formatter()
         if self.dest == "html":
-            return formatter.get_style_defs(f"{arg} .highlight")  # type: ignore
+            return formatter.get_style_defs(prefix)  # type: ignore
         else:
             return formatter.get_style_defs() + _LATEX_ADD_STYLES  # type: ignore
 
