@@ -47,13 +47,22 @@ def test_handles_highlighting(app: Sphinx, warning: StringIO) -> None:
 
     tree = parse_html(Path(app.outdir) / "index.html")
     code_block = tree("pre")
-    assert len(code_block) == 1
+    assert len(code_block) == 2
 
     inserted = code_block[0]("ins")
+    assert len(inserted) == 1
+
+    inserted = code_block[1]("ins")
     assert len(inserted) == 1
 
     deleted = code_block[0]("del")
     assert len(deleted) == 1
 
+    deleted = code_block[1]("del")
+    assert len(deleted) == 1
+
     placeholder = code_block[0]("span", class_="ge")
+    assert len(placeholder) == 1
+
+    placeholder = code_block[1]("span", class_="ge")
     assert len(placeholder) == 1
