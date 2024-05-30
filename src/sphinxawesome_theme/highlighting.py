@@ -269,7 +269,7 @@ class AwesomeCodeBlock(CodeBlock):  # type: ignore
 
     def run(self: AwesomeCodeBlock) -> list[Node]:
         """Handle parsing extra options for highlighting."""
-        literal_nodes = super().run()
+        literal_nodes: list[Node] = super().run()
 
         hl_added = self._get_line_numbers("emphasize-added")
         hl_removed = self._get_line_numbers("emphasize-removed")
@@ -284,7 +284,7 @@ class AwesomeCodeBlock(CodeBlock):  # type: ignore
             if isinstance(node, nodes.literal_block):
                 self._extra_args(node, hl_added, hl_removed)
 
-        return literal_nodes  # type: ignore
+        return literal_nodes
 
 
 # These external references are needed, or you'll get a maximum recursion depth error
