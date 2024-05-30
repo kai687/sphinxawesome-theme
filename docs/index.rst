@@ -44,7 +44,7 @@ Get started
 Upgrade
 -------
 
-If you want to upgrade to version |current| of the theme, see :ref:`sec:upgrade-to-5.0`.
+If you want to upgrade to version |current| of the theme, see :doc:`changelog/index`.
 
 Explore
 -------

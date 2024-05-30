@@ -13,9 +13,6 @@ from sphinxawesome_theme.postprocess import Icons
 
 load_dotenv()
 
-pygments_style = "emacs"
-pygments_style_dark = "github-dark"
-
 # -- Project information ---
 
 project = "Awesome Sphinx Theme"

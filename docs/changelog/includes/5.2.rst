@@ -1,0 +1,5 @@
+Version 5.2
+-----------
+
+Version 5.2 of the |product| deprecates the bundled ``sphinxawesome_theme.highlighting`` extension.
+Its functionality is now integrated and this extension will be removed with version 6.

@@ -30,7 +30,7 @@ The following table lists the assets used by the |product| to be awesome.
 +---------------------------------------------------------+-------------------------------+-----------------------------------------------------------------------------------+
 | Feature                                                 | Name/Website                  | License                                                                           |
 +=========================================================+===============================+===================================================================================+
-| UI design                                               | `shadcn/ui`_                  | `MIT License <https://github.com/shadcn/ui/blob/main/LICENSE.md>`__               |
+| UI design                                               | `shadcn/ui`_                  | `MIT License <https://github.com/shadcn-ui/ui/blob/main/LICENSE.md>`__            |
 +---------------------------------------------------------+-------------------------------+-----------------------------------------------------------------------------------+
 | CSS framework                                           | Tailwind_                     | `MIT License <https://github.com/tailwindlabs/tailwindcss/blob/master/LICENSE>`__ |
 +---------------------------------------------------------+-------------------------------+-----------------------------------------------------------------------------------+
@@ -64,8 +64,8 @@ The following table lists the assets used by the |product| to be awesome.
 .. _Material icons: https://fonts.google.com
 .. _undraw.co: https://undraw.co
 .. _custom: https://undraw.co/license
-.. _Primer/CSS: https://primer.style/css/
-.. _Entypo: http://www.entypo.com
+.. _Primer/CSS: https://primer.style/css/storybook/
+.. _Entypo: https://www.entypo.com
 .. _Zondicons: http://www.zondicons.com
 .. _Creative Commons Attribution-ShareAlike 4.0: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 .. _Apache License, Version 2.0: https://www.apache.org/licenses/LICENSE-2.0.html

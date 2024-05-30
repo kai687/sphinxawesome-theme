@@ -25,7 +25,7 @@ Create a local copy of the repository
 
         git clone https://github.com/kai687/sphinxawesome-theme.git
 
-.. _`fork the repository`: https://docs.github.com/en/get-started/quickstart/fork-a-repo
+.. _`fork the repository`: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo
 .. _`Clone the repository`: https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
 
 After cloning the repository,

@@ -15,7 +15,6 @@ Dark mode
 Simpler setup
    You no longer need to load the theme as an extension.
    Like most other themes for Sphinx, it's enough to load it as ``html_theme``.
-   You can add the :ref:`sec:bundled-extensions` to enable more features.
 
 Redesign
    Using the design from `shadcn/ui <https://ui.shadcn.com/docs>`_.
@@ -56,7 +55,7 @@ You can remove them from your Sphinx configuration:
    such as captions or comments at the top of a code block.
    For code samples in multiple languages, you can use the ``sphinx-design`` extension with its ``tab-set-code`` directive.
 
-**DocSearch** is now an external extension, available as `sphinx-docsearch <https://sphinx-docsearch.readthedocs.io/en/latest/>`_.
+**DocSearch** is now an external extension, available as `sphinx-docsearch <https://sphinx-docsearch.readthedocs.io/>`_.
 
 ``html_awesome_docsearch``
    Load the bundled ``sphinxawesome_theme.docsearch`` extension instead.
