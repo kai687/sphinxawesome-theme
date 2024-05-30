@@ -15,6 +15,7 @@ Customize the theme
 .. toctree::
    :caption: In this section
 
+   syntax-highlighting
    add-custom-css
    add-custom-js
    add-custom-templates
