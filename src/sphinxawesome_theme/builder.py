@@ -36,7 +36,7 @@ class AwesomeHTMLBuilder(StandaloneHTMLBuilder):
                 style = self.theme.pygments_style_default or "none"  # type: ignore
             except AttributeError:
                 # For Sphinx that runs only on Python 3.8
-                style = self.theme.pygments_style or "none"  # type: ignore
+                style = self.theme.get_config("theme", "pygments_style", "none")
         else:
             style = "sphinx"
 
@@ -45,7 +45,10 @@ class AwesomeHTMLBuilder(StandaloneHTMLBuilder):
         if self.config.pygments_style_dark is not None:
             dark_style = self.config.pygments_style_dark
         elif self.theme:
-            dark_style = self.theme.pygments_style_dark  # type: ignore[attr-defined]
+            try:
+                dark_style = self.theme.pygments_style_dark  # type: ignore[attr-defined]
+            except AttributeError:
+                dark_style = self.theme.get_config("theme", "pygments_dark_style", None)
         else:
             dark_style = None
 
