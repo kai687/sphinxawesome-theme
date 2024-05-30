@@ -15,7 +15,7 @@ follow these steps:
    This runs the ``pygmentize`` command, which is part of the Pygments package.
    If you installed the |product|, Pygments is also installed.
 
-#. Add the file :file:`pygments-dark.css` as :ref:`custom css <sec:custom_css>`.
+#. Add the file :file:`pygments-dark.css` as :ref:`custom css <sec:custom-css>`.
 
 .. dropdown:: More information
 
