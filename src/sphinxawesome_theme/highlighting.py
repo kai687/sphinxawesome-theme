@@ -68,7 +68,7 @@ TokenStream = Generator[Tuple[TokenType, str], None, None]
 
 
 def _replace_placeholders(
-    ttype: _TokenType, value: str, regex: Pattern[str]
+    ttype: TokenType, value: str, regex: Pattern[str]
 ) -> TokenStream:
     """Replace every occurence of ``regex`` with ``Generic.Emph`` token."""
     last = 0
@@ -82,11 +82,7 @@ def _replace_placeholders(
         yield ttype, value[last:]
 
 
-# Without the comment, `mypy` throws a fit:
-# Cannot subclass Filter, is type `Any`
-
-
-class AwesomePlaceholders(Filter):  # type: ignore[misc]
+class AwesomePlaceholders(Filter):  # type: ignore
     """A Pygments filter for marking up placeholder text.
 
     You can define the text to highlight with the ``hl_text`` option.
@@ -111,10 +107,7 @@ class AwesomePlaceholders(Filter):  # type: ignore[misc]
     def filter(
         self: AwesomePlaceholders, _lexer: Any, stream: TokenStream
     ) -> TokenStream:
-        """Filter on all tokens.
-
-        The ``lexer`` instance is required by the parent class, but isn't used here.
-        """
+        """Filter on all tokens."""
         regex = self.placeholders_re
         for ttype, value in stream:
             yield from _replace_placeholders(ttype, value, regex)
@@ -210,14 +203,14 @@ class AwesomeHtmlFormatter(HtmlFormatter):  # type: ignore
             outfile.write(piece)
 
 
-class AwesomeCodeBlock(CodeBlock):
+class AwesomeCodeBlock(CodeBlock):  # type: ignore
     """An extension of the Sphinx ``code-block`` directive to handle additional options.
 
     - ``:emphasize-added:`` highlight added lines
     - ``:emphasize-removed:`` highlight removed lines
     - ``:emphasize-text:`` highlight placeholder text
 
-    The job of the directive is to set the correct options to the ``literal_block`` node,
+    The job of the directive is to set the correct options for the ``literal_block`` node,
     which represents a code block in the parsed reStructuredText tree.
     When transforming the abstract tree to HTML,
     Sphinx passes these options to the ``highlight_block`` method,
@@ -258,24 +251,38 @@ class AwesomeCodeBlock(CodeBlock):
         except ValueError as err:
             return [document.reporter.warning(err, line=self.lineno)]
 
+    def _extra_args(
+        self: AwesomeCodeBlock,
+        node: Node,
+        hl_added: list[int] | None,
+        hl_removed: list[int] | None,
+    ) -> None:
+        """Set extra attributes for line highlighting."""
+        extra_args = node.get("highlight_args", {})  # type: ignore[attr-defined]
+
+        if hl_added is not None:
+            extra_args["hl_added"] = hl_added
+        if hl_removed is not None:
+            extra_args["hl_removed"] = hl_removed
+        if "emphasize-text" in self.options:
+            extra_args["hl_text"] = self.options["emphasize-text"]
+
     def run(self: AwesomeCodeBlock) -> list[Node]:
         """Handle parsing extra options for highlighting."""
-        literal_nodes = super().run()
+        literal_nodes: list[Node] = super().run()
 
         hl_added = self._get_line_numbers("emphasize-added")
         hl_removed = self._get_line_numbers("emphasize-removed")
 
-        # `literal_nodes` is either `[literal_block]`, or `[caption, literal_block]`
         for node in literal_nodes:
+            # Code blocks with caption [container > (caption + literal_block)]
+            if isinstance(node, nodes.container):
+                for nnode in node.children:
+                    if isinstance(nnode, nodes.literal_block):
+                        self._extra_args(nnode, hl_added, hl_removed)
+            # Code blocks without caption [literal_block]
             if isinstance(node, nodes.literal_block):
-                extra_args = node.get("highlight_args", {})
-
-                if hl_added is not None:
-                    extra_args["hl_added"] = hl_added
-                if hl_removed is not None:
-                    extra_args["hl_removed"] = hl_removed
-                if "emphasize-text" in self.options:
-                    extra_args["hl_text"] = self.options["emphasize-text"]
+                self._extra_args(node, hl_added, hl_removed)
 
         return literal_nodes
 
@@ -285,7 +292,7 @@ pygmentsbridge_get_lexer = PygmentsBridge.get_lexer
 pygmentsbridge_highlight_block = PygmentsBridge.highlight_block
 
 
-class AwesomePygmentsBridge(PygmentsBridge):
+class AwesomePygmentsBridge(PygmentsBridge):  # type: ignore
     """Monkey-patch the Pygments methods to handle highlighting placeholder text."""
 
     def get_lexer(
@@ -301,9 +308,11 @@ class AwesomePygmentsBridge(PygmentsBridge):
         Adds a filter to lexers if the ``hl_text`` option is present.
         """
         lexer = pygmentsbridge_get_lexer(self, source, lang, opts, force, location)
+        hl_text = opts.get("hl_text") if opts else None
 
-        if opts and "hl_text" in opts:
-            lexer.add_filter(AwesomePlaceholders(hl_text=opts["hl_text"]))
+        if hl_text:
+            lexer.add_filter(AwesomePlaceholders(hl_text=hl_text))
+
         return lexer
 
     def highlight_block(
@@ -317,10 +326,7 @@ class AwesomePygmentsBridge(PygmentsBridge):
     ) -> str:
         """Monkey-patch the ``PygmentsBridge.highlight_block`` method.
 
-        This method is called, when Sphinx transforms the abstract document tree
-        to HTML and encounters code blocks.
-        The ``hl_text`` option is passed in the ``kwargs`` dictionary.
-        For the ``get_lexer`` method, we need to pass it in the ``opts`` dictionary.
+        This method is called when Sphinx transforms the abstract document tree to HTML and encounters code blocks.
         """
         if opts is None:
             opts = {}
@@ -330,7 +336,7 @@ class AwesomePygmentsBridge(PygmentsBridge):
         if hl_text:
             opts["hl_text"] = hl_text
 
-        return pygmentsbridge_highlight_block(
+        return pygmentsbridge_highlight_block(  # type: ignore
             self, source, lang, opts, force, location, **kwargs
         )
 
@@ -338,10 +344,8 @@ class AwesomePygmentsBridge(PygmentsBridge):
 def setup(app: Sphinx) -> dict[str, Any]:
     """Set up this internal extension."""
     PygmentsBridge.html_formatter = AwesomeHtmlFormatter
-    PygmentsBridge.get_lexer = AwesomePygmentsBridge.get_lexer  # type: ignore
-    PygmentsBridge.highlight_block = (  # type: ignore
-        AwesomePygmentsBridge.highlight_block  # type: ignore
-    )
+    PygmentsBridge.get_lexer = AwesomePygmentsBridge.get_lexer  # type: ignore[assignment]
+    PygmentsBridge.highlight_block = AwesomePygmentsBridge.highlight_block  # type: ignore[assignment]
     directives.register_directive("code-block", AwesomeCodeBlock)
 
     return {
