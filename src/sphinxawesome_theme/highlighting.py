@@ -258,7 +258,7 @@ class AwesomeCodeBlock(CodeBlock):  # type: ignore
         hl_removed: list[int] | None,
     ) -> None:
         """Set extra attributes for line highlighting."""
-        extra_args = node.get("highlight_args", {})
+        extra_args = node.get("highlight_args", {})  # type: ignore[attr-defined]
 
         if hl_added is not None:
             extra_args["hl_added"] = hl_added
@@ -344,8 +344,8 @@ class AwesomePygmentsBridge(PygmentsBridge):  # type: ignore
 def setup(app: Sphinx) -> dict[str, Any]:
     """Set up this internal extension."""
     PygmentsBridge.html_formatter = AwesomeHtmlFormatter
-    PygmentsBridge.get_lexer = AwesomePygmentsBridge.get_lexer
-    PygmentsBridge.highlight_block = AwesomePygmentsBridge.highlight_block
+    PygmentsBridge.get_lexer = AwesomePygmentsBridge.get_lexer  # type: ignore[assignment]
+    PygmentsBridge.highlight_block = AwesomePygmentsBridge.highlight_block  # type: ignore[assignment]
     directives.register_directive("code-block", AwesomeCodeBlock)
 
     return {
