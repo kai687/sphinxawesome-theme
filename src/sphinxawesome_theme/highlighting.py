@@ -251,6 +251,22 @@ class AwesomeCodeBlock(CodeBlock):  # type: ignore
         except ValueError as err:
             return [document.reporter.warning(err, line=self.lineno)]
 
+    def _extra_args(
+        self: AwesomeCodeBlock,
+        node: Node,
+        hl_added: list[int] | None,
+        hl_removed: list[int] | None,
+    ) -> None:
+        """Set extra attributes for line highlighting."""
+        extra_args = node.get("highlight_args", {})
+
+        if hl_added is not None:
+            extra_args["hl_added"] = hl_added
+        if hl_removed is not None:
+            extra_args["hl_removed"] = hl_removed
+        if "emphasize-text" in self.options:
+            extra_args["hl_text"] = self.options["emphasize-text"]
+
     def run(self: AwesomeCodeBlock) -> list[Node]:
         """Handle parsing extra options for highlighting."""
         literal_nodes = super().run()
@@ -263,24 +279,10 @@ class AwesomeCodeBlock(CodeBlock):  # type: ignore
             if isinstance(node, nodes.container):
                 for nnode in node.children:
                     if isinstance(nnode, nodes.literal_block):
-                        extra_args = nnode.get("highlight_args", {})
-
-                        if hl_added is not None:
-                            extra_args["hl_added"] = hl_added
-                        if hl_removed is not None:
-                            extra_args["hl_removed"] = hl_removed
-                        if "emphasize-text" in self.options:
-                            extra_args["hl_text"] = self.options["emphasize-text"]
+                        self._extra_args(nnode, hl_added, hl_removed)
             # Code blocks without caption [literal_block]
             if isinstance(node, nodes.literal_block):
-                extra_args = node.get("highlight_args", {})
-
-                if hl_added is not None:
-                    extra_args["hl_added"] = hl_added
-                if hl_removed is not None:
-                    extra_args["hl_removed"] = hl_removed
-                if "emphasize-text" in self.options:
-                    extra_args["hl_text"] = self.options["emphasize-text"]
+                self._extra_args(node, hl_added, hl_removed)
 
         return literal_nodes  # type: ignore
 
