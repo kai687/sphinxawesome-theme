@@ -190,6 +190,14 @@ This renders as:
 
    print("Hello WORLD")
 
+Naturally, this should also work in combination with captions:
+
+.. code-block:: python
+   :caption: A caption
+   :emphasize-text: WORLD
+
+   print("Hello WORLD")
+
 
 Docutils code directive
 -----------------------
