@@ -166,7 +166,7 @@ def setup(app: Sphinx) -> dict[str, Any]:
     """Register the theme and its extensions wih Sphinx."""
     here = Path(__file__).parent.resolve()
 
-    app.add_config_value("pygments_style_dark", None, "html", str)
+    app.add_config_value("pygments_style_dark", None, "html", [str])
     # Monkey-patch galore
     StandaloneHTMLBuilder.init_highlighter = builder.AwesomeHTMLBuilder.init_highlighter  # type: ignore
     StandaloneHTMLBuilder.create_pygments_style_file = (  # type: ignore
