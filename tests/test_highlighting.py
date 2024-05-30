@@ -12,30 +12,7 @@ from .util import parse_html
 @pytest.mark.sphinx(
     "html",
     testroot="highlighting",
-    confoverrides={
-        "html_theme": "sphinxawesome_theme",
-    },
-    freshenv=True,
-)
-def test_has_unrecognized_options(app: Sphinx, warning: StringIO) -> None:
-    """It raises a warning when the ``sphinxawesome_theme.highlighting`` extension is not active."""
-    app.build()
-
-    # The full error message has line breaks and I can't be bothered to replicate it here.
-    # assert (
-    #     'unknown option: "emphasize-removed"'
-    #     in warning.getvalue()
-    # )
-    assert "sphinxawesome_theme.highlighting" not in app.extensions
-
-
-@pytest.mark.sphinx(
-    "html",
-    testroot="highlighting",
-    confoverrides={
-        "html_theme": "sphinxawesome_theme",
-        "extensions": ["sphinxawesome_theme.highlighting"],
-    },
+    confoverrides={"html_theme": "sphinxawesome_theme"},
     freshenv=True,
 )
 def test_handles_highlighting(app: Sphinx, warning: StringIO) -> None:
@@ -43,7 +20,6 @@ def test_handles_highlighting(app: Sphinx, warning: StringIO) -> None:
     app.build()
 
     assert len(warning.getvalue()) == 0
-    assert "sphinxawesome_theme.highlighting" in app.extensions
 
     tree = parse_html(Path(app.outdir) / "index.html")
     code_block = tree("pre")

@@ -11,12 +11,19 @@ from importlib.metadata import PackageNotFoundError, version
 from pathlib import Path
 from typing import Any, TypedDict
 
+from docutils.parsers.rst import directives
 from sphinx.application import Sphinx
 from sphinx.builders.html import StandaloneHTMLBuilder
 from sphinx.util import logging
 from sphinxcontrib.serializinghtml import JSONHTMLBuilder
 
-from . import builder, jinja_functions, jsonimpl, logos, postprocess, toc
+from . import jsonimpl
+from .builder import AwesomeHTMLBuilder
+from .code import AwesomeCodeBlock
+from .jinja_functions import setup_jinja
+from .logos import copy_logos, get_theme_options, setup_logo_path, update_config
+from .postprocess import changed_docs, post_process_html
+from .toc import change_toc
 
 logger = logging.getLogger(__name__)
 
@@ -115,7 +122,7 @@ def deprecated_options(app: Sphinx) -> None:
 
     Raises warnings and set the correct options.
     """
-    theme_options = logos.get_theme_options(app)
+    theme_options = get_theme_options(app)
 
     if (
         "nav_include_hidden" in theme_options
@@ -166,11 +173,13 @@ def setup(app: Sphinx) -> dict[str, Any]:
     """Register the theme and its extensions wih Sphinx."""
     here = Path(__file__).parent.resolve()
 
+    directives.register_directive("code-block", AwesomeCodeBlock)
     app.add_config_value("pygments_style_dark", None, "html", [str])
+
     # Monkey-patch galore
-    StandaloneHTMLBuilder.init_highlighter = builder.AwesomeHTMLBuilder.init_highlighter  # type: ignore
+    StandaloneHTMLBuilder.init_highlighter = AwesomeHTMLBuilder.init_highlighter  # type: ignore
     StandaloneHTMLBuilder.create_pygments_style_file = (  # type: ignore
-        builder.AwesomeHTMLBuilder.create_pygments_style_file  # type: ignore
+        AwesomeHTMLBuilder.create_pygments_style_file  # type: ignore
     )
 
     app.add_html_theme(name="sphinxawesome_theme", theme_path=str(here))
@@ -188,13 +197,13 @@ def setup(app: Sphinx) -> dict[str, Any]:
     # so I can't use internal extensions.
     # For the same reason, I also can't call the `config-inited` event
     app.connect("builder-inited", deprecated_options)
-    app.connect("builder-inited", logos.update_config)
-    app.connect("html-page-context", logos.setup_logo_path)
-    app.connect("html-page-context", jinja_functions.setup_jinja)
-    app.connect("html-page-context", toc.change_toc)
-    app.connect("build-finished", logos.copy_logos)
-    app.connect("env-before-read-docs", postprocess.changed_docs)
-    app.connect("build-finished", postprocess.post_process_html)
+    app.connect("builder-inited", update_config)
+    app.connect("html-page-context", setup_logo_path)
+    app.connect("html-page-context", setup_jinja)
+    app.connect("html-page-context", change_toc)
+    app.connect("build-finished", copy_logos)
+    app.connect("env-before-read-docs", changed_docs)
+    app.connect("build-finished", post_process_html)
 
     JSONHTMLBuilder.out_suffix = ".json"
     JSONHTMLBuilder.implementation = jsonimpl

@@ -17,7 +17,8 @@ from __future__ import annotations
 from os import path
 
 from sphinx.builders.html import StandaloneHTMLBuilder
-from sphinx.highlighting import PygmentsBridge
+
+from .highlighting import AwesomePygmentsBridge
 
 
 class AwesomeHTMLBuilder(StandaloneHTMLBuilder):
@@ -30,14 +31,16 @@ class AwesomeHTMLBuilder(StandaloneHTMLBuilder):
             style = self.config.pygments_style
         elif self.theme:
             # From the ``pygments_style`` theme setting
-            if self.theme.hasattr("pygments_style_default"):
-                style = self.theme.pygments_style_default or "none"
-            elif self.theme.hasattr("pygments_style"):
-                style = self.theme.pygments_style or "none"
+            if self.theme.pygments_style_default:  # type: ignore
+                style = self.theme.pygments_style_default  # type: ignore
+            elif self.theme.pygments_style:  # type: ignore
+                style = self.theme.pygments_style  # type: ignore
+            else:
+                style = "none"
         else:
             style = "sphinx"
 
-        self.highlighter = PygmentsBridge("html", style)
+        self.highlighter = AwesomePygmentsBridge("html", style)
 
         if self.config.pygments_style_dark is not None:
             dark_style = self.config.pygments_style_dark
@@ -46,9 +49,9 @@ class AwesomeHTMLBuilder(StandaloneHTMLBuilder):
         else:
             dark_style = None
 
-        self.dark_highlighter: PygmentsBridge | None  # type: ignore
+        self.dark_highlighter: AwesomePygmentsBridge | None  # type: ignore
         if dark_style is not None:
-            self.dark_highlighter = PygmentsBridge("html", dark_style)
+            self.dark_highlighter = AwesomePygmentsBridge("html", dark_style)
         else:
             self.dark_highlighter = None
 

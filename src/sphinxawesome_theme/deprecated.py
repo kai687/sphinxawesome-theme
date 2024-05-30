@@ -91,9 +91,12 @@ def setup(app: Sphinx) -> dict[str, Any]:
         logger.warning(
             "Including `sphinxawesome_theme` in your `extensions` is deprecated. "
             'Setting `html_theme = "sphinxawesome_theme"` is enough. '
-            "You can load the optional `sphinxawesome_theme.highlighting` extension."
         )
-        app.setup_extension("sphinxawesome_theme.highlighting")
+
+    if "sphinxawesome_theme.highlighting" in app.config.extensions:
+        logger.warning(
+            "You don't need to include the `sphinxawesome_theme.highlighting` extension anymore."
+        )
 
     # If we don't register these options, Sphinx ignores them when evaluating the `conf.py` file.
     app.add_config_value(
