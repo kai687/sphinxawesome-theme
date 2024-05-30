@@ -12,10 +12,11 @@ from pathlib import Path
 from typing import Any, TypedDict
 
 from sphinx.application import Sphinx
+from sphinx.builders.html import StandaloneHTMLBuilder
 from sphinx.util import logging
 from sphinxcontrib.serializinghtml import JSONHTMLBuilder
 
-from . import jinja_functions, jsonimpl, logos, postprocess, toc
+from . import builder, jinja_functions, jsonimpl, logos, postprocess, toc
 
 logger = logging.getLogger(__name__)
 
@@ -164,6 +165,13 @@ def deprecated_options(app: Sphinx) -> None:
 def setup(app: Sphinx) -> dict[str, Any]:
     """Register the theme and its extensions wih Sphinx."""
     here = Path(__file__).parent.resolve()
+
+    app.add_config_value("pygments_style_dark", None, "html", str)
+    # Monkey-patch galore
+    StandaloneHTMLBuilder.init_highlighter = builder.AwesomeHTMLBuilder.init_highlighter  # type: ignore
+    StandaloneHTMLBuilder.create_pygments_style_file = (  # type: ignore
+        builder.AwesomeHTMLBuilder.create_pygments_style_file  # type: ignore
+    )
 
     app.add_html_theme(name="sphinxawesome_theme", theme_path=str(here))
     app.add_js_file("theme.js", loading_method="defer")

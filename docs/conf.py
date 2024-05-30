@@ -13,6 +13,9 @@ from sphinxawesome_theme.postprocess import Icons
 
 load_dotenv()
 
+pygments_style = "solarized-light"
+pygments_style_dark = "github-dark"
+
 # -- Project information ---
 
 project = "Awesome Sphinx Theme"
