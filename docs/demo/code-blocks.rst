@@ -193,10 +193,14 @@ This renders as:
 Naturally, this should also work in combination with captions:
 
 .. code-block:: python
-   :caption: A caption
+   :caption: Caption text
    :emphasize-text: WORLD
+   :emphasize-added: 2
+   :emphasize-removed: 3
 
    print("Hello WORLD")
+   print("Added line")
+   print("Removed line")
 
 
 Docutils code directive
