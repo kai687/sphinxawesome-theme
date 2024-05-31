@@ -127,16 +127,10 @@ def xml(session: nox.Session) -> None:
 
 @nox.session(venv_backend=None)
 def export(session: nox.Session) -> None:
-    """Export a :file`requirements.txt` file for Netlify (Python 3.8).
-
-    On Netlify, we install Poetry, Pip, and Pipx with the same versions
-    as specified in :file:`requirements.txt`. Then, we use poetry
-    to install the regular dependencies, just like on a local machine.
+    """Export a :file`requirements.txt` file for Cloudflare.
 
     On GitHub actions, we use the same file, although it runs on Python 3.11.
     """
-    session.export("netlify", "requirements.txt")  # type: ignore[attr-defined]
-
     session.run(
         "poetry",
         "export",
@@ -144,7 +138,7 @@ def export(session: nox.Session) -> None:
         "--with",
         "docs",
         "--output",
-        "docs/readthedocs.txt",
+        "requirements.txt",
         external=True,
     )
 
