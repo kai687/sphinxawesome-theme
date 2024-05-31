@@ -33,7 +33,8 @@ Get started
 
    .. seealso::
 
-      :doc:`how-to/add/index`
+      :doc:`how-to/add/index`,
+      :doc:`how-to/configure/index`
 
 #. Build your documentation.
 
