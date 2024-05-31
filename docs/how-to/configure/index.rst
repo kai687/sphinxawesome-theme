@@ -9,7 +9,7 @@ Configure the theme
 
    Configure the |product|.
 
-.. include:: includes/extensions.rst
+.. include:: includes/syntax-highlighting.rst
 .. include:: includes/logos.rst
 .. include:: includes/sidebars.rst
 .. include:: includes/theme-options.rst

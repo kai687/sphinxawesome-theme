@@ -1,39 +1,15 @@
 """Add more highlighting options to Pygments.
 
-This extension extends the Sphinx ``code-block``
-directive with new options:
+Provide a new Pygments HTML formatter ``AwesomeHtmlFormatter``.
+This handles formatting the lines for added or removed options.
+This changes the output compared to the default Sphinx implementation.
+For example, each line is wrapped in a ``<span>`` element,
+and the whole code block is wrapped in a ``<pre><code>..`` element.
+For highlighted lines, this extension uses ``<mark>``, ``<ins>``, and ``<del>`` elements.
 
-- ``:emphasize-added:``: highlight added lines
-- ``:emphasize-removed:``: highlight removed lines
-- ``:emphasize-text:``: highlight a single word, such as, a placeholder
-
-To load this extension, add:
-
-.. code-block:: python
-   :caption: File: conf.py
-
-   extensions += ["sphinxawesome_theme.highlighting"]
-
-To achieve this, this extension makes a few larger changes:
-
-1. Provide a new Sphinx directive: ``AwesomeCodeBlock``.
-   This parses the additional options and passes them to the syntax highlighter.
-
-2. Provide a new Pygments HTML formatter ``AwesomeHtmlFormatter``.
-   This handles formatting the lines for added or removed options.
-   This extension changes the output compared to the default Sphinx implementation.
-   For example, each line is wrapped in a ``<span>`` element,
-   and the whole code block is wrapped in a ``<pre><code>..`` element.
-   For highlighted lines, this extension uses ``<mark>``, ``<ins>``, and ``<del>`` elements.
-
-3. Define a new custom Pygments filter ``AwesomePlaceholders``,
-   which wraps each encountered placeholder word in a ``Generic.Emphasized`` token,
-   such that we can style placeholders by CSS.
-
-4. Monkey-patch the ``PygmentsBridge.get_lexer`` method to apply the ``AwesomePlaceholders`` filter,
-   if the option for it is present.
-
-5. Monkey-patch the ``PygmentsBridge.highlight_block`` method to pass the option for highlighting text to the ``get_lexer`` method.
+Define a new custom Pygments filter ``AwesomePlaceholders``,
+which wraps each encountered placeholder word in a ``Generic.Emphasized`` token,
+such that we can style placeholders by CSS.
 
 :copyright: Copyright Kai Welke.
 :license: MIT, see LICENSE for details.
@@ -44,21 +20,14 @@ from __future__ import annotations
 import re
 from typing import Any, Generator, Literal, Pattern, Tuple, Union
 
-from docutils import nodes
-from docutils.nodes import Node
-from docutils.parsers.rst import directives
 from pygments.filter import Filter
 from pygments.formatters import HtmlFormatter
 from pygments.lexer import Lexer
 from pygments.token import Generic, _TokenType
 from pygments.util import get_list_opt
 from sphinx.application import Sphinx
-from sphinx.directives.code import CodeBlock
-from sphinx.highlighting import PygmentsBridge
-from sphinx.locale import __
-from sphinx.util import logging, parselinenos
-
-from . import __version__
+from sphinx.highlighting import _LATEX_ADD_STYLES, PygmentsBridge
+from sphinx.util import logging
 
 logger = logging.getLogger(__name__)
 
@@ -203,97 +172,10 @@ class AwesomeHtmlFormatter(HtmlFormatter):  # type: ignore
             outfile.write(piece)
 
 
-class AwesomeCodeBlock(CodeBlock):  # type: ignore
-    """An extension of the Sphinx ``code-block`` directive to handle additional options.
-
-    - ``:emphasize-added:`` highlight added lines
-    - ``:emphasize-removed:`` highlight removed lines
-    - ``:emphasize-text:`` highlight placeholder text
-
-    The job of the directive is to set the correct options for the ``literal_block`` node,
-    which represents a code block in the parsed reStructuredText tree.
-    When transforming the abstract tree to HTML,
-    Sphinx passes these options to the ``highlight_block`` method,
-    which is a wrapper around Pygments' ``highlight`` method.
-    Handling these options is then a job of the ``AwesomePygmentsBridge``.
-    """
-
-    new_options = {
-        "emphasize-added": directives.unchanged_required,
-        "emphasize-removed": directives.unchanged_required,
-        "emphasize-text": directives.unchanged_required,
-    }
-
-    option_spec = CodeBlock.option_spec  # type: ignore[misc]
-    option_spec.update(new_options)
-
-    def _get_line_numbers(
-        self: AwesomeCodeBlock, option: Literal["emphasize-added", "emphasize-removed"]
-    ) -> list[int] | None:
-        """Parse the line numbers for the ``:emphasize-added:`` and ``:emphasize-removed:`` options."""
-        document = self.state.document
-        location = self.state_machine.get_source_and_line(self.lineno)
-        nlines = len(self.content)
-        linespec = self.options.get(option)
-
-        if not linespec:
-            return None
-
-        try:
-            line_numbers = parselinenos(linespec, nlines)
-            if any(i >= nlines for i in line_numbers):
-                logger.warning(
-                    __("line number spec is out of range(1-%d): %r")
-                    % (nlines, linespec),
-                    location=location,
-                )
-            return [i + 1 for i in line_numbers if i < nlines]
-        except ValueError as err:
-            return [document.reporter.warning(err, line=self.lineno)]
-
-    def _extra_args(
-        self: AwesomeCodeBlock,
-        node: Node,
-        hl_added: list[int] | None,
-        hl_removed: list[int] | None,
-    ) -> None:
-        """Set extra attributes for line highlighting."""
-        extra_args = node.get("highlight_args", {})  # type: ignore[attr-defined]
-
-        if hl_added is not None:
-            extra_args["hl_added"] = hl_added
-        if hl_removed is not None:
-            extra_args["hl_removed"] = hl_removed
-        if "emphasize-text" in self.options:
-            extra_args["hl_text"] = self.options["emphasize-text"]
-
-    def run(self: AwesomeCodeBlock) -> list[Node]:
-        """Handle parsing extra options for highlighting."""
-        literal_nodes: list[Node] = super().run()
-
-        hl_added = self._get_line_numbers("emphasize-added")
-        hl_removed = self._get_line_numbers("emphasize-removed")
-
-        for node in literal_nodes:
-            # Code blocks with caption [container > (caption + literal_block)]
-            if isinstance(node, nodes.container):
-                for nnode in node.children:
-                    if isinstance(nnode, nodes.literal_block):
-                        self._extra_args(nnode, hl_added, hl_removed)
-            # Code blocks without caption [literal_block]
-            if isinstance(node, nodes.literal_block):
-                self._extra_args(node, hl_added, hl_removed)
-
-        return literal_nodes
-
-
-# These external references are needed, or you'll get a maximum recursion depth error
-pygmentsbridge_get_lexer = PygmentsBridge.get_lexer
-pygmentsbridge_highlight_block = PygmentsBridge.highlight_block
-
-
 class AwesomePygmentsBridge(PygmentsBridge):  # type: ignore
-    """Monkey-patch the Pygments methods to handle highlighting placeholder text."""
+    """Extend the PygmentsBridge to handle highlighting placeholder text."""
+
+    html_formatter = AwesomeHtmlFormatter
 
     def get_lexer(
         self: AwesomePygmentsBridge,
@@ -303,11 +185,11 @@ class AwesomePygmentsBridge(PygmentsBridge):  # type: ignore
         force: bool = False,
         location: Any = None,
     ) -> Lexer:
-        """Monkey-patch the ``PygmentsBridge.get_lexer`` method.
+        """Extend the ``PygmentsBridge.get_lexer`` method.
 
         Adds a filter to lexers if the ``hl_text`` option is present.
         """
-        lexer = pygmentsbridge_get_lexer(self, source, lang, opts, force, location)
+        lexer = super().get_lexer(source, lang, opts, force, location)
         hl_text = opts.get("hl_text") if opts else None
 
         if hl_text:
@@ -324,7 +206,7 @@ class AwesomePygmentsBridge(PygmentsBridge):  # type: ignore
         location: Any = None,
         **kwargs: Any,
     ) -> str:
-        """Monkey-patch the ``PygmentsBridge.highlight_block`` method.
+        """Extend the ``PygmentsBridge.highlight_block`` method.
 
         This method is called when Sphinx transforms the abstract document tree to HTML and encounters code blocks.
         """
@@ -336,20 +218,38 @@ class AwesomePygmentsBridge(PygmentsBridge):  # type: ignore
         if hl_text:
             opts["hl_text"] = hl_text
 
-        return pygmentsbridge_highlight_block(  # type: ignore
-            self, source, lang, opts, force, location, **kwargs
+        return super().highlight_block(  # type: ignore
+            source, lang, opts, force, location, **kwargs
         )
+
+    def get_stylesheet(self: AwesomePygmentsBridge, arg: str | None = None) -> str:
+        """Override the ``PygmentsBridge.get_stylesheet`` method.
+
+        This lets you prepend all Pygments classes with a common prefix, such as ``.dark``.
+        """
+        prefix = ".highlight"
+        if arg:
+            prefix = f"{arg} .highlight"
+
+        formatter = self.get_formatter()
+        if self.dest == "html":
+            return formatter.get_style_defs(prefix)  # type: ignore
+        else:
+            return formatter.get_style_defs() + _LATEX_ADD_STYLES  # type: ignore
 
 
 def setup(app: Sphinx) -> dict[str, Any]:
-    """Set up this internal extension."""
-    PygmentsBridge.html_formatter = AwesomeHtmlFormatter
-    PygmentsBridge.get_lexer = AwesomePygmentsBridge.get_lexer  # type: ignore[assignment]
-    PygmentsBridge.highlight_block = AwesomePygmentsBridge.highlight_block  # type: ignore[assignment]
-    directives.register_directive("code-block", AwesomeCodeBlock)
+    """Set up extension.
+
+    This module is no longer needed as an extension and no code will be run.
+    The classes and methods are called from `__init__.py`.
+    """
+    logger.warning(
+        "You no longer have to include the `sphinxawsome_theme.highlighting` extension. This extension will be removed in the next major release."
+    )
 
     return {
-        "version": __version__,
+        "version": "n/a",
         "parallel_read_safe": True,
         "parallel_write_safe": True,
     }

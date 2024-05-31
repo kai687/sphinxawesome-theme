@@ -19,10 +19,31 @@ def test_handles_deprecated_extension(app: Sphinx, warning: StringIO) -> None:
     app.build()
 
     assert (
-        'Including `sphinxawesome_theme` in your `extensions` is deprecated. Setting `html_theme = "sphinxawesome_theme"` is enough. You can load the optional `sphinxawesome_theme.highlighting` extension.'
+        'Including `sphinxawesome_theme` in your `extensions` is deprecated. Setting `html_theme = "sphinxawesome_theme"` is enough.'
         in warning.getvalue()
     )
-    assert "sphinxawesome_theme.highlighting" in app.extensions
+
+
+@pytest.mark.sphinx(
+    "html",
+    confoverrides={
+        "html_theme": "sphinxawesome_theme",
+        "extensions": [
+            "sphinxawesome_theme.highlighting",
+            "sphinxawesome_theme.deprecated",
+        ],
+    },
+)
+def test_handles_deprecated_highlighting_extension(
+    app: Sphinx, warning: StringIO
+) -> None:
+    """It raises a warning when loading the deprecated internal highlighting extension."""
+    app.build()
+
+    assert (
+        "You no longer have to include the `sphinxawsome_theme.highlighting` extension. This extension will be removed in the next major release."
+        in warning.getvalue()
+    )
 
 
 @pytest.mark.sphinx(

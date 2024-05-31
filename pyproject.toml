@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "sphinxawesome-theme"
-version = "5.1.6"
+version = "5.2.0"
 description = "An awesome theme for the Sphinx documentation generator"
 readme = "README.md"
 authors = ["Kai Welke <kai687@pm.me>"]
@@ -38,7 +38,7 @@ sphinx-design = [
   { version = "^0.5.0", python = ">=3.8,<3.9" },
   { version = "^0.6.0", python = ">=3.9,<3.13" },
 ]
-sphinx-docsearch = "^0.0.6"
+sphinx-docsearch = "^0.0.7"
 python-dotenv = ">=0.19,<1.1"
 
 [tool.poetry.group.dev.dependencies]
@@ -53,7 +53,7 @@ pre-commit = [
   { version = "^3.5", python = ">=3.8,<3.9"},
   { version = "^3.6", python = ">=3.9,<3.13"},
 ]
-ruff = ">=0.0.269,<0.4.6"
+ruff = ">=0.0.269,<0.4.7"
 
 [tool.poetry.group.netlify.dependencies]
 nox = {version = ">=2023.4.22,<2025.0.0", python = "3.8"}

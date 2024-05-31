@@ -1,7 +1,7 @@
 /* Code-related styles */
 
 .highlight {
-  @apply relative bg-transparent;
+  @apply relative !bg-transparent;
   &:hover .copy {
     @apply opacity-100;
   }
@@ -71,8 +71,8 @@ pre {
       }
     }
   }
-  & .linenos {
-    @apply select-none pl-0 pr-4;
+  & span.linenos {
+    @apply select-none !bg-transparent pl-0 pr-4;
   }
 }
 

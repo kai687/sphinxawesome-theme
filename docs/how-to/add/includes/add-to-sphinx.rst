@@ -14,13 +14,11 @@ Add the theme to your Sphinx configuration
 
       :confval:`sphinx:html_theme`
 
-#. Recommended: add the bundled extension for better code blocks.
+#. Optional: load a bundled extension to check if you're using deprecated options:
 
    .. code-block:: python
       :caption: |conf|
 
       extensions += [
-         "sphinxawesome.highlighting",
-         # To help you with the upgrade to version 5:
-         # "sphinxawesome.deprecated",
+         "sphinxawesome.deprecated",
       ]

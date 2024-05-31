@@ -11,7 +11,7 @@ The |product| uses these Python tools:
 
 .. _Poetry: https://python-poetry.org/
 .. _Nox: https://nox.thea.codes/en/stable/
-.. _Pipx: https://pypa.github.io/pipx/
+.. _Pipx: https://pipx.pypa.io/stable/
 
 If you want to use the same versions of the Python tools,
 you can provide a :gh:`requirements.txt <requirements.txt>` to the install commands.
