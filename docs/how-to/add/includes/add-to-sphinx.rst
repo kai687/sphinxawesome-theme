@@ -22,3 +22,5 @@ Add the theme to your Sphinx configuration
       extensions += [
          "sphinxawesome.deprecated",
       ]
+
+For information about the configuration options, see :doc:`../configure/index`.
