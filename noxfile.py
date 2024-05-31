@@ -127,10 +127,7 @@ def xml(session: nox.Session) -> None:
 
 @nox.session(venv_backend=None)
 def export(session: nox.Session) -> None:
-    """Export a :file`requirements.txt` file for Cloudflare.
-
-    On GitHub actions, we use the same file, although it runs on Python 3.11.
-    """
+    """Export a requirements file for ReadTheDocs."""
     session.run(
         "poetry",
         "export",
@@ -138,7 +135,7 @@ def export(session: nox.Session) -> None:
         "--with",
         "docs",
         "--output",
-        "requirements.txt",
+        "docs/readthedocs.txt",
         external=True,
     )
 
