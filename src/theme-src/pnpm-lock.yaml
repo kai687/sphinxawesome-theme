@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@alpinejs/intersect':
-    specifier: ^3.14.0
-    version: 3.14.0
+    specifier: ^3.14.1
+    version: 3.14.1
   alpinejs:
     specifier: ^3.14.0
     version: 3.14.0
@@ -111,8 +111,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /@alpinejs/intersect@3.14.0:
-    resolution: {integrity: sha512-QrAEB3rjcKsSO5rcDYrEeSq0Z+wDhro85yAxmDsdwK8FcDIdFbIZXM1dZbdmiqsfuPegTfxRH22FoJFS3khmtw==}
+  /@alpinejs/intersect@3.14.1:
+    resolution: {integrity: sha512-+qlQief0QWPqjFjoylr+CfKOkwvnxldRQg/WT1PscyPAeykK+wJOJAEQCimwwaLnYHxiXdF6whti5o7GYPYNxw==}
     dev: false
 
   /@ampproject/remapping@2.3.0:
