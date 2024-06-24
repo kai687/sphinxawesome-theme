@@ -22,4 +22,4 @@ Call ``super()`` to render the original content of the parent template.
 
 .. seealso::
 
-   :doc:`sphinx:development/templating`
+   :doc:`sphinx:development/html_themes/templating`
