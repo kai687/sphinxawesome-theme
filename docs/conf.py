@@ -79,6 +79,7 @@ html_extra_path = ["robots.txt", "_redirects"]
 html_context = {
     "mode": "production",
     "feedback_url": "https://github.com/kai687/sphinxawesome-theme/issues/new?title=Feedback",
+    "umami_website_id": os.getenv("UMAMI_WEBSITE_ID", ""),
 }
 
 html_sidebars: dict[str, list[str]] = {
