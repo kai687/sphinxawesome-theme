@@ -88,8 +88,8 @@ importers:
         specifier: ^16.6.1
         version: 16.6.1(typescript@5.4.5)
       stylelint-prettier:
-        specifier: ^5.0.0
-        version: 5.0.0(prettier@3.3.2)(stylelint@16.6.1(typescript@5.4.5))
+        specifier: ^5.0.1
+        version: 5.0.1(prettier@3.3.2)(stylelint@16.6.1(typescript@5.4.5))
       stylelint-webpack-plugin:
         specifier: ^5.0.1
         version: 5.0.1(stylelint@16.6.1(typescript@5.4.5))(webpack@5.92.1(webpack-cli@5.1.4))
@@ -2874,8 +2874,8 @@ packages:
     peerDependencies:
       postcss: ^8.4.31
 
-  stylelint-prettier@5.0.0:
-    resolution: {integrity: sha512-RHfSlRJIsaVg5Br94gZVdWlz/rBTyQzZflNE6dXvSxt/GthWMY3gEHsWZEBaVGg7GM+XrtVSp4RznFlB7i0oyw==}
+  stylelint-prettier@5.0.1:
+    resolution: {integrity: sha512-blsBcSiCv7ZNmUadZPo9tv/ZHxTDRUbByn/NUp3irH5AozPFnAE7SHM/md/2DMdQizUwfuD9/3kOKB5+4a1/4Q==}
     engines: {node: '>=18.12.0'}
     peerDependencies:
       prettier: '>=3.0.0'
@@ -6021,7 +6021,7 @@ snapshots:
       postcss: 8.4.39
       postcss-selector-parser: 6.1.0
 
-  stylelint-prettier@5.0.0(prettier@3.3.2)(stylelint@16.6.1(typescript@5.4.5)):
+  stylelint-prettier@5.0.1(prettier@3.3.2)(stylelint@16.6.1(typescript@5.4.5)):
     dependencies:
       prettier: 3.3.2
       prettier-linter-helpers: 1.0.0
