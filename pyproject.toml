@@ -24,7 +24,7 @@ packages = [
 python = "^3.8"
 sphinx = [
   { version = "<7.2", python = ">=3.8,<3.9" },
-  { version = "^7.2,<7.4", python = ">=3.9,<3.13" },
+  { version = "^7.2,<7.5", python = ">=3.9,<3.13" },
 ]
 beautifulsoup4 = "^4.9.1"
 
@@ -53,7 +53,7 @@ pre-commit = [
   { version = "^3.5", python = ">=3.8,<3.9"},
   { version = "^3.6", python = ">=3.9,<3.13"},
 ]
-ruff = ">=0.5.1,<0.5.2"
+ruff = ">=0.5.2,<0.5.3"
 
 [tool.poetry.group.netlify.dependencies]
 nox = {version = ">=2023.4.22,<2025.0.0", python = "3.8"}

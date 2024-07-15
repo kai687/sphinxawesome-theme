@@ -71,7 +71,7 @@ class AwesomeCodeBlock(CodeBlock):  # type: ignore
                 )
             return [i + 1 for i in line_numbers if i < nlines]
         except ValueError as err:
-            return [document.reporter.warning(err, line=self.lineno)]
+            return [document.reporter.warning(err, line=self.lineno)]  # type: ignore
 
     def _extra_args(
         self: AwesomeCodeBlock,
