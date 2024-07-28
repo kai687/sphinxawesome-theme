@@ -2153,13 +2153,13 @@ files = [
 
 [[package]]
 name = "types-docutils"
-version = "0.21.0.20240711"
+version = "0.21.0.20240724"
 description = "Typing stubs for docutils"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "types-docutils-0.21.0.20240711.tar.gz", hash = "sha256:646f239e7afd88304995f444d3ea39639166c9445580ae5dcaf5515974c050ed"},
-    {file = "types_docutils-0.21.0.20240711-py3-none-any.whl", hash = "sha256:149d822bd02d77954f4e04d8e87fcd039db2101dbf564a1cd1b0fabbd543277b"},
+    {file = "types-docutils-0.21.0.20240724.tar.gz", hash = "sha256:29ff7e27660f4fe76ea61d7e54d05ca3ce3b733ca9e8e8721e0fa587dbc10489"},
+    {file = "types_docutils-0.21.0.20240724-py3-none-any.whl", hash = "sha256:bf51c6c488d23c0412f9b3ba10686fb1a6cb0b957ef04b45128d8a55c79ebb00"},
 ]
 
 [[package]]
