@@ -40,7 +40,7 @@
     "postcss-preset-env": "^10.0.0",
     "prettier": "^3.3.3",
     "prettier-plugin-organize-imports": "^4.0.0",
-    "prettier-plugin-tailwindcss": "^0.6.5",
+    "prettier-plugin-tailwindcss": "^0.6.6",
     "stylelint": "^16.8.1",
     "stylelint-prettier": "^5.0.2",
     "stylelint-webpack-plugin": "^5.0.1",
