@@ -32,7 +32,7 @@ importers:
         version: 0.0.0-insiders.565cd3e(postcss@8.4.40)
       '@tailwindcss/typography':
         specifier: ^0.5.13
-        version: 0.5.13(tailwindcss@3.4.7)
+        version: 0.5.13(tailwindcss@3.4.9)
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.4.40)
@@ -94,8 +94,8 @@ importers:
         specifier: ^5.0.1
         version: 5.0.1(stylelint@16.8.1(typescript@5.4.5))(webpack@5.93.0(webpack-cli@5.1.4))
       tailwindcss:
-        specifier: ^3.4.7
-        version: 3.4.7
+        specifier: ^3.4.9
+        version: 3.4.9
       webpack:
         specifier: ^5.93.0
         version: 5.93.0(webpack-cli@5.1.4)
@@ -2652,10 +2652,6 @@ packages:
     resolution: {integrity: sha512-IQ7TZdoaqbT+LCpShg46jnZVlhWD2w6iQYAcYXfHARZ7X1t/UGhhceQDs5X0cGqKvYlHNOuv7Oa1xmb0oQuA3w==}
     engines: {node: '>=4'}
 
-  postcss-selector-parser@6.1.0:
-    resolution: {integrity: sha512-UMz42UD0UY0EApS0ZL9o1XnLhSTtvvvLe5Dc2H2O56fvRZi+KulDyf5ctDhhtYJBGKStV2FL1fy6253cmLgqVQ==}
-    engines: {node: '>=4'}
-
   postcss-selector-parser@6.1.1:
     resolution: {integrity: sha512-b4dlw/9V8A71rLIDsSwVmak9z2DuBUB7CA1/wSdelNEzqsjoSPeADTWNO09lpH49Diy3/JIZ2bSPB1dI3LJCHg==}
     engines: {node: '>=4'}
@@ -2982,8 +2978,8 @@ packages:
     resolution: {integrity: sha512-w2sfv80nrAh2VCbqR5AK27wswXhqcck2AhfnNW76beQXskGZ1V12GwS//yYVa3d3fcvAip2OUnbDAjW2k3v9fA==}
     engines: {node: '>=10.0.0'}
 
-  tailwindcss@3.4.7:
-    resolution: {integrity: sha512-rxWZbe87YJb4OcSopb7up2Ba4U82BoiSGUdoDr3Ydrg9ckxFS/YWsvhN323GMcddgU65QRy7JndC7ahhInhvlQ==}
+  tailwindcss@3.4.9:
+    resolution: {integrity: sha512-1SEOvRr6sSdV5IDf9iC+NU4dhwdqzF4zKKq3sAbasUWHEM6lsMhX+eNN5gkPx1BvLFEnZQEUFbXnGj8Qlp83Pg==}
     engines: {node: '>=14.0.0'}
     hasBin: true
 
@@ -4334,13 +4330,13 @@ snapshots:
       postcss: 8.4.40
       postcss-nested: 5.0.6(postcss@8.4.40)
 
-  '@tailwindcss/typography@0.5.13(tailwindcss@3.4.7)':
+  '@tailwindcss/typography@0.5.13(tailwindcss@3.4.9)':
     dependencies:
       lodash.castarray: 4.4.0
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       postcss-selector-parser: 6.0.10
-      tailwindcss: 3.4.7
+      tailwindcss: 3.4.9
 
   '@trysound/sax@0.2.0': {}
 
@@ -5579,7 +5575,7 @@ snapshots:
   postcss-discard-unused@7.0.1(postcss@8.4.40):
     dependencies:
       postcss: 8.4.40
-      postcss-selector-parser: 6.1.0
+      postcss-selector-parser: 6.1.1
 
   postcss-double-position-gradients@6.0.0(postcss@8.4.40):
     dependencies:
@@ -5716,13 +5712,13 @@ snapshots:
     dependencies:
       icss-utils: 5.1.0(postcss@8.4.40)
       postcss: 8.4.40
-      postcss-selector-parser: 6.1.0
+      postcss-selector-parser: 6.1.1
       postcss-value-parser: 4.2.0
 
   postcss-modules-scope@3.2.0(postcss@8.4.40):
     dependencies:
       postcss: 8.4.40
-      postcss-selector-parser: 6.1.0
+      postcss-selector-parser: 6.1.1
 
   postcss-modules-values@4.0.0(postcss@8.4.40):
     dependencies:
@@ -5732,12 +5728,12 @@ snapshots:
   postcss-nested@5.0.6(postcss@8.4.40):
     dependencies:
       postcss: 8.4.40
-      postcss-selector-parser: 6.1.0
+      postcss-selector-parser: 6.1.1
 
   postcss-nested@6.0.1(postcss@8.4.40):
     dependencies:
       postcss: 8.4.40
-      postcss-selector-parser: 6.1.0
+      postcss-selector-parser: 6.1.1
 
   postcss-nesting@13.0.0(postcss@8.4.40):
     dependencies:
@@ -5917,11 +5913,6 @@ snapshots:
       postcss-selector-parser: 6.1.1
 
   postcss-selector-parser@6.0.10:
-    dependencies:
-      cssesc: 3.0.0
-      util-deprecate: 1.0.2
-
-  postcss-selector-parser@6.1.0:
     dependencies:
       cssesc: 3.0.0
       util-deprecate: 1.0.2
@@ -6236,7 +6227,7 @@ snapshots:
       string-width: 4.2.3
       strip-ansi: 6.0.1
 
-  tailwindcss@3.4.7:
+  tailwindcss@3.4.9:
     dependencies:
       '@alloc/quick-lru': 5.2.0
       arg: 5.0.2
@@ -6257,7 +6248,7 @@ snapshots:
       postcss-js: 4.0.1(postcss@8.4.40)
       postcss-load-config: 4.0.2(postcss@8.4.40)
       postcss-nested: 6.0.1(postcss@8.4.40)
-      postcss-selector-parser: 6.1.0
+      postcss-selector-parser: 6.1.1
       resolve: 1.22.8
       sucrase: 3.35.0
     transitivePeerDependencies:
