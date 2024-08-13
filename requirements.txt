@@ -1,4 +1,4 @@
-argcomplete==3.4.0 ; python_version == "3.8"
+argcomplete==3.5.0 ; python_version == "3.8"
 build==1.2.1 ; python_version == "3.8"
 cachecontrol[filecache]==0.14.0 ; python_version == "3.8"
 certifi==2024.7.4 ; python_version == "3.8"
