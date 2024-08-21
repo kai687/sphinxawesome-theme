@@ -4,6 +4,7 @@ from io import StringIO
 
 import pytest
 from sphinx.application import Sphinx
+
 from sphinxawesome_theme import logos
 
 

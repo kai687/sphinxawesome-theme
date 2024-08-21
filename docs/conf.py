@@ -8,6 +8,7 @@ from dataclasses import asdict
 from dotenv import load_dotenv
 from sphinx.application import Sphinx
 from sphinx.util.docfields import Field
+
 from sphinxawesome_theme import ThemeOptions, __version__
 from sphinxawesome_theme.postprocess import Icons
 
