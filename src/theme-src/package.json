@@ -1,6 +1,6 @@
 {
   "name": "sphinxawesome-theme",
-  "version": "5.2.0",
+  "version": "5.3.0",
   "scripts": {
     "build": "NODE_ENV=production webpack",
     "dev": "NODE_ENV=development webpack --watch --progress",
