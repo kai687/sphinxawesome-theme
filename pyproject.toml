@@ -24,22 +24,26 @@ packages = [
 python = "^3.8"
 sphinx = [
   { version = "<7.2", python = ">=3.8,<3.9" },
-  { version = "^7.2,<7.5", python = ">=3.9,<3.13" },
+  { version = "^7.2,<7.5", python = ">=3.9,<3.10" },
+  { version = "^8", python = ">=3.10,<3.13" },
 ]
 beautifulsoup4 = "^4.9.1"
 
+[tool.poetry.group.docs]
+optional = true
+
 [tool.poetry.group.docs.dependencies]
-sphinx-autobuild = [
-  { version = "^2021", python = ">=3.8,<3.9" },
-  { version = "^2024.2.4", python = ">=3.9,<3.13" },
-]
+sphinx-autobuild = "*"
 sphinx-sitemap = "^2.2.0"
 sphinx-design = [
   { version = "^0.5.0", python = ">=3.8,<3.9" },
   { version = "^0.6.0", python = ">=3.9,<3.13" },
 ]
-sphinx-docsearch = "^0.0.7"
-python-dotenv = ">=0.19,<1.1"
+sphinx-docsearch = "*"
+python-dotenv = "*"
+
+[tool.poetry.group.dev]
+optional = true
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8"
@@ -48,12 +52,18 @@ coverage = { extras = ["toml"], version = "^7.2" }
 types-docutils = ">=0.19.1.6,<0.22.0.0"
 mypy = "^1.0"
 
+[tool.poetry.group.lint]
+optional = true
+
 [tool.poetry.group.lint.dependencies]
 pre-commit = [
   { version = "^3.5", python = ">=3.8,<3.9"},
   { version = "^3.6", python = ">=3.9,<3.13"},
 ]
 ruff = ">=0.5.2,<0.6.9"
+
+[tool.poetry.group.netlify]
+optional = true
 
 [tool.poetry.group.netlify.dependencies]
 nox = {version = ">=2023.4.22,<2025.0.0", python = "3.8"}
