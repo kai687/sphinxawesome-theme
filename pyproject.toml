@@ -60,7 +60,7 @@ pre-commit = [
   { version = "^3.5", python = ">=3.8,<3.9"},
   { version = "^3.6", python = ">=3.9,<3.13"},
 ]
-ruff = ">=0.5.2,<0.6.9"
+ruff = ">=0.5.2,<0.6.10"
 
 [tool.poetry.group.netlify]
 optional = true
