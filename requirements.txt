@@ -3,7 +3,7 @@ build==1.2.2 ; python_version == "3.8"
 cachecontrol[filecache]==0.14.0 ; python_version == "3.8"
 certifi==2024.8.30 ; python_version == "3.8"
 cffi==1.17.1 ; (sys_platform == "darwin" or sys_platform == "linux") and python_version == "3.8" and (sys_platform == "darwin" or platform_python_implementation != "PyPy")
-charset-normalizer==3.3.2 ; python_version == "3.8"
+charset-normalizer==3.4.0 ; python_version == "3.8"
 cleo==2.1.0 ; python_version == "3.8"
 click==8.1.7 ; python_version == "3.8"
 colorama==0.4.6 ; python_version == "3.8" and (sys_platform == "win32" or os_name == "nt" or platform_system == "Windows")
