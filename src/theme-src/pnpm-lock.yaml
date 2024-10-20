@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@alpinejs/intersect':
-        specifier: ^3.14.1
-        version: 3.14.1
+        specifier: ^3.14.3
+        version: 3.14.3
       alpinejs:
         specifier: ^3.14.1
         version: 3.14.1
@@ -112,8 +112,8 @@ packages:
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
     engines: {node: '>=10'}
 
-  '@alpinejs/intersect@3.14.1':
-    resolution: {integrity: sha512-+qlQief0QWPqjFjoylr+CfKOkwvnxldRQg/WT1PscyPAeykK+wJOJAEQCimwwaLnYHxiXdF6whti5o7GYPYNxw==}
+  '@alpinejs/intersect@3.14.3':
+    resolution: {integrity: sha512-6lyDfvHnZSNfLYVW3zLkbBlGR2EY408HX2SMHVXLoGPqmV/Om1V74W5+UbtfkqQX7xQmk6sqAX57bIKUqqoR5A==}
 
   '@ampproject/remapping@2.3.0':
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
@@ -3120,7 +3120,7 @@ snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
 
-  '@alpinejs/intersect@3.14.1': {}
+  '@alpinejs/intersect@3.14.3': {}
 
   '@ampproject/remapping@2.3.0':
     dependencies:
