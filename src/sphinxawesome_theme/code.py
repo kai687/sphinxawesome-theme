@@ -20,7 +20,7 @@ from docutils.parsers.rst import directives
 from sphinx.application import Sphinx
 from sphinx.directives.code import CodeBlock
 from sphinx.locale import __
-from sphinx.util import logging, parselinenos
+from sphinx.util import logging, parselinenos  # type: ignore[attr-defined]
 
 logger = logging.getLogger(__name__)
 

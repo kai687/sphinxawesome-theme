@@ -9,7 +9,7 @@ import nox
 nox.options.stop_on_first_error = True
 nox.options.sessions = ["docs", "lint", "fmt", "mypy", "tests"]
 
-python_versions = ["3.12", "3.11", "3.10", "3.9", "3.8"]
+python_versions = ["3.13", "3.12", "3.11", "3.10", "3.9", "3.8"]
 session_install = nox.Session.install
 
 
@@ -102,7 +102,7 @@ def docs(session: nox.Session, live: bool = False, verbose: bool = False) -> Non
 
 @nox.session
 def live_docs(session: nox.Session) -> None:
-    """Build the docs with :cmd:sphinx-autobuild`."""
+    """Build the docs with `sphinx-autobuild`."""
     verbose = bool("--verbose" in session.posargs)
     docs(session, True, verbose)
 
@@ -127,7 +127,7 @@ def xml(session: nox.Session) -> None:
 
 @nox.session(venv_backend=None)
 def export(session: nox.Session) -> None:
-    """Export a :file`requirements.txt` file for Netlify (Python 3.8).
+    """Export a `requirements.txt` file for Netlify (Python 3.8).
 
     On Netlify, we install Poetry, Pip, and Pipx with the same versions
     as specified in :file:`requirements.txt`. Then, we use poetry
@@ -166,7 +166,7 @@ def fmt(session: nox.Session) -> None:
     session.run("ruff", "format", ".")
 
 
-@nox.session(python=["3.8", "3.12"])
+@nox.session(python=[python_versions[0], python_versions[-1]])
 def mypy(session: nox.Session) -> None:
     """Type-check python files with mypy.
 
