@@ -27,7 +27,7 @@ from typing import Any
 
 from docutils.nodes import Node
 from sphinx.application import Sphinx
-from sphinx.util import isurl, logging
+from sphinx.util import isurl, logging  # type: ignore[attr-defined]
 from sphinx.util.fileutil import copy_asset_file
 
 logger = logging.getLogger(__name__)
