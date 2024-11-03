@@ -33,7 +33,7 @@
     "eslint": "^9.13.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-webpack-plugin": "^4.2.0",
-    "mini-css-extract-plugin": "^2.9.1",
+    "mini-css-extract-plugin": "^2.9.2",
     "postcss": "^8.4.47",
     "postcss-import": "^16.1.0",
     "postcss-loader": "^8.1.1",
