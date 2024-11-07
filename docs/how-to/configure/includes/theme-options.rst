@@ -18,7 +18,7 @@ you can use the :py:class:`ThemeOptions` class:
    theme_options = ThemeOptions(
       # Add your theme options. For example:
       show_breadcrumbs=True,
-      main_nav_links={"About", "/about"},
+      main_nav_links={"About": "/about"},
    )
 
    html_theme_options = asdict(theme_options)
