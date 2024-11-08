@@ -9,7 +9,7 @@
   "browserslist": [
     "last 2 versions",
     "not dead",
-    "> 1%"
+    "not op_mini all"
   ],
   "author": "Kai Welke",
   "license": "MIT",

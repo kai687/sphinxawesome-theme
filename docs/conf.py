@@ -23,6 +23,7 @@ copyright = f"{author}."
 # -- General configuration ---
 
 extensions = [
+    "autoapi.extension",
     "sphinx.ext.autodoc",
     "sphinx.ext.intersphinx",
     "sphinx.ext.extlinks",
@@ -61,6 +62,9 @@ extlinks = {
     "ghdir": ("https://github.com/kai687/sphinxawesome-theme/tree/main/%s", "%s"),
     "sphinxdocs": ("https://www.sphinx-doc.org/en/master/%s", "%s"),
 }
+
+autoapi_dirs = ["src"]
+autoapi_add_toctree_entry = False
 
 add_module_names = False
 

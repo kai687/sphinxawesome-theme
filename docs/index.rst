@@ -76,3 +76,9 @@ Explore
          :titlesonly:
 
          demo/*
+
+.. toctree::
+   :hidden:
+   :caption: API demo
+
+   autoapi/api/index
