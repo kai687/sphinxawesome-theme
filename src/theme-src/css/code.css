@@ -101,6 +101,19 @@ pre {
 .sig-name {
   @apply text-accent-foreground;
 }
+/* Custom styles for API documentation */
+.sig-param .n {
+  @apply font-normal;
+}
+
+.sig-param .p {
+  @apply mx-1;
+}
+
+.sig-param .annotation {
+  @apply text-muted-foreground;
+}
+
 
 em.property {
   @apply text-muted-foreground;
