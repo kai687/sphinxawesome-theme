@@ -2,9 +2,11 @@
 
 .highlight {
   @apply relative !bg-transparent;
+
   &:hover .copy {
     @apply opacity-100;
   }
+
   .gp {
     @apply select-none;
   }
@@ -17,9 +19,11 @@
 
 .literal-block-wrapper {
   @apply mx-0 mt-6 max-w-none rounded-lg border border-border px-0;
+
   & pre {
     @apply mt-0 rounded-none border-none;
   }
+
   & .code-block-caption {
     @apply rounded-t-lg border-b border-border px-4 py-2 text-sm tracking-wide text-muted-foreground;
   }
@@ -27,6 +31,7 @@
 
 code {
   @apply relative whitespace-nowrap rounded bg-muted px-[0.3em] py-[0.2em] font-mono text-sm;
+
   & em,
   & .ge {
     @apply font-bold tracking-wide text-accent-foreground;
@@ -39,14 +44,18 @@ code {
 
 pre {
   @apply mt-6 overflow-x-auto rounded-lg border border-border py-4 text-sm data-[theme=dark]:bg-background data-[theme=light]:bg-white;
+
   &.literal-block {
     @apply px-4;
   }
+
   & code {
     @apply whitespace-pre bg-transparent p-0;
+
     & > [id^="line-"] {
       @apply block px-4;
     }
+
     [id^="line-"] {
       &:has(mark),
       &:has(ins),
@@ -55,22 +64,27 @@ pre {
       &:has(.gi) {
         @apply px-0;
       }
+
       & mark,
       & ins,
       & del {
         @apply relative block px-4;
       }
+
       & mark {
         @apply bg-muted text-inherit shadow-[2px_0_currentColor_inset] dark:bg-slate-700 dark:shadow-[3px_0_currentColor_inset];
       }
+
       & ins {
         @apply bg-green-500/30 text-green-900 no-underline before:absolute before:left-[2px] before:content-['\002b'] dark:bg-opacity-100 dark:text-green-200;
       }
+
       & del {
         @apply bg-red-500/30 text-red-900 no-underline before:absolute before:left-[2px] before:content-['\2212'] dark:bg-opacity-100 dark:text-red-200;
       }
     }
   }
+
   & span.linenos {
     @apply select-none !bg-transparent pl-0 pr-4;
   }
@@ -80,6 +94,7 @@ pre {
   & .gi {
     @apply inline-block w-full bg-green-500/30 px-4 text-green-900 dark:bg-opacity-100 dark:text-green-200;
   }
+
   & .gd {
     @apply inline-block w-full bg-red-500/30 px-4 text-red-900 dark:bg-opacity-100 dark:text-green-200;
   }
@@ -116,4 +131,8 @@ em.property {
 
 .option-list kbd {
   @apply !border-none !bg-transparent !text-[1em] !font-bold;
+}
+
+dt .classifier {
+  @apply italic before:mr-2 before:content-[':'];
 }

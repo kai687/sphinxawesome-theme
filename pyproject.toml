@@ -41,6 +41,7 @@ sphinx-design = [
 ]
 sphinx-docsearch = "*"
 python-dotenv = "*"
+sphinx-autoapi = "^3.3.3"
 
 [tool.poetry.group.dev]
 optional = true
