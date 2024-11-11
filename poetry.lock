@@ -1993,17 +1993,6 @@ theme-sbt = ["sphinx-book-theme (>=1.1,<2.0)"]
 
 [[package]]
 name = "sphinx-docsearch"
-version = "0.0.8"
-description = "A Sphinx extension for replacing the built-in search with Algolia DocSearch"
-optional = false
-python-versions = "<4.0,>=3.8"
-files = [
-    {file = "sphinx_docsearch-0.0.8-py3-none-any.whl", hash = "sha256:20551387629cc77ac67fadde06fdafdb00a1bc0fe30c2a59fb16205d37069693"},
-    {file = "sphinx_docsearch-0.0.8.tar.gz", hash = "sha256:28daaecec2c0998bdaf62db34b96cdea81f4c43df9c4798b39bf6c3f887a5301"},
-]
-
-[[package]]
-name = "sphinx-docsearch"
 version = "0.1.0"
 description = "A Sphinx extension for replacing the built-in search with Algolia DocSearch"
 optional = false
