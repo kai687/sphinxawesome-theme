@@ -32,7 +32,7 @@ The following table lists the assets used by the |product| to be awesome.
 +=========================================================+===============================+===================================================================================+
 | UI design                                               | `shadcn/ui`_                  | `MIT License <https://github.com/shadcn-ui/ui/blob/main/LICENSE.md>`__            |
 +---------------------------------------------------------+-------------------------------+-----------------------------------------------------------------------------------+
-| CSS framework                                           | Tailwind_                     | `MIT License <https://github.com/tailwindlabs/tailwindcss/blob/master/LICENSE>`__ |
+| CSS framework                                           | Tailwind_                     | `MIT License <https://github.com/tailwindlabs/tailwindcss/blob/main/LICENSE>`__   |
 +---------------------------------------------------------+-------------------------------+-----------------------------------------------------------------------------------+
 | JavaScript framework (Version 5.0 and later)            | Alpine.js_                    | `MIT License <https://github.com/alpinejs/alpine/blob/main/LICENSE.md>`__         |
 +---------------------------------------------------------+-------------------------------+-----------------------------------------------------------------------------------+
@@ -58,7 +58,7 @@ The following table lists the assets used by the |product| to be awesome.
 .. _shadcn/ui: https://ui.shadcn.com/
 .. _Tailwind: https://tailwindcss.com
 .. _Clipboard.js: https://clipboardjs.com
-.. _Roboto: https://github.com/googlefonts/roboto
+.. _Roboto: https://github.com/googlefonts/roboto-2
 .. _JetBrains Mono: https://github.com/JetBrains/JetBrainsMono/
 .. _SIL Open Font License, 1.1: https://github.com/JetBrains/JetBrainsMono/blob/master/OFL.txt
 .. _Material icons: https://fonts.google.com
