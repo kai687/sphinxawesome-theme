@@ -1,179 +1,98 @@
-"""Run commands for this repository."""
+"""Run automated tasks."""
 
 from __future__ import annotations
 
-import tempfile
-
-import nox
+import nox  # type: ignore (external tool)
 
 nox.options.stop_on_first_error = True
-nox.options.sessions = ["docs", "lint", "fmt", "mypy", "tests"]
+nox.options.sessions = ["docs", "lint", "test", "typecheck"]
+nox.options.default_venv_backend = "uv"
 
-python_versions = ["3.13", "3.12", "3.11", "3.10", "3.9", "3.8"]
-session_install = nox.Session.install
-
-
-class PoetryNoxSession(nox.Session):
-    """Class for monkey-patching the Session object."""
-
-    def export(self: PoetryNoxSession, group: str, file_name: str) -> None:
-        """Export a group's dependencies from poetry.
-
-        Args:
-            group: The name of the dependency group from :file:`pyproject.toml`.
-            file_name: The file name for exporting the dependencies.
-        """
-        self.run(
-            "poetry",
-            "export",
-            "--without-hashes",
-            "--only",
-            group,
-            "--output",
-            file_name,
-            external=True,
-        )
-
-    def install(self: PoetryNoxSession, group: str, *args: str) -> None:  # type: ignore
-        """Install a group's dependencies into the nox virtual environment.
-
-        To make Nox use the version constraints as defined in :file:`pyproject.toml` ,
-        we have to export the dependencies into a temporary :file:`requirements.txt`.
-
-        Args:
-            group: The dependency group to export.
-            *args: The packages to install, passed on to :meth:`nox.Session.install`.
-        """
-        with tempfile.NamedTemporaryFile() as requirements:
-            self.export(group, requirements.name)
-            session_install(self, "-r", requirements.name, *args)
+python_versions = ["3.9", "3.13"]
 
 
-# Monkey-patch galore
-nox.Session.install = PoetryNoxSession.install  # type: ignore
-nox.Session.export = PoetryNoxSession.export  # type: ignore
+def get_requirements(groups: list[str] | str | None = None) -> list[str]:
+    """Load requirements from a `pyproject.toml` file."""
+    pyproject = nox.project.load_toml("pyproject.toml")
+    pkgs = pyproject["project"]["dependencies"]
+
+    if groups and "dependency-groups" in pyproject:
+        for g in groups if isinstance(groups, list) else [groups]:
+            pkgs += pyproject["dependency-groups"].get(g, [])
+
+    return pkgs
+
+
+def install_requirements(
+    session: nox.Session, groups: list[str] | str | None = None
+) -> None:
+    """Install requirements into the session's environment."""
+    requirements = get_requirements(groups)
+    session.install(*requirements)
+    session.install("-e", ".")
 
 
 @nox.session(python=python_versions)
-def tests(session: nox.Session) -> None:
-    """Run unit tests."""
-    args = session.posargs or ["--cov"]
-    deps = ["coverage[toml]", "pytest", "pytest-cov", "sphinx-design", "defusedxml"]
-    session.install("dev", ".", *deps)
-    session.run("pytest", *args)
-
-
-@nox.session(python=python_versions)
-def docs(session: nox.Session, live: bool = False, verbose: bool = False) -> None:
+def docs(session: nox.Session) -> None:
     """Build the docs.
 
     Args:
         session: The nox session instance.
-        live: If ``True``, use :cmd:`sphinx-autobuild` to build the docs with a live-reloading server.
-              If ``False``, use the regular :cmd:`sphinx-build`.
-        verbose: If ``True``, run sphinx in verbose mode (``-vvv``).
+        live: Whether to build a live-reloading version with ``sphinx-autobuild``.
+        verbose: Whether to run Sphinx in verbose mode.
     """
+    install_requirements(session, "docs")
+    build_cmd = "sphinx-build"
     args = ["-b", "dirhtml", "-aWTE", "docs", "docs/public"]
-    deps = ["sphinx", "bs4", "sphinx-sitemap", "sphinx-design", "sphinx-docsearch"]
-    sphinx_build = "sphinx-build"
 
     if "--live" in session.posargs:
-        live = True
+        build_cmd = "sphinx-autobuild"
+        args += ["-A", "mode=development", "--watch", "src/sphinxawesome_theme"]
         session.posargs.remove("--live")
 
     if "--verbose" in session.posargs:
-        verbose = True
-        session.posargs.remove("--verbose")
-
-    if live:
-        deps.append("sphinx-autobuild")
-        sphinx_build = "sphinx-autobuild"
-        args += ["-A", "mode=development", "--watch", "src/sphinxawesome_theme"]
-
-    if verbose:
         args += ["-vvv"]
+        session.posargs.remove("--verbose")
 
     if session.posargs:
         args += session.posargs
 
-    session.install("docs", ".", *deps)
-    session.run(sphinx_build, *args)
-
-
-@nox.session
-def live_docs(session: nox.Session) -> None:
-    """Build the docs with `sphinx-autobuild`."""
-    verbose = bool("--verbose" in session.posargs)
-    docs(session, True, verbose)
+    session.run(build_cmd, *args)
 
 
 @nox.session
 def linkcheck(session: nox.Session) -> None:
-    """Check links."""
+    """Check for broken links."""
     args = session.posargs or ["-b", "linkcheck", "-aWTE", "docs", "docs/public/_links"]
-    deps = ["sphinx", "bs4", "sphinx-sitemap", "sphinx-design", "sphinx-docsearch"]
-    session.install("docs", ".", *deps)
+    install_requirements(session, "docs")
     session.run("sphinx-build", *args)
-
-
-@nox.session
-def xml(session: nox.Session) -> None:
-    """Build XML version of the docs."""
-    args = ["-b", "xml", "-aWTE", "docs", "docs/public/xml"]
-    deps = ["sphinx", "bs4", "sphinx-sitemap", "sphinx-design", "sphinx-docsearch"]
-    session.install("docs", ".", *deps)
-    session.run("sphinx-build", *args)
-
-
-@nox.session(venv_backend=None)
-def export(session: nox.Session) -> None:
-    """Export a `requirements.txt` file for Netlify (Python 3.8).
-
-    On Netlify, we install Poetry, Pip, and Pipx with the same versions
-    as specified in :file:`requirements.txt`. Then, we use poetry
-    to install the regular dependencies, just like on a local machine.
-
-    On GitHub actions, we use the same file, although it runs on Python 3.11.
-    """
-    session.export("netlify", "requirements.txt")  # type: ignore[attr-defined]
-
-    session.run(
-        "poetry",
-        "export",
-        "--without-hashes",
-        "--with",
-        "docs",
-        "--output",
-        "docs/readthedocs.txt",
-        external=True,
-    )
 
 
 @nox.session(python=python_versions)
 def lint(session: nox.Session) -> None:
-    """Lint python files."""
-    deps = ["ruff"]
-    session.install("lint", ".", *deps)
+    """Check for common issues."""
+    install_requirements(session, "dev")
     session.run("ruff", "check", ".")
+
+
+@nox.session(python=python_versions)
+def test(session: nox.Session) -> None:
+    """Run tests."""
+    args = session.posargs or ["--cov"]
+    install_requirements(session, ["dev", "docs"])
+    session.run("pytest", *args)
 
 
 @nox.session
 def fmt(session: nox.Session) -> None:
     """Format python files."""
-    deps = ["ruff"]
-    session.install("lint", ".", *deps)
+    install_requirements(session, "dev")
     session.run("ruff", "check", ".", "--fix")
     session.run("ruff", "format", ".")
 
 
-@nox.session(python=[python_versions[0], python_versions[-1]])
-def mypy(session: nox.Session) -> None:
-    """Type-check python files with mypy.
-
-    Usually, issues occur either for all versions or the earliest
-    supported version, so running for these two is usually enough.
-    """
-    # We need to install these additional libraries or Mypy will complain
-    deps = ["mypy", "pytest", "sphinx", "types-docutils", "bs4", "nox"]
-    session.install("dev", *deps)
-    session.run("mypy")
+@nox.session(python=python_versions)
+def typecheck(session: nox.Session) -> None:
+    """Check type annotations."""
+    install_requirements(session, "dev")
+    session.run("pyright")
