@@ -22,4 +22,4 @@ repos:
         entry: nox -s export
         pass_filenames: false
         language: system
-        files: 'pyproject.toml,uv.lock'
+        files: 'pyproject\.toml|uv\.lock'
