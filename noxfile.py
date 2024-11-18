@@ -96,3 +96,17 @@ def typecheck(session: nox.Session) -> None:
     """Check type annotations."""
     install_requirements(session, "dev")
     session.run("pyright")
+
+
+@nox.session(python=False)
+def export(session: nox.Session) -> None:
+    """Export dependencies for Readthedocs."""
+    session.run(
+        "uv",
+        "export",
+        "--no-hashes",
+        "--python=3.12",
+        "--group=docs",
+        "--output-file=requirements.txt",
+        external=True,
+    )
