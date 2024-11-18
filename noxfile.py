@@ -61,7 +61,7 @@ def docs(session: nox.Session) -> None:
 
 
 @nox.session
-def linkcheck(session: nox.Session) -> None:
+def links(session: nox.Session) -> None:
     """Check for broken links."""
     args = session.posargs or ["-b", "linkcheck", "-aWTE", "docs", "docs/public/_links"]
     install_requirements(session, "docs")
