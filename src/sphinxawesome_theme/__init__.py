@@ -141,7 +141,7 @@ def deprecated_options(app: Sphinx) -> None:
             "Control the sidebar with the `html_sidebars` configuration option instead."
         )
         if theme_options["show_nav"] is False:
-            app.builder.config.html_sidebars = {"**": []}  # type: ignore[attr-defined]
+            app.builder.config.html_sidebars = {"**": []}
         del theme_options["show_nav"]
 
     if (
@@ -179,7 +179,7 @@ def setup(app: Sphinx) -> dict[str, Any]:
     # Monkey-patch galore
     StandaloneHTMLBuilder.init_highlighter = AwesomeHTMLBuilder.init_highlighter  # type: ignore
     StandaloneHTMLBuilder.create_pygments_style_file = (  # type: ignore
-        AwesomeHTMLBuilder.create_pygments_style_file  # type: ignore
+        AwesomeHTMLBuilder.create_pygments_style_file
     )
 
     app.add_html_theme(name="sphinxawesome_theme", theme_path=str(here))

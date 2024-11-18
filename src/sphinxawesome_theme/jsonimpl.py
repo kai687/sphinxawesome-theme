@@ -11,21 +11,21 @@ serializer.
 from __future__ import annotations
 
 import json
-from typing import IO, Any
+from typing import Any
 
 
 class AwesomeJSONEncoder(json.JSONEncoder):
     """Custom JSON encoder for everything in the `context`."""
 
-    def default(self: AwesomeJSONEncoder, obj: Any) -> str:
+    def default(self: AwesomeJSONEncoder, o: Any) -> str:
         """Return an empty string for anything that's not serializable by default."""
         return ""
 
 
-def dump(obj: Any, fp: IO[str], *args: Any, **kwargs: Any) -> None:
+def dump(obj: Any, file: Any, *args: Any, **kwargs: Any) -> None:
     """Dump JSON into file."""
     kwargs["cls"] = AwesomeJSONEncoder
-    return json.dump(obj, fp, *args, **kwargs)
+    return json.dump(obj, file, *args, **kwargs)
 
 
 def dumps(obj: Any, *args: Any, **kwargs: Any) -> str:
