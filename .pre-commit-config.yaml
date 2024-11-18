@@ -15,3 +15,11 @@ repos:
     rev: v0.7.4
     hooks:
       - id: ruff-format
+  - repo: local
+    hooks:
+      - id: requirements
+        name: Sync requirements.txt
+        entry: nox -s export
+        pass_filenames: false
+        language: system
+        files: 'pyproject.toml,uv.lock'
