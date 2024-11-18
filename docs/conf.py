@@ -80,7 +80,7 @@ html_logo = "assets/auto_awesome.svg"
 html_favicon = "assets/favicon-128x128.png"
 html_permalinks_icon = Icons.permalinks_icon
 html_baseurl = "https://sphinxawesome.xyz/"
-html_extra_path = ["robots.txt", "_redirects"]
+html_extra_path = ["robots.txt"]
 html_context = {
     "mode": "production",
     "feedback_url": "https://github.com/kai687/sphinxawesome-theme/issues/new?title=Feedback",
