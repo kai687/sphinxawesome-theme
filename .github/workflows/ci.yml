@@ -22,7 +22,7 @@ jobs:
           uv tool install nox
       - name: Run workflow
         run: |
-          nox -p ${{ nox.python-version }}
+          nox -p ${{ matrix.python-version }}
         env:
           DOCSEARCH_APP_ID: ${{ vars.DOCSEARCH_APP_ID }}
           DOCSEARCH_API_KEY: ${{ vars.DOCSEARCH_API_KEY }}
