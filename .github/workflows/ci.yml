@@ -44,6 +44,10 @@ jobs:
       - name: Check links
         run: |
           nox -s links
+        env:
+          DOCSEARCH_APP_ID: ${{ vars.DOCSEARCH_APP_ID }}
+          DOCSEARCH_API_KEY: ${{ vars.DOCSEARCH_API_KEY }}
+          DOCSEARCH_INDEX_NAME: ${{ vars.DOCSEARCH_INDEX_NAME }}
   publish:
     name: Publish to PyPI
     runs-on: ubuntu-latest
