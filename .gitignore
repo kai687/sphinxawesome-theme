@@ -4,6 +4,7 @@ __pycache__
 dist
 pip-wheel-metadata/
 sphinxawesome_theme.egg-info
+docs/autoapi
 docs/public
 docs/public/xml
 .nox
