@@ -1,0 +1,65 @@
+name: CI
+on: push
+jobs:
+  test:
+    name: Run CI workflows
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version:
+          - 3.9
+          - 3.13
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.version-file }}
+      - name: Set up nox
+        run: |
+          uv tool install nox
+      - name: Run workflow
+        run: |
+          nox -p ${{ nox.python-version }}
+        env:
+          DOCSEARCH_APP_ID: ${{ vars.DOCSEARCH_APP_ID }}
+          DOCSEARCH_API_KEY: ${{ vars.DOCSEARCH_API_KEY }}
+          DOCSEARCH_INDEX_NAME: ${{ vars.DOCSEARCH_INDEX_NAME }}
+  links:
+    name: Check for broken links
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.13
+      - name: Set up nox
+        run: |
+          uv tool install nox
+      - name: Check links
+        run: |
+          nox -s links
+  publish:
+    name: Publish to PyPI
+    runs-on: ubuntu-latest
+    needs:
+      - test
+      - links
+    if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+      - name: Build packages
+        run: |
+          uv build
+      - name: Publish to PyPI
+        run: |
+          uv publish
+        env:
+          UV_PUBLISH_TOKEN: ${{ secrets.PYPI_TOKEN }}
