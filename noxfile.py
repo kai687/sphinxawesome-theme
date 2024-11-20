@@ -107,6 +107,7 @@ def export(session: nox.Session) -> None:
         "--no-hashes",
         "--python=3.12",
         "--group=docs",
+        "--group=netlify",
         "--output-file=requirements.txt",
         external=True,
     )

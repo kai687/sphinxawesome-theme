@@ -53,14 +53,17 @@ docs = [
     "sphinx-sitemap>=2.6.0",
 ]
 dev = [
-    "pytest-cov>=6.0.0",
-    "pytest>=8.3.3",
-    "coverage[toml]>=7.6.7",
-    "ruff>=0.7.4",
-    "types-docutils>=0.21.0.20241005",
-    "types-beautifulsoup4>=4.12.0.20241020",
-    "types-pygments>=2.18.0.20240506",
-    "pyright>=1.1.389",
+    "pytest-cov",
+    "pytest",
+    "coverage[toml]",
+    "ruff",
+    "types-docutils",
+    "types-beautifulsoup4",
+    "types-pygments",
+    "pyright",
+]
+netlify = [
+  "nox"
 ]
 
 [tool.ruff.lint]
