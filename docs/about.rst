@@ -69,9 +69,3 @@ The following table lists the assets used by the |product| to be awesome.
 .. _Zondicons: http://www.zondicons.com
 .. _Creative Commons Attribution-ShareAlike 4.0: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 .. _Apache License, Version 2.0: https://www.apache.org/licenses/LICENSE-2.0.html
-
-
-Versioning strategy
--------------------
-
-Starting with version 5.0, the |product| adopts `semantic versioning <https://semver.org/>`_.

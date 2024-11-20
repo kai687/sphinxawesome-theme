@@ -47,7 +47,7 @@ def docs(session: nox.Session) -> None:
 
     if "--live" in session.posargs:
         build_cmd = "sphinx-autobuild"
-        args += ["-A", "mode=development", "--watch", "src/sphinxawesome_theme"]
+        args += ["-A", "mode=development"]
         session.posargs.remove("--live")
 
     if "--verbose" in session.posargs:
