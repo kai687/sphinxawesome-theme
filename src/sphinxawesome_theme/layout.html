@@ -1,30 +1,30 @@
 {%- set lang_attr = "en" if language == None else (language|replace('_','-')) -%}
 
 {%- if not embedded and docstitle -%}
-{%- if title == docstitle -%}
-{%- set titlesuffix = "" -%}
+  {%- if title == docstitle -%}
+    {%- set titlesuffix = "" -%}
+  {%- else -%}
+    {%- set titlesuffix = " | "|safe + docstitle|e -%}
+  {%- endif -%}
 {%- else -%}
-{%- set titlesuffix = " | "|safe + docstitle|e -%}
-{%- endif -%}
-{%- else -%}
-{%- set titlesuffix = "" -%}
+  {%- set titlesuffix = "" -%}
 {%- endif -%}
 
 <!DOCTYPE html>
 <html lang="{{ lang_attr }}" {% if sphinx_version_tuple>= (7, 2) %}data-content_root="{{ content_root }}"{% endif %}
-x-data="{
-darkMode: window.matchMedia('(prefers-color-scheme: dark)').matches,
-activeSection: '',
-init() {
-const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
-darkModeQuery.addEventListener('change', (event) => {
-this.darkMode = event.matches
-});
-},
-}"
-x-init="init()"
-class="scroll-smooth"
-:class="{'dark': darkMode}"
+      x-data="{
+        darkMode: window.matchMedia('(prefers-color-scheme: dark)').matches,
+        activeSection: '',
+        init() {
+          const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+          darkModeQuery.addEventListener('change', (event) => {
+            this.darkMode = event.matches
+          });
+        },
+      }"
+      x-init="init()"
+      class="scroll-smooth"
+      :class="{'dark': darkMode}"
 >
 
 <head>
