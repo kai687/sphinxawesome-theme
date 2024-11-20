@@ -63,6 +63,7 @@ types-pygments==2.18.0.20240506
 types-setuptools==75.4.0.20241115
 typing-extensions==4.12.2
 urllib3==2.2.3
+uv==0.5.3
 uvicorn==0.32.0
 virtualenv==20.27.1
 watchfiles==0.24.0

@@ -63,7 +63,8 @@ dev = [
     "pyright",
 ]
 netlify = [
-  "nox"
+  "nox",
+  "uv",
 ]
 
 [tool.ruff.lint]
