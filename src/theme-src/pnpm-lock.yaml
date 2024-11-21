@@ -105,6 +105,9 @@ importers:
       webpack-manifest-plugin:
         specifier: ^5.0.0
         version: 5.0.0(webpack@5.96.1)
+      webpack-remove-empty-scripts:
+        specifier: ^1.0.4
+        version: 1.0.4(webpack@5.96.1)
 
 packages:
 
@@ -1179,6 +1182,10 @@ packages:
     resolution: {integrity: sha512-bN798gFfQX+viw3R7yrGWRqnrN2oRkEkUjjl4JNn4E8GxxbjtG3FbrEIIY3l8/hrwUwIeCZvi4QuOTP4MErVug==}
     engines: {node: '>=12'}
 
+  ansis@1.5.2:
+    resolution: {integrity: sha512-T3vUABrcgSj/HXv27P+A/JxGk5b/ydx0JjN3lgjBTC2iZUFxQGjh43zCzLSbU4C1QTgmx9oaPeWNJFM+auI8qw==}
+    engines: {node: '>=12.13'}
+
   any-promise@1.3.0:
     resolution: {integrity: sha512-7UvmKalWRt1wgjL1RrGxoSJW/0QZFIegpeGvZG9kjp8vrRu55XTHbwnqq2GpXm9uLbcuhxm3IqX9OB4MZR1b2A==}
 
@@ -1271,8 +1278,8 @@ packages:
   caniuse-api@3.0.0:
     resolution: {integrity: sha512-bsTwuIg/BZZK/vreVTYYbSWoe2F+71P7K5QGEX+pT250DZbfU1MQ5prOKpPR+LL6uWKK3KMwMCAS74QB3Um1uw==}
 
-  caniuse-lite@1.0.30001680:
-    resolution: {integrity: sha512-rPQy70G6AGUMnbwS1z6Xg+RkHYPAi18ihs47GH0jcxIG7wArmPgY3XbS2sRdBbxJljp3thdT8BIqv9ccCypiPA==}
+  caniuse-lite@1.0.30001683:
+    resolution: {integrity: sha512-iqmNnThZ0n70mNwvxpEC2nBJ037ZHZUoBI5Gorh1Mw6IlEAZujEoU1tXA628iZfzm7R9FvFzxbfdgml82a3k8Q==}
 
   chalk@4.1.2:
     resolution: {integrity: sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==}
@@ -2990,6 +2997,12 @@ packages:
     resolution: {integrity: sha512-+4zXKdx7UnO+1jaN4l2lHVD+mFvnlZQP/6ljaJVb4SZiwIKeUnrT5l0gkT8z+n4hKpC+jpOv6O9R+gLtag7pSA==}
     engines: {node: '>=10.0.0'}
 
+  webpack-remove-empty-scripts@1.0.4:
+    resolution: {integrity: sha512-W/Vd94oNXMsQam+W9G+aAzGgFlX1aItcJpkG3byuHGDaxyK3H17oD/b5RcqS/ZHzStIKepksdLDznejDhDUs+Q==}
+    engines: {node: '>=12.14'}
+    peerDependencies:
+      webpack: '>=5.32.0'
+
   webpack-sources@2.3.1:
     resolution: {integrity: sha512-y9EI9AO42JjEcrTJFOYmVywVZdKVUfOvDUPsJea5GIr1JOEGFVqwlY2K098fFoIjOkDzHn2AjRvM8dsBZu+gCA==}
     engines: {node: '>=10.13.0'}
@@ -4304,6 +4317,8 @@ snapshots:
 
   ansi-styles@6.2.1: {}
 
+  ansis@1.5.2: {}
+
   any-promise@1.3.0: {}
 
   anymatch@3.1.3:
@@ -4322,7 +4337,7 @@ snapshots:
   autoprefixer@10.4.20(postcss@8.4.49):
     dependencies:
       browserslist: 4.24.2
-      caniuse-lite: 1.0.30001680
+      caniuse-lite: 1.0.30001683
       fraction.js: 4.3.7
       normalize-range: 0.1.2
       picocolors: 1.1.1
@@ -4383,7 +4398,7 @@ snapshots:
 
   browserslist@4.24.2:
     dependencies:
-      caniuse-lite: 1.0.30001680
+      caniuse-lite: 1.0.30001683
       electron-to-chromium: 1.5.63
       node-releases: 2.0.18
       update-browserslist-db: 1.1.1(browserslist@4.24.2)
@@ -4397,11 +4412,11 @@ snapshots:
   caniuse-api@3.0.0:
     dependencies:
       browserslist: 4.24.2
-      caniuse-lite: 1.0.30001680
+      caniuse-lite: 1.0.30001683
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
 
-  caniuse-lite@1.0.30001680: {}
+  caniuse-lite@1.0.30001683: {}
 
   chalk@4.1.2:
     dependencies:
@@ -6108,6 +6123,11 @@ snapshots:
       clone-deep: 4.0.1
       flat: 5.0.2
       wildcard: 2.0.1
+
+  webpack-remove-empty-scripts@1.0.4(webpack@5.96.1):
+    dependencies:
+      ansis: 1.5.2
+      webpack: 5.96.1(webpack-cli@5.1.4)
 
   webpack-sources@2.3.1:
     dependencies:

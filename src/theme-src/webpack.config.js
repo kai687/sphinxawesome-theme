@@ -1,7 +1,8 @@
 const ESLintPlugin = require("eslint-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const path = require("path");
+const RemoveEmptyScriptsPlugin = require("webpack-remove-empty-scripts");
 const StyleLintPlugin = require("stylelint-webpack-plugin");
+const path = require("path");
 const webpack = require("webpack");
 
 const THEME_STATIC_DIR = path.resolve(
@@ -17,7 +18,7 @@ module.exports = {
   mode: mode,
   entry: {
     theme: "./js/app.js",
-    "awesome-docsearch": "./js/search.js",
+    "awesome-docsearch": "./css/docsearch.css",
     "awesome-sphinx-design": "./css/sphinx-design.css",
   },
   output: {
@@ -36,6 +37,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "[name].css",
     }),
+    new RemoveEmptyScriptsPlugin(),
     new StyleLintPlugin({
       files: "css/*.css",
       fix: true,
