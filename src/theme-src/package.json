@@ -2,8 +2,7 @@
   "name": "sphinxawesome-theme",
   "version": "6.0.0a1",
   "scripts": {
-    "build": "NODE_ENV=production webpack",
-    "dev": "NODE_ENV=development webpack --watch --progress",
+    "build": "webpack",
     "format": "prettier --write */**/*.{css,js} */*.{css,js} *.js"
   },
   "browserslist": [

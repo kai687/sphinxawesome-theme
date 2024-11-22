@@ -1,4 +1,3 @@
-const { EsbuildPlugin } = require("esbuild-loader");
 const ESLintPlugin = require("eslint-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const RemoveEmptyScriptsPlugin = require("webpack-remove-empty-scripts");
@@ -10,12 +9,9 @@ const THEME_STATIC_DIR = path.resolve(
   "../sphinxawesome_theme/static/",
 );
 
-const mode = process.env.NODE_ENV || "development";
-const production = mode === "production";
-
 /** @type {import('webpack').Config} */
 module.exports = {
-  mode: mode,
+  mode: "production",
   entry: {
     theme: "./js/app.js",
     "awesome-docsearch": "./css/docsearch.css",
@@ -25,7 +21,7 @@ module.exports = {
     path: THEME_STATIC_DIR,
     publicPath: "",
     filename: "[name].js",
-    clean: production ? true : false,
+    clean: true,
   },
   plugins: [
     new ESLintPlugin({
@@ -41,11 +37,6 @@ module.exports = {
     new StyleLintPlugin({
       files: "css/*.css",
       fix: true,
-    }),
-    new EsbuildPlugin({
-      define: {
-        "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV),
-      },
     }),
   ],
   module: {
