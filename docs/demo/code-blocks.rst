@@ -202,6 +202,10 @@ Naturally, this should also work in combination with captions:
    print("Added line")
    print("Removed line")
 
+.. note::
+   Separate multiple placeholders by space, not by comma.
+   For example, `:emphasize-text: WORD1 WORD2` highlights both WORD1 and WORD2.
+
 
 Docutils code directive
 -----------------------
