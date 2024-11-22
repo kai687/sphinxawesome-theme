@@ -1,9 +1,9 @@
+const { EsbuildPlugin } = require("esbuild-loader");
 const ESLintPlugin = require("eslint-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const RemoveEmptyScriptsPlugin = require("webpack-remove-empty-scripts");
 const StyleLintPlugin = require("stylelint-webpack-plugin");
 const path = require("path");
-const webpack = require("webpack");
 
 const THEME_STATIC_DIR = path.resolve(
   __dirname,
@@ -42,9 +42,9 @@ module.exports = {
       files: "css/*.css",
       fix: true,
     }),
-    new webpack.DefinePlugin({
-      "process.env": {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+    new EsbuildPlugin({
+      define: {
+        "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV),
       },
     }),
   ],
@@ -65,9 +65,9 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: "babel-loader",
+        loader: "esbuild-loader",
         options: {
-          presets: [["@babel/preset-env", { targets: "> 1%, not dead" }]],
+          target: "es2020",
         },
       },
       {
