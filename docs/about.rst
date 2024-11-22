@@ -18,8 +18,9 @@ About
 I wanted to use Sphinx for a documentation project,
 but I found all available themes dated and ugly.
 So I built my own.
-Had I known of the `furo <https://pradyunsg.me/furo/>`_ or
-the `sphinx-books-theme <https://sphinx-book-theme.readthedocs.io/en/stable/>`_,
+Had I known of the `furo <https://pradyunsg.me/furo/>`_,
+the `sphinx-immaterial <https://jbms.github.io/sphinx-immaterial/>`_,
+or the `shibuya <https://shibuya.lepture.com/>`_ theme,
 I likely would not have started this project.
 
 Assets
