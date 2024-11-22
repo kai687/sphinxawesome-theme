@@ -1499,8 +1499,8 @@ packages:
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
 
-  electron-to-chromium@1.5.63:
-    resolution: {integrity: sha512-ddeXKuY9BHo/mw145axlyWjlJ1UBt4WK3AlvkT7W2AbqfRQoacVoRUCF6wL3uIx/8wT9oLKXzI+rFqHHscByaA==}
+  electron-to-chromium@1.5.64:
+    resolution: {integrity: sha512-IXEuxU+5ClW2IGEYFC2T7szbyVgehupCWQe5GNh+H065CD6U6IFN0s4KeAMFGNmQolRU4IV7zGBWSYMmZ8uuqQ==}
 
   emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -2691,15 +2691,15 @@ packages:
   regenerator-transform@0.15.2:
     resolution: {integrity: sha512-hfMp2BoF0qOk3uc5V20ALGDS2ddjQaLrdl7xrGXvAIow7qeWRM2VA2HuCHkUKk9slq3VwEwLNK3DFBqDfPGYtg==}
 
-  regexpu-core@6.1.1:
-    resolution: {integrity: sha512-k67Nb9jvwJcJmVpw0jPttR1/zVfnKf8Km0IPatrU/zJ5XeG3+Slx0xLXs9HByJSzXzrlz5EDvN6yLNMDc2qdnw==}
+  regexpu-core@6.2.0:
+    resolution: {integrity: sha512-H66BPQMrv+V16t8xtmq+UC0CBpiTBA60V8ibS1QVReIp8T1z8hwFxqcGzm9K6lgsN7sB5edVH8a+ze6Fqm4weA==}
     engines: {node: '>=4'}
 
   regjsgen@0.8.0:
     resolution: {integrity: sha512-RvwtGe3d7LvWiDQXeQw8p5asZUmfU1G/l6WbUXeHta7Y2PEIvBTwH6E2EfmYUK8pxcxEdEmaomqyp0vZZ7C+3Q==}
 
-  regjsparser@0.11.2:
-    resolution: {integrity: sha512-3OGZZ4HoLJkkAZx/48mTXJNlmqTGOzc0o9OWQPuWpkOlXXPbyN6OafCcoXUnBqE2D3f/T5L+pWc1kdEmnfnRsA==}
+  regjsparser@0.12.0:
+    resolution: {integrity: sha512-cnE+y8bz4NhMjISKbgeVJtqNbtf5QpjZP+Bslo+UqkIt9QPnX9q095eiRRASJG1/tz6dlNr6Z5NsBiWYokp6EQ==}
     hasBin: true
 
   require-from-string@2.0.2:
@@ -3148,7 +3148,7 @@ snapshots:
     dependencies:
       '@babel/core': 7.26.0
       '@babel/helper-annotate-as-pure': 7.25.9
-      regexpu-core: 6.1.1
+      regexpu-core: 6.2.0
       semver: 6.3.1
 
   '@babel/helper-define-polyfill-provider@0.6.3(@babel/core@7.26.0)':
@@ -4399,7 +4399,7 @@ snapshots:
   browserslist@4.24.2:
     dependencies:
       caniuse-lite: 1.0.30001683
-      electron-to-chromium: 1.5.63
+      electron-to-chromium: 1.5.64
       node-releases: 2.0.18
       update-browserslist-db: 1.1.1(browserslist@4.24.2)
 
@@ -4663,7 +4663,7 @@ snapshots:
 
   eastasianwidth@0.2.0: {}
 
-  electron-to-chromium@1.5.63: {}
+  electron-to-chromium@1.5.64: {}
 
   emoji-regex@8.0.0: {}
 
@@ -5768,18 +5768,18 @@ snapshots:
     dependencies:
       '@babel/runtime': 7.26.0
 
-  regexpu-core@6.1.1:
+  regexpu-core@6.2.0:
     dependencies:
       regenerate: 1.4.2
       regenerate-unicode-properties: 10.2.0
       regjsgen: 0.8.0
-      regjsparser: 0.11.2
+      regjsparser: 0.12.0
       unicode-match-property-ecmascript: 2.0.0
       unicode-match-property-value-ecmascript: 2.2.0
 
   regjsgen@0.8.0: {}
 
-  regjsparser@0.11.2:
+  regjsparser@0.12.0:
     dependencies:
       jsesc: 3.0.2
 
