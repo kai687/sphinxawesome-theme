@@ -16,7 +16,7 @@
 
 1. Install the theme as a Python package:
 
-   ```console
+   ```sh
    pip install sphinxawesome-theme
    ```
 

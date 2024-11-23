@@ -1,22 +1,17 @@
 name: Algolia indexing
-
 on:
   push:
     branches:
       - main
     paths:
       - "docs/**"
-
 jobs:
   index:
     runs-on: ubuntu-latest
-
     name: Index docs with Algolia
-
     steps:
       - name: Check out repo
         uses: actions/checkout@v4
-
       - name: Algolia Crawler
         uses: algolia/algoliasearch-crawler-github-actions@v1.1.13
         id: index_after_push

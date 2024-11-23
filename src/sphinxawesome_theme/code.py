@@ -15,7 +15,7 @@ from __future__ import annotations
 from typing import Any, Literal
 
 from docutils import nodes
-from docutils.nodes import Node
+from docutils.nodes import Node, system_message
 from docutils.parsers.rst import directives
 from sphinx.application import Sphinx
 from sphinx.directives.code import CodeBlock
@@ -25,7 +25,7 @@ from sphinx.util import logging, parselinenos  # type: ignore[attr-defined]
 logger = logging.getLogger(__name__)
 
 
-class AwesomeCodeBlock(CodeBlock):  # type: ignore
+class AwesomeCodeBlock(CodeBlock):
     """An extension of the Sphinx ``code-block`` directive to handle additional options.
 
     - ``:emphasize-added:`` highlight added lines
@@ -46,12 +46,12 @@ class AwesomeCodeBlock(CodeBlock):  # type: ignore
         "emphasize-text": directives.unchanged_required,
     }
 
-    option_spec = CodeBlock.option_spec  # type: ignore[misc]
+    option_spec = CodeBlock.option_spec
     option_spec.update(new_options)
 
     def _get_line_numbers(
         self: AwesomeCodeBlock, option: Literal["emphasize-added", "emphasize-removed"]
-    ) -> list[int] | None:
+    ) -> list[int] | list[system_message] | None:
         """Parse the line numbers for the ``:emphasize-added:`` and ``:emphasize-removed:`` options."""
         document = self.state.document
         location = self.state_machine.get_source_and_line(self.lineno)
@@ -71,13 +71,13 @@ class AwesomeCodeBlock(CodeBlock):  # type: ignore
                 )
             return [i + 1 for i in line_numbers if i < nlines]
         except ValueError as err:
-            return [document.reporter.warning(err, line=self.lineno)]  # type: ignore
+            return [document.reporter.warning(err, line=self.lineno)]
 
     def _extra_args(
         self: AwesomeCodeBlock,
         node: Node,
-        hl_added: list[int] | None,
-        hl_removed: list[int] | None,
+        hl_added: list[int] | list[system_message] | None,
+        hl_removed: list[int] | list[system_message] | None,
     ) -> None:
         """Set extra attributes for line highlighting."""
         extra_args = node.get("highlight_args", {})  # type: ignore[attr-defined]

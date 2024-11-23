@@ -11,13 +11,22 @@
 {%- endif -%}
 
 <!DOCTYPE html>
-<html lang="{{ lang_attr }}"
-      {% if sphinx_version_tuple >= (7, 2) %}data-content_root="{{ content_root }}"{% endif %}
-      x-data="{ darkMode: localStorage.getItem('darkMode') || localStorage.setItem('darkMode', 'system'), activeSection: '' }"
-      x-init="$watch('darkMode', val => localStorage.setItem('darkMode', val))"
+<html lang="{{ lang_attr }}" {% if sphinx_version_tuple>= (7, 2) %}data-content_root="{{ content_root }}"{% endif %}
+      x-data="{
+        darkMode: window.matchMedia('(prefers-color-scheme: dark)').matches,
+        activeSection: '',
+        init() {
+          const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+          darkModeQuery.addEventListener('change', (event) => {
+            this.darkMode = event.matches
+          });
+        },
+      }"
+      x-init="init()"
       class="scroll-smooth"
-      :class="{'dark': darkMode === 'dark' || (darkMode === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)}"
+      :class="{'dark': darkMode}"
 >
+
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta charset="utf-8" />
@@ -26,83 +35,87 @@
   {{ metatags }}
 
   {%- block htmltitle %}
-    <title>{{ title|striptags|e if title else docstitle }}{{ titlesuffix }}</title>
-    <meta property="og:title" content="{{ title|striptags|e if title else docstitle }}{{ titlesuffix }}" />
-    <meta name="twitter:title" content="{{ title|striptags|e if title else docstitle }}{{ titlesuffix }}" />
+  <title>{{ title|striptags|e if title else docstitle }}{{ titlesuffix }}</title>
+  <meta property="og:title" content="{{ title|striptags|e if title else docstitle }}{{ titlesuffix }}" />
+  <meta name="twitter:title" content="{{ title|striptags|e if title else docstitle }}{{ titlesuffix }}" />
   {%- endblock htmltitle %}
 
   {#- CSS files #}
   {%- for css in css_files %}
-    {%- if css|attr("filename") %}
-      {{ css_tag(css) }}
-    {%- else -%}
-      <link rel="stylesheet" href="{{ pathto(css, 1)|e }}" />
-    {%- endif %}
+  {%- if css|attr("filename") %}
+  {{ css_tag(css) }}
+  {%- else -%}
+  <link rel="stylesheet" href="{{ pathto(css, 1)|e }}" />
+  {%- endif %}
   {%- endfor %}
 
   {%- if docsearch %}
-    <link rel="preconnect" href="https://{{ docsearch_app_id }}-dsn.algolia.net" crossorigin="anonymous" />
+  <link rel="preconnect" href="https://{{ docsearch_app_id }}-dsn.algolia.net" crossorigin="anonymous" />
   {% endif %}
 
   {%- if pageurl %}
-    <link rel="canonical" href="{{ pageurl|e }}" />
+  <link rel="canonical" href="{{ pageurl|e }}" />
   {%- endif %}
 
   {%- set _favicon_url = favicon_url | default(pathto('_static/' + (favicon or ""), 1)) %}
-    {%- if favicon_url or favicon %}
-      <link rel="icon" href="{{ _favicon_url }}" />
-    {%- endif %}
+  {%- if favicon_url or favicon %}
+  <link rel="icon" href="{{ _favicon_url }}" />
+  {%- endif %}
 
-    {%- block linktags %}
-      {%- if hasdoc('search') and not docsearch %}
-        <link rel="search" title="{{ _('Search') }}" href="{{ pathto('search') }}" />
-      {%- endif %}
+  {%- block linktags %}
+  {%- if hasdoc('search') and not docsearch %}
+  <link rel="search" title="{{ _('Search') }}" href="{{ pathto('search') }}" />
+  {%- endif %}
 
-      {%- if hasdoc('genindex') %}
-        <link rel="index" title="{{ _('Index') }}" href="{{ pathto('genindex') }}" />
-      {%- endif %}
-      {%- if next %}
-          <link rel="next" title="{{ next.title|striptags|e }}" href="{{ next.link|e }}" />
-      {%- endif %}
-      {%- if prev %}
-          <link rel="prev" title="{{ prev.title|striptags|e }}" href="{{ prev.link|e }}" />
-      {%- endif %}
-    {%- endblock linktags %}
+  {%- if hasdoc('genindex') %}
+  <link rel="index" title="{{ _('Index') }}" href="{{ pathto('genindex') }}" />
+  {%- endif %}
+  {%- if next %}
+  <link rel="next" title="{{ next.title|striptags|e }}" href="{{ next.link|e }}" />
+  {%- endif %}
+  {%- if prev %}
+  <link rel="prev" title="{{ prev.title|striptags|e }}" href="{{ prev.link|e }}" />
+  {%- endif %}
+  {%- endblock linktags %}
 
-    <script>
+  <script>
     <!-- Prevent Flash of wrong theme -->
-      const userPreference = localStorage.getItem('darkMode');
-      let mode;
-      if (userPreference === 'dark' || window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        mode = 'dark';
-        document.documentElement.classList.add('dark');
-      } else {
-        mode = 'light';
-      }
-      if (!userPreference) {localStorage.setItem('darkMode', mode)}
-    </script>
+    const userPreference = localStorage.getItem('darkMode');
+    let mode;
+    if (userPreference === 'dark' || window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      mode = 'dark';
+      document.documentElement.classList.add('dark');
+    } else {
+      mode = 'light';
+    }
+    if (!userPreference) {localStorage.setItem('darkMode', mode)}
+  </script>
 
-    {%- block extrahead %}{%- endblock extrahead %}
+  {%- block extrahead %}{%- endblock extrahead %}
 </head>
-  <body x-data="{ showSidebar: false, showScrollTop: false }" class="min-h-screen font-sans antialiased bg-background text-foreground" :class="{ 'overflow-hidden': showSidebar }"
-    {%- if theme_show_scrolltop|tobool -%}@scroll.window="showScrollTop = pageYOffset > 100"{%- endif -%}
-  >
+
+<body x-data="{ showSidebar: false, showScrollTop: false }"
+  class="min-h-screen font-sans antialiased bg-background text-foreground" :class="{ 'overflow-hidden': showSidebar }"
+  {%- if theme_show_scrolltop|tobool -%}@scroll.window="showScrollTop = pageYOffset > 100" {%- endif -%}>
 
   {#- A blurry background screen for the mobile sidebar -#}
   {%- if sidebars|length > 0 %}
-    <div x-cloak x-show="showSidebar" class="fixed inset-0 z-50 overflow-hidden bg-background/80 backdrop-blur-sm md:hidden" @click.self="showSidebar = false"></div>
+  <div x-cloak x-show="showSidebar"
+    class="fixed inset-0 z-50 overflow-hidden bg-background/80 backdrop-blur-sm md:hidden"
+    @click.self="showSidebar = false"></div>
   {%- endif %}
 
   {#- The main page wrapper -#}
   <div id="page" class="relative flex flex-col min-h-screen">
 
     {#- Skip to content link -#}
-    <a href="#content" class="absolute top-0 left-0 z-[100] block bg-background p-4 text-xl transition -translate-x-full opacity-0 focus:translate-x-0 focus:opacity-100">
+    <a href="#content"
+      class="absolute top-0 left-0 z-[100] block bg-background p-4 text-xl transition -translate-x-full opacity-0 focus:translate-x-0 focus:opacity-100">
       Skip to content
     </a>
 
     {%- block header %}
-      {%- include "header.html" %}
+    {%- include "header.html" %}
     {%- endblock header %}
 
     <div class="flex-1">
@@ -110,36 +123,38 @@
       {%- set only_main_nav = sidebars == ["sidebar_main_nav_links.html"] %}
 
       {%- if not only_main_nav and sidebars|length > 0 -%}
-        <div class="container flex-1 items-start md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10">
-      {%- else -%}
+      <div
+        class="container flex-1 items-start md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10">
+        {%- else -%}
         <div class="container items-start flex-1">
-      {%- endif -%}
+          {%- endif -%}
 
-        {%- block sidebar %}
+          {%- block sidebar %}
           {%- if sidebars|length > 0 %}
-            {%- include "sidebar.html" %}
+          {%- include "sidebar.html" %}
           {%- endif %}
-        {%- endblock sidebar %}
+          {%- endblock sidebar %}
 
-        {%- block main %}
-        <main class="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]">
-          {%- block body %}{%- endblock %}
-        </main>
-        {%- endblock main %}
+          {%- block main %}
+          <main class="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]">
+            {%- block body %}{%- endblock %}
+          </main>
+          {%- endblock main %}
+        </div>
       </div>
-    </div>
 
-    {%- block footer %}
+      {%- block footer %}
       {%- include "footer.html" %}
-    {%- endblock footer %}
-  </div>
-  {%- if theme_show_scrolltop|tobool %}
+      {%- endblock footer %}
+    </div>
+    {%- if theme_show_scrolltop|tobool %}
     {%- include "scrolltop.html" %}
-  {%- endif %}
-  {% block scripts %}
-  {%- for js in script_files %}
+    {%- endif %}
+    {% block scripts %}
+    {%- for js in script_files %}
     {{ js_tag(js) }}
-  {%- endfor %}
-  {% endblock scripts %}
+    {%- endfor %}
+    {% endblock scripts %}
 </body>
+
 </html>

@@ -45,7 +45,7 @@
   }
 
   & a:not(.toc-backref) {
-    @apply font-medium text-primary underline decoration-from-font underline-offset-4;
+    @apply font-medium underline decoration-from-font underline-offset-4;
   }
 
   & ul:not(.search) {

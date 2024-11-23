@@ -49,7 +49,7 @@ def changed_docs(app: Sphinx, env: BuildEnvironment, docnames: list[str]) -> Non
 
     This is useful to make sure postprocessing only runs on changed files.
     """
-    app.env.awesome_changed_docs = docnames  # type: ignore[attr-defined]
+    app.env.awesome_changed_docs = docnames  # type:ignore
 
 
 def get_html_files(outdir: pathlib.Path | str) -> list[str]:
@@ -62,23 +62,25 @@ def get_html_files(outdir: pathlib.Path | str) -> list[str]:
     return html_list
 
 
+# FIXME: The code works but I don't know how to fix the types
 def collapsible_nav(tree: BeautifulSoup) -> None:
     """Make navigation links with children collapsible."""
     for link in tree.select("#left-sidebar a"):
         # Check if the link has "children"
         children = link.next_sibling
-        if children and children.name == "ul":
+        if children and children.name == "ul":  # type: ignore
             # State must be available in the link and the list
             li = link.parent
-            li["x-data"] = (
-                "{ expanded: $el.classList.contains('current') ? true : false }"
-            )
+            if li:
+                li["x-data"] = (
+                    "{ expanded: $el.classList.contains('current') ? true : false }"
+                )
             link["@click"] = "expanded = !expanded"
             # The expandable class is a hack because we can't use Tailwind
             # I want to have _only_ expandable links with `justify-between`
-            link["class"].append("expandable")
+            link["class"].append("expandable")  # type: ignore
             link[":class"] = "{ 'expanded' : expanded }"
-            children["x-show"] = "expanded"
+            children["x-show"] = "expanded"  # type: ignore
 
             # Create a button with an icon inside to get focus behavior
             button = tree.new_tag(
@@ -90,7 +92,8 @@ def collapsible_nav(tree: BeautifulSoup) -> None:
 
             # create the icon
             svg = BeautifulSoup(Icons.chevron_right, "html.parser").svg
-            button.append(svg)
+            if svg:
+                button.append(svg)
             link.append(button)
 
 

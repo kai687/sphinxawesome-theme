@@ -1,8 +1,7 @@
 <div class="feedback">
-  <div style="font-weight:500">Was this helpful?</div>
+  <div style="font-weight:bolder">Was this page helpful?</div>
   <div class="flex">
-    <button id="upvote"
-      class="p-2 hover:text-green-600 hover:bg-green-50 focus:text-green-600 tooltipped tooltipped-s"
+    <button id="upvote" class="p-2 hover:text-green-600 hover:bg-green-50 focus:text-green-600 tooltipped tooltipped-s"
       aria-label="Helpful">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -23,5 +22,12 @@
       </svg>
     </button>
   </div>
-  <a href="{{ feedback_url }}" class="feedback-send">Send feedback</a>
+  <a href="{{ feedback_url }}"
+    style="display:flex;align-items:center;text-decoration-line:underline;text-underline-offset:4px">Report
+    an issue<svg fill="currentColor" height="1em" stroke="none" viewBox="0 96 960 960" width="1em"
+      xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M188 868q-11-11-11-28t11-28l436-436H400q-17 0-28.5-11.5T360 336q0-17 11.5-28.5T400 296h320q17 0 28.5 11.5T760 336v320q0 17-11.5 28.5T720 696q-17 0-28.5-11.5T680 656V432L244 868q-11 11-28 11t-28-11Z">
+      </path>
+    </svg></a>
 </div>

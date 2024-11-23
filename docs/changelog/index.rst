@@ -14,6 +14,7 @@ Changelog
 
 ----
 
+.. include:: includes/6.0.rst
 .. include:: includes/5.2.rst
 .. include:: includes/5.0.rst
 .. include:: includes/4.0.rst

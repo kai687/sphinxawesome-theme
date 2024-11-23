@@ -10,29 +10,6 @@ from sphinx.application import Sphinx
 from .util import parse_html
 
 
-@pytest.mark.sphinx("html", confoverrides={"html_theme": "sphinxawesome_theme"})
-def test_compiles_html_with_theme(app: Sphinx) -> None:
-    """It compiles HTML with the theme but doesn't load the extra extensions."""
-    app.build()
-    assert os.path.exists(Path(app.outdir) / "index.html")
-    assert app.config.html_theme == "sphinxawesome_theme"
-
-    assert "sphinxawesome_theme.highlighting" not in app.extensions
-
-
-@pytest.mark.sphinx(
-    "html",
-    confoverrides={
-        "html_theme": "sphinxawesome_theme",
-        "extensions": ["sphinxawesome_theme.highlighting"],
-    },
-)
-def test_awesome_highlighting(app: Sphinx) -> None:
-    """It loads the highlighting extension."""
-    app.build()
-    assert "sphinxawesome_theme.highlighting" in app.extensions
-
-
 @pytest.mark.sphinx(
     "html",
     confoverrides={

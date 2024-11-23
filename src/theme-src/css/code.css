@@ -136,3 +136,11 @@ em.property {
 dt .classifier {
   @apply italic before:mr-2 before:content-[':'];
 }
+
+h2 + .function .sig {
+  @apply border-none;
+}
+
+.sig-param .n:first-child {
+  @apply not-italic;
+}

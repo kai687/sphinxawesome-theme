@@ -18,8 +18,9 @@ About
 I wanted to use Sphinx for a documentation project,
 but I found all available themes dated and ugly.
 So I built my own.
-Had I known of the `furo <https://pradyunsg.me/furo/>`_ or
-the `sphinx-books-theme <https://sphinx-book-theme.readthedocs.io/en/stable/>`_,
+Had I known of the `furo <https://pradyunsg.me/furo/>`_,
+the `sphinx-immaterial <https://jbms.github.io/sphinx-immaterial/>`_,
+or the `shibuya <https://shibuya.lepture.com/>`_ theme,
 I likely would not have started this project.
 
 Assets
@@ -32,7 +33,7 @@ The following table lists the assets used by the |product| to be awesome.
 +=========================================================+===============================+===================================================================================+
 | UI design                                               | `shadcn/ui`_                  | `MIT License <https://github.com/shadcn-ui/ui/blob/main/LICENSE.md>`__            |
 +---------------------------------------------------------+-------------------------------+-----------------------------------------------------------------------------------+
-| CSS framework                                           | Tailwind_                     | `MIT License <https://github.com/tailwindlabs/tailwindcss/blob/master/LICENSE>`__ |
+| CSS framework                                           | Tailwind_                     | `MIT License <https://github.com/tailwindlabs/tailwindcss/blob/main/LICENSE>`__   |
 +---------------------------------------------------------+-------------------------------+-----------------------------------------------------------------------------------+
 | JavaScript framework (Version 5.0 and later)            | Alpine.js_                    | `MIT License <https://github.com/alpinejs/alpine/blob/main/LICENSE.md>`__         |
 +---------------------------------------------------------+-------------------------------+-----------------------------------------------------------------------------------+
@@ -58,7 +59,7 @@ The following table lists the assets used by the |product| to be awesome.
 .. _shadcn/ui: https://ui.shadcn.com/
 .. _Tailwind: https://tailwindcss.com
 .. _Clipboard.js: https://clipboardjs.com
-.. _Roboto: https://github.com/googlefonts/roboto
+.. _Roboto: https://github.com/googlefonts/roboto-2
 .. _JetBrains Mono: https://github.com/JetBrains/JetBrainsMono/
 .. _SIL Open Font License, 1.1: https://github.com/JetBrains/JetBrainsMono/blob/master/OFL.txt
 .. _Material icons: https://fonts.google.com
@@ -69,9 +70,3 @@ The following table lists the assets used by the |product| to be awesome.
 .. _Zondicons: http://www.zondicons.com
 .. _Creative Commons Attribution-ShareAlike 4.0: https://creativecommons.org/licenses/by-sa/4.0/legalcode
 .. _Apache License, Version 2.0: https://www.apache.org/licenses/LICENSE-2.0.html
-
-
-Versioning strategy
--------------------
-
-Starting with version 5.0, the |product| adopts `semantic versioning <https://semver.org/>`_.

@@ -17,8 +17,11 @@ such that we can style placeholders by CSS.
 
 from __future__ import annotations
 
+import contextlib
 import re
-from typing import Any, Generator, Literal, Pattern, Tuple, Union
+from collections.abc import Generator, Iterator
+from re import Pattern
+from typing import Any, Literal, Union
 
 from pygments.filter import Filter
 from pygments.formatters import HtmlFormatter
@@ -31,9 +34,9 @@ from sphinx.util import logging
 
 logger = logging.getLogger(__name__)
 
-# type alias
-TokenType = Union[_TokenType, int]  # For Python 3.8
-TokenStream = Generator[Tuple[TokenType, str], None, None]
+# type alias (Old notation for Python 3.9)
+TokenType = Union[_TokenType, int]
+TokenStream = Generator[tuple[TokenType, str], None, None]
 
 
 def _replace_placeholders(
@@ -51,7 +54,7 @@ def _replace_placeholders(
         yield ttype, value[last:]
 
 
-class AwesomePlaceholders(Filter):  # type: ignore
+class AwesomePlaceholders(Filter):
     """A Pygments filter for marking up placeholder text.
 
     You can define the text to highlight with the ``hl_text`` option.
@@ -65,7 +68,7 @@ class AwesomePlaceholders(Filter):  # type: ignore
     For more information, see the `Pygments documentation <https://pygments.org/docs/quickstart/>`__.
     """
 
-    def __init__(self: AwesomePlaceholders, **options: str) -> None:
+    def __init__(self, **options: str) -> None:
         """Create an instance of the ``AwesomePlaceholders`` filter."""
         Filter.__init__(self, **options)
         placeholders = get_list_opt(options, "hl_text", [])
@@ -73,36 +76,34 @@ class AwesomePlaceholders(Filter):  # type: ignore
             r"|".join([re.escape(x) for x in placeholders if x])
         )
 
-    def filter(
-        self: AwesomePlaceholders, _lexer: Any, stream: TokenStream
-    ) -> TokenStream:
+    def filter(  # type: ignore
+        self, lexer: Any, stream: TokenStream
+    ) -> Iterator[tuple[_TokenType, str]]:
         """Filter on all tokens."""
         regex = self.placeholders_re
         for ttype, value in stream:
-            yield from _replace_placeholders(ttype, value, regex)
+            yield from _replace_placeholders(ttype, value, regex)  # type: ignore
 
 
-class AwesomeHtmlFormatter(HtmlFormatter):  # type: ignore
+class AwesomeHtmlFormatter(HtmlFormatter):
     """Custom Pygments HTML formatter for highlighting added or removed lines.
 
     The method is similar to handling the ``hl_lines`` option in the regular HtmlFormatter.
     """
 
     def _get_line_numbers(
-        self: AwesomeHtmlFormatter,
+        self,
         options: dict[str, Any],
         which: Literal["hl_added", "hl_removed"],
     ) -> set[int]:
         """Get the lines to be added or removed."""
         line_numbers = set()
         for lineno in get_list_opt(options, which, []):
-            try:
+            with contextlib.suppress(ValueError):
                 line_numbers.add(int(lineno))
-            except ValueError:
-                pass
         return line_numbers
 
-    def __init__(self: AwesomeHtmlFormatter, **options: Any) -> None:
+    def __init__(self, **options: Any) -> None:
         """Implement `hl_added` and `hl_removed` options.
 
         Also set the ``linespans`` and ``wrapcode`` options of the Pygments HTML formatter to ``True``.
@@ -117,9 +118,7 @@ class AwesomeHtmlFormatter(HtmlFormatter):  # type: ignore
 
         super().__init__(**options)
 
-    def _highlight_lines(
-        self: AwesomeHtmlFormatter, tokensource: TokenStream
-    ) -> TokenStream:
+    def _highlight_lines(self, tokensource: TokenStream) -> TokenStream:
         """Highlight added, removed, and emphasized lines.
 
         In contrast to Pygments, use ``<mark>``, ``<ins>``, and ``<del>`` elements.
@@ -137,7 +136,7 @@ class AwesomeHtmlFormatter(HtmlFormatter):  # type: ignore
                 yield 1, value
 
     def format_unencoded(
-        self: AwesomeHtmlFormatter,
+        self,
         tokensource: TokenStream,
         outfile: Any,
     ) -> None:
@@ -145,12 +144,14 @@ class AwesomeHtmlFormatter(HtmlFormatter):  # type: ignore
 
         Unfortunately, the method doesn't extend easily, so I copy it from Pygments.
         """
-        source = self._format_lines(tokensource)
+        # FIXME: These methods are defined on the 'HtmlFormatter' class.
+        #        Maybe Pyright doesn't like that they're private?
+        source = self._format_lines(tokensource)  # type: ignore
 
         # As a special case, we wrap line numbers before line highlighting
         # so the line numbers get wrapped in the highlighting tag.
         if not self.nowrap and self.linenos == 2:
-            source = self._wrap_inlinelinenos(source)
+            source = self._wrap_inlinelinenos(source)  # type: ignore
 
         # This is the only change I made from the original
         if self.hl_lines or self.added_lines or self.removed_lines:
@@ -158,21 +159,21 @@ class AwesomeHtmlFormatter(HtmlFormatter):  # type: ignore
 
         if not self.nowrap:
             if self.lineanchors:
-                source = self._wrap_lineanchors(source)
+                source = self._wrap_lineanchors(source)  # type:ignore
             if self.linespans:
-                source = self._wrap_linespans(source)
+                source = self._wrap_linespans(source)  # type:ignore
             source = self.wrap(source)
             if self.linenos == 1:
-                source = self._wrap_tablelinenos(source)
-            source = self._wrap_div(source)
+                source = self._wrap_tablelinenos(source)  # type: ignore
+            source = self._wrap_div(source)  # type: ignore
             if self.full:
-                source = self._wrap_full(source, outfile)
+                source = self._wrap_full(source, outfile)  # type: ignore
 
         for _, piece in source:
             outfile.write(piece)
 
 
-class AwesomePygmentsBridge(PygmentsBridge):  # type: ignore
+class AwesomePygmentsBridge(PygmentsBridge):
     """Extend the PygmentsBridge to handle highlighting placeholder text."""
 
     html_formatter = AwesomeHtmlFormatter
@@ -218,9 +219,7 @@ class AwesomePygmentsBridge(PygmentsBridge):  # type: ignore
         if hl_text:
             opts["hl_text"] = hl_text
 
-        return super().highlight_block(  # type: ignore
-            source, lang, opts, force, location, **kwargs
-        )
+        return super().highlight_block(source, lang, opts, force, location, **kwargs)
 
     def get_stylesheet(self: AwesomePygmentsBridge, arg: str | None = None) -> str:
         """Override the ``PygmentsBridge.get_stylesheet`` method.
@@ -233,9 +232,9 @@ class AwesomePygmentsBridge(PygmentsBridge):  # type: ignore
 
         formatter = self.get_formatter()
         if self.dest == "html":
-            return formatter.get_style_defs(prefix)  # type: ignore
+            return formatter.get_style_defs(prefix)
         else:
-            return formatter.get_style_defs() + _LATEX_ADD_STYLES  # type: ignore
+            return formatter.get_style_defs() + _LATEX_ADD_STYLES
 
 
 def setup(app: Sphinx) -> dict[str, Any]:

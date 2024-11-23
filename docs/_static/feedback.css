@@ -4,7 +4,6 @@
   flex-direction: column;
   padding-top: 1.5rem;
   align-items: center;
-  justify-content: center;
   font-size: 0.875rem;
   color: hsl(var(--muted-foreground));
 }
@@ -34,17 +33,4 @@
 
 #downvote:hover {
   background-color: #fef2f2;
-}
-
-.feedback-send {
-  display: block;
-  padding: 0.25rem 0.5rem;
-  border-radius: var(--radius);
-  border: 1px solid hsl(var(--border));
-}
-
-.feedback-send:hover,
-.feedback-send:focus {
-  background-color: hsl(var(--accent));
-  color: hsl(var(--accent-foreground));
 }

@@ -1,30 +1,27 @@
 const ESLintPlugin = require("eslint-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const path = require("path");
+const RemoveEmptyScriptsPlugin = require("webpack-remove-empty-scripts");
 const StyleLintPlugin = require("stylelint-webpack-plugin");
-const webpack = require("webpack");
+const path = require("path");
 
 const THEME_STATIC_DIR = path.resolve(
   __dirname,
   "../sphinxawesome_theme/static/",
 );
 
-const mode = process.env.NODE_ENV || "development";
-const production = mode === "production";
-
 /** @type {import('webpack').Config} */
 module.exports = {
-  mode: mode,
+  mode: "production",
   entry: {
     theme: "./js/app.js",
-    "awesome-docsearch": "./js/search.js",
+    "awesome-docsearch": "./css/docsearch.css",
     "awesome-sphinx-design": "./css/sphinx-design.css",
   },
   output: {
     path: THEME_STATIC_DIR,
     publicPath: "",
     filename: "[name].js",
-    clean: production ? true : false,
+    clean: true,
   },
   plugins: [
     new ESLintPlugin({
@@ -36,14 +33,10 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "[name].css",
     }),
+    new RemoveEmptyScriptsPlugin(),
     new StyleLintPlugin({
       files: "css/*.css",
       fix: true,
-    }),
-    new webpack.DefinePlugin({
-      "process.env": {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-      },
     }),
   ],
   module: {
@@ -63,9 +56,9 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: "babel-loader",
+        loader: "esbuild-loader",
         options: {
-          presets: [["@babel/preset-env", { targets: "> 1%, not dead" }]],
+          target: "es2020",
         },
       },
       {

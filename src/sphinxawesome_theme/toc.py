@@ -15,17 +15,6 @@ from sphinx.environment.adapters.toctree import TocTree
 from sphinx.util.docutils import new_document
 
 
-def findall(node: Node, selection: Node) -> Any:
-    """A backwards-compatible method to traverse docutils nodes.
-
-    `findall` isn't available in docutils < 0.18.
-    This can be removed if we pin the minimum version of Sphinx to >5.
-    """
-    findall = "findall" if hasattr(node, "findall") else "traverse"
-
-    return getattr(node, findall)(selection)
-
-
 def change_toc(
     app: Sphinx,
     pagename: str,
@@ -60,7 +49,7 @@ def change_toc(
     toc = TocTree(app.builder.env).get_toc_for(pagename, app.builder)
 
     # Remove `h1` node
-    for node in findall(toc, nodes.reference):  # type: ignore
+    for node in toc.findall(nodes.reference):
         if node["refuri"] == "#":
             # Remove the `list_item` wrapping the `reference` node.
             node.parent.parent.remove(node.parent)
@@ -70,7 +59,7 @@ def change_toc(
     doc.append(toc)
 
     # Replace outer bullet lists with inner bullet lists
-    for node in findall(doc, nodes.bullet_list):  # type: ignore
+    for node in doc.findall(nodes.bullet_list):
         if (
             len(node.children) == 1
             and isinstance(node.next_node(), nodes.list_item)
@@ -78,7 +67,8 @@ def change_toc(
         ):
             doc.replace(node, node.next_node().next_node())
 
-    if hasattr(app.builder, "_publisher"):
-        app.builder._publisher.set_source(doc)
-        app.builder._publisher.publish()
-        context["toc"] = app.builder._publisher.writer.parts["fragment"]
+    # FIXME: `_publisher` is set in the init function of the builder.
+    #        Probably `builder` is dynamic.
+    app.builder._publisher.set_source(doc)  # type: ignore
+    app.builder._publisher.publish()  # type: ignore
+    context["toc"] = app.builder._publisher.writer.parts["fragment"]  # type: ignore
