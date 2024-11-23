@@ -41,6 +41,7 @@ You can still configure the theme using a regular dictionary:
    :exclude-members: extra_header_links, nav_include_hidden, show_nav
 
 .. dropdown:: ``LinkIcon`` reference
+   :open:
 
    .. autoclass:: LinkIcon
       :members:
