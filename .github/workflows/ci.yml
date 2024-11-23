@@ -98,6 +98,6 @@ jobs:
           path: dist/
       - name: Create GitHub release
         run: |
-          gh release create ${{ github.ref_name }} ./dist/**
+          gh release create --repo ${{ github.repository }} ${{ github.ref_name }} ./dist/**
         env:
           GITHUB_TOKEN: ${{ github.token }}
