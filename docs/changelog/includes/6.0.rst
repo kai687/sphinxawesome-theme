@@ -1,0 +1,5 @@
+Version 6.0
+-----------
+
+Version 6.0 drops support for Python 3.8 and removes code that became deprecated in version 5.2.
+Other than that, it's mostly an update regarding the tools I use to develop this theme.
