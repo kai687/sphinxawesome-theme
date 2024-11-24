@@ -6,7 +6,7 @@ anyio==4.6.2.post1
 argcomplete==3.5.1
 astroid==3.3.5
 babel==2.16.0
-beautifulsoup4==4.9.3
+beautifulsoup4==4.12.3
 certifi==2024.8.30
 charset-normalizer==3.4.0
 click==8.1.7
