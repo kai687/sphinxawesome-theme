@@ -60,7 +60,7 @@ types-beautifulsoup4==4.12.0.20241020
 types-docutils==0.21.0.20241005
 types-html5lib==1.1.11.20241018
 types-pygments==2.18.0.20240506
-types-setuptools==75.4.0.20241115
+types-setuptools==75.5.0.20241122
 typing-extensions==4.12.2
 urllib3==2.2.3
 uv==0.5.4
