@@ -100,7 +100,7 @@ def typecheck(session: nox.Session) -> None:
 
 @nox.session(python=False)
 def export(session: nox.Session) -> None:
-    """Export dependencies for Readthedocs."""
+    """Export dependencies for Netlify."""
     session.run(
         "uv",
         "export",

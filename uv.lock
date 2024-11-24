@@ -843,7 +843,7 @@ netlify = [
 
 [package.metadata]
 requires-dist = [
-    { name = "beautifulsoup4", specifier = "~=4.9.1" },
+    { name = "beautifulsoup4", specifier = ">=4.9.1,<4.13.0" },
     { name = "sphinx", specifier = ">7,<9" },
 ]
 
@@ -859,12 +859,12 @@ dev = [
     { name = "types-pygments" },
 ]
 docs = [
-    { name = "python-dotenv", specifier = ">=1.0.1" },
-    { name = "sphinx-autoapi", specifier = ">=3.3.3" },
-    { name = "sphinx-autobuild", specifier = ">=2024.10.3" },
-    { name = "sphinx-design", specifier = ">=0.6.1" },
-    { name = "sphinx-docsearch", specifier = ">=0.1.0" },
-    { name = "sphinx-sitemap", specifier = ">=2.6.0" },
+    { name = "python-dotenv" },
+    { name = "sphinx-autoapi" },
+    { name = "sphinx-autobuild" },
+    { name = "sphinx-design" },
+    { name = "sphinx-docsearch" },
+    { name = "sphinx-sitemap" },
 ]
 netlify = [
     { name = "nox" },

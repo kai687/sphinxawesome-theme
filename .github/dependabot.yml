@@ -8,16 +8,15 @@ updates:
       timezone: Europe/Berlin
     assignees:
       - kai687
-
-  - package-ecosystem: pip
-    directory: "/"
-    schedule:
-      interval: weekly
-      day: sunday
-      timezone: Europe/Berlin
-    assignees:
-      - kai687
-
+  # uv not supported yet `uv.lock`
+  # - package-ecosystem: pip
+  #   directory: "/"
+  #   schedule:
+  #     interval: weekly
+  #     day: sunday
+  #     timezone: Europe/Berlin
+  #   assignees:
+  #     - kai687
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:

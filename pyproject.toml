@@ -45,12 +45,12 @@ build-backend = "hatchling.build"
 
 [dependency-groups]
 docs = [
-    "python-dotenv>=1.0.1",
-    "sphinx-autoapi>=3.3.3",
-    "sphinx-autobuild>=2024.10.3",
-    "sphinx-design>=0.6.1",
-    "sphinx-docsearch>=0.1.0",
-    "sphinx-sitemap>=2.6.0",
+    "python-dotenv",
+    "sphinx-autoapi",
+    "sphinx-autobuild",
+    "sphinx-design",
+    "sphinx-docsearch",
+    "sphinx-sitemap",
 ]
 dev = [
     "pytest-cov",
