@@ -1,6 +1,6 @@
 {
   "name": "sphinxawesome-theme",
-  "version": "6.0.0a1",
+  "version": "6.0.0a2",
   "scripts": {
     "build": "webpack",
     "format": "prettier --write */**/*.{css,js} */*.{css,js} *.js"
@@ -35,7 +35,7 @@
     "postcss-import": "^16.1.0",
     "postcss-loader": "^8.1.1",
     "postcss-preset-env": "^10.1.1",
-    "prettier": "^3.3.3",
+    "prettier": "^3.4.0",
     "prettier-plugin-organize-imports": "^4.1.0",
     "prettier-plugin-tailwindcss": "^0.6.9",
     "stylelint": "^16.10.0",

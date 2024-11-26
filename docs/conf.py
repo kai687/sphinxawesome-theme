@@ -31,9 +31,10 @@ extensions = [
     "sphinx_sitemap",
     "sphinx_design",
     "sphinx_docsearch",
+    "myst_nb",
 ]
 
-exclude_patterns = ["public", "includes", "**/includes"]
+exclude_patterns = ["public", "includes", "**/includes", "jupyter_execute"]
 
 nitpicky = True
 
@@ -95,6 +96,10 @@ html_sidebars: dict[str, list[str]] = {
 # if you want to include other pages than docs
 templates_path = ["_templates"]
 # html_additional_pages = {"about": "about.html"}
+
+# Separate syntax highlighting styles for light and dark mode
+# pygments_style = "xcode"
+# pygments_style_dark = "github-dark"
 
 html_static_path = ["_static"]
 html_css_files = ["feedback.css"]

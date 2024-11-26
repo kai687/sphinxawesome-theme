@@ -16,6 +16,7 @@ module.exports = {
     theme: "./js/app.js",
     "awesome-docsearch": "./css/docsearch.css",
     "awesome-sphinx-design": "./css/sphinx-design.css",
+    "awesome-myst-nb": "./css/myst-nb.css",
   },
   output: {
     path: THEME_STATIC_DIR,
