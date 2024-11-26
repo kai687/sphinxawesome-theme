@@ -2,7 +2,7 @@
   display: flex;
   gap: 0.5rem;
   flex-direction: column;
-  padding-top: 1.5rem;
+  padding-block-start: 1.5rem;
   align-items: center;
   font-size: 0.875rem;
   color: hsl(var(--muted-foreground));
@@ -23,7 +23,7 @@
 }
 
 #upvote > svg {
-  margin-bottom: 5px;
+  margin-block-end: 5px;
 }
 
 #downvote:hover,

@@ -1,0 +1,8 @@
+/* Overrides for the `myst-nb` extension */
+:root {
+  --mystnb-stdout-bg-color: theme(colors.background);
+  --mystnb-stdout-border-color: theme(colors.border);
+  --mystnb-source-bg-color: theme(colors.background);
+  --mystnb-source-border-color: theme(colors.border);
+  --mystnb-source-border-radius: theme(borderRadius.lg);
+}

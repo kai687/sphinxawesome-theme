@@ -1,6 +1,6 @@
 [project]
 name = "sphinxawesome-theme"
-version = "6.0.0a1"
+version = "6.0.0a2"
 description = "An awesome theme for the Sphinx documentation generator"
 readme = "README.md"
 authors = [
@@ -45,6 +45,7 @@ build-backend = "hatchling.build"
 
 [dependency-groups]
 docs = [
+    "myst-nb",
     "python-dotenv",
     "sphinx-autoapi",
     "sphinx-autobuild",

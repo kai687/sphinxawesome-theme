@@ -118,6 +118,9 @@ def setup(app: Sphinx) -> dict[str, Any]:
     # Add the CSS overrides if we're using the `sphinx-design` extension
     if "sphinx_design" in app.config.extensions:
         app.add_css_file("awesome-sphinx-design.css", priority=900)
+    # Add the CSS overrides if we're using the `myst-nb` extension
+    if "myst_nb" in app.config.extensions:
+        app.add_css_file("awesome-myst-nb.css", priority=900)
 
     if "sphinx_docsearch" in app.config.extensions:
         app.add_css_file("awesome-docsearch.css", priority=900)

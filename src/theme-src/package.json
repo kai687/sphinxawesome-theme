@@ -1,6 +1,6 @@
 {
   "name": "sphinxawesome-theme",
-  "version": "6.0.0a1",
+  "version": "6.0.0a2",
   "scripts": {
     "build": "webpack",
     "format": "prettier --write */**/*.{css,js} */*.{css,js} *.js"
