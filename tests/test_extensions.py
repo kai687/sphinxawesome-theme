@@ -29,3 +29,24 @@ def test_awesome_sphinx_design(app: Sphinx) -> None:
     assert len(css) == 4
     hrefs = [item["href"] for item in css]
     assert any(filter(pattern.search, hrefs))  # type: ignore[arg-type]
+
+
+@pytest.mark.sphinx(
+    "html",
+    confoverrides={
+        "html_theme": "sphinxawesome_theme",
+        "extensions": ["myst_nb"],
+    },
+)
+def test_awesome_myst_nb(app: Sphinx) -> None:
+    """It loads CSS for the `myst-nb` extension."""
+    app.build()
+    assert os.path.exists(Path(app.outdir) / "index.html")
+    tree = parse_html(Path(app.outdir) / "index.html")
+    pattern = re.compile(r"awesome-myst-nb.css")
+
+    # It adds the `awesome-myst-nb.css` file
+    css = tree.select('link[rel="stylesheet"]')
+    assert len(css) == 4
+    hrefs = [item["href"] for item in css]
+    assert any(filter(pattern.search, hrefs))  # type: ignore[arg-type]
