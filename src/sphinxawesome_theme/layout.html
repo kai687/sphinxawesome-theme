@@ -12,20 +12,7 @@
 
 <!DOCTYPE html>
 <html lang="{{ lang_attr }}" {% if sphinx_version_tuple>= (7, 2) %}data-content_root="{{ content_root }}"{% endif %}
-x-data="{
-darkMode: window.matchMedia('(prefers-color-scheme: dark)').matches,
-activeSection: '',
-init() {
-const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
-darkModeQuery.addEventListener('change', (event) => {
-this.darkMode = event.matches
-});
-},
-}"
-x-init="init()"
-class="scroll-smooth"
-:class="{'dark': darkMode}"
->
+x-data="{activeSection: ''}">
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -77,20 +64,6 @@ class="scroll-smooth"
   <link rel="prev" title="{{ prev.title|striptags|e }}" href="{{ prev.link|e }}" />
   {%- endif %}
   {%- endblock linktags %}
-
-  <script>
-    <!-- Prevent Flash of wrong theme -->
-    const userPreference = localStorage.getItem('darkMode');
-    let mode;
-    if (userPreference === 'dark' || window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      mode = 'dark';
-      document.documentElement.classList.add('dark');
-    } else {
-      mode = 'light';
-    }
-    if (!userPreference) {localStorage.setItem('darkMode', mode)}
-  </script>
-
   {%- block extrahead %}{%- endblock extrahead %}
 </head>
 
