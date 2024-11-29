@@ -43,7 +43,7 @@ code {
 }
 
 pre {
-  @apply mt-6 overflow-x-auto rounded-lg border border-border py-4 text-sm data-[theme=dark]:bg-background data-[theme=light]:bg-white;
+  @apply mt-6 overflow-x-auto rounded-lg border border-border py-4 text-sm;
 
   &.literal-block {
     @apply px-4;
@@ -76,11 +76,11 @@ pre {
       }
 
       & ins {
-        @apply bg-green-500/30 text-green-900 no-underline before:absolute before:left-[2px] before:content-['\002b'] dark:bg-opacity-100 dark:text-green-200;
+        @apply bg-green-500/30 text-green-900 no-underline before:absolute before:left-[2px] before:content-['\002b'] dark:text-green-200;
       }
 
       & del {
-        @apply bg-red-500/30 text-red-900 no-underline before:absolute before:left-[2px] before:content-['\2212'] dark:bg-opacity-100 dark:text-red-200;
+        @apply bg-red-500/30 text-red-900 no-underline before:absolute before:left-[2px] before:content-['\2212'] dark:text-red-200;
       }
     }
   }
@@ -92,11 +92,11 @@ pre {
 
 .highlight-diff {
   & .gi {
-    @apply inline-block w-full bg-green-500/30 px-4 text-green-900 dark:bg-opacity-100 dark:text-green-200;
+    @apply inline-block w-full bg-green-500/30 px-4 text-green-900 dark:text-green-200;
   }
 
   & .gd {
-    @apply inline-block w-full bg-red-500/30 px-4 text-red-900 dark:bg-opacity-100 dark:text-green-200;
+    @apply inline-block w-full bg-red-500/30 px-4 text-red-900 dark:text-green-200;
   }
 }
 
