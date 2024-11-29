@@ -3,6 +3,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const RemoveEmptyScriptsPlugin = require("webpack-remove-empty-scripts");
 const StyleLintPlugin = require("stylelint-webpack-plugin");
 const path = require("path");
+const { EsbuildPlugin } = require("esbuild-loader");
 
 const THEME_STATIC_DIR = path.resolve(
   __dirname,
@@ -23,6 +24,13 @@ module.exports = {
     publicPath: "",
     filename: "[name].js",
     clean: true,
+  },
+  optimization: {
+    minimizer: [
+      new EsbuildPlugin({
+        target: "es2020",
+      }),
+    ],
   },
   plugins: [
     new ESLintPlugin({
