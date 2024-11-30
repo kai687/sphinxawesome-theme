@@ -1,6 +1,7 @@
 {
   "name": "sphinxawesome-theme",
-  "version": "6.0.0a2",
+  "version": "6.0.0",
+  "private": true,
   "scripts": {
     "build": "webpack",
     "format": "prettier --write */**/*.{css,js} */*.{css,js} *.js"
@@ -20,14 +21,13 @@
   "devDependencies": {
     "@fontsource/jetbrains-mono": "^5.1.1",
     "@tailwindcss/nesting": "0.0.0-insiders.565cd3e",
-    "@tailwindcss/typography": "^0.5.15",
     "autoprefixer": "^10.4.20",
     "copy-webpack-plugin": "^12.0.2",
     "css-loader": "^7.1.2",
     "cssnano": "^7.0.6",
     "cssnano-preset-advanced": "^7.0.6",
     "esbuild-loader": "^4.2.2",
-    "eslint": "^9.15.0",
+    "eslint": "^9.16.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-webpack-plugin": "^4.2.0",
     "mini-css-extract-plugin": "^2.9.2",

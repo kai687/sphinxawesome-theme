@@ -1,16 +1,17 @@
 Syntax highlighting
 -------------------
 
-This theme lets you configure different color themes for syntax highlighting code blocks using these configuration options:
+You can choose any Pygments color scheme for syntax highlighting in code blocks.
+To use different color schemes for both light and dark modes,
+set both the :confval:`sphinx:pygments_style` and ``pygments_style_dark`` parameters.
+To use the same color scheme in light and dark mode,
+only set the ``pygments_style`` parameter:
 
 .. code-block:: python
    :caption: |conf|
    :emphasize-text: PYGMENTS_THEME
 
-   # Select theme for both light and dark mode
+   # Select a color scheme for light mode
    pygments_style = "PYGMENTS_THEME"
-   # Select a different theme for dark mode
+   # Select a different color scheme for dark mode
    pygments_style_dark = "PYGMENTS_THEME"
-
-If you only set the :confval:`sphinx:pygments_style` option, the same style will be used in both light and dark modes.
-If you specify a ``pygments_style_dark`` option, different colors will be used in light and dark modes.

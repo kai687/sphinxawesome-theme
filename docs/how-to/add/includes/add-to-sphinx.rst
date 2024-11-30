@@ -14,13 +14,4 @@ Add the theme to your Sphinx configuration
 
       :confval:`sphinx:html_theme`
 
-#. Optional: load a bundled extension to check if you're using deprecated options:
-
-   .. code-block:: python
-      :caption: |conf|
-
-      extensions += [
-         "sphinxawesome.deprecated",
-      ]
-
 For information about the configuration options, see :doc:`../configure/index`.
