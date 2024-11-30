@@ -43,9 +43,8 @@
   <link rel="canonical" href="{{ pageurl|e }}" />
   {%- endif %}
 
-  {%- set _favicon_url = favicon_url | default(pathto('_static/' + (favicon or ""), 1)) %}
-  {%- if favicon_url or favicon %}
-  <link rel="icon" href="{{ _favicon_url }}" />
+  {%- if favicon_url %}
+  <link rel="icon" href="{{ favicon_url|e }}" />
   {%- endif %}
 
   {%- block linktags %}
