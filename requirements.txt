@@ -65,7 +65,7 @@ pure-eval==0.2.3
 pycparser==2.22 ; implementation_name == 'pypy'
 pygments==2.18.0
 pyright==1.1.389
-pytest==8.3.3
+pytest==8.3.4
 pytest-cov==6.0.0
 python-dateutil==2.9.0.post0
 python-dotenv==1.0.1
