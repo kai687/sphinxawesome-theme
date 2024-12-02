@@ -1,6 +1,6 @@
 {
   "name": "sphinxawesome-theme",
-  "version": "6.0.0",
+  "version": "6.0.0b1",
   "private": true,
   "scripts": {
     "build": "webpack",
