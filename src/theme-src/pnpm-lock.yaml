@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@alpinejs/intersect':
-        specifier: ^3.14.6
-        version: 3.14.6
+        specifier: ^3.14.7
+        version: 3.14.7
       alpinejs:
         specifier: ^3.14.7
         version: 3.14.7
@@ -109,8 +109,8 @@ packages:
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
     engines: {node: '>=10'}
 
-  '@alpinejs/intersect@3.14.6':
-    resolution: {integrity: sha512-xopcLKaLreLT4TyIQM9Yzw4mTH8bttHOYG0o1hzjBBMf/HFIO5aqrArO2HH3mfxxPMH7n2Izeu456cf8bdUvCQ==}
+  '@alpinejs/intersect@3.14.7':
+    resolution: {integrity: sha512-EX3HKR0bUWm7mwBAInprPBwYCxOoCRJi2JovBLD6d5Lb+BvbgVqJb2a95o81rXrRPXEOL1HY4efCtSKU1JwDRQ==}
 
   '@babel/code-frame@7.26.2':
     resolution: {integrity: sha512-RJlIHRueQgwWitWgF8OdFYGZX328Ax5BCemNGlqHfplnRT9ESi8JkFlvaVYbS+UubVY6dpv87Fs2u5M29iNFVQ==}
@@ -2585,7 +2585,7 @@ snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
 
-  '@alpinejs/intersect@3.14.6': {}
+  '@alpinejs/intersect@3.14.7': {}
 
   '@babel/code-frame@7.26.2':
     dependencies:
