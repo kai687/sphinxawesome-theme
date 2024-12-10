@@ -29,10 +29,10 @@ importers:
         version: 10.4.20(postcss@8.4.49)
       copy-webpack-plugin:
         specifier: ^12.0.2
-        version: 12.0.2(webpack@5.96.1)
+        version: 12.0.2(webpack@5.96.1(webpack-cli@5.1.4))
       css-loader:
         specifier: ^7.1.2
-        version: 7.1.2(webpack@5.96.1)
+        version: 7.1.2(webpack@5.96.1(webpack-cli@5.1.4))
       cssnano:
         specifier: ^7.0.6
         version: 7.0.6(postcss@8.4.49)
@@ -41,7 +41,7 @@ importers:
         version: 7.0.6(postcss@8.4.49)
       esbuild-loader:
         specifier: ^4.2.2
-        version: 4.2.2(webpack@5.96.1)
+        version: 4.2.2(webpack@5.96.1(webpack-cli@5.1.4))
       eslint:
         specifier: ^9.16.0
         version: 9.16.0(jiti@1.21.6)
@@ -50,10 +50,10 @@ importers:
         version: 9.1.0(eslint@9.16.0(jiti@1.21.6))
       eslint-webpack-plugin:
         specifier: ^4.2.0
-        version: 4.2.0(eslint@9.16.0(jiti@1.21.6))(webpack@5.96.1)
+        version: 4.2.0(eslint@9.16.0(jiti@1.21.6))(webpack@5.96.1(webpack-cli@5.1.4))
       mini-css-extract-plugin:
         specifier: ^2.9.2
-        version: 2.9.2(webpack@5.96.1)
+        version: 2.9.2(webpack@5.96.1(webpack-cli@5.1.4))
       postcss:
         specifier: ^8.4.49
         version: 8.4.49
@@ -65,28 +65,28 @@ importers:
         version: 16.1.0(postcss@8.4.49)
       postcss-loader:
         specifier: ^8.1.1
-        version: 8.1.1(postcss@8.4.49)(typescript@5.4.5)(webpack@5.96.1)
+        version: 8.1.1(postcss@8.4.49)(typescript@5.4.5)(webpack@5.96.1(webpack-cli@5.1.4))
       postcss-preset-env:
         specifier: ^10.1.1
         version: 10.1.1(postcss@8.4.49)
       prettier:
-        specifier: ^3.4.1
-        version: 3.4.1
+        specifier: ^3.4.2
+        version: 3.4.2
       prettier-plugin-organize-imports:
         specifier: ^4.1.0
-        version: 4.1.0(prettier@3.4.1)(typescript@5.4.5)
+        version: 4.1.0(prettier@3.4.2)(typescript@5.4.5)
       prettier-plugin-tailwindcss:
         specifier: ^0.6.9
-        version: 0.6.9(prettier-plugin-organize-imports@4.1.0(prettier@3.4.1)(typescript@5.4.5))(prettier@3.4.1)
+        version: 0.6.9(prettier-plugin-organize-imports@4.1.0(prettier@3.4.2)(typescript@5.4.5))(prettier@3.4.2)
       stylelint:
         specifier: ^16.11.0
         version: 16.11.0(typescript@5.4.5)
       stylelint-prettier:
         specifier: ^5.0.2
-        version: 5.0.2(prettier@3.4.1)(stylelint@16.11.0(typescript@5.4.5))
+        version: 5.0.2(prettier@3.4.2)(stylelint@16.11.0(typescript@5.4.5))
       stylelint-webpack-plugin:
         specifier: ^5.0.1
-        version: 5.0.1(stylelint@16.11.0(typescript@5.4.5))(webpack@5.96.1)
+        version: 5.0.1(stylelint@16.11.0(typescript@5.4.5))(webpack@5.96.1(webpack-cli@5.1.4))
       tailwindcss:
         specifier: ^3.4.15
         version: 3.4.15
@@ -98,10 +98,10 @@ importers:
         version: 5.1.4(webpack@5.96.1)
       webpack-manifest-plugin:
         specifier: ^5.0.0
-        version: 5.0.0(webpack@5.96.1)
+        version: 5.0.0(webpack@5.96.1(webpack-cli@5.1.4))
       webpack-remove-empty-scripts:
         specifier: ^1.0.4
-        version: 1.0.4(webpack@5.96.1)
+        version: 1.0.4(webpack@5.96.1(webpack-cli@5.1.4))
 
 packages:
 
@@ -2213,8 +2213,8 @@ packages:
       prettier-plugin-svelte:
         optional: true
 
-  prettier@3.4.1:
-    resolution: {integrity: sha512-G+YdqtITVZmOJje6QkXQWzl3fSfMxFwm1tjTyo9exhkmWSqC4Yhd1+lug++IlR2mvRVAxEDDWYkQdeSztajqgg==}
+  prettier@3.4.2:
+    resolution: {integrity: sha512-e9MewbtFo+Fevyuxn/4rrcDAaq0IYxPGLvObpQjiZBMAzB9IGmzlnG9RZy3FFas+eBMu2vA0CszMeduow5dIuQ==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -3165,17 +3165,17 @@ snapshots:
       '@webassemblyjs/ast': 1.14.1
       '@xtuc/long': 4.2.2
 
-  '@webpack-cli/configtest@2.1.1(webpack-cli@5.1.4)(webpack@5.96.1)':
+  '@webpack-cli/configtest@2.1.1(webpack-cli@5.1.4(webpack@5.96.1))(webpack@5.96.1(webpack-cli@5.1.4))':
     dependencies:
       webpack: 5.96.1(webpack-cli@5.1.4)
       webpack-cli: 5.1.4(webpack@5.96.1)
 
-  '@webpack-cli/info@2.0.2(webpack-cli@5.1.4)(webpack@5.96.1)':
+  '@webpack-cli/info@2.0.2(webpack-cli@5.1.4(webpack@5.96.1))(webpack@5.96.1(webpack-cli@5.1.4))':
     dependencies:
       webpack: 5.96.1(webpack-cli@5.1.4)
       webpack-cli: 5.1.4(webpack@5.96.1)
 
-  '@webpack-cli/serve@2.0.5(webpack-cli@5.1.4)(webpack@5.96.1)':
+  '@webpack-cli/serve@2.0.5(webpack-cli@5.1.4(webpack@5.96.1))(webpack@5.96.1(webpack-cli@5.1.4))':
     dependencies:
       webpack: 5.96.1(webpack-cli@5.1.4)
       webpack-cli: 5.1.4(webpack@5.96.1)
@@ -3356,7 +3356,7 @@ snapshots:
 
   concat-map@0.0.1: {}
 
-  copy-webpack-plugin@12.0.2(webpack@5.96.1):
+  copy-webpack-plugin@12.0.2(webpack@5.96.1(webpack-cli@5.1.4)):
     dependencies:
       fast-glob: 3.3.2
       glob-parent: 6.0.2
@@ -3399,7 +3399,7 @@ snapshots:
       postcss-selector-parser: 7.0.0
       postcss-value-parser: 4.2.0
 
-  css-loader@7.1.2(webpack@5.96.1):
+  css-loader@7.1.2(webpack@5.96.1(webpack-cli@5.1.4)):
     dependencies:
       icss-utils: 5.1.0(postcss@8.4.49)
       postcss: 8.4.49
@@ -3565,7 +3565,7 @@ snapshots:
 
   es-module-lexer@1.5.4: {}
 
-  esbuild-loader@4.2.2(webpack@5.96.1):
+  esbuild-loader@4.2.2(webpack@5.96.1(webpack-cli@5.1.4)):
     dependencies:
       esbuild: 0.21.5
       get-tsconfig: 4.8.1
@@ -3621,7 +3621,7 @@ snapshots:
 
   eslint-visitor-keys@4.2.0: {}
 
-  eslint-webpack-plugin@4.2.0(eslint@9.16.0(jiti@1.21.6))(webpack@5.96.1):
+  eslint-webpack-plugin@4.2.0(eslint@9.16.0(jiti@1.21.6))(webpack@5.96.1(webpack-cli@5.1.4)):
     dependencies:
       '@types/eslint': 8.56.12
       eslint: 9.16.0(jiti@1.21.6)
@@ -4007,7 +4007,7 @@ snapshots:
     dependencies:
       mime-db: 1.52.0
 
-  mini-css-extract-plugin@2.9.2(webpack@5.96.1):
+  mini-css-extract-plugin@2.9.2(webpack@5.96.1(webpack-cli@5.1.4)):
     dependencies:
       schema-utils: 4.2.0
       tapable: 2.2.1
@@ -4287,7 +4287,7 @@ snapshots:
     optionalDependencies:
       postcss: 8.4.49
 
-  postcss-loader@8.1.1(postcss@8.4.49)(typescript@5.4.5)(webpack@5.96.1):
+  postcss-loader@8.1.1(postcss@8.4.49)(typescript@5.4.5)(webpack@5.96.1(webpack-cli@5.1.4)):
     dependencies:
       cosmiconfig: 9.0.0(typescript@5.4.5)
       jiti: 1.21.6
@@ -4597,18 +4597,18 @@ snapshots:
     dependencies:
       fast-diff: 1.3.0
 
-  prettier-plugin-organize-imports@4.1.0(prettier@3.4.1)(typescript@5.4.5):
+  prettier-plugin-organize-imports@4.1.0(prettier@3.4.2)(typescript@5.4.5):
     dependencies:
-      prettier: 3.4.1
+      prettier: 3.4.2
       typescript: 5.4.5
 
-  prettier-plugin-tailwindcss@0.6.9(prettier-plugin-organize-imports@4.1.0(prettier@3.4.1)(typescript@5.4.5))(prettier@3.4.1):
+  prettier-plugin-tailwindcss@0.6.9(prettier-plugin-organize-imports@4.1.0(prettier@3.4.2)(typescript@5.4.5))(prettier@3.4.2):
     dependencies:
-      prettier: 3.4.1
+      prettier: 3.4.2
     optionalDependencies:
-      prettier-plugin-organize-imports: 4.1.0(prettier@3.4.1)(typescript@5.4.5)
+      prettier-plugin-organize-imports: 4.1.0(prettier@3.4.2)(typescript@5.4.5)
 
-  prettier@3.4.1: {}
+  prettier@3.4.2: {}
 
   punycode@2.3.1: {}
 
@@ -4738,13 +4738,13 @@ snapshots:
       postcss: 8.4.49
       postcss-selector-parser: 6.1.2
 
-  stylelint-prettier@5.0.2(prettier@3.4.1)(stylelint@16.11.0(typescript@5.4.5)):
+  stylelint-prettier@5.0.2(prettier@3.4.2)(stylelint@16.11.0(typescript@5.4.5)):
     dependencies:
-      prettier: 3.4.1
+      prettier: 3.4.2
       prettier-linter-helpers: 1.0.0
       stylelint: 16.11.0(typescript@5.4.5)
 
-  stylelint-webpack-plugin@5.0.1(stylelint@16.11.0(typescript@5.4.5))(webpack@5.96.1):
+  stylelint-webpack-plugin@5.0.1(stylelint@16.11.0(typescript@5.4.5))(webpack@5.96.1(webpack-cli@5.1.4)):
     dependencies:
       globby: 11.1.0
       jest-worker: 29.7.0
@@ -4872,7 +4872,7 @@ snapshots:
 
   tapable@2.2.1: {}
 
-  terser-webpack-plugin@5.3.10(webpack@5.96.1):
+  terser-webpack-plugin@5.3.10(webpack@5.96.1(webpack-cli@5.1.4)):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.25
       jest-worker: 27.5.1
@@ -4934,9 +4934,9 @@ snapshots:
   webpack-cli@5.1.4(webpack@5.96.1):
     dependencies:
       '@discoveryjs/json-ext': 0.5.7
-      '@webpack-cli/configtest': 2.1.1(webpack-cli@5.1.4)(webpack@5.96.1)
-      '@webpack-cli/info': 2.0.2(webpack-cli@5.1.4)(webpack@5.96.1)
-      '@webpack-cli/serve': 2.0.5(webpack-cli@5.1.4)(webpack@5.96.1)
+      '@webpack-cli/configtest': 2.1.1(webpack-cli@5.1.4(webpack@5.96.1))(webpack@5.96.1(webpack-cli@5.1.4))
+      '@webpack-cli/info': 2.0.2(webpack-cli@5.1.4(webpack@5.96.1))(webpack@5.96.1(webpack-cli@5.1.4))
+      '@webpack-cli/serve': 2.0.5(webpack-cli@5.1.4(webpack@5.96.1))(webpack@5.96.1(webpack-cli@5.1.4))
       colorette: 2.0.20
       commander: 10.0.1
       cross-spawn: 7.0.6
@@ -4948,7 +4948,7 @@ snapshots:
       webpack: 5.96.1(webpack-cli@5.1.4)
       webpack-merge: 5.10.0
 
-  webpack-manifest-plugin@5.0.0(webpack@5.96.1):
+  webpack-manifest-plugin@5.0.0(webpack@5.96.1(webpack-cli@5.1.4)):
     dependencies:
       tapable: 2.2.1
       webpack: 5.96.1(webpack-cli@5.1.4)
@@ -4960,7 +4960,7 @@ snapshots:
       flat: 5.0.2
       wildcard: 2.0.1
 
-  webpack-remove-empty-scripts@1.0.4(webpack@5.96.1):
+  webpack-remove-empty-scripts@1.0.4(webpack@5.96.1(webpack-cli@5.1.4)):
     dependencies:
       ansis: 1.5.2
       webpack: 5.96.1(webpack-cli@5.1.4)
@@ -4999,7 +4999,7 @@ snapshots:
       neo-async: 2.6.2
       schema-utils: 3.3.0
       tapable: 2.2.1
-      terser-webpack-plugin: 5.3.10(webpack@5.96.1)
+      terser-webpack-plugin: 5.3.10(webpack@5.96.1(webpack-cli@5.1.4))
       watchpack: 2.4.2
       webpack-sources: 3.2.3
     optionalDependencies:
