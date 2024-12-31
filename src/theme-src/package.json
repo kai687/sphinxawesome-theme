@@ -19,7 +19,7 @@
     "clipboard": "^2.0.11"
   },
   "devDependencies": {
-    "@fontsource/jetbrains-mono": "^5.1.1",
+    "@fontsource/jetbrains-mono": "^5.1.2",
     "@tailwindcss/nesting": "0.0.0-insiders.565cd3e",
     "autoprefixer": "^10.4.20",
     "copy-webpack-plugin": "^12.0.2",
