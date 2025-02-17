@@ -36,7 +36,7 @@
     "postcss-import": "^16.1.0",
     "postcss-loader": "^8.1.1",
     "postcss-preset-env": "^10.1.3",
-    "prettier": "^3.4.2",
+    "prettier": "^3.5.1",
     "prettier-plugin-organize-imports": "^4.1.0",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "stylelint": "16.12.0",
