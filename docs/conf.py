@@ -92,7 +92,7 @@ html_sidebars: dict[str, list[str]] = {
 }
 
 # if you want to include other pages than docs
-# templates_path = ["_templates"]
+templates_path = ["_templates"]
 # html_additional_pages = {"about": "about.html"}
 
 # Separate syntax highlighting styles for light and dark mode
