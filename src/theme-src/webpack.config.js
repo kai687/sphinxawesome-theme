@@ -38,6 +38,7 @@ module.exports = {
       failOnError: true,
       files: "./js/*.js",
       fix: true,
+      configType: "eslintrc",
     }),
     new MiniCssExtractPlugin({
       filename: "[name].css",

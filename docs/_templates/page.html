@@ -1,0 +1,12 @@
+{#- Template for docs pages #}
+
+{%- extends "!page.html" -%}
+
+{{ super() }}
+
+{%- block on_page_toc %}
+{%- if (meta is not defined or meta is none or "notoc" not in meta) and display_toc %}
+{%- include "toc.html" %}
+{%- endif %}
+{% endblock %}
+
