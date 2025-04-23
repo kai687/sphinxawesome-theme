@@ -13,7 +13,7 @@ The main templates you can extend are:
    Template for the body of the page.
 
    This page **must** contain the ``{{ body }}`` expression to render the contents of your documentation.
-   The ``page`` template extends the layout ``with-sidebar`` or ``without-sidebar`` depending on the context.
+   This template extends the template ``layout.html``.
 
 ``layout.html``
    Main template defining the structure of the page, including the HTML ``<head>`` with all imported CSS and JavaScript files.
