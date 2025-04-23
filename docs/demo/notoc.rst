@@ -1,16 +1,27 @@
-:layout: no-toc.html
+:notoc: true
 
 .. meta::
-   :description: Hide the right sidebar.
-   :twitter:description: Hide the right sidebar.
+   :description: You can hide the right sidebar by extending the default layout.
+   :twitter:description: You can hide the right sidebar by extending the default layout.
 
-Hide the right sidebar
-======================
+Page without right sidebar
+==========================
 
 .. rst-class:: lead
 
-   Sometimes it's useful to leave out the right sidebar and have more space.
+   This page uses a custom layout without right TOC.
 
 ----
 
-How to do this?
+This layout extends the main body to the full width and doesn't include the *on-page* table of contents in the right sidebar.
+To learn nore, see :ref:`sec:hide-right-sidebar`.
+
+Heading 1
+---------
+
+This section only exists to show that the TOC is really not included on the page.
+
+Heading 2
+---------
+
+The same is true for this section.

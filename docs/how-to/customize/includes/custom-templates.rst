@@ -18,33 +18,3 @@ create a file :file:`_templates/footer.html` with the following content:
 .. seealso::
 
    :ref:`sec:add-custom-templates`
-
-Add custom page layouts
-~~~~~~~~~~~~~~~~~~~~~~~
-
-You can create custom layouts and choose different page layouts for different pages.
-
-To create a custom layout, create a new file :file:`_templates/custom-layout.html`:
-
-.. code-block:: html+jinja
-   :caption: File: _templates/custom-layout.html
-
-   <html>
-      <body>{{ body }}</body>
-   </html>
-
-Then, select the layout in your document with the ``layout`` option.
-
-.. tab-set-code::
-
-   .. code-block:: markdown
-      :class: no-header
-
-      ---
-      layout: "custom-layout"
-      ---
-
-   .. code-block:: rst
-      :class: no-header
-
-      :layout: custom-layout

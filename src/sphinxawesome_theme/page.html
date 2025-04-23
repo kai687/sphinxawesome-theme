@@ -1,11 +1,6 @@
-{#- Template for the main docs page. #}
+{#- Template for docs pages. #}
 
-{%- if meta is defined and meta is not none and 'layout' in meta %}
-{%- set layout = meta.get('layout') %}
-{%- extends layout -%}
-{%- else -%}
 {%- extends "layout.html" -%}
-{%- endif -%}
 
 {%- block body %}
 
