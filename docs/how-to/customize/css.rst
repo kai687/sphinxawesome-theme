@@ -24,7 +24,7 @@ To add extra CSS files, add your custom styles to a file—for example,
    html_css_files = ["custom.css"]
 
 Your custom CSS file is included *after* the theme's default CSS.
-Because of different `CSS specificities <https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity>`_,
+Because of different `CSS specificities <https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascade/Specificity>`_,
 you might need to add ``!important`` to your CSS styles.
 
 .. seealso::
