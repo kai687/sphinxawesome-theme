@@ -235,20 +235,3 @@ class AwesomePygmentsBridge(PygmentsBridge):
             return formatter.get_style_defs(prefix)
         else:
             return formatter.get_style_defs() + _LATEX_ADD_STYLES
-
-
-def setup(app: Sphinx) -> dict[str, Any]:
-    """Set up extension.
-
-    This module is no longer needed as an extension and no code will be run.
-    The classes and methods are called from `__init__.py`.
-    """
-    logger.warning(
-        "You no longer have to include the `sphinxawsome_theme.highlighting` extension. This extension will be removed in the next major release."
-    )
-
-    return {
-        "version": "n/a",
-        "parallel_read_safe": True,
-        "parallel_write_safe": True,
-    }
