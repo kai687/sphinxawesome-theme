@@ -12,12 +12,11 @@ New options:
 
 from __future__ import annotations
 
-from typing import Any, Literal
+from typing import Literal
 
 from docutils import nodes
 from docutils.nodes import Node, system_message
 from docutils.parsers.rst import directives
-from sphinx.application import Sphinx
 from sphinx.directives.code import CodeBlock
 from sphinx.locale import __
 from sphinx.util import logging, parselinenos
