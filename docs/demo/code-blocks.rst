@@ -251,9 +251,11 @@ For example:
 
 This renders as:
 
+.. |feature| replace:: markup
+
 .. parsed-literal::
 
-   This *can* contain markup, but **not** syntax highlighting.
+   This *can* contain |feature|, but **not** syntax highlighting.
    How about a `link <https://example.org>`_?
 
 
