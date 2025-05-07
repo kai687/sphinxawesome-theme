@@ -8,10 +8,11 @@
   .admonition-title,
   figure,
   dt,
+  .math,
   .code-block-caption;
 
 .headerlink {
-  @apply tooltipped tooltipped-sw ml-1 inline-flex items-center align-middle;
+  @apply tooltipped tooltipped-sw z-10 ml-1 inline-flex items-center align-middle;
   & > * {
     @apply invisible fill-current text-muted-foreground;
   }
