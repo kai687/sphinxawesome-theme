@@ -104,6 +104,10 @@
       @apply mt-4;
     }
   }
+
+  & .eqno {
+    @apply float-end;
+  }
 }
 
 blockquote {
