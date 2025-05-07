@@ -12,12 +12,11 @@ New options:
 
 from __future__ import annotations
 
-from typing import Any, Literal
+from typing import Literal
 
 from docutils import nodes
 from docutils.nodes import Node, system_message
 from docutils.parsers.rst import directives
-from sphinx.application import Sphinx
 from sphinx.directives.code import CodeBlock
 from sphinx.locale import __
 from sphinx.util import logging, parselinenos
@@ -107,17 +106,3 @@ class AwesomeCodeBlock(CodeBlock):
                 self._extra_args(node, hl_added, hl_removed)
 
         return literal_nodes
-
-
-def setup(app: Sphinx) -> dict[str, Any]:
-    """Set up extension."""
-    logger.warning(
-        "You no longer have to include `sphinxawesome_theme.highlighting` in your extensions."
-        "This extension will be removed in the next major version."
-    )
-
-    return {
-        "version": "n/a",
-        "parallel_read_safe": True,
-        "parallel_write_safe": True,
-    }
