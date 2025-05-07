@@ -106,7 +106,7 @@
   }
 
   & .eqno {
-    @apply float-end;
+    @apply float-right;
   }
 }
 
