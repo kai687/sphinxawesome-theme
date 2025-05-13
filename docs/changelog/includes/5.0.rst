@@ -1,12 +1,10 @@
-.. |version| replace:: 5.0
+Version 5.0
+-----------
 
-Version |version|
------------------
-
-Version |version| of the |product| is almost a complete rewrite.
+Version 5.0 of the |product| is almost a complete rewrite.
 
 Better navigation
-   Version |version| has a clear separation between links to other pages (left sidebar),
+   Version 5.0 has a clear separation between links to other pages (left sidebar),
    and links to sections on the current page (right sidebar).
 
 Dark mode
@@ -21,10 +19,10 @@ Redesign
 
 .. _sec:upgrade-to-5.0:
 
-Upgrade to version |version|
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Upgrade to version 5.0
+~~~~~~~~~~~~~~~~~~~~~~
 
-If you want to upgrade the theme to version |version|,
+If you want to upgrade the theme to version 5.0,
 you might need to update your Sphinx configuration.
 To help you find deprecated options,
 you can add the bundled ``sphinxawesome_theme.deprecated`` extension.
@@ -40,7 +38,7 @@ and upgrades them to their new values if possible.
 Deprecated options
 ++++++++++++++++++
 
-The following two options don't have any effect in version |version|.
+The following two options don't have any effect in version 5.0.
 You can remove them from your Sphinx configuration:
 
 ``html_collapsible_definitions``
