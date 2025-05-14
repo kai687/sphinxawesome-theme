@@ -25,5 +25,7 @@ Create a directory in your Sphinx project and add it to your Sphinx configuratio
 
 .. include:: includes/extend-templates.rst
 .. include:: includes/extend-template-blocks.rst
+.. include:: includes/example-right-sidebar.rst
+.. include:: includes/example-left-sidebar.rst
 .. include:: includes/custom-templates.rst
 .. include:: includes/available-templates.rst
