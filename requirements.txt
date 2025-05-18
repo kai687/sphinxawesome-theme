@@ -13,7 +13,7 @@ appnope==0.1.4 ; sys_platform == 'darwin'
     # via ipykernel
 argcomplete==3.6.2
     # via nox
-astroid==3.3.9
+astroid==3.3.10
     # via sphinx-autoapi
 asttokens==3.0.0
     # via stack-data
