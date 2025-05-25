@@ -314,7 +314,7 @@ traitlets==5.14.3
     #   matplotlib-inline
     #   nbclient
     #   nbformat
-types-beautifulsoup4==4.12.0.20250204
+types-beautifulsoup4==4.12.0.20250516
 types-docutils==0.21.0.20241128
     # via types-pygments
 types-html5lib==1.1.11.20241018
