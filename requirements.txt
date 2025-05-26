@@ -300,7 +300,7 @@ tomli==2.2.1 ; python_full_version <= '3.11'
     #   nox
     #   pytest
     #   sphinx
-tornado==6.4.2
+tornado==6.5.1
     # via
     #   ipykernel
     #   jupyter-client
