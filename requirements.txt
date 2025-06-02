@@ -345,5 +345,5 @@ wcwidth==0.2.13
     # via prompt-toolkit
 websockets==15.0.1
     # via sphinx-autobuild
-zipp==3.21.0
+zipp==3.22.0
     # via importlib-metadata
