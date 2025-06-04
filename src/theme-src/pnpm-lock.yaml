@@ -79,14 +79,14 @@ importers:
         specifier: ^0.6.12
         version: 0.6.12(prettier-plugin-organize-imports@4.1.0(prettier@3.5.3)(typescript@5.4.5))(prettier@3.5.3)
       stylelint:
-        specifier: 16.19.1
-        version: 16.19.1(typescript@5.4.5)
+        specifier: 16.20.0
+        version: 16.20.0(typescript@5.4.5)
       stylelint-prettier:
         specifier: ^5.0.3
-        version: 5.0.3(prettier@3.5.3)(stylelint@16.19.1(typescript@5.4.5))
+        version: 5.0.3(prettier@3.5.3)(stylelint@16.20.0(typescript@5.4.5))
       stylelint-webpack-plugin:
         specifier: ^5.0.1
-        version: 5.0.1(stylelint@16.19.1(typescript@5.4.5))(webpack@5.99.9)
+        version: 5.0.1(stylelint@16.20.0(typescript@5.4.5))(webpack@5.99.9)
       tailwindcss:
         specifier: ^3.4.17
         version: 3.4.17
@@ -2395,8 +2395,8 @@ packages:
       stylelint: ^13.0.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
       webpack: ^5.0.0
 
-  stylelint@16.19.1:
-    resolution: {integrity: sha512-C1SlPZNMKl+d/C867ZdCRthrS+6KuZ3AoGW113RZCOL0M8xOGpgx7G70wq7lFvqvm4dcfdGFVLB/mNaLFChRKw==}
+  stylelint@16.20.0:
+    resolution: {integrity: sha512-B5Myu9WRxrgKuLs3YyUXLP2H0mrbejwNxPmyADlACWwFsrL8Bmor/nTSh4OMae5sHjOz6gkSeccQH34gM4/nAw==}
     engines: {node: '>=18.12.0'}
     hasBin: true
 
@@ -4779,23 +4779,23 @@ snapshots:
       postcss: 8.5.4
       postcss-selector-parser: 7.1.0
 
-  stylelint-prettier@5.0.3(prettier@3.5.3)(stylelint@16.19.1(typescript@5.4.5)):
+  stylelint-prettier@5.0.3(prettier@3.5.3)(stylelint@16.20.0(typescript@5.4.5)):
     dependencies:
       prettier: 3.5.3
       prettier-linter-helpers: 1.0.0
-      stylelint: 16.19.1(typescript@5.4.5)
+      stylelint: 16.20.0(typescript@5.4.5)
 
-  stylelint-webpack-plugin@5.0.1(stylelint@16.19.1(typescript@5.4.5))(webpack@5.99.9):
+  stylelint-webpack-plugin@5.0.1(stylelint@16.20.0(typescript@5.4.5))(webpack@5.99.9):
     dependencies:
       globby: 11.1.0
       jest-worker: 29.7.0
       micromatch: 4.0.8
       normalize-path: 3.0.0
       schema-utils: 4.3.2
-      stylelint: 16.19.1(typescript@5.4.5)
+      stylelint: 16.20.0(typescript@5.4.5)
       webpack: 5.99.9(webpack-cli@6.0.1)
 
-  stylelint@16.19.1(typescript@5.4.5):
+  stylelint@16.20.0(typescript@5.4.5):
     dependencies:
       '@csstools/css-parser-algorithms': 3.0.5(@csstools/css-tokenizer@3.0.4)
       '@csstools/css-tokenizer': 3.0.4
