@@ -69,24 +69,30 @@ def collapsible_nav(tree: BeautifulSoup) -> None:
         # Check if the link has "children"
         children = link.next_sibling
         if children and children.name == "ul":  # type: ignore
-            # State must be available in the link and the list
             li = link.parent
+            is_expanded = False
             if li:
-                li["x-data"] = (
-                    "{ expanded: $el.classList.contains('current') ? true : false }"
-                )
-            link["@click"] = "expanded = !expanded"
+                is_expanded = "current" in li.get("class", "")  # type: ignore
+                li["x-data"] = f"{{ expanded: {str(is_expanded).lower()} }}"
+            link["@click"] = (
+                "expanded = $el.classList.contains('expanded') ? expanded : !expanded"
+            )
             # The expandable class is a hack because we can't use Tailwind
             # I want to have _only_ expandable links with `justify-between`
             link["class"].append("expandable")  # type: ignore
             link[":class"] = "{ 'expanded' : expanded }"
             children["x-show"] = "expanded"  # type: ignore
+            if is_expanded:
+                children["class"] = children.get("class", []).append("block")  # type: ignore
+            else:
+                children["x-cloak"] = ""  # type: ignore
 
             # Create a button with an icon inside to get focus behavior
             button = tree.new_tag(
                 "button",
                 attrs={"type": "button", "@click.prevent.stop": "expanded = !expanded"},
             )
+
             label = tree.new_tag("span", attrs={"class": "sr-only"})
             button.append(label)
 
