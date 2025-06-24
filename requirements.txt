@@ -315,7 +315,7 @@ traitlets==5.14.3
     #   nbclient
     #   nbformat
 types-beautifulsoup4==4.12.0.20250516
-types-docutils==0.21.0.20250526
+types-docutils==0.21.0.20250604
     # via types-pygments
 types-html5lib==1.1.11.20241018
     # via types-beautifulsoup4
