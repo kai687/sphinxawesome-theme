@@ -150,6 +150,7 @@ theme_options = ThemeOptions(
 
 html_theme_options = asdict(theme_options)
 
+sitemap_show_lastmod = False
 sitemap_url_scheme = "{link}"
 
 
