@@ -28,7 +28,7 @@ from pygments.formatters import HtmlFormatter
 from pygments.lexer import Lexer
 from pygments.token import Generic, _TokenType
 from pygments.util import get_list_opt
-from sphinx.highlighting import _LATEX_ADD_STYLES, PygmentsBridge
+from sphinx.highlighting import PygmentsBridge
 from sphinx.util import logging
 
 logger = logging.getLogger(__name__)
@@ -219,18 +219,3 @@ class AwesomePygmentsBridge(PygmentsBridge):
             opts["hl_text"] = hl_text
 
         return super().highlight_block(source, lang, opts, force, location, **kwargs)
-
-    def get_stylesheet(self: AwesomePygmentsBridge, arg: str | None = None) -> str:
-        """Override the ``PygmentsBridge.get_stylesheet`` method.
-
-        This lets you prepend all Pygments classes with a common prefix, such as ``.dark``.
-        """
-        prefix = ".highlight"
-        if arg:
-            prefix = f"{arg} .highlight"
-
-        formatter = self.get_formatter()
-        if self.dest == "html":
-            return formatter.get_style_defs(prefix)
-        else:
-            return formatter.get_style_defs() + _LATEX_ADD_STYLES

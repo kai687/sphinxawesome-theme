@@ -4,9 +4,8 @@ This extension extends the default HTML builder by changing the way
 Pygments CSS is handled.
 
 - Add a ``pygments_style_dark`` configuration option.
-- Append dark mode classes to the main ``pygments.css`` file,
-  instead of writing them in a separate file,
-  properly prepend all classes for dark mode with `.dark`
+- Append dark mode styles to the main ``pygments.css`` file,
+  based on `prefers-color-scheme`.
 
 :copyright: Copyright Kai Welke.
 :license: MIT, see LICENSE for details.
@@ -58,7 +57,9 @@ class AwesomeHTMLBuilder(StandaloneHTMLBuilder):
         """Create CSS file for Pygments."""
         stylesheet = self.highlighter.get_stylesheet()
         if self.dark_highlighter:
-            stylesheet += self.dark_highlighter.get_stylesheet(arg=".dark")  # type: ignore
+            stylesheet += "\n@media (prefers-color-scheme: dark) {\n"
+            stylesheet += self.dark_highlighter.get_stylesheet()
+            stylesheet += "\n}"
 
         with open(
             path.join(self.outdir, "_static", "pygments.css"), "w", encoding="utf-8"
