@@ -28,7 +28,7 @@ from pygments.formatters import HtmlFormatter
 from pygments.lexer import Lexer
 from pygments.token import Generic, _TokenType
 from pygments.util import get_list_opt
-from sphinx.highlighting import _LATEX_ADD_STYLES, PygmentsBridge
+from sphinx.highlighting import PygmentsBridge
 from sphinx.util import logging
 
 logger = logging.getLogger(__name__)
