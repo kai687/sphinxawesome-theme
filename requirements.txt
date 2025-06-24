@@ -27,7 +27,7 @@ babel==2.17.0
     # via sphinx
 beautifulsoup4==4.13.4
     # via sphinxawesome-theme
-certifi==2025.4.26
+certifi==2025.6.15
     # via requests
 cffi==1.17.1 ; implementation_name == 'pypy'
     # via pyzmq
@@ -196,7 +196,7 @@ pygments==2.19.1
     #   ipython
     #   ipython-pygments-lexers
     #   sphinx
-pyright==1.1.401
+pyright==1.1.402
 pytest==8.3.5
     # via pytest-cov
 pytest-cov==6.1.1
