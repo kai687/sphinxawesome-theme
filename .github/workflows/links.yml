@@ -1,0 +1,36 @@
+name: linkcheck
+on: [push]
+jobs:
+  links:
+    name: Check links
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: "latest"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Set up nox
+        run: |
+          uv tool install nox
+      - name: Detect changes in docs
+        id: docs
+        run: |
+          CHANGED=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} \
+            | grep -E '^docs/.*\.(md|rst)$' || true)
+          echo "::set-output name=changed::$CHANGED"
+      - name: Check links
+        if: steps.docs.outputs.changed != ''
+        run: |
+          nox -s links
+        env:
+          DOCSEARCH_APP_ID: ${{ vars.DOCSEARCH_APP_ID }}
+          DOCSEARCH_API_KEY: ${{ vars.DOCSEARCH_API_KEY }}
+          DOCSEARCH_INDEX_NAME: ${{ vars.DOCSEARCH_INDEX_NAME }}
+      - name: Skip link check
+        if: steps.docs.output.changed == ''
+        run: echo "No docs files modified -> skipping link check"
