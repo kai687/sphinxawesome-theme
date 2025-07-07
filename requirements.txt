@@ -202,7 +202,7 @@ pytest==8.4.1
 pytest-cov==6.1.1
 python-dateutil==2.9.0.post0
     # via jupyter-client
-python-dotenv==1.1.0
+python-dotenv==1.1.1
 pywin32==310 ; platform_python_implementation != 'PyPy' and sys_platform == 'win32'
     # via jupyter-core
 pyyaml==6.0.2
