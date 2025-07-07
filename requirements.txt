@@ -339,7 +339,7 @@ uvicorn==0.34.3
     # via sphinx-autobuild
 virtualenv==20.31.2
     # via nox
-watchfiles==1.0.5
+watchfiles==1.1.0
     # via sphinx-autobuild
 wcwidth==0.2.13
     # via prompt-toolkit
