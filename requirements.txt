@@ -334,7 +334,7 @@ typing-extensions==4.13.2
     #   uvicorn
 urllib3==2.5.0
     # via requests
-uv==0.7.12
+uv==0.7.20
 uvicorn==0.34.3
     # via sphinx-autobuild
 virtualenv==20.31.2
