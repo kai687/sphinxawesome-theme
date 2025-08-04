@@ -47,7 +47,7 @@ colorama==0.4.6
     #   sphinx-autobuild
 colorlog==6.9.0
     # via nox
-comm==0.2.2
+comm==0.2.3
     # via ipykernel
 coverage==7.9.2
     # via pytest-cov
