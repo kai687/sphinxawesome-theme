@@ -49,7 +49,7 @@ colorlog==6.9.0
     # via nox
 comm==0.2.3
     # via ipykernel
-coverage==7.9.2
+coverage==7.10.3
     # via pytest-cov
 debugpy==1.8.14
     # via ipykernel
