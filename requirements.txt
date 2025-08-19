@@ -320,7 +320,7 @@ types-docutils==0.21.0.20250604
 types-html5lib==1.1.11.20250809
     # via types-beautifulsoup4
 types-pygments==2.19.0.20250809
-typing-extensions==4.13.2
+typing-extensions==4.14.1
     # via
     #   anyio
     #   astroid
