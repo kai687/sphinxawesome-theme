@@ -196,7 +196,7 @@ pygments==2.19.2
     #   ipython
     #   ipython-pygments-lexers
     #   sphinx
-pyright==1.1.403
+pyright==1.1.404
 pytest==8.4.1
     # via pytest-cov
 pytest-cov==6.2.1
