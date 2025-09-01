@@ -105,7 +105,7 @@ for highlighting added or removed lines of code:
    Highlight added lines with :samp:`:emphasize-added: {LINE_NUMBERS}`.
 
 ``:emphasize-removed:``
-   Highlight removed lines with :samp:`:emphasize-added: {LINE_NUMBERS}`.
+   Highlight removed lines with :samp:`:emphasize-removed: {LINE_NUMBERS}`.
 
 .. code-block:: rst
 
