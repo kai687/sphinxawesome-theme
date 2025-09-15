@@ -29,7 +29,7 @@ beautifulsoup4==4.13.5
     # via sphinxawesome-theme
 certifi==2025.8.3
     # via requests
-cffi==1.17.1 ; implementation_name == 'pypy'
+cffi==2.0.0 ; implementation_name == 'pypy'
     # via pyzmq
 charset-normalizer==3.4.3
     # via requests
