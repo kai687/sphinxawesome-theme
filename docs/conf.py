@@ -3,8 +3,12 @@
 from __future__ import annotations
 
 import os
+import ssl
 from dataclasses import asdict
+from typing import Any
 
+import requests
+import requests.adapters
 from dotenv import load_dotenv
 from sphinx.application import Sphinx
 from sphinx.util.docfields import Field
@@ -13,6 +17,42 @@ from sphinxawesome_theme import ThemeOptions, __version__
 from sphinxawesome_theme.postprocess import Icons
 
 load_dotenv()
+
+# -- SSL fixes for Intersphinx --
+# SSL fix for intersphinx on Linux
+
+
+class IntersphinxSSLAdapter(requests.adapters.HTTPAdapter):
+    """Custom SSL adapter for intersphinx inventory downloads."""
+
+    def init_poolmanager(self, *args: Any, **kwargs: Any) -> Any:
+        """Initialize the urllib3 PoolManager with a proper SSL context.
+
+        This method creates a default SSL context with proper certificate verification
+        to fix SSL connection issues that occur with intersphinx on some Linux
+        distributions where the virtual environment's SSL context configuration
+        differs from the system's SSL setup.
+
+        Args:
+            *args: Positional arguments passed to the parent PoolManager
+            **kwargs: Keyword arguments passed to the parent PoolManager,
+                     modified to include our custom SSL context
+
+        Returns:
+            The initialized PoolManager instance
+        """
+        ssl_context = ssl.create_default_context()
+        ssl_context.check_hostname = True
+        ssl_context.verify_mode = ssl.CERT_REQUIRED
+        kwargs["ssl_context"] = ssl_context
+        return super().init_poolmanager(*args, **kwargs)
+
+
+# Apply the fix
+
+_session = requests.Session()
+_session.mount("https://", IntersphinxSSLAdapter())
+requests.get = _session.get
 
 # -- Project information ---
 
