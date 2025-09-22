@@ -220,7 +220,7 @@ pyyaml==6.0.2
     #   myst-nb
     #   myst-parser
     #   sphinx-autoapi
-pyzmq==27.0.2
+pyzmq==27.1.0
     # via
     #   ipykernel
     #   jupyter-client
