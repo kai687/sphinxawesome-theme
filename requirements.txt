@@ -282,7 +282,7 @@ sphinx-design==0.6.1
 sphinx-docsearch==0.1.0
 sphinx-last-updated-by-git==0.3.8
     # via sphinx-sitemap
-sphinx-sitemap==2.8.0
+sphinx-sitemap==2.9.0
 sphinxcontrib-applehelp==2.0.0
     # via sphinx
 sphinxcontrib-devhelp==2.0.0
