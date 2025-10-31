@@ -190,6 +190,7 @@ theme_options = ThemeOptions(
 
 html_theme_options = asdict(theme_options)
 
+# True fails on Netlify with `git clone too shallow`
 sitemap_show_lastmod = False
 sitemap_url_scheme = "{link}"
 

@@ -8,7 +8,7 @@ nox.options.stop_on_first_error = True
 nox.options.sessions = ["docs", "lint", "test", "typecheck"]
 nox.options.default_venv_backend = "uv"
 
-python_versions = ["3.9", "3.13"]
+python_versions = ["3.9", "3.14"]
 
 
 def get_requirements(groups: list[str] | str | None = None) -> list[str]:
@@ -105,7 +105,7 @@ def export(session: nox.Session) -> None:
         "uv",
         "export",
         "--no-hashes",
-        "--python=3.12",
+        "--python=3.13",
         "--group=docs",
         "--group=netlify",
         "--output-file=requirements.txt",
