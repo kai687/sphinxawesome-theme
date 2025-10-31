@@ -63,9 +63,9 @@ def change_toc(
         if (
             len(node.children) == 1
             and isinstance(node.next_node(), nodes.list_item)
-            and isinstance(node.next_node().next_node(), nodes.bullet_list)
+            and isinstance(node.next_node().next_node(), nodes.bullet_list)  # type:ignore
         ):
-            doc.replace(node, node.next_node().next_node())
+            doc.replace(node, node.next_node().next_node())  # type:ignore
 
     # FIXME: `_publisher` is set in the init function of the builder.
     #        Probably `builder` is dynamic.
