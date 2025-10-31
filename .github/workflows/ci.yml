@@ -70,7 +70,7 @@ jobs:
       - publish
     if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
     steps:
-      - uses: actions/download-artifact@v5
+      - uses: actions/download-artifact@v6
         with:
           name: python-packages
           path: dist/
