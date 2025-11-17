@@ -48,6 +48,7 @@
 
 .DocSearch-Form {
   @apply rounded-b-none rounded-t-lg;
+  border-bottom: none;
 }
 
 .DocSearch-Cancel {
@@ -65,6 +66,7 @@
 
 .DocSearch-Hit {
   @apply rounded-sm;
+
   & a {
     @apply rounded-sm focus-visible:outline-offset-[-2px];
   }
@@ -81,5 +83,5 @@
 }
 
 .DocSearch-Footer {
-  @apply border-t border-border;
+  @apply rounded-b-lg rounded-t-none border-t border-border;
 }
