@@ -42,10 +42,6 @@
   @apply rounded-lg border border-border;
 }
 
-.DocSearch-SearchBar {
-  @apply rounded-b-none rounded-t-lg border-b border-input p-0;
-}
-
 .DocSearch-Form {
   @apply rounded-b-none rounded-t-lg;
   border-bottom: none;
