@@ -17,7 +17,7 @@ module.exports = {
     "at-rule-no-unknown": [
       true,
       {
-        ignoreAtRules: ["layer"],
+        ignoreAtRules: ["layer", "apply"],
       },
     ],
     "comment-no-empty": true,

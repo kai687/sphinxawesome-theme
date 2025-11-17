@@ -42,12 +42,9 @@
   @apply rounded-lg border border-border;
 }
 
-.DocSearch-SearchBar {
-  @apply rounded-b-none rounded-t-lg border-b border-input p-0;
-}
-
 .DocSearch-Form {
   @apply rounded-b-none rounded-t-lg;
+  border-bottom: none;
 }
 
 .DocSearch-Cancel {
@@ -65,6 +62,7 @@
 
 .DocSearch-Hit {
   @apply rounded-sm;
+
   & a {
     @apply rounded-sm focus-visible:outline-offset-[-2px];
   }
@@ -81,5 +79,9 @@
 }
 
 .DocSearch-Footer {
+  @apply rounded-b-lg rounded-t-none border-t border-border;
+}
+
+.DocSearch-Dropdown {
   @apply border-t border-border;
 }

@@ -311,7 +311,7 @@ sphinx-autoapi==3.6.1
 sphinx-autobuild==2024.10.3 ; python_full_version < '3.11'
 sphinx-autobuild==2025.8.25 ; python_full_version >= '3.11'
 sphinx-design==0.6.1
-sphinx-docsearch==0.1.0
+sphinx-docsearch==0.2.0
 sphinx-last-updated-by-git==0.3.8
     # via sphinx-sitemap
 sphinx-sitemap==2.9.0
