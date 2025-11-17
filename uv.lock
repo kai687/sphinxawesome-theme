@@ -2480,16 +2480,16 @@ wheels = [
 
 [[package]]
 name = "sphinx-docsearch"
-version = "0.1.0"
+version = "0.2.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "sphinx", version = "7.4.7", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.10'" },
     { name = "sphinx", version = "8.1.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version == '3.10.*'" },
     { name = "sphinx", version = "8.2.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/7c/3c/52eb72d3e837f269aed90b0ef1b4f7dd437d26cc6812209f839c91053d8f/sphinx_docsearch-0.1.0.tar.gz", hash = "sha256:76fd0695e115b76ebb9633acffc263bfd894caad7aa29e3c40bfe3171da41535", size = 40008, upload-time = "2024-10-04T12:04:40.757Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/7b/3e/32849cb1154f936cfa387a29207a552162c8d6da9dfceb0aa1cfd8bbb04e/sphinx_docsearch-0.2.0.tar.gz", hash = "sha256:a96c97649453567c89ce2b37d714c10c4e829311e260e4b4d9ea980385aab117", size = 238214, upload-time = "2025-11-10T10:22:26.404Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/2b/44/4e59ba1820e8190d1cb3bceb491d875da5f79fb3f61f5c2fe82037c3546e/sphinx_docsearch-0.1.0-py3-none-any.whl", hash = "sha256:799221b0b962e3d86d0e0f084d4998c3d9227ef0eb2883d70e41d6bd08b616dd", size = 41852, upload-time = "2024-10-04T12:04:38.933Z" },
+    { url = "https://files.pythonhosted.org/packages/7b/53/d5a027db36576f515411353cf6be8b2b2aa74a65d520c706dab2cc2fc3d8/sphinx_docsearch-0.2.0-py3-none-any.whl", hash = "sha256:60e6062c2e4eb0a7320fec0ff6f014cba37f3b51c74f6a6f6a9212262f2fca2f", size = 140882, upload-time = "2025-11-10T10:22:23.218Z" },
 ]
 
 [[package]]
