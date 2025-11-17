@@ -81,3 +81,7 @@
 .DocSearch-Footer {
   @apply rounded-b-lg rounded-t-none border-t border-border;
 }
+
+.DocSearch-Dropdown {
+  @apply border-t border-border;
+}
