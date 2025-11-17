@@ -189,7 +189,7 @@ nest-asyncio==1.6.0
     # via ipykernel
 nodeenv==1.9.1
     # via pyright
-nox==2025.10.16
+nox==2025.11.12
 packaging==25.0
     # via
     #   dependency-groups
