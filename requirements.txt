@@ -17,7 +17,7 @@ astroid==3.3.11 ; python_full_version < '3.12'
     # via sphinx-autoapi
 astroid==4.0.1 ; python_full_version >= '3.12'
     # via sphinx-autoapi
-asttokens==3.0.0
+asttokens==3.0.1
     # via stack-data
 attrs==25.4.0
     # via
