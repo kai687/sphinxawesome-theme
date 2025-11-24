@@ -11,7 +11,7 @@ jobs:
     name: Index docs with Algolia
     steps:
       - name: Check out repo
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: Algolia Crawler
         uses: algolia/algoliasearch-crawler-github-actions@v1.1.13
         id: index_after_push
