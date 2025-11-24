@@ -362,7 +362,7 @@ types-docutils==0.22.2.20251006
     # via types-pygments
 types-html5lib==1.1.11.20251117
     # via types-beautifulsoup4
-types-pygments==2.19.0.20250809
+types-pygments==2.19.0.20251121
 typing-extensions==4.15.0
     # via
     #   anyio
