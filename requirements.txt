@@ -5,7 +5,7 @@ alabaster==0.7.16 ; python_full_version < '3.10'
     # via sphinx
 alabaster==1.0.0 ; python_full_version >= '3.10'
     # via sphinx
-anyio==4.11.0
+anyio==4.12.0
     # via
     #   starlette
     #   watchfiles
