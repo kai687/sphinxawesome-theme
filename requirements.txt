@@ -379,7 +379,7 @@ typing-extensions==4.15.0
     #   virtualenv
 urllib3==2.6.0
     # via requests
-uv==0.9.16
+uv==0.9.17
 uvicorn==0.38.0
     # via sphinx-autobuild
 virtualenv==20.35.4
