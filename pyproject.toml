@@ -28,7 +28,7 @@ packages = [
 ]
 dependencies = [
     "beautifulsoup4>=4.9.1,<4.15.0",
-    "sphinx>7,<9",
+    "sphinx>7,<10",
 ]
 
 [project.urls]
