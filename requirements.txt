@@ -187,7 +187,7 @@ nbformat==5.10.4
     #   nbclient
 nest-asyncio==1.6.0
     # via ipykernel
-nodeenv==1.9.1
+nodeenv==1.10.0
     # via pyright
 nox==2025.11.12
 packaging==25.0
