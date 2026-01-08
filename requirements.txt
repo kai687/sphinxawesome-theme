@@ -377,7 +377,7 @@ typing-extensions==4.15.0
     #   starlette
     #   uvicorn
     #   virtualenv
-urllib3==2.6.2
+urllib3==2.6.3
     # via requests
 uv==0.9.17
 uvicorn==0.38.0
