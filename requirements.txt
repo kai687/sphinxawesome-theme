@@ -59,7 +59,7 @@ coverage==7.10.7 ; python_full_version < '3.10'
     # via pytest-cov
 coverage==7.11.0 ; python_full_version >= '3.10'
     # via pytest-cov
-debugpy==1.8.18
+debugpy==1.8.19
     # via ipykernel
 decorator==5.2.1
     # via ipython
