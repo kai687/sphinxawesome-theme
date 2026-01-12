@@ -98,7 +98,7 @@ idna==3.11
     #   requests
 imagesize==1.4.1
     # via sphinx
-importlib-metadata==8.7.0
+importlib-metadata==8.7.1
     # via
     #   jupyter-cache
     #   jupyter-client
