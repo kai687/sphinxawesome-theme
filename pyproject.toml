@@ -1,19 +1,15 @@
 [project]
 name = "sphinxawesome-theme"
-version = "6.0.0b3"
+version = "6.0.0b4"
 description = "An awesome theme for the Sphinx documentation generator"
 readme = "README.md"
-authors = [
-  { name = "Kai Welke", email = "kai687@pm.me" }
-]
+requires-python = ">=3.9"
+authors = [{ name = "Kai Welke", email = "kai687@pm.me" }]
 classifiers = [
-  "Programming Language :: Python",
   "Framework :: Sphinx",
   "Framework :: Sphinx :: Theme",
-  "Topic :: Documentation",
-  "Topic :: Documentation :: Sphinx",
-  "Topic :: Software Development :: Documentation",
   "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python",
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
@@ -21,57 +17,85 @@ classifiers = [
   "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3.13",
   "Programming Language :: Python :: 3.14",
-]
-requires-python = ">=3.9"
-packages = [
-  { include = "sphinxawesome_theme", from = "src" }
+  "Topic :: Documentation",
+  "Topic :: Documentation :: Sphinx",
+  "Topic :: Software Development :: Documentation",
 ]
 dependencies = [
-    "beautifulsoup4>=4.9.1,<4.15.0",
-    "sphinx>7,<9",
+  "beautifulsoup4>=4.9.1,<5",
+  "sphinx>=7,<10",
 ]
 
 [project.urls]
-homepage = "https://sphinxawesome.xyz"
 documentation = "https://sphinxawesome.xyz"
-repository = "https://github.com/kai687/sphinxawesome-theme"
+homepage = "https://sphinxawesome.xyz"
 issues = "https://github.com/kai687/sphinxawesome-theme/issues"
+repository = "https://github.com/kai687/sphinxawesome-theme"
 
 [project.entry-points."sphinx.html_themes"]
 sphinxawesome_theme = "sphinxawesome_theme"
 
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
-
 [dependency-groups]
-docs = [
-    "myst-nb",
-    "python-dotenv",
-    "sphinx-autoapi",
-    "sphinx-autobuild",
-    "sphinx-design",
-    "sphinx-docsearch",
-    "sphinx-sitemap",
-]
 dev = [
-    "pytest-cov",
-    "pytest",
-    "coverage[toml]",
-    "ruff",
-    "types-docutils",
-    "types-beautifulsoup4",
-    "types-pygments",
-    "pyright",
+  "coverage[toml]",
+  "pyright",
+  "pytest",
+  "pytest-cov",
+  "ruff",
+  "types-beautifulsoup4",
+  "types-docutils",
+  "types-pygments",
+]
+docs = [
+  "myst-nb",
+  "python-dotenv",
+  "sphinx-autoapi",
+  "sphinx-autobuild",
+  "sphinx-design",
+  # "sphinx-docsearch",
+  "sphinx-sitemap",
 ]
 netlify = [
   "nox",
   "uv",
 ]
 
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build]
+sources = ["src"]
+dev-mode-dirs = ["src"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["sphinxawesome_theme"]
+
+[tool.hatch.build.targets.sdist]
+packages = ["src/sphinxawesome_theme"]
+
+[tool.pyright]
+include = ["src", "noxfile.py"]
+reportUnnecessaryTypeIgnoreComment = "warning"
+
 [tool.ruff.lint]
 # TODO: Check if all of these even make sense
-select = ["E", "F", "B", "Q", "W", "I", "C90", "D", "UP", "YTT", "S", "ANN", "SIM", "N"]
+select = [
+  "E",
+  "F",
+  "B",
+  "Q",
+  "W",
+  "I",
+  "C90",
+  "D",
+  "UP",
+  "YTT",
+  "S",
+  "ANN",
+  "SIM",
+  "N"
+]
 ignore = ["E501", "ANN401"]
 
 [tool.ruff.lint.per-file-ignores]
@@ -79,7 +103,3 @@ ignore = ["E501", "ANN401"]
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"
-
-[tool.pyright]
-include = ["src", "noxfile.py"]
-reportUnnecessaryTypeIgnoreComment = "warning"
