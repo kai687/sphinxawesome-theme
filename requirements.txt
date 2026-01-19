@@ -290,7 +290,7 @@ rpds-py==0.30.0 ; python_full_version >= '3.10'
     # via
     #   jsonschema
     #   referencing
-ruff==0.14.11
+ruff==0.14.13
 six==1.17.0
     # via python-dateutil
 snowballstemmer==3.0.1
