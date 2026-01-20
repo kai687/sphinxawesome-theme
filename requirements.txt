@@ -290,12 +290,12 @@ rpds-py==0.30.0 ; python_full_version >= '3.10'
     # via
     #   jsonschema
     #   referencing
-ruff==0.14.11
+ruff==0.14.13
 six==1.17.0
     # via python-dateutil
 snowballstemmer==3.0.1
     # via sphinx
-soupsieve==2.8.1
+soupsieve==2.8.3
     # via beautifulsoup4
 sphinx==7.4.7 ; python_full_version < '3.10'
     # via
@@ -330,7 +330,8 @@ sphinx==8.2.3 ; python_full_version >= '3.11'
 sphinx-autoapi==3.6.1
 sphinx-autobuild==2024.10.3 ; python_full_version < '3.11'
 sphinx-autobuild==2025.8.25 ; python_full_version >= '3.11'
-sphinx-design==0.6.1
+sphinx-design==0.6.1 ; python_full_version < '3.11'
+sphinx-design==0.7.0 ; python_full_version >= '3.11'
 sphinx-docsearch==0.2.0
 sphinx-last-updated-by-git==0.3.8
     # via sphinx-sitemap
@@ -353,7 +354,7 @@ stack-data==0.6.3
     # via ipython
 starlette==0.49.3 ; python_full_version < '3.10'
     # via sphinx-autobuild
-starlette==0.51.0 ; python_full_version >= '3.10'
+starlette==0.52.1 ; python_full_version >= '3.10'
     # via sphinx-autobuild
 stdlib-list==0.12.0 ; python_full_version < '3.10'
     # via sphinx-autoapi
@@ -403,7 +404,7 @@ typing-extensions==4.15.0
     #   virtualenv
 urllib3==2.6.3
     # via requests
-uv==0.9.25
+uv==0.9.26
 uvicorn==0.39.0 ; python_full_version < '3.10'
     # via sphinx-autobuild
 uvicorn==0.40.0 ; python_full_version >= '3.10'

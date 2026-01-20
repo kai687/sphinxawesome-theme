@@ -52,7 +52,7 @@ docs = [
   "sphinx-autoapi",
   "sphinx-autobuild",
   "sphinx-design",
-  # "sphinx-docsearch",
+  "sphinx-docsearch",
   "sphinx-sitemap",
 ]
 netlify = [

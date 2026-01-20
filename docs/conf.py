@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-# import os
+import os
 import ssl
 from dataclasses import asdict
 from typing import Any
@@ -71,7 +71,7 @@ extensions = [
     "sphinx.ext.viewcode",
     "sphinx_sitemap",
     "sphinx_design",
-    # "sphinx_docsearch",
+    "sphinx_docsearch",
     "myst_nb",
 ]
 
@@ -145,13 +145,13 @@ templates_path = ["_templates"]
 # html_js_files = [("feedback.js", {"defer": "defer"})]
 
 # DocSearch
-# docsearch_app_id = os.getenv("DOCSEARCH_APP_ID", "")
-# docsearch_api_key = os.getenv("DOCSEARCH_API_KEY", "")
-# docsearch_index_name = os.getenv("DOCSEARCH_INDEX_NAME", "")
-# docsearch_placeholder = "Search these docs"
-# docsearch_missing_results_url = (
-#     "https://github.com/kai687/sphinxawesome-theme/issues/new?title=${query}"
-# )
+docsearch_app_id = os.getenv("DOCSEARCH_APP_ID", "")
+docsearch_api_key = os.getenv("DOCSEARCH_API_KEY", "")
+docsearch_index_name = os.getenv("DOCSEARCH_INDEX_NAME", "")
+docsearch_placeholder = "Search these docs"
+docsearch_missing_results_url = (
+    "https://github.com/kai687/sphinxawesome-theme/issues/new?title=${query}"
+)
 
 theme_options = ThemeOptions(
     show_prev_next=True,
