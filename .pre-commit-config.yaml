@@ -5,18 +5,18 @@ repos:
     hooks:
       - id: check-hooks-apply
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v5.0.0
+    rev: v6.0.0
     hooks:
       - id: check-toml
       - id: check-yaml
       - id: trailing-whitespace
       - id: no-commit-to-branch
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.8.1
+    rev: v0.14.13
     hooks:
       - id: ruff-format
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.19.0
+    rev: v3.21.2
     hooks:
       - id: pyupgrade
         args: [--py39-plus]

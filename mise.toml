@@ -1,0 +1,4 @@
+[tools]
+node = "latest"
+pnpm = "latest"
+uv = { version = "latest", postinstall = "uv tool install nox pre-commit" }
