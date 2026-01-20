@@ -18,10 +18,9 @@ from sphinxawesome_theme.postprocess import Icons
 
 load_dotenv()
 
+
 # -- SSL fixes for Intersphinx --
 # SSL fix for intersphinx on Linux
-
-
 class IntersphinxSSLAdapter(requests.adapters.HTTPAdapter):
     """Custom SSL adapter for intersphinx inventory downloads."""
 
@@ -144,10 +143,22 @@ templates_path = ["_templates"]
 # html_css_files = ["feedback.css"]
 # html_js_files = [("feedback.js", {"defer": "defer"})]
 
+# Use dummy values in local development
+if (
+    os.getenv("CI") == "true"
+    or os.getenv("NETLIFY") == "true"
+    or os.getenv("NEEDS_ENV") == "true"
+):
+    default_value = ""
+else:
+    default_value = "foo"
+
 # DocSearch
-docsearch_app_id = os.getenv("DOCSEARCH_APP_ID", "")
-docsearch_api_key = os.getenv("DOCSEARCH_API_KEY", "")
-docsearch_index_name = os.getenv("DOCSEARCH_INDEX_NAME", "")
+docsearch_app_id = os.getenv("DOCSEARCH_APP_ID", default_value)
+docsearch_api_key = os.getenv("DOCSEARCH_API_KEY", default_value)
+docsearch_index_name = os.getenv("DOCSEARCH_INDEX_NAME", default_value)
+
+
 docsearch_placeholder = "Search these docs"
 docsearch_missing_results_url = (
     "https://github.com/kai687/sphinxawesome-theme/issues/new?title=${query}"

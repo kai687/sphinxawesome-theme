@@ -57,11 +57,11 @@ The easiest way to install **all** dependencies is with mise_.
     This runs a few checks and builds the docs to make sure your changes
     work as expected.
 
-#. If you want to contribute to the docs and test a local preview,
-   copy the file :file:`docs/.env.example` to :file:`docs/.env`.
+#. If you want to enable Algolia DocSearch locally, copy
+   :file:`docs/.env.example` to :file:`docs/.env` and fill the values.
 
-   For building the docs, these environment variables need to be defined,
-   even if they're just dummy values.
+   Without these variables, local builds skip DocSearch. CI builds fail if the
+   variables are missing (set ``NEEDS_ENV=true`` to enforce locally).
 
 #. Install JavaScript dependencies.
 
