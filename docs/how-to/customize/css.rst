@@ -24,8 +24,10 @@ To add extra CSS files, add your custom styles to a file—for example,
    html_css_files = ["custom.css"]
 
 Your custom CSS file is included *after* the theme's default CSS.
-Because of different `CSS specificities <https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascade/Specificity>`_,
+Because of different `CSS specificities`_,
 you might need to add ``!important`` to your CSS styles.
+
+.. _CSS specificities: https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Specificity
 
 .. seealso::
 
@@ -78,4 +80,4 @@ add a new CSS file or extend the templates and add the following CSS:
 
 .. seealso::
 
-   `CSS custom properties (MDN web docs) <https://developer.mozilla.org/en-US/docs/Web/CSS/--*>`_
+   `CSS custom properties (MDN web docs) <https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/--*>`_
