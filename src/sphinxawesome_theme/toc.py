@@ -18,9 +18,9 @@ from sphinx.util.docutils import new_document
 def change_toc(
     app: Sphinx,
     pagename: str,
-    templatename: str,
+    _templatename: str,
     context: dict[str, Any],
-    doctree: Node,
+    _doctree: Node,
 ) -> None:
     """Change the way the `{{ toc }}` helper works.
 
@@ -67,8 +67,7 @@ def change_toc(
         ):
             doc.replace(node, node.next_node().next_node())  # type:ignore
 
-    # FIXME: `_publisher` is set in the init function of the builder.
-    #        Probably `builder` is dynamic.
-    app.builder._publisher.set_source(doc)  # type: ignore
-    app.builder._publisher.publish()  # type: ignore
-    context["toc"] = app.builder._publisher.writer.parts["fragment"]  # type: ignore
+    toc_root = doc.children[0] if doc.children else None
+
+    # Use the public builder API to render the doctree fragment.
+    context["toc"] = app.builder.render_partial(toc_root)["fragment"]  # type: ignore[attr-defined]
