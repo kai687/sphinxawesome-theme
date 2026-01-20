@@ -58,18 +58,10 @@ The easiest way to install **all** dependencies is with mise_.
     work as expected.
 
 #. If you want to contribute to the docs and test a local preview,
-   create a :file:`.env` file with dummy values:
+   copy the file :file:`docs/.env.example` to :file:`docs/.env`.
 
-   .. code-block:: bash
-
-      DOCSEARCH_APP_ID=tmp
-      DOCSEARCH_API_KEY=tmp
-      DOCSEARCH_INDEX_NAME=tmp
-
-   .. note::
-
-      For building the docs, these environment variables need to be defined.
-      With dummy values, the search won't work in your local preview.
+   For building the docs, these environment variables need to be defined,
+   even if they're just dummy values.
 
 #. Install JavaScript dependencies.
 
