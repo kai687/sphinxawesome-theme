@@ -2,16 +2,17 @@
 
 @import "tailwindcss";
 @import "./theme.css";
-@import "./content.css" layer(components);
-@import "./admonitions.css" layer(components);
-@import "./code.css" layer(components);
-@import "./headerlinks.css" layer(components);
-@import "./sidebar.css" layer(components);
-@import "./toc.css" layer(components);
-@import "./search.css" layer(components);
+@import "./content.css";
+@import "./admonitions.css";
+@import "./code.css";
+@import "./headerlinks.css";
+@import "./sidebar.css";
+@import "./toc.css";
+@import "./search.css";
 @import "./tooltips.css";
 
 @source "../../sphinxawesome_theme/*.html";
+@source "../js/*.js";
 
 @custom-variant dark (&:is(.dark *));
 

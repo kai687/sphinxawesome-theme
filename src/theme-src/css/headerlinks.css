@@ -1,15 +1,4 @@
 /* Style the headerlink icons */
-@custom-selector :--headerlinkable
-  h1,
-  h2,
-  h3,
-  h4,
-  table,
-  .admonition-title,
-  figure,
-  dt,
-  .math,
-  .code-block-caption;
 
 .headerlink {
 	@apply tooltipped tooltipped-sw z-10 ml-1 inline-flex items-center align-middle;
@@ -21,7 +10,18 @@
 	}
 }
 
-:--headerlinkable:hover .headerlink {
+:is(
+	h1,
+	h2,
+	h3,
+	h4,
+	table,
+	.admonition-title,
+	figure,
+	dt,
+	.math,
+	.code-block-caption
+):hover .headerlink {
 	@apply visible;
 	& > * {
 		@apply visible;
