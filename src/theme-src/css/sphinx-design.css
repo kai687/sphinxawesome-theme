@@ -1,4 +1,7 @@
 /* Overrides for the `sphinx-design` extension */
+@reference "tailwindcss";
+@reference "./theme.css";
+
 :root {
 	--sd-color-tabs-label-active: "hsl(var(--foreground))";
 	--sd-color-tabs-underline-active: "hsl(var(--accent-foreground))";
