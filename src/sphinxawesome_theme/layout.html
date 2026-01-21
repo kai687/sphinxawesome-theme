@@ -11,13 +11,19 @@
 {%- endif -%}
 
 <!DOCTYPE html>
-<html lang="{{ lang_attr }}" data-content_root="{{ content_root|default('', true) }}" x-cloak
+<html lang="{{ lang_attr }}" data-content_root="{{ content_root|default('', true) }}"
   x-data="{ darkMode: $persist(window.matchMedia('(prefers-color-scheme: dark)').matches), activeSection: ''}"
   :class="{ 'dark' : darkMode === true }">
 
 <head>
   <script>
     (function () {
+      // Set initial color scheme
+      if ((localStorage.getItem("_x_darkMode") === "true") || (window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+        document.documentElement.classList.add("dark");
+      }
+
+      // Watch for media preference changes
       window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (event) => {
         localStorage.setItem("_x_darkMode", event.matches);
         document.documentElement.classList.toggle("dark", event.matches);
