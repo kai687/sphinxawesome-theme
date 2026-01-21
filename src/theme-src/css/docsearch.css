@@ -3,85 +3,85 @@
  */
 
 :root {
-  --docsearch-primary-color: hsl(var(--primary));
-  --docsearch-muted-color: hsl(var(--muted-foreground));
-  --docsearch-key-gradient: transparent;
-  --docsearch-key-shadow: transparent;
-  --docsearch-text-color: hsl(var(--popover-foreground));
-  --docsearch-modal-width: 760px;
-  --docsearch-modal-background: hsl(var(--popover));
-  --docsearch-footer-background: hsl(var(--popover));
-  --docsearch-searchbox-focus-background: hsl(var(--popover));
-  --docsearch-container-background: hsl(var(--background) / 0.8);
-  --docsearch-spacing: theme(spacing.2);
-  --docsearch-hit-active-color: hsl(var(--accent-foreground));
-  --docsearch-hit-background: transparent;
-  --docsearch-searchbox-shadow: none;
-  --docsearch-hit-shadow: none;
-  --docsearch-modal-shadow: none;
-  --docsearch-footer-shadow: none;
+	--docsearch-primary-color: hsl(var(--primary));
+	--docsearch-muted-color: hsl(var(--muted-foreground));
+	--docsearch-key-gradient: transparent;
+	--docsearch-key-shadow: transparent;
+	--docsearch-text-color: hsl(var(--popover-foreground));
+	--docsearch-modal-width: 760px;
+	--docsearch-modal-background: hsl(var(--popover));
+	--docsearch-footer-background: hsl(var(--popover));
+	--docsearch-searchbox-focus-background: hsl(var(--popover));
+	--docsearch-container-background: hsl(var(--background) / 0.8);
+	--docsearch-spacing: var(--spacing-2);
+	--docsearch-hit-active-color: hsl(var(--accent-foreground));
+	--docsearch-hit-background: transparent;
+	--docsearch-searchbox-shadow: none;
+	--docsearch-hit-shadow: none;
+	--docsearch-modal-shadow: none;
+	--docsearch-footer-shadow: none;
 }
 
 .DocSearch-Button {
-  @apply flex w-[90%] rounded-[0.5em] border border-solid border-input bg-transparent text-sm ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground hover:shadow-none focus:bg-accent focus:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+	@apply flex w-[90%] rounded-[0.5em] border border-solid border-input bg-transparent text-sm ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground hover:shadow-none focus:bg-accent focus:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
 }
 
 .DocSearch-Button-Placeholder {
-  @apply block text-sm font-medium;
+	@apply block text-sm font-medium;
 }
 
 .DocSearch-Button-Key {
-  @apply rounded border border-solid border-border bg-muted text-[12px] text-muted-foreground;
+	@apply rounded border border-solid border-border bg-muted text-[12px] text-muted-foreground;
 }
 
 .DocSearch-Container {
-  @apply fixed backdrop-blur-sm;
+	@apply fixed backdrop-blur-sm;
 }
 
 .DocSearch-Modal {
-  @apply rounded-lg border border-border;
+	@apply rounded-lg border border-border;
 }
 
 .DocSearch-Form {
-  @apply rounded-b-none rounded-t-lg;
-  border-bottom: none;
+	@apply rounded-b-none rounded-t-lg;
+	border-bottom: none;
 }
 
 .DocSearch-Cancel {
-  @apply px-2 text-sm text-muted-foreground;
+	@apply px-2 text-sm text-muted-foreground;
 }
 
 .DocSearch-MagnifierLabel,
 .DocSearch-Search-Icon {
-  @apply stroke-2 opacity-50;
+	@apply stroke-2 opacity-50;
 }
 
 .DocSearch-Hit-source {
-  @apply text-muted-foreground;
+	@apply text-muted-foreground;
 }
 
 .DocSearch-Hit {
-  @apply rounded-sm;
+	@apply rounded-sm;
 
-  & a {
-    @apply rounded-sm focus-visible:outline-offset-[-2px];
-  }
+	& a {
+		@apply rounded-sm focus-visible:outline-offset-[-2px];
+	}
 }
 
 .DocSearch-Hit[aria-selected="true"] {
-  & a {
-    @apply bg-accent text-accent-foreground;
-  }
+	& a {
+		@apply bg-accent text-accent-foreground;
+	}
 }
 
 .DocSearch-Commands {
-  @apply hidden;
+	@apply hidden;
 }
 
 .DocSearch-Footer {
-  @apply rounded-b-lg rounded-t-none border-t border-border;
+	@apply rounded-b-lg rounded-t-none border-t border-border;
 }
 
 .DocSearch-Dropdown {
-  @apply border-t border-border;
+	@apply border-t border-border;
 }

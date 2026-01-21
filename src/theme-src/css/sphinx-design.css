@@ -1,62 +1,62 @@
 /* Overrides for the `sphinx-design` extension */
 :root {
-  --sd-color-tabs-label-active: theme(colors.foreground);
-  --sd-color-tabs-underline-active: theme(colors.accent.foreground);
-  --sd-color-tabs-label-hover: theme(colors.accent.foreground);
-  --sd-color-tabs-overline: theme(colors.border);
-  --sd-color-tabs-underline: theme(colors.border);
+	--sd-color-tabs-label-active: "hsl(var(--foreground))";
+	--sd-color-tabs-underline-active: "hsl(var(--accent-foreground))";
+	--sd-color-tabs-label-hover: "hsl(var(--accent-foreground))";
+	--sd-color-tabs-overline: "hsl(var(--border))";
+	--sd-color-tabs-underline: "hsl(var(--border))";
 }
 
 .sd-card {
-  @apply mt-6 rounded-lg border border-border bg-card text-card-foreground;
+	@apply mt-6 rounded-lg border border-border bg-card text-card-foreground;
 }
 
 .sd-container-fluid {
-  @apply my-6;
+	@apply my-6;
 }
 
 .sd-card-title {
-  @apply !font-semibold;
+	@apply !font-semibold;
 }
 
 .sd-summary-title {
-  @apply !font-medium text-muted-foreground;
+	@apply !font-medium text-muted-foreground;
 }
 
 .sd-card-header,
 .sd-card-footer {
-  @apply text-sm;
+	@apply text-sm;
 }
 
 .sd-tab-set {
-  @apply mt-6;
+	@apply mt-6;
 }
 
 .sd-tab-content > p {
-  @apply mb-6;
+	@apply mb-6;
 }
 
 .sd-tab-content pre:first-of-type {
-  @apply mt-0;
+	@apply mt-0;
 }
 
 .sd-tab-set > label {
-  @apply font-medium tracking-wider;
+	@apply font-medium tracking-wider;
 }
 
 details.sd-dropdown:not([open]) > .sd-card-header,
 details.sd-dropdown {
-  @apply border-border;
+	@apply border-border;
 }
 
 details.sd-dropdown summary:focus {
-  @apply outline;
+	@apply outline;
 }
 
 .sd-cards-carousel {
-  @apply overflow-x-auto;
+	@apply overflow-x-auto;
 }
 
 .sd-shadow-sm {
-  @apply !shadow-none;
+	@apply !shadow-none;
 }
