@@ -23,7 +23,7 @@ classifiers = [
 ]
 dependencies = [
   "beautifulsoup4>=4.9.1,<5",
-  "sphinx>=7,<10",
+  "sphinx>7,<10",
 ]
 
 [project.urls]

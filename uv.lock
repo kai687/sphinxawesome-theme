@@ -2816,7 +2816,7 @@ netlify = [
 [package.metadata]
 requires-dist = [
     { name = "beautifulsoup4", specifier = ">=4.9.1,<5" },
-    { name = "sphinx", specifier = ">=7,<10" },
+    { name = "sphinx", specifier = ">7,<10" },
 ]
 
 [package.metadata.requires-dev]

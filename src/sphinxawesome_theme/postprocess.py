@@ -81,11 +81,17 @@ def collapsible_nav(tree: BeautifulSoup) -> None:
             link["class"].append("expandable")  # type: ignore
             link[":class"] = "{ 'expanded' : expanded }"
             children["x-show"] = "expanded"  # type: ignore
+            if "current" not in children.get("class", []):  # type: ignore
+                children["x-cloak"] = ""  # type: ignore
 
             # Create a button with an icon inside to get focus behavior
             button = tree.new_tag(
                 "button",
-                attrs={"type": "button", "@click.prevent.stop": "expanded = !expanded"},
+                attrs={
+                    "type": "button",
+                    "@click.prevent.stop": "expanded = !expanded",
+                    "x-cloak": "",
+                },
             )
             label = tree.new_tag("span", attrs={"class": "sr-only"})
             button.append(label)

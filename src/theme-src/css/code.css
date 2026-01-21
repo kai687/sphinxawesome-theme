@@ -1,150 +1,150 @@
 /* Code-related styles */
 
 .highlight {
-  @apply relative bg-transparent;
+	@apply relative bg-transparent;
 
-  &:hover .copy {
-    @apply opacity-100;
-  }
+	&:hover .copy {
+		@apply opacity-100;
+	}
 
-  .gp {
-    @apply select-none;
-  }
+	.gp {
+		@apply select-none;
+	}
 }
 
 .highlight-python .go,
 .highlight-pycon .go {
-  @apply select-none;
+	@apply select-none;
 }
 
 .literal-block-wrapper {
-  @apply mx-0 mt-6 max-w-none rounded-lg border border-border px-0;
+	@apply mx-0 mt-6 max-w-none rounded-lg border border-border px-0;
 
-  & pre {
-    @apply mt-0 rounded-none border-none;
-  }
+	& pre {
+		@apply mt-0 rounded-none border-none;
+	}
 
-  & .code-block-caption {
-    @apply rounded-t-lg border-b border-border px-4 py-2 text-sm tracking-wide text-muted-foreground;
-  }
+	& .code-block-caption {
+		@apply rounded-t-lg border-b border-border px-4 py-2 text-sm tracking-wide text-muted-foreground;
+	}
 }
 
 code {
-  @apply relative whitespace-nowrap rounded bg-muted px-[0.3em] py-[0.2em] font-mono text-sm;
+	@apply relative whitespace-nowrap rounded bg-muted px-[0.3em] py-[0.2em] font-mono text-sm;
 
-  & em,
-  & .ge {
-    @apply font-bold tracking-wide text-accent-foreground;
-  }
+	& em,
+	& .ge {
+		@apply font-bold tracking-wide text-accent-foreground;
+	}
 }
 
 :where(h1, h2, h3, h4, h5, h6) code {
-  font-size: inherit;
+	font-size: inherit;
 }
 
 pre {
-  @apply mt-6 overflow-x-auto rounded-lg border border-border py-4 text-sm;
+	@apply mt-6 overflow-x-auto rounded-lg border border-border py-4 text-sm;
 
-  &.literal-block {
-    @apply relative px-4;
+	&.literal-block {
+		@apply relative px-4;
 
-    &:hover .copy {
-      @apply opacity-100;
-    }
-  }
+		&:hover .copy {
+			@apply opacity-100;
+		}
+	}
 
-  & code {
-    @apply whitespace-pre bg-transparent p-0;
+	& code {
+		@apply whitespace-pre bg-transparent p-0;
 
-    & > [id^="line-"] {
-      @apply block px-4;
-    }
+		& > [id^="line-"] {
+			@apply block px-4;
+		}
 
-    [id^="line-"] {
-      &:has(mark),
-      &:has(ins),
-      &:has(del),
-      &:has(.gd),
-      &:has(.gi) {
-        @apply px-0;
-      }
+		[id^="line-"] {
+			&:has(mark),
+			&:has(ins),
+			&:has(del),
+			&:has(.gd),
+			&:has(.gi) {
+				@apply px-0;
+			}
 
-      & mark,
-      & ins,
-      & del {
-        @apply relative block px-4;
-      }
+			& mark,
+			& ins,
+			& del {
+				@apply relative block px-4;
+			}
 
-      & mark {
-        @apply bg-muted text-inherit shadow-[2px_0_currentColor_inset] dark:bg-slate-700 dark:shadow-[3px_0_currentColor_inset];
-      }
+			& mark {
+				@apply bg-muted text-inherit shadow-[2px_0_currentColor_inset] dark:bg-slate-700 dark:shadow-[3px_0_currentColor_inset];
+			}
 
-      & ins {
-        @apply bg-green-500/30 text-green-900 no-underline before:absolute before:left-[2px] before:content-['\002b'] dark:text-green-200;
-      }
+			& ins {
+				@apply bg-green-500/30 text-green-900 no-underline before:absolute before:left-[2px] before:content-['\002b'] dark:text-green-200;
+			}
 
-      & del {
-        @apply bg-red-500/30 text-red-900 no-underline before:absolute before:left-[2px] before:content-['\2212'] dark:text-red-200;
-      }
-    }
-  }
+			& del {
+				@apply bg-red-500/30 text-red-900 no-underline before:absolute before:left-[2px] before:content-['\2212'] dark:text-red-200;
+			}
+		}
+	}
 
-  & span.linenos {
-    @apply select-none !bg-transparent pl-0 pr-4;
-  }
+	& span.linenos {
+		@apply select-none !bg-transparent pl-0 pr-4;
+	}
 }
 
 .highlight-diff {
-  & .gi {
-    @apply inline-block w-full bg-green-500/30 px-4 text-green-900 dark:text-green-200;
-  }
+	& .gi {
+		@apply inline-block w-full bg-green-500/30 px-4 text-green-900 dark:text-green-200;
+	}
 
-  & .gd {
-    @apply inline-block w-full bg-red-500/30 px-4 text-red-900 dark:text-green-200;
-  }
+	& .gd {
+		@apply inline-block w-full bg-red-500/30 px-4 text-red-900 dark:text-green-200;
+	}
 }
 
 .guilabel,
 .menuselection {
-  @apply rounded-sm border border-border px-2 py-px font-medium text-accent-foreground;
+	@apply rounded-sm border border-border px-2 py-px font-medium text-accent-foreground;
 }
 
 #content kbd:not(.compound) {
-  @apply rounded border bg-muted px-1 py-px text-sm font-medium tracking-wide;
+	@apply rounded border bg-muted px-1 py-px text-sm font-medium tracking-wide;
 }
 
 .sig {
-  @apply scroll-m-20 border-t border-border pt-6 font-mono font-bold;
+	@apply scroll-m-20 border-t border-border pt-6 font-mono font-bold;
 }
 
 .sig-name {
-  @apply text-accent-foreground;
+	@apply text-accent-foreground;
 }
 
 em.property {
-  @apply text-muted-foreground;
+	@apply text-muted-foreground;
 }
 
 .option .sig-prename {
-  @apply italic;
+	@apply italic;
 }
 
 .viewcode-link {
-  @apply float-right text-muted-foreground;
+	@apply float-right text-muted-foreground;
 }
 
 .option-list kbd {
-  @apply !border-none !bg-transparent !text-[1em] !font-bold;
+	@apply !border-none !bg-transparent !text-[1em] !font-bold;
 }
 
 dt .classifier {
-  @apply italic before:mr-2 before:content-[':'];
+	@apply italic before:mr-2 before:content-[':'];
 }
 
 h2 + .function .sig {
-  @apply border-none;
+	@apply border-none;
 }
 
 .sig-param .n:first-child {
-  @apply not-italic;
+	@apply not-italic;
 }
