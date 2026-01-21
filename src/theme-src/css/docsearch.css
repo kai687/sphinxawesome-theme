@@ -13,7 +13,7 @@
   --docsearch-footer-background: hsl(var(--popover));
   --docsearch-searchbox-focus-background: hsl(var(--popover));
   --docsearch-container-background: hsl(var(--background) / 0.8);
-  --docsearch-spacing: theme(spacing.2);
+  --docsearch-spacing: var(--spacing-2);
   --docsearch-hit-active-color: hsl(var(--accent-foreground));
   --docsearch-hit-background: transparent;
   --docsearch-searchbox-shadow: none;

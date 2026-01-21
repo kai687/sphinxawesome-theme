@@ -1,10 +1,10 @@
 /* Overrides for the `sphinx-design` extension */
 :root {
-  --sd-color-tabs-label-active: theme(colors.foreground);
-  --sd-color-tabs-underline-active: theme(colors.accent.foreground);
-  --sd-color-tabs-label-hover: theme(colors.accent.foreground);
-  --sd-color-tabs-overline: theme(colors.border);
-  --sd-color-tabs-underline: theme(colors.border);
+  --sd-color-tabs-label-active: "hsl(var(--foreground))";
+  --sd-color-tabs-underline-active: "hsl(var(--accent-foreground))";
+  --sd-color-tabs-label-hover: "hsl(var(--accent-foreground))";
+  --sd-color-tabs-overline: "hsl(var(--border))";
+  --sd-color-tabs-underline: "hsl(var(--border))";
 }
 
 .sd-card {

@@ -16,5 +16,5 @@ Alpine.plugin([intersect, persist]);
 Alpine.start();
 
 window.addEventListener("DOMContentLoaded", () => {
-  addCodeButtons();
+	addCodeButtons();
 });
