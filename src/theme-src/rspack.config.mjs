@@ -1,16 +1,16 @@
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const RemoveEmptyScriptsPlugin = require("webpack-remove-empty-scripts");
-const path = require("node:path");
-const { EsbuildPlugin } = require("esbuild-loader");
+import { dirname, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+import rspack from "@rspack/core";
+import RemoveEmptyScriptsPlugin from "webpack-remove-empty-scripts";
 
-const THEME_STATIC_DIR = path.resolve(
-	__dirname,
-	"../sphinxawesome_theme/static/",
-);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const THEME_STATIC_DIR = resolve(__dirname, "../sphinxawesome_theme/static/");
 
 /** @type {import('webpack').Config} */
-module.exports = {
-	mode: "production",
+export default {
+  devtool: false,
 	entry: {
 		theme: "./js/app.js",
 		"awesome-docsearch": "./css/docsearch.css",
@@ -23,15 +23,8 @@ module.exports = {
 		filename: "[name].js",
 		clean: true,
 	},
-	optimization: {
-		minimizer: [
-			new EsbuildPlugin({
-				target: "es2020",
-			}),
-		],
-	},
 	plugins: [
-		new MiniCssExtractPlugin({
+		new rspack.CssExtractRspackPlugin({
 			filename: "[name].css",
 		}),
 		new RemoveEmptyScriptsPlugin(),
@@ -41,10 +34,11 @@ module.exports = {
 			{
 				test: /\.css$/,
 				use: [
-					MiniCssExtractPlugin.loader,
+					rspack.CssExtractRspackPlugin.loader,
 					{ loader: "css-loader", options: { importLoaders: 1 } },
 					"postcss-loader",
 				],
+				type: "javascript/auto",
 			},
 			{
 				test: /\.(woff|woff2|eot|ttf|otf)$/,
@@ -53,10 +47,13 @@ module.exports = {
 			{
 				test: /\.js$/,
 				exclude: /node_modules/,
-				loader: "esbuild-loader",
+				loader: "builtin:swc-loader",
 				options: {
-					target: "es2020",
+					env: {
+						targets: ["last 2 versions", "not dead", "not op_mini all"],
+					},
 				},
+				type: "javascript/auto",
 			},
 			{
 				test: /\.js_t$/,
