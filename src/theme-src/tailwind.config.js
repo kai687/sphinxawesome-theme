@@ -5,6 +5,7 @@ module.exports = {
   corePlugins: {
     animation: false,
   },
+  darkMode: ["class"],
   content: ["../sphinxawesome_theme/*.html", "./js/**/*.js"],
   theme: {
     container: {

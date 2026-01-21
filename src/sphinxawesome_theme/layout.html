@@ -11,7 +11,9 @@
 {%- endif -%}
 
 <!DOCTYPE html>
-<html lang="{{ lang_attr }}" data-content_root="{{ content_root|default('', true) }}" x-data="{activeSection: ''}">
+<html lang="{{ lang_attr }}" data-content_root="{{ content_root|default('', true) }}"
+  x-cloak
+  x-data="{ darkMode: $persist(false), activeSection: ''}" :class="{ 'dark' : darkMode === true }">
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />

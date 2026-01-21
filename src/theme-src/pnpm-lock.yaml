@@ -11,6 +11,9 @@ importers:
       '@alpinejs/intersect':
         specifier: ^3.15.4
         version: 3.15.4
+      '@alpinejs/persist':
+        specifier: ^3.15.4
+        version: 3.15.4
       alpinejs:
         specifier: ^3.15.4
         version: 3.15.4
@@ -111,6 +114,9 @@ packages:
 
   '@alpinejs/intersect@3.15.4':
     resolution: {integrity: sha512-BbhyRN/x1rvJZxb67pfqpEQblfBNhHr/j0rksCAx/b/ibMTyaRyRUv0COo41OKSMEsRVwI6/FZYChZ43zJkYLg==}
+
+  '@alpinejs/persist@3.15.4':
+    resolution: {integrity: sha512-PdSpPTh8sUN8a3S2BoJWpXbod68RqjuW9QGtDp0LJclAFERVjLLx2K5YzQSSg5IDQJV9OMiknSpzcEYeZPwLNw==}
 
   '@babel/code-frame@7.28.6':
     resolution: {integrity: sha512-JYgintcMjRiCvS8mMECzaEn+m3PfoQiyqukOMCCVQtoJGYJw8j/8LBJEiqkHLkfwCcs74E3pbAUFNg7d9VNJ+Q==}
@@ -2595,6 +2601,8 @@ snapshots:
   '@alloc/quick-lru@5.2.0': {}
 
   '@alpinejs/intersect@3.15.4': {}
+
+  '@alpinejs/persist@3.15.4': {}
 
   '@babel/code-frame@7.28.6':
     dependencies:

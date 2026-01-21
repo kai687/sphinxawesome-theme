@@ -7,11 +7,12 @@ import "@fontsource/jetbrains-mono/latin-700.css";
 import "../css/styles.css";
 
 import intersect from "@alpinejs/intersect";
+import persist from "@alpinejs/persist";
 import Alpine from "alpinejs";
 import { addCodeButtons } from "./code";
 
 window.Alpine = Alpine;
-Alpine.plugin(intersect);
+Alpine.plugin([intersect, persist]);
 Alpine.start();
 
 window.addEventListener("DOMContentLoaded", () => {
