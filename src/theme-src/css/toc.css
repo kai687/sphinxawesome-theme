@@ -5,7 +5,7 @@
 		& li {
 			@apply mt-0 pt-2;
 			& a {
-				@apply inline-block text-muted-foreground no-underline transition-colors hover:text-foreground focus-visible:outline-offset-[-1px];
+				@apply inline-block text-muted-foreground no-underline transition-colors hover:text-foreground focus-visible:-outline-offset-1;
 				&[data-current="true"] {
 					@apply font-medium text-foreground;
 				}
@@ -28,10 +28,10 @@
 		@apply pt-6 font-medium;
 	}
 	& ul {
-		@apply !m-0 !list-none;
+		@apply m-0! list-none!;
 		& li {
 			& a.reference {
-				@apply inline-block !font-normal !text-muted-foreground !no-underline transition-colors hover:text-foreground;
+				@apply inline-block font-normal! text-muted-foreground! no-underline! transition-colors hover:text-foreground;
 			}
 			& ul {
 				@apply pl-4;

@@ -90,7 +90,7 @@ pre {
 	}
 
 	& span.linenos {
-		@apply select-none !bg-transparent pl-0 pr-4;
+		@apply select-none bg-transparent! pl-0 pr-4;
 	}
 }
 
@@ -134,7 +134,7 @@ em.property {
 }
 
 .option-list kbd {
-	@apply !border-none !bg-transparent !text-[1em] !font-bold;
+	@apply border-none! bg-transparent! text-[1em]! font-bold!;
 }
 
 dt .classifier {

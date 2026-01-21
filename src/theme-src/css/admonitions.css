@@ -6,7 +6,7 @@
 		@apply mt-2;
 	}
 	& .admonition-title {
-		@apply !mt-0;
+		@apply mt-0!;
 	}
 }
 
@@ -15,32 +15,32 @@
 }
 
 .note {
-	@apply border-sky-600 bg-sky-50 text-sky-900 dark:bg-blue-400/[0.15] dark:text-sky-100;
+	@apply border-sky-600 bg-sky-50 text-sky-900 dark:bg-blue-400/15 dark:text-sky-100;
 }
 
 .tip,
 .hint {
-	@apply border-green-600 bg-green-50 text-green-900 dark:bg-green-400/[0.15] dark:text-green-100;
+	@apply border-green-600 bg-green-50 text-green-900 dark:bg-green-400/15 dark:text-green-100;
 }
 
 .danger,
 .error {
-	@apply border-red-600 bg-red-50 text-red-900 dark:bg-red-400/[0.15] dark:text-red-100;
+	@apply border-red-600 bg-red-50 text-red-900 dark:bg-red-400/15 dark:text-red-100;
 }
 
 .attention,
 .warning,
 .caution,
 .important {
-	@apply border-yellow-600 bg-yellow-50 text-yellow-900 dark:bg-yellow-400/[0.15] dark:text-yellow-100;
+	@apply border-yellow-600 bg-yellow-50 text-yellow-900 dark:bg-yellow-400/15 dark:text-yellow-100;
 }
 
 div.versionadded {
 	@apply mt-4 border-l-[3px] border-green-600 px-4 py-1 text-sm;
 	& p {
-		@apply !mt-0;
+		@apply mt-0!;
 		&:last-child {
-			@apply !mb-0;
+			@apply mb-0!;
 		}
 	}
 	& .versionmodified {
@@ -51,9 +51,9 @@ div.versionadded {
 div.versionchanged {
 	@apply mt-4 border-l-[3px] border-yellow-600 px-4 py-1 text-sm;
 	& p {
-		@apply !mt-0;
+		@apply mt-0!;
 		&:last-child {
-			@apply !mb-0;
+			@apply mb-0!;
 		}
 	}
 	& .versionmodified {
@@ -64,9 +64,9 @@ div.versionchanged {
 div.deprecated {
 	@apply mt-4 border-l-[3px] border-red-600 px-4 py-1 text-sm;
 	& p {
-		@apply !mt-0;
+		@apply mt-0!;
 		&:last-child {
-			@apply !mb-0;
+			@apply mb-0!;
 		}
 	}
 	& .versionmodified {
