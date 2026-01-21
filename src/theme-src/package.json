@@ -4,8 +4,8 @@
 	"private": true,
 	"scripts": {
 		"build": "webpack",
-		"format": "prettier --write */*.css",
-    "biome:format": "biome format --write */*.js *.js"
+		"format": "biome format --write */*.js */*.css *.js",
+		"lint": "biome lint --write */*.css */*.js *.js"
 	},
 	"browserslist": [
 		"last 2 versions",

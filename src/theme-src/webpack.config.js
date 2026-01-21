@@ -1,7 +1,6 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const RemoveEmptyScriptsPlugin = require("webpack-remove-empty-scripts");
-const StyleLintPlugin = require("stylelint-webpack-plugin");
-const path = require("path");
+const path = require("node:path");
 const { EsbuildPlugin } = require("esbuild-loader");
 
 const THEME_STATIC_DIR = path.resolve(
@@ -36,10 +35,6 @@ module.exports = {
 			filename: "[name].css",
 		}),
 		new RemoveEmptyScriptsPlugin(),
-		new StyleLintPlugin({
-			files: "css/*.css",
-			fix: true,
-		}),
 	],
 	module: {
 		rules: [
