@@ -1,9 +1,9 @@
 [project]
 name = "sphinxawesome-theme"
-version = "6.0.0b4"
+version = "6.0.0"
 description = "An awesome theme for the Sphinx documentation generator"
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 authors = [{ name = "Kai Welke", email = "kai687@pm.me" }]
 classifiers = [
   "Framework :: Sphinx",
@@ -11,7 +11,6 @@ classifiers = [
   "License :: OSI Approved :: MIT License",
   "Programming Language :: Python",
   "Programming Language :: Python :: 3",
-  "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",

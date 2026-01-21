@@ -1,7 +1,19 @@
 Version 6.0
 -----------
 
-Version 6.0 drops support for Python 3.8 and removes code that became deprecated in version 5.2.
-This version also removes the light mode/dark mode selector.
-Since dark mode is an operating-system setting,
-having to control this additionally for every website seems like an anti-pattern.
+Version 6.0 drops support for Python versions 3.8 and Python 3.9 and removes code that became deprecated in version 5.2.
+
+Breaking changes
+~~~~~~~~~~~~~~~~
+
+- Python >= 3.10 is now required.
+
+Features
+~~~~~~~~
+
+- Support for Sphinx 9.
+
+Maintenance
+~~~~~~~~~~~
+
+- Updated developer tooling

@@ -8,7 +8,7 @@ nox.options.stop_on_first_error = True
 nox.options.sessions = ["docs", "lint", "test", "typecheck"]
 nox.options.default_venv_backend = "uv"
 
-python_versions = ["3.9", "3.14"]
+python_versions = ["3.10", "3.14"]
 
 
 def get_requirements(groups: list[str] | str | None = None) -> list[str]:
@@ -47,7 +47,7 @@ def docs(session: nox.Session) -> None:
 
     if "--live" in session.posargs:
         build_cmd = "sphinx-autobuild"
-        args += ["-A", "mode=development"]
+        args += ["--ignore", "docs/jupyter_execute", "-a", "-A", "mode=development"]
         session.posargs.remove("--live")
 
     if "--verbose" in session.posargs:
