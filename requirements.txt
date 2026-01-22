@@ -168,7 +168,7 @@ nest-asyncio==1.6.0
 nodeenv==1.10.0
     # via pyright
 nox==2025.11.12
-packaging==25.0
+packaging==26.0
     # via
     #   dependency-groups
     #   ipykernel
@@ -195,7 +195,7 @@ ptyprocess==0.7.0 ; sys_platform != 'emscripten' and sys_platform != 'win32'
     # via pexpect
 pure-eval==0.2.3
     # via stack-data
-pycparser==2.23 ; implementation_name == 'pypy'
+pycparser==3.0 ; implementation_name == 'pypy'
     # via cffi
 pygments==2.19.2
     # via
@@ -290,7 +290,7 @@ sphinxcontrib-qthelp==2.0.0
     # via sphinx
 sphinxcontrib-serializinghtml==2.0.0
     # via sphinx
-sqlalchemy==2.0.45
+sqlalchemy==2.0.46
     # via jupyter-cache
 stack-data==0.6.3
     # via ipython
@@ -349,7 +349,7 @@ virtualenv==20.36.1
     # via nox
 watchfiles==1.1.1
     # via sphinx-autobuild
-wcwidth==0.2.14
+wcwidth==0.3.0
     # via prompt-toolkit
 websockets==16.0
     # via sphinx-autobuild
