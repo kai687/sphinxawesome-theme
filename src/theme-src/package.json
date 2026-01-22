@@ -1,17 +1,12 @@
 {
 	"name": "sphinxawesome-theme",
-	"version": "6.0.0b4",
+	"version": "6.0.0",
 	"private": true,
 	"scripts": {
-		"build": "webpack",
+		"build": "rspack build",
 		"format": "biome format --write */*.js */*.css *.js",
 		"lint": "biome lint --write */*.css */*.js *.js"
 	},
-	"browserslist": [
-		"last 2 versions",
-		"not dead",
-		"not op_mini all"
-	],
 	"author": "Kai Welke",
 	"license": "MIT",
 	"dependencies": {
@@ -23,18 +18,14 @@
 	"devDependencies": {
 		"@biomejs/biome": "2.3.11",
 		"@fontsource/jetbrains-mono": "^5.2.8",
+		"@rspack/cli": "^1.7.3",
+		"@rspack/core": "^1.7.3",
 		"@tailwindcss/postcss": "^4.1.18",
-		"copy-webpack-plugin": "^13.0.1",
 		"css-loader": "^7.1.2",
 		"cssnano": "^7.1.2",
-		"esbuild-loader": "^4.4.2",
-		"mini-css-extract-plugin": "^2.10.0",
 		"postcss": "^8.5.6",
 		"postcss-loader": "^8.2.0",
 		"tailwindcss": "^4.1.18",
-		"webpack": "^5.104.1",
-		"webpack-cli": "^6.0.1",
-		"webpack-manifest-plugin": "^6.0.1",
 		"webpack-remove-empty-scripts": "^1.1.1"
 	}
 }

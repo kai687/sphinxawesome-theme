@@ -21,7 +21,7 @@ import contextlib
 import re
 from collections.abc import Generator, Iterator
 from re import Pattern
-from typing import Any, Literal, Union
+from typing import Any, Literal
 
 from pygments.filter import Filter
 from pygments.formatters import HtmlFormatter
@@ -34,7 +34,7 @@ from sphinx.util import logging
 logger = logging.getLogger(__name__)
 
 # type alias (Old notation for Python 3.9)
-TokenType = Union[_TokenType, int]
+TokenType = _TokenType | int
 TokenStream = Generator[tuple[TokenType, str], None, None]
 
 

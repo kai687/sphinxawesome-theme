@@ -172,7 +172,7 @@ theme_options = ThemeOptions(
         "repository on GitHub": {
             "link": "https://github.com/kai687/sphinxawesome-theme",
             "icon": (
-                '<svg height="26px" style="margin-top:-2px;display:inline" '
+                '<svg height="16px" style="margin-top:-2px;display:inline" '
                 'viewBox="0 0 45 44" '
                 'fill="currentColor" xmlns="http://www.w3.org/2000/svg">'
                 '<path fill-rule="evenodd" clip-rule="evenodd" '

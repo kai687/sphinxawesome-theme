@@ -19,7 +19,7 @@ from docutils.nodes import Node, system_message
 from docutils.parsers.rst import directives
 from sphinx.directives.code import CodeBlock
 from sphinx.locale import __
-from sphinx.util import logging, parselinenos
+from sphinx.util import logging, parselinenos  # type: ignore
 
 logger = logging.getLogger(__name__)
 
