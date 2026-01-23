@@ -1,9 +1,25 @@
 name: CI
 on: push
 jobs:
+  format:
+    name: Check that code is formatted
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: astral-sh/setup-uv@v7
+        with:
+          version: "latest"
+          python-version: "3.14"
+          enable-cache: true
+      - name: Set up hatch
+        run: uv tool install hatch
+      - name: Check formatting
+        run: hatch fmt --check
   test:
     name: Run CI workflows
     runs-on: ubuntu-latest
+    needs:
+      - format
     strategy:
       matrix:
         python-version:
@@ -27,6 +43,8 @@ jobs:
   docs:
     name: Build the docs (for testing)
     runs-on: ubuntu-latest
+    needs:
+      - format
     steps:
       - uses: actions/checkout@v6
       - uses: astral-sh/setup-uv@v7
@@ -47,6 +65,7 @@ jobs:
     name: Build the package
     runs-on: ubuntu-latest
     needs:
+      - format
       - test
       - docs
     if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')

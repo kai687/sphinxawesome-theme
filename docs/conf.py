@@ -23,6 +23,7 @@ load_dotenv()
 # MystNB 5.0 uses some deprecated APIs
 warnings.filterwarnings("ignore", category=RemovedInSphinx10Warning, module="myst_nb.*")
 
+
 # -- SSL fixes for Intersphinx --
 # SSL fix for intersphinx on Linux
 class IntersphinxSSLAdapter(requests.adapters.HTTPAdapter):
