@@ -1,5 +1,11 @@
 name: linkcheck
-on: [push]
+on:
+  pull_request:
+    paths:
+      - 'docs/**/*.rst'
+      - 'docs/**/*.md'
+      - 'docs/conf.py'
+
 jobs:
   links:
     name: Check links
@@ -15,20 +21,9 @@ jobs:
           enable-cache: true
       - name: Set up hatch
         run: uv tool install hatch
-      - name: Detect changes in docs
-        id: docs
-        shell: bash
-        run: |
-          CHANGED=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} \
-            | grep -E '^docs/.*\.(md|rst)$' || true)
-          echo "changed=$CHANGED" >> "$GITHUB_OUTPUT"
       - name: Check links
-        if: steps.docs.outputs.changed != ''
         run: hatch run docs:links
         env:
           DOCSEARCH_APP_ID: ${{ vars.DOCSEARCH_APP_ID }}
           DOCSEARCH_API_KEY: ${{ vars.DOCSEARCH_API_KEY }}
           DOCSEARCH_INDEX_NAME: ${{ vars.DOCSEARCH_INDEX_NAME }}
-      - name: Skip link check
-        if: steps.docs.output.changed == ''
-        run: echo "No docs files modified -> skipping link check"
