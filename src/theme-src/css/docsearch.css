@@ -4,7 +4,6 @@
 @reference "tailwindcss";
 @reference "./theme.css";
 
-/* biome-ignore format: Until updating Tailwind */
 :root {
 	--docsearch-primary-color: hsl(var(--primary));
 	--docsearch-muted-color: hsl(var(--muted-foreground));
@@ -16,8 +15,7 @@
 	--docsearch-footer-background: hsl(var(--popover));
 	--docsearch-searchbox-focus-background: hsl(var(--popover));
 	--docsearch-container-background: hsl(var(--background) / 0.8);
-	/* biome-ignore lint/correctness/noUnknownFunction: need this until updating Tailwind */
-	--docsearch-spacing: theme(spacing.2);
+	--docsearch-spacing: --spacing(2);
 	--docsearch-hit-active-color: hsl(var(--accent-foreground));
 	--docsearch-hit-background: transparent;
 	--docsearch-searchbox-shadow: none;
@@ -27,7 +25,7 @@
 }
 
 .DocSearch-Button {
-	@apply flex w-[90%] rounded-[0.5em] border border-solid border-input bg-transparent text-sm ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground hover:shadow-none focus:bg-accent focus:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+	@apply flex w-[90%] rounded-lg border border-solid border-input bg-transparent text-sm ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground hover:shadow-none focus:bg-accent focus:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
 }
 
 .DocSearch-Button-Placeholder {
@@ -39,7 +37,7 @@
 }
 
 .DocSearch-Container {
-	@apply fixed backdrop-blur-sm;
+	@apply fixed backdrop-blur-xs;
 }
 
 .DocSearch-Modal {

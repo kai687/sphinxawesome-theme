@@ -11,17 +11,18 @@
 }
 
 :is(
-	h1,
-	h2,
-	h3,
-	h4,
-	table,
-	.admonition-title,
-	figure,
-	dt,
-	.math,
-	.code-block-caption
-):hover .headerlink {
+		h1,
+		h2,
+		h3,
+		h4,
+		table,
+		.admonition-title,
+		figure,
+		dt,
+		.math,
+		.code-block-caption
+	):hover
+	.headerlink {
 	@apply visible;
 	& > * {
 		@apply visible;
