@@ -1,11 +1,9 @@
 [tools]
+hatch = "latest"
 node = "latest"
 pnpm = "latest"
+pre-commit = "latest"
 uv = "latest"
 
 [hooks]
-postinstall = '''
-  uv tool install nox
-  uv tool install pre-commit
-  pre-commit install --hook-type pre-push
-'''
+postinstall = "pre-commit install --hook-type pre-push"

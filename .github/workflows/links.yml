@@ -11,22 +11,20 @@ jobs:
       - uses: astral-sh/setup-uv@v7
         with:
           version: "latest"
-      - uses: actions/setup-python@v6
-        with:
-          python-version: 3.14
-      - name: Set up nox
-        run: |
-          uv tool install nox
+          python-version: "3.14"
+          enable-cache: true
+      - name: Set up hatch
+        run: uv tool install hatch
       - name: Detect changes in docs
         id: docs
+        shell: bash
         run: |
           CHANGED=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} \
             | grep -E '^docs/.*\.(md|rst)$' || true)
-          echo "::set-output name=changed::$CHANGED"
+          echo "changed=$CHANGED" >> "$GITHUB_OUTPUT"
       - name: Check links
         if: steps.docs.outputs.changed != ''
-        run: |
-          nox -s links
+        run: hatch run docs:links
         env:
           DOCSEARCH_APP_ID: ${{ vars.DOCSEARCH_APP_ID }}
           DOCSEARCH_API_KEY: ${{ vars.DOCSEARCH_API_KEY }}

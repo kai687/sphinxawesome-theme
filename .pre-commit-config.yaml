@@ -24,7 +24,7 @@ repos:
     hooks:
       - id: requirements
         name: Sync requirements.txt
-        entry: nox -s export
+        entry: hatch run netlify:export
         pass_filenames: false
         language: system
         files: 'pyproject\.toml|uv\.lock'

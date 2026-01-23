@@ -11,20 +11,34 @@ jobs:
           - "3.14"
     steps:
       - uses: actions/checkout@v6
-      - name: Install uv
-        uses: astral-sh/setup-uv@v7
+      - uses: astral-sh/setup-uv@v7
         with:
           version: "latest"
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v6
-        with:
           python-version: ${{ matrix.python-version }}
-      - name: Set up nox
+          enable-cache: true
+      - name: Set up hatch
+        run: uv tool install hatch
+      - name: Run dev workflow
+        run: hatch run dev:all
+        env:
+          DOCSEARCH_APP_ID: ${{ vars.DOCSEARCH_APP_ID }}
+          DOCSEARCH_API_KEY: ${{ vars.DOCSEARCH_API_KEY }}
+          DOCSEARCH_INDEX_NAME: ${{ vars.DOCSEARCH_INDEX_NAME }}
+  docs:
+    name: Build the docs (for testing)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: astral-sh/setup-uv@v7
+        with:
+          version: "latest"
+          python-version: "3.14"
+          enable-cache: true
+      - name: Set up hatch
+        run: uv tool install hatch
+      - name: Build the docs
         run: |
-          uv tool install nox
-      - name: Run workflow
-        run: |
-          nox -p ${{ matrix.python-version }}
+          hatch run docs:build
         env:
           DOCSEARCH_APP_ID: ${{ vars.DOCSEARCH_APP_ID }}
           DOCSEARCH_API_KEY: ${{ vars.DOCSEARCH_API_KEY }}
@@ -34,6 +48,7 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       - test
+      - docs
     if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
     steps:
       - uses: actions/checkout@v6
@@ -41,6 +56,8 @@ jobs:
         uses: astral-sh/setup-uv@v7
         with:
           version: "latest"
+          python-version: "3.14"
+          enable-cache: true
       - name: Build packages
         run: |
           uv build
