@@ -2,10 +2,12 @@
 
 import os
 import re
+import warnings
 from pathlib import Path
 
 import pytest
 from sphinx.application import Sphinx
+from sphinx.deprecation import RemovedInSphinx11Warning
 
 from .util import parse_html
 
@@ -40,6 +42,10 @@ def test_awesome_sphinx_design(app: Sphinx) -> None:
 )
 def test_awesome_myst_nb(app: Sphinx) -> None:
     """It loads CSS for the `myst-nb` extension."""
+    # MystNB 5.0 uses some deprecated APIs
+    warnings.filterwarnings(
+        "ignore", category=RemovedInSphinx11Warning, module="myst_nb.*"
+    )
     app.build()
     assert os.path.exists(Path(app.outdir) / "index.html")
     tree = parse_html(Path(app.outdir) / "index.html")
