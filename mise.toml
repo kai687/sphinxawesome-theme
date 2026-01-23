@@ -4,6 +4,3 @@ node = "latest"
 pnpm = "latest"
 pre-commit = "latest"
 uv = "latest"
-
-[hooks]
-postinstall = "pre-commit install --hook-type pre-push"
