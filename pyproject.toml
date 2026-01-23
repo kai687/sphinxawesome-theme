@@ -55,7 +55,7 @@ docs = [
   "sphinx-sitemap",
 ]
 netlify = [
-  "nox",
+  "hatch",
   "uv",
 ]
 
@@ -73,8 +73,37 @@ packages = ["sphinxawesome_theme"]
 [tool.hatch.build.targets.sdist]
 packages = ["src/sphinxawesome_theme"]
 
+[tool.hatch.envs.default]
+installer = "uv"
+
+[tool.hatch.envs.docs]
+dependency-groups = ["docs"]
+
+[tool.hatch.envs.docs.scripts]
+build = "sphinx-build -b dirhtml -aWTE docs docs/public"
+live = "sphinx-autobuild -q -b dirhtml -A mode='development' -aTE docs docs/public --ignore docs/jupyter_execute --ignore docs/public"
+links = "sphinx-build -b linkcheck -aWTE docs docs/public/_links"
+
+[tool.hatch.envs.dev]
+dependency-groups = ["docs", "dev"]
+
+[tool.hatch.envs.dev.scripts]
+test = "pytest --cov"
+lint = "ruff check ."
+typecheck = "pyright"
+all = ["test", "lint", "typecheck"]
+
+[tool.hatch.envs.netlify]
+dependency-groups = ["netlify"]
+
+[tool.hatch.envs.netlify.scripts]
+export = "uv export --no-hashes --python=3.14 --group=docs --group=netlify --output-file=requirements.txt"
+
+[tool.hatch.envs.hatch-static-analysis]
+config-path = "none"
+
 [tool.pyright]
-include = ["src", "noxfile.py"]
+include = ["src"]
 reportUnnecessaryTypeIgnoreComment = "warning"
 
 [tool.ruff.lint]

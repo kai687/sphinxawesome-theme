@@ -2,6 +2,8 @@
    :description: Make your own theme by building on top of this theme. Fully customize the styles, JavaScript, and templates.
    :twitter:description: Make your own theme by building on top of this theme. Fully customize the styles, JavaScript, and templates.
 
+.. _sec:build-your-own:
+
 Build your own theme
 ====================
 
@@ -15,53 +17,25 @@ The easiest way to install **all** dependencies is with mise_.
 
 #. :ref:`sec:fork-and-clone`.
 
-#. Optional: enable support for mise's experimental ``postinstall`` hook.
-
-   .. code-block:: bash
-
-      mise settings experimental=true
-
-   .. tip::
-
-      This automatically installs the required Nox_ tool after uv_ is installed.
-      If you don't want to do this, run ``uv tool install nox`` after uv is installed.
-
-#. Install Python and Node.js dependencies:
+#. Install the dependencies.
 
    .. code-block:: bash
 
       mise install
 
-#. If you didn't enable support for mise's experimental ``postinstall`` hook,
-   run:
+#. Test, if everything is working.
 
    .. code-block:: bash
 
-      uv tool install nox
-      uv tool install pre-commit
-      pre-commit install --hook-type pre-push
+      hatch run dev:all
 
-#. Test, if everything is working:
+   This runs tests and the linter.
+
+   Too see a list of available tasks, run:
 
    .. code-block:: bash
 
-      nox --list-sessions
-      pre-commit run --all
-
-    After making changes to any template or Python file, run:
-
-    .. code-block:: bash
-
-       nox
-
-    This runs a few checks and builds the docs to make sure your changes
-    work as expected.
-
-#. If you want to enable Algolia DocSearch locally, copy
-   :file:`docs/.env.example` to :file:`docs/.env` and fill the values.
-
-   Without these variables, local builds skip DocSearch. CI builds fail if the
-   variables are missing (set ``NEEDS_ENV=true`` to enforce locally).
+      hatch env show
 
 #. Install JavaScript dependencies.
 
@@ -77,11 +51,20 @@ The easiest way to install **all** dependencies is with mise_.
 
       pnpm build
 
+#. Optional: add DocSearch environment variables.
+
+   If you have access to the environment variables for DocSearch,
+   copy the file :file:`docs/.env.example` to :file:`docs/.env`
+   and fill in the values. They're safe to expose on your website.
+
+   By default, placeholder values are used and DocSerach won't work
+   when developing locally.
+
 .. _mise: https://mise.jdx.dev
-.. _uv: https://docs.astral.sh/uv/
-.. _Nox: https://nox.thea.codes/en/stable/
 
 If you don't want to use mise,
 use your preferred version and package managers.
 See the files :file:`mise.toml`, :file:`pyproject.toml`,
 and :file:`src/theme-src/package.json` for more information.
+
+Now you can make any change you want.

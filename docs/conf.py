@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import os
 import ssl
+import warnings
 from dataclasses import asdict
 from typing import Any
 
@@ -11,12 +12,16 @@ import requests
 import requests.adapters
 from dotenv import load_dotenv
 from sphinx.application import Sphinx
+from sphinx.deprecation import RemovedInSphinx10Warning
 from sphinx.util.docfields import Field
 
 from sphinxawesome_theme import ThemeOptions, __version__
 from sphinxawesome_theme.postprocess import Icons
 
 load_dotenv()
+
+# MystNB 5.0 uses some deprecated APIs
+warnings.filterwarnings("ignore", category=RemovedInSphinx10Warning, module="myst_nb.*")
 
 
 # -- SSL fixes for Intersphinx --

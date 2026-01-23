@@ -10,7 +10,7 @@ via theme options:
 
    html_theme_options = {
        "logo_light": "<path>/<filename>",
-       "logo_dark": "<path>/<filename>"
+       "logo_dark": "<path>/<filename>",
    }
 
 Provide a path relative to the Sphinx configuration directory (with the :file:`conf.py` file).

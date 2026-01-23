@@ -12,6 +12,10 @@ Customize the theme
 
 ----
 
+This section shows you how to work *within* the theme.
+If you want to go beyond this, or want to develop your own theme,
+see :ref:`sec:build-your-own`.
+
 .. toctree::
    :caption: In this section
 
