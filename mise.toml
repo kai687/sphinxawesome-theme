@@ -2,5 +2,4 @@
 hatch = "latest"
 node = "latest"
 pnpm = "latest"
-pre-commit = "latest"
 uv = "latest"
