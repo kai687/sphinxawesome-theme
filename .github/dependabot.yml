@@ -6,12 +6,23 @@ updates:
       interval: weekly
     assignees:
       - kai687
+    groups:
+      npm-packages:
+        patterns:
+          - "*"
   - package-ecosystem: uv
     directory: "/"
     schedule:
       interval: weekly
     assignees:
       - kai687
+    groups:
+      uv-packages:
+        patterns:
+          - "*"
+        exclude-patterns:
+          - "docutils"
+          - "sphinx"
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
