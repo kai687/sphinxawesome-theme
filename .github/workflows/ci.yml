@@ -18,6 +18,9 @@ jobs:
   theme:
     name: Build theme assets
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: src/theme-src
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
