@@ -5,7 +5,8 @@
 	"scripts": {
 		"build": "rspack build",
 		"format": "biome format --write */*.js */*.css *.ts",
-		"lint": "biome lint --write */*.css */*.js *.ts"
+		"lint": "biome lint --write */*.css */*.js *.ts",
+    "ci": "biome ci */*.css */*.js *.ts"
 	},
 	"author": "Kai Welke",
 	"license": "MIT",
