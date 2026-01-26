@@ -54,10 +54,6 @@ docs = [
   "sphinx-docsearch",
   "sphinx-sitemap",
 ]
-netlify = [
-  "hatch",
-  "uv",
-]
 
 [build-system]
 requires = ["hatchling"]
@@ -92,12 +88,6 @@ test = "pytest --cov"
 lint = "ruff check ."
 typecheck = "pyright"
 all = ["test", "lint", "typecheck"]
-
-[tool.hatch.envs.netlify]
-dependency-groups = ["netlify"]
-
-[tool.hatch.envs.netlify.scripts]
-export = "uv export --no-hashes --python=3.14 --group=docs --group=netlify --output-file=requirements.txt"
 
 [tool.hatch.envs.hatch-static-analysis]
 config-path = "none"
