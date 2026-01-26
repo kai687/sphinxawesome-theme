@@ -280,7 +280,7 @@ rpds-py==0.30.0
     # via
     #   jsonschema
     #   referencing
-ruff==0.14.13
+ruff==0.14.14
 secretstorage==3.5.0 ; sys_platform == 'linux'
     # via keyring
 shellingham==1.5.4
