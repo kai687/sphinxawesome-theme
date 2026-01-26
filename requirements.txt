@@ -410,7 +410,7 @@ virtualenv==20.36.1
     # via hatch
 watchfiles==1.1.1
     # via sphinx-autobuild
-wcwidth==0.3.0
+wcwidth==0.4.0
     # via prompt-toolkit
 websockets==16.0
     # via sphinx-autobuild
