@@ -55,7 +55,7 @@ colorama==0.4.6
     #   sphinx-autobuild
 comm==0.2.3
     # via ipykernel
-coverage==7.13.1
+coverage==7.13.2
     # via pytest-cov
 cryptography==46.0.3 ; sys_platform == 'linux'
     # via secretstorage
