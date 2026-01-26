@@ -55,7 +55,7 @@ colorama==0.4.6
     #   sphinx-autobuild
 comm==0.2.3
     # via ipykernel
-coverage==7.13.1
+coverage==7.13.2
     # via pytest-cov
 cryptography==46.0.3 ; sys_platform == 'linux'
     # via secretstorage
@@ -84,7 +84,7 @@ fastjsonschema==2.21.2
     # via nbformat
 filelock==3.20.3
     # via virtualenv
-greenlet==3.3.0 ; platform_machine == 'AMD64' or platform_machine == 'WIN32' or platform_machine == 'aarch64' or platform_machine == 'amd64' or platform_machine == 'ppc64le' or platform_machine == 'win32' or platform_machine == 'x86_64'
+greenlet==3.3.1 ; platform_machine == 'AMD64' or platform_machine == 'WIN32' or platform_machine == 'aarch64' or platform_machine == 'amd64' or platform_machine == 'ppc64le' or platform_machine == 'win32' or platform_machine == 'x86_64'
     # via sqlalchemy
 h11==0.16.0
     # via
@@ -272,7 +272,7 @@ referencing==0.37.0
     #   jsonschema-specifications
 requests==2.32.5
     # via sphinx
-rich==14.2.0
+rich==14.3.1
     # via hatch
 roman-numerals==4.1.0 ; python_full_version >= '3.11'
     # via sphinx
@@ -410,7 +410,7 @@ virtualenv==20.36.1
     # via hatch
 watchfiles==1.1.1
     # via sphinx-autobuild
-wcwidth==0.3.0
+wcwidth==0.4.0
     # via prompt-toolkit
 websockets==16.0
     # via sphinx-autobuild
