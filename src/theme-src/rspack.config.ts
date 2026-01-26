@@ -10,7 +10,7 @@ const THEME_STATIC_DIR = resolve(__dirname, "../sphinxawesome_theme/static/");
 
 /** @type {import('webpack').Config} */
 export default {
-  devtool: false,
+	devtool: false,
 	entry: {
 		theme: "./js/app.js",
 		"awesome-docsearch": "./css/docsearch.css",
