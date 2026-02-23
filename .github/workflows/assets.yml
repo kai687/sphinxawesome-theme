@@ -4,7 +4,7 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
     paths:
-      - package.json
+      - src/theme-src/package.json
 
 permissions:
   contents: write
