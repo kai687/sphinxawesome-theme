@@ -21,12 +21,12 @@
 		"@fontsource/jetbrains-mono": "^5.2.8",
 		"@rspack/cli": "^1.7.6",
 		"@rspack/core": "^1.7.6",
-		"@tailwindcss/postcss": "^4.2.0",
+		"@tailwindcss/postcss": "^4.2.1",
 		"css-loader": "^7.1.4",
 		"cssnano": "^7.1.2",
 		"postcss": "^8.5.6",
 		"postcss-loader": "^8.2.1",
-		"tailwindcss": "^4.2.0",
+		"tailwindcss": "^4.2.1",
 		"webpack-remove-empty-scripts": "^1.1.1"
 	}
 }
