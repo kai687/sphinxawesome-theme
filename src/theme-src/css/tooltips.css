@@ -86,8 +86,6 @@
 @utility tooltipped-se {
 	&:after {
 		top: 100%;
-		right: 50%;
-		margin-top: 6px;
 		right: auto;
 		left: 50%;
 		margin-left: -16px;
@@ -139,10 +137,9 @@
 
 @utility tooltipped-ne {
 	&:after {
-		right: 50%;
+		right: auto;
 		bottom: 100%;
 		margin-bottom: 6px;
-		right: auto;
 		left: 50%;
 		margin-left: -16px;
 	}
