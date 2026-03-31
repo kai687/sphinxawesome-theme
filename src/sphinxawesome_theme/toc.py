@@ -11,6 +11,7 @@ from typing import Any
 from docutils import nodes
 from docutils.nodes import Node
 from sphinx.application import Sphinx
+from sphinx.builders.html import StandaloneHTMLBuilder
 from sphinx.environment.adapters.toctree import TocTree
 from sphinx.util.docutils import new_document
 
@@ -46,7 +47,11 @@ def change_toc(
 
     Then, we _outdent_ the tree.
     """
-    toc = TocTree(app.builder.env).get_toc_for(pagename, app.builder)
+    builder = app.builder
+    if not isinstance(builder, StandaloneHTMLBuilder):
+        return
+
+    toc = TocTree(builder.env).get_toc_for(pagename, builder)
 
     # Remove `h1` node
     for node in toc.findall(nodes.reference):
@@ -70,4 +75,4 @@ def change_toc(
     toc_root = doc.children[0] if doc.children else None
 
     # Use the public builder API to render the doctree fragment.
-    context["toc"] = app.builder.render_partial(toc_root)["fragment"]  # type: ignore[attr-defined]
+    context["toc"] = builder.render_partial(toc_root)["fragment"]

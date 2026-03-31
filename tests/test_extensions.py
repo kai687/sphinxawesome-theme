@@ -27,8 +27,8 @@ def test_awesome_sphinx_design(app: Sphinx) -> None:
     # It adds the `awesome-sphinx-design.css` file
     css = tree.select('link[rel="stylesheet"]')
     assert len(css) == 4
-    hrefs = [item["href"] for item in css]
-    assert any(filter(pattern.search, hrefs))  # type: ignore[arg-type]
+    hrefs = [str(item["href"]) for item in css]
+    assert any(pattern.search(href) is not None for href in hrefs)
 
 
 @pytest.mark.sphinx(
@@ -48,5 +48,5 @@ def test_awesome_myst_nb(app: Sphinx) -> None:
     # It adds the `awesome-myst-nb.css` file
     css = tree.select('link[rel="stylesheet"]')
     assert len(css) == 4
-    hrefs = [item["href"] for item in css]
-    assert any(filter(pattern.search, hrefs))  # type: ignore[arg-type]
+    hrefs = [str(item["href"]) for item in css]
+    assert any(pattern.search(href) is not None for href in hrefs)

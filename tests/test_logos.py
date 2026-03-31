@@ -20,7 +20,7 @@ def test_no_logo(app: Sphinx, warning: StringIO) -> None:
     """It compiles without defining a logo."""
     app.build()
     tree = parse_html(Path(app.outdir) / "index.html")
-    logos = tree.select("header img", attrs={"alt": "Logo"})
+    logos = tree.select('header img[alt="Logo"]')
     assert len(logos) == 0
 
     warnings = warning.getvalue()
@@ -39,7 +39,7 @@ def test_default_logo(app: Sphinx, warning: StringIO) -> None:
     """It compiles without ``logo_light`` and ``logo_dark``."""
     app.build()
     tree = parse_html(Path(app.outdir) / "index.html")
-    logos = tree.select("header img", attrs={"alt": "Logo"})
+    logos = tree.select('header img[alt="Logo"]')
     assert len(logos) == 1
 
     warnings = warning.getvalue()
@@ -59,10 +59,10 @@ def test_includes_only_one_html_logo(app: Sphinx, warning: StringIO) -> None:
     """It includes a single logo if both `logo_light` and `html_logo` are defined."""
     app.build()
     tree = parse_html(Path(app.outdir) / "index.html")
-    logos = tree.select("header img", alt="Logo")
+    logos = tree.select('header img[alt="Logo"]')
     assert len(logos) == 1
 
-    sidebar = tree.select("#left-sidebar img", alt="Logo")
+    sidebar = tree.select('#left-sidebar img[alt="Logo"]')
     assert len(sidebar) == 1
 
     warnings = warning.getvalue()
@@ -129,8 +129,8 @@ def test_copies_logos(app: Sphinx, warning: StringIO) -> None:
     assert dark.exists()
 
     tree = parse_html(Path(app.outdir) / "index.html")
-    logos = tree.select("header img", alt="Logo")
+    logos = tree.select('header img[alt="Logo"]')
     assert len(logos) == 2
 
-    sidebar = tree.select("#left-sidebar img", alt="Logo")
+    sidebar = tree.select('#left-sidebar img[alt="Logo"]')
     assert len(sidebar) == 2
