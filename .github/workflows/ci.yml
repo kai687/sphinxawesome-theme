@@ -60,8 +60,10 @@ jobs:
           enable-cache: true
       - name: Set up hatch
         run: uv tool install hatch
-      - name: Run dev workflow
-        run: hatch run dev:all
+      - name: Run lint and type checking
+        run: hatch run lint:all
+      - name: Run test workflow
+        run: hatch run test.py${{ matrix.python-version }}:run
         env:
           DOCSEARCH_APP_ID: ${{ vars.DOCSEARCH_APP_ID }}
           DOCSEARCH_API_KEY: ${{ vars.DOCSEARCH_API_KEY }}

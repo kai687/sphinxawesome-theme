@@ -80,14 +80,22 @@ build = "sphinx-build -b dirhtml -aWTE docs docs/public"
 live = "sphinx-autobuild -q -b dirhtml -A mode='development' -aTE docs docs/public --ignore docs/jupyter_execute --ignore docs/public"
 links = "sphinx-build -b linkcheck -aWTE docs docs/public/_links"
 
-[tool.hatch.envs.dev]
+[tool.hatch.envs.lint]
 dependency-groups = ["docs", "dev"]
 
-[tool.hatch.envs.dev.scripts]
-test = "pytest --cov"
+[tool.hatch.envs.lint.scripts]
 lint = "ruff check ."
 typecheck = "ty check"
-all = ["test", "lint", "typecheck"]
+all = ["lint", "typecheck"]
+
+[tool.hatch.envs.test]
+dependency-groups = ["docs", "dev"]
+
+[tool.hatch.envs.test.scripts]
+run = "pytest --cov"
+
+[[tool.hatch.envs.test.matrix]]
+python = ["3.10", "3.14"]
 
 [tool.hatch.envs.hatch-static-analysis]
 config-path = "none"
