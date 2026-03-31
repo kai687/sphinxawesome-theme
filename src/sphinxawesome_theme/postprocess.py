@@ -23,13 +23,21 @@ from __future__ import annotations
 import os
 import pathlib
 from dataclasses import dataclass
+from typing import cast
 
 from bs4 import BeautifulSoup, Comment
 from sphinx.application import Sphinx
+from sphinx.builders.html import StandaloneHTMLBuilder
 from sphinx.environment import BuildEnvironment
 from sphinx.util.display import status_iterator
 
 from . import logos
+
+
+class AwesomeBuildEnvironment(BuildEnvironment):
+    """Build environment with tracked changed documents."""
+
+    awesome_changed_docs: list[str]
 
 
 @dataclass(frozen=True)
@@ -49,7 +57,9 @@ def changed_docs(app: Sphinx, env: BuildEnvironment, docnames: list[str]) -> Non
 
     This is useful to make sure postprocessing only runs on changed files.
     """
-    app.env.awesome_changed_docs = docnames  # type:ignore
+    del env
+    awesome_env = cast(AwesomeBuildEnvironment, app.env)
+    awesome_env.awesome_changed_docs = docnames
 
 
 def get_html_files(outdir: pathlib.Path | str) -> list[str]:
@@ -162,7 +172,7 @@ def strip_comments(tree: BeautifulSoup) -> None:
         c.extract()
 
 
-def modify_html(html_filename: str, app: Sphinx) -> None:
+def modify_html(html_filename: os.PathLike[str] | str, app: Sphinx) -> None:
     """Modify a single HTML document.
 
     1. The HTML document is parsed into a BeautifulSoup tree.
@@ -202,9 +212,11 @@ def post_process_html(app: Sphinx, exc: Exception | None) -> None:
     if app.builder is not None and app.builder.name not in ["html", "dirhtml"]:
         return
 
+    builder = cast(StandaloneHTMLBuilder, app.builder)
+    env = cast(AwesomeBuildEnvironment, app.env)
+
     files_to_postprocess = [
-        app.builder.get_outfilename(doc)  # type: ignore[attr-defined]
-        for doc in app.env.awesome_changed_docs  # type: ignore[attr-defined]
+        builder.get_outfilename(doc) for doc in env.awesome_changed_docs
     ]
 
     if len(files_to_postprocess) == 0:

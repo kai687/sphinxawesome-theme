@@ -37,16 +37,16 @@ sphinxawesome_theme = "sphinxawesome_theme"
 [dependency-groups]
 dev = [
   "coverage[toml]",
-  "pyright",
   "pytest",
   "pytest-cov",
   "ruff",
+  "ty>=0.0.26",
   "types-beautifulsoup4",
   "types-docutils",
   "types-pygments",
 ]
 docs = [
-  "myst-nb",
+  "myst-nb>=1.4.0",
   "python-dotenv",
   "sphinx-autoapi",
   "sphinx-autobuild",
@@ -86,15 +86,17 @@ dependency-groups = ["docs", "dev"]
 [tool.hatch.envs.dev.scripts]
 test = "pytest --cov"
 lint = "ruff check ."
-typecheck = "pyright"
+typecheck = "ty check"
 all = ["test", "lint", "typecheck"]
 
 [tool.hatch.envs.hatch-static-analysis]
 config-path = "none"
 
-[tool.pyright]
-include = ["src"]
-reportUnnecessaryTypeIgnoreComment = "warning"
+[tool.ty.rules]
+unused-ignore-comment = "warn"
+
+[tool.ty.src]
+include = ["src", "tests"]
 
 [tool.ruff.lint]
 # TODO: Check if all of these even make sense

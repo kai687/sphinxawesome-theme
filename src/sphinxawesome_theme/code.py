@@ -12,14 +12,14 @@ New options:
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, cast
 
 from docutils import nodes
 from docutils.nodes import Node, system_message
 from docutils.parsers.rst import directives
 from sphinx.directives.code import CodeBlock
 from sphinx.locale import __
-from sphinx.util import logging, parselinenos  # type: ignore
+from sphinx.util import logging, parselinenos
 
 logger = logging.getLogger(__name__)
 
@@ -74,19 +74,24 @@ class AwesomeCodeBlock(CodeBlock):
 
     def _extra_args(
         self: AwesomeCodeBlock,
-        node: Node,
+        node: nodes.literal_block,
         hl_added: list[int] | list[system_message] | None,
         hl_removed: list[int] | list[system_message] | None,
     ) -> None:
         """Set extra attributes for line highlighting."""
-        extra_args = node.get("highlight_args", {})  # type: ignore[attr-defined]
+        extra_args = node.get("highlight_args")
+        if not isinstance(extra_args, dict):
+            extra_args = {}
+            node["highlight_args"] = extra_args
+
+        highlight_args = cast(dict[str, object], extra_args)
 
         if hl_added is not None:
-            extra_args["hl_added"] = hl_added
+            highlight_args["hl_added"] = hl_added
         if hl_removed is not None:
-            extra_args["hl_removed"] = hl_removed
+            highlight_args["hl_removed"] = hl_removed
         if "emphasize-text" in self.options:
-            extra_args["hl_text"] = self.options["emphasize-text"]
+            highlight_args["hl_text"] = self.options["emphasize-text"]
 
     def run(self: AwesomeCodeBlock) -> list[Node]:
         """Handle parsing extra options for highlighting."""

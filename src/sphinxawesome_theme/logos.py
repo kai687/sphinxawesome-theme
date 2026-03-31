@@ -23,11 +23,12 @@ from __future__ import annotations
 
 import os
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
 from docutils.nodes import Node
 from sphinx.application import Sphinx
-from sphinx.util import isurl, logging  # type: ignore
+from sphinx.builders.html import StandaloneHTMLBuilder
+from sphinx.util import isurl, logging
 from sphinx.util.fileutil import copy_asset_file
 
 logger = logging.getLogger(__name__)
@@ -39,8 +40,9 @@ def get_theme_options(app: Sphinx) -> Any:
     Adapted from the ``pydata_sphinx_theme``.
     https://github.com/pydata/pydata-sphinx-theme/blob/f15ecfed59a2a5096c05496a3d817fef4ef9a0af/src/pydata_sphinx_theme/utils.py
     """
-    if hasattr(app.builder, "theme_options"):
-        return app.builder.theme_options  # type:ignore
+    builder = app.builder
+    if isinstance(builder, StandaloneHTMLBuilder):
+        return cast(dict[str, Any], builder.theme_options)
     elif hasattr(app.config, "html_theme_options"):
         return app.config.html_theme_options
     else:
