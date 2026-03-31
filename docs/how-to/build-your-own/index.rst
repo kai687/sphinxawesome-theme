@@ -23,13 +23,13 @@ The easiest way to install **all** dependencies is with mise_.
 
       mise install
 
-#. Test, if everything is working.
+#. Check that everything is working locally.
 
    .. code-block:: bash
 
-      hatch run dev:all
+      hatch run lint:all
 
-   This runs tests and the linter.
+   This runs linting and type checking locally.
 
    Too see a list of available tasks, run:
 
