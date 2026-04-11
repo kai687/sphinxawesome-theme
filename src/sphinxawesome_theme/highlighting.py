@@ -19,7 +19,7 @@ from __future__ import annotations
 
 import contextlib
 import re
-from collections.abc import Generator, Iterator
+from collections.abc import Generator, Iterable, Iterator
 from re import Pattern
 from typing import Any, Literal
 
@@ -136,7 +136,7 @@ class AwesomeHtmlFormatter(HtmlFormatter):
 
     def format_unencoded(
         self,
-        tokensource: TokenStream,
+        tokensource: Iterable[tuple[_TokenType, str]],
         outfile: Any,
     ) -> None:
         """Overwrite method to handle emphasized, added, and removed lines.
