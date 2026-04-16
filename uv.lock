@@ -1850,7 +1850,7 @@ wheels = [
 
 [[package]]
 name = "sphinxawesome-theme"
-version = "6.0.1"
+version = "6.0.2"
 source = { editable = "." }
 dependencies = [
     { name = "beautifulsoup4" },
