@@ -40,7 +40,7 @@ dev = [
   "pytest",
   "pytest-cov",
   "ruff",
-  "ty==0.0.31",
+  "ty>=0.0.26",
   "types-beautifulsoup4",
   "types-docutils",
   "types-pygments",

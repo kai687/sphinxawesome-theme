@@ -1894,7 +1894,7 @@ dev = [
     { name = "pytest" },
     { name = "pytest-cov" },
     { name = "ruff" },
-    { name = "ty", specifier = "==0.0.31" },
+    { name = "ty", specifier = ">=0.0.26" },
     { name = "types-beautifulsoup4" },
     { name = "types-docutils" },
     { name = "types-pygments" },
