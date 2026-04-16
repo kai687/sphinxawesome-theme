@@ -158,7 +158,7 @@ The following example is for testing the previous options with line numbers:
    print("Emphasized line of code")
    print("Normal line of code")
 
-Highlighting short lines doesn't work well if you also have long, overflowing lines:
+Highlighting works across the full width of the code block, even when long lines cause horizontal scrolling:
 
 .. code-block::
    :caption: A really long line

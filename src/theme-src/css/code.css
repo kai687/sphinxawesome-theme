@@ -57,7 +57,7 @@ pre {
 	}
 
 	& code {
-		@apply whitespace-pre bg-transparent p-0;
+		@apply block whitespace-pre bg-transparent p-0 min-w-fit;
 
 		& > [id^="line-"] {
 			@apply block px-4;
