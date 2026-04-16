@@ -19,6 +19,9 @@
 			"complexity": {
 				"noImportantStyles": "off"
 			},
+			"style": {
+				"noDescendingSpecificity": "off"
+			},
 			"suspicious": {
 				"noUnknownAtRules": "off"
 			}

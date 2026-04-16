@@ -11,6 +11,14 @@
 	}
 }
 
+.literal-block-copy-wrapper {
+	@apply relative;
+
+	&:hover .copy {
+		@apply opacity-100;
+	}
+}
+
 .highlight-python .go,
 .highlight-pycon .go {
 	@apply select-none;
@@ -45,15 +53,11 @@ pre {
 	@apply mt-6 overflow-x-auto rounded-lg border border-border py-4 text-sm;
 
 	&.literal-block {
-		@apply relative px-4;
-
-		&:hover .copy {
-			@apply opacity-100;
-		}
+		@apply px-4;
 	}
 
 	& code {
-		@apply whitespace-pre bg-transparent p-0;
+		@apply block whitespace-pre bg-transparent p-0 min-w-fit;
 
 		& > [id^="line-"] {
 			@apply block px-4;

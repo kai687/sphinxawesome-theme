@@ -17,6 +17,18 @@ export function addCodeButtons() {
 		if (item.closest(".cell_output")) {
 			return;
 		}
+
+		// For pre.literal-block, wrap in a div so the copy button
+		// stays fixed when the pre block scrolls horizontally.
+		if (item.matches("pre.literal-block")) {
+			const wrapper = document.createElement("div");
+			wrapper.className = "literal-block-copy-wrapper";
+			item.parentNode.insertBefore(wrapper, item);
+			wrapper.appendChild(item);
+			wrapper.insertAdjacentHTML("beforeend", btn);
+			return;
+		}
+
 		const pre = item.querySelector("pre");
 		if (pre) {
 			pre.insertAdjacentHTML("beforeend", btn);

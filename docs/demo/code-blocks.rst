@@ -158,7 +158,7 @@ The following example is for testing the previous options with line numbers:
    print("Emphasized line of code")
    print("Normal line of code")
 
-Highlighting short lines doesn't work well if you also have long, overflowing lines:
+Highlighting works across the full width of the code block, even when long lines cause horizontal scrolling:
 
 .. code-block::
    :caption: A really long line
@@ -264,6 +264,10 @@ If you don't include any markup, the content is rendered with syntax highlightin
 .. parsed-literal::
 
    print("Hello world")
+
+.. parsed-literal::
+
+   This is a very long line that should definitely overflow the pre block container and cause horizontal scrolling to verify that the copy button stays fixed in place on the right side instead of scrolling away with the content
 
 .. seealso::
 
