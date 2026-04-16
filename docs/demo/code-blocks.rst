@@ -265,6 +265,10 @@ If you don't include any markup, the content is rendered with syntax highlightin
 
    print("Hello world")
 
+.. parsed-literal::
+
+   This is a very long line that should definitely overflow the pre block container and cause horizontal scrolling to verify that the copy button stays fixed in place on the right side instead of scrolling away with the content
+
 .. seealso::
 
    `Parsed-literal directive (docutils) <https://docutils.sourceforge.io/docs/ref/rst/directives.html#code>`_
