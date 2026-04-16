@@ -1,8 +1,117 @@
 /* Overrides for the `myst-nb` extension */
+@reference "tailwindcss";
+@reference "./theme.css";
+
+/* --- CSS variable overrides --- */
 :root {
-	--mystnb-stdout-bg-color: hsl(var(--background));
-	--mystnb-stdout-border-color: hsl(var(--border));
-	--mystnb-source-bg-color: hsl(var(--background));
+	--mystnb-source-bg-color: hsl(var(--muted));
 	--mystnb-source-border-color: hsl(var(--border));
-	--mystnb-source-border-radius: var(--radius);
+	--mystnb-source-margin-color: hsl(var(--border));
+	--mystnb-source-border-radius: calc(var(--radius) - 2px);
+	--mystnb-source-border-width: 1px;
+	--mystnb-stdout-bg-color: hsl(var(--muted) / 0.5);
+	--mystnb-stdout-border-color: hsl(var(--border));
+	--mystnb-stderr-bg-color: hsl(0 80% 95%);
+	--mystnb-stderr-border-color: hsl(0 60% 85%);
+	--mystnb-traceback-bg-color: hsl(0 80% 97%);
+	--mystnb-traceback-border-color: hsl(0 60% 85%);
+	--mystnb-scrollbar-thumb-color: hsl(var(--muted-foreground));
+	--mystnb-scrollbar-thumb-hover-color: hsl(var(--foreground));
+}
+
+:root.dark {
+	--mystnb-source-bg-color: hsl(var(--muted));
+	--mystnb-source-border-color: hsl(var(--border));
+	--mystnb-source-margin-color: hsl(var(--border));
+	--mystnb-stdout-bg-color: hsl(var(--muted) / 0.5);
+	--mystnb-stdout-border-color: hsl(var(--border));
+	--mystnb-stderr-bg-color: hsl(0 40% 12%);
+	--mystnb-stderr-border-color: hsl(0 40% 22%);
+	--mystnb-traceback-bg-color: hsl(0 40% 10%);
+	--mystnb-traceback-border-color: hsl(0 40% 22%);
+	--mystnb-scrollbar-thumb-color: hsl(var(--muted-foreground));
+	--mystnb-scrollbar-thumb-hover-color: hsl(var(--foreground));
+}
+
+/* --- Fix container class conflict --- */
+div.cell.container,
+div.cell_input.container,
+div.cell_output.container {
+	max-width: none;
+	padding-inline: 0;
+	margin-inline: 0;
+}
+
+/* --- Cell wrapper --- */
+div.container.cell {
+	@apply my-6 p-0;
+}
+
+/* --- Input cells --- */
+div.cell > div.cell_input {
+	@apply rounded-md border border-border text-sm;
+	background-color: var(--mystnb-source-bg-color);
+}
+
+div.cell_input pre {
+	@apply m-0 border-none rounded-none bg-transparent py-4;
+}
+
+div.cell_input div.highlight {
+	@apply m-0 bg-transparent;
+}
+
+/* --- Output cells --- */
+div.cell_output {
+	@apply p-0 mt-0;
+}
+
+div.cell_output > .output {
+	@apply rounded-md border border-border text-sm;
+	background-color: var(--mystnb-stdout-bg-color);
+}
+
+div.cell_output > .output.stderr {
+	background-color: var(--mystnb-stderr-bg-color);
+	border-color: var(--mystnb-stderr-border-color);
+}
+
+div.cell_output > .output.traceback {
+	background-color: var(--mystnb-traceback-bg-color);
+	border-color: var(--mystnb-traceback-border-color);
+}
+
+div.cell_output pre {
+	@apply mt-0 border-none rounded-none bg-transparent py-4;
+}
+
+div.cell_output div.highlight {
+	@apply m-0 bg-transparent;
+}
+
+/* --- Connected input + output: join as one visual block --- */
+div.cell:has(> .cell_output) > .cell_input {
+	@apply rounded-b-none border-b-0;
+}
+
+div.cell > .cell_output > .output:first-child {
+	@apply rounded-t-none;
+	border-top: 1px dashed hsl(var(--border));
+}
+
+/* --- Pandas tables in cell output (fix hardcoded colors) --- */
+div.cell_output table {
+	color: inherit;
+}
+
+div.cell_output thead {
+	@apply border-b border-border;
+}
+
+div.cell_output tbody tr:nth-child(odd) {
+	background: hsl(var(--muted));
+}
+
+div.cell_output tbody tr:hover {
+	background: hsl(var(--accent));
 }

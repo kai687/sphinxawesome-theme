@@ -14,6 +14,9 @@ export function addCodeButtons() {
 	}
 
 	highlighted.forEach((item) => {
+		if (item.closest(".cell_output")) {
+			return;
+		}
 		const pre = item.querySelector("pre");
 		if (pre) {
 			pre.insertAdjacentHTML("beforeend", btn);

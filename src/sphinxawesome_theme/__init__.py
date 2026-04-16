@@ -139,8 +139,8 @@ def setup(app: Sphinx) -> dict[str, Any]:
     app.connect("build-finished", post_process_html)
 
     JSONHTMLBuilder.out_suffix = ".json"
-    JSONHTMLBuilder.implementation = jsonimpl
-    JSONHTMLBuilder.indexer_format = jsonimpl
+    JSONHTMLBuilder.implementation = jsonimpl  # type: ignore
+    JSONHTMLBuilder.indexer_format = jsonimpl  # type: ignore
 
     return {
         "version": __version__,
