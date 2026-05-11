@@ -20,7 +20,7 @@ jobs:
 
       - name: Install mini-crawler
         env:
-          MINI_CRAWLER_VERSION: 0.1.0
+          MINI_CRAWLER_VERSION: 0.2.0
         run: |
           set -euo pipefail
           archive="mini-crawler_${MINI_CRAWLER_VERSION}_linux_amd64.tar.gz"
