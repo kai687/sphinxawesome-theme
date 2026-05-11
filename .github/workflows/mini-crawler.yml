@@ -62,7 +62,7 @@ jobs:
 
       - name: Update index settings
         run: |
-          algolia settings set "${INDEX_NAME}" \
+          algolia settings import "${INDEX_NAME}" \
             --application-id "${ALGOLIA_APPLICATION_ID}" \
             --api-key "${ALGOLIA_API_KEY}" \
             --file .github/crawler/settings.json
