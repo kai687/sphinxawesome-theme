@@ -66,4 +66,8 @@ jobs:
             --application-id "${ALGOLIA_APPLICATION_ID}" \
             --api-key "${ALGOLIA_API_KEY}" \
             --file .github/crawler/settings.json
+        env:
+          ALGOLIA_APPLICATION_ID: ${{ secrets.ALGOLIA_APP_ID }}
+          ALGOLIA_API_KEY: ${{ secrets.INDEXING_API_KEY }}
+          INDEX_NAME: ${{ vars.TMP_INDEX_NAME }}
 
