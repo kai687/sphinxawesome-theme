@@ -89,15 +89,19 @@ def docsearch_records(doc, ctx, lvl0):
         for key in ["lvl0", "lvl1", "lvl2", "lvl3", "lvl4", "lvl5", "lvl6"]:
             if key in hierarchy:
                 record_hierarchy[key] = hierarchy[key]
+            else:
+                record_hierarchy[key] = None
 
-        heading_records.append({
-            "anchor": anchor,
-            "hierarchy": record_hierarchy,
-            "objectID": str(position) + "-" + base_url,
-            "type": "lvl" + str(level),
-            "url": record_url,
-            "url_without_anchor": base_url,
-        })
+        heading_records.append(docsearch_record(
+            anchor,
+            None,
+            record_hierarchy,
+            position,
+            "lvl" + str(level),
+            record_url,
+            base_url,
+            100 - (level * 10),
+        ))
         position += 1
 
         # Index content from `p` and `li`.
@@ -119,15 +123,42 @@ def docsearch_records(doc, ctx, lvl0):
                 parts.append(value)
         content = "\r\n".join(parts)
         if content != "":
-            content_records.append({
-                "anchor": anchor,
-                "content": content,
-                "hierarchy": record_hierarchy,
-                "objectID": str(position) + "-" + base_url,
-                "type": "content",
-                "url": record_url,
-                "url_without_anchor": base_url,
-            })
+            content_records.append(docsearch_record(
+                anchor,
+                content,
+                record_hierarchy,
+                position,
+                "content",
+                record_url,
+                base_url,
+                0,
+            ))
             position += 1
 
     return heading_records + content_records
+
+
+def docsearch_record(anchor, content, hierarchy, position, record_type, url, base_url, level_weight):
+    """Return a DocSearch v3-compatible record."""
+    return {
+        "anchor": anchor,
+        "content": content,
+        "content_camel": content,
+        "hierarchy": hierarchy,
+        "lang": "en",
+        "language": "en",
+        "no_variables": False,
+        "objectID": str(position) + "-" + base_url,
+        "recordVersion": "v3",
+        "tags": [],
+        "type": record_type,
+        "url": url,
+        "url_without_anchor": base_url,
+        "url_without_variables": url,
+        "version": "",
+        "weight": {
+            "level": level_weight,
+            "pageRank": 0,
+            "position": position,
+        },
+    }
