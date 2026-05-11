@@ -1,0 +1,44 @@
+name: Index the docs
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/crawler/**"
+      - ".github/workflows/mini-crawler.yml"
+      - "docs/**"
+
+jobs:
+  index-temp:
+    name: Index docs into temporary Algolia index
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v6
+
+      - name: Set up Go
+        uses: actions/setup-go@v6
+        with:
+          go-version: stable
+
+      - name: Install mini-crawler
+        run: go install github.com/kai687/mini-crawler@latest
+
+      - name: Install Algolia CLI
+        run: go install github.com/algolia/cli/cmd/algolia@latest
+
+      - name: Check extraction script
+        run: mini-crawler script check --script .github/crawler/sphinxawesome.star
+
+      - name: Crawl and upload records to temporary Algolia index
+        run: |
+          mini-crawler crawl sitemap https://sphinxawesome.xyz/sitemap.xml \
+            --script .github/crawler/sphinxawesome.star \
+            --workers 2 \
+            | algolia objects import "$INDEX_NAME" -F -
+        env:
+          ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
+          ALGOLIA_API_KEY: ${{ secrets.ALGOLIA_API_KEY }}
+          INDEX_NAME: ${{ vars.TMP_INDEX_NAME }}
