@@ -45,7 +45,7 @@ jobs:
         run: |
           mini-crawler crawl sitemap https://sphinxawesome.xyz/sitemap.xml \
             --script .github/crawler/sphinxawesome.star \
-            --workers 2
+            --workers 2 \
             | algolia objects import "${INDEX_NAME}-tmp" \
               --application-id "${ALGOLIA_APPLICATION_ID}" \
               --api-key "${ALGOLIA_API_KEY}" \
