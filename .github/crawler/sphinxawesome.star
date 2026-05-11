@@ -94,7 +94,9 @@ def docsearch_records(doc, ctx, lvl0):
             "anchor": anchor,
             "hierarchy": record_hierarchy,
             "objectID": str(position) + "-" + base_url,
+            "type": "lvl" + str(level),
             "url": record_url,
+            "url_without_anchor": base_url,
         })
         position += 1
 
@@ -103,6 +105,7 @@ def docsearch_records(doc, ctx, lvl0):
         # subsection content. Direct-child selectors would miss wrapped content
         # such as lists/admonitions. Build a selector for deeper nested sections
         # and skip nodes that belong to those subsections.
+        parts = []
         nested_section_parts = []
         for i in range(level + 1):
             nested_section_parts.append("section")
@@ -111,15 +114,20 @@ def docsearch_records(doc, ctx, lvl0):
         for node in section.select("p, li"):
             if nested_section_selector != "" and has_parent(node, nested_section_selector):
                 continue
-            content = escape_html(trim(text(node)))
-            if content != "":
-                content_records.append({
-                    "anchor": anchor,
-                    "content": content,
-                    "hierarchy": record_hierarchy,
-                    "objectID": str(position) + "-" + base_url,
-                    "url": record_url,
-                })
-                position += 1
+            value = escape_html(trim(text(node)))
+            if value != "":
+                parts.append(value)
+        content = "\r\n".join(parts)
+        if content != "":
+            content_records.append({
+                "anchor": anchor,
+                "content": content,
+                "hierarchy": record_hierarchy,
+                "objectID": str(position) + "-" + base_url,
+                "type": "content",
+                "url": record_url,
+                "url_without_anchor": base_url,
+            })
+            position += 1
 
     return heading_records + content_records
