@@ -37,8 +37,11 @@ jobs:
           mini-crawler crawl sitemap https://sphinxawesome.xyz/sitemap.xml \
             --script .github/crawler/sphinxawesome.star \
             --workers 2 \
-            | algolia objects import "$INDEX_NAME" -F -
+            | algolia objects import "${INDEX_NAME}" \
+              --application-id "${ALGOLIA_APPLICATION_ID}" \
+              --api-key "${ALGOLIA_API_KEY}" \
+              --file -
         env:
-          ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
+          ALGOLIA_APPLICATION_ID: ${{ secrets.ALGOLIA_APP_ID }}
           ALGOLIA_API_KEY: ${{ secrets.ALGOLIA_API_KEY }}
           INDEX_NAME: ${{ vars.TMP_INDEX_NAME }}
