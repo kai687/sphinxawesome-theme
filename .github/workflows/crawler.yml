@@ -2,17 +2,12 @@ name: Index the docs
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
-    paths:
-      - ".github/crawler/**"
-      - ".github/workflows/mini-crawler.yml"
-      - "docs/**"
+  repository_dispatch:
+    types: [site_deployed]
 
 jobs:
-  index-temp:
-    name: Index docs into temporary Algolia index
+  index:
+    name: Crawl the docs and upload to Algolia
     runs-on: ubuntu-latest
     steps:
       - name: Check out repo
