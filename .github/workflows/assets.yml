@@ -22,7 +22,7 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
       - uses: actions/setup-node@v6
-      - uses: pnpm/action-setup@v6.0.3
+      - uses: pnpm/action-setup@v6.0.4
         with:
           version: latest
           run_install: false
