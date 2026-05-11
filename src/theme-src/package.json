@@ -19,14 +19,14 @@
 	"devDependencies": {
 		"@biomejs/biome": "^2.4.14",
 		"@fontsource/jetbrains-mono": "^5.2.8",
-		"@rspack/cli": "^2.0.1",
-		"@rspack/core": "^2.0.1",
-		"@tailwindcss/postcss": "^4.2.4",
+		"@rspack/cli": "^2.0.2",
+		"@rspack/core": "^2.0.2",
+		"@tailwindcss/postcss": "^4.3.0",
 		"css-loader": "^7.1.4",
-		"cssnano": "^7.1.7",
-		"postcss": "^8.5.13",
+		"cssnano": "^8.0.1",
+		"postcss": "^8.5.14",
 		"postcss-loader": "^8.2.1",
-		"tailwindcss": "^4.2.4",
+		"tailwindcss": "^4.3.0",
 		"webpack-remove-empty-scripts": "^1.1.1"
 	}
 }
