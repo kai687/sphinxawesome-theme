@@ -9,34 +9,57 @@ jobs:
   index:
     name: Crawl the docs and upload to Algolia
     runs-on: ubuntu-latest
+    env:
+      MINI_CRAWLER_VERSION: 0.2.0
+      ALGOLIA_CLI_VERSION: 1.8.2
     steps:
       - name: Check out repo
         uses: actions/checkout@v6
 
+      - name: Cache CLI tools
+        id: cache-cli-tools
+        uses: actions/cache@v4
+        with:
+          path: .tools
+          key: ${{ runner.os }}-cli-tools-mini-crawler-${{ env.MINI_CRAWLER_VERSION }}-algolia-${{ env.ALGOLIA_CLI_VERSION }}
+
+      - name: Add CLI tools to PATH
+        run: |
+          echo "${GITHUB_WORKSPACE}/.tools/mini-crawler/bin" >> "${GITHUB_PATH}"
+          echo "${GITHUB_WORKSPACE}/.tools/algolia/bin" >> "${GITHUB_PATH}"
+
       - name: Install mini-crawler
+        if: steps.cache-cli-tools.outputs.cache-hit != 'true'
         env:
-          MINI_CRAWLER_VERSION: 0.2.0
+          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           archive="mini-crawler_${MINI_CRAWLER_VERSION}_linux_amd64.tar.gz"
-          base_url="https://github.com/kai687/mini-crawler/releases/download/v${MINI_CRAWLER_VERSION}"
-          curl -fsSLO "${base_url}/${archive}"
-          curl -fsSLO "${base_url}/checksums.txt"
+          install_dir="${GITHUB_WORKSPACE}/.tools/mini-crawler/bin"
+          mkdir -p "${install_dir}"
+          gh release download "v${MINI_CRAWLER_VERSION}" \
+            --repo kai687/mini-crawler \
+            --pattern "${archive}" \
+            --pattern checksums.txt
           grep " ${archive}$" checksums.txt | sha256sum -c -
-          sudo tar -xzf "${archive}" -C /usr/local/bin mini-crawler
+          tar -xzf "${archive}" -C "${install_dir}" mini-crawler
 
       - name: Install Algolia CLI
+        if: steps.cache-cli-tools.outputs.cache-hit != 'true'
         env:
-          ALGOLIA_CLI_VERSION: 1.8.2
+          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           archive="algolia_${ALGOLIA_CLI_VERSION}_linux_amd64.tar.gz"
           dirname="algolia_${ALGOLIA_CLI_VERSION}_linux_amd64"
-          base_url="https://github.com/algolia/cli/releases/download/v${ALGOLIA_CLI_VERSION}"
-          curl -fsSLO "${base_url}/${archive}"
-          curl -fsSLO "${base_url}/algolia_${ALGOLIA_CLI_VERSION}_checksums.txt"
+          install_dir="${GITHUB_WORKSPACE}/.tools/algolia/bin"
+          mkdir -p "${install_dir}"
+          gh release download "v${ALGOLIA_CLI_VERSION}" \
+            --repo algolia/cli \
+            --pattern "${archive}" \
+            --pattern "algolia_${ALGOLIA_CLI_VERSION}_checksums.txt"
           grep " ${archive}$" "algolia_${ALGOLIA_CLI_VERSION}_checksums.txt" | sha256sum -c -
-          sudo tar -xzf "${archive}" -C /usr/local/bin --strip-components=1 "${dirname}/algolia"
+          tar -xzf "${archive}" -C "${install_dir}" --strip-components=1 "${dirname}/algolia"
 
       - name: Check extraction script
         run: mini-crawler script check --script .github/crawler/sphinxawesome.star
