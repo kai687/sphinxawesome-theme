@@ -1,42 +1,4 @@
-const SITE_ORIGIN = "https://sphinxawesome-theme.netlify.app";
-
-const getHeader = (headers, name) => {
-  const lowerName = name.toLowerCase();
-  const entry = Object.entries(headers ?? {}).find(
-    ([key]) => key.toLowerCase() === lowerName
-  );
-
-  return entry?.[1];
-};
-
-const isAllowedReferrer = (referrer) => {
-  if (!referrer) {
-    return false;
-  }
-
-  try {
-    return new URL(referrer).origin === SITE_ORIGIN;
-  } catch {
-    return false;
-  }
-};
-
-export const handler = async (event) => {
-  const origin = getHeader(event.headers, "origin");
-  const referrer = getHeader(event.headers, "referer");
-  const forwardedFor = getHeader(event.headers, "x-forwarded-for");
-  const callerIp = forwardedFor?.split(",")[0]?.trim() ?? "unknown";
-  const userAgent = getHeader(event.headers, "user-agent") ?? "unknown";
-
-  console.info("trigger-crawl request", {
-    callerIp,
-    userAgent,
-  });
-
-  if (origin !== SITE_ORIGIN || !isAllowedReferrer(referrer)) {
-    return { statusCode: 403 };
-  }
-
+export const handler = async () => {
   const res = await fetch(
     "https://api.github.com/repos/kai687/sphinxawesome-theme/dispatches",
     {
