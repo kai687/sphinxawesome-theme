@@ -19,8 +19,8 @@
 	"devDependencies": {
 		"@biomejs/biome": "^2.4.15",
 		"@fontsource/jetbrains-mono": "^5.2.8",
-		"@rspack/cli": "^2.0.2",
-		"@rspack/core": "^2.0.2",
+		"@rspack/cli": "^2.0.3",
+		"@rspack/core": "^2.0.3",
 		"@tailwindcss/postcss": "^4.3.0",
 		"css-loader": "^7.1.4",
 		"cssnano": "^8.0.1",
