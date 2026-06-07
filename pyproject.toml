@@ -64,7 +64,7 @@ sources = ["src"]
 dev-mode-dirs = ["src"]
 
 [tool.hatch.build.targets.wheel]
-packages = ["sphinxawesome_theme"]
+packages = ["src/sphinxawesome_theme"]
 
 [tool.hatch.build.targets.sdist]
 packages = ["src/sphinxawesome_theme"]
