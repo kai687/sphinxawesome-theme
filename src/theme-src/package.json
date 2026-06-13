@@ -17,16 +17,16 @@
 		"clipboard": "^2.0.11"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "^2.4.16",
+		"@biomejs/biome": "^2.5.0",
 		"@fontsource/jetbrains-mono": "^5.2.8",
-		"@rspack/cli": "^2.0.6",
-		"@rspack/core": "^2.0.6",
-		"@tailwindcss/postcss": "^4.3.0",
+		"@rspack/cli": "^2.0.8",
+		"@rspack/core": "^2.0.8",
+		"@tailwindcss/postcss": "^4.3.1",
 		"css-loader": "^7.1.4",
-		"cssnano": "^8.0.1",
+		"cssnano": "^8.0.2",
 		"postcss": "^8.5.15",
 		"postcss-loader": "^8.2.1",
-		"tailwindcss": "^4.3.0",
+		"tailwindcss": "^4.3.1",
 		"webpack-remove-empty-scripts": "^1.1.1"
 	}
 }
