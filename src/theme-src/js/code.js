@@ -39,7 +39,7 @@ export function addCodeButtons() {
 
 	const clipboard = new ClipboardJS("button.copy", {
 		target: (trigger) => {
-			return trigger.parentElement.querySelector("code") ?? trigger.previousElementSibling;
+			return trigger.previousElementSibling ?? trigger.parentElement.querySelector("code");
 		},
 	});
 
