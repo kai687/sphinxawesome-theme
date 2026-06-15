@@ -66,9 +66,7 @@ def get_html_files(outdir: pathlib.Path | str) -> list[str]:
     """Get a list of HTML files."""
     html_list = []
     for root, _, files in os.walk(outdir):
-        html_list.extend(
-            [os.path.join(root, file) for file in files if file.endswith(".html")]
-        )
+        html_list.extend([os.path.join(root, file) for file in files if file.endswith(".html")])
     return html_list
 
 
@@ -82,9 +80,7 @@ def collapsible_nav(tree: BeautifulSoup) -> None:
             # State must be available in the link and the list
             li = link.parent
             if li:
-                li["x-data"] = (
-                    "{ expanded: $el.classList.contains('current') ? true : false }"
-                )
+                li["x-data"] = "{ expanded: $el.classList.contains('current') ? true : false }"
             link["@click"] = "expanded = !expanded"
             # The expandable class is a hack because we can't use Tailwind
             # I want to have _only_ expandable links with `justify-between`
@@ -140,13 +136,9 @@ def headerlinks(tree: BeautifulSoup) -> None:
 def scrollspy(tree: BeautifulSoup) -> None:
     """Add an active class to current TOC links in the right sidebar."""
     for link in tree("a", class_="headerlink"):
-        if link.parent.name in ["h2", "h3"] or (
-            link.parent.name == "dt" and "sig" in link.parent.get("class", "")
-        ):
+        if link.parent.name in ["h2", "h3"] or (link.parent.name == "dt" and "sig" in link.parent.get("class", "")):
             active_link = link["href"]
-            link["x-intersect.margin.0%.0%.-70%.0%"] = (
-                f"activeSection = '{active_link}'"
-            )
+            link["x-intersect.margin.0%.0%.-70%.0%"] = f"activeSection = '{active_link}'"
 
     for link in tree.select("#right-sidebar a"):
         active_link = link["href"]
@@ -215,9 +207,7 @@ def post_process_html(app: Sphinx, exc: Exception | None) -> None:
     builder = cast(StandaloneHTMLBuilder, app.builder)
     env = cast(AwesomeBuildEnvironment, app.env)
 
-    files_to_postprocess = [
-        builder.get_outfilename(doc) for doc in env.awesome_changed_docs
-    ]
+    files_to_postprocess = [builder.get_outfilename(doc) for doc in env.awesome_changed_docs]
 
     if len(files_to_postprocess) == 0:
         return

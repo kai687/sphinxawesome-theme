@@ -66,10 +66,7 @@ def test_includes_only_one_html_logo(app: Sphinx, warning: StringIO) -> None:
     assert len(sidebar) == 1
 
     warnings = warning.getvalue()
-    assert (
-        "Conflicting theme options: use either `html_logo` or `logo_light` and `logo_dark`."
-        in warnings
-    )
+    assert "Conflicting theme options: use either `html_logo` or `logo_light` and `logo_dark`." in warnings
 
 
 @pytest.mark.sphinx(

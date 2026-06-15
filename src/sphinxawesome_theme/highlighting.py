@@ -38,9 +38,7 @@ TokenType = _TokenType | int
 TokenStream = Generator[tuple[TokenType, str], None, None]
 
 
-def _replace_placeholders(
-    ttype: TokenType, value: str, regex: Pattern[str]
-) -> TokenStream:
+def _replace_placeholders(ttype: TokenType, value: str, regex: Pattern[str]) -> TokenStream:
     """Replace every occurence of ``regex`` with ``Generic.Emph`` token."""
     last = 0
     for match in regex.finditer(value):
@@ -71,9 +69,7 @@ class AwesomePlaceholders(Filter):
         """Create an instance of the ``AwesomePlaceholders`` filter."""
         Filter.__init__(self, **options)
         placeholders = get_list_opt(options, "hl_text", [])
-        self.placeholders_re = re.compile(
-            r"|".join([re.escape(x) for x in placeholders if x])
-        )
+        self.placeholders_re = re.compile(r"|".join([re.escape(x) for x in placeholders if x]))
 
     def filter(  # type: ignore
         self, lexer: Any, stream: TokenStream
