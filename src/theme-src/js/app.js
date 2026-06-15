@@ -9,7 +9,7 @@ import "../css/styles.css";
 import intersect from "@alpinejs/intersect";
 import persist from "@alpinejs/persist";
 import Alpine from "alpinejs";
-import { addCodeButtons } from "./code";
+import { addCodeButtons } from "./code.js";
 
 window.Alpine = Alpine;
 Alpine.plugin([intersect, persist]);
