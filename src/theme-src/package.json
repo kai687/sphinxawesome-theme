@@ -1,7 +1,7 @@
 {
 	"name": "sphinxawesome-theme",
   "type": "module",
-	"version": "6.0.4",
+	"version": "6.0.5",
 	"private": true,
 	"scripts": {
 		"build": "rspack build",
