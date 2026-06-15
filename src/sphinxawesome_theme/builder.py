@@ -61,7 +61,5 @@ class AwesomeHTMLBuilder(StandaloneHTMLBuilder):
             stylesheet += self.dark_highlighter.get_stylesheet()
             stylesheet += "\n}"
 
-        with open(
-            path.join(self.outdir, "_static", "pygments.css"), "w", encoding="utf-8"
-        ) as f:
+        with open(path.join(self.outdir, "_static", "pygments.css"), "w", encoding="utf-8") as f:
             f.write(stylesheet)

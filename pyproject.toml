@@ -60,14 +60,18 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build]
-sources = ["src"]
 dev-mode-dirs = ["src"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/sphinxawesome_theme"]
 
 [tool.hatch.build.targets.sdist]
-packages = ["src/sphinxawesome_theme"]
+include = [
+  "/LICENSE",
+  "/README.md",
+  "/pyproject.toml",
+  "/src/sphinxawesome_theme",
+]
 
 [tool.hatch.envs.default]
 installer = "uv"

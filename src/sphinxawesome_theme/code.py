@@ -64,8 +64,7 @@ class AwesomeCodeBlock(CodeBlock):
             line_numbers = parselinenos(linespec, nlines)
             if any(i >= nlines for i in line_numbers):
                 logger.warning(
-                    __("line number spec is out of range(1-%d): %r")
-                    % (nlines, linespec),
+                    __("line number spec is out of range(1-%d): %r") % (nlines, linespec),
                     location=location,
                 )
             return [i + 1 for i in line_numbers if i < nlines]

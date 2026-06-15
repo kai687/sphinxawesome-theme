@@ -149,11 +149,7 @@ templates_path = ["_templates"]
 # html_js_files = [("feedback.js", {"defer": "defer"})]
 
 # Use dummy values in local development
-if (
-    os.getenv("CI") == "true"
-    or os.getenv("NETLIFY") == "true"
-    or os.getenv("NEEDS_ENV") == "true"
-):
+if os.getenv("CI") == "true" or os.getenv("NETLIFY") == "true" or os.getenv("NEEDS_ENV") == "true":
     default_value = ""
 else:
     default_value = "foo"
@@ -165,9 +161,7 @@ docsearch_index_name = os.getenv("DOCSEARCH_INDEX_NAME", default_value)
 
 
 docsearch_placeholder = "Search these docs"
-docsearch_missing_results_url = (
-    "https://github.com/kai687/sphinxawesome-theme/issues/new?title=${query}"
-)
+docsearch_missing_results_url = "https://github.com/kai687/sphinxawesome-theme/issues/new?title=${query}"
 
 theme_options = ThemeOptions(
     show_prev_next=True,
