@@ -18,7 +18,7 @@ jobs:
         working-directory: src/theme-src
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           ref: ${{ github.head_ref }}
       - uses: actions/setup-node@v6
