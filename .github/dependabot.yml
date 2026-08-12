@@ -4,6 +4,8 @@ updates:
     directory: "/src/theme-src"
     schedule:
       interval: weekly
+    cooldown:
+      default-days: 2
     assignees:
       - kai687
     groups:
