@@ -12,16 +12,16 @@
 	"author": "Kai Welke",
 	"license": "MIT",
 	"dependencies": {
-		"@alpinejs/intersect": "^3.15.12",
-		"@alpinejs/persist": "^3.15.12",
-		"alpinejs": "^3.15.12",
+		"@alpinejs/intersect": "^3.16.1",
+		"@alpinejs/persist": "^3.16.1",
+		"alpinejs": "^3.16.1",
 		"clipboard": "^2.0.11"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "^2.5.7",
+		"@biomejs/biome": "^2.5.8",
 		"@fontsource/jetbrains-mono": "^5.3.0",
-		"@rspack/cli": "^2.1.8",
-		"@rspack/core": "^2.1.8",
+		"@rspack/cli": "^2.1.9",
+		"@rspack/core": "^2.1.9",
 		"@tailwindcss/postcss": "^4.3.3",
 		"css-loader": "^7.1.4",
 		"cssnano": "^8.0.5",
