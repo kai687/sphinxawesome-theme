@@ -1,6 +1,6 @@
 {
 	"name": "sphinxawesome-theme",
-  "type": "module",
+	"type": "module",
 	"version": "6.0.5",
 	"private": true,
 	"scripts": {
@@ -20,11 +20,11 @@
 	"devDependencies": {
 		"@biomejs/biome": "^2.5.14",
 		"@fontsource/jetbrains-mono": "^5.3.0",
-		"@rspack/cli": "^2.2.5",
-		"@rspack/core": "^2.2.5",
+		"@rspack/cli": "^2.2.6",
+		"@rspack/core": "^2.2.6",
 		"@tailwindcss/postcss": "^4.3.3",
 		"css-loader": "^7.1.5",
-		"cssnano": "^9.0.4",
+		"cssnano": "^9.0.5",
 		"postcss": "^8.5.28",
 		"postcss-loader": "^8.2.1",
 		"tailwindcss": "^4.3.3",
