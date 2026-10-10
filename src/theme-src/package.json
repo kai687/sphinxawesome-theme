@@ -24,8 +24,8 @@
 		"@rspack/core": "^2.2.8",
 		"@tailwindcss/postcss": "^4.3.3",
 		"css-loader": "^7.1.5",
-		"cssnano": "^9.2.2",
-		"postcss": "^8.5.28",
+		"cssnano": "^9.3.2",
+		"postcss": "^8.5.29",
 		"postcss-loader": "^8.2.1",
 		"tailwindcss": "^4.3.3",
 		"webpack-remove-empty-scripts": "^1.1.1"
