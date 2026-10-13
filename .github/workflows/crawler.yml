@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       MINI_CRAWLER_VERSION: 0.2.0
-      ALGOLIA_CLI_VERSION: 1.8.2
+      ALGOLIA_CLI_VERSION: 1.17.1
     steps:
       - name: Check out repo
         uses: actions/checkout@v7
@@ -63,6 +63,26 @@ jobs:
 
       - name: Check extraction script
         run: mini-crawler script check --script .github/crawler/sphinxawesome.star
+
+      - name: Check Algolia settings drift
+        env:
+          ALGOLIA_APPLICATION_ID: ${{ secrets.ALGOLIA_APP_ID }}
+          ALGOLIA_API_KEY: ${{ secrets.INDEXING_API_KEY }}
+          INDEX_NAME: ${{ vars.INDEX_NAME }}
+        run: |
+          set -euo pipefail
+
+          jq --sort-keys . .github/crawler/settings.json > expected-settings.json
+          algolia settings get "${INDEX_NAME}" \
+            --application-id "${ALGOLIA_APPLICATION_ID}" \
+            --api-key "${ALGOLIA_API_KEY}" \
+            --output json \
+            | jq --sort-keys . > actual-settings.json
+
+          if ! diff --unified expected-settings.json actual-settings.json; then
+            echo "::error::Algolia dashboard settings differ from settings.json"
+            exit 1
+          fi
 
       - name: Crawl and upload records to temporary Algolia index
         run: |
