@@ -27,7 +27,7 @@ The easiest way to install **all** dependencies is with mise_.
 
    .. code-block:: bash
 
-      hatch run lint:all
+      mise run quality
 
    This runs linting and type checking locally.
 
@@ -35,7 +35,7 @@ The easiest way to install **all** dependencies is with mise_.
 
    .. code-block:: bash
 
-      hatch env show
+      mise tasks
 
 #. Install JavaScript dependencies.
 

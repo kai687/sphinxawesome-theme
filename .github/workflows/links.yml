@@ -16,13 +16,11 @@ jobs:
           fetch-depth: 2
       - uses: astral-sh/setup-uv@v7
         with:
-          version: "latest"
-          python-version: "3.14"
+          version: "0.13.0"
+          python-version: "3.14.7"
           enable-cache: true
-      - name: Set up hatch
-        run: uv tool install hatch
       - name: Check links
-        run: hatch run docs:links
+        run: uv run --locked --no-default-groups --group docs sphinx-build -b linkcheck -aWTE docs docs/public/_links
         env:
           DOCSEARCH_APP_ID: ${{ vars.DOCSEARCH_APP_ID }}
           DOCSEARCH_API_KEY: ${{ vars.DOCSEARCH_API_KEY }}
