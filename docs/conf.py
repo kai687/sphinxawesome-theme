@@ -114,6 +114,13 @@ autoapi_add_toctree_entry = False
 
 add_module_names = False
 
+# -- Options for linkcheck ---
+
+# docutils.sourceforge.io returns 403 for Sphinx's default browser-like user agent
+linkcheck_request_headers = {
+    "https://docutils.sourceforge.io/": {"User-Agent": "Mozilla/5.0"},
+}
+
 # -- Options for HTML output ---
 
 html_title = project
