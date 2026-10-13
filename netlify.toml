@@ -1,0 +1,6 @@
+[build]
+command = "uv run --locked --no-default-groups --group docs sphinx-build -b dirhtml -aWTE docs docs/public"
+publish = "docs/public"
+
+[build.environment]
+PYTHON_VERSION = "3.14.7"
