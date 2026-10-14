@@ -68,7 +68,7 @@ jobs:
       - name: Check Algolia settings drift
         env:
           ALGOLIA_APPLICATION_ID: ${{ secrets.ALGOLIA_APP_ID }}
-          ALGOLIA_API_KEY: ${{ secrets.ALGOLIA_API_KEY }}
+          ALGOLIA_API_KEY: ${{ secrets.INDEXING_API_KEY }}
           INDEX_NAME: ${{ vars.INDEX_NAME }}
         run: algolia-rs settings diff "${INDEX_NAME}" --file .github/crawler/settings.json
 
@@ -88,13 +88,13 @@ jobs:
       - name: Replace records in Algolia index
         env:
           ALGOLIA_APPLICATION_ID: ${{ secrets.ALGOLIA_APP_ID }}
-          ALGOLIA_API_KEY: ${{ secrets.ALGOLIA_API_KEY }}
+          ALGOLIA_API_KEY: ${{ secrets.INDEXING_API_KEY }}
           INDEX_NAME: ${{ vars.INDEX_NAME }}
         run: algolia-rs records replace "${INDEX_NAME}" --file records.jsonl
 
       - name: Update index settings
         env:
           ALGOLIA_APPLICATION_ID: ${{ secrets.ALGOLIA_APP_ID }}
-          ALGOLIA_API_KEY: ${{ secrets.ALGOLIA_API_KEY }}
+          ALGOLIA_API_KEY: ${{ secrets.INDEXING_API_KEY }}
           INDEX_NAME: ${{ vars.INDEX_NAME }}
         run: algolia-rs settings apply "${INDEX_NAME}" --file .github/crawler/settings.json
