@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       MINI_CRAWLER_VERSION: 0.2.0
-      ALGOLIA_RS_VERSION: 0.1.2
+      ALGOLIA_RS_VERSION: 0.1.3
       MIN_RECORDS: 190
     steps:
       - name: Check out repo
