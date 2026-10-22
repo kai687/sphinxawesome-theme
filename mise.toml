@@ -1,8 +1,8 @@
 [tools]
-python = "3.14.7"
-uv = "0.13.0"
-node = "26.11.1"
-pnpm = "12.11.2"
+python = "3.15"
+uv = "0.13.5"
+node = "26.12.1"
+pnpm = "12.14.0"
 
 [tasks.format]
 description = "Format Python code"
@@ -25,16 +25,16 @@ description = "Run linting and type checking"
 run = "uv run --locked --no-default-groups --group dev --group docs ruff check . && uv run --locked --no-default-groups --group dev --group docs ty check"
 
 [tasks.test]
-description = "Run tests with Python 3.14"
-run = "uv run --locked --python 3.14.7 --no-default-groups --group dev --group docs pytest --cov"
+description = "Run tests with Python 3.15"
+run = "uv run --locked --python 3.15.1 --no-default-groups --group dev --group docs pytest --cov"
 
 [tasks."test-3.10"]
 description = "Run tests with Python 3.10 in an isolated environment"
 run = "uv run --locked --isolated --python 3.10.21 --no-default-groups --group dev --group docs pytest --cov"
 
 [tasks."test-3.14"]
-description = "Run tests with Python 3.14"
-run = "uv run --locked --python 3.14.7 --no-default-groups --group dev --group docs pytest --cov"
+description = "Run tests with Python 3.15"
+run = "uv run --locked --python 3.15.1 --no-default-groups --group dev --group docs pytest --cov"
 
 [tasks."docs:build"]
 description = "Build documentation"

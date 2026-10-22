@@ -1,6 +1,6 @@
 [project]
 name = "sphinxawesome-theme"
-version = "6.0.5"
+version = "6.0.6"
 description = "An awesome theme for the Sphinx documentation generator"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -16,6 +16,7 @@ classifiers = [
   "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3.13",
   "Programming Language :: Python :: 3.14",
+  "Programming Language :: Python :: 3.15",
   "Topic :: Documentation",
   "Topic :: Documentation :: Sphinx",
   "Topic :: Software Development :: Documentation",
