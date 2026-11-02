@@ -22,8 +22,8 @@ importers:
         version: 2.0.11
     devDependencies:
       '@biomejs/biome':
-        specifier: ^2.6.2
-        version: 2.6.2
+        specifier: ^2.6.4
+        version: 2.6.4
       '@fontsource/jetbrains-mono':
         specifier: ^5.3.0
         version: 5.3.0
@@ -38,22 +38,22 @@ importers:
         version: 4.3.3
       css-loader:
         specifier: ^7.1.5
-        version: 7.1.5(@rspack/core@2.2.9)(webpack@5.112.0(cssnano@9.9.0(postcss@8.5.31))(lightningcss@1.32.0)(postcss@8.5.31))
+        version: 7.1.5(@rspack/core@2.2.9)(webpack@5.112.0(cssnano@9.9.0(postcss@8.5.32))(lightningcss@1.32.0)(postcss@8.5.32))
       cssnano:
         specifier: ^9.9.0
-        version: 9.9.0(postcss@8.5.31)
+        version: 9.9.0(postcss@8.5.32)
       postcss:
-        specifier: ^8.5.31
-        version: 8.5.31
+        specifier: ^8.5.32
+        version: 8.5.32
       postcss-loader:
         specifier: ^8.2.1
-        version: 8.2.1(@rspack/core@2.2.9)(postcss@8.5.31)(webpack@5.112.0(cssnano@9.9.0(postcss@8.5.31))(lightningcss@1.32.0)(postcss@8.5.31))
+        version: 8.2.1(@rspack/core@2.2.9)(postcss@8.5.32)(webpack@5.112.0(cssnano@9.9.0(postcss@8.5.32))(lightningcss@1.32.0)(postcss@8.5.32))
       tailwindcss:
         specifier: ^4.3.3
         version: 4.3.3
       webpack-remove-empty-scripts:
         specifier: ^1.1.1
-        version: 1.1.1(webpack@5.112.0(cssnano@9.9.0(postcss@8.5.31))(lightningcss@1.32.0)(postcss@8.5.31))
+        version: 1.1.1(webpack@5.112.0(cssnano@9.9.0(postcss@8.5.32))(lightningcss@1.32.0)(postcss@8.5.32))
 
 packages:
 
@@ -75,71 +75,71 @@ packages:
     resolution: {integrity: sha512-qehxGkRj55h/ff8EMaJ+cYhyaKlHIxqYDn682wQD7RNp9UujOQsHog2uS0r2vzr4pW+sXf90NeeayjcNaX3fFg==}
     engines: {node: '>=6.9.0'}
 
-  '@biomejs/biome@2.6.2':
-    resolution: {integrity: sha512-JLTFAFF9vfJcWwLhwuL4ZHflLg+XfTEC4IUnAlJRX1cMRt57++Xd1Ysb9Fdmlh9YUrvyCXfPEHjjEIqKJGdPKw==}
+  '@biomejs/biome@2.6.4':
+    resolution: {integrity: sha512-8sKKwaNW4ot22awZ3lBjwWLHnUFXgXnrBPYS2gNlBAXRbDC++7kqjK2H7dR/FgCDtPvO1xfKpgEhJkGxAKYkxA==}
     engines: {node: '>=14.21.3'}
     hasBin: true
 
-  '@biomejs/cli-android-arm64@2.6.2':
-    resolution: {integrity: sha512-dMpdpH7zFEL5FxuIA9LJW+RoNyC3oeDB7PJyjqVVwtMNoKB5uo8OZYmrVSBikn71txzYwy/3xga7UME6bJQZ6A==}
+  '@biomejs/cli-android-arm64@2.6.4':
+    resolution: {integrity: sha512-jwrwigP4tBcHxzuV8izioX/BOUhJL/4e2rNSOE5nCjBkVC018LQAQUGiH+CNkFYvLtQ1dcZo5/xXERmaAGc7JQ==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [android]
 
-  '@biomejs/cli-android-x64@2.6.2':
-    resolution: {integrity: sha512-XCwEhPBGYzuRA502dRkCcQ+5cefQwuxQR7f9wa4do92dvIcuBL6VMLMFB/fL9hlpZ4dGSfHdpGFSIDlp52mg0A==}
+  '@biomejs/cli-android-x64@2.6.4':
+    resolution: {integrity: sha512-HdGInPJ4nZFwHxzvEtcp2nmSBtUyJrurmtIK43upFckuS3+ZqVM05HtsxQWnqGsuy/pxckIAjyKWlEKRlBXUyA==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [android]
 
-  '@biomejs/cli-darwin-arm64@2.6.2':
-    resolution: {integrity: sha512-rpXtabRgyZNz3aCjd/cRoSZGYi92R9eAXdUUe1sigIsRDyfMwgThaa98Yxt1fiZ7mxquqkAyIHIo08N/e1ToBA==}
+  '@biomejs/cli-darwin-arm64@2.6.4':
+    resolution: {integrity: sha512-0VvcUz46wbg59Q4TZ59KkIjDJrxEyu4Eoe79+F4SChxoWe+W7AEyIp6F5r72C9+p6MsB6dIovnZt1D30lGM3XA==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [darwin]
 
-  '@biomejs/cli-darwin-x64@2.6.2':
-    resolution: {integrity: sha512-7GGzlm1GxUKoQ9CNV8tQZ+XXad4sz+v+uzNsWlhaGjsnZqUOVBw1OmAMpG3uNV/Mr0UrCpRJvSK0qvfuqSQOjg==}
+  '@biomejs/cli-darwin-x64@2.6.4':
+    resolution: {integrity: sha512-fxmvkF81srlS3DiMyfm+aG3J0eG+6/BjaxRyjy57KbLSafnq0PO+hHfVWmtH2ty0S7nm6yDXBRwySfFeaRJKRQ==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [darwin]
 
-  '@biomejs/cli-linux-arm64-musl@2.6.2':
-    resolution: {integrity: sha512-I+FYCLVSmR3cYfKcQ+KNeLOZ5w0wRd9fQFlw3JbSvy7bkegvTqdHaBRRcJzHQB/1ldldTLIcG21ka6X2cTWmJw==}
+  '@biomejs/cli-linux-arm64-musl@2.6.4':
+    resolution: {integrity: sha512-31ZaH/MHqPX+O+evRwRrCHQ8W5/9adY+/eMytGGWZnRx1T41QsWIF09+/WujynLBhWZUxNGS5CtsWLwgOFTAyg==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [linux]
     libc: [musl]
 
-  '@biomejs/cli-linux-arm64@2.6.2':
-    resolution: {integrity: sha512-Qs4CofCE8MdkjZFfEjswh2NAcbyQ7IVYtGSzQBvLqFlla/CSXroGbktUFndWG/kVSTywadauzAspYWtSfqAc2g==}
+  '@biomejs/cli-linux-arm64@2.6.4':
+    resolution: {integrity: sha512-6+bK1Y/evmIUiJr7auertuMbiaYVicJhqA1bZyL47lCMWugv8l0gFQCqvR/gN1vZMHYm+HwoTKgeMxdNFCoQTg==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [linux]
     libc: [glibc]
 
-  '@biomejs/cli-linux-x64-musl@2.6.2':
-    resolution: {integrity: sha512-wnjEXAK2pDd2j8r9gKI3L+44sIxjkYzS5aHmD1+K57RNJ3sFyT4n22NH6QFPqqeVdRBxN54H3kckUUCrFKCcJw==}
+  '@biomejs/cli-linux-x64-musl@2.6.4':
+    resolution: {integrity: sha512-bomSa2XdQAGGj6Cwdm4M13qE+lN9+AOlW8KtI4hdyVyRRF/Z71qPAi95T4wtdZK0QpBbkTW8hgbZZCwPi4xzIw==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [linux]
     libc: [musl]
 
-  '@biomejs/cli-linux-x64@2.6.2':
-    resolution: {integrity: sha512-FJKsb95418139xDdbv9XnNJsIIwvsgR21Of0aE9B9U+nQlOtRq5gJl2ps0jZUmYBxTaOlP9BKo8N+Ff8+Rui1g==}
+  '@biomejs/cli-linux-x64@2.6.4':
+    resolution: {integrity: sha512-tbFZMdL6dP/ws4edXxYG9WhvaVa1ZDzL4G5DzahnWW7Psib9H+VTdyU4XXVxpJk5j/nYZroSbvSNyYlpW3yCIw==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [linux]
     libc: [glibc]
 
-  '@biomejs/cli-win32-arm64@2.6.2':
-    resolution: {integrity: sha512-/PEOo6evlgrQOfKhMNtC/4Gk8ai3hySXXEtjUzCqZe/4iAbMdqelpp7qvZEDyLxlZS+BjOMQFpq2gXI/BPaAqw==}
+  '@biomejs/cli-win32-arm64@2.6.4':
+    resolution: {integrity: sha512-eCsqt8Ma3eVap+oyJCDnJZH60SIU464B66n3y38EUTJdM1T/HfZol1FJC9vb+sHToX0ix8XzqPcwJnOzyAJz0g==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [win32]
 
-  '@biomejs/cli-win32-x64@2.6.2':
-    resolution: {integrity: sha512-FVlWD+mDDz8nN5LWKRWUhhb7wKIK0VE3oXQvQBX7Fwwj00CvqMVhMyiz1iz8O5aZGmnkhFlKSwJPrUvMh5prQw==}
+  '@biomejs/cli-win32-x64@2.6.4':
+    resolution: {integrity: sha512-pYsMy5AThiHFOZAsngg8qN4PurM6nInKBhVX7sbj3eNpRQqo1Hb0MgCwPL7VqVMrmcEEMj9Ks3qbkallR65e8g==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [win32]
@@ -836,8 +836,8 @@ packages:
   postcss-value-parser@4.2.0:
     resolution: {integrity: sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==}
 
-  postcss@8.5.31:
-    resolution: {integrity: sha512-YUbWYCgErwnMAVkjUnYa+KlMBzGpHwiIt/DE7f0G33AuX2LH9UcTk6KgWxd3zRU+pN3u/C+Xl3EnMLM4Hea7Sg==}
+  postcss@8.5.32:
+    resolution: {integrity: sha512-LJlKCCAUFKOuZxipUdYw1NzIITEsPcgyOG9LkvRJvuKj/bRzbuRY0ARXvL0pWGpsZvn8jku+LMep2eU0seHp8g==}
     engines: {node: ^10 || ^12 || >=14}
 
   require-from-string@2.0.2:
@@ -951,47 +951,47 @@ snapshots:
 
   '@babel/helper-validator-identifier@7.29.7': {}
 
-  '@biomejs/biome@2.6.2':
+  '@biomejs/biome@2.6.4':
     optionalDependencies:
-      '@biomejs/cli-android-arm64': 2.6.2
-      '@biomejs/cli-android-x64': 2.6.2
-      '@biomejs/cli-darwin-arm64': 2.6.2
-      '@biomejs/cli-darwin-x64': 2.6.2
-      '@biomejs/cli-linux-arm64': 2.6.2
-      '@biomejs/cli-linux-arm64-musl': 2.6.2
-      '@biomejs/cli-linux-x64': 2.6.2
-      '@biomejs/cli-linux-x64-musl': 2.6.2
-      '@biomejs/cli-win32-arm64': 2.6.2
-      '@biomejs/cli-win32-x64': 2.6.2
+      '@biomejs/cli-android-arm64': 2.6.4
+      '@biomejs/cli-android-x64': 2.6.4
+      '@biomejs/cli-darwin-arm64': 2.6.4
+      '@biomejs/cli-darwin-x64': 2.6.4
+      '@biomejs/cli-linux-arm64': 2.6.4
+      '@biomejs/cli-linux-arm64-musl': 2.6.4
+      '@biomejs/cli-linux-x64': 2.6.4
+      '@biomejs/cli-linux-x64-musl': 2.6.4
+      '@biomejs/cli-win32-arm64': 2.6.4
+      '@biomejs/cli-win32-x64': 2.6.4
 
-  '@biomejs/cli-android-arm64@2.6.2':
+  '@biomejs/cli-android-arm64@2.6.4':
     optional: true
 
-  '@biomejs/cli-android-x64@2.6.2':
+  '@biomejs/cli-android-x64@2.6.4':
     optional: true
 
-  '@biomejs/cli-darwin-arm64@2.6.2':
+  '@biomejs/cli-darwin-arm64@2.6.4':
     optional: true
 
-  '@biomejs/cli-darwin-x64@2.6.2':
+  '@biomejs/cli-darwin-x64@2.6.4':
     optional: true
 
-  '@biomejs/cli-linux-arm64-musl@2.6.2':
+  '@biomejs/cli-linux-arm64-musl@2.6.4':
     optional: true
 
-  '@biomejs/cli-linux-arm64@2.6.2':
+  '@biomejs/cli-linux-arm64@2.6.4':
     optional: true
 
-  '@biomejs/cli-linux-x64-musl@2.6.2':
+  '@biomejs/cli-linux-x64-musl@2.6.4':
     optional: true
 
-  '@biomejs/cli-linux-x64@2.6.2':
+  '@biomejs/cli-linux-x64@2.6.4':
     optional: true
 
-  '@biomejs/cli-win32-arm64@2.6.2':
+  '@biomejs/cli-win32-arm64@2.6.4':
     optional: true
 
-  '@biomejs/cli-win32-x64@2.6.2':
+  '@biomejs/cli-win32-x64@2.6.4':
     optional: true
 
   '@colordx/core@7.3.0': {}
@@ -1184,7 +1184,7 @@ snapshots:
       '@alloc/quick-lru': 5.3.0
       '@tailwindcss/node': 4.3.3
       '@tailwindcss/oxide': 4.3.3
-      postcss: 8.5.31
+      postcss: 8.5.32
       tailwindcss: 4.3.3
 
   '@tybys/wasm-util@0.10.4':
@@ -1350,30 +1350,30 @@ snapshots:
       js-yaml: 4.3.2
       parse-json: 5.2.0
 
-  css-loader@7.1.5(@rspack/core@2.2.9)(webpack@5.112.0(cssnano@9.9.0(postcss@8.5.31))(lightningcss@1.32.0)(postcss@8.5.31)):
+  css-loader@7.1.5(@rspack/core@2.2.9)(webpack@5.112.0(cssnano@9.9.0(postcss@8.5.32))(lightningcss@1.32.0)(postcss@8.5.32)):
     dependencies:
-      icss-utils: 5.1.0(postcss@8.5.31)
-      postcss: 8.5.31
-      postcss-modules-extract-imports: 3.1.0(postcss@8.5.31)
-      postcss-modules-local-by-default: 4.2.0(postcss@8.5.31)
-      postcss-modules-scope: 3.2.1(postcss@8.5.31)
-      postcss-modules-values: 4.0.0(postcss@8.5.31)
+      icss-utils: 5.1.0(postcss@8.5.32)
+      postcss: 8.5.32
+      postcss-modules-extract-imports: 3.1.0(postcss@8.5.32)
+      postcss-modules-local-by-default: 4.2.0(postcss@8.5.32)
+      postcss-modules-scope: 3.2.1(postcss@8.5.32)
+      postcss-modules-values: 4.0.0(postcss@8.5.32)
       postcss-value-parser: 4.2.0
       semver: 7.8.5
     optionalDependencies:
       '@rspack/core': 2.2.9
-      webpack: 5.112.0(cssnano@9.9.0(postcss@8.5.31))(lightningcss@1.32.0)(postcss@8.5.31)
+      webpack: 5.112.0(cssnano@9.9.0(postcss@8.5.32))(lightningcss@1.32.0)(postcss@8.5.32)
 
   cssesc@3.0.0: {}
 
-  cssnano@9.9.0(postcss@8.5.31):
+  cssnano@9.9.0(postcss@8.5.32):
     dependencies:
       '@colordx/core': 7.3.0
       '@csstools/css-tokenizer': 4.0.2
       browserslist: 4.29.4
       caniuse-api: 4.0.0
-      postcss: 8.5.31
-      postcss-calc: 11.2.3(postcss@8.5.31)
+      postcss: 8.5.32
+      postcss-calc: 11.2.3(postcss@8.5.32)
 
   delegate@3.2.0: {}
 
@@ -1410,9 +1410,9 @@ snapshots:
 
   has-flag@4.0.0: {}
 
-  icss-utils@5.1.0(postcss@8.5.31):
+  icss-utils@5.1.0(postcss@8.5.32):
     dependencies:
-      postcss: 8.5.31
+      postcss: 8.5.32
 
   import-fresh@3.3.1:
     dependencies:
@@ -1498,17 +1498,17 @@ snapshots:
 
   mime-db@1.54.0: {}
 
-  minimizer-webpack-plugin@5.13.1(cssnano@9.9.0(postcss@8.5.31))(lightningcss@1.32.0)(postcss@8.5.31)(webpack@5.112.0(cssnano@9.9.0(postcss@8.5.31))(lightningcss@1.32.0)(postcss@8.5.31)):
+  minimizer-webpack-plugin@5.13.1(cssnano@9.9.0(postcss@8.5.32))(lightningcss@1.32.0)(postcss@8.5.32)(webpack@5.112.0(cssnano@9.9.0(postcss@8.5.32))(lightningcss@1.32.0)(postcss@8.5.32)):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.31
       jest-worker: 27.5.1
-      schema-utils: 4.8.1(webpack@5.112.0(cssnano@9.9.0(postcss@8.5.31))(lightningcss@1.32.0)(postcss@8.5.31))
+      schema-utils: 4.8.1(webpack@5.112.0(cssnano@9.9.0(postcss@8.5.32))(lightningcss@1.32.0)(postcss@8.5.32))
       terser: 5.51.2
-      webpack: 5.112.0(cssnano@9.9.0(postcss@8.5.31))(lightningcss@1.32.0)(postcss@8.5.31)
+      webpack: 5.112.0(cssnano@9.9.0(postcss@8.5.32))(lightningcss@1.32.0)(postcss@8.5.32)
     optionalDependencies:
-      cssnano: 9.9.0(postcss@8.5.31)
+      cssnano: 9.9.0(postcss@8.5.32)
       lightningcss: 1.32.0
-      postcss: 8.5.31
+      postcss: 8.5.32
 
   nanoid@3.3.20: {}
 
@@ -1527,43 +1527,43 @@ snapshots:
 
   picocolors@1.1.1: {}
 
-  postcss-calc@11.2.3(postcss@8.5.31):
+  postcss-calc@11.2.3(postcss@8.5.32):
     dependencies:
       '@csstools/css-tokenizer': 4.0.2
-      postcss: 8.5.31
+      postcss: 8.5.32
 
-  postcss-loader@8.2.1(@rspack/core@2.2.9)(postcss@8.5.31)(webpack@5.112.0(cssnano@9.9.0(postcss@8.5.31))(lightningcss@1.32.0)(postcss@8.5.31)):
+  postcss-loader@8.2.1(@rspack/core@2.2.9)(postcss@8.5.32)(webpack@5.112.0(cssnano@9.9.0(postcss@8.5.32))(lightningcss@1.32.0)(postcss@8.5.32)):
     dependencies:
       cosmiconfig: 9.0.2
       jiti: 2.7.0
-      postcss: 8.5.31
+      postcss: 8.5.32
       semver: 7.8.5
     optionalDependencies:
       '@rspack/core': 2.2.9
-      webpack: 5.112.0(cssnano@9.9.0(postcss@8.5.31))(lightningcss@1.32.0)(postcss@8.5.31)
+      webpack: 5.112.0(cssnano@9.9.0(postcss@8.5.32))(lightningcss@1.32.0)(postcss@8.5.32)
     transitivePeerDependencies:
       - typescript
 
-  postcss-modules-extract-imports@3.1.0(postcss@8.5.31):
+  postcss-modules-extract-imports@3.1.0(postcss@8.5.32):
     dependencies:
-      postcss: 8.5.31
+      postcss: 8.5.32
 
-  postcss-modules-local-by-default@4.2.0(postcss@8.5.31):
+  postcss-modules-local-by-default@4.2.0(postcss@8.5.32):
     dependencies:
-      icss-utils: 5.1.0(postcss@8.5.31)
-      postcss: 8.5.31
+      icss-utils: 5.1.0(postcss@8.5.32)
+      postcss: 8.5.32
       postcss-selector-parser: 7.1.7
       postcss-value-parser: 4.2.0
 
-  postcss-modules-scope@3.2.1(postcss@8.5.31):
+  postcss-modules-scope@3.2.1(postcss@8.5.32):
     dependencies:
-      postcss: 8.5.31
+      postcss: 8.5.32
       postcss-selector-parser: 7.1.7
 
-  postcss-modules-values@4.0.0(postcss@8.5.31):
+  postcss-modules-values@4.0.0(postcss@8.5.32):
     dependencies:
-      icss-utils: 5.1.0(postcss@8.5.31)
-      postcss: 8.5.31
+      icss-utils: 5.1.0(postcss@8.5.32)
+      postcss: 8.5.32
 
   postcss-selector-parser@7.1.7:
     dependencies:
@@ -1572,7 +1572,7 @@ snapshots:
 
   postcss-value-parser@4.2.0: {}
 
-  postcss@8.5.31:
+  postcss@8.5.32:
     dependencies:
       nanoid: 3.3.20
       picocolors: 1.1.1
@@ -1582,14 +1582,14 @@ snapshots:
 
   resolve-from@4.0.0: {}
 
-  schema-utils@4.8.1(webpack@5.112.0(cssnano@9.9.0(postcss@8.5.31))(lightningcss@1.32.0)(postcss@8.5.31)):
+  schema-utils@4.8.1(webpack@5.112.0(cssnano@9.9.0(postcss@8.5.32))(lightningcss@1.32.0)(postcss@8.5.32)):
     dependencies:
       '@types/json-schema': 7.0.15
       ajv: 8.20.0
       ajv-formats: 3.0.1
       ajv-keywords: 5.1.0(ajv@8.20.0)
     optionalDependencies:
-      webpack: 5.112.0(cssnano@9.9.0(postcss@8.5.31))(lightningcss@1.32.0)(postcss@8.5.31)
+      webpack: 5.112.0(cssnano@9.9.0(postcss@8.5.32))(lightningcss@1.32.0)(postcss@8.5.32)
 
   select@1.1.2: {}
 
@@ -1638,14 +1638,14 @@ snapshots:
     dependencies:
       graceful-fs: 4.2.11
 
-  webpack-remove-empty-scripts@1.1.1(webpack@5.112.0(cssnano@9.9.0(postcss@8.5.31))(lightningcss@1.32.0)(postcss@8.5.31)):
+  webpack-remove-empty-scripts@1.1.1(webpack@5.112.0(cssnano@9.9.0(postcss@8.5.32))(lightningcss@1.32.0)(postcss@8.5.32)):
     dependencies:
       ansis: 4.0.0-node10
-      webpack: 5.112.0(cssnano@9.9.0(postcss@8.5.31))(lightningcss@1.32.0)(postcss@8.5.31)
+      webpack: 5.112.0(cssnano@9.9.0(postcss@8.5.32))(lightningcss@1.32.0)(postcss@8.5.32)
 
   webpack-sources@3.6.0: {}
 
-  webpack@5.112.0(cssnano@9.9.0(postcss@8.5.31))(lightningcss@1.32.0)(postcss@8.5.31):
+  webpack@5.112.0(cssnano@9.9.0(postcss@8.5.32))(lightningcss@1.32.0)(postcss@8.5.32):
     dependencies:
       '@types/estree': 1.0.9
       '@types/json-schema': 7.0.15
@@ -1659,8 +1659,8 @@ snapshots:
       events: 3.3.0
       graceful-fs: 4.2.11
       mime-db: 1.54.0
-      minimizer-webpack-plugin: 5.13.1(cssnano@9.9.0(postcss@8.5.31))(lightningcss@1.32.0)(postcss@8.5.31)(webpack@5.112.0(cssnano@9.9.0(postcss@8.5.31))(lightningcss@1.32.0)(postcss@8.5.31))
-      schema-utils: 4.8.1(webpack@5.112.0(cssnano@9.9.0(postcss@8.5.31))(lightningcss@1.32.0)(postcss@8.5.31))
+      minimizer-webpack-plugin: 5.13.1(cssnano@9.9.0(postcss@8.5.32))(lightningcss@1.32.0)(postcss@8.5.32)(webpack@5.112.0(cssnano@9.9.0(postcss@8.5.32))(lightningcss@1.32.0)(postcss@8.5.32))
+      schema-utils: 4.8.1(webpack@5.112.0(cssnano@9.9.0(postcss@8.5.32))(lightningcss@1.32.0)(postcss@8.5.32))
       tapable: 2.3.3
       watchpack: 2.6.3
       webpack-sources: 3.6.0
