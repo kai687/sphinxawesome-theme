@@ -53,6 +53,7 @@ docs = [
   "sphinx-autobuild",
   "sphinx-design",
   "sphinx-docsearch",
+  "sphinx-llm>=1.1.0",
   "sphinx-sitemap",
 ]
 
