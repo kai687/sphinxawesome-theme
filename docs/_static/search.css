@@ -1,0 +1,166 @@
+/* Search palette. Uses the theme's color tokens, so dark mode works for free. */
+#search-dialog {
+	--s-radius: calc(var(--radius, 0.5rem));
+	width: min(36rem, calc(100vw - 2rem));
+	margin: 12vh auto auto;
+	padding: 0;
+	overflow: hidden;
+	color: hsl(var(--popover-foreground));
+	background: hsl(var(--popover));
+	border: 1px solid hsl(var(--border));
+	border-radius: var(--s-radius);
+	box-shadow: 0 16px 48px -12px hsl(0 0% 0% / 0.3);
+}
+#search-dialog::backdrop {
+	background: hsl(var(--background) / 0.7);
+	backdrop-filter: blur(2px);
+}
+#search-dialog kbd {
+	font: 500 0.6875rem/1 var(--font-mono, ui-monospace, monospace);
+	padding: 0.2rem 0.35rem;
+	border: 1px solid hsl(var(--border));
+	border-radius: 0.25rem;
+	background: hsl(var(--muted));
+	color: hsl(var(--muted-foreground));
+}
+
+.s-form {
+	display: flex;
+	align-items: center;
+	gap: 0.625rem;
+	padding: 0 0.875rem;
+	border-bottom: 1px solid hsl(var(--border));
+}
+.s-icon {
+	width: 1rem;
+	height: 1rem;
+	flex: none;
+	color: hsl(var(--muted-foreground));
+}
+.s-input {
+	flex: 1;
+	min-width: 0;
+	height: 3rem;
+	border: 0;
+	outline: 0;
+	background: transparent;
+	color: inherit;
+	font-size: 0.9375rem;
+}
+.s-input::-webkit-search-cancel-button {
+	display: none;
+}
+
+.s-list {
+	list-style: none;
+	margin: 0;
+	padding: 0.375rem;
+	max-height: min(24rem, 55vh);
+	overflow-y: auto;
+}
+.s-list:empty {
+	display: none;
+}
+.s-list a {
+	display: grid;
+	grid-template-columns: 1rem minmax(0, 1fr);
+	column-gap: 0.75rem;
+	align-items: start;
+	padding: 0.5rem 0.625rem;
+	border-radius: calc(var(--s-radius) - 2px);
+	color: inherit;
+	text-decoration: none;
+	font-size: 0.875rem;
+}
+.s-list [aria-selected="true"] a {
+	background: hsl(var(--accent));
+	color: hsl(var(--accent-foreground));
+}
+.s-kind {
+	width: 1rem;
+	height: 1rem;
+	margin-top: 1.1rem;
+	fill: none;
+	stroke: hsl(var(--muted-foreground));
+	stroke-width: 1.5;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+.s-body {
+	display: flex;
+	flex-direction: column;
+	gap: 0.125rem;
+	min-width: 0;
+}
+.s-body > span {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.s-trail {
+	font-size: 0.6875rem;
+	color: hsl(var(--muted-foreground));
+}
+.s-title {
+	font-weight: 500;
+}
+.s-snip {
+	font-size: 0.8125rem;
+	color: hsl(var(--muted-foreground));
+}
+#search-dialog mark {
+	background: none;
+	color: hsl(var(--primary));
+	font-weight: 600;
+}
+
+.s-status {
+	margin: 0;
+	padding: 1.25rem 1rem;
+	text-align: center;
+	font-size: 0.875rem;
+	color: hsl(var(--muted-foreground));
+}
+.s-status:empty {
+	display: none;
+}
+.s-status a {
+	color: hsl(var(--primary));
+}
+
+.s-foot {
+	display: flex;
+	gap: 1rem;
+	align-items: center;
+	padding: 0.5rem 0.875rem;
+	border-top: 1px solid hsl(var(--border));
+	font-size: 0.75rem;
+	color: hsl(var(--muted-foreground));
+}
+.s-foot kbd {
+	margin-right: 0.2rem;
+}
+.s-foot a {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	margin-left: auto;
+	color: inherit;
+	text-decoration: none;
+}
+.s-logo {
+	height: 0.875rem;
+	width: auto;
+	color: #003dff;
+}
+:root.dark .s-logo {
+	color: #5468ff;
+}
+@media (max-width: 40rem) {
+	.s-foot span {
+		display: none;
+	}
+	#search-dialog {
+		margin-top: 4vh;
+	}
+}

@@ -1,0 +1,10 @@
+{#- Header trigger for the search palette (see _static/search.js). -#}
+<button type="button"
+        data-search-open
+        aria-label="Search the docs"
+        class="relative inline-flex items-center h-9 w-full justify-start rounded-[0.5rem] border border-input bg-transparent px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background md:w-40 lg:w-64">
+  {{ docsearch_placeholder }}
+  <kbd class="pointer-events-none absolute right-1.5 top-2 hidden h-5 select-none items-center gap-1 rounded border border-border bg-muted px-1.5 font-mono text-[10px] font-medium sm:flex">
+    <span class="text-xs">⌘</span>K
+  </kbd>
+</button>

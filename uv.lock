@@ -2466,21 +2466,6 @@ wheels = [
 ]
 
 [[package]]
-name = "sphinx-docsearch"
-version = "0.3.2"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "sphinx", version = "8.1.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
-    { name = "sphinx", version = "9.0.4", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version == '3.11.*'" },
-    { name = "sphinx", version = "9.1.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version == '3.12.*'" },
-    { name = "sphinx", version = "9.2.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.13'" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/d4/97/47bde2d37515683be7d431e7e5cfc6faaca4d81551cd182d981e90e91f6e/sphinx_docsearch-0.3.2.tar.gz", hash = "sha256:09932a0db8823bd3dc92b2da99b922708759c390ecf39078fd3ec4c13cdf2d34", size = 142684, upload-time = "2026-10-22T10:52:57.357Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/d7/86/2fd018648045c10412f1093a3a54aa80c2df8012eaab3c3041c6dc486585/sphinx_docsearch-0.3.2-py3-none-any.whl", hash = "sha256:6612c0f97668e186fd79f8db72473b24dee4454c0aabccbb1234ea6e412217fd", size = 144594, upload-time = "2026-10-22T10:52:56.051Z" },
-]
-
-[[package]]
 name = "sphinx-last-updated-by-git"
 version = "0.3.8"
 source = { registry = "https://pypi.org/simple" }
@@ -2576,7 +2561,6 @@ docs = [
     { name = "sphinx-autobuild", version = "2025.8.25", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
     { name = "sphinx-design", version = "0.6.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
     { name = "sphinx-design", version = "0.8.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
-    { name = "sphinx-docsearch" },
     { name = "sphinx-llm" },
     { name = "sphinx-sitemap" },
 ]
@@ -2604,7 +2588,6 @@ docs = [
     { name = "sphinx-autoapi" },
     { name = "sphinx-autobuild" },
     { name = "sphinx-design" },
-    { name = "sphinx-docsearch" },
     { name = "sphinx-llm", specifier = ">=1.1.0" },
     { name = "sphinx-sitemap" },
 ]

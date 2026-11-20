@@ -2,6 +2,11 @@
 
 {{ super() }}
 
+{%- block extrahead %}
+{{ super() }}
+<script>window.SEARCH_CONFIG = {{ search_config|tojson }};</script>
+{%- endblock extrahead %}
+
 
 {%- block main %}
 {%- if meta is defined and meta is not none and 'notoc' in meta %}
