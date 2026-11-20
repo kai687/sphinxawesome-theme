@@ -74,6 +74,7 @@ extensions = [
     "sphinx.ext.mathjax",
     "sphinx.ext.viewcode",
     "sphinx_sitemap",
+    "sphinx_llm.txt",
     "sphinx_design",
     "sphinx_docsearch",
     "myst_nb",
@@ -211,6 +212,30 @@ html_theme_options = asdict(theme_options)
 sitemap_show_lastmod = False
 sitemap_url_scheme = "{link}"
 
+llms_txt_nested_enabled = False
+llms_txt_full_build = True
+llms_txt_suffix_mode = "replace"
+markdown_bullet = "-"
+markdown_flavor = "github"
+llms_txt_exclude = ["demo/**", "changelog/**"]
+llms_txt_suppress_unknown_node_warnings = [
+    "admonition",
+    "attribution",
+    "caption",
+    "centered",
+    "legend",
+    "meta",
+    "option_list",
+    "PassthroughTextElement",
+]
+llms_txt_description = (
+    "A Sphinx theme for Python documentation, built with Tailwind CSS. "
+    "It provides light and dark modes, responsive navigation, code block "
+    "features, and Algolia DocSearch integration. "
+    "The pages cover how to install the theme, add it to a Sphinx project, "
+    "configure and customize it, and reference its options."
+)
+
 
 # -- Register a :confval: interpreted text role ----------------------------------
 def setup(app: Sphinx) -> None:
@@ -233,3 +258,28 @@ def setup(app: Sphinx) -> None:
             )
         ],
     )
+
+    # sphinx-llm writes ``copyright`` into llms.txt; blank it just before
+    # (priority 101) that happens. The HTML build is already finished.
+    app.connect("build-finished", _omit_copyright_from_llms_txt, priority=50)
+    app.connect("build-finished", _add_llms_txt_header, priority=200)
+
+
+def _omit_copyright_from_llms_txt(app: Sphinx, exception: Exception | None) -> None:
+    """Keep the copyright line out of ``llms.txt``."""
+    app.config.copyright = ""
+
+
+def _add_llms_txt_header(app: Sphinx, exception: Exception | None) -> None:
+    """Point agents from each Markdown page back to ``llms.txt``.
+
+    Runs after sphinx-llm has written ``llms-full.txt`` (priority 101), so the
+    header isn't repeated for every page in the combined file.
+    """
+    if exception or app.builder.name != "html":
+        return
+    header = f"> Documentation index: {app.config.html_baseurl}llms.txt\n\n"
+    for md_file in app.outdir.rglob("*.md"):
+        if "_static" in md_file.relative_to(app.outdir).parts:
+            continue
+        md_file.write_text(header + md_file.read_text(encoding="utf-8"), encoding="utf-8")
