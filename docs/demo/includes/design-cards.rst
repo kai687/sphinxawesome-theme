@@ -12,11 +12,15 @@ This is a card with header and footer.
 
 .. card:: Card with header and footer
 
-   Card header
-   ^^^
+   .. card-header::
+
+      Card header
+
    This is card content.
-   +++
-   Card footer
+
+   .. card-footer::
+
+      Card footer
 
 You can also build a carousel for cards:
 
