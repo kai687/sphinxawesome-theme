@@ -136,7 +136,6 @@ html_baseurl = "https://sphinxawesome.xyz/"
 html_extra_path = ["robots.txt", "_redirects"]
 html_context = {
     "mode": "production",
-    "docsearch_placeholder": "Search these docs",
 }
 
 html_sidebars: dict[str, list[str]] = {
