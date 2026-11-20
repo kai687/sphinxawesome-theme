@@ -214,7 +214,7 @@ sitemap_url_scheme = "{link}"
 
 llms_txt_nested_enabled = False
 llms_txt_full_build = True
-llms_txt_suffix_mode = "replace"
+llms_txt_suffix_mode = "append"
 markdown_bullet = "-"
 markdown_flavor = "github"
 llms_txt_exclude = ["demo/**", "changelog/**"]
@@ -276,9 +276,12 @@ def _add_llms_txt_header(app: Sphinx, exception: Exception | None) -> None:
     Runs after sphinx-llm has written ``llms-full.txt`` (priority 101), so the
     header isn't repeated for every page in the combined file.
     """
-    if exception or app.builder.name != "html":
+    if exception or app.builder.name not in ("html", "dirhtml"):
         return
-    header = f"> Documentation index: {app.config.html_baseurl}llms.txt\n\n"
+    header = (
+        f"> Fetch the complete documentation index at: {app.config.html_baseurl}llms.txt\n"
+        "> Use this file to discover available pages before exploring further.\n\n"
+    )
     for md_file in app.outdir.rglob("*.md"):
         if "_static" in md_file.relative_to(app.outdir).parts:
             continue
