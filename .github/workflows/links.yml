@@ -17,7 +17,7 @@ jobs:
       - uses: astral-sh/setup-uv@v7
         with:
           version: "0.13.5"
-          python-version: "3.15.1"
+          python-version: "3.15.2"
           enable-cache: true
       - name: Check links
         run: uv run --locked --no-default-groups --group docs sphinx-build -b linkcheck -aWTE docs docs/public/_links
