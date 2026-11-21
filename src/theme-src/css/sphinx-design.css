@@ -16,11 +16,7 @@
 }
 
 .sd-card {
-	@apply mt-6 rounded-lg border border-border bg-muted/40 text-card-foreground;
-}
-
-:root.dark .sd-card {
-	background-color: rgb(255 255 255 / 4%);
+	@apply mt-6 rounded-lg border border-border bg-transparent text-card-foreground;
 }
 
 .sd-container-fluid {
