@@ -9,14 +9,8 @@
 	const status = dialog.querySelector(".s-status");
 	const row = document.getElementById("search-row");
 
-	// Private-use characters mark highlights (set as the index's highlight tags), so the rest can be HTML-escaped.
-	const OPEN = "\uE000";
-	const CLOSE = "\uE001";
-	const html = (s) =>
-		s
-			.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`)
-			.replaceAll(OPEN, "<mark>")
-			.replaceAll(CLOSE, "</mark>");
+	// The crawler HTML-escapes all indexed text and the index highlights matches with <mark>,
+	// so Algolia's values are safe to insert as HTML.
 
 	function render(hits, query) {
 		let prevPage;
@@ -26,9 +20,9 @@
 				const last = levels.pop();
 				const kind = h.type === "content" ? "para" : h.type === "lvl1" ? "page" : "heading";
 				const li = row.content.cloneNode(true);
-				const text = (sel, value, set = "innerHTML") => {
+				const text = (sel, value) => {
 					const el = li.querySelector(sel);
-					if (value) el[set] = value;
+					if (value) el.innerHTML = value;
 					else el.remove();
 				};
 				// Hits on the same page as the row above nest under it, without a repeated breadcrumb.
@@ -38,9 +32,9 @@
 				li.firstElementChild.classList.toggle("s-child", child);
 				li.querySelector("a").href = h.url;
 				li.querySelector("use").setAttribute("href", `#s-${kind}`);
-				text(".s-trail", !(child && kind === "heading") && levels.map((k) => h.hierarchy[k]).join(" › "), "textContent");
-				text(".s-title", html(h._highlightResult.hierarchy[last].value));
-				text(".s-snip", kind === "para" && html(h._snippetResult.content.value));
+				text(".s-trail", !(child && kind === "heading") && levels.map((k) => h.hierarchy[k]).join(" › "));
+				text(".s-title", h._highlightResult.hierarchy[last].value);
+				text(".s-snip", kind === "para" && h._snippetResult.content.value);
 				return li;
 			}),
 		);
