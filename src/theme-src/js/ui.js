@@ -153,14 +153,25 @@ export function initScrollTop() {
 	});
 }
 
-/** Focus the search input with Cmd+K. */
+/** Focus the search input with Cmd+K or Ctrl+K. The hint shows the platform's modifier. */
 export function initSearchShortcut() {
 	const input = document.getElementById("search-input");
 	if (!input) {
 		return;
 	}
+
+	const platform =
+		navigator.userAgentData?.platform || navigator.platform || "";
+	const isApple = /mac|iphone|ipad/i.test(platform);
+	if (!isApple) {
+		for (const key of document.querySelectorAll("[data-modifier-key]")) {
+			key.textContent = "Ctrl";
+		}
+	}
+
 	window.addEventListener("keydown", (event) => {
-		if (event.metaKey && event.key === "k") {
+		if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+			event.preventDefault();
 			input.focus();
 		}
 	});
