@@ -76,7 +76,6 @@ extensions = [
     "sphinx_sitemap",
     "sphinx_llm.txt",
     "sphinx_design",
-    "sphinx_docsearch",
     "myst_nb",
 ]
 
@@ -152,9 +151,9 @@ templates_path = ["_templates"]
 # pygments_style = "xcode"
 # pygments_style_dark = "github-dark"
 
-# html_static_path = ["_static"]
-# html_css_files = ["feedback.css"]
-# html_js_files = [("feedback.js", {"defer": "defer"})]
+html_static_path = ["_static"]
+html_css_files = ["search.css"]
+html_js_files = [("search.js", {"defer": "defer"})]
 
 # Use dummy values in local development
 if os.getenv("CI") == "true" or os.getenv("NETLIFY") == "true" or os.getenv("NEEDS_ENV") == "true":
@@ -167,9 +166,14 @@ docsearch_app_id = os.getenv("DOCSEARCH_APP_ID", default_value)
 docsearch_api_key = os.getenv("DOCSEARCH_API_KEY", default_value)
 docsearch_index_name = os.getenv("DOCSEARCH_INDEX_NAME", default_value)
 
+html_context["search_config"] = {
+    "appId": docsearch_app_id,
+    "apiKey": docsearch_api_key,
+    "indexName": docsearch_index_name,
+    "placeholder": "Search these docs",
+    "missingResultsUrl": "https://github.com/kai687/sphinxawesome-theme/issues/new?title=${query}",
+}
 
-docsearch_placeholder = "Search these docs"
-docsearch_missing_results_url = "https://github.com/kai687/sphinxawesome-theme/issues/new?title=${query}"
 
 theme_options = ThemeOptions(
     show_prev_next=True,

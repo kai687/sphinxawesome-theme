@@ -1,4 +1,6 @@
-# Extract records from https://sphinxawesome.xyz that are compatible with Algolia DocSearch.
+# Extract records from https://sphinxawesome.xyz for the custom search in docs/_static/search.js.
+# Records only contain the fields used by the search UI and the index settings,
+# so they aren't compatible with the DocSearch UI.
 
 # Extractor functions only differ in the section (lvl0).
 def handle_how_to(pattern, doc, ctx):
@@ -29,7 +31,7 @@ extract("^/$", handle_home)
 
 
 def docsearch_records(doc, ctx, lvl0):
-    """Build a record suitable for the DocSearch UI."""
+    """Build the records for a page: one per heading and one per section content."""
     # Only index content that's a child of `#content`.
     root = doc.select_first("#content")
     if root == None:
@@ -39,7 +41,8 @@ def docsearch_records(doc, ctx, lvl0):
     content_records = []
     hierarchy = {"lvl0": lvl0}
     position = 0
-    base_url = url_without_anchor(ctx["url"])
+    # Store the path only, so links work on any host (local builds, previews).
+    base_url = "/" + url_without_anchor(ctx["url"]).split("/", 3)[3]
 
     # In Sphinx, sections have the IDs, not the headings.
     for section in root.select("section[id]"):
@@ -85,19 +88,17 @@ def docsearch_records(doc, ctx, lvl0):
         else:
             record_url = base_url + "#" + anchor
 
+        # Only include the levels that are set.
         record_hierarchy = {}
-        for key in ["lvl0", "lvl1", "lvl2", "lvl3", "lvl4", "lvl5", "lvl6"]:
+        for key in ["lvl0", "lvl1", "lvl2", "lvl3", "lvl4"]:
             if key in hierarchy:
                 record_hierarchy[key] = hierarchy[key]
-            else:
-                record_hierarchy[key] = None
 
         heading_records.append(docsearch_record(
-            anchor,
-            None,
-            record_hierarchy,
             position,
             "lvl" + str(level),
+            record_hierarchy,
+            None,
             record_url,
             base_url,
             100 - (level * 10),
@@ -124,11 +125,10 @@ def docsearch_records(doc, ctx, lvl0):
         content = "\r\n".join(parts)
         if content != "":
             content_records.append(docsearch_record(
-                anchor,
-                content,
-                record_hierarchy,
                 position,
                 "content",
+                record_hierarchy,
+                content,
                 record_url,
                 base_url,
                 0,
@@ -138,27 +138,21 @@ def docsearch_records(doc, ctx, lvl0):
     return heading_records + content_records
 
 
-def docsearch_record(anchor, content, hierarchy, position, record_type, url, base_url, level_weight):
-    """Return a DocSearch v3-compatible record."""
-    return {
-        "anchor": anchor,
-        "content": content,
-        "content_camel": content,
-        "hierarchy": hierarchy,
-        "lang": "en",
-        "language": "en",
-        "no_variables": False,
+def docsearch_record(position, record_type, hierarchy, content, url, base_url, level_weight):
+    """Return a search record.
+
+    `weight.level` ranks headings above content, `weight.position` keeps page order.
+    """
+    record = {
         "objectID": str(position) + "-" + base_url,
-        "recordVersion": "v3",
-        "tags": [],
         "type": record_type,
+        "hierarchy": hierarchy,
         "url": url,
-        "url_without_anchor": base_url,
-        "url_without_variables": url,
-        "version": "",
         "weight": {
             "level": level_weight,
-            "pageRank": 0,
             "position": position,
         },
     }
+    if content != None:
+        record["content"] = content
+    return record
