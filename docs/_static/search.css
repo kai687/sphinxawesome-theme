@@ -78,6 +78,13 @@
 	background: hsl(var(--accent));
 	color: hsl(var(--accent-foreground));
 }
+.s-child {
+	margin-left: 1.125rem;
+	border-left: 1px solid hsl(var(--border));
+}
+.s-child a {
+	padding-left: 0.75rem;
+}
 .s-kind {
 	flex: none;
 	width: 1rem;

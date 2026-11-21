@@ -3,13 +3,13 @@
 	const dialog = document.getElementById("search-dialog");
 	if (!dialog) return;
 
-	const { appId, apiKey, indexName, missingResultsUrl, searchParameters } = JSON.parse(dialog.dataset.config);
+	const { appId, apiKey, indexName, missingResultsUrl } = JSON.parse(dialog.dataset.config);
 	const input = dialog.querySelector(".s-input");
 	const list = dialog.querySelector(".s-list");
 	const status = dialog.querySelector(".s-status");
 	const row = document.getElementById("search-row");
 
-	// Private-use characters mark highlights, so the rest can be HTML-escaped.
+	// Private-use characters mark highlights (set as the index's highlight tags), so the rest can be HTML-escaped.
 	const OPEN = "\uE000";
 	const CLOSE = "\uE001";
 	const html = (s) =>
@@ -19,6 +19,7 @@
 			.replaceAll(CLOSE, "</mark>");
 
 	function render(hits, query) {
+		let prevPage;
 		list.replaceChildren(
 			...hits.map((h) => {
 				const levels = Object.keys(h.hierarchy).sort().filter((k) => h.hierarchy[k]);
@@ -30,9 +31,14 @@
 					if (value) el[set] = value;
 					else el.remove();
 				};
+				// Hits on the same page as the row above nest under it, without a repeated breadcrumb.
+				const page = h.url.split("#")[0];
+				const child = kind !== "page" && page === prevPage;
+				prevPage = page;
+				li.firstElementChild.classList.toggle("s-child", child);
 				li.querySelector("a").href = h.url;
 				li.querySelector("use").setAttribute("href", `#s-${kind}`);
-				text(".s-trail", levels.map((k) => h.hierarchy[k]).join(" › "), "textContent");
+				text(".s-trail", !(child && kind === "heading") && levels.map((k) => h.hierarchy[k]).join(" › "), "textContent");
 				text(".s-title", html(h._highlightResult.hierarchy[last].value));
 				text(".s-snip", kind === "para" && html(h._snippetResult.content.value));
 				return li;
@@ -64,17 +70,7 @@
 				signal: controller.signal,
 				// text/plain avoids a CORS preflight, as recommended by Algolia.
 				headers: { "Content-Type": "text/plain", "X-Algolia-Application-Id": appId, "X-Algolia-API-Key": apiKey },
-				body: JSON.stringify({
-					query,
-					hitsPerPage: 12,
-					attributesToRetrieve: ["hierarchy", "url", "type"],
-					attributesToHighlight: ["hierarchy"],
-					attributesToSnippet: ["content:12"],
-					highlightPreTag: OPEN,
-					highlightPostTag: CLOSE,
-					snippetEllipsisText: "…",
-					...searchParameters,
-				}),
+				body: JSON.stringify({ query }),
 			});
 			if (!res.ok) throw new Error(res.statusText);
 			render((await res.json()).hits, query);
