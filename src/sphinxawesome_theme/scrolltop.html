@@ -2,10 +2,7 @@
 A `scroll to top` button. Is shown at the bottom right if `show_scrolltop` is true.
 -#}
 <button id="scrolltop"
-        x-cloak
-        @click="window.scrollTo({top: 0, behavior: 'smooth'})"
-        class="fixed bottom-8 right-8 p-2 z-10 rounded-sm bg-gray-700 text-xs text-white transition-all duration-1000 hover:bg-gray-950 focus:bg-gray-950"
-        :class="{'opacity-0 invisible' : !showScrollTop}"
+        class="opacity-0 invisible fixed bottom-8 right-8 p-2 z-10 rounded-sm bg-gray-700 text-xs text-white transition-all duration-1000 hover:bg-gray-950 focus:bg-gray-950"
 >
   <svg xmlns="http://www.w3.org/2000/svg"
        height="14"

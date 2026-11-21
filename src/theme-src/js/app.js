@@ -6,15 +6,24 @@ import "@fontsource/jetbrains-mono/latin-700-italic.css";
 import "@fontsource/jetbrains-mono/latin-700.css";
 import "../css/styles.css";
 
-import intersect from "@alpinejs/intersect";
-import persist from "@alpinejs/persist";
-import Alpine from "alpinejs";
 import { addCodeButtons } from "./code.js";
-
-window.Alpine = Alpine;
-Alpine.plugin([intersect, persist]);
-Alpine.start();
+import {
+	initCollapsibleNav,
+	initHeaderlinks,
+	initScrollspy,
+	initScrollTop,
+	initSearchShortcut,
+	initSidebar,
+	initThemeToggle,
+} from "./ui.js";
 
 window.addEventListener("DOMContentLoaded", () => {
 	addCodeButtons();
+	initThemeToggle();
+	initSidebar();
+	initCollapsibleNav();
+	initHeaderlinks();
+	initScrollspy();
+	initScrollTop();
+	initSearchShortcut();
 });

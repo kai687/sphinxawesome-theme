@@ -79,25 +79,19 @@ def collapsible_nav(tree: BeautifulSoup) -> None:
         if children and children.name == "ul":  # type: ignore
             # State must be available in the link and the list
             li = link.parent
-            if li:
-                li["x-data"] = "{ expanded: $el.classList.contains('current') ? true : false }"
-            link["@click"] = "expanded = !expanded"
+            expanded = bool(li and "current" in li.get("class", []))
             # The expandable class is a hack because we can't use Tailwind
             # I want to have _only_ expandable links with `justify-between`
             link["class"].append("expandable")  # type: ignore
-            link[":class"] = "{ 'expanded' : expanded }"
-            children["x-show"] = "expanded"  # type: ignore
-            if "current" not in children.get("class", []):  # type: ignore
-                children["x-cloak"] = ""  # type: ignore
+            if expanded:
+                link["class"].append("expanded")  # type: ignore
+            else:
+                children["hidden"] = ""  # type: ignore
 
             # Create a button with an icon inside to get focus behavior
             button = tree.new_tag(
                 "button",
-                attrs={
-                    "type": "button",
-                    "@click.prevent.stop": "expanded = !expanded",
-                    "x-cloak": "",
-                },
+                attrs={"type": "button"},
             )
             label = tree.new_tag("span", attrs={"class": "sr-only"})
             button.append(label)
@@ -125,9 +119,6 @@ def remove_empty_toctree(tree: BeautifulSoup) -> None:
 def headerlinks(tree: BeautifulSoup) -> None:
     """Make headerlinks copy their URL on click."""
     for link in tree("a", class_="headerlink"):
-        link["@click.prevent"] = (
-            "window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() => $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)"
-        )
         del link["title"]
         link["aria-label"] = "Copy link to this element"
         link["data-tooltip"] = "Copy link to this element"
@@ -137,12 +128,7 @@ def scrollspy(tree: BeautifulSoup) -> None:
     """Add an active class to current TOC links in the right sidebar."""
     for link in tree("a", class_="headerlink"):
         if link.parent.name in ["h2", "h3"] or (link.parent.name == "dt" and "sig" in link.parent.get("class", "")):
-            active_link = link["href"]
-            link["x-intersect.margin.0%.0%.-70%.0%"] = f"activeSection = '{active_link}'"
-
-    for link in tree.select("#right-sidebar a"):
-        active_link = link["href"]
-        link[":data-current"] = f"activeSection === '{active_link}'"
+            link["data-scrollspy"] = ""
 
 
 def external_links(tree: BeautifulSoup) -> None:

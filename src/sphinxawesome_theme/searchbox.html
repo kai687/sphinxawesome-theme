@@ -2,9 +2,8 @@
 <form id="searchbox"
       action="{{ pathto('search') }}"
       method="get"
-      class="relative flex items-center group"
-      @keydown.k.window.meta="$refs.search.focus()">
-  <input x-ref="search"
+      class="relative flex items-center group">
+  <input
           name="q"
           id="search-input"
           type="search"
