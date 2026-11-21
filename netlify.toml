@@ -4,3 +4,10 @@ publish = "docs/public"
 
 [build.environment]
 PYTHON_VERSION = "3.15.1"
+
+# Temporary: use the test index for previews of this branch. Remove before merging.
+[context.deploy-preview.environment]
+DOCSEARCH_INDEX_NAME = "sphinxawesome-test"
+
+[context."test/custom-search".environment]
+DOCSEARCH_INDEX_NAME = "sphinxawesome-test"
