@@ -8,10 +8,15 @@
 	--sd-color-tabs-label-hover: hsl(var(--accent-foreground));
 	--sd-color-tabs-overline: hsl(var(--border));
 	--sd-color-tabs-underline: hsl(var(--border));
+	--sd-color-tabs-label-inactive: hsl(var(--muted-foreground));
+	--sd-color-card-border: hsl(var(--border));
+	--sd-color-card-border-hover: hsl(var(--accent-foreground));
+	--sd-color-card-background: transparent;
+	--sd-color-card-text: hsl(var(--card-foreground));
 }
 
 .sd-card {
-	@apply mt-6 rounded-lg border border-border bg-card text-card-foreground;
+	@apply mt-6 rounded-lg border border-border bg-transparent text-card-foreground;
 }
 
 .sd-container-fluid {
