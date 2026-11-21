@@ -17,3 +17,8 @@ Maintenance
 ~~~~~~~~~~~
 
 - Updated developer tooling
+- Replaced Alpine.js with vanilla JavaScript.
+  If you override ``header.html``, ``sidebar.html``, ``scrolltop.html`` or ``layout.html`` with a copy of the old markup,
+  replace the Alpine attributes with the new ``data-*`` hooks:
+  ``data-theme-toggle`` (color scheme button),
+  ``data-sidebar-open`` and ``data-sidebar-close`` (mobile sidebar buttons).
