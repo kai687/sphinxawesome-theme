@@ -61,6 +61,30 @@ details.sd-dropdown summary:focus {
 	@apply outline;
 }
 
+/* Animate opening and closing dropdowns, so the page height changes gradually
+   instead of jumping. Browsers without support keep the instant behavior. */
+@media (prefers-reduced-motion: no-preference) {
+	@supports (interpolate-size: allow-keywords) and selector(::details-content) {
+		details.sd-dropdown {
+			interpolate-size: allow-keywords;
+
+			&::details-content {
+				height: 0;
+				/* `.sd-card` is a flex container; allow the pseudo-element to shrink below its content. */
+				min-height: 0;
+				overflow: clip;
+				transition:
+					height 0.25s ease,
+					content-visibility 0.25s allow-discrete;
+			}
+
+			&[open]::details-content {
+				height: auto;
+			}
+		}
+	}
+}
+
 .sd-cards-carousel {
 	@apply overflow-x-auto;
 }
