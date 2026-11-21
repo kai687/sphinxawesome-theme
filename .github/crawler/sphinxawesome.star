@@ -41,7 +41,8 @@ def docsearch_records(doc, ctx, lvl0):
     content_records = []
     hierarchy = {"lvl0": lvl0}
     position = 0
-    base_url = url_without_anchor(ctx["url"])
+    # Store the path only, so links work on any host (local builds, previews).
+    base_url = "/" + url_without_anchor(ctx["url"]).split("/", 3)[3]
 
     # In Sphinx, sections have the IDs, not the headings.
     for section in root.select("section[id]"):
