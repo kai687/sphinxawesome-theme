@@ -1,6 +1,6 @@
 /* Code-related styles */
 .highlight {
-	@apply relative bg-transparent;
+	@apply relative;
 
 	&:hover .copy {
 		@apply opacity-100;

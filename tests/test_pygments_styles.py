@@ -68,8 +68,9 @@ def test_dark_styles_follow_theme_toggle(app: Sphinx) -> None:
     assert "font-weight: bold" in light_keyword
     assert "font-weight" not in dark_keyword
     assert "prefers-color-scheme" not in css
-    # The theme owns the background of code blocks.
-    assert ".highlight { background" not in css
+    # Explicit styles keep their own code block backgrounds.
+    assert f"{light_scope} .highlight {{ background" in css
+    assert f"{dark_scope} .highlight {{ background" in css
 
     assert not (Path(app.outdir) / "_static" / "pygments_dark.css").exists()
     tree = parse_html(Path(app.outdir) / "index.html")
@@ -106,3 +107,15 @@ def test_explicit_single_style_keeps_its_palette(app: Sphinx) -> None:
     assert ".dark" not in css
     assert ".highlight { background: #ffffff; }" in css
     assert ".highlight { color: #000; }" in css
+
+
+def test_pygments_rules_are_single_line() -> None:
+    """It guards the per-line scoping in `create_pygments_style_file`."""
+    from sphinxawesome_theme.highlighting import AwesomePygmentsBridge
+
+    for style in ("default", "one-dark", "github-dark"):
+        css = AwesomePygmentsBridge("html", style).get_stylesheet()
+        for line in css.splitlines():
+            assert line.strip()
+            assert "{" in line
+            assert "}" in line

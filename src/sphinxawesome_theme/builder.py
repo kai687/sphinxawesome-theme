@@ -92,16 +92,17 @@ class AwesomeHTMLBuilder(StandaloneHTMLBuilder):
     def create_pygments_style_file(self: AwesomeHTMLBuilder) -> None:
         """Create CSS file for Pygments."""
         stylesheet = self.highlighter.get_stylesheet()
-        if self.dark_highlighter is None and self.config.pygments_style is not None:
-            # Keep the selected palette intact across both page modes. Pygments
-            # can omit the foreground when it expects black text by default.
-            stylesheet = ".highlight { color: #000; }\n" + stylesheet
-        else:
+        if self.config.pygments_style is None:
+            # Theme defaults: the theme owns the code block backgrounds.
             stylesheet = _drop_backgrounds(stylesheet)
+        else:
+            # Explicit style: keep its palette intact. Pygments can omit the
+            # foreground when it expects black text by default.
+            stylesheet = ".highlight { color: #000; }\n" + stylesheet
 
         if self.dark_highlighter:
             # Keep the palettes separate without raising selector specificity.
-            dark_stylesheet = _drop_backgrounds(self.dark_highlighter.get_stylesheet())
+            dark_stylesheet = self.dark_highlighter.get_stylesheet()
             stylesheet = "\n".join(
                 f":where({scope}) {rule}"
                 for scope, css in ((":root:not(.dark)", stylesheet), (":root.dark", dark_stylesheet))
