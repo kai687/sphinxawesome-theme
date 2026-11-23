@@ -82,10 +82,11 @@ You can override these custom properties:
    The color of borders and of form fields.
 
 ``--ring``
-   The color of the focus outline.
+   The color of the keyboard focus ring on the built-in search field and the DocSearch button.
+   It does not change other focus outlines.
 
-For example, to change the focus outline to green in light mode and in dark mode,
-add a new CSS file, or extend the templates. Then add this CSS:
+To make the search focus ring green in both light and dark mode,
+add this CSS to a custom stylesheet or template:
 
 .. code-block:: css
 
@@ -93,6 +94,8 @@ add a new CSS file, or extend the templates. Then add this CSS:
    :root.dark {
       --ring: 142 71% 45%;
    }
+
+Press Tab until the search field or DocSearch button has focus to see the green ring.
 
 To set different colors for light mode and dark mode,
 set the custom properties on ``:root`` and on ``:root.dark`` separately.
