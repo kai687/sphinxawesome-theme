@@ -22,7 +22,7 @@ but show the header navigation links on an ``about`` page:
 .. code-block:: python
 
    html_sidebars = {
-     "/about": ["sidebar_main_nav_links.html"]
+     "about": ["sidebar_main_nav_links.html"]
    }
 
 To hide the sidebar fully, use ``html_sidebars = {"**": []}``.
