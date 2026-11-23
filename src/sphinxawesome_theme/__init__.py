@@ -50,7 +50,7 @@ class ThemeOptions:
     Each attribute becomes a key in the :confval:`sphinx:html_theme_options` dictionary.
     """
 
-    show_prev_next: bool = True
+    show_prev_next: bool = False
     """If true, the theme includes links to the previous and next pages in the hierarchy."""
 
     show_breadcrumbs: bool = True
