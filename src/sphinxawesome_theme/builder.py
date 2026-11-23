@@ -5,7 +5,7 @@ Pygments CSS is handled.
 
 - Add a ``pygments_style_dark`` configuration option.
 - Append dark mode styles to the main ``pygments.css`` file,
-  based on `prefers-color-scheme`.
+  scoped to the ``dark`` class set by the theme toggle.
 
 :copyright: Copyright Kai Welke.
 :license: MIT, see LICENSE for details.
@@ -13,12 +13,32 @@ Pygments CSS is handled.
 
 from __future__ import annotations
 
+import re
 from os import path
 
 from sphinx.builders.html import StandaloneHTMLBuilder
 from sphinx.highlighting import PygmentsBridge
 
 from .highlighting import AwesomePygmentsBridge
+
+# Backgrounds of the code block and (non-special) line numbers belong to the theme,
+# so that they follow the page colors regardless of the Pygments style.
+_BLOCK_BG = re.compile(r"^(\.dark )?\.highlight \{[^}]*\}")
+_LINENOS_BG = re.compile(r"^(\.dark )?(td\.linenos \.normal|span\.linenos) \{")
+_BG = re.compile(r"\s*background(-color)?:[^;}]*;?")
+
+
+original_init_css_files = StandaloneHTMLBuilder.init_css_files
+
+
+def _drop_backgrounds(css: str) -> str:
+    """Remove theme-owned background declarations from Pygments CSS."""
+    lines = []
+    for line in css.splitlines():
+        if _BLOCK_BG.match(line) or _LINENOS_BG.match(line):
+            line = _BG.sub("", line)
+        lines.append(line)
+    return "\n".join(lines)
 
 
 class AwesomeHTMLBuilder(StandaloneHTMLBuilder):
@@ -53,13 +73,25 @@ class AwesomeHTMLBuilder(StandaloneHTMLBuilder):
         else:
             self.dark_highlighter = None
 
+    def init_css_files(self: AwesomeHTMLBuilder) -> None:
+        """Skip Sphinx's separate dark Pygments stylesheet.
+
+        The dark styles are part of ``pygments.css`` and follow the theme toggle,
+        so the file ``pygments_dark.css`` doesn't exist.
+        """
+        original_init_css_files(self)
+        self._css_files = [css for css in self._css_files if not str(css.filename).endswith("pygments_dark.css")]
+
     def create_pygments_style_file(self: AwesomeHTMLBuilder) -> None:
         """Create CSS file for Pygments."""
-        stylesheet = self.highlighter.get_stylesheet()
+        stylesheet = _drop_backgrounds(self.highlighter.get_stylesheet())
         if self.dark_highlighter:
-            stylesheet += "\n@media (prefers-color-scheme: dark) {\n"
-            stylesheet += self.dark_highlighter.get_stylesheet()
-            stylesheet += "\n}"
+            # Scope dark styles to the ``dark`` class on the root element,
+            # because the theme toggle sets it independent of the OS preference.
+            formatter = self.dark_highlighter.get_formatter()
+            dark_rules = formatter.get_style_defs(".dark .highlight").splitlines()
+            dark_css = "\n".join(line if line.startswith(".dark") else f".dark {line}" for line in dark_rules)
+            stylesheet += "\n" + _drop_backgrounds(dark_css)
 
         with open(path.join(self.outdir, "_static", "pygments.css"), "w", encoding="utf-8") as f:
             f.write(stylesheet)

@@ -108,6 +108,7 @@ def setup(app: Sphinx) -> dict[str, Any]:
 
     # Monkey-patch galore
     StandaloneHTMLBuilder.init_highlighter = AwesomeHTMLBuilder.init_highlighter  # type: ignore
+    StandaloneHTMLBuilder.init_css_files = AwesomeHTMLBuilder.init_css_files  # type: ignore
     StandaloneHTMLBuilder.create_pygments_style_file = (  # type: ignore
         AwesomeHTMLBuilder.create_pygments_style_file
     )

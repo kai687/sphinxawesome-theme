@@ -148,8 +148,8 @@ templates_path = ["_templates"]
 # html_additional_pages = {"about": "about.html"}
 
 # Separate syntax highlighting styles for light and dark mode
-# pygments_style = "xcode"
-# pygments_style_dark = "github-dark"
+pygments_style = "xcode"
+pygments_style_dark = "github-dark"
 
 html_static_path = ["_static"]
 html_css_files = ["search.css"]
