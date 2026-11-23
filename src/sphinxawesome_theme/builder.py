@@ -51,7 +51,10 @@ class AwesomeHTMLBuilder(StandaloneHTMLBuilder):
             style = self.config.pygments_style
         elif self.theme:
             # From the ``pygments_style`` theme setting
-            style = self.theme.pygments_style_default or "none"
+            try:
+                style = self.theme.pygments_style_default or "none"
+            except AttributeError:
+                style = self.theme.get_config("theme", "pygments_style", "none")
         else:
             style = "sphinx"
 
@@ -88,7 +91,14 @@ class AwesomeHTMLBuilder(StandaloneHTMLBuilder):
 
     def create_pygments_style_file(self: AwesomeHTMLBuilder) -> None:
         """Create CSS file for Pygments."""
-        stylesheet = _drop_backgrounds(self.highlighter.get_stylesheet())
+        stylesheet = self.highlighter.get_stylesheet()
+        if self.dark_highlighter is None and self.config.pygments_style is not None:
+            # Keep the selected palette intact across both page modes. Pygments
+            # can omit the foreground when it expects black text by default.
+            stylesheet = ".highlight { color: #000; }\n" + stylesheet
+        else:
+            stylesheet = _drop_backgrounds(stylesheet)
+
         if self.dark_highlighter:
             # Scope dark styles to the ``dark`` class on the root element,
             # because the theme toggle sets it independent of the OS preference.

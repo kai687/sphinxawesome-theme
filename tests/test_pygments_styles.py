@@ -83,3 +83,20 @@ def test_no_dark_styles_by_default(app: Sphinx) -> None:
 
     css = (Path(app.outdir) / "_static" / "pygments.css").read_text(encoding="utf-8")
     assert ".dark" not in css
+    assert ".highlight { background" not in css
+
+
+@pytest.mark.sphinx(
+    "html",
+    testroot="root",
+    confoverrides={"html_theme": "sphinxawesome_theme", "pygments_style": "xcode"},
+    freshenv=True,
+)
+def test_explicit_single_style_keeps_its_palette(app: Sphinx) -> None:
+    """It preserves contrast even when the page switches to dark mode."""
+    app.build()
+
+    css = (Path(app.outdir) / "_static" / "pygments.css").read_text(encoding="utf-8")
+    assert ".dark" not in css
+    assert ".highlight { background: #ffffff; }" in css
+    assert ".highlight { color: #000; }" in css

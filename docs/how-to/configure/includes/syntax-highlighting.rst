@@ -35,8 +35,6 @@ Do not use highly saturated color schemes, such as ``monokai`` or ``dracula``. T
 
 .. note::
 
-   The theme sets the background color of code blocks
-   to match the page in light mode and in dark mode.
-   The theme ignores the background color of the Pygments color scheme.
-   The theme uses the dark mode scheme when the theme toggle is set to dark mode.
-   It does not use the operating system setting.
+   If you set only ``pygments_style``, code blocks keep the background and text colors of that scheme in both modes.
+   Otherwise, the theme sets the background of code blocks to match the page.
+   If you set ``pygments_style_dark``, the dark scheme follows the theme toggle, not the operating system setting.
