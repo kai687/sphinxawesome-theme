@@ -15,9 +15,9 @@ def test_drop_backgrounds_from_code_block_and_line_numbers() -> None:
     css = "\n".join(
         [
             ".highlight { background: #ffffff; }",
-            ".dark .highlight { background: #0d1117; color: #E6EDF3 }",
+            ".highlight { background: #0d1117; color: #E6EDF3 }",
             "span.linenos { color: #6e7681; background-color: #0d1117; padding-left: 5px; }",
-            ".dark td.linenos .normal { color: #6e7681; background-color: #0d1117; }",
+            "td.linenos .normal { color: #6e7681; background-color: #0d1117; }",
         ]
     )
 
@@ -33,7 +33,7 @@ def test_drop_backgrounds_keeps_highlighted_lines() -> None:
     """It keeps the backgrounds of highlighted lines and tokens."""
     css = "\n".join(
         [
-            ".dark .highlight .hll { background-color: #6e7681 }",
+            ".highlight .hll { background-color: #6e7681 }",
             "span.linenos.special { color: #000000; background-color: #ffffc0; }",
             ".highlight .gd { background-color: #ffdddd }",
         ]
@@ -49,8 +49,8 @@ def test_drop_backgrounds_keeps_highlighted_lines() -> None:
         # Sphinx 7.1 processes overrides before loading the theme entry point.
         "extensions": ["sphinxawesome_theme"],
         "html_theme": "sphinxawesome_theme",
-        "pygments_style": "xcode",
-        "pygments_style_dark": "github-dark",
+        "pygments_style": "default",
+        "pygments_style_dark": "one-dark",
     },
     freshenv=True,
 )
@@ -59,11 +59,17 @@ def test_dark_styles_follow_theme_toggle(app: Sphinx) -> None:
     app.build()
 
     css = (Path(app.outdir) / "_static" / "pygments.css").read_text(encoding="utf-8")
-    assert ".dark .highlight .k" in css
+    light_scope = ":where(:root:not(.dark))"
+    dark_scope = ":where(:root.dark)"
+    rules = css.splitlines()
+    assert all(rule.startswith((f"{light_scope} ", f"{dark_scope} ")) for rule in rules)
+    light_keyword = next(rule for rule in rules if rule.startswith(f"{light_scope} .highlight .k {{"))
+    dark_keyword = next(rule for rule in rules if rule.startswith(f"{dark_scope} .highlight .k {{"))
+    assert "font-weight: bold" in light_keyword
+    assert "font-weight" not in dark_keyword
     assert "prefers-color-scheme" not in css
-    # The theme owns the background of code blocks
+    # The theme owns the background of code blocks.
     assert ".highlight { background" not in css
-    assert ".dark .highlight { background" not in css
 
     assert not (Path(app.outdir) / "_static" / "pygments_dark.css").exists()
     tree = parse_html(Path(app.outdir) / "index.html")

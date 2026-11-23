@@ -23,8 +23,8 @@ from .highlighting import AwesomePygmentsBridge
 
 # Backgrounds of the code block and (non-special) line numbers belong to the theme,
 # so that they follow the page colors regardless of the Pygments style.
-_BLOCK_BG = re.compile(r"^(\.dark )?\.highlight \{[^}]*\}")
-_LINENOS_BG = re.compile(r"^(\.dark )?(td\.linenos \.normal|span\.linenos) \{")
+_BLOCK_BG = re.compile(r"^\.highlight \{[^}]*\}")
+_LINENOS_BG = re.compile(r"^(td\.linenos \.normal|span\.linenos) \{")
 _BG = re.compile(r"\s*background(-color)?:[^;}]*;?")
 
 
@@ -100,12 +100,13 @@ class AwesomeHTMLBuilder(StandaloneHTMLBuilder):
             stylesheet = _drop_backgrounds(stylesheet)
 
         if self.dark_highlighter:
-            # Scope dark styles to the ``dark`` class on the root element,
-            # because the theme toggle sets it independent of the OS preference.
-            formatter = self.dark_highlighter.get_formatter()
-            dark_rules = formatter.get_style_defs(".dark .highlight").splitlines()
-            dark_css = "\n".join(line if line.startswith(".dark") else f".dark {line}" for line in dark_rules)
-            stylesheet += "\n" + _drop_backgrounds(dark_css)
+            # Keep the palettes separate without raising selector specificity.
+            dark_stylesheet = _drop_backgrounds(self.dark_highlighter.get_stylesheet())
+            stylesheet = "\n".join(
+                f":where({scope}) {rule}"
+                for scope, css in ((":root:not(.dark)", stylesheet), (":root.dark", dark_stylesheet))
+                for rule in css.splitlines()
+            )
 
         with open(path.join(self.outdir, "_static", "pygments.css"), "w", encoding="utf-8") as f:
             f.write(stylesheet)
