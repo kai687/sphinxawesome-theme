@@ -13,7 +13,7 @@ Build your own theme
 
 ----
 
-The easiest way to install **all** dependencies is with mise_.
+To install **all** dependencies, use mise_.
 
 #. :ref:`sec:fork-and-clone`.
 
@@ -23,15 +23,15 @@ The easiest way to install **all** dependencies is with mise_.
 
       mise install
 
-#. Check that everything is working locally.
+#. Make sure that everything works.
 
    .. code-block:: bash
 
       mise run quality
 
-   This runs linting and type checking locally.
+   This command runs the linter and the type checker.
 
-   Too see a list of available tasks, run:
+   To see a list of the available tasks, run:
 
    .. code-block:: bash
 
@@ -39,13 +39,13 @@ The easiest way to install **all** dependencies is with mise_.
 
 #. Install JavaScript dependencies.
 
-   Go to the :file:`src/theme-src` directory and run:
+   Go to the :file:`src/theme-src` directory. Then run:
 
    .. code-block:: bash
 
       pnpm install
 
-#. To build the JavaScript and CSS assets, run:
+#. Build the JavaScript and CSS assets:
 
    .. code-block:: bash
 
@@ -53,18 +53,19 @@ The easiest way to install **all** dependencies is with mise_.
 
 #. Optional: add DocSearch environment variables.
 
-   If you have access to the environment variables for DocSearch,
-   copy the file :file:`docs/.env.example` to :file:`docs/.env`
-   and fill in the values. They're safe to expose on your website.
+   If you have the environment variables for DocSearch,
+   copy the file :file:`docs/.env.example` to :file:`docs/.env`.
+   Then enter the values in the new file.
+   It is safe to show these values on your website.
 
-   By default, placeholder values are used and DocSerach won't work
-   when developing locally.
+   By default, the build uses placeholder values.
+   With these values, DocSearch does not work during local development.
 
 .. _mise: https://mise.jdx.dev
 
-If you don't want to use mise,
-use your preferred version and package managers.
-See the files :file:`mise.toml`, :file:`pyproject.toml`,
-and :file:`src/theme-src/package.json` for more information.
+If you do not want to use mise,
+use your preferred version manager and package manager.
+For more information, read the files :file:`mise.toml`, :file:`pyproject.toml`,
+and :file:`src/theme-src/package.json`.
 
-Now you can make any change you want.
+Now you can change the theme.

@@ -1,7 +1,7 @@
 /* Styles for notes, warnings, etc. */
 
 .admonition {
-	@apply my-6 rounded-lg border border-border bg-background p-4 text-sm text-foreground;
+	@apply my-6 rounded-lg border border-border bg-background px-5 py-4 text-[0.9375rem] leading-6 text-foreground;
 	& p:not(.admonition-title) {
 		@apply mt-2;
 	}
@@ -11,7 +11,7 @@
 }
 
 .admonition-title {
-	@apply font-medium dark:font-semibold dark:tracking-wide;
+	@apply font-semibold;
 }
 
 .note {
@@ -36,7 +36,7 @@
 }
 
 div.versionadded {
-	@apply mt-4 border-l-[3px] border-green-600 px-4 py-1 text-sm;
+	@apply my-6 border-l-[3px] border-green-600 px-4 py-1 text-[0.9375rem] leading-6;
 	& p {
 		@apply mt-0!;
 		&:last-child {
@@ -49,7 +49,7 @@ div.versionadded {
 }
 
 div.versionchanged {
-	@apply mt-4 border-l-[3px] border-yellow-600 px-4 py-1 text-sm;
+	@apply my-6 border-l-[3px] border-yellow-600 px-4 py-1 text-[0.9375rem] leading-6;
 	& p {
 		@apply mt-0!;
 		&:last-child {
@@ -62,7 +62,7 @@ div.versionchanged {
 }
 
 div.deprecated {
-	@apply mt-4 border-l-[3px] border-red-600 px-4 py-1 text-sm;
+	@apply my-6 border-l-[3px] border-red-600 px-4 py-1 text-[0.9375rem] leading-6;
 	& p {
 		@apply mt-0!;
 		&:last-child {

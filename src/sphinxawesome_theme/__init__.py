@@ -50,7 +50,7 @@ class ThemeOptions:
     Each attribute becomes a key in the :confval:`sphinx:html_theme_options` dictionary.
     """
 
-    show_prev_next: bool = True
+    show_prev_next: bool = False
     """If true, the theme includes links to the previous and next pages in the hierarchy."""
 
     show_breadcrumbs: bool = True
@@ -108,6 +108,7 @@ def setup(app: Sphinx) -> dict[str, Any]:
 
     # Monkey-patch galore
     StandaloneHTMLBuilder.init_highlighter = AwesomeHTMLBuilder.init_highlighter  # type: ignore
+    StandaloneHTMLBuilder.init_css_files = AwesomeHTMLBuilder.init_css_files  # type: ignore
     StandaloneHTMLBuilder.create_pygments_style_file = (  # type: ignore
         AwesomeHTMLBuilder.create_pygments_style_file
     )

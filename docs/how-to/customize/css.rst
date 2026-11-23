@@ -14,8 +14,8 @@ Add custom CSS
 Add CSS files
 -------------
 
-To add extra CSS files, add your custom styles to a file—for example,
-:file:`_static/custom.css` and add the following options to your Sphinx configuration:
+To add extra CSS files, put your custom styles in a file, for example :file:`_static/custom.css`.
+Then add these options to your Sphinx configuration:
 
 .. code-block:: python
    :caption: |conf|
@@ -23,9 +23,9 @@ To add extra CSS files, add your custom styles to a file—for example,
    html_static_path = ["_static"]
    html_css_files = ["custom.css"]
 
-Your custom CSS file is included *after* the theme's default CSS.
+Sphinx loads your custom CSS file *after* the default CSS of the theme.
 Because of different `CSS specificities`_,
-you might need to add ``!important`` to your CSS styles.
+sometimes you must add ``!important`` to your CSS styles.
 
 .. _CSS specificities: https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Specificity
 
@@ -36,21 +36,19 @@ you might need to add ``!important`` to your CSS styles.
 
 .. important::
 
-   You can't use Tailwind's ``@apply`` directive in custom CSS.
+   Do not use the ``@apply`` directive of Tailwind in custom CSS.
    Use regular CSS instead.
 
 Extend templates with inline CSS
 --------------------------------
 
-If you want to add CSS inline,
-you can extend the default ``page`` template and override the ``extrahead`` block:
+To add CSS inline,
+extend the default ``page`` template and override the ``extrahead`` block:
 
 .. code-block:: html+jinja
   :caption: File: page.html
 
   {% extends "!page.html" %}
-
-  {{ super() }}
 
   {% block extrahead %}
   <style>
@@ -61,22 +59,46 @@ you can extend the default ``page`` template and override the ``extrahead`` bloc
 Override CSS custom properties
 ------------------------------
 
+The theme defines its colors as CSS custom properties on the ``:root`` element.
+The dark mode values are on ``:root.dark``.
+Each value is a list of hue, saturation, and lightness (HSL) values, without the ``hsl()`` function.
+For example, ``222.2 47.4% 11.2%``.
+
 You can override these custom properties:
 
-``--color-brand``
-   The color for hover, focus, and highlight styles
+``--background``, ``--foreground``
+   The color of the page and the color of the main text.
 
-``--color-links``
-   The color for links in the main text.
+``--primary``
+   The color for sidebar link hover styles and for DocSearch highlights.
 
-For example, to change the color of links to green,
-add a new CSS file or extend the templates and add the following CSS:
+``--accent``, ``--accent-foreground``
+   The background color and the text color for hover and focus states.
+
+``--muted``, ``--muted-foreground``
+   The colors for secondary elements and secondary text.
+
+``--border``, ``--input``
+   The color of borders and of form fields.
+
+``--ring``
+   The color of the keyboard focus ring on the built-in search field and the DocSearch button.
+   It does not change other focus outlines.
+
+To make the search focus ring green in both light and dark mode,
+add this CSS to a custom stylesheet or template:
 
 .. code-block:: css
 
-   :root {
-      --color-links: green;
+   :root,
+   :root.dark {
+      --ring: 142 71% 45%;
    }
+
+Press Tab until the search field or DocSearch button has focus to see the green ring.
+
+To set different colors for light mode and dark mode,
+set the custom properties on ``:root`` and on ``:root.dark`` separately.
 
 .. seealso::
 

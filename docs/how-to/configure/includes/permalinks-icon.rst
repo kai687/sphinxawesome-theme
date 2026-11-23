@@ -1,20 +1,20 @@
 Permalinks icons
 ----------------
 
-By default, Sphinx adds a link to each heading which allows you to link to each section of a page.
-Sphinx adds a ¶ icon by default.
+By default, Sphinx adds a link with a ¶ icon to each heading.
+You can use these links to link to each section of a page.
 
-Even if you want to use the default icon, it's better to wrap it in a ``<span>`` element:
+To use the default icon, put it in a ``<span>`` element:
 
 .. code-block:: python
    :caption: |conf|
 
    html_permalinks_icon = "<span>¶</span>"
 
-This makes the icon only show up when you hover over or focus the heading.
+With this change, the icon shows only when you hover over the heading or move focus to it.
 
-If you want to use the same icon as used in the documentation for the |product|,
-add the following code to your Sphinx configuration:
+To use the same icon as the documentation for the |product|,
+add this code to your Sphinx configuration:
 
 .. code-block:: python
    :caption: |conf|

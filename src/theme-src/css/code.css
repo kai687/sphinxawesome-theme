@@ -1,6 +1,6 @@
 /* Code-related styles */
 .highlight {
-	@apply relative bg-transparent;
+	@apply relative;
 
 	&:hover .copy {
 		@apply opacity-100;
@@ -109,7 +109,7 @@ pre {
 
 .guilabel,
 .menuselection {
-	@apply rounded-sm border border-border px-2 py-px font-medium text-accent-foreground;
+	@apply rounded border border-border px-2 py-px font-medium text-accent-foreground;
 }
 
 #content kbd:not(.compound) {

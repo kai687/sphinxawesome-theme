@@ -1,10 +1,10 @@
 Logos
 -----
 
-You can use the :confval:`sphinx:html_logo` option to set a path to your logo.
-If you're using a logo that works well in dark mode, you only need to declare one logo.
+Set the path to your logo with the :confval:`sphinx:html_logo` option.
+If your logo works well in dark mode, you need only one logo.
 
-If you want to use different logos for *light* and *dark* mode,
+To use different logos for *light* and *dark* mode,
 add them to your theme options:
 
 .. code-block:: python

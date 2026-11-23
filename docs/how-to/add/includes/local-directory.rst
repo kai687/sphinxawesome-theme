@@ -1,9 +1,8 @@
 Load the theme from a local directory
 -------------------------------------
 
-If you want to load the |product| from a local directory
-without installing a Python package,
-follow these steps:
+To load the |product| from a local directory
+without a Python package, do these steps:
 
 #. Install the ``beautifulsoup`` package.
 
@@ -11,11 +10,11 @@ follow these steps:
 
       pip install bs4
 
-   If you load the theme from a local directly,
-   you need to manage the theme's dependencies.
+   If you load the theme from a local directory,
+   you must manage the dependencies of the theme.
 
 #. :ref:`sec:fork-and-clone`.
-#. Create a new directory for themes in your Sphinx project—for example, :file:`_themes/`:
+#. Make a new directory for themes in your Sphinx project, for example :file:`_themes/`:
 
    .. code-block:: bash
       :emphasize-lines: 4
@@ -47,15 +46,18 @@ follow these steps:
       html_theme_path = ["_themes"]
       exclude_patterns = ["_themes"]
 
-   This configuration makes the local :file:`_themes` directory available to Sphinx,
-   adds the |product| as HTML theme and extension,
-   and excludes the directory from being searched for documentation files.
+   This configuration does these things:
+
+   - It makes the local :file:`_themes` directory available to Sphinx.
+   - It adds the |product| as an HTML theme and as an extension.
+   - It stops Sphinx from searching the directory for documentation files.
 
    .. note::
 
-      If you load the |product| via the ``html_theme_path`` option,
-      you must add it as extension *and* theme.
-      That's because the |product| depends on a setup function that only runs when you import the theme as Python code.
+      If you load the |product| with the ``html_theme_path`` option,
+      you must add it as an extension *and* as a theme.
+      The |product| needs a setup function.
+      This function runs only when you import the theme as Python code.
 
    .. seealso::
 

@@ -3,7 +3,7 @@
 
 #left-sidebar {
 	& .caption {
-		@apply mb-1 rounded-md px-2 py-1 pt-6 text-sm font-semibold first:pt-0;
+		@apply mb-1 px-2 pb-1 pt-8 text-xs font-semibold uppercase tracking-wider text-muted-foreground first:pt-0;
 	}
 	& ul {
 		@apply grid transform-gpu grid-flow-row auto-rows-max overflow-hidden text-sm transition-all duration-300 ease-in-out motion-reduce:transition-none;
@@ -20,7 +20,7 @@
 			}
 		}
 		&.current {
-			@apply border border-border bg-accent font-medium text-accent-foreground;
+			@apply border border-border bg-accent font-semibold text-accent-foreground;
 		}
 		&.expandable {
 			@apply justify-between;
