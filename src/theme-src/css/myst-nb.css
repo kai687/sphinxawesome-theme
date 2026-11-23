@@ -49,7 +49,7 @@ div.container.cell {
 
 /* --- Input cells --- */
 div.cell > div.cell_input {
-	@apply rounded-md border border-border text-sm;
+	@apply rounded-lg border border-border text-sm;
 	background-color: var(--mystnb-source-bg-color);
 }
 
@@ -67,7 +67,7 @@ div.cell_output {
 }
 
 div.cell_output > .output {
-	@apply rounded-md border border-border text-sm;
+	@apply rounded-lg border border-border text-sm;
 	background-color: var(--mystnb-stdout-bg-color);
 }
 

@@ -17,7 +17,7 @@
 	}
 
 	& h3 {
-		@apply mt-8 text-2xl font-semibold;
+		@apply mt-10 text-2xl font-semibold;
 	}
 
 	& h4,
@@ -118,7 +118,7 @@ blockquote {
 }
 
 table {
-	@apply my-6 w-full text-sm;
+	@apply my-6 w-full text-sm leading-6;
 	& caption {
 		@apply mb-6 text-left text-muted-foreground;
 	}
