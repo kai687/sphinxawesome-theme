@@ -79,8 +79,12 @@ class AwesomeHTMLBuilder(StandaloneHTMLBuilder):
         The dark styles are part of ``pygments.css`` and follow the theme toggle,
         so the file ``pygments_dark.css`` doesn't exist.
         """
-        original_init_css_files(self)
-        self._css_files = [css for css in self._css_files if not str(css.filename).endswith("pygments_dark.css")]
+        dark_highlighter = self.dark_highlighter
+        self.dark_highlighter = None
+        try:
+            original_init_css_files(self)
+        finally:
+            self.dark_highlighter = dark_highlighter
 
     def create_pygments_style_file(self: AwesomeHTMLBuilder) -> None:
         """Create CSS file for Pygments."""

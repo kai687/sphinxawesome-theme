@@ -46,6 +46,8 @@ def test_drop_backgrounds_keeps_highlighted_lines() -> None:
     "html",
     testroot="root",
     confoverrides={
+        # Sphinx 7.1 processes overrides before loading the theme entry point.
+        "extensions": ["sphinxawesome_theme"],
         "html_theme": "sphinxawesome_theme",
         "pygments_style": "xcode",
         "pygments_style_dark": "github-dark",

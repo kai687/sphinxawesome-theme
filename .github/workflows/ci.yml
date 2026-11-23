@@ -76,6 +76,12 @@ jobs:
           DOCSEARCH_APP_ID: ${{ vars.DOCSEARCH_APP_ID }}
           DOCSEARCH_API_KEY: ${{ vars.DOCSEARCH_API_KEY }}
           DOCSEARCH_INDEX_NAME: ${{ vars.DOCSEARCH_INDEX_NAME }}
+      - name: Smoke-test dark highlighting on Sphinx 7.1
+        if: matrix.python-version == '3.10.21'
+        run: >-
+          uv run --no-project --python ${{ matrix.python-version }}
+          --with 'sphinx==7.1.0' --with pytest --with-editable .
+          pytest -q tests/test_pygments_styles.py::test_dark_styles_follow_theme_toggle
   docs:
     name: Build the docs (for testing)
     runs-on: ubuntu-latest
