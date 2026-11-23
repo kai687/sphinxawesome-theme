@@ -1,8 +1,8 @@
 Logos
 -----
 
-Use the :confval:`sphinx:html_logo` option to set the path to your logo.
-If your logo is clear in dark mode, you need only one logo.
+Set the path to your logo with the :confval:`sphinx:html_logo` option.
+If your logo works well in dark mode, you need only one logo.
 
 To use different logos for *light* and *dark* mode,
 add them to your theme options:
