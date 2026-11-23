@@ -152,7 +152,7 @@ pygments_style = "xcode"
 pygments_style_dark = "github-dark"
 
 html_static_path = ["_static"]
-html_css_files = ["search.css"]
+html_css_files = ["search.css", "custom.css"]
 html_js_files = [("search.js", {"defer": "defer"})]
 
 # Use dummy values in local development

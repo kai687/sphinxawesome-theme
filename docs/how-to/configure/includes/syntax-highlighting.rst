@@ -28,6 +28,23 @@ You can also try these Pygments color schemes:
 
 Do not use highly saturated color schemes, such as ``monokai`` or ``dracula``. They can clash with the rest of the theme.
 
+After you select the color schemes, check code blocks in light mode and dark mode.
+Make sure that text, highlighted tokens, and line numbers have enough contrast.
+A color scheme designed for one mode might not work in the other mode.
+
+To change the background of code blocks, :ref:`add custom CSS <sec:custom-css>`.
+For example, this CSS makes the background transparent in both modes:
+
+.. code-block:: css
+
+   :root:not(.dark) .highlight,
+   :root.dark .highlight {
+      background-color: transparent;
+   }
+
+You can replace ``transparent`` with another CSS color.
+Check the contrast again after you change the background.
+
 .. note::
 
    If you set ``pygments_style``, code blocks keep the background and text colors of that scheme.

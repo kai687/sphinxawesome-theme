@@ -85,12 +85,30 @@ def test_dark_styles_follow_theme_toggle(app: Sphinx) -> None:
     freshenv=True,
 )
 def test_no_dark_styles_by_default(app: Sphinx) -> None:
-    """It doesn't add dark styles unless you configure `pygments_style_dark`."""
+    """It lets the theme style the background of the default `bw` scheme."""
     app.build()
 
     css = (Path(app.outdir) / "_static" / "pygments.css").read_text(encoding="utf-8")
     assert ".dark" not in css
     assert ".highlight { background" not in css
+
+
+@pytest.mark.sphinx(
+    "html",
+    testroot="root",
+    confoverrides={
+        "extensions": ["sphinxawesome_theme"],
+        "html_theme": "child",
+        "html_theme_path": ["_themes"],
+    },
+    freshenv=True,
+)
+def test_inherited_theme_style_keeps_its_palette(app: Sphinx) -> None:
+    """It keeps the background selected by an inherited theme."""
+    app.build()
+
+    css = (Path(app.outdir) / "_static" / "pygments.css").read_text(encoding="utf-8")
+    assert ".highlight { background: #272822; color: #F8F8F2 }" in css
 
 
 @pytest.mark.sphinx(

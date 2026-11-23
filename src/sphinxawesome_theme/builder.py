@@ -59,6 +59,7 @@ class AwesomeHTMLBuilder(StandaloneHTMLBuilder):
             style = "sphinx"
 
         self.highlighter = AwesomePygmentsBridge("html", style)
+        self._use_theme_code_background = self.config.pygments_style is None and style == "bw"
 
         if self.config.pygments_style_dark is not None:
             dark_style = self.config.pygments_style_dark
@@ -92,8 +93,8 @@ class AwesomeHTMLBuilder(StandaloneHTMLBuilder):
     def create_pygments_style_file(self: AwesomeHTMLBuilder) -> None:
         """Create CSS file for Pygments."""
         stylesheet = self.highlighter.get_stylesheet()
-        if self.config.pygments_style is None:
-            # Theme defaults: the theme owns the code block backgrounds.
+        if self._use_theme_code_background:
+            # The built-in ``bw`` default inherits the theme's foreground and background.
             stylesheet = _drop_backgrounds(stylesheet)
         else:
             # Explicit style: keep its palette intact. Pygments can omit the
