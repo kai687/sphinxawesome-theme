@@ -3,17 +3,17 @@
 Example: hide the right sidebar
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Extending the base templates is a powerful technique to achieve custom layouts
-that integrate well with the existing theme.
+Extend the base templates to make custom layouts
+that fit the existing theme.
 
-For example, you can change the layout to conditionally show or hide the *on-page* table of contents in the right sidebar.
-To achieve this, you need to update 2 templates:
+For example, you can show or hide the *on-page* table of contents in the right sidebar.
+To do this, update 2 templates:
 
-- ``layout.html``. You need to update this template to extend the body to the full width.
-- ``page.html``. You need to update this template to conditionally include the table of contents.
+- ``layout.html``: Update this template to extend the body to the full width.
+- ``page.html``: Update this template to include the table of contents only when necessary.
 
 #. :ref:`Add a templates folder to your docs <sec:add-custom-templates>`.
-#. Create a new file :file:`_templates/layout.html` with the following content:
+#. Create a new file :file:`_templates/layout.html` with this content:
 
    .. code-block:: html+django
       :caption: File: layout.html
@@ -32,10 +32,10 @@ To achieve this, you need to update 2 templates:
       </main>
       {%- endblock main %}
 
-   This change leads to different styles being applied to the ``main`` element,
-   depending on whether the document has a ``:notoc:`` field or not.
+   This change applies different styles to the ``main`` element.
+   The styles depend on the ``:notoc:`` field in the document.
 
-#. Create a new file :file:`_templates/page.html` with the following content:
+#. Create a new file :file:`_templates/page.html` with this content:
 
    .. code-block:: html+django
       :caption: File: page.html
@@ -50,9 +50,9 @@ To achieve this, you need to update 2 templates:
       {%- endif %}
       {% endblock %}
 
-   This change hides the sidebar if the document has a ``:notoc:`` option.
+   This change hides the sidebar if the document has a ``:notoc:`` field.
 
-#. Include the ``:notoc:`` option in your documents.
+#. Add the ``:notoc:`` field to your documents.
 
    .. code-block:: reStructuredText
 

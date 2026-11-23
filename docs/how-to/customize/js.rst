@@ -12,8 +12,8 @@ Add custom JavaScript
 Add JavaScript files
 --------------------
 
-To add extra JavaScript files, add your code to a file—for example,
-:file:`_static/custom.js` and add the following options to your Sphinx configuration:
+To add extra JavaScript files, put your code in a file, for example :file:`_static/custom.js`.
+Then add these options to your Sphinx configuration:
 
 .. code-block:: python
    :caption: |conf|
@@ -29,9 +29,9 @@ To add extra JavaScript files, add your code to a file—for example,
 Extend templates with inline JavaScript
 ---------------------------------------
 
-If you want to add JavaScript inline,
-or load additional external scripts,
-you can extend the default ``page`` template
+To add JavaScript inline,
+or to load more external scripts,
+extend the default ``page`` template
 and override the ``extrahead`` block:
 
 .. code-block:: html+jinja

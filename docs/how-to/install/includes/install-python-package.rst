@@ -15,4 +15,4 @@ To install the latest **development version**, run:
 
    pip install git+https://github.com/kai687/sphinxawesome-theme.git
 
-After installing the theme, you can :doc:`add it to your project <../add/index>`.
+After you install the theme, you can :doc:`add it to your project <../add/index>`.

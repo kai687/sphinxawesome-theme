@@ -3,5 +3,5 @@
 Algolia DocSearch
 -----------------
 
-If you want to replace Sphinx's built-in search with DocSearch,
+To replace the built-in search of Sphinx with DocSearch,
 use the `sphinx-docsearch <https://github.com/algolia/sphinx-docsearch>`_ extension.

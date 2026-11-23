@@ -45,7 +45,7 @@ Get started
 Upgrade
 -------
 
-If you want to upgrade to version |current| of the theme, see :doc:`changelog/index`.
+To upgrade to version |current| of the theme, read the :doc:`changelog/index`.
 
 Explore
 -------
@@ -54,7 +54,7 @@ Explore
 
    .. tab-item:: How To
 
-      In the **How-to** section, you can learn more about using and customizing the theme.
+      The **How-to** section shows how to use and customize the theme.
 
       .. toctree::
          :caption: How To
@@ -68,7 +68,7 @@ Explore
 
    .. tab-item:: Demo
 
-      The **Demo** section shows how various elements will look like.
+      The **Demo** section shows how the different elements look.
 
       .. toctree::
          :caption: Demo

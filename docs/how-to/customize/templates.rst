@@ -9,7 +9,7 @@ Add custom templates
 
 .. rst-class:: lead
 
-   Add, extend, or overrde Jinja2 templates.
+   Add, extend, or override Jinja2 templates.
 
 Create a directory in your Sphinx project and add it to your Sphinx configuration:
 

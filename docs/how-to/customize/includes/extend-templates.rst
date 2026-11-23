@@ -6,8 +6,8 @@
 Extend templates
 ~~~~~~~~~~~~~~~~
 
-To extend existing templates,
-create a new file with the same name and add the following code:
+To extend an existing template,
+create a new file with the same name. Add this code to the file:
 
 .. code-block:: html+jinja
    :emphasize-text: TEMPLATE
@@ -16,9 +16,9 @@ create a new file with the same name and add the following code:
 
    {{ super() }}
 
-Replace :samp:`{TEMPLATE}` with the name of the template you want to extend.
-The exclamation mark lets Sphinx load the parent template from the HTML theme.
-Call ``super()`` to render the original content of the parent template.
+Replace :samp:`{TEMPLATE}` with the name of the template to extend.
+The exclamation mark makes Sphinx load the parent template from the HTML theme.
+The ``super()`` call renders the original content of the parent template.
 
 .. seealso::
 

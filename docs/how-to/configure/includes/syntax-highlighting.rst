@@ -1,11 +1,11 @@
 Syntax highlighting
 -------------------
 
-You can choose any Pygments color scheme for syntax highlighting in code blocks.
-To use different color schemes for both light and dark modes,
-set both the :confval:`sphinx:pygments_style` and ``pygments_style_dark`` parameters.
-To use the same color scheme in light and dark mode,
-only set the ``pygments_style`` parameter:
+You can use any Pygments color scheme for syntax highlighting in code blocks.
+To use different color schemes for light mode and dark mode,
+set the :confval:`sphinx:pygments_style` parameter and the ``pygments_style_dark`` parameter.
+To use the same color scheme in both modes,
+set only the ``pygments_style`` parameter:
 
 .. code-block:: python
    :caption: |conf|
@@ -25,18 +25,18 @@ and the ``github-dark`` color scheme in dark mode:
    pygments_style = "xcode"
    pygments_style_dark = "github-dark"
 
-Both schemes use muted colors, which suit the neutral palette of the theme.
-Other Pygments color schemes that you may want to try:
+Both schemes use muted colors. These colors suit the neutral palette of the theme.
+You can also try these Pygments color schemes:
 
 - Light mode: ``default``, ``friendly``, ``vs``
 - Dark mode: ``one-dark``, ``nord``, ``night-owl``
 
-Highly saturated color schemes, such as ``monokai`` or ``dracula``, can clash with the rest of the theme.
+Do not use highly saturated color schemes, such as ``monokai`` or ``dracula``. They can clash with the rest of the theme.
 
 .. note::
 
-   The theme sets the background color of code blocks,
-   so that they match the page in light and dark mode.
+   The theme sets the background color of code blocks
+   to match the page in light mode and in dark mode.
    The theme ignores the background color of the Pygments color scheme.
-   The theme applies the dark mode scheme when dark mode is on, according to the theme toggle,
-   not the operating system setting.
+   The theme uses the dark mode scheme when the theme toggle is set to dark mode.
+   It does not use the operating system setting.

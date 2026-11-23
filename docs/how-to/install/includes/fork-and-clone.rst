@@ -5,8 +5,8 @@ Create a local copy of the repository
 
 #. Optional: `fork the repository`_ .
 
-   If you don't want to merge your changes with the original repository,
-   you can skip this step.
+   If you do not want to merge your changes into the original repository,
+   skip this step.
 
 #. `Clone the repository`_:
 
@@ -19,7 +19,7 @@ Create a local copy of the repository
 
      Replace :samp:`{GITHUB_USERNAME}` with your GitHub username.
 
-   - If you didn't fork the repository, clone the original repository:
+   - If you did not fork the repository, clone the original repository:
 
      .. code-block:: bash
 
@@ -28,6 +28,6 @@ Create a local copy of the repository
 .. _`fork the repository`: https://docs.github.com/en/pull-requests/how-tos/work-with-forks/fork-a-repo
 .. _`Clone the repository`: https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
 
-After cloning the repository,
+After you clone the repository,
 you can :ref:`install the theme as a local package<sec:install-local-package>`
-or :doc:`install the project's dependencies <../build-your-own/index>`.
+or :doc:`install the dependencies of the project <../build-your-own/index>`.
