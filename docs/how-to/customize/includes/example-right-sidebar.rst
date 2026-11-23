@@ -20,8 +20,6 @@ To do this, update 2 templates:
 
       {%- extends "!layout.html" %}
 
-      {{ super() }}
-
       {%- block main %}
       {%- if meta is defined and meta is not none and 'notoc' in meta %}
         <main class="relative py-6">
@@ -41,8 +39,6 @@ To do this, update 2 templates:
       :caption: File: page.html
 
       {%- extends "!page.html" -%}
-
-      {{ super() }}
 
       {%- block on_page_toc %}
       {%- if (meta is not defined or meta is none or "notoc" not in meta) and display_toc %}

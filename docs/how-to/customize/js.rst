@@ -39,8 +39,6 @@ and override the ``extrahead`` block:
 
    {% extends "!page.html" %}
 
-   {{ super() }}
-
    {% block extrahead %}
    <script>
     // Add your JavaScript code here

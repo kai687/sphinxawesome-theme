@@ -64,8 +64,6 @@ and override these blocks:
 
    {% extends "!page.html" %}
 
-   {{ super() }}
-
    {% block extrahead %}
    {# Included before the closing </head> tag #}
    {% endblock %}

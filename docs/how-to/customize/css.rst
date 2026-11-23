@@ -50,8 +50,6 @@ extend the default ``page`` template and override the ``extrahead`` block:
 
   {% extends "!page.html" %}
 
-  {{ super() }}
-
   {% block extrahead %}
   <style>
    /* Add your CSS styles here */
