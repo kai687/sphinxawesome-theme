@@ -46,6 +46,13 @@ def docsearch_records(doc, ctx, lvl0):
 
     # In Sphinx, sections have the IDs, not the headings.
     for section in root.select("section[id]"):
+        # Skip sections marked with `.. rst-class:: search-ignore`, and their children.
+        classes = attr(section, "class")
+        if classes != None and "search-ignore" in classes.split(" "):
+            continue
+        if has_parent(section, "section.search-ignore"):
+            continue
+
         # Index only up to h4.
         heading = section.select_first("h1, h2, h3, h4")
         if heading == None:
@@ -118,6 +125,11 @@ def docsearch_records(doc, ctx, lvl0):
 
         for node in section.select("p, li"):
             if nested_section_selector != "" and has_parent(node, nested_section_selector):
+                continue
+            # Skip text inside "See also" callouts (`.. seealso::`).
+            # Also skip `li` nodes that contain one, because their text includes
+            # the callout. Their own `p` children are indexed separately.
+            if has_parent(node, "div.seealso") or node.select_first("div.seealso") != None:
                 continue
             value = escape_html(trim(text(node)))
             if value != "":
