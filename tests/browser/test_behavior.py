@@ -85,7 +85,6 @@ def test_scrollspy_follows_scroll_and_reaches_last_section(browser: Any, site: s
     context = browser.new_context(viewport={"width": 1440, "height": 800})
     page = context.new_page()
     page.goto(f"{site}/long.html")
-    page.wait_for_function("window.Alpine !== undefined")
 
     page.evaluate("document.querySelector('#second-section').scrollIntoView()")
     page.wait_for_function("document.querySelector('#right-sidebar [data-current]')")

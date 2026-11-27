@@ -26,7 +26,7 @@ def test_theme_toggle_has_accessible_name(app: Sphinx) -> None:
     tree = parse_html(Path(app.outdir) / "index.html")
     button = tree.select_one('button[aria-label="Toggle color scheme"]')
     assert button is not None
-    assert button.get(":aria-pressed") == "darkMode.toString()"
+    assert button.get("aria-pressed") == "false"
 
 
 @pytest.mark.sphinx("html", testroot="nav", confoverrides=OPTIONS)

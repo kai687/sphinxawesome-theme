@@ -36,7 +36,7 @@ The following table lists the assets used by the |product| to be awesome.
 +---------------------------------------------------------+-------------------------------+-----------------------------------------------------------------------------------+
 | CSS framework                                           | Tailwind_                     | `MIT License <https://github.com/tailwindlabs/tailwindcss/blob/main/LICENSE>`__   |
 +---------------------------------------------------------+-------------------------------+-----------------------------------------------------------------------------------+
-| JavaScript framework (Version 5.0 and later)            | Alpine.js_                    | `MIT License <https://github.com/alpinejs/alpine/blob/main/LICENSE.md>`__         |
+| JavaScript framework (Versions 5.0 to 6.0)              | Alpine.js_                    | `MIT License <https://github.com/alpinejs/alpine/blob/main/LICENSE.md>`__         |
 +---------------------------------------------------------+-------------------------------+-----------------------------------------------------------------------------------+
 | JavaScript framework (Versions 2 to 4)                  | Stimulus_                     | `MIT License <https://github.com/hotwired/stimulus/blob/main/LICENSE.md>`__       |
 +---------------------------------------------------------+-------------------------------+-----------------------------------------------------------------------------------+

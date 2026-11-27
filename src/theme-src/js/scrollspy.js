@@ -2,8 +2,9 @@
  * Highlight the current section in the on-page TOC.
  *
  * The postprocessing step marks each heading's permalink with
- * `data-scrollspy`. The current section is the last heading that has
- * scrolled above a line near the top of the viewport. At the very bottom
+ * `data-scrollspy`. The matching TOC link gets `data-current`. The current
+ * section is the last heading that has scrolled above a line near the top of
+ * the viewport. At the very bottom
  * of the page, the last heading wins, so short final sections can still
  * become active even though the page can't scroll any further.
  */
@@ -13,7 +14,9 @@ export function initScrollspy() {
 		return;
 	}
 
-	const root = document.documentElement;
+	const tocLinks = [
+		...document.querySelectorAll("#right-sidebar a[href^='#']"),
+	];
 	let ticking = false;
 	let current;
 
@@ -42,10 +45,8 @@ export function initScrollspy() {
 			return;
 		}
 		current = next;
-		// The root element's Alpine state holds `activeSection`.
-		const data = window.Alpine?.$data(root);
-		if (data) {
-			data.activeSection = next;
+		for (const link of tocLinks) {
+			link.dataset.current = String(link.getAttribute("href") === next);
 		}
 	}
 

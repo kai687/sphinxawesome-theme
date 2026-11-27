@@ -8,15 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@alpinejs/intersect':
-        specifier: ^3.17.5
-        version: 3.17.5
-      '@alpinejs/persist':
-        specifier: ^3.17.5
-        version: 3.17.5
-      alpinejs:
-        specifier: ^3.17.5
-        version: 3.17.5
       clipboard:
         specifier: ^2.0.11
         version: 2.0.11
@@ -60,12 +51,6 @@ packages:
   '@alloc/quick-lru@5.3.0':
     resolution: {integrity: sha512-U4+70Pc5ZS9osnCBCE5Jha/ciHM+Yp+CNMNC/7HvYbNRk1Ldd+f7qO65W5qfhu/TCv+/ozljlXXe9Nj8419DMA==}
     engines: {node: '>=10'}
-
-  '@alpinejs/intersect@3.17.5':
-    resolution: {integrity: sha512-ajnUJjrx3ygix9uLW0xx4TPzegBNi2cJEVA/Z2kEoqKR5fANXSKcVzWc3NyYO0Fi1DZ0aPYQ3esXIDSNCbQdBw==}
-
-  '@alpinejs/persist@3.17.5':
-    resolution: {integrity: sha512-hH1UmIXgakz93pHFif5a6N0HLRO2237l7i0xvS7cpxV47WLJv8+1hAiWABjKZA2VQuWEghXMvYFjtoOLihP5PQ==}
 
   '@babel/code-frame@7.29.7':
     resolution: {integrity: sha512-Aup7aUOfpbAUg2ROOJN6Iw5f9DMBlzu0mIkm/malLQFN/YQgO48wCj0Kxa3sEHJvPVFg7siR+qRInwXd2qhQKw==}
@@ -395,12 +380,6 @@ packages:
   '@types/node@26.6.11':
     resolution: {integrity: sha512-uUyQ2XLEz+EXh34lmS3GhKrkqn/8FU7KUiKRpk347At2bmnMVWss45yz8b4FG/tUtmV1tV/+TVkITItPROyeeQ==}
 
-  '@vue/reactivity@3.5.46':
-    resolution: {integrity: sha512-+FHtYTvGxgFoX3oRs7soz6JHizGv50Q26WJN6PWtXuTLXRfkfUpDUTRuoTA/kiZVVt8NMeMpsPQLh9h++ReUjQ==}
-
-  '@vue/shared@3.5.46':
-    resolution: {integrity: sha512-P1WePbdzHrcIciWtmY2Im9EFhdakd3rZxYqvalOa3SfoxtF35Q8Uhmj1tKn6bWP4utcOpN8ao6BoJUItq0Uf+g==}
-
   '@webassemblyjs/ast@1.14.1':
     resolution: {integrity: sha512-nuBEDgQfm1ccRp/8bCQrx1frohyufl4JlbMMZ4P1wpeOfDhF6FQkxZJ1b/e+PLwr6X1Nhw6OLme5usuBWYBvuQ==}
 
@@ -467,9 +446,6 @@ packages:
 
   ajv@8.20.0:
     resolution: {integrity: sha512-Thbli+OlOj+iMPYFBVBfJ3OmCAnaSyNn4M1vz9T6Gka5Jt9ba/HIR56joy65tY6kx/FCF5VXNB819Y7/GUrBGA==}
-
-  alpinejs@3.17.5:
-    resolution: {integrity: sha512-XewMqRC6zjy8iaUPn86dxjvooAsNai3hUtQbdn0A5H2w7Jt10xHGZ1SczN5+Dvp3UKkuSEt9moy/UaUWOwKdnQ==}
 
   ansis@4.0.0-node10:
     resolution: {integrity: sha512-BRrU0Bo1X9dFGw6KgGz6hWrqQuOlVEDOzkb0QSLZY9sXHqA7pNj7yHPVJRz7y/rj4EOJ3d/D5uxH+ee9leYgsg==}
@@ -932,10 +908,6 @@ snapshots:
 
   '@alloc/quick-lru@5.3.0': {}
 
-  '@alpinejs/intersect@3.17.5': {}
-
-  '@alpinejs/persist@3.17.5': {}
-
   '@babel/code-frame@7.29.7':
     dependencies:
       '@babel/helper-validator-identifier': 7.29.7
@@ -1193,12 +1165,6 @@ snapshots:
     dependencies:
       undici-types: 8.9.0
 
-  '@vue/reactivity@3.5.46':
-    dependencies:
-      '@vue/shared': 3.5.46
-
-  '@vue/shared@3.5.46': {}
-
   '@webassemblyjs/ast@1.14.1':
     dependencies:
       '@webassemblyjs/helper-numbers': 1.13.2
@@ -1296,10 +1262,6 @@ snapshots:
       fast-uri: 3.1.9
       json-schema-traverse: 1.0.0
       require-from-string: 2.0.2
-
-  alpinejs@3.17.5:
-    dependencies:
-      '@vue/reactivity': 3.5.46
 
   ansis@4.0.0-node10: {}
 
