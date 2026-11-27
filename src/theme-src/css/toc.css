@@ -5,9 +5,9 @@
 		& li {
 			@apply mt-0 pt-2;
 			& a {
-				@apply inline-block text-muted-foreground no-underline transition-colors hover:text-foreground focus-visible:-outline-offset-1;
+				@apply -ml-px inline-block border-l-[3px] border-transparent pl-3 text-muted-foreground no-underline transition-colors hover:text-foreground focus-visible:-outline-offset-1;
 				&[data-current="true"] {
-					@apply font-medium text-foreground;
+					@apply border-brand font-medium text-foreground;
 				}
 			}
 			& ul {

@@ -1,7 +1,15 @@
-/* Styles for notes, warnings, etc. */
+/* Styles for notes, warnings, etc.
+ *
+ * Each type sets one hue (`--adm`). A hue-colored border and a faint tint
+ * carry the type; the text stays in the normal foreground color.
+ */
 
 .admonition {
-	@apply my-6 rounded-lg border border-border bg-background px-5 py-4 text-[0.9375rem] leading-6 text-foreground;
+	--adm: var(--note);
+	@apply my-6 rounded-lg border px-5 py-4 text-[0.9375rem] leading-6 text-foreground;
+	border-color: hsl(var(--adm) / 0.5);
+	background-color: hsl(var(--adm) / 0.07);
+
 	& p:not(.admonition-title) {
 		@apply mt-2;
 	}
@@ -12,64 +20,62 @@
 
 .admonition-title {
 	@apply font-semibold;
-}
-
-.note {
-	@apply border-sky-600 bg-sky-50 text-sky-900 dark:bg-blue-400/15 dark:text-sky-100;
+	color: hsl(var(--adm));
 }
 
 .tip,
 .hint {
-	@apply border-green-600 bg-green-50 text-green-900 dark:bg-green-400/15 dark:text-green-100;
+	--adm: var(--tip);
 }
 
 .danger,
 .error {
-	@apply border-red-600 bg-red-50 text-red-900 dark:bg-red-400/15 dark:text-red-100;
+	--adm: var(--danger);
 }
 
 .attention,
 .warning,
 .caution,
 .important {
-	@apply border-yellow-600 bg-yellow-50 text-yellow-900 dark:bg-yellow-400/15 dark:text-yellow-100;
+	--adm: var(--warning);
+}
+
+/* See also is a list of references, not a callout: neutral border, no tint. */
+.admonition.seealso {
+	border-color: hsl(var(--border));
+	background-color: transparent;
+
+	& .admonition-title {
+		@apply text-foreground;
+	}
+}
+
+div.versionadded,
+div.versionchanged,
+div.deprecated {
+	@apply my-6 border-l-[3px] px-4 py-1 text-[0.9375rem] leading-6;
+	border-color: hsl(var(--adm));
+
+	& p {
+		@apply mt-0!;
+		&:last-child {
+			@apply mb-0!;
+		}
+	}
+	& .versionmodified {
+		@apply font-medium;
+		color: hsl(var(--adm));
+	}
 }
 
 div.versionadded {
-	@apply my-6 border-l-[3px] border-green-600 px-4 py-1 text-[0.9375rem] leading-6;
-	& p {
-		@apply mt-0!;
-		&:last-child {
-			@apply mb-0!;
-		}
-	}
-	& .versionmodified {
-		@apply font-medium text-green-900 dark:tracking-wide dark:text-green-500;
-	}
+	--adm: var(--tip);
 }
 
 div.versionchanged {
-	@apply my-6 border-l-[3px] border-yellow-600 px-4 py-1 text-[0.9375rem] leading-6;
-	& p {
-		@apply mt-0!;
-		&:last-child {
-			@apply mb-0!;
-		}
-	}
-	& .versionmodified {
-		@apply font-medium text-yellow-900 dark:tracking-wide dark:text-yellow-500;
-	}
+	--adm: var(--warning);
 }
 
 div.deprecated {
-	@apply my-6 border-l-[3px] border-red-600 px-4 py-1 text-[0.9375rem] leading-6;
-	& p {
-		@apply mt-0!;
-		&:last-child {
-			@apply mb-0!;
-		}
-	}
-	& .versionmodified {
-		@apply font-medium text-red-900 dark:tracking-wide dark:text-red-400;
-	}
+	--adm: var(--danger);
 }

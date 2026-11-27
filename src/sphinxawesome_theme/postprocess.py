@@ -134,11 +134,14 @@ def headerlinks(tree: BeautifulSoup) -> None:
 
 
 def scrollspy(tree: BeautifulSoup) -> None:
-    """Add an active class to current TOC links in the right sidebar."""
+    """Mark the current section's TOC link in the right sidebar.
+
+    Headings are marked with ``data-scrollspy``; the theme's JavaScript sets
+    ``activeSection`` while scrolling, which toggles ``data-current``.
+    """
     for link in tree("a", class_="headerlink"):
         if link.parent.name in ["h2", "h3"] or (link.parent.name == "dt" and "sig" in link.parent.get("class", "")):
-            active_link = link["href"]
-            link["x-intersect.margin.0%.0%.-70%.0%"] = f"activeSection = '{active_link}'"
+            link["data-scrollspy"] = ""
 
     for link in tree.select("#right-sidebar a"):
         active_link = link["href"]

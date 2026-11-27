@@ -36,6 +36,9 @@ repository = "https://github.com/kai687/sphinxawesome-theme"
 sphinxawesome_theme = "sphinxawesome_theme"
 
 [dependency-groups]
+browser = [
+  "playwright",
+]
 dev = [
   "coverage[toml]",
   "pytest",

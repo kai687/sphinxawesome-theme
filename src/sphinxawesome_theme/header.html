@@ -30,7 +30,8 @@
       {%- if theme_main_nav_links|tobool -%}
       <nav class="flex items-center gap-6 text-sm font-medium">
         {%- for text,url in theme_main_nav_links.items() %}
-        {%- set _active = "text-foreground" if pagename in url else "text-foreground/60" -%}
+        {%- set _target = url.split('#')[0].split('?')[0]|trim('/') -%}
+        {%- set _active = "text-foreground" if (not url.startswith("http") and (_target == pagename or _target ~ "/index" == pagename)) else "text-foreground/60" -%}
         {%- if url.startswith("http") %}
         <a href="{{ url }}" class="transition-colors hover:text-foreground/80 {{ _active }}" rel="noopener nofollow">{{
           text }}</a>
@@ -86,7 +87,7 @@
         <button @click="darkMode = !darkMode"
           class="relative inline-flex items-center justify-center px-0 text-sm font-medium transition-colors rounded-md hover:bg-accent hover:text-accent-foreground h-9 w-9"
           type="button"
-          title="Toggle color scheme">
+          title="Toggle color scheme" aria-label="Toggle color scheme" :aria-pressed="darkMode.toString()">
           <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 96 960 960" fill="currentColor"
             class="absolute transition-all scale-100 rotate-0 dark:-rotate-90 dark:scale-0">
             <path

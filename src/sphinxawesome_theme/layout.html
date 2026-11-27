@@ -19,9 +19,11 @@
   <script>
     (function () {
       // Set initial color scheme
-      if ((localStorage.getItem("_x_darkMode") === "true") || (window.matchMedia("(prefers-color-scheme: dark)").matches)) {
-        document.documentElement.classList.add("dark");
-      }
+      // A stored user choice wins over the OS preference.
+      var stored = null;
+      try { stored = localStorage.getItem("_x_darkMode"); } catch (e) {}
+      var dark = stored !== null ? stored === "true" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+      document.documentElement.classList.toggle("dark", dark);
 
       // Watch for media preference changes
       window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (event) => {
@@ -81,7 +83,9 @@
   {%- block extrahead %}{%- endblock extrahead %}
 </head>
 
-<body x-data="{ showSidebar: false, showScrollTop: false }"
+<body x-data="{ showSidebar: false, showScrollTop: false, isMobile: window.matchMedia('(max-width: 767px)').matches }"
+  x-init="window.matchMedia('(max-width: 767px)').addEventListener('change', e => { isMobile = e.matches; if (!e.matches) showSidebar = false })"
+  @keydown.escape.window="showSidebar = false"
   class="min-h-screen font-sans antialiased bg-background text-foreground" :class="{ 'overflow-hidden': showSidebar }"
   {%- if theme_show_scrolltop|tobool -%}@scroll.window="showScrollTop = pageYOffset > 100" {%- endif -%}>
 

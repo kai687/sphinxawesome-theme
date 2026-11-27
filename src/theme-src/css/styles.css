@@ -41,7 +41,7 @@
 	::before,
 	::backdrop,
 	::file-selector-button {
-		border-color: var(--color-gray-200, currentcolor);
+		border-color: var(--color-border, currentcolor);
 	}
 }
 
@@ -49,27 +49,35 @@
 	:root {
 		color-scheme: light;
 
+		/* Pure white paper, cool ink, and one teal accent. */
 		--background: 0 0% 100%;
-		--foreground: 222.2 47.4% 11.2%;
+		--foreground: 215 28% 13%;
 
-		--muted: 210 40% 96.1%;
-		--muted-foreground: 215.4 16.3% 38%;
+		--muted: 210 20% 96%;
+		--muted-foreground: 215 14% 36%;
 
 		--popover: 0 0% 100%;
-		--popover-foreground: 222.2 47.4% 11.2%;
+		--popover-foreground: 215 28% 13%;
 
-		--border: 214.3 31.8% 91.4%;
-		--input: 214.3 31.8% 91.4%;
+		--border: 214 20% 89%;
+		--input: 214 20% 85%;
 
 		--card: 0 0% 100%;
-		--card-foreground: 222.2 47.4% 11.2%;
+		--card-foreground: 215 28% 13%;
 
-		--primary: 222.2 47.4% 11.2%;
+		--primary: 215 28% 13%;
+		--brand: 188 80% 26%;
 
-		--accent: 210 40% 96.1%;
-		--accent-foreground: 222.2 47.4% 11.2%;
+		--accent: 210 25% 95%;
+		--accent-foreground: 215 28% 13%;
 
-		--ring: 215 20.2% 65.1%;
+		--ring: 188 80% 32%;
+
+		/* Admonition and version-note hues. */
+		--note: 205 75% 36%;
+		--tip: 152 60% 27%;
+		--warning: 36 90% 31%;
+		--danger: 355 68% 42%;
 
 		--radius: 0.5rem;
 	}
@@ -77,30 +85,33 @@
 	:root.dark {
 		color-scheme: dark;
 
-		--background: 224 71% 0%;
-		--foreground: 213 31% 91%;
+		--background: 215 22% 8%;
+		--foreground: 214 20% 89%;
 
-		--muted: 223 47% 11%;
-		--muted-foreground: 215.4 16.3% 68%;
+		--muted: 215 20% 12%;
+		--muted-foreground: 214 12% 66%;
 
-		--accent: 216 34% 17%;
-		--accent-foreground: 210 40% 98%;
+		--popover: 215 22% 10%;
+		--popover-foreground: 214 20% 89%;
 
-		--popover: 224 71% 4%;
-		--popover-foreground: 215 20.2% 65.1%;
+		--border: 215 16% 19%;
+		--input: 215 16% 22%;
 
-		--border: 216 34% 17%;
-		--input: 216 34% 17%;
+		--card: 215 22% 10%;
+		--card-foreground: 214 20% 89%;
 
-		--card: 224 71% 4%;
-		--card-foreground: 213 31% 91%;
+		--primary: 214 20% 94%;
+		--brand: 186 55% 63%;
 
-		--primary: 210 40% 98%;
-		--primary-foreground: 222.2 47.4% 1.2%;
+		--accent: 215 18% 15%;
+		--accent-foreground: 214 20% 94%;
 
-		--ring: 216 34% 17%;
+		--ring: 186 55% 63%;
 
-		--radius: 0.5rem;
+		--note: 205 85% 70%;
+		--tip: 152 50% 62%;
+		--warning: 40 85% 63%;
+		--danger: 355 85% 72%;
 	}
 }
 
