@@ -65,12 +65,12 @@
 		--card: 0 0% 100%;
 		--card-foreground: 215 28% 13%;
 
-		--brand: 188 80% 26%;
+		--brand: 0 0% 10%;
 
 		--accent: 210 25% 95%;
 		--accent-foreground: 215 28% 13%;
 
-		--ring: 188 80% 32%;
+		--ring: 0 0% 30%;
 
 		/* Admonition and version-note hues. */
 		--note: 205 75% 36%;
@@ -105,12 +105,12 @@
 		--card: 215 22% 10%;
 		--card-foreground: 214 20% 89%;
 
-		--brand: 186 55% 63%;
+		--brand: 0 0% 90%;
 
 		--accent: 215 18% 15%;
 		--accent-foreground: 214 20% 94%;
 
-		--ring: 186 55% 63%;
+		--ring: 0 0% 75%;
 
 		--note: 205 85% 70%;
 		--tip: 152 50% 62%;
