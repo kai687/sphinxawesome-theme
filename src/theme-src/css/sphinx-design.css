@@ -68,3 +68,13 @@ details.sd-dropdown summary:focus {
 .sd-shadow-sm {
 	@apply !shadow-none;
 }
+
+/* sphinx-design's dark color is invisible on the dark background. */
+:root.dark .sd-text-dark,
+:root.dark .sd-text-dark > p {
+	color: hsl(var(--foreground)) !important;
+}
+
+:root.dark .sd-outline-dark {
+	border-color: hsl(var(--foreground)) !important;
+}
