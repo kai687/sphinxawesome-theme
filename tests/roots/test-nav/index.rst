@@ -1,0 +1,7 @@
+Home
+====
+
+.. toctree::
+
+   about
+   a

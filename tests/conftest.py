@@ -24,6 +24,18 @@ def rootdir() -> Any:  # noqa: ANN401
         return path(__file__).parent.abspath() / "roots"
 
 
+def pytest_addoption(parser: pytest.Parser) -> None:
+    """Add an opt-in flag for the slow browser tests."""
+    parser.addoption(
+        "--run-browser",
+        action="store_true",
+        default=False,
+        help="Also run the Playwright browser tests in tests/browser.",
+    )
+
+
 def pytest_configure(config: Config) -> None:
-    """Register `sphinx` marker with pytest."""
+    """Register `sphinx` marker and skip browser tests unless requested."""
     config.addinivalue_line("markers", "sphinx")
+    if not config.getoption("--run-browser"):
+        collect_ignore.append("browser")
