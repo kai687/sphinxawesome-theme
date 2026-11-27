@@ -6,6 +6,7 @@
 	--color-background: hsl(var(--background));
 	--color-foreground: hsl(var(--foreground));
 	--color-primary: hsl(var(--primary));
+	--color-brand: hsl(var(--brand));
 
 	--color-muted: hsl(var(--muted));
 	--color-muted-foreground: hsl(var(--muted-foreground));
