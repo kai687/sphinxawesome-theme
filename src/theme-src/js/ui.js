@@ -39,7 +39,13 @@ export function initTheme() {
 	});
 }
 
-/** The mobile drawer: open and close buttons, overlay, Escape and breakpoint. */
+/**
+ * The mobile drawer: open and close buttons, overlay, Escape and breakpoint.
+ *
+ * While the drawer is open, everything outside it is made `inert`, so focus
+ * can't move to the blurred page behind it. Focus moves into the drawer on
+ * open and returns to the button that opened it on close.
+ */
 export function initSidebar() {
 	const sidebar = document.getElementById("left-sidebar");
 	if (!sidebar) {
@@ -48,6 +54,33 @@ export function initSidebar() {
 	const overlay = document.getElementById("sidebar-overlay");
 	const mobile = window.matchMedia("(max-width: 767px)");
 	let open = false;
+	let opener = null;
+	let blocked = [];
+
+	/** Make all content outside the drawer inert, or undo that. */
+	function setBackgroundInert(inert) {
+		if (!inert) {
+			for (const element of blocked) {
+				element.inert = false;
+			}
+			blocked = [];
+			return;
+		}
+		let node = sidebar;
+		while (node !== document.body && node.parentElement) {
+			for (const sibling of node.parentElement.children) {
+				const skip =
+					sibling === node ||
+					sibling === overlay ||
+					["SCRIPT", "STYLE", "LINK"].includes(sibling.tagName);
+				if (!skip && !sibling.inert) {
+					sibling.inert = true;
+					blocked.push(sibling);
+				}
+			}
+			node = node.parentElement;
+		}
+	}
 
 	function render() {
 		const closed = mobile.matches && !open;
@@ -59,18 +92,29 @@ export function initSidebar() {
 		}
 		sidebar.classList.toggle("translate-x-0", open);
 		document.body.classList.toggle("overflow-hidden", open);
+		setBackgroundInert(open && mobile.matches);
 		if (overlay) {
 			overlay.hidden = !open;
 		}
 	}
 
-	function setOpen(value) {
+	function setOpen(value, trigger) {
+		if (value === open) {
+			return;
+		}
 		open = value;
 		render();
+		if (open) {
+			opener = trigger ?? document.activeElement;
+			sidebar.querySelector("a[href], button")?.focus();
+		} else {
+			opener?.focus();
+			opener = null;
+		}
 	}
 
 	for (const button of document.querySelectorAll("[data-sidebar-open]")) {
-		button.addEventListener("click", () => setOpen(true));
+		button.addEventListener("click", () => setOpen(true, button));
 	}
 	for (const button of document.querySelectorAll("[data-sidebar-close]")) {
 		button.addEventListener("click", () => setOpen(false));
@@ -84,6 +128,7 @@ export function initSidebar() {
 	mobile.addEventListener("change", (event) => {
 		if (!event.matches) {
 			open = false;
+			opener = null;
 		}
 		render();
 	});
@@ -156,14 +201,24 @@ export function initScrollTop() {
 	update();
 }
 
-/** Focus the search field with Cmd+K. */
+/** Focus the search field with Cmd+K (macOS) or Ctrl+K. */
 export function initSearchShortcut() {
 	const input = document.getElementById("search-input");
 	if (!input) {
 		return;
 	}
+
+	// Show the shortcut that works on this platform.
+	const platform = navigator.userAgentData?.platform ?? navigator.platform;
+	if (!/mac|iphone|ipad/i.test(platform)) {
+		const key = document.querySelector("#searchbox kbd span");
+		if (key) {
+			key.textContent = "Ctrl";
+		}
+	}
+
 	document.addEventListener("keydown", (event) => {
-		if (event.metaKey && event.key === "k") {
+		if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
 			event.preventDefault();
 			input.focus();
 		}

@@ -158,6 +158,47 @@ def test_drawer_aria_hidden_follows_state(new_page: Any) -> None:
     assert page.get_attribute(SIDEBAR, "aria-hidden") != "true"
 
 
+def focus_in(page: Any, selector: str) -> bool:
+    """Whether the focused element is inside the element matching `selector`."""
+    return bool(page.evaluate(f"document.querySelector('{selector}').contains(document.activeElement)"))
+
+
+def test_drawer_traps_focus(new_page: Any) -> None:
+    """With the drawer open, Tab never reaches the page behind it."""
+    page = new_page("index.html", viewport=MOBILE)
+    open_drawer(page)
+    assert focus_in(page, SIDEBAR), "focus should move into the drawer"
+    for _ in range(12):
+        page.keyboard.press("Tab")
+        # Focus may leave the document for the browser UI, but never lands in the page.
+        assert page.evaluate("document.activeElement === document.body") or focus_in(page, SIDEBAR)
+    for _ in range(12):
+        page.keyboard.press("Shift+Tab")
+        assert page.evaluate("document.activeElement === document.body") or focus_in(page, SIDEBAR)
+
+
+def test_drawer_returns_focus_on_close(new_page: Any) -> None:
+    """Closing the drawer puts focus back on the menu button, and the page is usable again."""
+    page = new_page("index.html", viewport=MOBILE)
+    open_drawer(page)
+    page.keyboard.press("Escape")
+    page.wait_for_function(f"document.querySelector('{SIDEBAR}').inert")
+    assert page.evaluate("document.activeElement.textContent.includes('Toggle navigation menu')")
+    assert not page.evaluate("document.querySelector('main').closest('[inert]')")
+    assert not page.evaluate("document.querySelector('header').closest('[inert]')")
+
+
+def test_sidebar_links_reachable_by_keyboard_on_desktop(new_page: Any) -> None:
+    """Tab visits the sidebar's links on desktop."""
+    page = new_page("index.html", viewport=DESKTOP)
+    visited = set()
+    for _ in range(25):
+        page.keyboard.press("Tab")
+        if focus_in(page, SIDEBAR):
+            visited.add(page.evaluate("document.activeElement.getAttribute('href')"))
+    assert {"about.html", "a.html", "long.html", "parent.html"} <= visited
+
+
 # Scroll to top
 
 
@@ -182,6 +223,14 @@ def test_cmd_k_focuses_search(new_page: Any) -> None:
     page = new_page("index.html", viewport=DESKTOP)
     page.evaluate("document.activeElement.blur()")
     page.keyboard.press("Meta+k")
+    assert page.evaluate("document.activeElement.id") == "search-input"
+
+
+def test_ctrl_k_focuses_search(new_page: Any) -> None:
+    """Ctrl+K moves focus to the search field."""
+    page = new_page("index.html", viewport=DESKTOP)
+    page.evaluate("document.activeElement.blur()")
+    page.keyboard.press("Control+k")
     assert page.evaluate("document.activeElement.id") == "search-input"
 
 
