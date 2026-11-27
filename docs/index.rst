@@ -47,6 +47,8 @@ Upgrade
 
 To upgrade to version |current| of the theme, read the :doc:`changelog/index`.
 
+.. rst-class:: search-ignore
+
 Explore
 -------
 
