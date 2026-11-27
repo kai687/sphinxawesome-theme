@@ -30,7 +30,7 @@
 	--color-diff-remove-foreground: hsl(var(--diff-remove-foreground));
 
 	--font-mono:
-		JetBrains\Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+		"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
 		"Liberation Mono", "Courier New", monospace;
 
 	--radius-lg: var(--radius);
