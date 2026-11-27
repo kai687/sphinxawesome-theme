@@ -42,7 +42,7 @@ def site(tmp_path_factory: pytest.TempPathFactory) -> Iterator[str]:
         buildername="html",
         confoverrides={
             "html_theme": "sphinxawesome_theme",
-            "html_theme_options": {"main_nav_links": NAV_LINKS},
+            "html_theme_options": {"main_nav_links": NAV_LINKS, "show_scrolltop": True, "awesome_headerlinks": True},
         },
         freshenv=True,
         status=None,

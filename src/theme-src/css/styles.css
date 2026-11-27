@@ -45,6 +45,18 @@
 	}
 }
 
+/*
+  Keyboard focus ring. Without an explicit color, browsers draw their own
+  ring, which can be nearly invisible on a dark background. Utilities such as
+  `focus-visible:-outline-offset-1` still override the offset.
+*/
+@layer base {
+	:focus-visible {
+		outline: 2px solid var(--color-ring);
+		outline-offset: 2px;
+	}
+}
+
 @layer base {
 	:root {
 		color-scheme: light;
@@ -122,11 +134,6 @@
 		--diff-remove: 0 84% 60%;
 		--diff-remove-foreground: 0 96% 89%;
 	}
-}
-
-/* For Alpine.js */
-[x-cloak] {
-	display: none !important;
 }
 
 @media (max-width: 640px) {

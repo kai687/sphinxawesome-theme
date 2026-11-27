@@ -11,9 +11,7 @@
 {%- endif -%}
 
 <!DOCTYPE html>
-<html lang="{{ lang_attr }}" data-content_root="{{ content_root|default('', true) }}"
-  x-data="{ darkMode: $persist(window.matchMedia('(prefers-color-scheme: dark)').matches), activeSection: ''}"
-  :class="{ 'dark' : darkMode === true }">
+<html lang="{{ lang_attr }}" data-content_root="{{ content_root|default('', true) }}">
 
 <head>
   <script>
@@ -27,7 +25,7 @@
 
       // Watch for media preference changes
       window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (event) => {
-        localStorage.setItem("_x_darkMode", event.matches);
+        try { localStorage.setItem("_x_darkMode", event.matches); } catch (e) {}
         document.documentElement.classList.toggle("dark", event.matches);
       });
     })();
@@ -83,17 +81,12 @@
   {%- block extrahead %}{%- endblock extrahead %}
 </head>
 
-<body x-data="{ showSidebar: false, showScrollTop: false, isMobile: window.matchMedia('(max-width: 767px)').matches }"
-  x-init="window.matchMedia('(max-width: 767px)').addEventListener('change', e => { isMobile = e.matches; if (!e.matches) showSidebar = false })"
-  @keydown.escape.window="showSidebar = false"
-  class="min-h-screen font-sans antialiased bg-background text-foreground" :class="{ 'overflow-hidden': showSidebar }"
-  {%- if theme_show_scrolltop|tobool -%}@scroll.window="showScrollTop = pageYOffset > 100" {%- endif -%}>
+<body class="min-h-screen font-sans antialiased bg-background text-foreground">
 
   {#- A blurry background screen for the mobile sidebar -#}
   {%- if sidebars|length > 0 %}
-  <div x-cloak x-show="showSidebar"
-    class="fixed inset-0 z-50 overflow-hidden bg-background/80 backdrop-blur-sm md:hidden"
-    @click.self="showSidebar = false"></div>
+  <div id="sidebar-overlay" hidden
+    class="fixed inset-0 z-50 overflow-hidden bg-background/80 backdrop-blur-sm md:hidden"></div>
   {%- endif %}
 
   {#- The main page wrapper -#}

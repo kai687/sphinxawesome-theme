@@ -70,35 +70,30 @@ def get_html_files(outdir: pathlib.Path | str) -> list[str]:
     return html_list
 
 
-# FIXME: The code works but I don't know how to fix the types
 def collapsible_nav(tree: BeautifulSoup) -> None:
-    """Make navigation links with children collapsible."""
+    """Make navigation links with children collapsible.
+
+    The initial state is rendered here: branches that contain the current page
+    are expanded, all others are hidden. The theme's JavaScript toggles the
+    ``expanded`` class on the link and the ``hidden`` attribute on the list.
+    """
     for link in tree.select("#left-sidebar a"):
         # Check if the link has "children"
         children = link.next_sibling
         if children and children.name == "ul":  # type: ignore
-            # State must be available in the link and the list
             li = link.parent
-            if li:
-                li["x-data"] = "{ expanded: $el.classList.contains('current') ? true : false }"
-            link["@click"] = "expanded = !expanded"
+            expanded = bool(li and "current" in li.get("class", []))
+
             # The expandable class is a hack because we can't use Tailwind
             # I want to have _only_ expandable links with `justify-between`
             link["class"].append("expandable")  # type: ignore
-            link[":class"] = "{ 'expanded' : expanded }"
-            children["x-show"] = "expanded"  # type: ignore
-            if "current" not in children.get("class", []):  # type: ignore
-                children["x-cloak"] = ""  # type: ignore
+            if expanded:
+                link["class"].append("expanded")  # type: ignore
+            else:
+                children["hidden"] = ""  # type: ignore
 
             # Create a button with an icon inside to get focus behavior
-            button = tree.new_tag(
-                "button",
-                attrs={
-                    "type": "button",
-                    "@click.prevent.stop": "expanded = !expanded",
-                    "x-cloak": "",
-                },
-            )
+            button = tree.new_tag("button", attrs={"type": "button"})
             label = tree.new_tag("span", attrs={"class": "sr-only"})
             button.append(label)
 
@@ -125,9 +120,7 @@ def remove_empty_toctree(tree: BeautifulSoup) -> None:
 def headerlinks(tree: BeautifulSoup) -> None:
     """Make headerlinks copy their URL on click."""
     for link in tree("a", class_="headerlink"):
-        link["@click.prevent"] = (
-            "window.navigator.clipboard.writeText($el.href); $el.setAttribute('data-tooltip', 'Copied!'); setTimeout(() => $el.setAttribute('data-tooltip', 'Copy link to this element'), 2000)"
-        )
+        link["data-copy-link"] = ""
         del link["title"]
         link["aria-label"] = "Copy link to this element"
         link["data-tooltip"] = "Copy link to this element"
@@ -137,15 +130,11 @@ def scrollspy(tree: BeautifulSoup) -> None:
     """Mark the current section's TOC link in the right sidebar.
 
     Headings are marked with ``data-scrollspy``; the theme's JavaScript sets
-    ``activeSection`` while scrolling, which toggles ``data-current``.
+    ``data-current`` on the matching TOC link while scrolling.
     """
     for link in tree("a", class_="headerlink"):
         if link.parent.name in ["h2", "h3"] or (link.parent.name == "dt" and "sig" in link.parent.get("class", "")):
             link["data-scrollspy"] = ""
-
-    for link in tree.select("#right-sidebar a"):
-        active_link = link["href"]
-        link[":data-current"] = f"activeSection === '{active_link}'"
 
 
 def external_links(tree: BeautifulSoup) -> None:
