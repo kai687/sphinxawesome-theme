@@ -11,10 +11,10 @@
 	--mystnb-source-border-width: 1px;
 	--mystnb-stdout-bg-color: hsl(var(--muted) / 0.5);
 	--mystnb-stdout-border-color: hsl(var(--border));
-	--mystnb-stderr-bg-color: hsl(0 80% 95%);
-	--mystnb-stderr-border-color: hsl(0 60% 85%);
-	--mystnb-traceback-bg-color: hsl(0 80% 97%);
-	--mystnb-traceback-border-color: hsl(0 60% 85%);
+	--mystnb-stderr-bg-color: hsl(var(--danger) / 0.08);
+	--mystnb-stderr-border-color: hsl(var(--danger) / 0.3);
+	--mystnb-traceback-bg-color: hsl(var(--danger) / 0.05);
+	--mystnb-traceback-border-color: hsl(var(--danger) / 0.3);
 	--mystnb-scrollbar-thumb-color: hsl(var(--muted-foreground));
 	--mystnb-scrollbar-thumb-hover-color: hsl(var(--foreground));
 }
@@ -25,10 +25,10 @@
 	--mystnb-source-margin-color: hsl(var(--border));
 	--mystnb-stdout-bg-color: hsl(var(--muted) / 0.5);
 	--mystnb-stdout-border-color: hsl(var(--border));
-	--mystnb-stderr-bg-color: hsl(0 40% 12%);
-	--mystnb-stderr-border-color: hsl(0 40% 22%);
-	--mystnb-traceback-bg-color: hsl(0 40% 10%);
-	--mystnb-traceback-border-color: hsl(0 40% 22%);
+	--mystnb-stderr-bg-color: hsl(var(--danger) / 0.1);
+	--mystnb-stderr-border-color: hsl(var(--danger) / 0.3);
+	--mystnb-traceback-bg-color: hsl(var(--danger) / 0.07);
+	--mystnb-traceback-border-color: hsl(var(--danger) / 0.3);
 	--mystnb-scrollbar-thumb-color: hsl(var(--muted-foreground));
 	--mystnb-scrollbar-thumb-hover-color: hsl(var(--foreground));
 }

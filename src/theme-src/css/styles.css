@@ -65,7 +65,6 @@
 		--card: 0 0% 100%;
 		--card-foreground: 215 28% 13%;
 
-		--primary: 215 28% 13%;
 		--brand: 188 80% 26%;
 
 		--accent: 210 25% 95%;
@@ -78,6 +77,12 @@
 		--tip: 152 60% 27%;
 		--warning: 36 90% 31%;
 		--danger: 355 68% 42%;
+
+		/* Diff highlighting: background hue and text color. */
+		--diff-add: 142 71% 45%;
+		--diff-add-foreground: 144 61% 20%;
+		--diff-remove: 0 84% 60%;
+		--diff-remove-foreground: 0 63% 31%;
 
 		--radius: 0.5rem;
 	}
@@ -100,7 +105,6 @@
 		--card: 215 22% 10%;
 		--card-foreground: 214 20% 89%;
 
-		--primary: 214 20% 94%;
 		--brand: 186 55% 63%;
 
 		--accent: 215 18% 15%;
@@ -112,6 +116,11 @@
 		--tip: 152 50% 62%;
 		--warning: 40 85% 63%;
 		--danger: 355 85% 72%;
+
+		--diff-add: 142 71% 45%;
+		--diff-add-foreground: 141 79% 85%;
+		--diff-remove: 0 84% 60%;
+		--diff-remove-foreground: 0 96% 89%;
 	}
 }
 

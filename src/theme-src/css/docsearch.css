@@ -5,7 +5,7 @@
 @reference "./theme.css";
 
 :root {
-	--docsearch-primary-color: hsl(var(--primary));
+	--docsearch-primary-color: hsl(var(--brand));
 	--docsearch-muted-color: hsl(var(--muted-foreground));
 	--docsearch-key-gradient: transparent;
 	--docsearch-key-shadow: transparent;

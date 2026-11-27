@@ -79,7 +79,7 @@
 		right: 50%;
 		bottom: -7px;
 		margin-right: -6px;
-		border-bottom-color: #1a202c;
+		border-bottom-color: hsl(var(--muted) / 0.75);
 	}
 }
 
@@ -96,7 +96,7 @@
 		right: 50%;
 		bottom: -7px;
 		margin-right: -6px;
-		border-bottom-color: #1a202c;
+		border-bottom-color: hsl(var(--muted) / 0.75);
 	}
 }
 
@@ -113,7 +113,7 @@
 		right: 50%;
 		bottom: -7px;
 		margin-right: -6px;
-		border-bottom-color: #1a202c;
+		border-bottom-color: hsl(var(--muted) / 0.75);
 	}
 }
 
@@ -131,7 +131,7 @@
 		right: 50%;
 		bottom: auto;
 		margin-right: -6px;
-		border-top-color: #1a202c;
+		border-top-color: hsl(var(--muted) / 0.75);
 	}
 }
 
@@ -149,7 +149,7 @@
 		right: 50%;
 		bottom: auto;
 		margin-right: -6px;
-		border-top-color: #1a202c;
+		border-top-color: hsl(var(--muted) / 0.75);
 	}
 }
 
@@ -166,7 +166,7 @@
 		right: 50%;
 		bottom: auto;
 		margin-right: -6px;
-		border-top-color: #1a202c;
+		border-top-color: hsl(var(--muted) / 0.75);
 	}
 }
 
@@ -184,7 +184,7 @@
 		bottom: 50%;
 		left: -7px;
 		margin-top: -6px;
-		border-left-color: #1a202c;
+		border-left-color: hsl(var(--muted) / 0.75);
 	}
 }
 
@@ -202,6 +202,6 @@
 		right: -7px;
 		bottom: 50%;
 		margin-top: -6px;
-		border-right-color: #1a202c;
+		border-right-color: hsl(var(--muted) / 0.75);
 	}
 }

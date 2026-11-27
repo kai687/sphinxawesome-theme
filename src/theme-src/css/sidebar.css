@@ -14,7 +14,7 @@
 	& a {
 		@apply flex w-full items-center rounded-md border border-transparent px-2 py-1.5 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:-outline-offset-1;
 		& > button {
-			@apply rounded text-muted-foreground hover:bg-primary/10;
+			@apply rounded text-muted-foreground hover:bg-foreground/10;
 			& > svg {
 				@apply origin-center transform-gpu transition-transform;
 			}

@@ -69,14 +69,20 @@ You can override these custom properties:
 ``--background``, ``--foreground``
    The color of the page and the color of the main text.
 
-``--primary``
-   The color for sidebar link hover styles and for DocSearch highlights.
+``--brand``
+   The accent color for the active sidebar link, the active table of contents entry, and DocSearch highlights.
 
 ``--accent``, ``--accent-foreground``
    The background color and the text color for hover and focus states.
 
 ``--muted``, ``--muted-foreground``
-   The colors for secondary elements and secondary text.
+   The colors for secondary elements, such as code block backgrounds, tooltips, and secondary text.
+
+``--popover``, ``--popover-foreground``
+   The colors for the DocSearch modal.
+
+``--card``, ``--card-foreground``
+   The colors for cards, for example from ``sphinx-design``.
 
 ``--border``, ``--input``
    The color of borders and of form fields.
@@ -84,6 +90,30 @@ You can override these custom properties:
 ``--ring``
    The color of the keyboard focus ring on the built-in search field and the DocSearch button.
    It does not change other focus outlines.
+
+``--note``, ``--tip``, ``--warning``, ``--danger``
+   The hues for admonitions and version notes.
+   ``--danger`` also colors the error output of ``myst-nb`` cells and the JavaScript fallback message on the search page.
+
+``--diff-add``, ``--diff-remove``
+   The background hue for added and removed lines in diffs and in highlighted code blocks.
+
+``--diff-add-foreground``, ``--diff-remove-foreground``
+   The text color for added and removed lines.
+
+``--radius``
+   The base corner radius, for example ``0.5rem``.
+   This value is a length, not an HSL list.
+
+``--font-mono``
+   The font stack for code and other monospace text.
+   This value is a list of font families, not an HSL list.
+   For example, ``--font-mono: "Fira Code", ui-monospace, monospace;``.
+
+.. note::
+
+   Syntax highlighting colors are not CSS custom properties.
+   To change them, set :confval:`sphinx:pygments_style` and ``pygments_style_dark``.
 
 To make the search focus ring green in both light and dark mode,
 add this CSS to a custom stylesheet or template:
@@ -99,6 +129,17 @@ Press Tab until the search field or DocSearch button has focus to see the green 
 
 To set different colors for light mode and dark mode,
 set the custom properties on ``:root`` and on ``:root.dark`` separately.
+
+Extension variables
+~~~~~~~~~~~~~~~~~~~
+
+The theme maps its colors to the variables of ``sphinx-design``, ``myst-nb``, and DocSearch.
+To change one element only, override the variable of the extension directly.
+These variables hold complete colors, such as ``hsl(0 80% 95%)``, not HSL lists:
+
+- ``--sd-color-*`` for ``sphinx-design`` tabs and cards
+- ``--mystnb-*`` for ``myst-nb`` code cells and output
+- ``--docsearch-*`` for DocSearch
 
 .. seealso::
 
