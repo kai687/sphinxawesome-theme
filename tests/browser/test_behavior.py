@@ -72,3 +72,29 @@ def test_sidebar_is_interactive_on_desktop(browser: Any, site: str) -> None:
     page.goto(f"{site}/index.html")
     assert not page.evaluate(f"document.querySelector('{SIDEBAR}').inert")
     context.close()
+
+
+def active_section(page: Any) -> str:
+    """The TOC link currently marked as active, or an empty string."""
+    links = page.query_selector_all('#right-sidebar a[data-current="true"]')
+    return links[0].get_attribute("href") if links else ""
+
+
+def test_scrollspy_follows_scroll_and_reaches_last_section(browser: Any, site: str) -> None:
+    """The active TOC entry follows the scroll, including the short last section."""
+    context = browser.new_context(viewport={"width": 1440, "height": 800})
+    page = context.new_page()
+    page.goto(f"{site}/long.html")
+    page.wait_for_function("window.Alpine !== undefined")
+
+    page.evaluate("document.querySelector('#second-section').scrollIntoView()")
+    page.wait_for_function("document.querySelector('#right-sidebar [data-current]')")
+    assert active_section(page) == "#second-section"
+
+    # The last sections are too short to scroll to the top of the viewport.
+    page.evaluate("window.scrollTo(0, document.documentElement.scrollHeight)")
+    page.wait_for_function(
+        "document.querySelector('#right-sidebar a[href=\"#fourth-section\"]').dataset.current === 'true'"
+    )
+    assert active_section(page) == "#fourth-section"
+    context.close()

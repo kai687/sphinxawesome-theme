@@ -10,6 +10,7 @@ import intersect from "@alpinejs/intersect";
 import persist from "@alpinejs/persist";
 import Alpine from "alpinejs";
 import { addCodeButtons } from "./code.js";
+import { initScrollspy } from "./scrollspy.js";
 
 window.Alpine = Alpine;
 Alpine.plugin([intersect, persist]);
@@ -17,4 +18,5 @@ Alpine.start();
 
 window.addEventListener("DOMContentLoaded", () => {
 	addCodeButtons();
+	initScrollspy();
 });

@@ -45,3 +45,19 @@ def test_main_nav_marks_only_current_page(app: Sphinx, page: str, active: str) -
     links = {a.get_text(strip=True): a for a in tree.select("header nav a")}
     is_active = {name: "text-foreground/60" not in links[name].get("class", []) for name in NAV_LINKS}
     assert {name for name, on in is_active.items() if on} == {active}
+
+
+@pytest.mark.sphinx("html", testroot="nav", confoverrides=OPTIONS)
+def test_scrollspy_marks_section_headings(app: Sphinx) -> None:
+    """Section headings carry the scrollspy marker the theme's JavaScript reads."""
+    app.build()
+    tree = parse_html(Path(app.outdir) / "long.html")
+    marked = [a.get("href") for a in tree.select("a.headerlink[data-scrollspy]")]
+    assert marked == [
+        "#first-section",
+        "#second-section",
+        "#third-section",
+        "#fourth-section",
+    ]
+    toc = tree.select("#right-sidebar a")
+    assert [a.get("href") for a in toc] == marked
