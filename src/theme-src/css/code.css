@@ -79,15 +79,15 @@ pre {
 			}
 
 			& mark {
-				@apply bg-muted text-inherit shadow-[2px_0_currentColor_inset] dark:bg-slate-700 dark:shadow-[3px_0_currentColor_inset];
+				@apply bg-accent text-inherit shadow-[2px_0_currentColor_inset] dark:shadow-[3px_0_currentColor_inset];
 			}
 
 			& ins {
-				@apply bg-green-500/30 text-green-900 no-underline before:absolute before:left-[2px] before:content-['\002b'] dark:text-green-200;
+				@apply bg-diff-add/30 text-diff-add-foreground no-underline before:absolute before:left-[2px] before:content-['\002b'];
 			}
 
 			& del {
-				@apply bg-red-500/30 text-red-900 no-underline before:absolute before:left-[2px] before:content-['\2212'] dark:text-red-200;
+				@apply bg-diff-remove/30 text-diff-remove-foreground no-underline before:absolute before:left-[2px] before:content-['\2212'];
 			}
 		}
 	}
@@ -99,11 +99,11 @@ pre {
 
 .highlight-diff {
 	& .gi {
-		@apply inline-block w-full bg-green-500/30 px-4 text-green-900 dark:text-green-200;
+		@apply inline-block w-full bg-green-500/30 px-4 text-green-900;
 	}
 
 	& .gd {
-		@apply inline-block w-full bg-red-500/30 px-4 text-red-900 dark:text-green-200;
+		@apply inline-block w-full bg-red-500/30 px-4 text-red-900;
 	}
 }
 
