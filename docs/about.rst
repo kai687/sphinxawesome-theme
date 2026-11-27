@@ -1,4 +1,5 @@
 :orphan: true
+:notoc: true
 
 .. meta::
    :description: Miscellaneous information about the Awesome Theme
