@@ -1,5 +1,4 @@
-/* Let the page provide the code block background in both color schemes. */
-:root.dark .highlight,
-:root:not(.dark) .highlight {
+/* Let the page provide the code block background in dark mode. */
+:root.dark .highlight {
 	background-color: transparent;
 }

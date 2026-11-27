@@ -49,8 +49,8 @@
 	:root {
 		color-scheme: light;
 
-		/* Cool paper and ink, with one teal accent. */
-		--background: 210 20% 99%;
+		/* Pure white paper, cool ink, and one teal accent. */
+		--background: 0 0% 100%;
 		--foreground: 215 28% 13%;
 
 		--muted: 210 20% 96%;
